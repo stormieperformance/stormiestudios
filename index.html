@@ -415,6 +415,69 @@
     .studio-section.in-view .studio-grid { opacity: 1; transform: translateY(0); filter: blur(0); }
     .studio-section.in-view .studio-grid { transition-delay: 0.1s; }
 
+    /* LIVING WOODLAND */
+    .woodland {
+      position: relative;
+      height: clamp(430px, 58vw, 620px);
+      margin: 0 -48px;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 72% 30%, rgba(201,169,110,0.07), transparent 22%),
+        linear-gradient(180deg, #0c0c0b 0%, #10110e 58%, #090a08 100%);
+      isolation: isolate;
+    }
+    .woodland::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 8;
+      pointer-events: none;
+      background: linear-gradient(90deg, #0c0c0b 0%, transparent 14%, transparent 86%, #0c0c0b 100%);
+    }
+    .woodland-copy {
+      position: absolute;
+      z-index: 7;
+      top: 54px;
+      left: 48px;
+      max-width: 320px;
+    }
+    .woodland-kicker {
+      font-size: 9px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .woodland-title {
+      font-family: var(--serif);
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: .98;
+      color: rgba(232,228,220,.88);
+    }
+    .woodland-scene { width: 100%; height: 100%; display: block; }
+    .woodland-line { fill: none; stroke: rgba(201,169,110,.21); stroke-width: 1.2; }
+    .woodland-far { opacity: .36; }
+    .woodland-mid { opacity: .58; }
+    .woodland-near { opacity: .9; }
+    .animal { color: #171912; transition: color .5s ease, filter .5s ease; }
+    .animal .body { fill: currentColor; }
+    .animal .detail { fill: none; stroke: rgba(201,169,110,.68); stroke-width: 1.25; stroke-linecap: round; }
+    .animal:hover { color: #1f2118; filter: drop-shadow(0 0 12px rgba(201,169,110,.18)); }
+    .fox { transform-origin: 755px 454px; animation: foxBreathe 4.8s ease-in-out infinite; }
+    .fox-tail { transform-origin: 805px 440px; animation: foxTail 5.2s ease-in-out infinite; }
+    .deer { transform-origin: 475px 393px; animation: deerBreathe 5.4s ease-in-out infinite; }
+    .deer-head { transform-origin: 508px 314px; animation: deerListen 7s ease-in-out infinite; }
+    .rabbit { transform-origin: 915px 476px; animation: rabbitAlert 5.8s ease-in-out infinite; }
+    .badger { transform-origin: 285px 480px; animation: badgerSniff 6.4s ease-in-out infinite; }
+    .bird-one { animation: birdFlight 15s linear infinite; }
+    .bird-two { animation: birdFlight 19s linear -7s infinite; }
+    .leaf { transform-box: fill-box; transform-origin: center; animation: leafSway 5s ease-in-out infinite; }
+    .leaf:nth-child(2n) { animation-delay: -2.4s; animation-duration: 6.5s; }
+
     /* ══ FOOTER SHELL (matches Stormie Games / Stormie Moves) ══ */
     .hud-frame {
       position: relative;
@@ -487,6 +550,14 @@
       50%  { transform: translateX(-18px); }
       100% { transform: translateX(0); }
     }
+    @keyframes foxBreathe { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-1.5px)} }
+    @keyframes foxTail { 0%,100%{transform:rotate(0)} 50%{transform:rotate(2.4deg)} }
+    @keyframes deerBreathe { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.006)} }
+    @keyframes deerListen { 0%,72%,100%{transform:rotate(0)} 78%{transform:rotate(-3deg)} 84%{transform:rotate(2deg)} }
+    @keyframes rabbitAlert { 0%,65%,100%{transform:translateY(0)} 70%{transform:translateY(-4px)} 75%{transform:translateY(0)} }
+    @keyframes badgerSniff { 0%,68%,100%{transform:rotate(0)} 74%{transform:rotate(2deg)} 81%{transform:rotate(-1deg)} }
+    @keyframes birdFlight { from{transform:translateX(-180px) translateY(0)} 50%{transform:translateX(540px) translateY(-18px)} to{transform:translateX(1180px) translateY(3px)} }
+    @keyframes leafSway { 0%,100%{transform:rotate(-1deg)} 50%{transform:rotate(4deg)} }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
@@ -504,6 +575,9 @@
       .footer-network { max-width: 320px; line-height: 1.8; }
       .hud-frame { margin-left: -24px; margin-right: -24px; }
       .hero-label { letter-spacing: 0.18em; }
+      .woodland { margin: 0 -24px; height: 500px; }
+      .woodland-copy { top: 38px; left: 24px; max-width: 250px; }
+      .woodland-scene { width: 145%; transform: translateX(-24%); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -512,6 +586,7 @@
         animation: none !important; transform: none !important; opacity: 1 !important; filter: none !important; transition: none !important;
       }
       .enter-btn::before { animation: none !important; }
+      .animal, .animal *, .bird-one, .bird-two, .leaf { animation: none !important; }
       body { opacity: 1; transform: none; transition: none; }
       .hero-contours { opacity: 1 !important; transition: none !important; }
     }
@@ -565,6 +640,89 @@
         <span>Scroll</span>
         <div class="scroll-line"></div>
       </div>
+    </section>
+
+    <section class="woodland" aria-label="An animated Swedish woodland with a deer, fox, rabbit, badger and birds">
+      <div class="woodland-copy">
+        <p class="woodland-kicker">Built with care</p>
+        <h2 class="woodland-title">For the wild ones.</h2>
+      </div>
+      <svg class="woodland-scene" viewBox="0 0 1080 620" role="img" aria-labelledby="woodlandTitle woodlandDesc">
+        <title id="woodlandTitle">A living woodland</title>
+        <desc id="woodlandDesc">A subtle animated forest landscape with native wildlife.</desc>
+        <defs>
+          <linearGradient id="groundFade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#151710"/><stop offset="1" stop-color="#090a08"/>
+          </linearGradient>
+          <radialGradient id="moonGlow"><stop offset="0" stop-color="#c9a96e" stop-opacity=".16"/><stop offset="1" stop-color="#c9a96e" stop-opacity="0"/></radialGradient>
+        </defs>
+
+        <circle cx="816" cy="145" r="112" fill="url(#moonGlow)"/>
+        <circle cx="816" cy="145" r="31" fill="none" stroke="#c9a96e" stroke-opacity=".18"/>
+        <g class="woodland-far">
+          <path class="woodland-line" d="M-50 390Q85 305 210 371T475 357T738 370T1130 330"/>
+          <path fill="#11130f" d="M0 410V238l18-57 12 61 19-107 16 111 18-67 12 231zm123 0V190l18-99 17 103 18-58 14 274zm820 0V204l19-93 15 96 22-121 16 124 22-83 14 283z"/>
+        </g>
+        <g class="woodland-mid">
+          <path fill="#12140f" d="M60 470V284l9-48 8 50 10-73 9 76 12-42 8 223zm115 0V260l12-82 11 86 15-113 13 118 14-73 13 274zm695 0V257l13-79 11 84 15-106 13 111 15-66 12 269z"/>
+          <g fill="none" stroke="#c9a96e" stroke-opacity=".17" stroke-linecap="round">
+            <path d="M229 470V166M229 250l-49-45M229 286l56-55M229 214l31-37M82 470V265M82 325l-34-33M82 301l35-40M913 470V231M913 298l-47-39M913 275l38-42"/>
+          </g>
+        </g>
+
+        <g fill="none" stroke="#c9a96e" stroke-opacity=".4" stroke-width="1.4">
+          <path class="bird-one" d="M0 173q8-8 16 0q8-8 16 0"/><path class="bird-two" d="M-60 218q7-7 14 0q7-7 14 0"/>
+        </g>
+
+        <path d="M0 472Q150 446 305 474T584 461T825 472T1080 447V620H0Z" fill="url(#groundFade)"/>
+        <path class="woodland-line woodland-near" d="M-20 481Q142 450 303 479T587 467T824 478T1110 453"/>
+
+        <!-- badger -->
+        <g class="animal badger" tabindex="0" aria-label="Badger">
+          <path class="body" d="M225 467c11-25 46-34 79-24 23 7 36 22 33 35-4 15-22 18-52 17-28-1-56-7-65-16-5-5-2-9 5-12z"/>
+          <path class="body" d="M317 448c14-5 29 1 34 12 3 8-3 16-17 20l-19-4z"/>
+          <path class="detail" d="M324 452l16 22M331 450l14 18M242 489v8M298 491v8"/>
+        </g>
+
+        <!-- deer -->
+        <g class="animal deer" tabindex="0" aria-label="Roe deer">
+          <path class="body" d="M414 374c20-19 67-21 93-3 16 11 17 29 3 42-17 15-76 11-94-2-13-10-14-26-2-37z"/>
+          <path class="body" d="M423 401l11 77h9l5-68zm67 4 5 73h9l8-77z"/>
+          <g class="deer-head">
+            <path class="body" d="M493 374c-2-25 5-44 15-55 7-8 19-6 25 2 5 7 3 20-5 30l-17 28z"/>
+            <path class="body" d="M507 322l-10-18 16 8zm17 0 17-14-8 21z"/>
+            <path class="detail" d="M512 321l-5-18m8 8-12-14m22 24 5-18m-2 9 9-13"/>
+            <circle cx="523" cy="332" r="1.5" fill="#c9a96e"/>
+          </g>
+          <path class="detail" d="M425 477h19M493 477h17"/>
+        </g>
+
+        <!-- fox -->
+        <g class="animal fox" tabindex="0" aria-label="Red fox">
+          <path class="body" d="M699 440c21-19 61-24 87-8 18 12 19 34 1 47-20 14-71 9-91-6-13-10-12-23 3-33z"/>
+          <path class="body" d="M706 469l-2 22h9l12-19zm58 6 7 18h9l1-24z"/>
+          <path class="body" d="M703 443l-24-23 7 34z"/>
+          <path class="body" d="M772 433l17-26 6 17 17-8-12 29z"/>
+          <circle cx="791" cy="427" r="1.6" fill="#c9a96e"/>
+          <g class="fox-tail"><path class="body" d="M700 447c-25-4-45 2-62 20-12 13-31 13-46 4 10 27 43 35 71 20 25-13 38-28 37-44z"/><path class="detail" d="M607 475c14 5 27 4 38-2"/></g>
+          <path class="detail" d="M704 491h15M770 492h15"/>
+        </g>
+
+        <!-- rabbit -->
+        <g class="animal rabbit" tabindex="0" aria-label="Rabbit">
+          <ellipse class="body" cx="920" cy="473" rx="30" ry="21"/>
+          <circle class="body" cx="946" cy="456" r="15"/>
+          <path class="body" d="M939 445c-7-28-3-43 4-42 8 1 11 19 8 42zm10 0c2-27 9-41 16-38 7 4 2 24-8 42z"/>
+          <circle cx="951" cy="453" r="1.5" fill="#c9a96e"/>
+          <circle cx="894" cy="464" r="9" fill="#1b1d16"/>
+        </g>
+
+        <g fill="none" stroke="#c9a96e" stroke-opacity=".24" stroke-linecap="round">
+          <path class="leaf" d="M35 512q11-37 19-55m-10 28-18-10m23-5 16-15"/><path class="leaf" d="M105 520q5-44 18-67m-10 25-19-12m25-5 17-18"/>
+          <path class="leaf" d="M371 518q9-39 21-60m-12 30-20-13m25-4 18-18"/><path class="leaf" d="M842 520q7-42 18-65m-10 28-18-12m23-4 17-18"/>
+          <path class="leaf" d="M1017 510q8-37 18-54m-10 24-16-10m21-4 14-15"/>
+        </g>
+      </svg>
     </section>
 
     <section class="studio-section" id="giving">
