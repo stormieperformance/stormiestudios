@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Erik Strand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:   #08111e;
+      --blue:  #1549b8;
+      --steel: #b8c8e8;
+      --fog:   #e8edf7;
+      --white: #f7f9fd;
+      --line:  rgba(8,17,30,0.08);
+      --muted: rgba(8,17,30,0.48);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--sans);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-right { display: flex; gap: 32px; align-items: center; }
+
+    .nav-link {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover { color: var(--ink); }
+
+    .nav-back {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-back:hover { opacity: 0.7; }
+
+    /* PAGE */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* HEADER */
+    .shop-header {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .shop-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    .shop-title {
+      font-family: var(--serif);
+      font-size: clamp(44px, 6vw, 72px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .shop-title em { font-style: italic; color: var(--muted); }
+
+    .shop-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.75;
+    }
+
+    /* PRODUCTS */
+    .products-section { padding: 64px 0; }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .product-card:hover {
+      border-color: var(--steel);
+      box-shadow: 0 8px 40px rgba(8,17,30,0.06);
+    }
+
+    .product-visual {
+      background: var(--fog);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-visual-num {
+      font-family: var(--serif);
+      font-size: 120px;
+      font-weight: 300;
+      color: var(--steel);
+      line-height: 1;
+      opacity: 0.5;
+      user-select: none;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--blue);
+      color: #fff;
+      padding: 4px 10px;
+    }
+
+    .product-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-type {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .product-name {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+
+    .product-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .product-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .product-includes li {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .product-includes li::before {
+      content: '–';
+      color: var(--steel);
+      flex-shrink: 0;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .product-price {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .product-price span {
+      font-size: 13px;
+      font-family: var(--sans);
+      font-weight: 300;
+      color: var(--muted);
+      margin-left: 4px;
+    }
+
+    .btn-buy {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: #fff;
+      padding: 12px 20px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-buy:hover { background: var(--blue); }
+
+    .btn-buy.blue { background: var(--blue); }
+    .btn-buy.blue:hover { background: #0f3a9a; }
+
+    /* GUARANTEE */
+    .guarantee {
+      background: var(--fog);
+      border: 1px solid var(--line);
+      padding: 40px 48px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 64px;
+    }
+
+    .guarantee-icon {
+      font-family: var(--serif);
+      font-size: 64px;
+      font-weight: 300;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .guarantee-title {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .guarantee-text {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    /* FAQ */
+    .faq-section { padding: 0 0 64px; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 32px;
+    }
+
+    .faq-list { display: flex; flex-direction: column; }
+
+    .faq-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+    }
+
+    .faq-item:first-of-type { border-top: 1px solid var(--line); }
+
+    .faq-q {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-toggle {
+      font-size: 20px;
+      color: var(--blue);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+    .faq-a {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding-top 0.3s;
+    }
+
+    .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+    .footer-right { font-size: 11px; color: var(--muted); }
+    .footer-right a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-right a:hover { color: var(--blue); }
+
+    @media (max-width: 860px) {
+      .nav-inner { padding: 0 24px; }
+      .page { padding: 0 24px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .guarantee { padding: 28px 24px; grid-template-columns: 1fr; gap: 16px; }
+      .guarantee-icon { font-size: 40px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="demo-erikstrand.html">Erik Strand</a>
+      <div class="nav-right">
+        <a class="nav-link" href="demo-erikstrand.html#services">Tjänster</a>
+        <a class="nav-link" href="demo-erikstrand.html#contact">Kontakt</a>
+        <a class="nav-back" href="demo-erikstrand.html">← Tillbaka</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <div class="shop-header">
+      <p class="shop-label">Shop</p>
+      <h1 class="shop-title">Program &<br><em>resurser</em></h1>
+      <p class="shop-sub">Digitala träningsprogram du kan starta direkt. Byggt för dig som vill ha struktur, progression och resultat — utan att boka ett gym.</p>
+    </div>
+
+    <div class="products-section">
+      <div class="products-grid">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="product-visual">
+            <span class="product-visual-num">12</span>
+            <span class="product-badge">Bästsäljare</span>
+          </div>
+          <div class="product-body">
+            <p class="product-type">Program · 12 veckor</p>
+            <p class="product-name">Bygg styrka från grunden</p>
+            <p class="product-desc">Ett fullständigt styrkeprogram för dig som vill bygga en solid bas. Fokus på de stora lyften, rätt teknik och stadig progression.</p>
+            <ul class="product-includes">
+              <li>36 pass med video och instruktioner</li>
+              <li>Veckovis progression inbyggd</li>
+              <li>Teknikkompendium inkluderat</li>
+              <li>Livstidsåtkomst</li>
+            </ul>
+            <div class="product-footer">
+              <div class="product-price">997 kr <span>engångspris</span></div>
+              <a class="btn-buy blue" href="#">Köp nu</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="product-visual" style="background:#e8f0fc;">
+            <span class="product-visual-num" style="color:#b8c8e8;">8</span>
+          </div>
+          <div class="product-body">
+            <p class="product-type">Program · 8 veckor</p>
+            <p class="product-name">Skadefri & stark</p>
+            <p class="product-desc">Träning för dig som vill komma tillbaka efter skada, eller förebygga den. Rörlighet, stabilitet och progressiv belastning i balans.</p>
+            <ul class="product-includes">
+              <li>24 pass med rörelseguider</li>
+              <li>Rörlighetsprotokoll per muskelgrupp</li>
+              <li>Anpassningar för vanliga skador</li>
+              <li>Livstidsåtkomst</li>
+            </ul>
+            <div class="product-footer">
+              <div class="product-price">697 kr <span>engångspris</span></div>
+              <a class="btn-buy" href="#">Köp nu</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="product-visual" style="background:#f0f4fc;">
+            <span class="product-visual-num" style="color:#c8d8f0;">E</span>
+          </div>
+          <div class="product-body">
+            <p class="product-type">E-bok · Guide</p>
+            <p class="product-name">Trygg i gymmet</p>
+            <p class="product-desc">Allt du behöver veta för att träna smart och säkert. Teknik, planering, återhämtning och vanliga misstag att undvika.</p>
+            <ul class="product-includes">
+              <li>80+ sidor med illustrationer</li>
+              <li>Träningsplaneringsmallar</li>
+              <li>PDF — ladda ner direkt</li>
+            </ul>
+            <div class="product-footer">
+              <div class="product-price">197 kr <span>engångspris</span></div>
+              <a class="btn-buy" href="#">Köp nu</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GUARANTEE -->
+    <div class="guarantee">
+      <div class="guarantee-icon">14</div>
+      <div>
+        <p class="guarantee-title">14 dagars öppet köp</p>
+        <p class="guarantee-text">Inte nöjd? Hör av dig inom 14 dagar så får du pengarna tillbaka — inga frågor. Jag vill att du ska vara säker på att det passar dig.</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <p class="section-label">Vanliga frågor</p>
+      <div class="faq-list">
+
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <p class="faq-q">Hur får jag tillgång till programmet? <span class="faq-toggle">+</span></p>
+          <p class="faq-a">Direkt efter köp får du ett mejl med nedladdningslänk. Allt finns i en PDF du kan spara och använda i gymmet.</p>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <p class="faq-q">Passar programmet nybörjare? <span class="faq-toggle">+</span></p>
+          <p class="faq-a">Ja. "Bygg styrka från grunden" är designat för dig som är ny eller vill starta om ordentligt. Tydliga instruktioner och progression från första passet.</p>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <p class="faq-q">Kan jag kombinera programmet med personlig träning? <span class="faq-toggle">+</span></p>
+          <p class="faq-a">Absolut. Många av mina klienter kör programmet självständigt och kompletterar med ett par PT-pass per månad för teknikgenomgångar.</p>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <p class="faq-q">Vilken utrustning behöver jag? <span class="faq-toggle">+</span></p>
+          <p class="faq-a">Tillgång till ett vanligt gym med skivstång och fria vikter. Inget specialutrustning krävs.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      <span class="footer-left">Erik Strand © 2026</span>
+       <span class="footer-right"> Concept project · not affiliated with a real client </span>
+      <span class="footer-right">Built by <a href="https://stormiestudios.com">Stormie Studios</a></span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
