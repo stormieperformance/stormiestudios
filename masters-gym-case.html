@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masters Gym — Case Study — Stormie Studios</title>
+<meta name="description" content="How Masters Gym Stockholm's site was built: conversion-focused structure, self-service CMS, and a live Instagram feed.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f6f0e2;--text:#241d13;--muted:rgba(36,29,19,.58);--muted2:rgba(36,29,19,.32);--line:rgba(36,29,19,.12);--gold:#a8763e;--gold-bright:#7d5a2c;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',sans-serif}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:860px;margin:0 auto;padding:56px 24px 120px}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+  .back:hover{color:var(--gold-bright)}
+  .eyebrow{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:40px 0 16px}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(36px,6vw,56px);line-height:1.05;margin-bottom:10px}
+  .subtitle{font-size:14px;color:var(--muted2);letter-spacing:.03em;margin-bottom:40px}
+  .note{border:1px solid var(--line);padding:18px 22px;font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:48px}
+  .note strong{color:var(--text);font-weight:500}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:48px}
+  .two-col h3{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--gold-bright);font-weight:400;margin-bottom:8px}
+  .two-col p{font-size:14px;color:var(--muted);line-height:1.8}
+  .grid4{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:48px}
+  .grid4 .cell{background:var(--bg);padding:28px 30px}
+  .grid4 .num{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--gold)}
+  .grid4 h4{font-family:var(--serif);font-size:20px;font-weight:400;margin:8px 0 8px}
+  .grid4 p{font-size:13px;color:var(--muted);line-height:1.75}
+  .outcomes{list-style:none;margin-bottom:56px}
+  .outcomes li{display:flex;gap:10px;align-items:baseline;font-size:14px;padding:6px 0}
+  .outcomes li::before{content:'✓';color:var(--gold);font-size:12px}
+  .tech{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:32px 0;margin-bottom:48px}
+  .tech h3{font-family:var(--serif);font-weight:400;font-size:20px;margin-bottom:16px}
+  .tech ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
+  .tech li{font-size:13px;color:var(--muted);line-height:1.7;padding-left:14px;position:relative}
+  .tech li::before{content:'—';position:absolute;left:0;color:var(--gold)}
+  .tech code{font-family:var(--sans);font-weight:500;color:var(--text)}
+  .cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-block;padding:12px 26px;border:1px solid var(--text);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--text);transition:all .2s}
+  .btn:hover{background:var(--text);color:var(--bg)}
+  .btn.ghost{border-color:var(--line);color:var(--muted)}
+  .btn.ghost:hover{background:transparent;color:var(--text);border-color:var(--text)}
+  @media(max-width:640px){.two-col,.grid4,.tech ul{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">← Stormie Studios</a>
+
+  <span class="eyebrow">Case study</span>
+  <h1>Masters Gym</h1>
+  <p class="subtitle">Kickboxing &amp; Muay Thai club · Kungsholmen, Stockholm</p>
+
+  <div class="note"><strong>Where this stands:</strong> the technical build below is live and working today, real CMS, real code, real client meetings. The gym's own photography and hero video are still being finalized on their end, so the visual polish on the live site isn't final yet. Publishing this now on purpose, so what you're reading is what was actually built, not a finished showreel.</div>
+
+  <div class="two-col">
+    <div>
+      <h3>The challenge</h3>
+      <p>A dated site with no clear path from visitor to member, nothing for corporate inquiries, and content that depended on a developer to update.</p>
+    </div>
+    <div>
+      <h3>The approach</h3>
+      <p>A fully custom, hand-coded, bilingual build structured around conversion, with a content system matched to how the club actually works day to day.</p>
+    </div>
+  </div>
+
+  <div class="grid4">
+    <div class="cell"><span class="num">i.</span><h4>Built for conversion</h4><p>Separate paths for members, families, and corporate training, each with its own call to action, rather than one generic contact form.</p></div>
+    <div class="cell"><span class="num">ii.</span><h4>Self-service news</h4><p>Moved onto a real headless CMS with photo support. Published and confirmed live end to end, Studio to site, no developer required.</p></div>
+    <div class="cell"><span class="num">iii.</span><h4>Schedule that fits how they work</h4><p>Kept on a spreadsheet on purpose, a deliberate call, not a shortcut. It's genuinely the fastest way to edit fast-moving weekly class times.</p></div>
+    <div class="cell"><span class="num">iv.</span><h4>Social-first design</h4><p>A live Instagram feed built in, meeting members where they already look first, which matters a lot in the fitness industry.</p></div>
+  </div>
+
+  <span class="eyebrow">Outcome so far</span>
+  <ul class="outcomes">
+    <li>Clear conversion paths for individual members and business customers alike</li>
+    <li>News fully self-service, confirmed working with a real published post</li>
+    <li>No placeholder or unfinished content anywhere on the site</li>
+  </ul>
+
+  <div class="tech">
+    <h3>How it's actually built</h3>
+    <ul>
+      <li>Hand-coded <code>HTML / CSS / JS</code>, no page builder</li>
+      <li>Headless CMS via <code>Sanity</code>, queried with <code>GROQ</code></li>
+      <li>Schedule sync via <code>Google Sheets</code>, deliberately kept separate from the CMS</li>
+      <li>Bilingual <code>EN / SV</code> throughout, one i18n system</li>
+      <li>Membership signups via <code>GymControl</code></li>
+      <li>Contact handled through <code>Formspree</code></li>
+      <li>Deployed on <code>GitHub Pages</code>, custom domain in progress</li>
+      <li>Light / dark mode, fully responsive, mobile-first</li>
+    </ul>
+  </div>
+
+  <div class="cta">
+    <a class="btn" href="index.html">Back to Stormie Studios</a>
+    <a class="btn ghost" href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener">See the live build in progress →</a>
+  </div>
+
+</div>
+</body>
+</html>
