@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erik Strand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:   #08111e;
+      --blue:  #1549b8;
+      --steel: #b8c8e8;
+      --fog:   #e8edf7;
+      --white: #f7f9fd;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--sans);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      text-decoration: none;
+      opacity: 0;
+      animation: appear 1s ease 0.1s forwards;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      opacity: 0;
+      animation: appear 1s ease 0.2s forwards;
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(8,17,30,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--blue);
+      padding: 10px 24px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-shop {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      text-decoration: none;
+      border: 1px solid var(--blue);
+      padding: 10px 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-shop:hover { background: var(--blue); color: var(--white); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-left {
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -80px;
+      width: 520px; height: 520px;
+      background: var(--blue);
+      border-radius: 50%;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: slideUp 1s ease 0.4s forwards;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(72px, 7vw, 116px);
+      font-weight: 300;
+      line-height: 0.92;
+      color: var(--white);
+      opacity: 0;
+      animation: slideUp 1.1s ease 0.5s forwards;
+    }
+
+    .hero-name em { font-style: italic; color: var(--steel); }
+
+    .hero-right {
+      background: var(--fog);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 56px;
+      gap: 48px;
+    }
+
+    .hero-desc {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 420px;
+      opacity: 0;
+      animation: slideUp 1.1s ease 0.65s forwards;
+    }
+
+    .hero-bottom {
+      opacity: 0;
+      animation: slideUp 1s ease 0.8s forwards;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--blue);
+      padding: 14px 32px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.8; }
+
+    .btn-ghost {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(8,17,30,0.4);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(8,17,30,0.2);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--blue); }
+
+    .stats-row {
+      border-top: 1px solid rgba(8,17,30,0.1);
+      padding-top: 28px;
+      display: flex;
+      gap: 40px;
+    }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--blue);
+    }
+
+    .stat-label {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(8,17,30,0.4);
+      margin-top: 4px;
+    }
+
+    /* LAYOUT */
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    .rule { height: 1px; background: rgba(8,17,30,0.1); }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 24px;
+    }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(44px, 4vw, 68px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+
+    .section-heading em { font-style: italic; color: rgba(8,17,30,0.35); }
+
+    /* APPROACH */
+    .approach { padding: 120px 0; }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .approach-text {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(8,17,30,0.65);
+      margin-bottom: 20px;
+      max-width: 600px;
+    }
+
+    .pillars {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(8,17,30,0.1);
+      border: 1px solid rgba(8,17,30,0.1);
+    }
+
+    .pillar {
+      background: var(--white);
+      padding: 36px 28px;
+    }
+
+    .pillar-num {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .pillar-title {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .pillar-text {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(8,17,30,0.5);
+    }
+
+    /* SERVICES */
+    .services {
+      padding: 120px 0;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: var(--blue);
+      border-radius: 50%;
+      opacity: 0.08;
+    }
+
+    .services .wrap { position: relative; z-index: 1; }
+    .services .section-label { color: var(--steel); }
+    .services .section-heading { color: var(--white); }
+    .services .section-heading em { color: rgba(247,249,253,0.25); }
+
+    .services-grid {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(247,249,253,0.08);
+    }
+
+    .svc {
+      background: rgba(247,249,253,0.03);
+      padding: 48px 36px;
+      transition: background 0.3s;
+    }
+
+    .svc:hover { background: rgba(21,73,184,0.15); }
+
+    .svc-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 28px;
+    }
+
+    .svc-title {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .svc-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(247,249,253,0.45);
+      margin-bottom: 36px;
+    }
+
+    .svc-price {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--steel);
+      border-top: 1px solid rgba(247,249,253,0.1);
+      padding-top: 20px;
+    }
+
+    /* PROCESS */
+    .process { padding: 120px 0; }
+
+    .process-rows { margin-top: 64px; }
+
+    .process-row {
+      display: grid;
+      grid-template-columns: 64px 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      padding: 40px 0;
+      border-top: 1px solid rgba(8,17,30,0.1);
+    }
+
+    .process-row:last-child { border-bottom: 1px solid rgba(8,17,30,0.1); }
+
+    .process-n {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      padding-top: 4px;
+    }
+
+    .process-title {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .process-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(8,17,30,0.5);
+    }
+
+    /* QUOTES */
+    .words { padding: 120px 0; background: var(--fog); }
+
+    .quotes-grid {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .quote-card {
+      background: var(--white);
+      padding: 40px 32px;
+      border-top: 2px solid var(--blue);
+    }
+
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 64px;
+      line-height: 1;
+      color: var(--blue);
+      opacity: 0.2;
+    }
+
+    .quote-text {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    .quote-name {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .quote-role {
+      font-size: 10px;
+      color: rgba(8,17,30,0.35);
+      margin-top: 3px;
+    }
+
+    /* ABOUT */
+    .about { padding: 120px 0; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-card {
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, #08111e 0%, #1549b8 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 40px;
+    }
+
+    .about-card-bg {
+      position: absolute;
+      bottom: -10px; right: -10px;
+      font-family: var(--serif);
+      font-size: 180px;
+      font-weight: 300;
+      color: rgba(247,249,253,0.06);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      pointer-events: none;
+    }
+
+    .about-card-name {
+      font-family: var(--serif);
+      font-size: 38px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-card-name em { font-style: italic; color: var(--steel); }
+
+    .about-right { padding-top: 8px; }
+
+    .about-body {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(8,17,30,0.65);
+      margin-bottom: 16px;
+    }
+
+    .creds {
+      margin-top: 48px;
+      border-top: 1px solid rgba(8,17,30,0.1);
+    }
+
+    .cred-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(8,17,30,0.07);
+    }
+
+    .cred-title { font-size: 13px; font-weight: 400; color: var(--ink); }
+    .cred-detail { font-size: 11px; font-weight: 300; color: rgba(8,17,30,0.4); }
+
+    /* CTA */
+    .cta-strip {
+      background: var(--blue);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-strip::before {
+      content: '';
+      position: absolute;
+      top: -150px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .cta-strip .wrap { position: relative; z-index: 1; }
+
+    .cta-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(247,249,253,0.5);
+      margin-bottom: 24px;
+    }
+
+    .cta-heading {
+      font-family: var(--serif);
+      font-size: clamp(52px, 6vw, 88px);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .cta-heading em { font-style: italic; color: var(--steel); }
+
+    .cta-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(247,249,253,0.5);
+      margin-bottom: 48px;
+    }
+
+    .cta-email {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(247,249,253,0.35);
+      padding-bottom: 4px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .cta-email:hover { color: var(--steel); border-color: var(--steel); }
+
+    /* FOOTER */
+    footer { padding: 32px 0; border-top: 1px solid rgba(8,17,30,0.1); }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy { font-size: 11px; font-weight: 300; color: rgba(8,17,30,0.3); }
+
+    .footer-by { font-size: 11px; font-weight: 300; color: rgba(8,17,30,0.3); }
+    .footer-by a { color: rgba(8,17,30,0.3); text-decoration: none; transition: color 0.2s; }
+    .footer-by a:hover { color: var(--blue); }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @media (max-width: 860px) {
+      .nav-inner { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 120px 28px 48px; }
+      .hero-right { padding: 48px 28px; }
+      .wrap { padding: 0 24px; }
+      .approach-grid { grid-template-columns: 1fr; gap: 40px; }
+      .pillars { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-row { grid-template-columns: 40px 1fr; }
+      .process-row > *:last-child { grid-column: 2; }
+      .quotes-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-inner { padding: 0 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">Erik Strand</a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#services">Tjänster</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#about">Om Erik</a></li>
+        </ul>
+        <a class="nav-shop" href="erikstrand-shop.html">Shop</a>
+        <a class="nav-cta" href="erikstrand-booking.html">Boka konsultation</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Personlig tränare · Stockholm</p>
+      <h1 class="hero-name">Erik<br><em>Strand</em></h1>
+    </div>
+    <div class="hero-right">
+      <p class="hero-desc">"Bli starkare, skadefri och trygg i gymmet — med en tränare som vet vad han gör."</p>
+      <div class="hero-bottom">
+        <div class="hero-cta-row">
+          <a class="btn-primary" href="#contact">Boka gratis samtal</a>
+          <a class="btn-ghost" href="#services">Se tjänster</a>
+        </div>
+        <div class="stats-row">
+          <div>
+            <div class="stat-num">10+</div>
+            <div class="stat-label">År</div>
+          </div>
+          <div>
+            <div class="stat-num">200+</div>
+            <div class="stat-label">Klienter</div>
+          </div>
+          <div>
+            <div class="stat-num">4.9</div>
+            <div class="stat-label">Betyg</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <section class="approach" id="approach">
+    <div class="wrap">
+      <div class="approach-grid">
+        <div>
+          <p class="section-label">Filosofi</p>
+          <h2 class="section-heading">Resultat<br><em>kräver</em><br>struktur.</h2>
+        </div>
+        <div>
+          <p class="approach-text">Jag tror inte på genvägar. Jag tror på ett program byggt för just din kropp, ett tydligt mål och konsekvens vecka för vecka.</p>
+          <p class="approach-text">Det handlar inte om att träna hårdare — det handlar om att träna rätt.</p>
+          <div class="pillars">
+            <div class="pillar">
+              <p class="pillar-num">01</p>
+              <p class="pillar-title">Styrka</p>
+              <p class="pillar-text">Bygg en kropp som klarar av mer — i gymmet och i vardagen.</p>
+            </div>
+            <div class="pillar">
+              <p class="pillar-num">02</p>
+              <p class="pillar-title">Skadefrihet</p>
+              <p class="pillar-text">Rätt teknik, rätt belastning. Träning som håller i längden.</p>
+            </div>
+            <div class="pillar">
+              <p class="pillar-num">03</p>
+              <p class="pillar-title">Trygghet</p>
+              <p class="pillar-text">Vet exakt vad du gör och varför. Ingen gissning, bara process.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <p class="section-label">Tjänster</p>
+      <h2 class="section-heading">Välj din<br><em>väg</em></h2>
+      <div class="services-grid">
+        <div class="svc">
+          <p class="svc-tag">01 — 1 mot 1</p>
+          <p class="svc-title">Personlig<br>träning</p>
+          <p class="svc-desc">Privata pass anpassade helt efter dig. Teknik, belastning och intensitet — allt styrs av din kropp och dina mål.</p>
+          <p class="svc-price">Från 900 kr / pass</p>
+        </div>
+        <div class="svc">
+          <p class="svc-tag">02 — Online</p>
+          <p class="svc-title">Online<br>coaching</p>
+          <p class="svc-desc">Anpassat veckoprogram, löpande incheckningar och direktkontakt. Träna var du vill — med full support.</p>
+          <p class="svc-price">Från 2 500 kr / mån</p>
+        </div>
+        <div class="svc">
+          <p class="svc-tag">03 — Program</p>
+          <p class="svc-title">12 veckor</p>
+          <p class="svc-desc">Full transformation från dag ett. Styrka, kropp, teknik — med en tränare som följer varje steg.</p>
+          <p class="svc-price">Från 12 900 kr</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="wrap">
+      <p class="section-label">Hur det funkar</p>
+      <h2 class="section-heading">Enkelt<br><em>från dag ett</em></h2>
+      <div class="process-rows">
+        <div class="process-row">
+          <p class="process-n">I</p>
+          <p class="process-title">Gratis samtal</p>
+          <p class="process-desc">Vi pratar mål, historik och vad som faktiskt hindrar dig. Ingen förpliktelse — bara ärlighet.</p>
+        </div>
+        <div class="process-row">
+          <p class="process-n">II</p>
+          <p class="process-title">Ditt program</p>
+          <p class="process-desc">Skrivet för din kropp. Inte en mall — en plan byggd utifrån hur du rör dig och vad du behöver.</p>
+        </div>
+        <div class="process-row">
+          <p class="process-n">III</p>
+          <p class="process-title">Träna och mät</p>
+          <p class="process-desc">Varje session loggad. Varje vecka ser du framsteg i siffror.</p>
+        </div>
+        <div class="process-row">
+          <p class="process-n">IV</p>
+          <p class="process-title">Resultat som håller</p>
+          <p class="process-desc">En grund som fortsätter bära långt efter att programmet är klart.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="words">
+    <div class="wrap">
+      <p class="section-label">Klienter</p>
+      <h2 class="section-heading">Ord från<br><em>dom som vet</em></h2>
+      <div class="quotes-grid">
+        <div class="quote-card">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">På tre månader lade jag till 20 kilo på knäböj och förstod äntligen hur man tränar rätt.</p>
+          <p class="quote-name">Marcus, 34</p>
+          <p class="quote-role">Online coaching</p>
+        </div>
+        <div class="quote-card">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">Han lyssnade faktiskt och byggde något som passade mitt liv — inte ett generiskt program.</p>
+          <p class="quote-name">Anna, 29</p>
+          <p class="quote-role">1 mot 1 träning</p>
+        </div>
+        <div class="quote-card">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">Jag känner mig alltid trygg och jag utvecklas varje vecka — både i teknik och styrka.</p>
+          <p class="quote-name">Johan, 41</p>
+          <p class="quote-role">12-veckorsprogram</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-card-bg">ES</div>
+          <div class="about-card-name">Erik<br><em>Strand</em></div>
+        </div>
+        <div class="about-right">
+          <p class="section-label">Om Erik</p>
+          <p class="about-body">Jag har tränat folk i 10 år och är fortfarande lika engagerad som dag ett. Det märks när det funkar — när en klient sätter nytt personbästa eller äntligen rör sig utan smärta.</p>
+          <p class="about-body">Min bakgrund i styrkelyft och crossfit har gett mig en djup förståelse för rörelsemönster och belastning. Jag studerar just nu till naprapat för att kunna hjälpa mina klienter ännu mer.</p>
+          <div class="creds">
+            <div class="cred-row">
+              <span class="cred-title">Licensierad personlig tränare</span>
+              <span class="cred-detail">10+ år</span>
+            </div>
+            <div class="cred-row">
+              <span class="cred-title">Styrkelyft & crossfit</span>
+              <span class="cred-detail">Specialisering</span>
+            </div>
+            <div class="cred-row">
+              <span class="cred-title">Naprapatutbildning</span>
+              <span class="cred-detail">Pågående</span>
+            </div>
+            <div class="cred-row">
+              <span class="cred-title">Baserad i Stockholm</span>
+              <span class="cred-detail">Södermalm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip" id="contact">
+    <div class="wrap">
+      <p class="cta-eyebrow">Redo att börja</p>
+      <h2 class="cta-heading">Boka ett<br><em>gratis samtal</em></h2>
+      <p class="cta-sub">Inga förpliktelser. Bara ett ärligt samtal om vad du vill uppnå.</p><br>
+      <a class="cta-email" href="#" onclick="window.location='mai'+'lto:erik'+'@erikstrand.se'; return false;">erik&#64;erikstrand&#46;se</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">© Erik Strand 2026</span>
+       <span class="footer-right">Concept project · not affiliated with a real client</span>
+      <span class="footer-by">Built by <a href="https://stormiestudios.com">Stormie Studios</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>
