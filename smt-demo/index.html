@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SMT — Stormie Muay Thai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="./style.css?v=200" />
+</head>
+<body>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">&times;</button>
+    <h3>BOOK A CLASS</h3>
+    <p class="modal-sub">Try your first class for free. We'll get back to you within 24 hours.</p>
+    <div class="modal-form">
+      <input type="text" placeholder="Your name" autocomplete="name" />
+      <input type="email" placeholder="Email address" autocomplete="email" />
+      <input type="tel" placeholder="Phone number (optional)" autocomplete="tel" />
+      <select>
+        <option value="" disabled selected>Which class interests you?</option>
+        <option>Morning Technique</option>
+        <option>Pad Work</option>
+        <option>Fight Training</option>
+        <option>Beginner Muay Thai</option>
+        <option>Not sure yet</option>
+      </select>
+      <button class="modal-submit" id="modal-submit">Send request →</button>
+      <p class="modal-note">No commitment. No equipment needed.</p>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-main">STORMIE</span>
+    <span class="nav-logo-sub">MUAY THAI</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#memberships">Memberships</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#coaches">Coaches</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://instagram.com/stormiemuaythai" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+  </ul>
+  <button class="nav-cta open-modal">Book Class</button>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" id="mobile-close" aria-label="Close menu">&times;</button>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#schedule" class="mobile-link">Schedule</a>
+  <a href="#memberships" class="mobile-link">Memberships</a>
+  <a href="#shop" class="mobile-link">Shop</a>
+  <a href="#coaches" class="mobile-link">Coaches</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="https://instagram.com/stormiemuaythai" target="_blank" rel="noopener noreferrer" class="mobile-link">Instagram</a>
+  <button class="mobile-cta open-modal">Book Class</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="https://raw.githubusercontent.com/stormieperformance/smt-demo/main/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Stockholm · Muay Thai</p>
+    <h1>STORMIE<br>MUAY THAI</h1>
+    <p class="hero-desc">Train Muay Thai in Stockholm. All levels welcome.</p>
+    <div class="hero-buttons">
+      <button class="btn btn-primary open-modal">Book Class</button>
+      <a href="#schedule" class="btn btn-ghost">View Schedule</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- MARQUEE 1 -->
+<div class="marquee marquee-accent">
+  <div class="marquee-track">
+    <span>START TRAINING&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;TRY YOUR FIRST CLASS FOR FREE&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;BEGINNER FRIENDLY&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</span>
+    <span>START TRAINING&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;TRY YOUR FIRST CLASS FOR FREE&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;BEGINNER FRIENDLY&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- START TRAINING -->
+<section class="start-training">
+  <img class="slide active" src="images/start-training.jpg" alt="">
+  <img class="slide" src="images/start2.jpg" alt="">
+  <img class="slide" src="images/start3.jpg" alt="">
+  <img class="slide" src="images/start6.jpg" alt="">
+  <div class="start-overlay">
+    <h3>Start Training</h3>
+    <p>Try your first class — no experience needed.</p>
+    <button class="btn btn-primary open-modal">Try your first class for free</button>
+  </div>
+</section>
+
+<!-- MARQUEE 2 -->
+<div class="marquee marquee-dark">
+  <div class="marquee-track">
+    <span>REAL MUAY THAI&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;STOCKHOLM&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;ALL LEVELS WELCOME&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</span>
+    <span>REAL MUAY THAI&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;STOCKHOLM&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;ALL LEVELS WELCOME&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-container">
+    <div class="about-media">
+      <img src="images/about-training.png" alt="Stormie Muay Thai training in Stockholm">
+    </div>
+    <div class="about-content">
+      <span class="about-label">About</span>
+      <h2>More than<br>a gym</h2>
+      <p class="about-tagline">A place to train, built with intent</p>
+      <p>Stormie Muay Thai is built around one thing. Quality training.</p>
+      <p>Everything we do is deliberate. Smaller groups, focused sessions, real attention to detail.</p>
+      <p>You do not need experience to start. You just need the willingness to train.</p>
+      <p>We focus on technique, conditioning, and long term progress. No noise. No distractions. Just the work.</p>
+      <p>Located in Stockholm.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule" id="schedule">
+  <div class="schedule-container">
+    <div class="schedule-header">
+      <h2>Schedule</h2>
+      <div class="schedule-tabs">
+        <button class="schedule-tab active" data-schedule="today" type="button">Today</button>
+        <button class="schedule-tab" data-schedule="tomorrow" type="button">Tomorrow</button>
+      </div>
+    </div>
+    <div class="schedule-slider">
+      <div class="schedule-panel active" data-panel="today">
+        <div class="schedule-grid">
+          <div class="schedule-card">
+            <div class="time">07:00</div>
+            <div class="info"><h3>Morning Technique</h3><p>All levels</p></div>
+            <button class="schedule-book-btn open-modal">Book →</button>
+          </div>
+          <div class="schedule-card">
+            <div class="time">12:00</div>
+            <div class="info"><h3>Pad Work</h3><p>Intermediate</p></div>
+            <button class="schedule-book-btn open-modal">Book →</button>
+          </div>
+          <div class="schedule-card">
+            <div class="time">18:00</div>
+            <div class="info"><h3>Fight Training</h3><p>Advanced</p></div>
+            <button class="schedule-book-btn open-modal">Book →</button>
+          </div>
+        </div>
+      </div>
+      <div class="schedule-panel" data-panel="tomorrow">
+        <div class="schedule-grid">
+          <div class="schedule-card">
+            <div class="time">08:00</div>
+            <div class="info"><h3>Beginner Muay Thai</h3><p>Beginner</p></div>
+            <button class="schedule-book-btn open-modal">Book →</button>
+          </div>
+          <div class="schedule-card">
+            <div class="time">13:00</div>
+            <div class="info"><h3>Technical Drills</h3><p>All levels</p></div>
+            <button class="schedule-book-btn open-modal">Book →</button>
+          </div>
+          <div class="schedule-card">
+            <div class="time">19:00</div>
+            <div class="info"><h3>Sparring</h3><p>Advanced</p></div>
+            <button class="schedule-book-btn open-modal">Book →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-ghost open-modal">View Full Schedule</button>
+  </div>
+</section>
+
+<!-- MEMBERSHIPS -->
+<section class="memberships" id="memberships">
+  <div class="memberships-container">
+    <h2>Memberships</h2>
+    <p class="memberships-sub">Choose how you want to train.</p>
+    <div class="memberships-carousel">
+      <div class="memberships-grid">
+        <div class="membership-card">
+          <div class="membership-ribbon">Flexible</div>
+          <h3>Stormie Drop-in</h3>
+          <p class="price">199 kr</p>
+          <p class="desc">Train when you want. No commitment.</p>
+          <button class="btn open-modal">Book class</button>
+        </div>
+        <div class="membership-card featured">
+          <div class="membership-ribbon">Best Value</div>
+          <h3>Stormie Unlimited</h3>
+          <p class="price">999 kr / month</p>
+          <p class="desc">Unlimited classes. Best value.</p>
+          <button class="btn open-modal">Start membership</button>
+        </div>
+        <div class="membership-card">
+          <div class="membership-ribbon">Beginner</div>
+          <h3>Stormie Start</h3>
+          <p class="price">4 classes 499 kr</p>
+          <p class="desc">Start your journey. Learn the basics.</p>
+          <button class="btn open-modal">Start here</button>
+        </div>
+        <div class="membership-card">
+          <div class="membership-ribbon">Student</div>
+          <h3>Stormie Student</h3>
+          <p class="price">799 kr / month</p>
+          <p class="desc">Discounted for students.</p>
+          <button class="btn open-modal">Start membership</button>
+        </div>
+        <div class="membership-card">
+          <div class="membership-ribbon">Youth</div>
+          <h3>Stormie Youth</h3>
+          <p class="price">699 kr / month</p>
+          <p class="desc">For younger athletes.</p>
+          <button class="btn open-modal">Start membership</button>
+        </div>
+        <div class="membership-card">
+          <div class="membership-ribbon">10 Sessions</div>
+          <h3>Stormie 10-Pack</h3>
+          <p class="price">1499 kr</p>
+          <p class="desc">10 classes. Flexible training.</p>
+          <button class="btn open-modal">Buy pack</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="shop-preview" id="shop">
+  <div class="shop-container">
+    <div class="shop-header">
+      <div>
+        <h2>Shop</h2>
+        <p class="shop-sub">Club gear</p>
+      </div>
+      <a href="#contact" class="shop-link">View all →</a>
+    </div>
+    <div class="shop-grid">
+      <div class="shop-card">
+        <div class="shop-image"><img class="variant active" src="images/hoodie.png" alt="Hoodie black"><img class="variant" src="images/hoodie-white.png" alt="Hoodie white"></div>
+        <div class="shop-card-info"><h3>Hoodie</h3><div class="shop-dots"><span class="shop-dot active"></span><span class="shop-dot"></span></div></div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-image"><img class="variant active" src="images/tee.png" alt="T-Shirt black"><img class="variant" src="images/tee-white.png" alt="T-Shirt white"></div>
+        <div class="shop-card-info"><h3>T-Shirt</h3><div class="shop-dots"><span class="shop-dot active"></span><span class="shop-dot"></span></div></div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-image"><img class="variant active" src="images/cap.png" alt="Cap black"><img class="variant" src="images/cap-white.png" alt="Cap white"></div>
+        <div class="shop-card-info"><h3>Cap</h3><div class="shop-dots"><span class="shop-dot active"></span><span class="shop-dot"></span></div></div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-image"><img class="variant active" src="images/beanie.png" alt="Beanie black"><img class="variant" src="images/beanie-white.png" alt="Beanie white"></div>
+        <div class="shop-card-info"><h3>Beanie</h3><div class="shop-dots"><span class="shop-dot active"></span><span class="shop-dot"></span></div></div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-image"><img class="variant active" src="images/stormiewraps.png" alt="Hand Wraps"><img class="variant" src="images/stormiewraps-white.png" alt="Hand Wraps white"></div>
+        <div class="shop-card-info"><h3>Hand Wraps</h3><div class="shop-dots"><span class="shop-dot active"></span><span class="shop-dot"></span></div></div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-image"><img class="variant active" src="images/blackshorts.png" alt="Black Shorts"><img class="variant" src="images/blackshorts-white.png" alt="Black Shorts white"></div>
+        <div class="shop-card-info"><h3>Black Shorts</h3><div class="shop-dots"><span class="shop-dot active"></span><span class="shop-dot"></span></div></div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-image"><img class="variant active" src="images/stripedshorts.png" alt="Striped Shorts"><img class="variant" src="images/stripedshorts-inverted.png" alt="Striped Shorts inverted"></div>
+        <div class="shop-card-info"><h3>Striped Shorts</h3><div class="shop-dots"><span class="shop-dot active"></span><span class="shop-dot"></span></div></div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-image"><img class="variant active" src="images/checkeredshorts.png" alt="Checkered Shorts"><img class="variant" src="images/checkeredshorts-inverted.png" alt="Checkered Shorts inverted"></div>
+        <div class="shop-card-info"><h3>Checkered Shorts</h3><div class="shop-dots"><span class="shop-dot active"></span><span class="shop-dot"></span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     NEWS — 3D carousel (Ignite-style)
+     Drop-in replacement for the old <section class="news-section">.
+     Self-contained: all CSS + JS lives in this block.
+     Accent matches your brand red (#C0392B).
+     ============================================================ -->
+<section class="news-section" id="news">
+<style>
+  .news-section { --nc-accent: #C9A86A; /* guld - justera hex har om din exakta guldton skiljer sig */ }
+
+  /* ---------- 3D stage ---------- */
+  .nc-stage {
+    position: relative;
+    height: 500px;
+    margin: 48px auto 8px;
+    max-width: 1200px;
+    perspective: 1400px;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .nc-track {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+  }
+
+  /* ---------- cards ---------- */
+  .nc-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 440px;
+    margin: -220px 0 0 -160px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: #0c0c0c;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 26px 24px;
+    cursor: pointer;
+    will-change: transform, opacity;
+    transition: border-color .3s ease, box-shadow .3s ease;
+    overflow: hidden;
+  }
+  .nc-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .nc-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 35%, rgba(0,0,0,0.85) 100%);
+    pointer-events: none;
+  }
+  .nc-card .nc-card-tag,
+  .nc-card h3 { position: relative; z-index: 2; }
+  .nc-card.is-active {
+    border-color: var(--nc-accent);
+    box-shadow: 0 0 0 1px var(--nc-accent), 0 30px 80px rgba(0,0,0,0.6);
+    cursor: grab;
+  }
+  .nc-stage.is-dragging .nc-card { cursor: grabbing; }
+
+  .nc-card .nc-card-tag {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 5px 14px;
+    border: 1px solid var(--nc-accent);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(201,168,106,0.22);
+    margin-bottom: 12px;
+  }
+  .nc-card h3 {
+    font-size: 24px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #fff;
+    margin: 0;
+  }
+
+  /* ---------- arrows ---------- */
+  .nc-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(10,10,10,0.6);
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .nc-arrow:hover { border-color: var(--nc-accent); color: var(--nc-accent); }
+  .nc-arrow:focus-visible { outline: 2px solid var(--nc-accent); outline-offset: 3px; }
+  .nc-arrow--prev { left: 4%; }
+  .nc-arrow--next { right: 4%; }
+
+  /* ---------- detail panel ---------- */
+  .nc-detail {
+    max-width: 600px;
+    margin: 28px auto 0;
+    text-align: center;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .nc-detail.is-switching {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .nc-detail .nc-pill {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid var(--nc-accent);
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--nc-accent);
+    margin-bottom: 18px;
+  }
+  .nc-detail h3 {
+    font-size: clamp(32px, 5.5vw, 52px);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin: 0 0 14px;
+  }
+  .nc-detail .nc-text {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .nc-detail .nc-hint {
+    margin-top: 24px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 768px) {
+    .nc-stage { height: 410px; margin-top: 32px; }
+    .nc-card {
+      width: 250px;
+      height: 350px;
+      margin: -175px 0 0 -125px;
+      padding: 20px 18px;
+    }
+    .nc-card h3 { font-size: 20px; }
+    .nc-arrow { width: 44px; height: 44px; }
+    .nc-arrow--prev { left: 8px; }
+    .nc-arrow--next { right: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nc-detail, .nc-card { transition: none; }
+  }
+</style>
+
+  <h2>News</h2>
+
+  <div class="nc-stage" id="ncStage" aria-roledescription="carousel" aria-label="News">
+    <button class="nc-arrow nc-arrow--prev" id="ncPrev" type="button" aria-label="Previous news">&#8249;</button>
+    <div class="nc-track" id="ncTrack"></div>
+    <button class="nc-arrow nc-arrow--next" id="ncNext" type="button" aria-label="Next news">&#8250;</button>
+  </div>
+
+  <div class="nc-detail" id="ncDetail" aria-live="polite">
+    <span class="nc-pill" id="ncPill"></span>
+    <h3 id="ncTitle"></h3>
+    <p class="nc-text" id="ncText"></p>
+    <p class="nc-hint">Drag to spin — or use the arrows</p>
+  </div>
+
+<script>
+(function () {
+  var ITEMS = [
+    {
+      tag: "Fight",
+      title: "Fight Night – April 12",
+      text: "Stormie fighter stepping into the ring. More details coming soon.",
+      img: "images/fight-night2.jpg"
+    },
+    {
+      tag: "Result",
+      title: "2 Wins – 1 KO",
+      text: "Strong performance this weekend. More fights ahead.",
+      img: "images/result.jpg"
+    },
+    {
+      tag: "Update",
+      title: "Morning Classes Added",
+      text: "New sessions Tuesdays & Thursdays 07:00–08:00.",
+      img: "images/morning-classes.png"
+    }
+  ];
+
+  var START_INDEX = 0;
+  var N = ITEMS.length;
+
+  var stage   = document.getElementById("ncStage");
+  var track   = document.getElementById("ncTrack");
+  var detail  = document.getElementById("ncDetail");
+  var pillEl  = document.getElementById("ncPill");
+  var titleEl = document.getElementById("ncTitle");
+  var textEl  = document.getElementById("ncText");
+  if (!stage || !track) return;
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var cards = ITEMS.map(function (item, i) {
+    var el = document.createElement("div");
+    el.className = "nc-card";
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    el.setAttribute("aria-label", item.title);
+    el.innerHTML =
+      '<img src="' + item.img + '" alt="">' +
+      '<span class="nc-card-tag">' + item.tag + "</span>" +
+      "<h3>" + item.title + "</h3>";
+    el.addEventListener("click", function () {
+      if (dragMoved) return;
+      goTo(i);
+    });
+    el.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goTo(i); }
+    });
+    track.appendChild(el);
+    return el;
+  });
+
+  var pos = START_INDEX;
+  var target = START_INDEX;
+  var shownIndex = -1;
+  var rafId = null;
+
+  function spacing() { return window.innerWidth <= 768 ? 170 : 280; }
+  function mod(n, m) { return ((n % m) + m) % m; }
+  function nearestIndex() { return mod(Math.round(pos), N); }
+
+  function render() {
+    var sp = spacing();
+    var active = nearestIndex();
+    cards.forEach(function (card, i) {
+      var off = mod(i - pos, N);
+      if (off > N / 2) off -= N;
+      var abs = Math.abs(off);
+      var visible = abs <= 1.6;
+      card.style.opacity = visible ? String(Math.max(0, 1 - abs * 0.38)) : "0";
+      card.style.pointerEvents = visible ? "auto" : "none";
+      card.style.zIndex = String(100 - Math.round(abs * 10));
+      card.style.transform =
+        "translateX(" + (off * sp).toFixed(1) + "px) " +
+        "translateZ(" + (-abs * 170).toFixed(1) + "px) " +
+        "rotateY(" + (-off * 18).toFixed(2) + "deg)";
+      card.classList.toggle("is-active", i === active && Math.abs(pos - target) < 0.01);
+    });
+    if (active !== shownIndex && Math.abs(pos - Math.round(pos)) < 0.5) {
+      updateDetail(active);
+    }
+  }
+
+  function updateDetail(i) {
+    shownIndex = i;
+    var apply = function () {
+      var item = ITEMS[i];
+      pillEl.textContent = item.tag;
+      titleEl.textContent = item.title;
+      textEl.textContent = item.text;
+      detail.classList.remove("is-switching");
+    };
+    if (reduceMotion) { apply(); return; }
+    detail.classList.add("is-switching");
+    setTimeout(apply, 180);
+  }
+
+  function tick() {
+    var diff = target - pos;
+    if (Math.abs(diff) < 0.001) {
+      pos = target;
+      render();
+      rafId = null;
+      return;
+    }
+    pos += diff * (reduceMotion ? 1 : 0.14);
+    render();
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function startTween() {
+    if (rafId === null) rafId = requestAnimationFrame(tick);
+  }
+
+  function goTo(i) {
+    var diff = mod(i - target, N);
+    if (diff > N / 2) diff -= N;
+    target += diff;
+    startTween();
+  }
+
+  function step(dir) { target += dir; startTween(); }
+
+  document.getElementById("ncPrev").addEventListener("click", function () { step(-1); });
+  document.getElementById("ncNext").addEventListener("click", function () { step(1); });
+
+  stage.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); step(1); }
+  });
+
+  var dragging = false, dragStartX = 0, dragStartPos = 0, dragMoved = false;
+
+  stage.addEventListener("pointerdown", function (e) {
+    if (e.target.closest(".nc-arrow")) return;
+    dragging = true;
+    dragMoved = false;
+    dragStartX = e.clientX;
+    dragStartPos = pos;
+    stage.classList.add("is-dragging");
+    if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+    stage.setPointerCapture(e.pointerId);
+  });
+
+  stage.addEventListener("pointermove", function (e) {
+    if (!dragging) return;
+    var dx = e.clientX - dragStartX;
+    if (Math.abs(dx) > 6) dragMoved = true;
+    pos = dragStartPos - dx / spacing();
+    render();
+  });
+
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    stage.classList.remove("is-dragging");
+    target = Math.round(pos);
+    startTween();
+    setTimeout(function () { dragMoved = false; }, 0);
+  }
+  stage.addEventListener("pointerup", endDrag);
+  stage.addEventListener("pointercancel", endDrag);
+
+  window.addEventListener("resize", render);
+
+  render();
+  updateDetail(START_INDEX);
+})();
+</script>
+</section>
+
+
+<!-- COACHES -->
+<section class="coaches" id="coaches">
+  <h2>Coaches</h2>
+  <div class="coaches-grid">
+    <div class="coach-card">
+      <img src="images/coachstorm.png" alt="Coach Storm">
+      <h3>Storm</h3>
+      <p>Head Coach · Muay Thai</p>
+    </div>
+    <div class="coach-card">
+      <img src="images/coachmochi.png" alt="Coach Mochi">
+      <h3>Mochi</h3>
+      <p>Striking Coach</p>
+    </div>
+    <div class="coach-card">
+      <img src="images/coachalex.png" alt="Coach Alex">
+      <h3>Alex</h3>
+      <p>Conditioning Coach</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="social-feed">
+  <div class="social-container">
+    <div class="social-header">
+      <div>
+        <h2>From the gym</h2>
+        <p class="social-handle">@stormiemuaythai</p>
+      </div>
+      <a href="https://instagram.com/stormiemuaythai" target="_blank" rel="noopener noreferrer" class="social-link">Follow on Instagram →</a>
+    </div>
+    <div class="social-grid">
+    <behold-widget feed-id="i8EM4KntKhOfUTN0Zw2u"></behold-widget>
+    <script>
+      (() => {
+        const d=document,s=d.createElement("script");s.type="module";
+        s.src="https://w.behold.so/widget.js";d.head.append(s);
+      })();
+    </script>
+</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-location" id="contact">
+  <div class="contact-location-container">
+    <div class="contact-location-text">
+      <h2>Contact</h2>
+      <p class="contact-sub">Train with us in Stockholm.</p>
+      <div class="contact-details">
+        <div class="contact-row">
+          <span class="contact-label">Address</span>
+          <p>Helvetesgränd, Old Town, Stockholm</p>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <p>hello@stormiemuaythai.com</p>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Instagram</span>
+          <p>@stormiemuaythai</p>
+        </div>
+      </div>
+      <div class="contact-buttons">
+        <button class="btn btn-primary open-modal">Book Class</button>
+        <a href="https://maps.google.com/?q=Helvetesgränd,+Gamla+Stan,+Stockholm" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Open Maps</a>
+      </div>
+    </div>
+    <div class="contact-location-map">
+      <div id="map"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <h3>Stormie Muay Thai</h3>
+      <p>Stockholm · Muay Thai Gym</p>
+    </div>
+    <div class="footer-right">
+      <div class="footer-col">
+        <span>Links</span>
+        <a href="#schedule">Schedule</a>
+        <a href="#memberships">Memberships</a>
+        <a href="#shop">Shop</a>
+      </div>
+      <div class="footer-col">
+        <span>Contact</span>
+        <a href="mailto:hello@stormiemuaythai.com">hello@stormiemuaythai.com</a>
+        <a href="https://instagram.com/stormiemuaythai" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© Stormie Muay Thai</p>
+    <p class="footer-credit">Built by <a href="https://stormiestudios.com" target="_blank" rel="noopener noreferrer">Stormie Studios</a></p>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// NAVBAR SCROLL
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// HAMBURGER
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+function closeMobileMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('active');
+  document.body.style.overflow = '';
+}
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+});
+document.getElementById('mobile-close').addEventListener('click', closeMobileMenu);
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// MODAL
+const modal = document.getElementById('modal');
+function openModal() { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
+document.querySelectorAll('.open-modal').forEach(b => b.addEventListener('click', openModal));
+document.getElementById('modal-close').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.getElementById('modal-submit').addEventListener('click', function(e) {
+  e.preventDefault();
+  this.textContent = "Sent! We'll be in touch soon.";
+  this.style.background = 'rgba(192,57,43,0.2)';
+  this.style.color = '#C0392B';
+  this.style.cursor = 'default';
+  setTimeout(closeModal, 2000);
+});
+
+// SLIDESHOW
+const slides = document.querySelectorAll('.start-training .slide');
+let current = 0;
+if (slides.length > 0) {
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 3000);
+}
+
+// SCHEDULE TABS
+const scheduleTabs = document.querySelectorAll('.schedule-tab');
+const schedulePanels = document.querySelectorAll('.schedule-panel');
+const scheduleOrder = ['today', 'tomorrow'];
+let scheduleIndex = 0;
+function showSchedulePanel(name) {
+  scheduleTabs.forEach(t => t.classList.toggle('active', t.dataset.schedule === name));
+  schedulePanels.forEach(p => p.classList.toggle('active', p.dataset.panel === name));
+}
+scheduleTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    scheduleIndex = scheduleOrder.indexOf(tab.dataset.schedule);
+    showSchedulePanel(tab.dataset.schedule);
+  });
+});
+setInterval(() => {
+  scheduleIndex = (scheduleIndex + 1) % scheduleOrder.length;
+  showSchedulePanel(scheduleOrder[scheduleIndex]);
+}, 4500);
+
+// SHOP AUTO-BLINK
+document.querySelectorAll('.shop-card').forEach(card => {
+  const variants = card.querySelectorAll('.variant');
+  const dots = card.querySelectorAll('.shop-dot');
+  let idx = 0;
+  if (variants.length < 2) return;
+  setInterval(() => {
+    variants[idx].classList.remove('active');
+    if (dots[idx]) dots[idx].classList.remove('active');
+    idx = (idx + 1) % variants.length;
+    variants[idx].classList.add('active');
+    if (dots[idx]) dots[idx].classList.add('active');
+  }, 2500);
+});
+
+// MAP
+const mapEl = document.getElementById('map');
+if (mapEl) {
+  const map = L.map('map', { scrollWheelZoom: false }).setView([59.3237, 18.0710], 15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap'
+  }).addTo(map);
+  const icon = L.divIcon({
+    className: '',
+    html: '<div style="width:12px;height:12px;background:#C0392B;border-radius:50%;border:2px solid #0a0a09;box-shadow:0 0 0 4px rgba(192,57,43,0.3);"></div>',
+    iconSize: [12, 12], iconAnchor: [6, 6]
+  });
+  L.marker([59.3237, 18.0710], { icon }).addTo(map)
+    .bindPopup('<strong>Stormie Muay Thai</strong><br>Helvetesgränd, Gamla Stan').openPopup();
+}
+</script>
+
+<!-- ============================================================
+     SITE POLISH — gold button sheen, coach lightning, about reveal
+     Self-contained: safe to remove as one block.
+     ============================================================ -->
+<style>
+  :root { --sp-gold: #C9A86A; }
+
+  /* ---- Gold buttons: sheen sweep + hover glow ---- */
+  .btn-primary, .nav-cta, .mobile-cta, .modal-submit, .schedule-tab.active {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-primary::after, .nav-cta::after, .mobile-cta::after,
+  .modal-submit::after, .schedule-tab.active::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: -80%;
+    width: 50%;
+    background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+    transform: skewX(-20deg);
+    animation: sp-sheen 4.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  @keyframes sp-sheen {
+    0%, 55%  { left: -80%; }
+    100%     { left: 130%; }
+  }
+  .btn-primary, .nav-cta, .mobile-cta, .modal-submit {
+    transition: box-shadow .25s ease, transform .25s ease;
+  }
+  .btn-primary:hover, .nav-cta:hover, .mobile-cta:hover, .modal-submit:hover {
+    box-shadow: 0 0 26px rgba(201,168,106,0.45);
+    transform: translateY(-1px);
+  }
+
+  /* ---- Coaches: small gold bolt emblem, top-right corner ---- */
+  .coach-card { position: relative; overflow: hidden; }
+  .coach-bolt {
+    position: absolute;
+    top: 4.5%;
+    right: 5.5%;
+    width: 12%;
+    aspect-ratio: 1 / 2;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    overflow: visible;
+    filter: drop-shadow(0 0 6px rgba(201,168,106,0.65))
+            drop-shadow(0 0 16px rgba(201,168,106,0.35));
+  }
+  .coach-card.strike .coach-bolt { animation: sp-bolt-show 2s ease-in-out forwards; }
+  @keyframes sp-bolt-show {
+    0%   { opacity: 0; }
+    12%  { opacity: 1; }
+    74%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .coach-bolt .bolt-shape {
+    fill: var(--sp-gold);
+    fill-opacity: 0;
+    stroke: var(--sp-gold);
+    stroke-width: 3;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  .coach-card.strike .bolt-shape {
+    animation:
+      sp-bolt-trace .5s ease-out forwards,
+      sp-bolt-fill  .45s ease-in .4s forwards;
+  }
+  @keyframes sp-bolt-trace { to { stroke-dashoffset: 0; } }
+  @keyframes sp-bolt-fill  { to { fill-opacity: 0.95; } }
+
+
+
+  /* ---- Hero video: warm gold grade ---- */
+  .hero-video {
+    filter: sepia(0.48) saturate(1.15) contrast(1.06) brightness(0.96) hue-rotate(-6deg);
+  }
+  .hero { position: relative; }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(110% 80% at 50% 35%, rgba(201,168,106,0.14), transparent 60%),
+      linear-gradient(180deg, rgba(201,168,106,0.06), rgba(0,0,0,0.18));
+    mix-blend-mode: soft-light;
+  }
+  .hero-content, .hero-scroll { position: relative; z-index: 2; }
+
+  /* Same golden grade on the Start Training + About photos */
+  .start-training .slide,
+  .about-media img {
+    filter: sepia(0.48) saturate(1.15) contrast(1.06) brightness(0.96) hue-rotate(-6deg);
+  }
+
+  @media (max-width: 768px) {
+    /* Start Training fills the screen so the two marquees never share the frame */
+    .start-training { min-height: 100vh; min-height: 100svh; }
+  }
+
+  /* ---- Footer credit ---- */
+  .footer-credit {
+    margin-top: 8px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.32);
+  }
+  .footer-credit a {
+    color: var(--sp-gold);
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  .footer-credit a:hover { color: #fff; }
+
+  /* ---- Shop: exclusive feel ---- */
+  .shop-card {
+    transition: transform .4s ease, box-shadow .4s ease;
+  }
+  .shop-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 60px rgba(0,0,0,0.55);
+  }
+  .shop-image {
+    position: relative;
+    overflow: hidden;
+  }
+  .shop-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    transition: border-color .4s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .shop-card:hover .shop-image::after {
+    border-color: rgba(201,168,106,0.55);
+  }
+  .shop-image .variant {
+    transition: transform 1.1s cubic-bezier(.2,.6,.2,1), opacity .6s ease;
+  }
+  .shop-card:hover .shop-image .variant {
+    transform: scale(1.05);
+  }
+  .shop-card-info h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shop-card, .shop-image .variant { transition: none; }
+    .shop-card:hover { transform: none; }
+  }
+
+  /* ---- About: staggered reveal + gold shimmer on heading ---- */
+  .about-content > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .about-content.in-view > * { opacity: 1; transform: none; }
+  .about-content.in-view > *:nth-child(1) { transition-delay: 0s; }
+  .about-content.in-view > *:nth-child(2) { transition-delay: .1s; }
+  .about-content.in-view > *:nth-child(3) { transition-delay: .2s; }
+  .about-content.in-view > *:nth-child(4) { transition-delay: .3s; }
+  .about-content.in-view > *:nth-child(5) { transition-delay: .4s; }
+  .about-content.in-view > *:nth-child(6) { transition-delay: .5s; }
+  .about-content.in-view > *:nth-child(7) { transition-delay: .6s; }
+  .about-content.in-view > *:nth-child(8) { transition-delay: .7s; }
+  .about-content.in-view > *:nth-child(9) { transition-delay: .8s; }
+  .about-content.in-view h2 {
+    background: linear-gradient(100deg, currentColor 38%, var(--sp-gold) 50%, currentColor 62%);
+    background-size: 220% 100%;
+    background-position: 130% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: sp-about-shimmer 2.2s ease .5s forwards;
+  }
+  @keyframes sp-about-shimmer {
+    to { background-position: -130% 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-primary::after, .nav-cta::after, .mobile-cta::after,
+    .modal-submit::after, .schedule-tab.active::after { animation: none; }
+    .coach-card.strike .coach-bolt,
+    .coach-card.strike .coach-bolt path { animation: none; }
+    .about-content > * { opacity: 1; transform: none; transition: none; }
+    .about-content.in-view h2 { animation: none; -webkit-text-fill-color: currentColor; background: none; }
+  }
+</style>
+<script>
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // About reveal (once)
+  var about = document.querySelector('.about-content');
+  if (about) {
+    if (reduceMotion) {
+      about.classList.add('in-view');
+    } else {
+      var aboutObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            about.classList.add('in-view');
+            aboutObs.disconnect();
+          }
+        });
+      }, { threshold: 0.25 });
+      aboutObs.observe(about);
+    }
+  }
+
+  // Coach bolt emblem (re-triggers each time you scroll past)
+  var coachCards = document.querySelectorAll('.coach-card');
+  var coachesSection = document.querySelector('.coaches');
+  if (coachesSection && coachCards.length && !reduceMotion) {
+    var BOLT_PATH = 'M62 2 L20 116 L48 116 L38 198 L84 78 L54 78 Z';
+    coachCards.forEach(function (card) {
+      card.insertAdjacentHTML('beforeend',
+        '<svg class="coach-bolt" viewBox="0 0 100 200" aria-hidden="true">' +
+        '<path class="bolt-shape" pathLength="1" d="' + BOLT_PATH + '"/>' +
+        '</svg>');
+    });
+    var coachObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          coachCards.forEach(function (card, i) {
+            setTimeout(function () {
+              card.classList.add('strike');
+              setTimeout(function () { card.classList.remove('strike'); }, 2100);
+            }, 250 + i * 500);
+          });
+        }
+      });
+    }, { threshold: 0.35 });
+    coachObs.observe(coachesSection);
+  }
+})();
+</script>
+</body>
+</html>
