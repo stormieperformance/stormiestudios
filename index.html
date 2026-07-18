@@ -101,8 +101,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .topbar {
   position: sticky; top: 0; z-index: 30;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 18px 48px;
-  margin: 0 -48px;
+  padding-top: 18px; padding-bottom: 18px;
+  padding-left: max(48px, calc((100vw - 1080px)/2 + 48px));
+  padding-right: max(48px, calc((100vw - 1080px)/2 + 48px));
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
   border: 0; border-bottom: 1px solid rgba(168,118,62,0.16);
   background: rgba(9,10,11,0.92);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
@@ -507,7 +509,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   footer { padding: 36px 24px 30px; gap: 14px; }
   .footer-network { max-width: 320px; line-height: 1.8; }
   .section-inner { padding: 0 24px; }
-  .topbar { margin: 0 -24px; padding: 14px 24px; }
+  .topbar { padding-top: 14px; padding-bottom: 14px; }
   .topbar-left { font-size: 9px; letter-spacing: 0.14em; }
   .menu-panel { right: 24px; left: 24px; min-width: 0; }
   .hide-mobile { display: none; }
