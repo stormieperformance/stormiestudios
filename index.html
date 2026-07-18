@@ -64,7 +64,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .eyebrow { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
 .eyebrow::after { content: ''; display: block; width: 0; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin-top: 12px; transition: width 1s ease 0.15s; }
 .inview .eyebrow::after { width: 56px; }
-.section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted2); }
+.section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
 .gold-shimmer {
   font-style: italic;
   background: linear-gradient(110deg, var(--gold) 30%, var(--gold-bright) 50%, var(--gold) 70%);
@@ -99,6 +99,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ── topbar ── */
 .topbar {
+  --text: #ede7d9; --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.42);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   position: sticky; top: 0; z-index: 30;
   display: flex; justify-content: space-between; align-items: center;
   padding-top: 18px; padding-bottom: 18px;
@@ -165,7 +167,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ INTRO ══ */
 .intro {
-  --bg: #171310; --bg2: #1e1911; --text: #ede7d9;
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
   --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
   --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   background: var(--bg);
@@ -354,7 +356,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ SEGMENTS ══ */
 .segments {
-  --bg: #171310; --bg2: #1e1911; --text: #ede7d9;
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
   --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
   --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   background: var(--bg); padding: 88px 0; border-bottom: 1px solid var(--line);
@@ -364,7 +366,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .segments-title em { font-style: italic; color: var(--muted); }
 .segment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .segment-card {
-  --bg: #171310; --bg2: #1e1911; --text: #ede7d9;
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
   --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
   --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   background: var(--bg); padding: 38px 34px 34px; text-decoration: none; color: inherit;
@@ -416,7 +418,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .giving-copy p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
 .giving-form {
-  --bg: #171310; --bg2: #1e1911; --text: #ede7d9;
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
   --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
   --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   background: var(--bg); border-radius: 0;
@@ -429,7 +431,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ CONTACT ══ */
 .contact {
-  --bg: #171310; --bg2: #1e1911; --text: #ede7d9;
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
   --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
   --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   background: var(--bg); padding: 100px 0 90px; border-bottom: 1px solid var(--line); text-align: center;
@@ -457,7 +459,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* ══ FOOTER SHELL (matches Stormie Games / Moves / Studios) ══ */
 .hud-frame { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
 .section-inner { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
-.footer-shell { border: 0; border-top: 1px solid rgba(201,169,110,0.12); background: #171310; }
+.footer-shell { border: 0; border-top: 1px solid rgba(201,169,110,0.12); background: #0c0c0b; }
 footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
 .footer-mark { width: 24px; height: 24px; color: rgba(201,169,110,0.68); margin-bottom: 4px; }
 .footer-mark-trigger { background: none; border: none; padding: 0; margin-bottom: 4px; cursor: pointer; color: rgba(201,169,110,0.68); transition: color 0.2s ease; }
@@ -516,7 +518,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   margin-top: 32px;
 }
 .need-btn {
-  --bg: #171310; --bg2: #1e1911; --text: #ede7d9;
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
   --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
   --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   width: 100%; background: var(--bg2); border: 1px solid var(--line);
