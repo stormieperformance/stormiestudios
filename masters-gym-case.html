@@ -32,7 +32,7 @@
   .outcomes li::before{content:'✓';color:var(--gold);font-size:12px}
   .tech{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:32px 0;margin-bottom:48px}
   .tech h3{font-family:var(--serif);font-weight:400;font-size:20px;margin-bottom:16px}
-  .tech ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
+  .tech ul{list-style:none;display:flex;flex-direction:column;gap:12px}
   .tech li{font-size:13px;color:var(--muted);line-height:1.7;padding-left:14px;position:relative}
   .tech li::before{content:'—';position:absolute;left:0;color:var(--gold)}
   .tech code{font-family:var(--sans);font-weight:500;color:var(--text)}
@@ -41,7 +41,7 @@
   .btn:hover{background:var(--text);color:var(--bg)}
   .btn.ghost{border-color:var(--line);color:var(--muted)}
   .btn.ghost:hover{background:transparent;color:var(--text);border-color:var(--text)}
-  @media(max-width:640px){.two-col,.grid4,.tech ul{grid-template-columns:1fr}}
+  @media(max-width:640px){.two-col,.grid4{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -83,19 +83,19 @@
   </ul>
 
   <div class="tech">
-    <h3>How it's actually built</h3>
+    <h3>What's actually under the hood</h3>
     <ul>
-      <li>Hand-coded <code>HTML / CSS / JS</code>, no page builder</li>
-      <li>Headless CMS via <code>Sanity</code>, queried with <code>GROQ</code>, required fields, image cropping, alt-text validation</li>
-      <li>Schedule sync via <code>Google Sheets</code>, deliberately kept separate from the CMS, with row validation and cancellation support</li>
-      <li>All external CMS/sheet content is HTML-escaped before rendering, no raw injection into the page</li>
-      <li>Bilingual <code>EN / SV</code> throughout, one i18n system</li>
-      <li>Membership signups via <code>GymControl</code></li>
-      <li>Accessible booking modal: focus trap, Escape to close, keyboard-operable carousels</li>
-      <li>LocalBusiness structured data, canonical URL, sitemap and robots.txt, custom 404 page</li>
-      <li>Analytics event tracking scaffolded on real conversion points, awaiting the client's own account</li>
-      <li>Deployed on <code>GitHub Pages</code>, custom domain in progress</li>
-      <li>Light / dark mode, fully responsive, mobile-first</li>
+      <li>Built by hand, not assembled from a template, so it's the site you'd actually ask for, not a generic layout with a logo swapped in</li>
+      <li>A real content system behind the news section (<code>Sanity</code>), with required fields and photo cropping built in, so it's hard to accidentally publish something broken</li>
+      <li>The class schedule lives in a spreadsheet on purpose, it's simply the fastest way to update, with checks in place so a typo can't break the whole page</li>
+      <li>Anything pulled in from the CMS or spreadsheet is checked before it's shown, so bad or malicious data can't slip onto the page</li>
+      <li>Every page works in Swedish and English from one system, not two separate sites to maintain</li>
+      <li>Membership signups connect straight through to <code>GymControl</code>, no extra steps</li>
+      <li>Fully usable with just a keyboard, and readable by screen readers, not every small studio site bothers with this</li>
+      <li>Set up to actually get found on Google: structured business data, a sitemap, and a proper 404 page instead of a broken one</li>
+      <li>Wired to track real signups and inquiries, not just page views, once the client connects their own analytics account</li>
+      <li>Hosted reliably on <code>GitHub Pages</code>; the real domain connection is in progress</li>
+      <li>Light and dark mode, fully responsive, built mobile-first</li>
     </ul>
   </div>
 
