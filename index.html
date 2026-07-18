@@ -1102,6 +1102,12 @@ function buildHeadline(text) {
 (function() {
   const ITEMS = [
     {
+      name:'Masters Gym', href:'https://stormieperformance.com/masters-gym/', frame:'https://stormieperformance.com/masters-gym/', comingSoon:true,
+      img:'https://stormieperformance.com/masters-gym/og-image.jpg',
+      en:{cat:'Client project · Launching soon', desc:'A Stockholm gym getting a full new site. Case study publishes on launch day.', link:''},
+      sv:{cat:'Kundprojekt · Lanseras snart', desc:'Ett Stockholmsgym som får en helt ny sajt. Caset publiceras på lanseringsdagen.', link:''}
+    },
+    {
       name:'Stormie Muay Thai', href:'stormiemuaythai.html', frame:'https://stormieperformance.com/smt-demo/', comingSoon:false,
       en:{cat:'Concept project · Martial arts club', desc:'A full club system: branded site, 3D news carousel, memberships, shop and auto-updating content.', link:'View case →'},
       sv:{cat:'Konceptprojekt · Kampsportsklubb', desc:'Ett helt klubbsystem: varumärkt sajt, 3D-nyhetskarusell, medlemskap, shop och självuppdaterande innehåll.', link:'Visa case →'}
@@ -1111,13 +1117,6 @@ function buildHeadline(text) {
       name:'KBK Bågskytteklubb', href:'https://stormieperformance.com/kbk-demo/', frame:'https://stormieperformance.com/kbk-demo/', comingSoon:true,
       en:{cat:'Pitch project · Archery club', desc:'A booking system demo for an archery club, built ahead of an upcoming pitch. Case study publishes after the meeting.', link:''},
       sv:{cat:'Pitchprojekt · Bågskytteklubb', desc:'Ett bokningssystem för en bågskytteklubb, byggt inför en kommande pitch. Caset publiceras efter mötet.', link:''}
-    },
-
-    {
-      name:'Masters Gym', href:'https://stormieperformance.com/masters-gym/', frame:'https://stormieperformance.com/masters-gym/', comingSoon:true,
-      img:'https://stormieperformance.com/masters-gym/og-image.jpg',
-      en:{cat:'Client project · Launching soon', desc:'A Stockholm gym getting a full new site. Case study publishes on launch day.', link:''},
-      sv:{cat:'Kundprojekt · Lanseras snart', desc:'Ett Stockholmsgym som får en helt ny sajt. Caset publiceras på lanseringsdagen.', link:''}
     },
     {
       name:'Real Performance by Dante', href:'https://www.pt-real-performance-by-dante.com', frame:'https://www.pt-real-performance-by-dante.com', comingSoon:true,
@@ -1256,14 +1255,9 @@ function buildHeadline(text) {
     });
   }
 
-  // Auto-scroll: advance 1 card every 4 seconds, pause on hover or drag
+  // Auto-scroll disabled — manual navigation only (arrows, drag)
   let autoScrollTimer=null;
-  function startAutoScroll(){
-    if(autoScrollTimer)return;
-    autoScrollTimer=setInterval(()=>{
-      if(!dragging){target+=1;startTween();}
-    },4000);
-  }
+  function startAutoScroll(){}
   function stopAutoScroll(){clearInterval(autoScrollTimer);autoScrollTimer=null;}
   stage.addEventListener('mouseenter',stopAutoScroll);
   stage.addEventListener('mouseleave',startAutoScroll);
