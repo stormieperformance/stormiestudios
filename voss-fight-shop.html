@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voss Fight — Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080807;
+      --surface: #0f0f0e;
+      --text: #e8e4dc;
+      --muted: rgba(232,228,220,0.45);
+      --muted2: rgba(232,228,220,0.22);
+      --line: rgba(232,228,220,0.08);
+      --red: #c0291a;
+      --red-dim: rgba(192,41,26,0.1);
+      --sans: 'DM Sans', sans-serif;
+      --display: 'Bebas Neue', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* ANNOUNCEMENT BAR */
+    .announcement {
+      background: var(--red);
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,8,7,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 20px;
+      letter-spacing: 0.12em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+
+    .nav-back {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--text); }
+
+    .cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: var(--sans);
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      transition: border-color 0.2s;
+    }
+
+    .cart-btn:hover { border-color: var(--muted2); }
+
+    .cart-count {
+      background: var(--red);
+      color: var(--text);
+      font-size: 10px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* HERO BANNER */
+    .hero-banner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .banner-left { }
+
+    .banner-tag {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    .banner-title {
+      font-family: var(--display);
+      font-size: clamp(56px, 7vw, 100px);
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+
+    .banner-title span { color: var(--red); }
+
+    .banner-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 360px;
+      margin-bottom: 32px;
+    }
+
+    .btn-shop {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: var(--text);
+      padding: 14px 28px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: var(--sans);
+    }
+
+    .btn-shop:hover { opacity: 0.85; }
+
+    .banner-right {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner-product-visual {
+      font-family: var(--display);
+      font-size: 120px;
+      color: rgba(192,41,26,0.08);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .banner-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--red);
+      color: var(--text);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+    }
+
+    /* COLLECTION FILTER */
+    .collection-header {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 48px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .collection-title {
+      font-family: var(--display);
+      font-size: 32px;
+      letter-spacing: 0.06em;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0;
+    }
+
+    .filter-tab {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      border-right: none;
+      cursor: pointer;
+      background: none;
+      font-family: var(--sans);
+      transition: all 0.2s;
+    }
+
+    .filter-tab:last-child { border-right: 1px solid var(--line); }
+    .filter-tab.active { background: var(--red); color: var(--text); border-color: var(--red); }
+    .filter-tab:hover:not(.active) { color: var(--text); border-color: var(--muted2); }
+
+    /* PRODUCT GRID */
+    .product-grid {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 48px 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .product-card {
+      background: var(--bg);
+      cursor: pointer;
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .product-card:hover { background: var(--surface); }
+
+    .product-img {
+      aspect-ratio: 1;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .product-icon {
+      font-family: var(--display);
+      font-size: 64px;
+      color: rgba(232,228,220,0.06);
+      letter-spacing: 0.04em;
+      user-select: none;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+    }
+
+    .badge-new { background: var(--red); color: var(--text); }
+    .badge-sale { background: var(--text); color: var(--bg); }
+    .badge-digital { background: transparent; color: var(--red); border: 1px solid rgba(192,41,26,0.4); }
+
+    .product-info { padding: 20px; }
+
+    .product-category {
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .product-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted2);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-price {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .product-price .original {
+      font-size: 12px;
+      color: var(--muted2);
+      text-decoration: line-through;
+      margin-right: 6px;
+    }
+
+    .add-btn {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--muted2);
+      border: 1px solid var(--line);
+      padding: 7px 14px;
+      cursor: pointer;
+      font-family: var(--sans);
+      transition: all 0.2s;
+    }
+
+    .add-btn:hover {
+      background: var(--red);
+      color: var(--text);
+      border-color: var(--red);
+    }
+
+    /* FEATURED PRODUCT */
+    .featured {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .featured-img {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .featured-icon {
+      font-family: var(--display);
+      font-size: 100px;
+      color: rgba(192,41,26,0.1);
+      letter-spacing: 0.04em;
+    }
+
+    .featured-tag {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    .featured-title {
+      font-family: var(--display);
+      font-size: clamp(36px, 4vw, 56px);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .featured-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .featured-price {
+      font-size: 32px;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    .featured-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .featured-includes li {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      display: flex;
+      gap: 10px;
+    }
+
+    .featured-includes li::before { content: '—'; color: var(--red); opacity: 0.6; flex-shrink: 0; }
+
+    .btn-featured {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: var(--text);
+      padding: 14px 32px;
+      cursor: pointer;
+      border: none;
+      font-family: var(--sans);
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-featured:hover { opacity: 0.85; }
+
+    /* ONLINE COURSES BANNER */
+    .courses-banner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 48px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .courses-tag {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    .courses-title {
+      font-family: var(--display);
+      font-size: clamp(40px, 5vw, 72px);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .courses-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    .course-card {
+      background: var(--bg);
+      padding: 28px;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+
+    .course-card:hover { background: var(--surface); }
+
+    .course-type {
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .course-name {
+      font-family: var(--display);
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .course-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted2);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .course-price {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 48px 32px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand {
+      font-family: var(--display);
+      font-size: 24px;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand span { color: var(--red); }
+
+    .footer-tagline {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted2);
+      line-height: 1.6;
+      max-width: 240px;
+      margin-bottom: 20px;
+    }
+
+    .footer-credit {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+
+    .footer-credit a { color: var(--muted2); text-decoration: none; transition: color 0.2s; }
+    .footer-credit a:hover { color: var(--text); }
+
+    .footer-col h4 {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .footer-col a {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--text); }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 48px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom span {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 14px 20px;
+      font-size: 12px;
+      color: var(--text);
+      letter-spacing: 0.06em;
+      z-index: 200;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .nav-inner { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero-banner { grid-template-columns: 1fr; padding: 48px 24px; gap: 32px; }
+      .banner-right { display: none; }
+      .collection-header { padding: 32px 24px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); padding: 24px; }
+      .featured { grid-template-columns: 1fr; padding: 48px 24px; gap: 32px; }
+      .featured-img { display: none; }
+      .courses-banner { padding: 48px 24px; }
+      .courses-grid { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr 1fr; padding: 32px 24px; }
+      .footer-bottom { padding: 16px 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement">Free shipping on orders over 500 kr · Use code VOSS10 for 10% off your first order</div>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="demo-muaythai.html">VOSS <span>FIGHT</span></a>
+      <ul class="nav-links">
+        <li><a href="demo-muaythai.html">Home</a></li>
+        <li><a href="#gear" class="active">Shop</a></li>
+        <li><a href="#courses">Online Courses</a></li>
+        <li><a href="demo-muaythai.html#coaching">Coaching</a></li>
+        <li><a href="demo-muaythai.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a class="nav-back" href="demo-muaythai.html">← Back to site</a>
+        <button class="cart-btn" onclick="showToast('Cart feature coming soon')">
+          Cart <span class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-banner">
+    <div class="banner-left">
+      <p class="banner-tag">New collection — Spring 2026</p>
+      <h1 class="banner-title">FIGHT<br><span>GEAR</span><br>SHOP</h1>
+      <p class="banner-desc">Authentic Muay Thai equipment. Tested at the highest level. Built for fighters who take the art seriously.</p>
+      <a class="btn-shop" href="#gear">Shop now</a>
+    </div>
+    <div class="banner-right">
+      <div class="banner-product-visual">VF</div>
+      <span class="banner-badge">New arrivals</span>
+    </div>
+  </div>
+
+  <!-- COLLECTION -->
+  <div class="collection-header" id="gear">
+    <h2 class="collection-title">ALL PRODUCTS</h2>
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterProducts('all', this)">All</button>
+      <button class="filter-tab" onclick="filterProducts('gloves', this)">Gloves</button>
+      <button class="filter-tab" onclick="filterProducts('apparel', this)">Apparel</button>
+      <button class="filter-tab" onclick="filterProducts('digital', this)">Digital</button>
+    </div>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+
+    <div class="product-card" data-category="gloves">
+      <div class="product-img">
+        <div class="product-icon">VF</div>
+        <span class="product-badge badge-new">New</span>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Boxing Gloves</p>
+        <p class="product-name">Voss Fight Pro Gloves</p>
+        <p class="product-desc">Premium leather. Wrist support. Available in 10, 12, 14, 16 oz.</p>
+        <div class="product-footer">
+          <span class="product-price">895 kr</span>
+          <button class="add-btn" onclick="addToCart(this)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="gloves">
+      <div class="product-img">
+        <div class="product-icon">VF</div>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Hand Wraps</p>
+        <p class="product-name">Voss Fight Hand Wraps</p>
+        <p class="product-desc">4.5m elastic cotton. Semi-elastic for perfect fit. Set of 2.</p>
+        <div class="product-footer">
+          <span class="product-price">195 kr</span>
+          <button class="add-btn" onclick="addToCart(this)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel">
+      <div class="product-img">
+        <div class="product-icon">VF</div>
+        <span class="product-badge badge-sale">Sale</span>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Shorts</p>
+        <p class="product-name">Voss Fight Muay Thai Shorts</p>
+        <p class="product-desc">Traditional Thai cut. Satin finish. Red / Black / White.</p>
+        <div class="product-footer">
+          <span class="product-price"><span class="original">695 kr</span>495 kr</span>
+          <button class="add-btn" onclick="addToCart(this)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="gloves">
+      <div class="product-img">
+        <div class="product-icon">VF</div>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Shin Guards</p>
+        <p class="product-name">Voss Fight Shin Guards</p>
+        <p class="product-desc">Full coverage. Breathable inner lining. Sizes S–XL.</p>
+        <div class="product-footer">
+          <span class="product-price">695 kr</span>
+          <button class="add-btn" onclick="addToCart(this)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel">
+      <div class="product-img">
+        <div class="product-icon">VF</div>
+        <span class="product-badge badge-new">New</span>
+      </div>
+      <div class="product-info">
+        <p class="product-category">T-Shirt</p>
+        <p class="product-name">Voss Fight Tee — Black</p>
+        <p class="product-desc">100% organic cotton. Heavyweight 240gsm. Unisex fit.</p>
+        <div class="product-footer">
+          <span class="product-price">395 kr</span>
+          <button class="add-btn" onclick="addToCart(this)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="digital">
+      <div class="product-img">
+        <div class="product-icon">VF</div>
+        <span class="product-badge badge-digital">Digital</span>
+      </div>
+      <div class="product-info">
+        <p class="product-category">PDF Guide</p>
+        <p class="product-name">Fighter's Do's & Don'ts</p>
+        <p class="product-desc">60-page PDF. Technique breakdowns, common mistakes, fight strategy.</p>
+        <div class="product-footer">
+          <span class="product-price">295 kr</span>
+          <button class="add-btn" onclick="addToCart(this)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="gloves">
+      <div class="product-img">
+        <div class="product-icon">VF</div>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Mouthguard</p>
+        <p class="product-name">Voss Fight Mouthguard</p>
+        <p class="product-desc">Boil & bite. Vented design. Includes carry case.</p>
+        <div class="product-footer">
+          <span class="product-price">245 kr</span>
+          <button class="add-btn" onclick="addToCart(this)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel">
+      <div class="product-img">
+        <div class="product-icon">VF</div>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Hoodie</p>
+        <p class="product-name">Voss Fight Hoodie — Black</p>
+        <p class="product-desc">Heavyweight fleece. Embroidered logo. Oversized fit.</p>
+        <div class="product-footer">
+          <span class="product-price">695 kr</span>
+          <button class="add-btn" onclick="addToCart(this)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="digital">
+      <div class="product-img">
+        <div class="product-icon">VF</div>
+        <span class="product-badge badge-digital">Digital</span>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Online Course</p>
+        <p class="product-name">Timing & Feinting — Full Course</p>
+        <p class="product-desc">5+ hours. The most important principles in Muay Thai, broken down by Kai Voss.</p>
+        <div class="product-footer">
+          <span class="product-price">1 290 kr</span>
+          <button class="add-btn" onclick="addToCart(this)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FEATURED -->
+  <div class="featured">
+    <div class="featured-img">
+      <div class="featured-icon">VF</div>
+    </div>
+    <div>
+      <p class="featured-tag">Fighter's bundle</p>
+      <h2 class="featured-title">THE COMPLETE<br>STARTER KIT</h2>
+      <p class="featured-desc">Everything you need to train Muay Thai from day one. Curated by Kai Voss based on what he wishes he had starting out.</p>
+      <p class="featured-price">1 995 kr</p>
+      <ul class="featured-includes">
+        <li>Voss Fight Pro Gloves (10 oz)</li>
+        <li>Hand Wraps (set of 2)</li>
+        <li>Muay Thai Shorts</li>
+        <li>Fighter's Do's & Don'ts PDF</li>
+      </ul>
+      <a class="btn-featured" href="#" onclick="showToast('Added to cart'); return false;">Add bundle to cart</a>
+    </div>
+  </div>
+
+  <!-- ONLINE COURSES -->
+  <div class="courses-banner" id="courses">
+    <p class="courses-tag">Learn from a world champion</p>
+    <h2 class="courses-title">ONLINE<br>COURSES</h2>
+    <p class="courses-desc">Authentic Muay Thai taught online. No watered down technique — exactly what you'd learn at elite gyms in Thailand.</p>
+    <div class="courses-grid">
+      <div class="course-card">
+        <p class="course-type">Beginner · 3 hours</p>
+        <p class="course-name">FUNDAMENTALS</p>
+        <p class="course-desc">Stance, guard, basic strikes and movement. The foundation every fighter needs.</p>
+        <p class="course-price">790 kr</p>
+      </div>
+      <div class="course-card">
+        <p class="course-type">Intermediate · 5 hours</p>
+        <p class="course-name">TIMING & FEINTING</p>
+        <p class="course-desc">The most important principles in combat sports. How to read, deceive and counter.</p>
+        <p class="course-price">1 290 kr</p>
+      </div>
+      <div class="course-card">
+        <p class="course-type">Advanced · Subscription</p>
+        <p class="course-name">VOSS VIP</p>
+        <p class="course-desc">Full library access. New content weekly. Direct access to Kai via messaging.</p>
+        <p class="course-price">890 kr / month</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <p class="footer-brand">VOSS <span>FIGHT</span></p>
+      <p class="footer-tagline">Thailand trained. Globally delivered. Authentic Muay Thai for serious practitioners.</p>
+      <p class="footer-credit">Built by <a href="https://stormiestudios.com">Stormie Studios</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Gloves & Wraps</a></li>
+        <li><a href="#">Apparel</a></li>
+        <li><a href="#">Digital Products</a></li>
+        <li><a href="#">Bundles</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Training</h4>
+      <ul>
+        <li><a href="demo-muaythai.html#coaching">1-on-1 Coaching</a></li>
+        <li><a href="demo-muaythai.html#seminars">Seminars</a></li>
+        <li><a href="#courses">Online Courses</a></li>
+        <li><a href="demo-muaythai.html#contact">Book now</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="demo-muaythai.html#story">About Kai</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="demo-muaythai.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="footer-bottom">
+    <span>© 2026 Voss Fight. All rights reserved.</span>
+    <span>Visa · Mastercard · Klarna · Swish</span>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let cartCount = 0;
+
+    function addToCart(btn) {
+      cartCount++;
+      document.querySelector('.cart-count').textContent = cartCount;
+      showToast('Added to cart');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    function filterProducts(category, btn) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
