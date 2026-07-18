@@ -163,6 +163,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ INTRO ══ */
 .intro {
+  --bg: #171310; --bg2: #1e1911; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg);
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+  padding-left: max(48px, calc((100vw - 1080px)/2 + 48px));
+  padding-right: max(48px, calc((100vw - 1080px)/2 + 48px));
   display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px;
   align-items: start; padding-top: 72px;
   border-bottom: 1px solid var(--line); overflow: hidden;
@@ -305,7 +312,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ ABOUT — immediately after carousel column ══ */
 .about-inline {
-  padding: 52px 0; border-bottom: 1px solid var(--line);
+  --bg: #171310; --bg2: #1e1911; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg);
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+  padding-top: 52px; padding-bottom: 52px;
+  padding-left: max(48px, calc((100vw - 1080px)/2 + 48px));
+  padding-right: max(48px, calc((100vw - 1080px)/2 + 48px));
+  border-bottom: 1px solid var(--line);
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
 }
 .about-inline-title {
@@ -411,7 +426,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .giving-title em { font-style: italic; color: var(--muted); }
 .giving-copy { display: flex; flex-direction: column; gap: 18px; }
 .giving-copy p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
-.giving-form { display: flex; flex-direction: column; gap: 22px; padding-top: 8px; }
+.giving-form {
+  --bg: #171310; --bg2: #1e1911; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg); padding: 36px 34px; border-radius: 0;
+  display: flex; flex-direction: column; gap: 22px;
+}
 .giving-note { font-size: 11px; font-weight: 300; color: var(--muted2); line-height: 1.7; }
 .giving-note a { color: var(--muted2); transition: color 0.2s; }
 .giving-note a:hover { color: var(--gold); }
@@ -453,7 +474,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* ══ FOOTER SHELL (matches Stormie Games / Moves / Studios) ══ */
 .hud-frame { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
 .section-inner { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
-.footer-shell { border: 0; border-top: 1px solid rgba(201,169,110,0.12); background: linear-gradient(180deg, rgba(12,12,11,0.28), rgba(8,9,10,0.96)); }
+.footer-shell { border: 0; border-top: 1px solid rgba(201,169,110,0.12); background: linear-gradient(180deg, rgba(23,19,16,0.4), #171310 60%); }
 footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
 .footer-mark { width: 24px; height: 24px; color: rgba(201,169,110,0.68); margin-bottom: 4px; }
 .footer-network { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; }
@@ -481,7 +502,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .sc-frame iframe { transform: scale(0.5385); }
   .sc-arrow--prev { left: -4px; }
   .sc-arrow--next { right: -4px; }
-  .about-inline { grid-template-columns: 1fr; gap: 28px; padding: 44px 0; }
+  .about-inline { grid-template-columns: 1fr; gap: 28px; padding-top: 44px; padding-bottom: 44px; }
   .trust-grid { grid-template-columns: 1fr; }
   .segment-grid { grid-template-columns: 1fr; }
   .segment-card.wide { flex-direction: column; gap: 14px; }
