@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Commerce — Stormie Studios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0c0c0b;
+      --text: #e8e4dc;
+      --muted: rgba(232,228,220,0.42);
+      --muted2: rgba(232,228,220,0.22);
+      --line: rgba(232,228,220,0.08);
+      --gold: #c9a96e;
+      --sans: 'DM Sans', sans-serif;
+      --serif: 'Cormorant Garamond', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    .page { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 48px; }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-brand { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); text-decoration: none; transition: color 0.2s; }
+    .nav-brand:hover { color: var(--text); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.gold { color: var(--gold); }
+
+    section { padding: 80px 0; }
+
+    .label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+
+    #hero { padding-top: 100px; padding-bottom: 80px; border-bottom: 1px solid var(--line); }
+
+    #hero h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 88px); font-weight: 300; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 24px; }
+    #hero h1 em { font-style: italic; color: var(--muted); }
+    #hero p { font-size: 14px; font-weight: 300; color: var(--muted); max-width: 460px; margin-bottom: 36px; line-height: 1.8; }
+
+    .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 12px 24px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; font-family: var(--sans); }
+    .btn-primary { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
+    .btn-primary:hover { background: #fff; border-color: #fff; }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+    .btn-ghost:hover { border-color: var(--muted); color: var(--text); }
+
+    #how { border-bottom: 1px solid var(--line); }
+    .steps { display: flex; flex-direction: column; }
+    .step { display: grid; grid-template-columns: 36px 1fr auto; gap: 20px; align-items: start; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .step:last-child { border-bottom: none; }
+    .step-num { font-family: var(--serif); font-size: 12px; font-style: italic; color: var(--muted2); padding-top: 2px; }
+    .step-title { font-size: 14px; font-weight: 400; color: var(--text); margin-bottom: 4px; }
+    .step-desc { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.65; }
+    .step-tag { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); white-space: nowrap; padding-top: 3px; opacity: 0.8; }
+
+    #demo { border-bottom: 1px solid var(--line); }
+
+    .demo-card {
+      border: 1px solid var(--line);
+      padding: 24px;
+      margin-bottom: 20px;
+      background: rgba(232,228,220,0.03);
+      transition: border-color 0.2s;
+    }
+
+    .demo-card:hover { border-color: rgba(201,169,110,0.3); }
+    .demo-card h3 { font-family: var(--serif); font-size: 20px; font-weight: 300; margin-bottom: 6px; }
+    .demo-card p { font-size: 13px; font-weight: 300; color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
+    .demo-card a { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.3); padding-bottom: 2px; transition: border-color 0.2s; }
+    .demo-card a:hover { border-color: var(--gold); }
+
+    .demo-open {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 20px;
+      border: 1px dashed rgba(232,228,220,0.12);
+      color: var(--muted2);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .demo-open:hover { border-color: var(--gold); color: var(--gold); }
+
+    #what { border-bottom: 1px solid var(--line); }
+    .what-list { display: flex; flex-direction: column; }
+    .what-item { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .what-item:last-child { border-bottom: none; }
+    .what-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 7px; flex-shrink: 0; opacity: 0.6; }
+    .what-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; opacity: 0.8; }
+    .what-desc { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+
+    #pricing { border-bottom: 1px solid var(--line); }
+    .pricing-card { border: 1px solid var(--line); padding: 32px; background: rgba(232,228,220,0.03); transition: border-color 0.2s; }
+    .pricing-card:hover { border-color: rgba(201,169,110,0.3); }
+    .pricing-tier { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; opacity: 0.8; }
+    .price { font-family: var(--serif); font-size: 36px; font-weight: 300; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .price-sub { font-size: 11px; color: var(--muted2); margin-bottom: 24px; letter-spacing: 0.08em; }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .feature-list li { font-size: 13px; font-weight: 300; color: var(--muted); display: flex; gap: 12px; }
+    .feature-list li::before { content: '—'; color: var(--muted2); flex-shrink: 0; }
+    .btn-cta { display: block; width: 100%; text-align: center; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px; background: var(--text); color: var(--bg); border: none; cursor: pointer; text-decoration: none; font-family: var(--sans); transition: background 0.2s; }
+    .btn-cta:hover { background: #fff; }
+
+    footer { padding: 24px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    footer a { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .page { padding: 0 24px; }
+      #hero { padding-top: 80px; }
+      .nav-links { display: none; }
+      .step { grid-template-columns: 28px 1fr; }
+      .step-tag { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <a class="nav-brand" href="index.html">Stormie Studios</a>
+    <ul class="nav-links">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#e6959289948bc88d898a8b89828f88a6818b878f8ac885898b" class="gold">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <p class="label">E-Commerce</p>
+    <h1>Your store, live.<br><em>Selling from day one.</em></h1>
+    <p>Online stores for sports and fitness brands — whether you sell physical gear via Shopify or digital programs via a simple checkout. Built to your brand, ready to sell.</p>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#demo">See the demos</a>
+      <a class="btn btn-ghost" href="#how">How it works</a>
+    </div>
+  </section>
+
+  <section id="how">
+    <p class="label">Two tracks</p>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div><p class="step-title">Shopify — physical products</p><p class="step-desc">For brands selling gear, apparel or equipment. Full store with product pages, checkout, payments and shipping. You own everything.</p></div>
+        <span class="step-tag">Shopify</span>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div><p class="step-title">Digital shop — programs & courses</p><p class="step-desc">For coaches and PTs selling training programs, e-books or online courses. Simple HTML + Stripe. No monthly fees, no platform lock-in.</p></div>
+        <span class="step-tag">Stripe</span>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div><p class="step-title">Built to your brand</p><p class="step-desc">Colours, fonts, tone — everything matches your identity. Not a template.</p></div>
+        <span class="step-tag">Design</span>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <div><p class="step-title">Live in days</p><p class="step-desc">Connected to your domain and handed over with full access. Ready to sell from day one.</p></div>
+        <span class="step-tag">Launch</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo">
+    <p class="label">Live demos</p>
+    <div class="demo-card">
+      <h3>Clinch Athletics</h3>
+      <p>A combat sports brand built around small releases, distinct series, and premium design - produced in Thailand, designed in Sweden by Storm Kolmodin.</p>
+      <a href="https://clinchathletics.com" target="_blank" rel="noopener noreferrer">Open store →</a>
+    </div>
+    <div class="demo-card" style="margin-top: 16px;">
+      <h3>Voss Fight Shop</h3>
+      <p>A custom-built fight gear store for a Muay Thai coach — gear, apparel, digital courses and bundles.</p>
+      <a href="voss-fight-shop.html" target="_blank" rel="noopener noreferrer">Open store →</a>
+    </div>
+    <div class="demo-card" style="margin-top: 16px;">
+      <h3>Erik Strand — Digital shop</h3>
+      <p>A clean digital shop for a personal trainer. Training programs and guides sold directly via Stripe — no platform fees, no monthly cost.</p>
+      <a href="erikstrand-shop.html" target="_blank" rel="noopener noreferrer">Open shop →</a>
+    </div>
+  </section>
+
+  <section id="what">
+    <p class="label">What's included</p>
+    <div class="what-list">
+      <div class="what-item"><div class="what-dot"></div><div><p class="what-label">Store setup</p><p class="what-desc">Shopify configured with your brand — colours, fonts, logo, favicon.</p></div></div>
+      <div class="what-item"><div class="what-dot"></div><div><p class="what-label">Product pages</p><p class="what-desc">Up to 20 products uploaded with descriptions, images and variants.</p></div></div>
+      <div class="what-item"><div class="what-dot"></div><div><p class="what-label">Payments & shipping</p><p class="what-desc">Stripe or Shopify Payments connected. Shipping zones configured.</p></div></div>
+      <div class="what-item"><div class="what-dot"></div><div><p class="what-label">Domain & launch</p><p class="what-desc">Connected to your domain and live. Handover with full access.</p></div></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <p class="label">Pricing</p>
+    <div class="pricing-card" style="margin-bottom: 16px;">
+      <p class="pricing-tier">Digital shop — Stripe</p>
+      <p class="price">From 2 990 kr</p>
+      <p class="price-sub">One-time · Ready in 3 days · No monthly fees</p>
+      <ul class="feature-list">
+        <li>Up to 5 products with Stripe checkout</li>
+        <li>Branded design matching your site</li>
+        <li>Mobile responsive</li>
+        <li>Domain connected & launched</li>
+        <li>30 days support</li>
+      </ul>
+      <a class="btn-cta" href="#" onclick="window.location='mai'+'lto:storm.kolmo'+'din@gmail.com'; return false;">Get in touch</a>
+    </div>
+    <div class="pricing-card">
+      <p class="pricing-tier">Shopify store — Physical products</p>
+      <p class="price">From 4 990 kr</p>
+      <p class="price-sub">One-time · Ready in 5 days · Full handover</p>
+      <ul class="feature-list">
+        <li>Branded Shopify store</li>
+        <li>Up to 20 products uploaded</li>
+        <li>Payments & shipping configured</li>
+        <li>Domain connected & launched</li>
+        <li>30 days support</li>
+      </ul>
+      <a class="btn-cta" href="#" onclick="window.location='mai'+'lto:storm.kolmo'+'din@gmail.com'; return false;">Get in touch</a>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html">← stormiestudios.com</a>
+    <span style="font-size:10px;letter-spacing:0.1em;color:rgba(232,228,220,
