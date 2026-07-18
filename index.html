@@ -449,6 +449,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .giving-note a { color: var(--muted2); transition: color 0.2s; }
 .giving-note a:hover { color: var(--gold); }
 
+/* ══ FAQ ══ */
+.faq {
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg); padding-top: 100px; padding-bottom: 100px; border-bottom: 1px solid var(--line);
+  padding-left: max(48px, calc((100vw - 1080px)/2 + 48px));
+  padding-right: max(48px, calc((100vw - 1080px)/2 + 48px));
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+}
+.faq-title { font-family: var(--serif); font-size: clamp(30px, 4vw, 44px); font-weight: 300; color: var(--text); margin: 16px 0 36px; }
+.faq-list { display: flex; flex-direction: column; max-width: 640px; }
+.faq-item { padding: 20px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+.faq-item:first-of-type { border-top: 1px solid var(--line); }
+.faq-q { font-size: 15px; font-weight: 400; color: var(--text); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-toggle { font-size: 20px; color: var(--gold); flex-shrink: 0; transition: transform 0.2s; line-height: 1; }
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+.faq-a { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding-top 0.3s; }
+.faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
+
 /* ══ CONTACT ══ */
 .contact {
   --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
@@ -836,6 +856,34 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <span class="section-label" data-i18n="faq_label">Faq</span>
+  <h2 class="faq-title" data-i18n="faq_title">Common questions.</h2>
+  <div class="faq-list">
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <p class="faq-q"><span data-i18n="faq1_q">How long does a project take?</span><span class="faq-toggle">+</span></p>
+      <p class="faq-a" data-i18n="faq1_a">Most projects launch within a few weeks of our first call, depending on scope and how quickly content comes together.</p>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <p class="faq-q"><span data-i18n="faq2_q">Do you provide hosting?</span><span class="faq-toggle">+</span></p>
+      <p class="faq-a" data-i18n="faq2_a">Yes, hosting, security, backups and updates are handled for a flat monthly fee, or you're welcome to bring your own.</p>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <p class="faq-q"><span data-i18n="faq3_q">Can you use my existing domain?</span><span class="faq-toggle">+</span></p>
+      <p class="faq-a" data-i18n="faq3_a">Yes, I connect your existing domain and set up HTTPS as part of the build.</p>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <p class="faq-q"><span data-i18n="faq4_q">Can I update the website myself?</span><span class="faq-toggle">+</span></p>
+      <p class="faq-a" data-i18n="faq4_a">Yes, most content, schedules, prices and news, is editable by you directly, no developer needed.</p>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <p class="faq-q"><span data-i18n="faq5_q">Do you work outside Stockholm?</span><span class="faq-toggle">+</span></p>
+      <p class="faq-a" data-i18n="faq5_a">Right now all my clients are here in Stockholm and I prefer meeting face-to-face, but remote projects are absolutely possible if that suits you better.</p>
+    </div>
+  </div>
+</section>
+
 <div class="hud-frame footer-shell">
 <footer>
   <button type="button" class="footer-mark-trigger" aria-label="A little something extra" onclick="document.querySelector('.footer-heart').style.display='inline-flex';this.style.display='none';">
@@ -903,6 +951,13 @@ const I18N = {
     giving_p3:"Every website is designed and built by me from scratch, so I can only take on a small number of projects. If your organization could benefit from a new website, I'd love to hear from you.",
     giving_f_org:"Organization name", giving_f_msg:"Tell me about your organization", giving_f_apply:"Apply",
     giving_note:"For registered non-profits. A few spots available.",
+    faq_label:"Faq",
+    faq_title:"Common questions.",
+    faq1_q:"How long does a project take?", faq1_a:"Most projects launch within a few weeks of our first call, depending on scope and how quickly content comes together.",
+    faq2_q:"Do you provide hosting?", faq2_a:"Yes, hosting, security, backups and updates are handled for a flat monthly fee, or you're welcome to bring your own.",
+    faq3_q:"Can you use my existing domain?", faq3_a:"Yes, I connect your existing domain and set up HTTPS as part of the build.",
+    faq4_q:"Can I update the website myself?", faq4_a:"Yes, most content, schedules, prices and news, is editable by you directly, no developer needed.",
+    faq5_q:"Do you work outside Stockholm?", faq5_a:"Right now all my clients are here in Stockholm and I prefer meeting face-to-face, but remote projects are absolutely possible if that suits you better.",
     pro_label:"How it works", pro_title:"Three steps. No surprises.",
     pro1_h:"We talk", pro1_p:"Every club, coach and business is different. We start by understanding your goals, your clients and the role the website should play in the business.",
     pro2_h:"You see possibilities", pro2_p:"Within a week you get a first draft of your actual site. Not a sketch, a working page with your content. We adjust together until it sits right.",
@@ -972,6 +1027,13 @@ const I18N = {
     giving_p3:"Varje hemsida designas och byggs av mig från grunden, så jag kan bara ta mig an ett fåtal projekt. Om er organisation skulle ha nytta av en ny hemsida hör gärna av er.",
     giving_f_org:"Organisationens namn", giving_f_msg:"Berätta om er organisation", giving_f_apply:"Ansök",
     giving_note:"För registrerade ideella organisationer. Ett fåtal platser tillgängliga.",
+    faq_label:"Vanliga frågor",
+    faq_title:"Vanliga frågor.",
+    faq1_q:"Hur lång tid tar ett projekt?", faq1_a:"De flesta projekt lanseras inom några veckor efter vårt första samtal, beroende på omfattning och hur snabbt innehållet kommer på plats.",
+    faq2_q:"Erbjuder du hosting?", faq2_a:"Ja, hosting, säkerhet, backuper och uppdateringar sköts för en fast månadskostnad, eller så använder du din egen.",
+    faq3_q:"Kan jag använda min befintliga domän?", faq3_a:"Ja, jag kopplar din befintliga domän och sätter upp HTTPS som en del av bygget.",
+    faq4_q:"Kan jag uppdatera hemsidan själv?", faq4_a:"Ja, det mesta av innehållet, scheman, priser och nyheter, redigerar du själv direkt, ingen utvecklare behövs.",
+    faq5_q:"Jobbar du utanför Stockholm?", faq5_a:"Just nu är alla mina kunder här i Stockholm och jag föredrar att träffas personligen, men distansprojekt är fullt möjliga om det passar dig bättre.",
     pro_label:"Så funkar det", pro_title:"Tre steg. Inga överraskningar.",
     pro1_h:"Vi pratar", pro1_p:"En förfrågan om din klubb, dina mål och vad sajten ska åstadkomma. Inga säljpitchar, inga bindningar.",
     pro2_h:"Du ser ett utkast", pro2_p:"Inom en vecka får du ett första utkast av din riktiga sajt. Inte en skiss, en fungerande sida med ditt innehåll. Vi justerar tillsammans tills det sitter.",
