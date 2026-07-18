@@ -455,24 +455,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .form-privacy-note a:hover { color: var(--gold); border-color: var(--gold-line); }
 
 /* ══ FOOTER ══ */
-.wylder {
-  --bg: #171310; --text: #ede7d9; --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  background: var(--bg);
-  text-align: center; padding: 44px 0; border-bottom: 1px solid var(--line);
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-}
-.wylder-trigger { font-family: var(--serif); font-size: 12px; font-style: italic; color: var(--muted2); background: none; border: none; letter-spacing: 0.08em; transition: color 0.2s; padding: 0; }
-.wylder-trigger:hover { color: var(--muted); }
-.wylder-game { display: none; margin-top: 20px; }
-.wylder-game a { display: inline-block; opacity: 0.6; transition: opacity 0.2s; text-decoration: none; }
-.wylder-game a:hover { opacity: 1; }
-.wylder-game svg { display: block; margin: 0 auto; }
 /* ══ FOOTER SHELL (matches Stormie Games / Moves / Studios) ══ */
 .hud-frame { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
 .section-inner { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
 .footer-shell { border: 0; border-top: 1px solid rgba(201,169,110,0.12); background: #171310; }
 footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
 .footer-mark { width: 24px; height: 24px; color: rgba(201,169,110,0.68); margin-bottom: 4px; }
+.footer-mark-trigger { background: none; border: none; padding: 0; margin-bottom: 4px; cursor: pointer; color: rgba(201,169,110,0.68); transition: color 0.2s ease; }
+.footer-mark-trigger:hover { color: var(--gold); }
+.footer-mark-trigger .footer-mark { margin-bottom: 0; }
+.footer-heart { display: inline-flex; margin-bottom: 4px; opacity: 0.7; transition: opacity 0.2s; text-decoration: none; }
+.footer-heart:hover { opacity: 1; }
 .footer-network { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; }
 .footer-network a { color: rgba(232,228,220,0.30); text-decoration: none; transition: color 0.2s ease; }
 .footer-network a:hover { color: var(--gold); }
@@ -760,21 +753,16 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   </div>
 </section>
 
-<!-- EASTER EGG -->
-<div class="wylder">
-  <button class="wylder-trigger" onclick="document.querySelector('.wylder-game').style.display='block';this.style.display='none';">· Storm Kolmodin · Stormie Studios ·</button>
-  <div class="wylder-game">
-    <a href="alpine.html" aria-label="A little something extra">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="#c9a96e" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-    </a>
-  </div>
-</div>
-
 <div class="hud-frame footer-shell">
 <footer>
-  <svg class="footer-mark" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true">
-    <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/>
-  </svg>
+  <button type="button" class="footer-mark-trigger" aria-label="A little something extra" onclick="document.querySelector('.footer-heart').style.display='inline-flex';this.style.display='none';">
+    <svg class="footer-mark" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true">
+      <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/>
+    </svg>
+  </button>
+  <a href="alpine.html" class="footer-heart" aria-label="A little something extra" style="display:none">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#c9a96e" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+  </a>
 
   <div class="footer-network">
     <a href="https://stormiestudios.com">Stormie Studios</a>
