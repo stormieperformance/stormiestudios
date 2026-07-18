@@ -42,7 +42,7 @@ html { scroll-behavior: smooth; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 body {
-  background: var(--bg);
+  background: #171310;
   color: var(--text);
   font-family: var(--sans);
   min-height: 100vh;
@@ -192,6 +192,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .intro-headline {
   font-family: var(--serif); font-size: clamp(40px, 5.2vw, 72px);
   font-weight: 300; line-height: 1.02; margin-bottom: 24px; overflow: hidden;
+  color: var(--text);
 }
 .intro-headline .word {
   display: inline-block; opacity: 0; transform: translateY(28px);
@@ -305,7 +306,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .sc-detail.is-switching { opacity: 0; transform: translateY(6px); }
 .sc-cat { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-.sc-detail h3 { font-family: var(--serif); font-size: clamp(22px, 2.4vw, 30px); font-weight: 300; line-height: 1.05; margin-bottom: 8px; }
+.sc-detail h3 { font-family: var(--serif); font-size: clamp(22px, 2.4vw, 30px); font-weight: 300; line-height: 1.05; margin-bottom: 8px; color: var(--text); }
 .sc-desc { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
 .sc-detail-link { display: inline-block; }
 .sc-hint { margin-top: 14px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); }
@@ -366,7 +367,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   background: var(--bg); padding: 88px 0; border-bottom: 1px solid var(--line);
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
 }
-.segments-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 52px; }
+.segments-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 52px; color: var(--text); }
 .segments-title em { font-style: italic; color: var(--muted); }
 .segment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .segment-card {
@@ -438,7 +439,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
 }
 .contact .eyebrow::after { margin-left: auto; margin-right: auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-.contact-title { font-family: var(--serif); font-size: clamp(40px, 6vw, 84px); font-weight: 300; line-height: 1.02; letter-spacing: -0.02em; margin: 24px auto 18px; max-width: 18ch; }
+.contact-title { font-family: var(--serif); font-size: clamp(40px, 6vw, 84px); font-weight: 300; line-height: 1.02; letter-spacing: -0.02em; margin: 24px auto 18px; max-width: 18ch; color: var(--text); }
 .contact-sub { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 440px; margin: 0 auto 52px; }
 .contact-form { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; text-align: left; }
 .field label { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); margin-bottom: 9px; }
