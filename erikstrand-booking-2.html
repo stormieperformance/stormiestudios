@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boka tid — Erik Strand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:   #08111e;
+      --blue:  #1549b8;
+      --steel: #b8c8e8;
+      --fog:   #e8edf7;
+      --white: #f7f9fd;
+      --line:  rgba(8,17,30,0.08);
+      --muted: rgba(8,17,30,0.48);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--sans);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-right { display: flex; gap: 32px; align-items: center; }
+
+    .nav-link {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover { color: var(--ink); }
+
+    .nav-back {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-back:hover { opacity: 0.7; }
+
+    /* PAGE */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* HEADER */
+    .booking-header {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+    }
+
+    .booking-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    .booking-title {
+      font-family: var(--serif);
+      font-size: clamp(44px, 5vw, 64px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .booking-title em { font-style: italic; color: var(--muted); }
+
+    .booking-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .booking-meta { display: flex; flex-direction: column; gap: 20px; }
+
+    .meta-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .meta-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .meta-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--fog);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 3px;
+    }
+
+    .meta-value {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .meta-sub {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* BOOKING TYPES */
+    .types-section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 24px;
+    }
+
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .type-card {
+      border: 1px solid var(--line);
+      padding: 24px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .type-card:hover,
+    .type-card.active {
+      border-color: var(--blue);
+      background: rgba(21,73,184,0.03);
+    }
+
+    .type-card.active::after {
+      content: '✓';
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 12px;
+      color: var(--blue);
+    }
+
+    .type-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .type-duration {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .type-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .type-price {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    /* CALENDLY SECTION */
+    .calendly-section {
+      padding: 56px 0 64px;
+    }
+
+    .calendly-wrapper {
+      background: var(--white);
+      border: 1px solid var(--line);
+      min-height: 660px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Placeholder — replace with real Calendly embed */
+    .calendly-placeholder {
+      min-height: 660px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: var(--fog);
+      padding: 48px;
+      text-align: center;
+    }
+
+    .calendly-placeholder-icon {
+      font-family: var(--serif);
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--steel);
+      line-height: 1;
+    }
+
+    .calendly-placeholder-title {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    .calendly-placeholder-sub {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 360px;
+      line-height: 1.7;
+    }
+
+    .calendly-placeholder-code {
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--blue);
+      background: rgba(21,73,184,0.06);
+      border: 1px solid rgba(21,73,184,0.15);
+      padding: 8px 16px;
+      letter-spacing: 0.05em;
+    }
+
+    /* WHAT TO EXPECT */
+    .expect-section {
+      padding: 0 0 64px;
+    }
+
+    .expect-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .expect-item {
+      background: var(--white);
+      padding: 28px 24px;
+    }
+
+    .expect-num {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--steel);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .expect-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .expect-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .footer-right { font-size: 11px; color: var(--muted); }
+    .footer-right a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-right a:hover { color: var(--blue); }
+
+    @media (max-width: 860px) {
+      .nav-inner { padding: 0 24px; }
+      .page { padding: 0 24px; }
+      .booking-header { grid-template-columns: 1fr; gap: 40px; }
+      .types-grid { grid-template-columns: 1fr; }
+      .expect-grid { grid-template-columns: repeat(2, 1fr); }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="demo-erikstrand.html">Erik Strand</a>
+      <div class="nav-right">
+        <a class="nav-link" href="erikstrand-shop.html">Shop</a>
+        <a class="nav-back" href="demo-erikstrand.html">← Tillbaka</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="booking-header">
+      <div>
+        <p class="booking-label">Boka tid</p>
+        <h1 class="booking-title">Välj tid<br><em>som passar dig</em></h1>
+        <p class="booking-sub">Boka ett gratis introduktionssamtal eller ditt första PT-pass direkt i kalendern. Ingen väntetid, inget krångel.</p>
+      </div>
+      <div class="booking-meta">
+        <div class="meta-item">
+          <div class="meta-icon">📍</div>
+          <div>
+            <p class="meta-label">Plats</p>
+            <p class="meta-value">Södermalm, Stockholm</p>
+            <p class="meta-sub">Eller online via Google Meet</p>
+          </div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">⏱</div>
+          <div>
+            <p class="meta-label">Svarstid</p>
+            <p class="meta-value">Bekräftelse inom 2 timmar</p>
+            <p class="meta-sub">Måndag–fredag 07–20</p>
+          </div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-icon">↩</div>
+          <div>
+            <p class="meta-label">Avbokning</p>
+            <p class="meta-value">Gratis upp till 24h innan</p>
+            <p class="meta-sub">Enkelt via bekräftelsemejlet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOKING TYPES -->
+    <div class="types-section">
+      <p class="section-label">Välj bokningstyp</p>
+      <div class="types-grid">
+
+        <div class="type-card active" onclick="selectType(this)">
+          <p class="type-duration">30 min · Gratis</p>
+          <p class="type-name">Introduktionssamtal</p>
+          <p class="type-desc">Vi pratar mål, nuläge och vad som passar dig. Ingen förpliktelse — bara ett ärligt samtal.</p>
+          <p class="type-price">Kostnadsfritt</p>
+        </div>
+
+        <div class="type-card" onclick="selectType(this)">
+          <p class="type-duration">60 min · PT-pass</p>
+          <p class="type-name">Första passet</p>
+          <p class="type-desc">Genomgång av teknik, rörlighet och ett första träningspass. Fullt fokus på dig.</p>
+          <p class="type-price">900 kr</p>
+        </div>
+
+        <div class="type-card" onclick="selectType(this)">
+          <p class="type-duration">45 min · Online</p>
+          <p class="type-name">Online coaching-start</p>
+          <p class="type-desc">Kickoff för online coaching. Vi går igenom ditt program, dina mål och hur vi jobbar tillsammans.</p>
+          <p class="type-price">Ingår i coachingen</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CALENDLY EMBED -->
+    <div class="calendly-section">
+      <p class="section-label">Välj datum & tid</p>
+      <div class="calendly-wrapper">
+
+        <!-- 
+          REPLACE THIS PLACEHOLDER WITH YOUR CALENDLY EMBED:
+
+          1. Gå till calendly.com och skapa ett konto
+          2. Skapa ett event (t.ex. "Introduktionssamtal 30 min")
+          3. Klicka "Share" → "Add to website" → "Inline embed"
+          4. Kopiera koden och ersätt hela .calendly-placeholder-blocket nedan
+
+          Exempel på Calendly inline embed:
+          <div class="calendly-inline-widget" 
+               data-url="https://calendly.com/ditt-namn/introduktionssamtal" 
+               style="min-width:320px;height:660px;">
+          </div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        -->
+
+        <div class="calendly-placeholder">
+          <div class="calendly-placeholder-icon">📅</div>
+          <p class="calendly-placeholder-title">Kalender laddas här</p>
+          <p class="calendly-placeholder-sub">Här visas Eriks bokningskalender via Calendly. Besökaren väljer datum, tid och fyller i sina uppgifter direkt på sidan.</p>
+          <p class="calendly-placeholder-code">Ersätt med Calendly inline embed</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- WHAT TO EXPECT -->
+    <div class="expect-section">
+      <p class="section-label">Vad händer efter bokning</p>
+      <div class="expect-grid">
+        <div class="expect-item">
+          <p class="expect-num">01</p>
+          <p class="expect-title">Bekräftelse direkt</p>
+          <p class="expect-desc">Du får ett bekräftelsemejl med all info och en påminnelse dagen innan.</p>
+        </div>
+        <div class="expect-item">
+          <p class="expect-num">02</p>
+          <p class="expect-title">Förberedelse</p>
+          <p class="expect-desc">Erik skickar ett kort formulär om dina mål och din bakgrund.</p>
+        </div>
+        <div class="expect-item">
+          <p class="expect-num">03</p>
+          <p class="expect-title">Mötet</p>
+          <p class="expect-desc">Fullt fokus på dig. Inga säljpitchar, bara ett ärligt samtal om vad du behöver.</p>
+        </div>
+        <div class="expect-item">
+          <p class="expect-num">04</p>
+          <p class="expect-title">Din plan</p>
+          <p class="expect-desc">Inom 24h efter mötet får du ett förslag på hur vi kan jobba tillsammans.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <span class="footer-left">Erik Strand © 2026</span>
+      <span class="footer-right">Concept project — not affiliated with a real client.</a></span>
+      <span class="footer-right">Built by <a href="https://stormiestudios.com">Stormie Studios</a></span>
+    </footer>
+
+  </div>
+
+  <script>
+    function selectType(el) {
+      document.querySelectorAll('.type-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
