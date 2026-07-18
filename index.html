@@ -312,15 +312,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ ABOUT — immediately after carousel column ══ */
 .about-inline {
-  --bg: #171310; --bg2: #1e1911; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg);
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  padding-top: 52px; padding-bottom: 52px;
-  padding-left: max(48px, calc((100vw - 1080px)/2 + 48px));
-  padding-right: max(48px, calc((100vw - 1080px)/2 + 48px));
-  border-bottom: 1px solid var(--line);
+  padding: 52px 0; border-bottom: 1px solid var(--line);
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
 }
 .about-inline-title {
@@ -502,7 +494,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .sc-frame iframe { transform: scale(0.5385); }
   .sc-arrow--prev { left: -4px; }
   .sc-arrow--next { right: -4px; }
-  .about-inline { grid-template-columns: 1fr; gap: 28px; padding-top: 44px; padding-bottom: 44px; }
+  .about-inline { grid-template-columns: 1fr; gap: 28px; padding: 44px 0; }
   .trust-grid { grid-template-columns: 1fr; }
   .segment-grid { grid-template-columns: 1fr; }
   .segment-card.wide { flex-direction: column; gap: 14px; }
