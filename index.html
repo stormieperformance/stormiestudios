@@ -455,7 +455,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .form-privacy-note a:hover { color: var(--gold); border-color: var(--gold-line); }
 
 /* ══ FOOTER ══ */
-.wylder { text-align: center; padding: 44px 0; border-bottom: 1px solid var(--line); }
+.wylder {
+  --bg: #171310; --text: #ede7d9; --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  background: var(--bg);
+  text-align: center; padding: 44px 0; border-bottom: 1px solid var(--line);
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+}
 .wylder-trigger { font-family: var(--serif); font-size: 12px; font-style: italic; color: var(--muted2); background: none; border: none; letter-spacing: 0.08em; transition: color 0.2s; padding: 0; }
 .wylder-trigger:hover { color: var(--muted); }
 .wylder-game { display: none; margin-top: 20px; }
