@@ -78,21 +78,28 @@
     <li>Clear conversion paths for individual members and business customers alike</li>
     <li>News fully self-service, confirmed working with a real published post</li>
     <li>No placeholder or unfinished content anywhere on the site</li>
+    <li>External CMS and spreadsheet content sanitized before it ever reaches the page</li>
+    <li>Keyboard and screen-reader accessible: modal, toggles, and carousels all operable without a mouse</li>
   </ul>
 
   <div class="tech">
     <h3>How it's actually built</h3>
     <ul>
       <li>Hand-coded <code>HTML / CSS / JS</code>, no page builder</li>
-      <li>Headless CMS via <code>Sanity</code>, queried with <code>GROQ</code></li>
-      <li>Schedule sync via <code>Google Sheets</code>, deliberately kept separate from the CMS</li>
+      <li>Headless CMS via <code>Sanity</code>, queried with <code>GROQ</code>, required fields, image cropping, alt-text validation</li>
+      <li>Schedule sync via <code>Google Sheets</code>, deliberately kept separate from the CMS, with row validation and cancellation support</li>
+      <li>All external CMS/sheet content is HTML-escaped before rendering, no raw injection into the page</li>
       <li>Bilingual <code>EN / SV</code> throughout, one i18n system</li>
       <li>Membership signups via <code>GymControl</code></li>
-      <li>Contact handled through <code>Formspree</code></li>
+      <li>Accessible booking modal: focus trap, Escape to close, keyboard-operable carousels</li>
+      <li>LocalBusiness structured data, canonical URL, sitemap and robots.txt, custom 404 page</li>
+      <li>Analytics event tracking scaffolded on real conversion points, awaiting the client's own account</li>
       <li>Deployed on <code>GitHub Pages</code>, custom domain in progress</li>
       <li>Light / dark mode, fully responsive, mobile-first</li>
     </ul>
   </div>
+
+  <div class="note" style="margin-top:24px"><strong>Also true right now:</strong> the contact form's backend isn't wired up yet, that's waiting on the client's own form-handling account, in keeping with the same principle as everything else here: their infrastructure, their ownership, not mine.</div>
 
   <div class="cta">
     <a class="btn" href="index.html">Back to Stormie Studios</a>
