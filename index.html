@@ -405,6 +405,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .care-right { display: flex; flex-direction: column; gap: 22px; padding-top: 8px; }
 .care-right p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
 
+/* ══ INCLUDED ══ */
+.included { padding: 100px 0; border-bottom: 1px solid var(--line); }
+.included-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 16px; color: var(--text); }
+.included-title em { font-style: italic; color: var(--muted); }
+.included-sub { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.75; max-width: 480px; margin-bottom: 44px; }
+.included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.included-item { background: var(--bg); padding: 30px 30px 28px; position: relative; }
+.included-item::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.5s ease; }
+.included-item:hover::before { width: 100%; }
+.included-num { font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--gold); }
+.included-name { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--text); margin: 8px 0 6px; line-height: 1.15; }
+.included-desc { font-size: 12.5px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+.optional { margin-top: 64px; }
+.optional-title { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 24px; color: var(--text); margin: 14px 0 24px; }
+.optional-list { display: flex; flex-direction: column; }
+.optional-row { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 15px 0; border-top: 1px solid var(--line); }
+.optional-row:last-child { border-bottom: 1px solid var(--line); }
+.optional-name { font-size: 14px; font-weight: 300; color: var(--text); }
+.optional-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); white-space: nowrap; }
+
 /* ══ GIVING BACK ══ */
 .giving {
   display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
@@ -697,6 +717,68 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   </div>
 </section>
 
+<!-- INCLUDED -->
+<section class="included" id="included">
+  <span class="section-label" data-i18n="inc_label">What You Get</span>
+  <h2 class="included-title" data-i18n="inc_title">Every project. <em>Fully equipped.</em></h2>
+  <p class="included-sub" data-i18n="inc_sub">A site built to turn visitors into members, not just look good doing it. Here's exactly what's included, no surprises.</p>
+
+  <div class="included-grid">
+    <div class="included-item">
+      <span class="included-num">i.</span>
+      <h3 class="included-name" data-i18n="inc1_name">Custom-built, not templated</h3>
+      <p class="included-desc" data-i18n="inc1_desc">Designed around your business, your brand, your members.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">ii.</span>
+      <h3 class="included-name" data-i18n="inc2_name">Fully responsive</h3>
+      <p class="included-desc" data-i18n="inc2_desc">Looks and works right on desktop, tablet and phone.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">iii.</span>
+      <h3 class="included-name" data-i18n="inc3_name">Self-service content</h3>
+      <p class="included-desc" data-i18n="inc3_desc">Update schedules, prices and news yourself, in seconds.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">iv.</span>
+      <h3 class="included-name" data-i18n="inc4_name">Booking and membership paths</h3>
+      <p class="included-desc" data-i18n="inc4_desc">Clear routes from visitor to trial to paying member.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">v.</span>
+      <h3 class="included-name" data-i18n="inc5_name">Fast, performance-focused build</h3>
+      <p class="included-desc" data-i18n="inc5_desc">Hand-coded, no bloated page-builder overhead.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">vi.</span>
+      <h3 class="included-name" data-i18n="inc6_name">Basic SEO setup</h3>
+      <p class="included-desc" data-i18n="inc6_desc">Titles, structure and metadata set up to be found.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">vii.</span>
+      <h3 class="included-name" data-i18n="inc7_name">Contact forms and integrations</h3>
+      <p class="included-desc" data-i18n="inc7_desc">Inquiries, social links and Google Maps where relevant.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">viii.</span>
+      <h3 class="included-name" data-i18n="inc8_name">Domain, HTTPS and launch support</h3>
+      <p class="included-desc" data-i18n="inc8_desc">Connected, secured, and live, with help through launch day.</p>
+    </div>
+  </div>
+
+  <div class="optional">
+    <span class="section-label" data-i18n="opt_label">Optional Services</span>
+    <h3 class="optional-title" data-i18n="opt_title">For when you want more, later.</h3>
+    <div class="optional-list">
+      <div class="optional-row"><span class="optional-name" data-i18n="opt1_name">Hosting, security, backups and updates</span><span class="optional-tag" data-i18n="opt1_tag">Flat monthly fee</span></div>
+      <div class="optional-row"><span class="optional-name" data-i18n="opt2_name">Ongoing content updates handled for you</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
+      <div class="optional-row"><span class="optional-name" data-i18n="opt3_name">Google Search Console and Analytics setup</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
+      <div class="optional-row"><span class="optional-name" data-i18n="opt4_name">Business email setup</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
+      <div class="optional-row"><span class="optional-name" data-i18n="opt5_name">Additional pages, features and improvements</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
 <div class="section-inner">
@@ -828,6 +910,25 @@ const I18N = {
     care_title:"Easy for you.<br><span class=\"gold-shimmer\">Handled by me.</span>",
     care_p1:"Your content is always yours. Depending on the project, you update it yourself in a spreadsheet or through a clean CMS dashboard built for non-developers. No manuals, no agency middleman.",
     care_p2:"Everything you don't want to think about, like hosting, security, backups and updates, I handle for a flat monthly fee. Less than what a template platform charges, with none of the limitations.",
+    inc_label:"What You Get",
+    inc_title:"Every project. <em>Fully equipped.</em>",
+    inc_sub:"A site built to turn visitors into members, not just look good doing it. Here's exactly what's included, no surprises.",
+    inc1_name:"Custom-built, not templated", inc1_desc:"Designed around your business, your brand, your members.",
+    inc2_name:"Fully responsive", inc2_desc:"Looks and works right on desktop, tablet and phone.",
+    inc3_name:"Self-service content", inc3_desc:"Update schedules, prices and news yourself, in seconds.",
+    inc4_name:"Booking and membership paths", inc4_desc:"Clear routes from visitor to trial to paying member.",
+    inc5_name:"Fast, performance-focused build", inc5_desc:"Hand-coded, no bloated page-builder overhead.",
+    inc6_name:"Basic SEO setup", inc6_desc:"Titles, structure and metadata set up to be found.",
+    inc7_name:"Contact forms and integrations", inc7_desc:"Inquiries, social links and Google Maps where relevant.",
+    inc8_name:"Domain, HTTPS and launch support", inc8_desc:"Connected, secured, and live, with help through launch day.",
+    opt_label:"Optional Services",
+    opt_title:"For when you want more, later.",
+    opt1_name:"Hosting, security, backups and updates", opt1_tag:"Flat monthly fee",
+    opt2_name:"Ongoing content updates handled for you",
+    opt3_name:"Google Search Console and Analytics setup",
+    opt4_name:"Business email setup",
+    opt5_name:"Additional pages, features and improvements",
+    opt_addon:"Add-on",
     ct_label:"Get in touch",
     ct_title:"What do you need <span class=\"gold-shimmer\">help with?</span>",
     ct_sub:"",
@@ -878,6 +979,25 @@ const I18N = {
     care_title:"Enkelt för dig.<br><span class=\"gold-shimmer\">Skött av mig.</span>",
     care_p1:"Ditt innehåll är alltid ditt. Beroende på projektet uppdaterar du det själv i ett kalkylark eller via ett enkelt CMS-gränssnitt byggt för icke-utvecklare. Inga manualer, ingen mellanhands-byrå.",
     care_p2:"Allt du inte vill tänka på, som hosting, säkerhet, backup och uppdateringar, sköter jag för en fast månadskostnad. Lägre än vad en mallplattform kostar, utan deras begränsningar.",
+    inc_label:"Vad du får",
+    inc_title:"Varje projekt. <em>Fullt utrustat.</em>",
+    inc_sub:"En sajt byggd för att göra besökare till medlemmar, inte bara för att se bra ut. Här är exakt vad som ingår, inga överraskningar.",
+    inc1_name:"Skräddarsytt, inte mallbaserat", inc1_desc:"Designat kring ditt företag, ditt varumärke, dina medlemmar.",
+    inc2_name:"Fullt responsivt", inc2_desc:"Ser bra ut och fungerar på desktop, surfplatta och mobil.",
+    inc3_name:"Innehåll du sköter själv", inc3_desc:"Uppdatera scheman, priser och nyheter själv, på sekunder.",
+    inc4_name:"Boknings- och medlemsflöden", inc4_desc:"Tydliga vägar från besökare till provpass till betalande medlem.",
+    inc5_name:"Snabb, prestandafokuserad build", inc5_desc:"Handkodad, utan tunga page builder-verktyg.",
+    inc6_name:"Grundläggande SEO", inc6_desc:"Titlar, struktur och metadata som gör att ni hittas.",
+    inc7_name:"Kontaktformulär och integrationer", inc7_desc:"Förfrågningar, sociala länkar och Google Maps där relevant.",
+    inc8_name:"Domän, HTTPS och lanseringsstöd", inc8_desc:"Kopplad, säkrad och live, med hjälp genom lanseringsdagen.",
+    opt_label:"Tilläggstjänster",
+    opt_title:"För när du vill ha mer, längre fram.",
+    opt1_name:"Hosting, säkerhet, backuper och uppdateringar", opt1_tag:"Fast månadsavgift",
+    opt2_name:"Löpande innehållsuppdateringar",
+    opt3_name:"Google Search Console och Analytics",
+    opt4_name:"Uppsättning av företagsmejl",
+    opt5_name:"Fler sidor, funktioner och förbättringar",
+    opt_addon:"Tillägg",
     ct_label:"Kom igång",
     ct_title:"Vad behöver du <span class=\"gold-shimmer\">hjälp med?</span>",
     ct_sub:"",
