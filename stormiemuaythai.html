@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stormie Muay Thai Built by Stormie Studios</title>
+<meta name="description" content="A full Muay Thai gym website with hero video, live schedule, memberships, shop, news carousel and Instagram integration. Built by Stormie Studios." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0c0c0b;
+  --bg2: #111110;
+  --text: #e8e4dc;
+  --muted: rgba(232,228,220,0.42);
+  --muted2: rgba(232,228,220,0.22);
+  --line: rgba(232,228,220,0.08);
+  --gold: #c9a96e;
+  --gold-bright: #ecd9ae;
+  --gold-dim: rgba(201,169,110,0.14);
+  --gold-line: rgba(201,169,110,0.4);
+  --sans: 'DM Sans', sans-serif;
+  --serif: 'Cormorant Garamond', serif;
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+a { text-decoration: none; color: inherit; }
+a:focus-visible, button:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
+.page { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+.eyebrow { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
+.section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted2); }
+.gold-shimmer {
+  font-style: italic;
+  background: linear-gradient(110deg, var(--gold) 30%, var(--gold-bright) 50%, var(--gold) 70%);
+  background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmer 7s ease-in-out infinite;
+}
+@keyframes shimmer { 0%,100%{background-position:115% 0} 50%{background-position:-15% 0} }
+
+.btn-gold {
+  position: relative; display: inline-block; overflow: hidden;
+  font-family: var(--sans); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); background: transparent; border: 1px solid var(--gold-line);
+  padding: 14px 30px; cursor: pointer;
+  transition: color 0.3s, border-color 0.3s, background 0.3s, letter-spacing 0.35s;
+}
+.btn-gold::before {
+  content: ''; position: absolute; top: 0; left: -130%; width: 55%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(236,217,174,0.22), transparent);
+  transform: skewX(-18deg); transition: left 0.7s ease;
+}
+.btn-gold:hover { color: var(--gold-bright); border-color: var(--gold); background: var(--gold-dim); letter-spacing: 0.2em; }
+.btn-gold:hover::before { left: 170%; }
+.btn-ghost {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); position: relative; padding-bottom: 4px;
+}
+.btn-ghost::after { content: ''; position: absolute; left:0;bottom:0;width:100%;height:1px;background:var(--line); }
+.btn-ghost::before { content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .45s ease;z-index:1; }
+.btn-ghost:hover { color: var(--text); }
+.btn-ghost:hover::before { width: 100%; }
+
+/* TOPBAR */
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 28px 0; border-bottom: 1px solid var(--line);
+  opacity: 0; animation: fadeIn 0.8s ease 0.1s forwards;
+}
+.topbar-left { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); transition: color 0.2s; }
+.topbar-left:hover { color: var(--text); }
+.topbar-right { display: flex; gap: 28px; align-items: center; }
+.topbar-right a { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); transition: color 0.2s; }
+.topbar-right a:hover { color: var(--text); }
+.topbar-right a.cta-link { color: var(--gold); position: relative; padding-bottom: 2px; }
+.topbar-right a.cta-link::after { content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold-line);transform:scaleX(0.4);transform-origin:left;transition:transform .4s ease; }
+.topbar-right a.cta-link:hover::after { transform: scaleX(1); }
+.lang-toggle { display:flex;align-items:center;gap:6px;font-family:var(--serif);font-size:13px;font-style:italic;color:var(--muted2); }
+.lang-toggle button { background:none;border:none;cursor:pointer;font:inherit;color:var(--muted2);padding:2px 1px;transition:color .2s; }
+.lang-toggle button:hover { color: var(--text); }
+.lang-toggle button.active { color: var(--gold); }
+
+/* HERO */
+.hero { padding: 88px 0 0; border-bottom: 1px solid var(--line); }
+.hero-top { margin-bottom: 56px; }
+.hero .eyebrow { margin-bottom: 28px; opacity: 0; animation: fadeUp 1s ease 0.3s forwards; }
+.hero-title {
+  font-family: var(--serif); font-size: clamp(54px, 8.5vw, 116px);
+  font-weight: 300; line-height: 0.98; letter-spacing: -0.02em;
+  opacity: 0; animation: fadeUp 1.2s ease 0.45s forwards;
+}
+.hero-bottom {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 40px; margin-top: 36px; margin-bottom: 56px;
+  opacity: 0; animation: fadeUp 1s ease 0.75s forwards;
+}
+.hero-desc { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; max-width: 520px; }
+.hero-meta { text-align: right; flex-shrink: 0; }
+.hero-meta-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); margin-bottom: 6px; }
+.hero-meta-value { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--muted); }
+
+/* 3D DEVICE PREVIEW */
+.preview-stage {
+  position: relative;
+  width: 100%;
+  height: 640px;
+  perspective: 1800px;
+  perspective-origin: 50% 40%;
+  overflow: visible;
+  opacity: 0;
+  animation: fadeUp 1.4s ease 1s forwards;
+}
+.preview-device {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%) rotateX(12deg) rotateY(0deg);
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.preview-device:hover {
+  transform: translateX(-50%) translateY(-52%) rotateX(4deg) rotateY(0deg) scale(1.02);
+}
+.preview-screen {
+  width: 820px;
+  height: 520px;
+  border-radius: 2px;
+  border: 1px solid rgba(201,169,110,0.4);
+  overflow: hidden;
+  position: relative;
+  background: #080808;
+  box-shadow:
+    0 0 0 1px rgba(201,169,110,0.08),
+    0 2px 0 0 rgba(201,169,110,0.6),
+    0 40px 120px rgba(0,0,0,0.95),
+    0 80px 200px rgba(0,0,0,0.7);
+}
+.preview-iframe-wrap {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+}
+.preview-iframe-wrap iframe {
+  width: 1440px;
+  height: 900px;
+  border: 0;
+  transform: scale(0.569);
+  transform-origin: top left;
+  pointer-events: none;
+}
+.preview-glow {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(201,169,110,0.18) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(20px);
+}
+.preview-reflection {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 820px;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(201,169,110,0.06), transparent);
+  filter: blur(2px);
+  pointer-events: none;
+  border-radius: 0 0 10px 10px;
+}
+/* floating labels around device */
+.preview-label {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: labelFadeIn 0.6s ease forwards;
+}
+.preview-label-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(201,169,110,0.6);
+  flex-shrink: 0;
+}
+.preview-label-line {
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-line), transparent);
+  flex-shrink: 0;
+}
+.preview-label-text {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.pl-1 { top: 15%; left: -5%; animation-delay: 1.6s; }
+.pl-1 .preview-label-line { width: 40px; }
+.pl-2 { top: 38%; left: -8%; animation-delay: 1.8s; }
+.pl-2 .preview-label-line { width: 55px; }
+.pl-3 { bottom: 28%; right: -6%; animation-delay: 2s; flex-direction: row-reverse; }
+.pl-3 .preview-label-line { width: 40px; background: linear-gradient(270deg, var(--gold-line), transparent); }
+.pl-4 { bottom: 12%; right: -3%; animation-delay: 2.2s; flex-direction: row-reverse; }
+.pl-4 .preview-label-line { width: 30px; background: linear-gradient(270deg, var(--gold-line), transparent); }
+@keyframes labelFadeIn { from{opacity:0;transform:translateX(-8px)} to{opacity:1;transform:translateX(0)} }
+.pl-3, .pl-4 { }
+@keyframes labelFadeInRight { from{opacity:0;transform:translateX(8px)} to{opacity:1;transform:translateX(0)} }
+.pl-3 { animation-name: labelFadeInRight; }
+.pl-4 { animation-name: labelFadeInRight; }
+
+/* BUILT LIST */
+.built { padding: 88px 0 72px; border-bottom: 1px solid var(--line); }
+.built-header { display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px; }
+.section-count { font-family:var(--serif);font-size:14px;font-style:italic;color:var(--muted2); }
+.built-list { display: flex; flex-direction: column; }
+.built-row {
+  display: grid; grid-template-columns: 52px 1fr auto;
+  gap: 24px; align-items: center; padding: 26px 0;
+  border-bottom: 1px solid var(--line); color: inherit; position: relative;
+}
+a.built-row { transition: padding-left 0.3s ease; }
+a.built-row::after { content:'';position:absolute;left:0;bottom:-1px;width:0;height:1px;background:var(--gold);transition:width .4s ease; }
+a.built-row:hover::after { width: 100%; }
+a.built-row:hover { padding-left: 10px; }
+.built-num { font-family:var(--serif);font-size:15px;font-style:italic;color:var(--gold); }
+.built-info { display:flex;flex-direction:column;gap:5px; }
+.built-name { font-family:var(--serif);font-size:clamp(22px,2.8vw,32px);font-weight:300;line-height:1.05;color:var(--text);transition:color .2s; }
+a.built-row:hover .built-name { color: #fff; }
+.built-category { font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);transition:color .2s; }
+a.built-row:hover .built-category { color: var(--gold); }
+.built-arrow { font-size:10px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;transition:transform .25s ease,color .2s; }
+a.built-row:hover .built-arrow { transform:translateX(6px);color:var(--gold); }
+.built-live {
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); display: flex; align-items: center; gap: 6px;
+}
+.built-live::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); box-shadow: 0 0 6px rgba(201,169,110,0.6);
+  flex-shrink: 0;
+}
+
+/* ABOUT */
+.about {
+  padding: 88px 0; border-bottom: 1px solid var(--line);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+}
+.about-title { font-family:var(--serif);font-size:clamp(38px,4.5vw,58px);font-weight:300;line-height:1.08;letter-spacing:-0.01em; }
+.about-right { display:flex;flex-direction:column;gap:22px;padding-top:8px; }
+.about-right p { font-size:14px;font-weight:300;color:var(--muted);line-height:1.85; }
+.about-note { font-family:var(--serif);font-size:14px!important;font-style:italic;color:var(--muted2)!important;border-top:1px solid var(--line);padding-top:18px; }
+.about-tags { display:flex;flex-wrap:wrap;gap:8px;margin-top:4px; }
+.tag { font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);border:1px solid var(--line);padding:6px 13px;transition:color .25s,border-color .25s; }
+.tag:hover { color:var(--gold);border-color:var(--gold-line); }
+
+/* SYSTEM GRID */
+.system { padding: 88px 0; border-bottom: 1px solid var(--line); }
+.system-title { font-family:var(--serif);font-size:clamp(34px,4vw,52px);font-weight:300;line-height:1.1;margin:18px 0 52px; }
+.system-title em { font-style:italic;color:var(--muted); }
+.system-grid { display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line); }
+.system-card { background:var(--bg);padding:36px 32px;position:relative;transition:background .25s; }
+.system-card::before { content:'';position:absolute;top:0;left:0;width:0;height:1px;background:var(--gold);transition:width .5s ease; }
+.system-card:hover { background:var(--bg2); }
+.system-card:hover::before { width:100%; }
+.system-num { font-family:var(--serif);font-size:15px;font-style:italic;color:var(--gold);margin-bottom:16px; }
+.system-type { font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);margin-bottom:8px; }
+.system-name { font-family:var(--serif);font-size:clamp(24px,3vw,30px);font-weight:300;line-height:1.1;color:var(--text);margin-bottom:12px;transition:color .2s; }
+.system-card:hover .system-name { color:#fff; }
+.system-desc { font-size:13px;font-weight:300;color:var(--muted);line-height:1.8; }
+
+/* CTA */
+.cta-section { padding:100px 0 90px;text-align:center;border-bottom:1px solid var(--line); }
+.cta-title { font-family:var(--serif);font-size:clamp(40px,6vw,84px);font-weight:300;line-height:1.02;letter-spacing:-0.02em;margin:24px auto 18px;max-width:18ch; }
+.cta-desc { font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;max-width:440px;margin:0 auto 44px; }
+.cta-actions { display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap; }
+
+footer { padding:24px 0;display:flex;justify-content:space-between;align-items:center; }
+.footer-left { font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2); }
+.footer-right { font-family:var(--serif);font-size:13px;font-style:italic; }
+.footer-right a { color:var(--muted2);transition:color .2s; }
+.footer-right a:hover { color:var(--text); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+@media(max-width:900px){
+  .preview-stage{height:400px}
+  .preview-screen{width:520px;height:330px}
+  .preview-iframe-wrap iframe{width:1440px;height:900px;transform:scale(0.361);transform-origin:top left}
+  .preview-reflection{width:520px}
+  .pl-1,.pl-2,.pl-3,.pl-4{display:none}
+}
+@media(max-width:768px){
+  .page{padding:0 24px}
+  .hero{padding:76px 0 0}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:26px}
+  .hero-meta{text-align:left}
+  .preview-stage{height:280px}
+  .preview-screen{width:340px;height:220px}
+  .preview-iframe-wrap iframe{transform:scale(0.236);transform-origin:top left}
+  .preview-reflection{width:340px}
+  .built-row{grid-template-columns:36px 1fr auto;gap:16px}
+  .about{grid-template-columns:1fr;gap:32px}
+  .system-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:8px;text-align:center}
+  .hide-mobile{display:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="topbar">
+  <a class="topbar-left" href="index.html">Stormie Studios</a>
+  <nav class="topbar-right">
+    <a href="https://stormieperformance.com/smt-demo/" target="_blank" rel="noopener noreferrer" class="hide-mobile" data-i18n="nav_live">Live site</a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" id="lang-en" class="active" onclick="setLang('en')">EN</button>
+      <span>/</span>
+      <button type="button" id="lang-sv" onclick="setLang('sv')">SV</button>
+    </div>
+    <a href="index.html#contact" class="cta-link" data-i18n="nav_cta">Work with us</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero inview">
+  <div class="hero-top">
+    <p class="eyebrow" data-i18n="hero_eyebrow">Concept project · Martial arts club</p>
+    <h1 class="hero-title" data-i18n="hero_title">Stormie <span class="gold-shimmer">Muay Thai.</span></h1>
+    <div class="hero-bottom">
+      <p class="hero-desc" data-i18n="hero_desc">A complete Muay Thai gym website hero video, live schedule, membership plans, branded shop, news carousel and Instagram integration. One cohesive system built to convert visitors into members.</p>
+      <div class="hero-meta">
+        <p class="hero-meta-label" data-i18n="hero_meta_label">Client type</p>
+        <p class="hero-meta-value" data-i18n="hero_meta_value">Martial arts club · Membership-based business</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D DEVICE PREVIEW -->
+  <div class="preview-stage">
+    <div class="preview-device" id="previewDevice">
+      <div class="preview-screen">
+        <div class="preview-iframe-wrap">
+          <iframe
+            src="https://stormieperformance.com/smt-demo/"
+            loading="lazy"
+            scrolling="no"
+            tabindex="-1"
+            aria-hidden="true"
+            title="Stormie Muay Thai live preview">
+          </iframe>
+        </div>
+      </div>
+      <div class="preview-glow"></div>
+      <div class="preview-reflection"></div>
+    </div>
+
+    <!-- floating labels -->
+    <div class="preview-label pl-1">
+      <div class="preview-label-dot"></div>
+      <div class="preview-label-line"></div>
+      <span class="preview-label-text">Hero video</span>
+    </div>
+    <div class="preview-label pl-2">
+      <div class="preview-label-dot"></div>
+      <div class="preview-label-line"></div>
+      <span class="preview-label-text">Live schedule</span>
+    </div>
+    <div class="preview-label pl-3">
+      <span class="preview-label-text">Membership flow</span>
+      <div class="preview-label-line"></div>
+      <div class="preview-label-dot"></div>
+    </div>
+    <div class="preview-label pl-4">
+      <span class="preview-label-text">Branded shop</span>
+      <div class="preview-label-line"></div>
+      <div class="preview-label-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WAS BUILT -->
+<section class="built" id="work">
+  <div class="built-header">
+    <span class="section-label" data-i18n="built_label">What was built</span>
+    <span class="section-count" data-i18n="built_count">06 parts · All live</span>
+  </div>
+  <div class="built-list">
+
+    <a class="built-row" href="https://stormieperformance.com/smt-demo/" target="_blank" rel="noopener noreferrer">
+      <span class="built-num">01</span>
+      <div class="built-info">
+        <span class="built-name" data-i18n="b1_name">Website & Brand</span>
+        <span class="built-category" data-i18n="b1_cat">Hero video · Navigation · About · Coaches · Instagram feed</span>
+      </div>
+      <span class="built-arrow" data-i18n="b_view">View →</span>
+    </a>
+
+    <a class="built-row" href="https://stormieperformance.com/smt-demo/#schedule" target="_blank" rel="noopener noreferrer">
+      <span class="built-num">02</span>
+      <div class="built-info">
+        <span class="built-name" data-i18n="b2_name">Schedule</span>
+        <span class="built-category" data-i18n="b2_cat">Day tabs · Class cards · Booking flow entry</span>
+      </div>
+      <span class="built-arrow" data-i18n="b_view">View →</span>
+    </a>
+
+    <a class="built-row" href="https://stormieperformance.com/smt-demo/#memberships" target="_blank" rel="noopener noreferrer">
+      <span class="built-num">03</span>
+      <div class="built-info">
+        <span class="built-name" data-i18n="b3_name">Memberships</span>
+        <span class="built-category" data-i18n="b3_cat">6 plans · Drop-in, unlimited, starter, student, youth, 10-pack</span>
+      </div>
+      <span class="built-arrow" data-i18n="b_view">View →</span>
+    </a>
+
+    <a class="built-row" href="https://stormieperformance.com/smt-demo/#shop" target="_blank" rel="noopener noreferrer">
+      <span class="built-num">04</span>
+      <div class="built-info">
+        <span class="built-name" data-i18n="b4_name">Shop</span>
+        <span class="built-category" data-i18n="b4_cat">Hoodies, tees, caps, wraps, shorts · Colour toggle · Hover states</span>
+      </div>
+      <span class="built-arrow" data-i18n="b_view">View →</span>
+    </a>
+
+    <a class="built-row" href="https://stormieperformance.com/smt-demo/#news" target="_blank" rel="noopener noreferrer">
+      <span class="built-num">05</span>
+      <div class="built-info">
+        <span class="built-name" data-i18n="b5_name">News carousel</span>
+        <span class="built-category" data-i18n="b5_cat">3D drag carousel · Fight news · Class updates · Results</span>
+      </div>
+      <span class="built-arrow" data-i18n="b_view">View →</span>
+    </a>
+
+    <a class="built-row" href="https://stormieperformance.com/smt-demo/#coaches" target="_blank" rel="noopener noreferrer">
+      <span class="built-num">06</span>
+      <div class="built-info">
+        <span class="built-name" data-i18n="b6_name">Instagram & Coaches</span>
+        <span class="built-category" data-i18n="b6_cat">Behold.so live feed · Auto-updating · Coach profiles</span>
+      </div>
+      <span class="built-arrow" data-i18n="b_view">View →</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- WHAT WE SOLVED -->
+<section class="about">
+  <h2 class="about-title" data-i18n="about_title">One gym.<br><span class="gold-shimmer">One system.</span></h2>
+  <div class="about-right">
+    <p data-i18n="about_p1">Most Muay Thai gyms run on scattered tools a basic website, a separate booking platform, memberships managed through email, and a shop that lives somewhere else entirely. Nothing feels connected.</p>
+    <p data-i18n="about_p2">This concept brings it together. One site with a hero video that sets the tone, a schedule members can actually use, membership plans with clear paths to conversion, a branded shop and a news section that keeps the club feeling alive.</p>
+    <p data-i18n="about_p3">The Instagram feed updates automatically through Behold.so so as long as the gym posts on Instagram, the website stays fresh without anyone touching the backend.</p>
+    <p class="about-note" data-i18n="about_note">Concept project all parts built and live at smt-demo.</p>
+    <div class="about-tags">
+      <span class="tag" data-i18n="tag1">Hero video</span>
+      <span class="tag" data-i18n="tag2">Memberships</span>
+      <span class="tag" data-i18n="tag3">Schedule</span>
+      <span class="tag" data-i18n="tag4">Branded shop</span>
+      <span class="tag" data-i18n="tag5">Auto Instagram</span>
+      <span class="tag" data-i18n="tag6">News carousel</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="system" id="system">
+  <span class="section-label" data-i18n="sys_label">How it works</span>
+  <h2 class="system-title" data-i18n="sys_title">Six parts. <em>One experience.</em></h2>
+  <div class="system-grid">
+
+    <div class="system-card">
+      <p class="system-num">01</p>
+      <p class="system-type" data-i18n="s1_type">Brand layer</p>
+      <h3 class="system-name" data-i18n="s1_name">Website</h3>
+      <p class="system-desc" data-i18n="s1_desc">Hero video that sets the tone before a word is read. Clean navigation, about section, coaches and contact all in one scroll.</p>
+    </div>
+
+    <div class="system-card">
+      <p class="system-num">02</p>
+      <p class="system-type" data-i18n="s2_type">Class access</p>
+      <h3 class="system-name" data-i18n="s2_name">Schedule</h3>
+      <p class="system-desc" data-i18n="s2_desc">Today and tomorrow tabs. Each class card shows time, name and level with a direct booking entry point. No external link, no friction.</p>
+    </div>
+
+    <div class="system-card">
+      <p class="system-num">03</p>
+      <p class="system-type" data-i18n="s3_type">Member flow</p>
+      <h3 class="system-name" data-i18n="s3_name">Memberships</h3>
+      <p class="system-desc" data-i18n="s3_desc">Six plans covering every type of member drop-in, unlimited, beginner, student, youth and pack. Clear pricing, clear path to start.</p>
+    </div>
+
+    <div class="system-card">
+      <p class="system-num">04</p>
+      <p class="system-type" data-i18n="s4_type">Commerce layer</p>
+      <h3 class="system-name" data-i18n="s4_name">Shop</h3>
+      <p class="system-desc" data-i18n="s4_desc">Club gear hoodies, tees, caps, wraps and shorts with colour toggles built in. Premium feel, part of the same brand experience.</p>
+    </div>
+
+    <div class="system-card">
+      <p class="system-num">05</p>
+      <p class="system-type" data-i18n="s5_type">Content system</p>
+      <h3 class="system-name" data-i18n="s5_name">News</h3>
+      <p class="system-desc" data-i18n="s5_desc">A 3D drag carousel for fight results, class updates and announcements. The same carousel format as the Stormie Studios portfolio built from scratch.</p>
+    </div>
+
+    <div class="system-card">
+      <p class="system-num">06</p>
+      <p class="system-type" data-i18n="s6_type">Social layer</p>
+      <h3 class="system-name" data-i18n="s6_name">Auto content</h3>
+      <p class="system-desc" data-i18n="s6_desc">Behold.so pulls the gym's Instagram feed live. Post on Instagram the website updates automatically. No backend, no manual work.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section inview">
+  <p class="eyebrow" data-i18n="cta_label">Want something similar?</p>
+  <h2 class="cta-title" data-i18n="cta_title">Let's build <span class="gold-shimmer">yours.</span></h2>
+  <p class="cta-desc" data-i18n="cta_desc">Website, schedule, memberships, shop or a full connected system built for your club, your brand and your members.</p>
+  <div class="cta-actions">
+    <a class="btn-gold" href="index.html#contact" data-i18n="cta_btn">Request a consultation</a>
+    <a class="btn-ghost" href="#" onclick="window.location='mai'+'lto:storm.kolmo'+'din@gmail.com'; return false;">storm&#46;kolmodin&#64;gmail&#46;com</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-left">© Stormie Studios</span>
+  <span class="footer-right"><a href="index.html" data-i18n="ft_back">Back to index</a></span>
+</footer>
+
+</div>
+
+<script>
+const I18N = {
+  en: {
+    nav_live:"Live site", nav_cta:"Work with us",
+    hero_eyebrow:"Concept project · Martial arts club",
+    hero_title:'Stormie <span class="gold-shimmer">Muay Thai.</span>',
+    hero_desc:"A complete Muay Thai gym website hero video, live schedule, membership plans, branded shop, news carousel and Instagram integration. One cohesive system built to convert visitors into members.",
+    hero_meta_label:"Client type", hero_meta_value:"Martial arts club · Membership-based business",
+    built_label:"What was built", built_count:"06 parts · All live",
+    b1_name:"Website & Brand", b1_cat:"Hero video · Navigation · About · Coaches · Instagram feed",
+    b2_name:"Schedule", b2_cat:"Day tabs · Class cards · Booking flow entry",
+    b3_name:"Memberships", b3_cat:"6 plans · Drop-in, unlimited, starter, student, youth, 10-pack",
+    b4_name:"Shop", b4_cat:"Hoodies, tees, caps, wraps, shorts · Colour toggle · Hover states",
+    b5_name:"News carousel", b5_cat:"3D drag carousel · Fight news · Class updates · Results",
+    b6_name:"Instagram & Coaches", b6_cat:"Behold.so live feed · Auto-updating · Coach profiles",
+    b_view:"View →",
+    about_title:'One gym.<br><span class="gold-shimmer">One system.</span>',
+    about_p1:"Most Muay Thai gyms run on scattered tools a basic website, a separate booking platform, memberships managed through email, and a shop that lives somewhere else entirely. Nothing feels connected.",
+    about_p2:"This concept brings it together. One site with a hero video that sets the tone, a schedule members can actually use, membership plans with clear paths to conversion, a branded shop and a news section that keeps the club feeling alive.",
+    about_p3:"The Instagram feed updates automatically through Behold.so so as long as the gym posts on Instagram, the website stays fresh without anyone touching the backend.",
+    about_note:"Concept project all parts built and live at smt-demo.",
+    tag1:"Hero video", tag2:"Memberships", tag3:"Schedule", tag4:"Branded shop", tag5:"Auto Instagram", tag6:"News carousel",
+    sys_label:"How it works", sys_title:'Six parts. <em>One experience.</em>',
+    s1_type:"Brand layer", s1_name:"Website", s1_desc:"Hero video that sets the tone before a word is read. Clean navigation, about section, coaches and contact all in one scroll.",
+    s2_type:"Class access", s2_name:"Schedule", s2_desc:"Today and tomorrow tabs. Each class card shows time, name and level with a direct booking entry point. No external link, no friction.",
+    s3_type:"Member flow", s3_name:"Memberships", s3_desc:"Six plans covering every type of member drop-in, unlimited, beginner, student, youth and pack. Clear pricing, clear path to start.",
+    s4_type:"Commerce layer", s4_name:"Shop", s4_desc:"Club gear hoodies, tees, caps, wraps and shorts with colour toggles built in. Premium feel, part of the same brand experience.",
+    s5_type:"Content system", s5_name:"News", s5_desc:"A 3D drag carousel for fight results, class updates and announcements. The same carousel format as the Stormie Studios portfolio built from scratch.",
+    s6_type:"Social layer", s6_name:"Auto content", s6_desc:"Behold.so pulls the gym's Instagram feed live. Post on Instagram the website updates automatically. No backend, no manual work.",
+    cta_label:"Want something similar?",
+    cta_title:'Let\'s build <span class="gold-shimmer">yours.</span>',
+    cta_desc:"Website, schedule, memberships, shop or a full connected system built for your club, your brand and your members.",
+    cta_btn:"Request a consultation", ft_back:"Back to index"
+  },
+  sv: {
+    nav_live:"Live-sajt", nav_cta:"Jobba med oss",
+    hero_eyebrow:"Konceptprojekt · Kampsportsklubb",
+    hero_title:'Stormie <span class="gold-shimmer">Muay Thai.</span>',
+    hero_desc:"En komplett thaiboxningssajt herolvideo, live-schema, medlemskapsplaner, varumärkt shop, nyhetskarusell och Instagram-integration. Ett sammanhållet system byggt för att omvandla besökare till medlemmar.",
+    hero_meta_label:"Kundtyp", hero_meta_value:"Kampsportsklubb · Medlemskapsbaserad verksamhet",
+    built_label:"Vad som byggdes", built_count:"06 delar · Alla live",
+    b1_name:"Sajt & varumärke", b1_cat:"Herolvideo · Navigation · Om oss · Coacher · Instagram-flöde",
+    b2_name:"Schema", b2_cat:"Dagflikar · Passkort · Bokningsflöde",
+    b3_name:"Medlemskap", b3_cat:"6 planer · Drop-in, obegränsat, starter, student, ungdom, 10-pack",
+    b4_name:"Shop", b4_cat:"Hoodies, tees, kepsar, lindor, shorts · Färgväxling · Hovers",
+    b5_name:"Nyhetskarusell", b5_cat:"3D-dragkarusell · Fightnyheter · Schemauppdateringar · Resultat",
+    b6_name:"Instagram & coacher", b6_cat:"Behold.so live-flöde · Automatisk uppdatering · Coachprofiler",
+    b_view:"Visa →",
+    about_title:'Ett gym.<br><span class="gold-shimmer">Ett system.</span>',
+    about_p1:"De flesta thaiboxningsklubbar använder spridda verktyg en enkel hemsida, en separat bokningsplattform, medlemskap via mail och en shop som lever på en annan sida. Inget känns ihopkopplat.",
+    about_p2:"Det här konceptet samlar det. En sajt med en herolvideo som sätter tonen, ett schema som medlemmar faktiskt kan använda, tydliga medlemskapsplaner, en varumärkt shop och en nyhetssektion som håller klubben levande.",
+    about_p3:"Instagram-flödet uppdateras automatiskt via Behold.so så länge gymmet postar på Instagram håller sajten sig fräsch utan att någon rör backend.",
+    about_note:"Konceptprojekt alla delar byggda och live på smt-demo.",
+    tag1:"Herolvideo", tag2:"Medlemskap", tag3:"Schema", tag4:"Varumärkt shop", tag5:"Auto Instagram", tag6:"Nyhetskarusell",
+    sys_label:"Så fungerar det", sys_title:'Sex delar. <em>En upplevelse.</em>',
+    s1_type:"Varumärkeslager", s1_name:"Sajt", s1_desc:"En herolvideo som sätter tonen innan ett ord lästs. Ren navigation, om-sektion, coacher och kontakt allt i en scroll.",
+    s2_type:"Passåtkomst", s2_name:"Schema", s2_desc:"Idag- och imorgon-flikar. Varje passkort visar tid, namn och nivå med direkt bokningsknapp. Ingen extern länk, ingen friktion.",
+    s3_type:"Medlemsflöde", s3_name:"Medlemskap", s3_desc:"Sex planer som täcker alla typer av medlemmar drop-in, obegränsat, nybörjare, student, ungdom och 10-pack. Tydlig prissättning, tydlig väg att starta.",
+    s4_type:"Commerce-lager", s4_name:"Shop", s4_desc:"Klubbkläder hoodies, tees, kepsar, lindor och shorts med inbyggd färgväxling. Premium-känsla som en del av samma varumärkesupplevelse.",
+    s5_type:"Innehållssystem", s5_name:"Nyheter", s5_desc:"En 3D-dragkarusell för fighter, schemauppdateringar och besked. Samma karusellformat som Stormie Studios-portfolion byggt från grunden.",
+    s6_type:"Socialt lager", s6_name:"Auto-innehåll", s6_desc:"Behold.so hämtar gymmets Instagram-flöde live. Posta på Instagram sajten uppdateras automatiskt. Ingen backend, inget manuellt arbete.",
+    cta_label:"Vill du ha något liknande?",
+    cta_title:'Vi bygger <span class="gold-shimmer">din.</span>',
+    cta_desc:"Sajt, schema, medlemskap, shop eller ett helt sammankopplat system byggt för din klubb, ditt varumärke och dina medlemmar.",
+    cta_btn:"Skicka en förfrågan", ft_back:"Tillbaka till start"
+  }
+};
+
+function setLang(lang) {
+  const dict = I18N[lang]; if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.documentElement.lang = lang;
+  document.getElementById('lang-en').classList.toggle('active', lang==='en');
+  document.getElementById('lang-sv').classList.toggle('active', lang==='sv');
+  try { localStorage.setItem('sp-lang', lang); } catch(e) {}
+}
+
+(function init() {
+  let lang = 'en';
+  try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
+  if (lang !== 'en') setLang(lang);
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('inview'); io.unobserve(e.target); }});
+    }, { threshold: 0.18 });
+    document.querySelectorAll('section').forEach(s => io.observe(s));
+  } else {
+    document.querySelectorAll('section').forEach(s => s.classList.add('inview'));
+  }
+
+  // subtle tilt on mouse move
+  const device = document.getElementById('previewDevice');
+  if (device && window.matchMedia('(hover:hover)').matches) {
+    document.addEventListener('mousemove', e => {
+      const rect = device.closest('.preview-stage').getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / (rect.width / 2);
+      const dy = (e.clientY - cy) / (rect.height / 2);
+      device.style.transform = `translateX(-50%) translateY(-50%) rotateX(${(12 - dy * 4).toFixed(2)}deg) rotateY(${(dx * 5).toFixed(2)}deg)`;
+    });
+  }
+})();
+</script>
+</body>
+</html>
