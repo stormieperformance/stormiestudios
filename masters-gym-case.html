@@ -183,6 +183,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .pd-row:last-child { border-bottom: 1px solid var(--line); }
 .pd-row h4 { font-family: var(--serif); font-size: 20px; font-weight: 300; font-style: italic; color: var(--gold-bright); }
 .pd-row p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+.pd-row-planned { opacity: 0.85; }
+.pd-planned-badge { display: inline-block; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-line); padding: 3px 10px; margin-bottom: 8px; }
 
 /* CRAFT / BUILT PROPERLY */
 .craft { padding: 88px 0; border-bottom: 1px solid var(--line); }
@@ -483,6 +485,14 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
       <h4 data-i18n="pm6_h">Honest, not oversold</h4>
       <p data-i18n="pm6_p">The schedule has no "book this class" button on purpose. Masters Gym is drop-in, so a booking button would promise something the club can't actually deliver. Trust matters more than looking feature-complete.</p>
     </div>
+    <div class="pd-row">
+      <h4 data-i18n="pm7_h">Meeting members where they already look</h4>
+      <p data-i18n="pm7_p">A live Instagram feed built directly into the site, not just a link out to it. The club's real content updates the site automatically.</p>
+    </div>
+    <div class="pd-row">
+      <h4 data-i18n="pm8_h">Dark or light, visitor's choice</h4>
+      <p data-i18n="pm8_p">A small detail most competitors skip, but it's the kind of polish that signals a site was actually considered, not templated.</p>
+    </div>
   </div>
 </section>
 
@@ -528,6 +538,11 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
     <div class="pd-row">
       <h4 data-i18n="pa3_h">Season notes, without a developer</h4>
       <p data-i18n="pa3_p">An optional "important information" field the club fills in themselves when something needs flagging, no code required.</p>
+    </div>
+    <div class="pd-row pd-row-planned">
+      <span class="pd-planned-badge" data-i18n="pa4_badge">Planned, not yet live</span>
+      <h4 data-i18n="pa4_h">Automatic replies, ready to switch on</h4>
+      <p data-i18n="pa4_p">The moment Masters Gym has its own Formspree account, a trial request can trigger an automatic reply with what to bring, arrival time, and location, no extra building required. Held back on purpose until the club owns the account, not built on borrowed infrastructure.</p>
     </div>
   </div>
 </section>
@@ -740,6 +755,8 @@ const I18N = {
     pm4_h:"A visible path forward", pm4_p:"Beginner, intermediate, competition, shown as a ladder, not implied. People stay longer when they can see where they're headed.",
     pm5_h:"Bilingual, properly", pm5_p:"Every section works in Swedish and English from one system. Stockholm's English-speaking population was simply invisible to the old site.",
     pm6_h:"Honest, not oversold", pm6_p:"The schedule has no \"book this class\" button on purpose. Masters Gym is drop-in, so a booking button would promise something the club can't actually deliver. Trust matters more than looking feature-complete.",
+    pm7_h:"Meeting members where they already look", pm7_p:"A live Instagram feed built directly into the site, not just a link out to it. The club's real content updates the site automatically.",
+    pm8_h:"Dark or light, visitor's choice", pm8_p:"A small detail most competitors skip, but it's the kind of polish that signals a site was actually considered, not templated.",
     pmo_label:"02 — Money", pmo_title:'Protecting and growing <em>revenue.</em>',
     pmo_intro:"Some of this is about earning more. Some of it is about no longer quietly losing what was already there.",
     pmo1_h:"Membership clarity", pmo1_p:"Every tier, every price, a call to action next to each one. No visitor has to ask how to actually sign up.",
@@ -751,6 +768,7 @@ const I18N = {
     pa1_h:"News the club publishes itself", pa1_p:"A real CMS, with photo support, replacing pages that had to be built one at a time outside the site's own navigation.",
     pa2_h:"A schedule that fits how they work", pa2_p:"Kept on a spreadsheet on purpose, genuinely the fastest way to edit fast-moving weekly class times, with checks so a typo can't break the page.",
     pa3_h:"Season notes, without a developer", pa3_p:"An optional \"important information\" field the club fills in themselves when something needs flagging, no code required.",
+    pa4_badge:"Planned, not yet live", pa4_h:"Automatic replies, ready to switch on", pa4_p:"The moment Masters Gym has its own Formspree account, a trial request can trigger an automatic reply with what to bring, arrival time, and location, no extra building required. Held back on purpose until the club owns the account, not built on borrowed infrastructure.",
     craft_label:"04 — Built properly", craft_title:'The craft <em>underneath.</em>',
     craft_tab1:"The short version", craft_tab2:"Tech specs",
     craft_plain1:"Built to load fast, to work for people using a keyboard or a screen reader, and to actually get found on Google, not just look finished.",
@@ -820,6 +838,8 @@ const I18N = {
     pm4_h:"En synlig väg framåt", pm4_p:"Nybörjare, fortsättning, tävling, visat som en stege, inte underförstått. Folk stannar längre när de kan se vart de är på väg.",
     pm5_h:"Tvåspråkig, på riktigt", pm5_p:"Varje sektion fungerar på svenska och engelska från ett och samma system. Stockholms engelsktalande befolkning var helt enkelt osynlig för den gamla sajten.",
     pm6_h:"Ärligt, inte översålt", pm6_p:"Schemat har medvetet ingen \"boka det här passet\"-knapp. Masters Gym är drop-in, så en bokningsknapp skulle lova något klubben faktiskt inte kan leverera. Förtroende väger tyngre än att se komplett ut.",
+    pm7_h:"Möter medlemmar där de redan tittar", pm7_p:"Ett live Instagram-flöde inbyggt direkt i sajten, inte bara en länk dit ut. Klubbens verkliga innehåll uppdaterar sajten automatiskt.",
+    pm8_h:"Mörkt eller ljust, besökarens val", pm8_p:"En liten detalj de flesta konkurrenter hoppar över, men det är den typen av finish som visar att en sajt faktiskt är genomtänkt, inte en mall.",
     pmo_label:"02 — Pengar", pmo_title:'Skydda och öka <em>intäkter.</em>',
     pmo_intro:"En del av det här handlar om att tjäna mer. En del handlar om att sluta tyst förlora det som redan fanns.",
     pmo1_h:"Tydliga medlemskap", pmo1_p:"Varje nivå, varje pris, en call to action bredvid varje. Ingen besökare behöver fråga hur man faktiskt blir medlem.",
@@ -831,6 +851,7 @@ const I18N = {
     pa1_h:"Nyheter klubben publicerar själva", pa1_p:"Ett riktigt CMS med fotostöd, som ersätter sidor som fick byggas en i taget utanför sajtens egen navigering.",
     pa2_h:"Ett schema som passar hur de arbetar", pa2_p:"Ligger kvar i ett kalkylblad med flit, genuint det snabbaste sättet att redigera snabbrörliga veckoscheman, med kontroller så att ett stavfel inte förstör sidan.",
     pa3_h:"Säsongsnoteringar, utan utvecklare", pa3_p:"Ett valfritt fält för \"viktig information\" som klubben fyller i själva när något behöver flaggas, ingen kod krävs.",
+    pa4_badge:"Planerat, ännu inte live", pa4_h:"Automatiska svar, redo att slås på", pa4_p:"Så snart Masters Gym har ett eget Formspree-konto kan en provpassförfrågan trigga ett automatiskt svar med vad man ska ta med, ankomsttid och adress, utan extra utveckling. Medvetet väntat med tills klubben äger kontot, inte byggt på lånad infrastruktur.",
     craft_label:"04 — Byggt på riktigt", craft_title:'Hantverket <em>under ytan.</em>',
     craft_tab1:"Kortversionen", craft_tab2:"Tekniska specifikationer",
     craft_plain1:"Byggt för att ladda snabbt, fungera för den som använder tangentbord eller skärmläsare, och faktiskt gå att hitta på Google, inte bara se färdigt ut.",
@@ -955,6 +976,7 @@ function initCraftTabs() {
 </script>
 </body>
 </html>
+
 
 
 
