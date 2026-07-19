@@ -479,6 +479,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
       <h4 data-i18n="pm5_h">Bilingual, properly</h4>
       <p data-i18n="pm5_p">Every section works in Swedish and English from one system. Stockholm's English-speaking population was simply invisible to the old site.</p>
     </div>
+    <div class="pd-row">
+      <h4 data-i18n="pm6_h">Honest, not oversold</h4>
+      <p data-i18n="pm6_p">The schedule has no "book this class" button on purpose. Masters Gym is drop-in, so a booking button would promise something the club can't actually deliver. Trust matters more than looking feature-complete.</p>
+    </div>
   </div>
 </section>
 
@@ -735,11 +739,12 @@ const I18N = {
     pm3_h:'"Which class is right for you?"', pm3_p:"One click answers the single most common hesitation for a first-time visitor, before they've read a word of the schedule.",
     pm4_h:"A visible path forward", pm4_p:"Beginner, intermediate, competition, shown as a ladder, not implied. People stay longer when they can see where they're headed.",
     pm5_h:"Bilingual, properly", pm5_p:"Every section works in Swedish and English from one system. Stockholm's English-speaking population was simply invisible to the old site.",
+    pm6_h:"Honest, not oversold", pm6_p:"The schedule has no \"book this class\" button on purpose. Masters Gym is drop-in, so a booking button would promise something the club can't actually deliver. Trust matters more than looking feature-complete.",
     pmo_label:"02 — Money", pmo_title:'Protecting and growing <em>revenue.</em>',
     pmo_intro:"Some of this is about earning more. Some of it is about no longer quietly losing what was already there.",
     pmo1_h:"Membership clarity", pmo1_p:"Every tier, every price, a call to action next to each one. No visitor has to ask how to actually sign up.",
     pmo2_h:"Corporate leads that self-qualify", pmo2_p:"A dedicated section spells out exactly what's included and promises a quote within 24 hours, instead of one paragraph and a dead link.",
-    pmo3_h:"A real leak, found and fixed", pmo3_p:'The old booking form could show "sent!" even when the submission silently failed. That\'s not a cosmetic bug, that\'s trial requests disappearing with nobody noticing. Fixed.',
+    pmo3_h:"A bug that was losing real leads", pmo3_p:'The old booking form could show "sent!" even when the submission silently failed. Nobody would have known trial requests were quietly disappearing. Caught during a routine code review, then fixed.',
     pmo4_h:"Findable, not just visible", pmo4_p:"Structured data tells Google exactly what the business is and where it is. Being easy to find is directly worth money for a local business.",
     pa_label:"03 — Admin", pa_title:'Time <em>given back.</em>',
     pa_intro:"The old site's real problem was never that a developer had to do everything. It was that the tools didn't fit how the club actually works.",
@@ -795,9 +800,9 @@ const I18N = {
     compare_label:"Sektion för sektion", compare_title:'Gammalt <em>mot nytt.</em>',
     compare_sub:"Varje del av sajten är ombyggd, inte bara omstylad. Skärmbilder från nya sajten läggs till efterhand som de blir klara.",
     compare_old:"Gammal", compare_new:"Ny", compare_soon:"Skärmbild kommer",
-    c1_name:"Hjälte", c1_text:"Den gamla hjälten var ett enda foto som kändes lite som bildbank, med menyn ovanpå. Den nya hjälten ersätter det med en strukturerad layout, rubrik, beskrivning och två tydliga call-to-actions, boka provpass eller se schemat, så en förstagångsbesökare vet exakt vad de ska göra utan att scrolla.",
+    c1_name:"Startsida", c1_text:"Den gamla toppsektionen var ett enda foto som kändes lite som bildbank, med menyn ovanpå. Den nya toppsektionen ersätter det med en strukturerad layout, rubrik, beskrivning och två tydliga call-to-actions, boka provpass eller se schemat, så en förstagångsbesökare vet exakt vad hen ska göra utan att scrolla.",
     c2_name:"Om oss", c2_text:"Den gamla Om oss-sektionen var två stycken text som flöt i en ruta ovanpå ett foto, trångt och svårläst på mindre skärmar. Den nya Om oss-sektionen är en riktig sektion med grundarhistoria, meriter och ett värderingsraster, vilket ger klubbens historia utrymme att faktiskt bygga förtroende istället för att konkurrera med en bild om platsen.",
-    c3_name:"Pass", c3_text:"Den gamla sidan hade ett allmänt stycke och en enda länk. Den nya sajten delar upp träningen i sju olika passtyper, var och en med sitt eget format, tagline och utrustningsinfo, så en besökare kan hitta rätt pass för sin nivå innan de ens kontaktar gymmet.",
+    c3_name:"Pass", c3_text:"Den gamla sidan hade ett allmänt stycke och en enda länk. Den nya sajten delar upp träningen i sju olika passtyper, var och en med sitt eget format, tagline och utrustningsinfo, så en besökare kan hitta rätt pass för sin nivå innan hen ens kontaktar gymmet.",
     c4_name:"Schema", c4_text:"Det gamla schemat var ett foto av en utskriven affisch, inte riktig text, inte sökbart, och fastnade med vilken säsong som helst det laddades upp för. Det nya schemat hämtas live från ett kalkylark klubben redigerar själva, med dag-för-dag- och veckovyer, så det blir aldrig inaktuellt.",
     c5_name:"Nyheter", c5_text:"Den gamla nyhetssidan var en enkel lista med daterade inlägg, lätt att missa och frikopplad från resten av sajten. Den nya Nyheter-sektionen körs på ett riktigt CMS och ligger nu högt upp på startsidan, precis bredvid schemat, där medlemmar faktiskt tittar.",
     c6_name:"Medlemskap", c6_text:"Den gamla sajten marknadsförde provveckor som en tidsbegränsad banner för säsongen, vilket antydde att provpass bara fanns vissa perioder. Den nya sajten visar alla medlemskapsnivåer och priser året runt, med en stående inbjudan att prova ett pass när som helst, ingen väntan på ett kampanjfönster.",
@@ -808,17 +813,18 @@ const I18N = {
     pillar2_name:"Pengar", pillar2_text:"Intäkter skyddade och ökade. Tydliga priser, självkvalificerande företagsleads, och ett riktigt läckage som hittades och lagades.",
     pillar3_name:"Administration", pillar3_text:"Tid tillbaka. Nyhets- och schemauppdateringar som klubben gör själva, i verktyg de redan kan.",
     pm_label:"01 — Medlemmar", pm_title:'Fler genom <em>dörren.</em>',
-    pm_intro:"En besökare som inte vet vad de ska göra härnäst blir inte medlem. Varje del av den här sektionen finns för att ta bort en tveksamhet.",
-    pm1_h:"Boka provpass, överallt", pm1_p:"Meny, hjälte och varje passkort leder till samma bokningsflöde. Inga återvändsgränder, ingen separat kontaktsida att leta efter.",
-    pm2_h:"Spårning av hänvisningar", pm2_p:"En enkel fråga om hur man hörde talas om gymmet i provpassformuläret. Gymmet har nu riktig data på vilken kanal som faktiskt ger nya besökare, något de aldrig haft förut.",
-    pm3_h:'"Vilket pass passar dig?"', pm3_p:"Ett klick besvarar den vanligaste tveksamheten för en förstagångsbesökare, innan de ens läst schemat.",
+    pm_intro:"Besökare som inte vet vad de ska göra härnäst blir inte medlemmar. Varje del av den här sektionen finns för att ta bort en tveksamhet.",
+    pm1_h:"Boka provpass, överallt", pm1_p:"Menyn, startsidan och varje passkort leder till samma bokningsflöde. Inga återvändsgränder, ingen separat kontaktsida att leta efter.",
+    pm2_h:"Spårning av hänvisningar", pm2_p:"En enkel fråga om hur man hörde talas om gymmet i provpassformuläret. Gymmet har nu riktig data på vilken kanal som faktiskt ger nya besökare, något det aldrig haft förut.",
+    pm3_h:'"Vilket pass passar dig?"', pm3_p:"Ett klick besvarar den vanligaste tveksamheten hos en förstagångsbesökare, redan innan schemat är läst.",
     pm4_h:"En synlig väg framåt", pm4_p:"Nybörjare, fortsättning, tävling, visat som en stege, inte underförstått. Folk stannar längre när de kan se vart de är på väg.",
     pm5_h:"Tvåspråkig, på riktigt", pm5_p:"Varje sektion fungerar på svenska och engelska från ett och samma system. Stockholms engelsktalande befolkning var helt enkelt osynlig för den gamla sajten.",
+    pm6_h:"Ärligt, inte översålt", pm6_p:"Schemat har medvetet ingen \"boka det här passet\"-knapp. Masters Gym är drop-in, så en bokningsknapp skulle lova något klubben faktiskt inte kan leverera. Förtroende väger tyngre än att se komplett ut.",
     pmo_label:"02 — Pengar", pmo_title:'Skydda och öka <em>intäkter.</em>',
     pmo_intro:"En del av det här handlar om att tjäna mer. En del handlar om att sluta tyst förlora det som redan fanns.",
     pmo1_h:"Tydliga medlemskap", pmo1_p:"Varje nivå, varje pris, en call to action bredvid varje. Ingen besökare behöver fråga hur man faktiskt blir medlem.",
     pmo2_h:"Företagsleads som självkvalificerar sig", pmo2_p:"En egen sektion visar exakt vad som ingår och lovar en offert inom 24 timmar, istället för ett stycke och en död länk.",
-    pmo3_h:"Ett riktigt läckage, hittat och lagat", pmo3_p:'Det gamla bokningsformuläret kunde visa "skickat!" även när det tyst misslyckades. Det är inte en kosmetisk bugg, det är provpassförfrågningar som försvinner utan att någon märker det. Fixat.',
+    pmo3_h:"En bugg som kostade riktiga leads", pmo3_p:'Det gamla bokningsformuläret kunde visa "skickat!" även när det tyst misslyckades. Ingen hade märkt att provpassförfrågningar tyst försvann. Hittades under en rutinmässig kodgenomgång, och åtgärdades.',
     pmo4_h:"Hittbar, inte bara synlig", pmo4_p:"Strukturerad data talar om för Google exakt vad verksamheten är och var den finns. Att vara lätt att hitta är direkt värt pengar för ett lokalt företag.",
     pa_label:"03 — Administration", pa_title:'Tid <em>tillbaka.</em>',
     pa_intro:"Den gamla sajtens verkliga problem var aldrig att en utvecklare behövde göra allt. Det var att verktygen inte passade hur klubben faktiskt arbetar.",
@@ -827,11 +833,11 @@ const I18N = {
     pa3_h:"Säsongsnoteringar, utan utvecklare", pa3_p:"Ett valfritt fält för \"viktig information\" som klubben fyller i själva när något behöver flaggas, ingen kod krävs.",
     craft_label:"04 — Byggt på riktigt", craft_title:'Hantverket <em>under ytan.</em>',
     craft_tab1:"Kortversionen", craft_tab2:"Tekniska specifikationer",
-    craft_plain1:"Byggt för att ladda snabbt, fungera för den som använder tangentbord eller skärmläsare, och faktiskt gå att hitta på Google, inte bara se klart ut.",
+    craft_plain1:"Byggt för att ladda snabbt, fungera för den som använder tangentbord eller skärmläsare, och faktiskt gå att hitta på Google, inte bara se färdigt ut.",
     craft_plain2:"Varje formulärfält, varje meny, varje modal kontrollerades för sådant som är osynligt tills det går sönder för någon.",
     craft_t1:"Stack: handskriven HTML, CSS och vanilla JS, inget ramverk, en enda statisk fil, hostad på GitHub Pages.",
     craft_t2:"Innehållslager: Sanity CMS via GROQ-frågor för nyheter, publicerad Google Sheets CSV-endpoint för schemat.",
-    craft_t3:"Prestanda: tog bort en renderingsblockerande tredjepartsstilmall, förladdade hjältebilden, lade till font-preconnects. Lighthouse-prestanda på mobil gick från omätbart till 91, desktop till 99.",
+    craft_t3:"Prestanda: tog bort en renderingsblockerande tredjepartsstilmall, förladdade huvudbilden i toppen, lade till font-preconnects. Lighthouse-prestanda gick från omätbart till 91 på mobil och 99 på desktop.",
     craft_t4:"Tillgänglighet: fokusfälla i modalen med Escape-stängning och fokusåterställning, fullständig ARIA-märkning, tangentbordsstyrd karusell, korrigerad rubrikhierarki, återställd pinch-to-zoom.",
     craft_t5:"Säkerhet: innerHTML-utdata escapad genomgående, honeypot-fält i provpassformuläret.",
     craft_t6:"SEO: kanonisk URL, LocalBusiness strukturerad data, sitemap.xml, robots.txt, egen 404-sida.",
@@ -949,6 +955,7 @@ function initCraftTabs() {
 </script>
 </body>
 </html>
+
 
 
 
