@@ -184,6 +184,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
   z-index: 5; pointer-events: none;
 }
 .hz:hover .hz-tip, .hz:focus-visible .hz-tip { opacity: 1; visibility: visible; transform: translateY(0); }
+.hz.below .hz-tip { bottom: auto; top: calc(100% + 10px); transform: translateY(-6px); }
+.hz.below:hover .hz-tip, .hz.below:focus-visible .hz-tip { transform: translateY(0); }
+.hz.right .hz-tip { left: auto; right: 0; }
 .hz-tip b { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--gold-bright); font-weight: 400; }
 .hz-tip span { font-size: 12px; color: var(--muted); line-height: 1.6; }
 
@@ -443,14 +446,38 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
     <h3 class="tour-block-title" data-i18n="tb1_title">Hero</h3>
     <div class="tour-shot">
       <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
-      <button class="hz" style="top:2%;left:2%;width:96%;height:12%">
-        <span class="hz-tip"><b data-i18n="hz1_1_h">Navbar</b><span data-i18n="hz1_1_p">Logo, nav links, language toggle, dark/light toggle, and the trial-booking CTA, all in one persistent strip.</span></span>
+      <button class="hz below" style="top:1%;left:2%;width:19%;height:7%">
+        <span class="hz-tip"><b data-i18n="hz1_1_h">Logo, both modes</b><span data-i18n="hz1_1_p">A separate logo variant for dark and light mode, not one logo awkwardly recolored to fit both.</span></span>
       </button>
-      <button class="hz" style="top:30%;left:4%;width:60%;height:30%">
-        <span class="hz-tip"><b data-i18n="hz1_2_h">Headline</b><span data-i18n="hz1_2_p">Structured layout, clear description, no scrolling required to know what the club offers.</span></span>
+      <button class="hz below" style="top:1%;left:28%;width:45%;height:7%">
+        <span class="hz-tip"><b data-i18n="hz1_2_h">Full navigation, every section</b><span data-i18n="hz1_2_p">The old site didn't even have nav tabs for every section. Here, every part of the site is one click away, always.</span></span>
       </button>
-      <button class="hz" style="top:70%;left:4%;width:55%;height:12%">
-        <span class="hz-tip"><b data-i18n="hz1_3_h">Corporate teaser</b><span data-i18n="hz1_3_p">A quiet secondary link for a completely different visitor intent, without competing with the main CTA.</span></span>
+      <button class="hz below right" style="top:1%;left:91%;width:3%;height:7%">
+        <span class="hz-tip"><b data-i18n="hz1_3_h">EN / SV</b><span data-i18n="hz1_3_p">Every page works in both languages from one system, not two sites to maintain.</span></span>
+      </button>
+      <button class="hz below right" style="top:1%;left:95%;width:3%;height:7%">
+        <span class="hz-tip"><b data-i18n="hz1_4_h">Dark / light mode</b><span data-i18n="hz1_4_p">A small detail most competitors skip, but it signals a site that was actually considered.</span></span>
+      </button>
+      <button class="hz below right" style="top:1%;left:80%;width:10%;height:7%">
+        <span class="hz-tip"><b data-i18n="hz1_5_h">Always-visible trial CTA</b><span data-i18n="hz1_5_p">One of three layered calls to action on this page alone, so the booking flow is never more than a glance away.</span></span>
+      </button>
+      <button class="hz" style="top:17%;left:2%;width:42%;height:48%">
+        <span class="hz-tip"><b data-i18n="hz1_6_h">Headline</b><span data-i18n="hz1_6_p">Structured, direct, and legible over any photo underneath it, no scrolling required to know what the club is.</span></span>
+      </button>
+      <button class="hz" style="top:7%;left:45%;width:53%;height:60%">
+        <span class="hz-tip"><b data-i18n="hz1_7_h">Hero image, becoming video</b><span data-i18n="hz1_7_p">A real gym photo for now, planned to become a short video to sell the gym's atmosphere directly, not just describe it.</span></span>
+      </button>
+      <button class="hz" style="top:68%;left:2%;width:42%;height:8%">
+        <span class="hz-tip"><b data-i18n="hz1_8_h">Description</b><span data-i18n="hz1_8_p">One plain sentence, who it's for and what it is, no jargon.</span></span>
+      </button>
+      <button class="hz" style="top:79%;left:2%;width:12%;height:7%">
+        <span class="hz-tip"><b data-i18n="hz1_9_h">Trial CTA, no commitment</b><span data-i18n="hz1_9_p">For visitors who aren't ready to commit, the low-friction first step.</span></span>
+      </button>
+      <button class="hz" style="top:79%;left:15%;width:10%;height:7%">
+        <span class="hz-tip"><b data-i18n="hz1_10_h">Membership CTA, ready to commit</b><span data-i18n="hz1_10_p">For visitors who already know they want in, a direct second path instead of forcing everyone through a trial first.</span></span>
+      </button>
+      <button class="hz" style="top:87%;left:2%;width:24%;height:4%">
+        <span class="hz-tip"><b data-i18n="hz1_11_h">Corporate teaser</b><span data-i18n="hz1_11_p">A quiet third link for a completely different visitor intent, without competing with the main CTAs.</span></span>
       </button>
     </div>
   </div>
@@ -870,9 +897,17 @@ const I18N = {
     tour_sub:"Hover or tab through any highlighted area for the thinking behind it, from layout to business value.",
     tour_soon:"Screenshot coming",
     tb1_title:"Hero", tb2_title:"Classes", tb3_title:"Schedule", tb4_title:"News", tb5_title:"Memberships", tb6_title:"Corporate", tb7_title:"Contact",
-    hz1_1_h:"Navbar", hz1_1_p:"Logo, nav links, language toggle, dark/light toggle, and the trial-booking CTA, all in one persistent strip.",
-    hz1_2_h:"Headline", hz1_2_p:"Structured layout, clear description, no scrolling required to know what the club offers.",
-    hz1_3_h:"Corporate teaser", hz1_3_p:"A quiet secondary link for a completely different visitor intent, without competing with the main CTA.",
+    hz1_1_h:"Logo, both modes", hz1_1_p:"A separate logo variant for dark and light mode, not one logo awkwardly recolored to fit both.",
+    hz1_2_h:"Full navigation, every section", hz1_2_p:"The old site didn't even have nav tabs for every section. Here, every part of the site is one click away, always.",
+    hz1_3_h:"EN / SV", hz1_3_p:"Every page works in both languages from one system, not two sites to maintain.",
+    hz1_4_h:"Dark / light mode", hz1_4_p:"A small detail most competitors skip, but it signals a site that was actually considered.",
+    hz1_5_h:"Always-visible trial CTA", hz1_5_p:"One of three layered calls to action on this page alone, so the booking flow is never more than a glance away.",
+    hz1_6_h:"Headline", hz1_6_p:"Structured, direct, and legible over any photo underneath it, no scrolling required to know what the club is.",
+    hz1_7_h:"Hero image, becoming video", hz1_7_p:"A real gym photo for now, planned to become a short video to sell the gym's atmosphere directly, not just describe it.",
+    hz1_8_h:"Description", hz1_8_p:"One plain sentence, who it's for and what it is, no jargon.",
+    hz1_9_h:"Trial CTA, no commitment", hz1_9_p:"For visitors who aren't ready to commit, the low-friction first step.",
+    hz1_10_h:"Membership CTA, ready to commit", hz1_10_p:"For visitors who already know they want in, a direct second path instead of forcing everyone through a trial first.",
+    hz1_11_h:"Corporate teaser", hz1_11_p:"A quiet third link for a completely different visitor intent, without competing with the main CTAs.",
     hz2_1_h:"Progression ladder", hz2_1_p:"Beginner, intermediate, competition, shown as a visible path, not implied. People stay longer when they can see where they're headed.",
     hz2_2_h:"Class finder", hz2_2_p:"One click answers the single most common hesitation for a first-time visitor.",
     hz2_3_h:"Class cards", hz2_3_p:"Nybörjare, Fortsättning and Tävling grouped first, all-levels classes grouped after, so the track that actually matters is easy to scan.",
@@ -971,9 +1006,17 @@ const I18N = {
     tour_sub:"Hovra eller tabba genom valfri markerad yta för tankarna bakom, från layout till affärsvärde.",
     tour_soon:"Skärmbild kommer",
     tb1_title:"Hero", tb2_title:"Pass", tb3_title:"Schema", tb4_title:"Nyheter", tb5_title:"Medlemskap", tb6_title:"Företag", tb7_title:"Kontakt",
-    hz1_1_h:"Meny", hz1_1_p:"Logotyp, menylänkar, språkval, mörkt/ljust-läge och bokningsknappen för provpass, allt i en fast rad.",
-    hz1_2_h:"Rubrik", hz1_2_p:"Strukturerad layout, tydlig beskrivning, ingen scrollning krävs för att förstå vad klubben erbjuder.",
-    hz1_3_h:"Företagslänk", hz1_3_p:"En diskret sekundär länk för en helt annan besöksavsikt, utan att konkurrera med huvudknappen.",
+    hz1_1_h:"Logotyp, båda lägena", hz1_1_p:"En egen logotypvariant för mörkt och ljust läge, inte en logotyp omfärgad på ett kompromissigt sätt för att passa båda.",
+    hz1_2_h:"Full navigering, varje sektion", hz1_2_p:"Den gamla sajten hade inte ens menyflikar för alla sektioner. Här är varje del av sajten ett klick bort, alltid.",
+    hz1_3_h:"EN / SV", hz1_3_p:"Varje sida fungerar på båda språken från ett och samma system, inte två sajter att underhålla.",
+    hz1_4_h:"Mörkt / ljust läge", hz1_4_p:"En liten detalj de flesta konkurrenter hoppar över, men den visar att en sajt faktiskt är genomtänkt.",
+    hz1_5_h:"Alltid synlig provpass-knapp", hz1_5_p:"En av tre lagrade call-to-actions på den här sidan ensam, så bokningsflödet aldrig är mer än en blick bort.",
+    hz1_6_h:"Rubrik", hz1_6_p:"Strukturerad, direkt och läsbar över vilket foto som helst under den, ingen scrollning krävs för att förstå vad klubben är.",
+    hz1_7_h:"Herobild, blir video", hz1_7_p:"Ett riktigt gymfoto för nu, planerat att bli en kort video för att sälja gymmets känsla direkt, inte bara beskriva den.",
+    hz1_8_h:"Beskrivning", hz1_8_p:"En enkel mening, för vem det är och vad det är, ingen jargong.",
+    hz1_9_h:"Provpass-knapp, ingen bindning", hz1_9_p:"För besökare som inte är redo att binda sig, det första steget med minst friktion.",
+    hz1_10_h:"Medlemskapsknapp, redo att bestämma", hz1_10_p:"För besökare som redan vet att de vill gå med, en direkt andra väg istället för att tvinga alla genom ett provpass först.",
+    hz1_11_h:"Företagslänk", hz1_11_p:"En diskret tredje länk för en helt annan besöksavsikt, utan att konkurrera med huvudknapparna.",
     hz2_1_h:"Progressionsstege", hz2_1_p:"Nybörjare, fortsättning, tävling, visat som en synlig väg, inte underförstått. Folk stannar längre när de kan se vart de är på väg.",
     hz2_2_h:"Passguide", hz2_2_p:"Ett klick besvarar den vanligaste tveksamheten hos en förstagångsbesökare.",
     hz2_3_h:"Passkort", hz2_3_p:"Nybörjare, Fortsättning och Tävling grupperade först, alla nivåer-passen grupperade efter, så det spår som faktiskt betyder något är lätt att skanna.",
@@ -1135,6 +1178,7 @@ function initCraftTabs() {
 </script>
 </body>
 </html>
+
 
 
 
