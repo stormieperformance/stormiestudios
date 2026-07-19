@@ -118,8 +118,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .topbar-mark { width: 13px; height: 13px; color: var(--gold); flex-shrink: 0; }
 .topbar-right { display: flex; gap: 28px; align-items: center; }
 
+.topbar-nav-desktop { display: flex; align-items: center; gap: 20px; }
+.topbar-nav-desktop a { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); transition: color 0.2s ease; white-space: nowrap; }
+.topbar-nav-desktop a:hover { color: var(--text); }
+.topbar-nav-desktop .lang-toggle { padding-left: 14px; margin-left: 2px; border-left: 1px solid rgba(168,118,62,0.2); }
+.topbar-nav-desktop a.cta-link {
+  font-family: var(--sans); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--gold-line); padding: 9px 16px;
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+.topbar-nav-desktop a.cta-link:hover { color: var(--gold-bright); border-color: var(--gold); background: var(--gold-dim); }
+
 .menu-toggle {
-  display: inline-flex; align-items: center; gap: 12px;
+  display: none;
+  align-items: center; gap: 12px;
   background: none; border: none; cursor: pointer;
   font-family: var(--sans); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--muted2); padding: 6px 2px;
@@ -549,6 +561,8 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .section-inner { padding: 0 24px; }
   .topbar { padding-top: 14px; padding-bottom: 14px; }
   .topbar-left { font-size: 9px; letter-spacing: 0.14em; }
+  .topbar-nav-desktop { display: none; }
+  .menu-toggle { display: inline-flex; }
   .menu-panel { right: 24px; left: 24px; min-width: 0; }
   .hide-mobile { display: none; }
 }
@@ -612,6 +626,22 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
     Stormie Studios
   </span>
   <nav class="topbar-right">
+    <div class="topbar-nav-desktop">
+      <a href="#work" data-i18n="nav_work">Work</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#trust" data-i18n="nav_trust">Why it works</a>
+      <a href="#segments" data-i18n="nav_segments">Who I work with</a>
+      <a href="#process" data-i18n="nav_how">How it works</a>
+      <a href="#included" data-i18n="nav_included">What you get</a>
+      <a href="#giving" data-i18n="nav_giving">Giving Back</a>
+      <a href="#faq" data-i18n="nav_faq">Faq</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="lang-en-desktop" class="active" onclick="setLang('en')">EN</button>
+        <span>/</span>
+        <button type="button" id="lang-sv-desktop" onclick="setLang('sv')">SV</button>
+      </div>
+      <a href="#contact" class="cta-link" data-i18n="nav_cta">Request a consultation</a>
+    </div>
     <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuPanel">
       <span data-i18n="nav_menu">Menu</span>
       <span class="menu-toggle-lines" aria-hidden="true"><i></i><i></i></span>
@@ -837,7 +867,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
       <button class="btn-gold form-submit" type="submit" id="formSubmitBtn" data-i18n="f_send">Send →</button>
       <p class="form-error-msg" id="formError" data-i18n="f_error">Something went wrong. Please try again or email me directly.</p>
     </form>
-    <p class="form-success" id="formSuccess" data-i18n="f_success">Message received. I'll be in touch within 24 hours.</p>
+    <p class="form-success" id="formSuccess" data-i18n="f_success">Message received. I'll reply within 24 hours with a few follow-up questions and a rough timeline for your project.</p>
     <p class="form-privacy-note"><a href="/privacy.html" data-i18n="f_privacy">Privacy policy</a></p>
   </div>
 </div>
@@ -1004,7 +1034,7 @@ const I18N = {
     f_name:"Name", f_email:"Email", f_type:"What do you run?",
     f_type1:"Gym / club", f_type2:"PT / coach", f_type3:"Other",
     f_msg:"Tell me briefly", f_send:"Send →",
-    f_success:"Message received. I'll be in touch within 24 hours.",
+    f_success:"Message received. I'll reply within 24 hours with a few follow-up questions and a rough timeline for your project.",
     f_error:"Something went wrong. Please try again or email me directly.",
     f_privacy:"Privacy policy"
   },
@@ -1082,7 +1112,7 @@ const I18N = {
     f_name:"Namn", f_email:"Mail", f_type:"Vad driver du?",
     f_type1:"Gym / klubb", f_type2:"PT / coach", f_type3:"Annat",
     f_msg:"Berätta kort", f_send:"Skicka →",
-    f_success:"Meddelande mottaget. Jag återkommer inom 24 timmar.",
+    f_success:"Meddelande mottaget. Jag återkommer inom 24 timmar med några följdfrågor och en ungefärlig tidsplan för ditt projekt.",
     f_error:"Något gick fel. Försök igen eller maila mig direkt.",
     f_privacy:"Integritetspolicy"
   }
@@ -1096,8 +1126,8 @@ function setLang(lang) {
   });
   buildHeadline(dict.hero_headline);
   document.documentElement.lang = lang;
-  document.getElementById('lang-en').classList.toggle('active', lang==='en');
-  document.getElementById('lang-sv').classList.toggle('active', lang==='sv');
+  document.querySelectorAll('#lang-en, #lang-en-desktop').forEach(el => el.classList.toggle('active', lang==='en'));
+  document.querySelectorAll('#lang-sv, #lang-sv-desktop').forEach(el => el.classList.toggle('active', lang==='sv'));
   if (typeof updateDetail === 'function') updateDetail(window._scShownIndex || 0, true);
   try { localStorage.setItem('sp-lang', lang); } catch(e) {}
 }
@@ -1492,5 +1522,6 @@ const NEED_LABELS = {
 })();
 
 </script>
+
 
 
