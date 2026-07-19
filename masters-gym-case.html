@@ -46,6 +46,13 @@ a { text-decoration: none; color: inherit; }
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
 .page { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 48px; }
 
+.cream {
+  --bg: #f6f0e2; --bg2: #efe4cd; --text: #241d13;
+  --muted: rgba(36,29,19,0.58); --muted2: rgba(36,29,19,0.32); --line: rgba(36,29,19,0.12);
+  --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
+  background: var(--bg); color: var(--text);
+}
+
 .eyebrow { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
 .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted2); }
 .gold-shimmer {
@@ -156,6 +163,42 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .showcase-stat-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); font-weight: 500; margin-top: 4px; }
 .showcase-stat-sub { font-size: 12px; color: var(--muted2); line-height: 1.6; }
 
+/* PILLARS OVERVIEW */
+.pillars { padding: 88px 0; border-bottom: 1px solid var(--line); }
+.pillars-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 44px; }
+.pillars-title em { font-style: italic; color: var(--muted); }
+.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.pillar-card { background: var(--bg); padding: 32px 28px; }
+.pillar-num { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--gold); display: block; margin-bottom: 14px; }
+.pillar-card h3 { font-family: var(--serif); font-size: 26px; font-weight: 300; margin-bottom: 12px; }
+.pillar-card p { font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+/* PILLAR DETAIL SECTIONS */
+.pillar-detail { padding: 88px 0; border-bottom: 1px solid var(--line); }
+.pillar-detail-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 20px; }
+.pillar-detail-title em { font-style: italic; color: var(--muted); }
+.pillar-detail-intro { font-size: 14px; color: var(--muted); line-height: 1.8; max-width: 560px; margin-bottom: 44px; }
+.pd-list { display: flex; flex-direction: column; }
+.pd-row { padding: 24px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 280px 1fr; gap: 32px; }
+.pd-row:last-child { border-bottom: 1px solid var(--line); }
+.pd-row h4 { font-family: var(--serif); font-size: 20px; font-weight: 300; font-style: italic; color: var(--gold-bright); }
+.pd-row p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+/* CRAFT / BUILT PROPERLY */
+.craft { padding: 88px 0; border-bottom: 1px solid var(--line); }
+.craft-tabs { display: flex; gap: 2px; margin: 32px 0 32px; border-bottom: 1px solid var(--line); }
+.craft-tab { background: none; border: none; padding: 12px 4px; margin-right: 32px; font-family: var(--sans); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); cursor: pointer; position: relative; transition: color 0.25s; }
+.craft-tab::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 100%; height: 1.5px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+.craft-tab:hover { color: var(--text); }
+.craft-tab.active { color: var(--gold-bright); }
+.craft-tab.active::after { transform: scaleX(1); }
+.craft-panel { display: none; }
+.craft-panel.active { display: block; }
+.craft-panel p { font-size: 14px; color: var(--muted); line-height: 1.85; max-width: 620px; margin-bottom: 14px; }
+.craft-list { list-style: none; display: flex; flex-direction: column; gap: 14px; max-width: 700px; }
+.craft-list li { font-size: 13px; color: var(--muted); line-height: 1.8; padding-left: 20px; position: relative; }
+.craft-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
 /* WHAT WAS BUILT */
 .built { padding: 88px 0 72px; border-bottom: 1px solid var(--line); }
 .built-header { display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px; }
@@ -235,6 +278,9 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   .compare-col{aspect-ratio:16/10}
   .compare-nav{flex-wrap:wrap}
   .compare-count{margin-left:0;width:100%;order:3}
+  .pillars-grid{grid-template-columns:1fr}
+  .pd-row{grid-template-columns:1fr;gap:8px}
+  .craft-tab{margin-right:20px}
   footer{flex-direction:column;gap:8px;text-align:center}
   .hide-mobile{display:none}
 }
@@ -269,7 +315,7 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
 </section>
 
 <!-- SECTION BY SECTION -->
-<section class="compare" id="compare">
+<section class="compare cream" id="compare">
   <span class="section-label" data-i18n="compare_label">Section by section</span>
   <h2 class="compare-title" data-i18n="compare_title">Old <em>versus new.</em></h2>
   <p class="compare-sub" data-i18n="compare_sub">Every part of the site rebuilt, not just restyled. New-site screenshots are being added as they're finalized.</p>
@@ -360,8 +406,31 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   </div>
 </section>
 
+<!-- THREE PILLARS -->
+<section class="pillars" id="pillars">
+  <span class="section-label" data-i18n="pillars_label">The thinking</span>
+  <h2 class="pillars-title" data-i18n="pillars_title">Three problems. <em>One system.</em></h2>
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <span class="pillar-num">01</span>
+      <h3 data-i18n="pillar1_name">Members</h3>
+      <p data-i18n="pillar1_text">More people through the door. Every visitor gets a clear next step, from a first look to a decision to compete.</p>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-num">02</span>
+      <h3 data-i18n="pillar2_name">Money</h3>
+      <p data-i18n="pillar2_text">Revenue protected and grown. Clear pricing, self-qualifying corporate leads, and a real leak that got found and fixed.</p>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-num">03</span>
+      <h3 data-i18n="pillar3_name">Admin</h3>
+      <p data-i18n="pillar3_text">Time given back. News and schedule updates the club makes themselves, in tools they already know.</p>
+    </div>
+  </div>
+</section>
+
 <!-- RESULTS -->
-<section class="showcase" id="showcase">
+<section class="showcase cream" id="showcase">
   <span class="section-label" data-i18n="showcase_label">Real results</span>
   <h2 class="showcase-title" data-i18n="showcase_title">Measured, <em>not just claimed.</em></h2>
 
@@ -381,6 +450,105 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
       <span class="showcase-stat-label" data-i18n="stat_a11y_label">Accessibility score</span>
       <span class="showcase-stat-sub" data-i18n="stat_a11y_sub">Keyboard and screen-reader tested, not just automated</span>
     </div>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section class="pillar-detail" id="pillar-members">
+  <span class="section-label" data-i18n="pm_label">01 — Members</span>
+  <h2 class="pillar-detail-title" data-i18n="pm_title">Getting more people <em>through the door.</em></h2>
+  <p class="pillar-detail-intro" data-i18n="pm_intro">A visitor who doesn't know what to do next doesn't become a member. Every part of this section exists to remove a hesitation.</p>
+  <div class="pd-list">
+    <div class="pd-row">
+      <h4 data-i18n="pm1_h">Trial booking, everywhere</h4>
+      <p data-i18n="pm1_p">Nav, hero, and every class card lead to the same booking flow. No dead ends, no separate contact page to hunt for.</p>
+    </div>
+    <div class="pd-row">
+      <h4 data-i18n="pm2_h">Referral tracking</h4>
+      <p data-i18n="pm2_p">A simple "how did you hear about us" question on the trial form. The gym now has real data on which channel actually brings people in, something it never had before.</p>
+    </div>
+    <div class="pd-row">
+      <h4 data-i18n="pm3_h">"Which class is right for you?"</h4>
+      <p data-i18n="pm3_p">One click answers the single most common hesitation for a first-time visitor, before they've read a word of the schedule.</p>
+    </div>
+    <div class="pd-row">
+      <h4 data-i18n="pm4_h">A visible path forward</h4>
+      <p data-i18n="pm4_p">Beginner, intermediate, competition, shown as a ladder, not implied. People stay longer when they can see where they're headed.</p>
+    </div>
+    <div class="pd-row">
+      <h4 data-i18n="pm5_h">Bilingual, properly</h4>
+      <p data-i18n="pm5_p">Every section works in Swedish and English from one system. Stockholm's English-speaking population was simply invisible to the old site.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MONEY -->
+<section class="pillar-detail cream" id="pillar-money">
+  <span class="section-label" data-i18n="pmo_label">02 — Money</span>
+  <h2 class="pillar-detail-title" data-i18n="pmo_title">Protecting and growing <em>revenue.</em></h2>
+  <p class="pillar-detail-intro" data-i18n="pmo_intro">Some of this is about earning more. Some of it is about no longer quietly losing what was already there.</p>
+  <div class="pd-list">
+    <div class="pd-row">
+      <h4 data-i18n="pmo1_h">Membership clarity</h4>
+      <p data-i18n="pmo1_p">Every tier, every price, a call to action next to each one. No visitor has to ask how to actually sign up.</p>
+    </div>
+    <div class="pd-row">
+      <h4 data-i18n="pmo2_h">Corporate leads that self-qualify</h4>
+      <p data-i18n="pmo2_p">A dedicated section spells out exactly what's included and promises a quote within 24 hours, instead of one paragraph and a dead link.</p>
+    </div>
+    <div class="pd-row">
+      <h4 data-i18n="pmo3_h">A real leak, found and fixed</h4>
+      <p data-i18n="pmo3_p">The old booking form could show "sent!" even when the submission silently failed. That's not a cosmetic bug, that's trial requests disappearing with nobody noticing. Fixed.</p>
+    </div>
+    <div class="pd-row">
+      <h4 data-i18n="pmo4_h">Findable, not just visible</h4>
+      <p data-i18n="pmo4_p">Structured data tells Google exactly what the business is and where it is. Being easy to find is directly worth money for a local business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN -->
+<section class="pillar-detail" id="pillar-admin">
+  <span class="section-label" data-i18n="pa_label">03 — Admin</span>
+  <h2 class="pillar-detail-title" data-i18n="pa_title">Time <em>given back.</em></h2>
+  <p class="pillar-detail-intro" data-i18n="pa_intro">The old site's real problem was never that a developer had to do everything. It was that the tools didn't fit how the club actually works.</p>
+  <div class="pd-list">
+    <div class="pd-row">
+      <h4 data-i18n="pa1_h">News the club publishes itself</h4>
+      <p data-i18n="pa1_p">A real CMS, with photo support, replacing pages that had to be built one at a time outside the site's own navigation.</p>
+    </div>
+    <div class="pd-row">
+      <h4 data-i18n="pa2_h">A schedule that fits how they work</h4>
+      <p data-i18n="pa2_p">Kept on a spreadsheet on purpose, genuinely the fastest way to edit fast-moving weekly class times, with checks so a typo can't break the page.</p>
+    </div>
+    <div class="pd-row">
+      <h4 data-i18n="pa3_h">Season notes, without a developer</h4>
+      <p data-i18n="pa3_p">An optional "important information" field the club fills in themselves when something needs flagging, no code required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT PROPERLY -->
+<section class="craft cream" id="craft">
+  <span class="section-label" data-i18n="craft_label">04 — Built properly</span>
+  <h2 class="pillar-detail-title" data-i18n="craft_title">The craft <em>underneath.</em></h2>
+  <div class="craft-tabs">
+    <button type="button" class="craft-tab active" data-tab="plain" data-i18n="craft_tab1">The short version</button>
+    <button type="button" class="craft-tab" data-tab="tech" data-i18n="craft_tab2">Tech specs</button>
+  </div>
+  <div class="craft-panel active" id="craft-plain">
+    <p data-i18n="craft_plain1">Built to load fast, to work for people using a keyboard or a screen reader, and to actually get found on Google, not just look finished.</p>
+    <p data-i18n="craft_plain2">Every form field, every menu, every modal was checked for the kind of thing that's invisible until it breaks for someone.</p>
+  </div>
+  <div class="craft-panel" id="craft-tech">
+    <ul class="craft-list">
+      <li data-i18n="craft_t1">Stack: hand-written HTML, CSS and vanilla JS, no framework, single static file, hosted on GitHub Pages.</li>
+      <li data-i18n="craft_t2">Content layer: Sanity CMS via GROQ queries for news, published Google Sheets CSV endpoint for the schedule.</li>
+      <li data-i18n="craft_t3">Performance: eliminated a render-blocking third-party stylesheet, preloaded the hero image, added font preconnects. Mobile Lighthouse performance went from unmeasurable to 91, desktop to 99.</li>
+      <li data-i18n="craft_t4">Accessibility: modal focus trap with Escape-to-close and focus return, full ARIA labeling, keyboard-operable carousel, corrected heading hierarchy, restored pinch-to-zoom.</li>
+      <li data-i18n="craft_t5">Security: innerHTML output escaped throughout, honeypot field on the trial form.</li>
+      <li data-i18n="craft_t6">SEO: canonical URL, LocalBusiness structured data, sitemap.xml, robots.txt, branded 404 page.</li>
+    </ul>
   </div>
 </section>
 
@@ -450,7 +618,7 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
 </section>
 
 <!-- WHAT WE SOLVED -->
-<section class="about">
+<section class="about cream">
   <h2 class="about-title" data-i18n="about_title">One club.<br><span class="gold-shimmer">One system.</span></h2>
   <div class="about-right">
     <p data-i18n="about_p1">The old site ran on Squarespace, so the club could technically edit it themselves. The real problem wasn't developer-dependency, it was no bilingual support, no clear path from visitor to member, and content that went stale anyway.</p>
@@ -556,6 +724,38 @@ const I18N = {
     c6_name:"Memberships", c6_text:"The old site promoted trial weeks as a limited seasonal banner, implying trials were only available at certain times. The new site shows every membership tier and price year-round, with a standing invitation to try a class any time, no waiting for a promo window.",
     c7_name:"Corporate", c7_text:'The old corporate offer was one paragraph and a "Read more" link with no clear next step. The new corporate section spells out exactly what\'s included, morning sessions, team building, group classes, with a direct booking CTA and a quote turnaround time.',
     c8_name:"Contact", c8_text:'The old footer was five links and a "Made with Squarespace" credit. The new contact section gives visitors the address, metro directions, opening hours and an embedded map in one place, answering the most common first-visit questions without an extra click.',
+    pillars_label:"The thinking", pillars_title:'Three problems. <em>One system.</em>',
+    pillar1_name:"Members", pillar1_text:"More people through the door. Every visitor gets a clear next step, from a first look to a decision to compete.",
+    pillar2_name:"Money", pillar2_text:"Revenue protected and grown. Clear pricing, self-qualifying corporate leads, and a real leak that got found and fixed.",
+    pillar3_name:"Admin", pillar3_text:"Time given back. News and schedule updates the club makes themselves, in tools they already know.",
+    pm_label:"01 — Members", pm_title:'Getting more people <em>through the door.</em>',
+    pm_intro:"A visitor who doesn't know what to do next doesn't become a member. Every part of this section exists to remove a hesitation.",
+    pm1_h:"Trial booking, everywhere", pm1_p:"Nav, hero, and every class card lead to the same booking flow. No dead ends, no separate contact page to hunt for.",
+    pm2_h:"Referral tracking", pm2_p:"A simple \"how did you hear about us\" question on the trial form. The gym now has real data on which channel actually brings people in, something it never had before.",
+    pm3_h:'"Which class is right for you?"', pm3_p:"One click answers the single most common hesitation for a first-time visitor, before they've read a word of the schedule.",
+    pm4_h:"A visible path forward", pm4_p:"Beginner, intermediate, competition, shown as a ladder, not implied. People stay longer when they can see where they're headed.",
+    pm5_h:"Bilingual, properly", pm5_p:"Every section works in Swedish and English from one system. Stockholm's English-speaking population was simply invisible to the old site.",
+    pmo_label:"02 — Money", pmo_title:'Protecting and growing <em>revenue.</em>',
+    pmo_intro:"Some of this is about earning more. Some of it is about no longer quietly losing what was already there.",
+    pmo1_h:"Membership clarity", pmo1_p:"Every tier, every price, a call to action next to each one. No visitor has to ask how to actually sign up.",
+    pmo2_h:"Corporate leads that self-qualify", pmo2_p:"A dedicated section spells out exactly what's included and promises a quote within 24 hours, instead of one paragraph and a dead link.",
+    pmo3_h:"A real leak, found and fixed", pmo3_p:'The old booking form could show "sent!" even when the submission silently failed. That\'s not a cosmetic bug, that\'s trial requests disappearing with nobody noticing. Fixed.',
+    pmo4_h:"Findable, not just visible", pmo4_p:"Structured data tells Google exactly what the business is and where it is. Being easy to find is directly worth money for a local business.",
+    pa_label:"03 — Admin", pa_title:'Time <em>given back.</em>',
+    pa_intro:"The old site's real problem was never that a developer had to do everything. It was that the tools didn't fit how the club actually works.",
+    pa1_h:"News the club publishes itself", pa1_p:"A real CMS, with photo support, replacing pages that had to be built one at a time outside the site's own navigation.",
+    pa2_h:"A schedule that fits how they work", pa2_p:"Kept on a spreadsheet on purpose, genuinely the fastest way to edit fast-moving weekly class times, with checks so a typo can't break the page.",
+    pa3_h:"Season notes, without a developer", pa3_p:"An optional \"important information\" field the club fills in themselves when something needs flagging, no code required.",
+    craft_label:"04 — Built properly", craft_title:'The craft <em>underneath.</em>',
+    craft_tab1:"The short version", craft_tab2:"Tech specs",
+    craft_plain1:"Built to load fast, to work for people using a keyboard or a screen reader, and to actually get found on Google, not just look finished.",
+    craft_plain2:"Every form field, every menu, every modal was checked for the kind of thing that's invisible until it breaks for someone.",
+    craft_t1:"Stack: hand-written HTML, CSS and vanilla JS, no framework, single static file, hosted on GitHub Pages.",
+    craft_t2:"Content layer: Sanity CMS via GROQ queries for news, published Google Sheets CSV endpoint for the schedule.",
+    craft_t3:"Performance: eliminated a render-blocking third-party stylesheet, preloaded the hero image, added font preconnects. Mobile Lighthouse performance went from unmeasurable to 91, desktop to 99.",
+    craft_t4:"Accessibility: modal focus trap with Escape-to-close and focus return, full ARIA labeling, keyboard-operable carousel, corrected heading hierarchy, restored pinch-to-zoom.",
+    craft_t5:"Security: innerHTML output escaped throughout, honeypot field on the trial form.",
+    craft_t6:"SEO: canonical URL, LocalBusiness structured data, sitemap.xml, robots.txt, branded 404 page.",
     showcase_label:"Real results", showcase_title:'Measured, <em>not just claimed.</em>',
     stat_perf_label:"Performance score (mobile)", stat_perf_sub:"The old site's performance couldn't even be measured, Lighthouse failed to complete a scan",
     stat_seo_label:"SEO score", stat_seo_sub:"Up from 85 on the old site",
@@ -603,6 +803,38 @@ const I18N = {
     c6_name:"Medlemskap", c6_text:"Den gamla sajten marknadsförde provveckor som en tidsbegränsad banner för säsongen, vilket antydde att provpass bara fanns vissa perioder. Den nya sajten visar alla medlemskapsnivåer och priser året runt, med en stående inbjudan att prova ett pass när som helst, ingen väntan på ett kampanjfönster.",
     c7_name:"Företag", c7_text:'Det gamla företagserbjudandet var ett stycke och en "Läs mer"-länk utan tydligt nästa steg. Den nya företagssektionen visar exakt vad som ingår, morgonpass, teambuilding, gruppass, med en direkt bokningsknapp och svarstid för offert.',
     c8_name:"Kontakt", c8_text:'Den gamla sidfoten var fem länkar och en "Made with Squarespace"-kreditering. Den nya kontaktsektionen ger besökare adress, T-baneväg, öppettider och en inbäddad karta på ett ställe, vilket besvarar de vanligaste frågorna inför ett första besök utan ett extra klick.',
+    pillars_label:"Tankarna bakom", pillars_title:'Tre problem. <em>Ett system.</em>',
+    pillar1_name:"Medlemmar", pillar1_text:"Fler genom dörren. Varje besökare får ett tydligt nästa steg, från första titten till beslutet att tävla.",
+    pillar2_name:"Pengar", pillar2_text:"Intäkter skyddade och ökade. Tydliga priser, självkvalificerande företagsleads, och ett riktigt läckage som hittades och lagades.",
+    pillar3_name:"Administration", pillar3_text:"Tid tillbaka. Nyhets- och schemauppdateringar som klubben gör själva, i verktyg de redan kan.",
+    pm_label:"01 — Medlemmar", pm_title:'Fler genom <em>dörren.</em>',
+    pm_intro:"En besökare som inte vet vad de ska göra härnäst blir inte medlem. Varje del av den här sektionen finns för att ta bort en tveksamhet.",
+    pm1_h:"Boka provpass, överallt", pm1_p:"Meny, hjälte och varje passkort leder till samma bokningsflöde. Inga återvändsgränder, ingen separat kontaktsida att leta efter.",
+    pm2_h:"Spårning av hänvisningar", pm2_p:"En enkel fråga om hur man hörde talas om gymmet i provpassformuläret. Gymmet har nu riktig data på vilken kanal som faktiskt ger nya besökare, något de aldrig haft förut.",
+    pm3_h:'"Vilket pass passar dig?"', pm3_p:"Ett klick besvarar den vanligaste tveksamheten för en förstagångsbesökare, innan de ens läst schemat.",
+    pm4_h:"En synlig väg framåt", pm4_p:"Nybörjare, fortsättning, tävling, visat som en stege, inte underförstått. Folk stannar längre när de kan se vart de är på väg.",
+    pm5_h:"Tvåspråkig, på riktigt", pm5_p:"Varje sektion fungerar på svenska och engelska från ett och samma system. Stockholms engelsktalande befolkning var helt enkelt osynlig för den gamla sajten.",
+    pmo_label:"02 — Pengar", pmo_title:'Skydda och öka <em>intäkter.</em>',
+    pmo_intro:"En del av det här handlar om att tjäna mer. En del handlar om att sluta tyst förlora det som redan fanns.",
+    pmo1_h:"Tydliga medlemskap", pmo1_p:"Varje nivå, varje pris, en call to action bredvid varje. Ingen besökare behöver fråga hur man faktiskt blir medlem.",
+    pmo2_h:"Företagsleads som självkvalificerar sig", pmo2_p:"En egen sektion visar exakt vad som ingår och lovar en offert inom 24 timmar, istället för ett stycke och en död länk.",
+    pmo3_h:"Ett riktigt läckage, hittat och lagat", pmo3_p:'Det gamla bokningsformuläret kunde visa "skickat!" även när det tyst misslyckades. Det är inte en kosmetisk bugg, det är provpassförfrågningar som försvinner utan att någon märker det. Fixat.',
+    pmo4_h:"Hittbar, inte bara synlig", pmo4_p:"Strukturerad data talar om för Google exakt vad verksamheten är och var den finns. Att vara lätt att hitta är direkt värt pengar för ett lokalt företag.",
+    pa_label:"03 — Administration", pa_title:'Tid <em>tillbaka.</em>',
+    pa_intro:"Den gamla sajtens verkliga problem var aldrig att en utvecklare behövde göra allt. Det var att verktygen inte passade hur klubben faktiskt arbetar.",
+    pa1_h:"Nyheter klubben publicerar själva", pa1_p:"Ett riktigt CMS med fotostöd, som ersätter sidor som fick byggas en i taget utanför sajtens egen navigering.",
+    pa2_h:"Ett schema som passar hur de arbetar", pa2_p:"Ligger kvar i ett kalkylblad med flit, genuint det snabbaste sättet att redigera snabbrörliga veckoscheman, med kontroller så att ett stavfel inte förstör sidan.",
+    pa3_h:"Säsongsnoteringar, utan utvecklare", pa3_p:"Ett valfritt fält för \"viktig information\" som klubben fyller i själva när något behöver flaggas, ingen kod krävs.",
+    craft_label:"04 — Byggt på riktigt", craft_title:'Hantverket <em>under ytan.</em>',
+    craft_tab1:"Kortversionen", craft_tab2:"Tekniska specifikationer",
+    craft_plain1:"Byggt för att ladda snabbt, fungera för den som använder tangentbord eller skärmläsare, och faktiskt gå att hitta på Google, inte bara se klart ut.",
+    craft_plain2:"Varje formulärfält, varje meny, varje modal kontrollerades för sådant som är osynligt tills det går sönder för någon.",
+    craft_t1:"Stack: handskriven HTML, CSS och vanilla JS, inget ramverk, en enda statisk fil, hostad på GitHub Pages.",
+    craft_t2:"Innehållslager: Sanity CMS via GROQ-frågor för nyheter, publicerad Google Sheets CSV-endpoint för schemat.",
+    craft_t3:"Prestanda: tog bort en renderingsblockerande tredjepartsstilmall, förladdade hjältebilden, lade till font-preconnects. Lighthouse-prestanda på mobil gick från omätbart till 91, desktop till 99.",
+    craft_t4:"Tillgänglighet: fokusfälla i modalen med Escape-stängning och fokusåterställning, fullständig ARIA-märkning, tangentbordsstyrd karusell, korrigerad rubrikhierarki, återställd pinch-to-zoom.",
+    craft_t5:"Säkerhet: innerHTML-utdata escapad genomgående, honeypot-fält i provpassformuläret.",
+    craft_t6:"SEO: kanonisk URL, LocalBusiness strukturerad data, sitemap.xml, robots.txt, egen 404-sida.",
     showcase_label:"Verkliga resultat", showcase_title:'Mätt, <em>inte bara påstått.</em>',
     stat_perf_label:"Prestandapoäng (mobil)", stat_perf_sub:"Den gamla sajtens prestanda gick inte ens att mäta, Lighthouse kunde inte slutföra skanningen",
     stat_seo_label:"SEO-poäng", stat_seo_sub:"Upp från 85 på den gamla sajten",
@@ -684,12 +916,26 @@ function initCompare() {
   update();
 }
 
+function initCraftTabs() {
+  const tabs = document.querySelectorAll('.craft-tab');
+  if (!tabs.length) return;
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.craft-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('craft-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+}
+
 (function init() {
   let lang = 'en';
   try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
   if (lang !== 'en') setLang(lang);
 
   initCompare();
+  initCraftTabs();
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
@@ -703,6 +949,7 @@ function initCompare() {
 </script>
 </body>
 </html>
+
 
 
 
