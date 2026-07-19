@@ -119,39 +119,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .showcase { padding: 88px 0; border-bottom: 1px solid var(--line); }
 .showcase-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 40px; }
 .showcase-title em { font-style: italic; color: var(--muted); }
-.compare-slider {
-  position: relative; width: 100%; aspect-ratio: 16 / 10; max-height: 620px;
-  overflow: hidden; border: 1px solid var(--line); cursor: ew-resize; user-select: none;
-  background: var(--bg2);
-}
-.compare-media { position: absolute; inset: 0; overflow: hidden; }
-.compare-media img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
-.compare-before { width: 50%; border-right: 1px solid var(--gold-line); }
-.compare-media.no-image { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--bg2), #17110a); }
-.compare-media.no-image::after {
-  content: attr(data-placeholder); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted2);
-  white-space: nowrap;
-}
-.compare-before img { width: 100vw; max-width: none; }
-.compare-handle {
-  position: absolute; top: 0; bottom: 0; left: 50%; width: 0; transform: translateX(-50%);
-  display: flex; align-items: center; justify-content: center; z-index: 3; cursor: ew-resize;
-}
-.compare-handle-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--gold-line); transform: translateX(-50%); }
-.compare-handle-grip {
-  width: 40px; height: 40px; border-radius: 50%; background: var(--bg);
-  border: 1px solid var(--gold-line); display: flex; align-items: center; justify-content: center;
-  font-size: 11px; color: var(--gold); letter-spacing: 0.05em; transition: border-color 0.2s, background 0.2s;
-}
-.compare-handle:hover .compare-handle-grip, .compare-handle:focus-visible .compare-handle-grip { border-color: var(--gold); background: var(--gold-dim); }
-.compare-label {
-  position: absolute; top: 16px; z-index: 2; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold-bright); background: rgba(12,12,11,0.6); padding: 6px 12px; border: 1px solid var(--gold-line);
-}
-.compare-label-before { left: 16px; }
-.compare-label-after { right: 16px; }
-.showcase-note { font-size: 12px; color: var(--muted2); line-height: 1.7; margin-top: 18px; max-width: 480px; }
-.showcase-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 36px; }
+.showcase-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .showcase-stat { background: var(--bg); padding: 28px 26px; display: flex; flex-direction: column; gap: 6px; }
 .showcase-stat-num { font-family: var(--serif); font-style: italic; font-size: 44px; color: var(--gold-bright); line-height: 1; }
 .showcase-stat-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); font-weight: 500; margin-top: 4px; }
@@ -231,7 +199,6 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   .built-row{grid-template-columns:36px 1fr auto;gap:16px}
   .about{grid-template-columns:1fr;gap:32px}
   .system-grid{grid-template-columns:1fr}
-  .compare-slider{aspect-ratio:4/5}
   .showcase-stats{grid-template-columns:1fr}
   footer{flex-direction:column;gap:8px;text-align:center}
   .hide-mobile{display:none}
@@ -266,26 +233,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   </div>
 </section>
 
-<!-- BEFORE / AFTER -->
+<!-- RESULTS -->
 <section class="showcase" id="showcase">
-  <span class="section-label" data-i18n="showcase_label">Before &amp; after</span>
-  <h2 class="showcase-title" data-i18n="showcase_title">See the <em>difference.</em></h2>
-
-  <div class="compare-slider" id="compareSlider">
-    <div class="compare-media compare-after" data-placeholder="After — new build screenshot">
-      <img src="masters-gym-after.jpg" alt="Masters Gym new site" />
-    </div>
-    <div class="compare-media compare-before" id="compareBefore" data-placeholder="Before — old Squarespace screenshot">
-      <img src="masters-gym-before.jpg" alt="Masters Gym old Squarespace site" />
-    </div>
-    <div class="compare-handle" id="compareHandle" tabindex="0" role="slider" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-      <div class="compare-handle-line"></div>
-      <div class="compare-handle-grip">↔</div>
-    </div>
-    <span class="compare-label compare-label-before" data-i18n="showcase_before">Before</span>
-    <span class="compare-label compare-label-after" data-i18n="showcase_after">After</span>
-  </div>
-  <p class="showcase-note" data-i18n="showcase_note">Drag the handle to compare. Screenshots go here once the gym signs off on final photography, drop masters-gym-before.jpg and masters-gym-after.jpg into this folder to replace the placeholders.</p>
+  <span class="section-label" data-i18n="showcase_label">Real results</span>
+  <h2 class="showcase-title" data-i18n="showcase_title">Measured, <em>not just claimed.</em></h2>
 
   <div class="showcase-stats">
     <div class="showcase-stat">
@@ -467,9 +418,7 @@ const I18N = {
     hero_title:'Masters <span class="gold-shimmer">Gym.</span>',
     hero_desc:"A full rebuild for Masters Gym Stockholm bilingual, conversion-focused, with a self-service news system, a schedule that fits how the club actually works, and a live Instagram feed.",
     hero_meta_label:"Client type", hero_meta_value:"Kickboxing & Muay Thai club · Kungsholmen, Stockholm",
-    showcase_label:"Before & after", showcase_title:'See the <em>difference.</em>',
-    showcase_before:"Before", showcase_after:"After",
-    showcase_note:"Drag the handle to compare. Screenshots go here once the gym signs off on final photography, drop masters-gym-before.jpg and masters-gym-after.jpg into this folder to replace the placeholders.",
+    showcase_label:"Real results", showcase_title:'Measured, <em>not just claimed.</em>',
     stat_perf_label:"Performance score (mobile)", stat_perf_sub:"The old site's performance couldn't even be measured, Lighthouse failed to complete a scan",
     stat_seo_label:"SEO score", stat_seo_sub:"Up from 85 on the old site",
     stat_a11y_label:"Accessibility score", stat_a11y_sub:"Keyboard and screen-reader tested, not just automated",
@@ -505,9 +454,7 @@ const I18N = {
     hero_title:'Masters <span class="gold-shimmer">Gym.</span>',
     hero_desc:"En fullständig ombyggnad för Masters Gym Stockholm tvåspråkig, konverteringsfokuserad, med ett självbetjänat nyhetssystem, ett schema som passar hur klubben faktiskt arbetar, och ett live Instagram-flöde.",
     hero_meta_label:"Kundtyp", hero_meta_value:"Kickboxning & thaiboxningsklubb · Kungsholmen, Stockholm",
-    showcase_label:"Före & efter", showcase_title:'Se <em>skillnaden.</em>',
-    showcase_before:"Före", showcase_after:"Efter",
-    showcase_note:"Dra i handtaget för att jämföra. Skärmbilder läggs in här när gymmet godkänt slutgiltiga foton, lägg masters-gym-before.jpg och masters-gym-after.jpg i den här mappen för att ersätta platshållarna.",
+    showcase_label:"Verkliga resultat", showcase_title:'Mätt, <em>inte bara påstått.</em>',
     stat_perf_label:"Prestandapoäng (mobil)", stat_perf_sub:"Den gamla sajtens prestanda gick inte ens att mäta, Lighthouse kunde inte slutföra skanningen",
     stat_seo_label:"SEO-poäng", stat_seo_sub:"Upp från 85 på den gamla sajten",
     stat_a11y_label:"Tillgänglighetspoäng", stat_a11y_sub:"Testat med tangentbord och skärmläsare, inte bara automatiskt",
@@ -551,60 +498,10 @@ function setLang(lang) {
   try { localStorage.setItem('sp-lang', lang); } catch(e) {}
 }
 
-function initCompareSlider() {
-  const container = document.getElementById('compareSlider');
-  if (!container) return;
-  const before = document.getElementById('compareBefore');
-  const handle = document.getElementById('compareHandle');
-  let dragging = false;
-
-  function setPos(pct) {
-    pct = Math.max(0, Math.min(100, pct));
-    before.style.width = pct + '%';
-    handle.style.left = pct + '%';
-    handle.setAttribute('aria-valuenow', String(Math.round(pct)));
-  }
-  function posFromClientX(clientX) {
-    const rect = container.getBoundingClientRect();
-    return ((clientX - rect.left) / rect.width) * 100;
-  }
-  handle.addEventListener('pointerdown', e => {
-    dragging = true;
-    handle.setPointerCapture(e.pointerId);
-  });
-  handle.addEventListener('pointerup', () => { dragging = false; });
-  container.addEventListener('pointermove', e => {
-    if (dragging) setPos(posFromClientX(e.clientX));
-  });
-  container.addEventListener('pointerdown', e => {
-    if (e.target === handle || handle.contains(e.target)) return;
-    setPos(posFromClientX(e.clientX));
-  });
-  handle.addEventListener('keydown', e => {
-    const current = parseFloat(handle.style.left) || 50;
-    if (e.key === 'ArrowLeft') { setPos(current - 4); e.preventDefault(); }
-    if (e.key === 'ArrowRight') { setPos(current + 4); e.preventDefault(); }
-  });
-  setPos(50);
-}
-
 (function init() {
   let lang = 'en';
   try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
   if (lang !== 'en') setLang(lang);
-
-  document.querySelectorAll('.compare-media img').forEach(img => {
-    img.addEventListener('error', () => {
-      img.style.display = 'none';
-      img.parentElement.classList.add('no-image');
-    }, { once: true });
-    if (img.complete && img.naturalWidth === 0) {
-      img.style.display = 'none';
-      img.parentElement.classList.add('no-image');
-    }
-  });
-
-  initCompareSlider();
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
@@ -618,4 +515,5 @@ function initCompareSlider() {
 </script>
 </body>
 </html>
+
 
