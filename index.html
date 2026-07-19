@@ -432,10 +432,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .optional { margin-top: 64px; }
 .optional-title { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 24px; color: var(--text); margin: 14px 0 24px; }
 .optional-list { display: flex; flex-direction: column; }
-.optional-row { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 15px 0; border-top: 1px solid var(--line); }
+.optional-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 15px 0; border-top: 1px solid var(--line); }
 .optional-row:last-child { border-bottom: 1px solid var(--line); }
+.optional-info { display: flex; flex-direction: column; gap: 4px; }
 .optional-name { font-size: 14px; font-weight: 300; color: var(--text); }
-.optional-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); white-space: nowrap; }
+.optional-desc { font-size: 12px; font-weight: 300; color: var(--muted2); line-height: 1.65; max-width: 440px; }
+.optional-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); white-space: nowrap; padding-top: 2px; }
 
 /* ══ GIVING BACK ══ */
 .giving {
@@ -829,9 +831,21 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
     <span class="section-label" data-i18n="opt_label">Optional Services</span>
     <h3 class="optional-title" data-i18n="opt_title">For when you want more, later.</h3>
     <div class="optional-list">
-      <div class="optional-row"><span class="optional-name" data-i18n="opt1_name">Hosting, security, backups and updates</span><span class="optional-tag" data-i18n="opt1_tag">Flat monthly fee</span></div>
+      <div class="optional-row">
+        <div class="optional-info">
+          <span class="optional-name" data-i18n="opt1_name">Hosting, security, backups and updates</span>
+          <span class="optional-desc" data-i18n="opt1_desc">Fixes and updates handled within 48 hours on weekdays. Hosting, HTTPS, backups and monitoring included, no separate line items.</span>
+        </div>
+        <span class="optional-tag" data-i18n="opt1_tag">Flat monthly fee</span>
+      </div>
       <div class="optional-row"><span class="optional-name" data-i18n="opt2_name">Ongoing content updates handled for you</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
-      <div class="optional-row"><span class="optional-name" data-i18n="opt3_name">Google Search Console and Analytics setup</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
+      <div class="optional-row">
+        <div class="optional-info">
+          <span class="optional-name" data-i18n="opt3_name">Google Search Console and Analytics setup</span>
+          <span class="optional-desc" data-i18n="opt3_desc">Google Analytics or Plausible connected from day one, with a short monthly summary of visits, top pages and where traffic comes from, in plain language, not a raw dashboard.</span>
+        </div>
+        <span class="optional-tag" data-i18n="opt_addon">Add-on</span>
+      </div>
       <div class="optional-row"><span class="optional-name" data-i18n="opt4_name">Business email setup</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
       <div class="optional-row"><span class="optional-name" data-i18n="opt5_name">Additional pages, features and improvements</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
     </div>
@@ -1025,8 +1039,10 @@ const I18N = {
     opt_label:"Optional Services",
     opt_title:"For when you want more, later.",
     opt1_name:"Hosting, security, backups and updates", opt1_tag:"Flat monthly fee",
+    opt1_desc:"Fixes and updates handled within 48 hours on weekdays. Hosting, HTTPS, backups and monitoring included, no separate line items.",
     opt2_name:"Ongoing content updates handled for you",
     opt3_name:"Google Search Console and Analytics setup",
+    opt3_desc:"Google Analytics or Plausible connected from day one, with a short monthly summary of visits, top pages and where traffic comes from, in plain language, not a raw dashboard.",
     opt4_name:"Business email setup",
     opt5_name:"Additional pages, features and improvements",
     opt_addon:"Add-on",
@@ -1103,8 +1119,10 @@ const I18N = {
     opt_label:"Tilläggstjänster",
     opt_title:"För när du vill ha mer, längre fram.",
     opt1_name:"Hosting, säkerhet, backuper och uppdateringar", opt1_tag:"Fast månadsavgift",
+    opt1_desc:"Fixar och uppdateringar hanteras inom 48 timmar på vardagar. Hosting, HTTPS, backuper och övervakning ingår, inga separata poster.",
     opt2_name:"Löpande innehållsuppdateringar",
     opt3_name:"Google Search Console och Analytics",
+    opt3_desc:"Google Analytics eller Plausible kopplat från dag ett, med en kort månadssammanfattning av besök, populäraste sidor och varifrån trafiken kommer, på ett enkelt språk, inte en rå instrumentpanel.",
     opt4_name:"Uppsättning av företagsmejl",
     opt5_name:"Fler sidor, funktioner och förbättringar",
     opt_addon:"Tillägg",
@@ -1524,6 +1542,7 @@ const NEED_LABELS = {
 })();
 
 </script>
+
 
 
 
