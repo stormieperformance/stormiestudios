@@ -169,6 +169,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .tour-title em { font-style: italic; color: var(--muted); }
 .tour-sub { font-size: 13px; color: var(--muted2); line-height: 1.7; max-width: 520px; margin-bottom: 44px; }
 .tour-block { margin-bottom: 40px; }
+.tour-block-label { display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
 .tour-block-title { font-family: var(--serif); font-size: 20px; font-style: italic; color: var(--gold-bright); margin-bottom: 14px; }
 .tour-block-note { font-size: 12px; color: var(--muted2); line-height: 1.7; margin: -8px 0 14px; max-width: 480px; }
 .tour-shot { position: relative; aspect-ratio: 1600/886; border: 1px solid var(--line); background: var(--bg2); overflow: hidden; counter-reset: hz; }
@@ -522,6 +523,7 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   </div>
 
   <div class="tour-block">
+    <span class="tour-block-label" data-i18n="tb1m_label">Design choices</span>
     <h3 class="tour-block-title" data-i18n="tb1m_title">Hero — Mobile</h3>
     <p class="tour-block-note" data-i18n="tb1m_note">The only section shown here in its mobile form, since this is where the branding decisions are easiest to see. Every other block above and below is shown at desktop size.</p>
     <div class="tour-shot portrait">
@@ -1005,7 +1007,7 @@ const I18N = {
     tour_explain_empty:"Select a numbered point above to see the explanation here.",
     tour_legend_toggle:"Show all points as a list",
     tb1_title:"Hero", tb2_title:"Classes", tb3_title:"Schedule", tb4_title:"News", tb5_title:"Memberships", tb6_title:"Corporate", tb7_title:"Contact",
-    tb1m_title:"Hero — Mobile", tb1m_note:"The only section shown here in its mobile form, since this is where the branding decisions are easiest to see. Every other block above and below is shown at desktop size.",
+    tb1m_title:"Hero — Mobile", tb1m_label:"Design choices", tb1m_note:"The only section shown here in its mobile form, since this is where the branding decisions are easiest to see. Every other block above and below is shown at desktop size.",
     hzm_1_h:"A color palette, not invented", hzm_1_p:"The teal accent wasn't picked from a design tool's default palette, it was sampled directly from Masters Gym's own logo and social media material. The website matches their brand, it doesn't compete with it.",
     hzm_2_h:"One menu icon, nothing sacrificed", hzm_2_p:"On mobile, every nav link, the language toggle and the theme switch collapse into a single hamburger menu instead of being stripped down. Smaller screen, same navigation, nothing removed to make it fit.",
     hzm_3_h:"Typography borrowed from their own gear", hzm_3_p:"This bold, condensed display font was chosen after looking at what Masters Gym already uses on their own branded training wear and social posts. The goal wasn't a new identity, it was a website that's recognizably theirs.",
@@ -1125,7 +1127,7 @@ const I18N = {
     tour_explain_empty:"Välj en numrerad punkt ovan för att se förklaringen här.",
     tour_legend_toggle:"Visa alla punkter som en lista",
     tb1_title:"Hero", tb2_title:"Pass", tb3_title:"Schema", tb4_title:"Nyheter", tb5_title:"Medlemskap", tb6_title:"Företag", tb7_title:"Kontakt",
-    tb1m_title:"Hero — Mobil", tb1m_note:"Den enda sektionen som visas i mobilformat här, eftersom det är där varumärkesbesluten syns tydligast. Alla andra block ovan och nedan visas i desktopstorlek.",
+    tb1m_title:"Hero — Mobil", tb1m_label:"Designval", tb1m_note:"Den enda sektionen som visas i mobilformat här, eftersom det är där varumärkesbesluten syns tydligast. Alla andra block ovan och nedan visas i desktopstorlek.",
     hzm_1_h:"En färgpalett, inte påhittad", hzm_1_p:"Turkosaccenten valdes inte från ett designverktygs standardpalett, den hämtades direkt från Masters Gyms egen logotyp och material från sociala medier. Sajten matchar deras varumärke, den konkurrerar inte med det.",
     hzm_2_h:"En menyikon, inget bortprioriterat", hzm_2_p:"På mobil samlas varje menylänk, språkval och temaväxling i en enda hamburgermeny istället för att strippas ner. Mindre skärm, samma navigering, inget borttaget för att få plats.",
     hzm_3_h:"Typografi lånad från deras eget kit", hzm_3_p:"Det här fetstilta, kondenserade typsnittet valdes efter att ha tittat på vad Masters Gym redan använder på sina egna märkeskläder och sociala inlägg. Målet var inte en ny identitet, det var en sajt som märkbart är deras.",
@@ -1392,6 +1394,7 @@ function initTourAutoCycle() {
 </script>
 </body>
 </html>
+
 
 
 
