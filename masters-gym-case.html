@@ -151,6 +151,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .compare-label-before { left: 16px; }
 .compare-label-after { right: 16px; }
 .showcase-note { font-size: 12px; color: var(--muted2); line-height: 1.7; margin-top: 18px; max-width: 480px; }
+.showcase-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 36px; }
+.showcase-stat { background: var(--bg); padding: 28px 26px; display: flex; flex-direction: column; gap: 6px; }
+.showcase-stat-num { font-family: var(--serif); font-style: italic; font-size: 44px; color: var(--gold-bright); line-height: 1; }
+.showcase-stat-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); font-weight: 500; margin-top: 4px; }
+.showcase-stat-sub { font-size: 12px; color: var(--muted2); line-height: 1.6; }
 
 /* WHAT WAS BUILT */
 .built { padding: 88px 0 72px; border-bottom: 1px solid var(--line); }
@@ -227,6 +232,7 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   .about{grid-template-columns:1fr;gap:32px}
   .system-grid{grid-template-columns:1fr}
   .compare-slider{aspect-ratio:4/5}
+  .showcase-stats{grid-template-columns:1fr}
   footer{flex-direction:column;gap:8px;text-align:center}
   .hide-mobile{display:none}
 }
@@ -280,6 +286,24 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
     <span class="compare-label compare-label-after" data-i18n="showcase_after">After</span>
   </div>
   <p class="showcase-note" data-i18n="showcase_note">Drag the handle to compare. Screenshots go here once the gym signs off on final photography, drop masters-gym-before.jpg and masters-gym-after.jpg into this folder to replace the placeholders.</p>
+
+  <div class="showcase-stats">
+    <div class="showcase-stat">
+      <span class="showcase-stat-num">91</span>
+      <span class="showcase-stat-label" data-i18n="stat_perf_label">Performance score (mobile)</span>
+      <span class="showcase-stat-sub" data-i18n="stat_perf_sub">The old site's performance couldn't even be measured, Lighthouse failed to complete a scan</span>
+    </div>
+    <div class="showcase-stat">
+      <span class="showcase-stat-num">100</span>
+      <span class="showcase-stat-label" data-i18n="stat_seo_label">SEO score</span>
+      <span class="showcase-stat-sub" data-i18n="stat_seo_sub">Up from 85 on the old site</span>
+    </div>
+    <div class="showcase-stat">
+      <span class="showcase-stat-num">97</span>
+      <span class="showcase-stat-label" data-i18n="stat_a11y_label">Accessibility score</span>
+      <span class="showcase-stat-sub" data-i18n="stat_a11y_sub">Keyboard and screen-reader tested, not just automated</span>
+    </div>
+  </div>
 </section>
 
 <!-- WHAT WAS BUILT -->
@@ -446,6 +470,9 @@ const I18N = {
     showcase_label:"Before & after", showcase_title:'See the <em>difference.</em>',
     showcase_before:"Before", showcase_after:"After",
     showcase_note:"Drag the handle to compare. Screenshots go here once the gym signs off on final photography, drop masters-gym-before.jpg and masters-gym-after.jpg into this folder to replace the placeholders.",
+    stat_perf_label:"Performance score (mobile)", stat_perf_sub:"The old site's performance couldn't even be measured, Lighthouse failed to complete a scan",
+    stat_seo_label:"SEO score", stat_seo_sub:"Up from 85 on the old site",
+    stat_a11y_label:"Accessibility score", stat_a11y_sub:"Keyboard and screen-reader tested, not just automated",
     built_label:"What was built", built_count:"06 parts",
     b1_name:"Website & Brand", b1_cat:"Bilingual build · Navigation · About · Coaches",
     b2_name:"Schedule", b2_cat:"Day-by-day and week-grid views · Google Sheets pipeline",
@@ -481,6 +508,9 @@ const I18N = {
     showcase_label:"Före & efter", showcase_title:'Se <em>skillnaden.</em>',
     showcase_before:"Före", showcase_after:"Efter",
     showcase_note:"Dra i handtaget för att jämföra. Skärmbilder läggs in här när gymmet godkänt slutgiltiga foton, lägg masters-gym-before.jpg och masters-gym-after.jpg i den här mappen för att ersätta platshållarna.",
+    stat_perf_label:"Prestandapoäng (mobil)", stat_perf_sub:"Den gamla sajtens prestanda gick inte ens att mäta, Lighthouse kunde inte slutföra skanningen",
+    stat_seo_label:"SEO-poäng", stat_seo_sub:"Upp från 85 på den gamla sajten",
+    stat_a11y_label:"Tillgänglighetspoäng", stat_a11y_sub:"Testat med tangentbord och skärmläsare, inte bara automatiskt",
     built_label:"Vad som byggdes", built_count:"06 delar",
     b1_name:"Sajt & varumärke", b1_cat:"Tvåspråkig sajt · Navigation · Om oss · Coacher",
     b2_name:"Schema", b2_cat:"Dag-för-dag och veckovy · Google Sheets-flöde",
@@ -588,3 +618,4 @@ function initCompareSlider() {
 </script>
 </body>
 </html>
+
