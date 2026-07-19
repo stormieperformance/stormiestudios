@@ -446,6 +446,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   display: flex; flex-direction: column; gap: 22px; justify-content: center;
   padding: 100px max(48px, calc((100vw - 1080px)/2 + 48px)) 100px 56px;
 }
+.giving-form-title { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--gold-bright); margin: 0 0 4px; }
 .giving-note { font-size: 11px; font-weight: 300; color: var(--muted2); line-height: 1.7; }
 .giving-note a { color: var(--muted2); transition: color 0.2s; }
 .giving-note a:hover { color: var(--gold); }
@@ -849,9 +850,9 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
     <p data-i18n="giving_p1">I've had animals in my life for as long as I can remember. I've worked as a vet nurse assistant, managed a dog day care, and today I volunteer as an animal caretaker at a non-profit farm, caring for their farm animals on weekends. Giving back to the people who dedicate their lives to protecting animals feels like the right place to start.</p>
     <p data-i18n="giving_p2">As Stormie Studios grows, I'm offering 2-3 custom websites completely free each year to registered non-profit organizations working in animal rescue, wildlife conservation, or animal welfare.</p>
     <p data-i18n="giving_p3">Every website is designed and built by me from scratch, so I can only take on a small number of projects. If your organization could benefit from a new website, I'd love to hear from you.</p>
-    <a href="#g-org" class="btn-gold giving-cta" data-i18n="giving_cta" onclick="event.preventDefault();document.getElementById('g-org').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('g-org').focus(),400);">Apply now →</a>
   </div>
   <div class="giving-form">
+    <h3 class="giving-form-title" data-i18n="giving_form_title">Apply below</h3>
     <form class="contact-form" action="https://formspree.io/f/mvznvwpk" method="POST" style="max-width:none;margin:0;">
       <div class="field"><label for="g-org" data-i18n="giving_f_org">Organization name</label><input id="g-org" type="text" name="name" required autocomplete="organization" /></div>
       <div class="field"><label for="g-email" data-i18n="f_email">Email</label><input id="g-email" type="email" name="email" required autocomplete="email" /></div>
@@ -956,7 +957,7 @@ const I18N = {
     giving_p1:"I've had animals in my life for as long as I can remember. I've worked as a vet nurse assistant, managed a dog day care, and today I volunteer as an animal caretaker at a non-profit farm, caring for their farm animals on weekends. Giving back to the people who dedicate their lives to protecting animals feels like the right place to start.",
     giving_p2:"As Stormie Studios grows, I'm offering 2-3 custom websites completely free each year to registered non-profit organizations working in animal rescue, wildlife conservation, or animal welfare.",
     giving_p3:"Every website is designed and built by me from scratch, so I can only take on a small number of projects. If your organization could benefit from a new website, I'd love to hear from you.",
-    giving_cta:"Apply now →",
+    giving_form_title:"Apply below",
     giving_f_org:"Organization name", giving_f_msg:"Tell me about your organization", giving_f_apply:"Apply",
     giving_note:"For registered non-profits. A few spots available.",
     faq_label:"Faq",
@@ -1033,7 +1034,7 @@ const I18N = {
     giving_p1:"Jag har haft djur i mitt liv så länge jag kan minnas. Jag har jobbat som djursjukskötarassistent, varit chef för ett hunddagis, och idag är jag helgskötare på en ideell gård där jag tar hand om gårdens djur på helgerna. Att ge tillbaka till dem som ägnar sina liv åt att skydda djur känns som rätt plats att börja.",
     giving_p2:"I takt med att Stormie Studios växer erbjuder jag 2-3 kostnadsfria hemsidor varje år till registrerade ideella organisationer som arbetar med djurräddning, viltvård eller djurskydd.",
     giving_p3:"Varje hemsida designas och byggs av mig från grunden, så jag kan bara ta mig an ett fåtal projekt. Om er organisation skulle ha nytta av en ny hemsida hör gärna av er.",
-    giving_cta:"Ansök nu →",
+    giving_form_title:"Ansök nedan",
     giving_f_org:"Organisationens namn", giving_f_msg:"Berätta om er organisation", giving_f_apply:"Ansök",
     giving_note:"För registrerade ideella organisationer. Ett fåtal platser tillgängliga.",
     faq_label:"Vanliga frågor",
@@ -1485,3 +1486,4 @@ const NEED_LABELS = {
 })();
 
 </script>
+
