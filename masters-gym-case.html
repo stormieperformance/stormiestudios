@@ -119,6 +119,32 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .showcase { padding: 88px 0; border-bottom: 1px solid var(--line); }
 .showcase-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 40px; }
 .showcase-title em { font-style: italic; color: var(--muted); }
+
+.compare { padding: 88px 0; border-bottom: 1px solid var(--line); }
+.compare-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 12px; }
+.compare-title em { font-style: italic; color: var(--muted); }
+.compare-sub { font-size: 13px; color: var(--muted2); line-height: 1.7; max-width: 480px; margin-bottom: 40px; }
+.compare-viewport { overflow: hidden; }
+.compare-track { display: flex; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+.compare-slide { flex: 0 0 100%; }
+.compare-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.compare-col { position: relative; background: var(--bg2); aspect-ratio: 16/9; overflow: hidden; }
+.compare-col img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.compare-tag { position: absolute; top: 14px; left: 14px; z-index: 2; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-bright); background: rgba(12,12,11,0.7); padding: 6px 12px; border: 1px solid var(--gold-line); }
+.compare-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 1px dashed var(--line); margin: 10px; }
+.compare-placeholder-icon { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--muted2); font-size: 14px; }
+.compare-placeholder-text { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); }
+.compare-name { font-family: var(--serif); font-size: 24px; font-style: italic; color: var(--gold-bright); margin: 28px 0 12px; }
+.compare-caption { font-size: 14px; color: var(--muted); line-height: 1.85; max-width: 680px; }
+.compare-nav { display: flex; align-items: center; gap: 20px; margin-top: 36px; }
+.compare-arrow { width: 40px; height: 40px; border: 1px solid var(--line); background: transparent; color: var(--text); font-size: 15px; cursor: pointer; transition: border-color 0.2s, color 0.2s; display: flex; align-items: center; justify-content: center; }
+.compare-arrow:hover { border-color: var(--gold-line); color: var(--gold-bright); }
+.compare-arrow:disabled { opacity: 0.3; cursor: default; }
+.compare-arrow:disabled:hover { border-color: var(--line); color: var(--text); }
+.compare-dots { display: flex; gap: 8px; }
+.compare-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line); border: none; padding: 0; cursor: pointer; transition: background 0.2s; }
+.compare-dot.active { background: var(--gold); }
+.compare-count { font-size: 11px; letter-spacing: 0.08em; color: var(--muted2); margin-left: auto; }
 .preview { padding: 0 0 88px; }
 .preview-frame { border: 1px solid var(--line); background: var(--bg2); overflow: hidden; }
 .preview-frame-bar { display: flex; gap: 6px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
@@ -205,6 +231,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   .about{grid-template-columns:1fr;gap:32px}
   .system-grid{grid-template-columns:1fr}
   .showcase-stats{grid-template-columns:1fr}
+  .compare-cols{grid-template-columns:1fr}
+  .compare-col{aspect-ratio:16/10}
+  .compare-nav{flex-wrap:wrap}
+  .compare-count{margin-left:0;width:100%;order:3}
   footer{flex-direction:column;gap:8px;text-align:center}
   .hide-mobile{display:none}
 }
@@ -235,6 +265,98 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
       <p class="hero-meta-label" data-i18n="hero_meta_label">Client type</p>
       <p class="hero-meta-value" data-i18n="hero_meta_value">Kickboxing &amp; Muay Thai club · Kungsholmen, Stockholm</p>
     </div>
+  </div>
+</section>
+
+<!-- SECTION BY SECTION -->
+<section class="compare" id="compare">
+  <span class="section-label" data-i18n="compare_label">Section by section</span>
+  <h2 class="compare-title" data-i18n="compare_title">Old <em>versus new.</em></h2>
+  <p class="compare-sub" data-i18n="compare_sub">Every part of the site rebuilt, not just restyled. New-site screenshots are being added as they're finalized.</p>
+
+  <div class="compare-viewport">
+    <div class="compare-track" id="compareTrack">
+
+      <div class="compare-slide">
+        <div class="compare-cols">
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_old">Old</span><img src="masters-gym-before.jpg" alt="Old hero"></div>
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_new">New</span><div class="compare-placeholder"><span class="compare-placeholder-icon">↗</span><span class="compare-placeholder-text" data-i18n="compare_soon">Screenshot coming</span></div></div>
+        </div>
+        <h3 class="compare-name" data-i18n="c1_name">Hero</h3>
+        <p class="compare-caption" data-i18n="c1_text">The old hero was a single stock-feeling photo with the nav overlaid on top. The new hero replaces it with a structured layout, headline, description, and two direct calls to action, book a trial or check the schedule, so a first-time visitor knows exactly what to do without scrolling.</p>
+      </div>
+
+      <div class="compare-slide">
+        <div class="compare-cols">
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_old">Old</span><img src="old-about.jpg" alt="Old about section"></div>
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_new">New</span><div class="compare-placeholder"><span class="compare-placeholder-icon">↗</span><span class="compare-placeholder-text" data-i18n="compare_soon">Screenshot coming</span></div></div>
+        </div>
+        <h3 class="compare-name" data-i18n="c2_name">About</h3>
+        <p class="compare-caption" data-i18n="c2_text">The old About was two paragraphs floating in a box on top of a photo, cramped and hard to read on smaller screens. The new About is a proper section with founding story, credentials and a values grid, giving the club's history room to actually build trust instead of competing with an image for space.</p>
+      </div>
+
+      <div class="compare-slide">
+        <div class="compare-cols">
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_old">Old</span><img src="old-classes.jpg" alt="Old classes section"></div>
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_new">New</span><div class="compare-placeholder"><span class="compare-placeholder-icon">↗</span><span class="compare-placeholder-text" data-i18n="compare_soon">Screenshot coming</span></div></div>
+        </div>
+        <h3 class="compare-name" data-i18n="c3_name">Classes</h3>
+        <p class="compare-caption" data-i18n="c3_text">The old page had one general paragraph and a single link. The new site breaks training into seven distinct class types, each with its own format, tagline and equipment notes, so a visitor can find the right class for their level before ever contacting the gym.</p>
+      </div>
+
+      <div class="compare-slide">
+        <div class="compare-cols">
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_old">Old</span><img src="old-schedule.jpg" alt="Old schedule section"></div>
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_new">New</span><div class="compare-placeholder"><span class="compare-placeholder-icon">↗</span><span class="compare-placeholder-text" data-i18n="compare_soon">Screenshot coming</span></div></div>
+        </div>
+        <h3 class="compare-name" data-i18n="c4_name">Schedule</h3>
+        <p class="compare-caption" data-i18n="c4_text">The old schedule was a photo of a printed poster, not real text, not searchable, and stuck showing whichever season it was uploaded for. The new schedule pulls live from a spreadsheet the club edits themselves, with day-by-day and week views, so it's never out of date.</p>
+      </div>
+
+      <div class="compare-slide">
+        <div class="compare-cols">
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_old">Old</span><img src="old-news.jpg" alt="Old news page"></div>
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_new">New</span><div class="compare-placeholder"><span class="compare-placeholder-icon">↗</span><span class="compare-placeholder-text" data-i18n="compare_soon">Screenshot coming</span></div></div>
+        </div>
+        <h3 class="compare-name" data-i18n="c5_name">News</h3>
+        <p class="compare-caption" data-i18n="c5_text">The old news page was a plain list of dated posts, easy to miss and disconnected from the rest of the site. The new News section runs on a real CMS and now sits high on the homepage, right next to the schedule, where members actually look.</p>
+      </div>
+
+      <div class="compare-slide">
+        <div class="compare-cols">
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_old">Old</span><img src="old-trial.jpg" alt="Old trial promo"></div>
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_new">New</span><div class="compare-placeholder"><span class="compare-placeholder-icon">↗</span><span class="compare-placeholder-text" data-i18n="compare_soon">Screenshot coming</span></div></div>
+        </div>
+        <h3 class="compare-name" data-i18n="c6_name">Memberships</h3>
+        <p class="compare-caption" data-i18n="c6_text">The old site promoted trial weeks as a limited seasonal banner, implying trials were only available at certain times. The new site shows every membership tier and price year-round, with a standing invitation to try a class any time, no waiting for a promo window.</p>
+      </div>
+
+      <div class="compare-slide">
+        <div class="compare-cols">
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_old">Old</span><img src="old-corporate.jpg" alt="Old corporate section"></div>
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_new">New</span><div class="compare-placeholder"><span class="compare-placeholder-icon">↗</span><span class="compare-placeholder-text" data-i18n="compare_soon">Screenshot coming</span></div></div>
+        </div>
+        <h3 class="compare-name" data-i18n="c7_name">Corporate</h3>
+        <p class="compare-caption" data-i18n="c7_text">The old corporate offer was one paragraph and a "Read more" link with no clear next step. The new corporate section spells out exactly what's included, morning sessions, team building, group classes, with a direct booking CTA and a quote turnaround time.</p>
+      </div>
+
+      <div class="compare-slide">
+        <div class="compare-cols">
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_old">Old</span><img src="old-footer.jpg" alt="Old footer"></div>
+          <div class="compare-col"><span class="compare-tag" data-i18n="compare_new">New</span><div class="compare-placeholder"><span class="compare-placeholder-icon">↗</span><span class="compare-placeholder-text" data-i18n="compare_soon">Screenshot coming</span></div></div>
+        </div>
+        <h3 class="compare-name" data-i18n="c8_name">Contact</h3>
+        <p class="compare-caption" data-i18n="c8_text">The old footer was five links and a "Made with Squarespace" credit. The new contact section gives visitors the address, metro directions, opening hours and an embedded map in one place, answering the most common first-visit questions without an extra click.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="compare-nav">
+    <button class="compare-arrow" id="comparePrev" aria-label="Previous section">←</button>
+    <button class="compare-arrow" id="compareNext" aria-label="Next section">→</button>
+    <div class="compare-dots" id="compareDots"></div>
+    <span class="compare-count" id="compareCount">1 / 8</span>
   </div>
 </section>
 
@@ -423,6 +545,17 @@ const I18N = {
     hero_title:'Masters <span class="gold-shimmer">Gym.</span>',
     hero_desc:"A full rebuild for Masters Gym Stockholm bilingual, conversion-focused, with a self-service news system, a schedule that fits how the club actually works, and a live Instagram feed.",
     hero_meta_label:"Client type", hero_meta_value:"Kickboxing & Muay Thai club · Kungsholmen, Stockholm",
+    compare_label:"Section by section", compare_title:'Old <em>versus new.</em>',
+    compare_sub:"Every part of the site rebuilt, not just restyled. New-site screenshots are being added as they're finalized.",
+    compare_old:"Old", compare_new:"New", compare_soon:"Screenshot coming",
+    c1_name:"Hero", c1_text:"The old hero was a single stock-feeling photo with the nav overlaid on top. The new hero replaces it with a structured layout, headline, description, and two direct calls to action, book a trial or check the schedule, so a first-time visitor knows exactly what to do without scrolling.",
+    c2_name:"About", c2_text:"The old About was two paragraphs floating in a box on top of a photo, cramped and hard to read on smaller screens. The new About is a proper section with founding story, credentials and a values grid, giving the club's history room to actually build trust instead of competing with an image for space.",
+    c3_name:"Classes", c3_text:"The old page had one general paragraph and a single link. The new site breaks training into seven distinct class types, each with its own format, tagline and equipment notes, so a visitor can find the right class for their level before ever contacting the gym.",
+    c4_name:"Schedule", c4_text:"The old schedule was a photo of a printed poster, not real text, not searchable, and stuck showing whichever season it was uploaded for. The new schedule pulls live from a spreadsheet the club edits themselves, with day-by-day and week views, so it's never out of date.",
+    c5_name:"News", c5_text:"The old news page was a plain list of dated posts, easy to miss and disconnected from the rest of the site. The new News section runs on a real CMS and now sits high on the homepage, right next to the schedule, where members actually look.",
+    c6_name:"Memberships", c6_text:"The old site promoted trial weeks as a limited seasonal banner, implying trials were only available at certain times. The new site shows every membership tier and price year-round, with a standing invitation to try a class any time, no waiting for a promo window.",
+    c7_name:"Corporate", c7_text:'The old corporate offer was one paragraph and a "Read more" link with no clear next step. The new corporate section spells out exactly what\'s included, morning sessions, team building, group classes, with a direct booking CTA and a quote turnaround time.',
+    c8_name:"Contact", c8_text:'The old footer was five links and a "Made with Squarespace" credit. The new contact section gives visitors the address, metro directions, opening hours and an embedded map in one place, answering the most common first-visit questions without an extra click.',
     showcase_label:"Real results", showcase_title:'Measured, <em>not just claimed.</em>',
     stat_perf_label:"Performance score (mobile)", stat_perf_sub:"The old site's performance couldn't even be measured, Lighthouse failed to complete a scan",
     stat_seo_label:"SEO score", stat_seo_sub:"Up from 85 on the old site",
@@ -459,6 +592,17 @@ const I18N = {
     hero_title:'Masters <span class="gold-shimmer">Gym.</span>',
     hero_desc:"En fullständig ombyggnad för Masters Gym Stockholm tvåspråkig, konverteringsfokuserad, med ett självbetjänat nyhetssystem, ett schema som passar hur klubben faktiskt arbetar, och ett live Instagram-flöde.",
     hero_meta_label:"Kundtyp", hero_meta_value:"Kickboxning & thaiboxningsklubb · Kungsholmen, Stockholm",
+    compare_label:"Sektion för sektion", compare_title:'Gammalt <em>mot nytt.</em>',
+    compare_sub:"Varje del av sajten är ombyggd, inte bara omstylad. Skärmbilder från nya sajten läggs till efterhand som de blir klara.",
+    compare_old:"Gammal", compare_new:"Ny", compare_soon:"Skärmbild kommer",
+    c1_name:"Hjälte", c1_text:"Den gamla hjälten var ett enda foto som kändes lite som bildbank, med menyn ovanpå. Den nya hjälten ersätter det med en strukturerad layout, rubrik, beskrivning och två tydliga call-to-actions, boka provpass eller se schemat, så en förstagångsbesökare vet exakt vad de ska göra utan att scrolla.",
+    c2_name:"Om oss", c2_text:"Den gamla Om oss-sektionen var två stycken text som flöt i en ruta ovanpå ett foto, trångt och svårläst på mindre skärmar. Den nya Om oss-sektionen är en riktig sektion med grundarhistoria, meriter och ett värderingsraster, vilket ger klubbens historia utrymme att faktiskt bygga förtroende istället för att konkurrera med en bild om platsen.",
+    c3_name:"Pass", c3_text:"Den gamla sidan hade ett allmänt stycke och en enda länk. Den nya sajten delar upp träningen i sju olika passtyper, var och en med sitt eget format, tagline och utrustningsinfo, så en besökare kan hitta rätt pass för sin nivå innan de ens kontaktar gymmet.",
+    c4_name:"Schema", c4_text:"Det gamla schemat var ett foto av en utskriven affisch, inte riktig text, inte sökbart, och fastnade med vilken säsong som helst det laddades upp för. Det nya schemat hämtas live från ett kalkylark klubben redigerar själva, med dag-för-dag- och veckovyer, så det blir aldrig inaktuellt.",
+    c5_name:"Nyheter", c5_text:"Den gamla nyhetssidan var en enkel lista med daterade inlägg, lätt att missa och frikopplad från resten av sajten. Den nya Nyheter-sektionen körs på ett riktigt CMS och ligger nu högt upp på startsidan, precis bredvid schemat, där medlemmar faktiskt tittar.",
+    c6_name:"Medlemskap", c6_text:"Den gamla sajten marknadsförde provveckor som en tidsbegränsad banner för säsongen, vilket antydde att provpass bara fanns vissa perioder. Den nya sajten visar alla medlemskapsnivåer och priser året runt, med en stående inbjudan att prova ett pass när som helst, ingen väntan på ett kampanjfönster.",
+    c7_name:"Företag", c7_text:'Det gamla företagserbjudandet var ett stycke och en "Läs mer"-länk utan tydligt nästa steg. Den nya företagssektionen visar exakt vad som ingår, morgonpass, teambuilding, gruppass, med en direkt bokningsknapp och svarstid för offert.',
+    c8_name:"Kontakt", c8_text:'Den gamla sidfoten var fem länkar och en "Made with Squarespace"-kreditering. Den nya kontaktsektionen ger besökare adress, T-baneväg, öppettider och en inbäddad karta på ett ställe, vilket besvarar de vanligaste frågorna inför ett första besök utan ett extra klick.',
     showcase_label:"Verkliga resultat", showcase_title:'Mätt, <em>inte bara påstått.</em>',
     stat_perf_label:"Prestandapoäng (mobil)", stat_perf_sub:"Den gamla sajtens prestanda gick inte ens att mäta, Lighthouse kunde inte slutföra skanningen",
     stat_seo_label:"SEO-poäng", stat_seo_sub:"Upp från 85 på den gamla sajten",
@@ -503,10 +647,49 @@ function setLang(lang) {
   try { localStorage.setItem('sp-lang', lang); } catch(e) {}
 }
 
+function initCompare() {
+  const track = document.getElementById('compareTrack');
+  if (!track) return;
+  const slides = Array.from(track.children);
+  const prevBtn = document.getElementById('comparePrev');
+  const nextBtn = document.getElementById('compareNext');
+  const dotsWrap = document.getElementById('compareDots');
+  const countEl = document.getElementById('compareCount');
+  let index = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'compare-dot';
+    dot.setAttribute('aria-label', 'Go to section ' + (i + 1));
+    dot.addEventListener('click', () => { index = i; update(); });
+    dotsWrap.appendChild(dot);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function update() {
+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === slides.length - 1;
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    countEl.textContent = (index + 1) + ' / ' + slides.length;
+  }
+  prevBtn.addEventListener('click', () => { index = Math.max(0, index - 1); update(); });
+  nextBtn.addEventListener('click', () => { index = Math.min(slides.length - 1, index + 1); update(); });
+  document.addEventListener('keydown', e => {
+    const rect = track.getBoundingClientRect();
+    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+  update();
+}
+
 (function init() {
   let lang = 'en';
   try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
   if (lang !== 'en') setLang(lang);
+
+  initCompare();
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
@@ -520,6 +703,7 @@ function setLang(lang) {
 </script>
 </body>
 </html>
+
 
 
 
