@@ -193,9 +193,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
   opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity 0.2s, transform 0.2s;
   z-index: 5; pointer-events: none;
 }
-.hz:hover .hz-tip, .hz:focus-visible .hz-tip { opacity: 1; visibility: visible; transform: translateY(0); }
+.hz:hover .hz-tip, .hz:focus-visible .hz-tip, .hz.open .hz-tip { opacity: 1; visibility: visible; transform: translateY(0); }
+.hz.open { border-color: var(--gold-line); background: var(--gold-dim); }
+.hz.open::before { background: var(--gold); color: #0c0c0b; }
 .hz.below .hz-tip { bottom: auto; top: calc(100% + 10px); transform: translateY(-6px); }
-.hz.below:hover .hz-tip, .hz.below:focus-visible .hz-tip { transform: translateY(0); }
+.hz.below:hover .hz-tip, .hz.below:focus-visible .hz-tip, .hz.below.open .hz-tip { transform: translateY(0); }
 .hz.right .hz-tip { left: auto; right: 0; }
 .hz-tip b { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--gold-bright); font-weight: 400; }
 .hz-tip span { font-size: 12px; color: var(--muted); line-height: 1.6; }
@@ -470,10 +472,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
       <button class="hz below right" style="top:1%;left:80%;width:10%;height:7%">
         <span class="hz-tip"><b data-i18n="hz1_5_h">Always-visible trial CTA</b><span data-i18n="hz1_5_p">One of three layered calls to action on this page alone, so the booking flow is never more than a glance away.</span></span>
       </button>
-      <button class="hz" style="top:17%;left:2%;width:42%;height:48%">
+      <button class="hz below" style="top:17%;left:2%;width:42%;height:48%">
         <span class="hz-tip"><b data-i18n="hz1_6_h">Headline</b><span data-i18n="hz1_6_p">Structured, direct, and legible over any photo underneath it, no scrolling required to know what the club is.</span></span>
       </button>
-      <button class="hz" style="top:7%;left:45%;width:53%;height:60%">
+      <button class="hz below" style="top:7%;left:45%;width:53%;height:60%">
         <span class="hz-tip"><b data-i18n="hz1_7_h">Hero image, becoming video</b><span data-i18n="hz1_7_p">A real gym photo for now, planned to become a short video to sell the gym's atmosphere directly, not just describe it.</span></span>
       </button>
       <button class="hz" style="top:68%;left:2%;width:42%;height:8%">
@@ -1167,6 +1169,22 @@ function initCraftTabs() {
   });
 }
 
+function initTourHotspots() {
+  const hotspots = document.querySelectorAll('.hz');
+  if (!hotspots.length) return;
+  hotspots.forEach(hz => {
+    hz.addEventListener('click', e => {
+      e.stopPropagation();
+      const wasOpen = hz.classList.contains('open');
+      hotspots.forEach(h => h.classList.remove('open'));
+      if (!wasOpen) hz.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => {
+    hotspots.forEach(h => h.classList.remove('open'));
+  });
+}
+
 (function init() {
   let lang = 'en';
   try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
@@ -1174,6 +1192,7 @@ function initCraftTabs() {
 
   initCompare();
   initCraftTabs();
+  initTourHotspots();
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
@@ -1187,6 +1206,7 @@ function initCraftTabs() {
 </script>
 </body>
 </html>
+
 
 
 
