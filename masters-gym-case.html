@@ -171,6 +171,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .tour-block { margin-bottom: 40px; }
 .tour-block-title { font-family: var(--serif); font-size: 20px; font-style: italic; color: var(--gold-bright); margin-bottom: 14px; }
 .tour-shot { position: relative; aspect-ratio: 16/9; border: 1px solid var(--line); background: var(--bg2); overflow: hidden; counter-reset: hz; }
+.tour-shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .tour-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 1px dashed var(--line); margin: 10px; }
 .tour-placeholder-icon { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--muted2); font-size: 14px; }
 .tour-placeholder span:last-child { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); }
@@ -454,7 +455,7 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   <div class="tour-block">
     <h3 class="tour-block-title" data-i18n="tb1_title">Hero</h3>
     <div class="tour-shot">
-      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
+      <img src="masters-gym-hero-tour.jpg" alt="Masters Gym hero section">
       <button class="hz below" style="top:1%;left:2%;width:19%;height:7%">
         <span class="hz-tip"><b data-i18n="hz1_1_h">Logo, both modes</b><span data-i18n="hz1_1_p">A separate logo variant for dark and light mode, not one logo awkwardly recolored to fit both.</span></span>
       </button>
@@ -1187,6 +1188,7 @@ function initCraftTabs() {
 </script>
 </body>
 </html>
+
 
 
 
