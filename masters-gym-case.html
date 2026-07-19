@@ -164,6 +164,23 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .showcase-stat-sub { font-size: 12px; color: var(--muted2); line-height: 1.6; }
 
 /* PILLARS OVERVIEW */
+.demo { padding: 88px 0; border-bottom: 1px solid var(--line); }
+.demo-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 12px; }
+.demo-title em { font-style: italic; color: var(--muted); }
+.demo-sub { font-size: 13px; color: var(--muted2); line-height: 1.7; max-width: 500px; margin-bottom: 36px; }
+.demo-frame { border: 1px solid var(--line); background: var(--bg2); overflow: hidden; margin-bottom: 24px; }
+.demo-frame-bar { display: flex; gap: 6px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.demo-frame-bar span { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+.demo-frame iframe { display: block; width: 100%; height: 640px; border: none; background: #0A0A08; }
+.demo-legend { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 24px; }
+.demo-pin { background: var(--bg); border: none; text-align: left; padding: 22px 20px; cursor: pointer; font-family: var(--sans); display: flex; flex-direction: column; gap: 8px; transition: background 0.2s; }
+.demo-pin:hover { background: var(--gold-dim); }
+.demo-pin.active { background: var(--gold-dim); }
+.demo-pin-num { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--gold); }
+.demo-pin-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.demo-pin-text { font-size: 11px; color: var(--muted2); line-height: 1.6; }
+.demo-open { display: inline-block; }
+
 .pillars { padding: 88px 0; border-bottom: 1px solid var(--line); }
 .pillars-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 44px; }
 .pillars-title em { font-style: italic; color: var(--muted); }
@@ -282,6 +299,8 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   .compare-count{margin-left:0;width:100%;order:3}
   .pillars-grid{grid-template-columns:1fr}
   .pd-row{grid-template-columns:1fr;gap:8px}
+  .demo-legend{grid-template-columns:1fr 1fr}
+  .demo-frame iframe{height:480px}
   .craft-tab{margin-right:20px}
   footer{flex-direction:column;gap:8px;text-align:center}
   .hide-mobile{display:none}
@@ -406,6 +425,63 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
     <div class="compare-dots" id="compareDots"></div>
     <span class="compare-count" id="compareCount">1 / 8</span>
   </div>
+</section>
+
+<!-- LIVE DEMO -->
+<section class="demo" id="demo">
+  <span class="section-label" data-i18n="demo_label">Explore the real thing</span>
+  <h2 class="demo-title" data-i18n="demo_title">Not a mockup. <em>The actual site.</em></h2>
+  <p class="demo-sub" data-i18n="demo_sub">Click a feature below and the site jumps straight to it. This is the real, live build, not a screenshot.</p>
+
+  <div class="demo-frame">
+    <div class="demo-frame-bar"><span></span><span></span><span></span></div>
+    <iframe id="liveDemo" src="https://stormieperformance.com/masters-gym/#hero" title="Masters Gym live site" loading="lazy"></iframe>
+  </div>
+
+  <div class="demo-legend">
+    <button type="button" class="demo-pin" data-anchor="hero">
+      <span class="demo-pin-num">01</span>
+      <span class="demo-pin-name" data-i18n="dp1_h">Hero</span>
+      <span class="demo-pin-text" data-i18n="dp1_p">Structured layout, dual calls to action, no scrolling required to know what to do.</span>
+    </button>
+    <button type="button" class="demo-pin" data-anchor="finder">
+      <span class="demo-pin-num">02</span>
+      <span class="demo-pin-name" data-i18n="dp2_h">Class finder</span>
+      <span class="demo-pin-text" data-i18n="dp2_p">One click answers the most common hesitation a first-time visitor has.</span>
+    </button>
+    <button type="button" class="demo-pin" data-anchor="path-ladder">
+      <span class="demo-pin-num">03</span>
+      <span class="demo-pin-name" data-i18n="dp3_h">Progression ladder</span>
+      <span class="demo-pin-text" data-i18n="dp3_p">Beginner, intermediate, competition, shown as a visible path, not implied.</span>
+    </button>
+    <button type="button" class="demo-pin" data-anchor="schedule">
+      <span class="demo-pin-num">04</span>
+      <span class="demo-pin-name" data-i18n="dp4_h">Schedule</span>
+      <span class="demo-pin-text" data-i18n="dp4_p">Pulled live from a spreadsheet the club edits themselves. No booking button, on purpose, the club is drop-in only.</span>
+    </button>
+    <button type="button" class="demo-pin" data-anchor="news">
+      <span class="demo-pin-num">05</span>
+      <span class="demo-pin-name" data-i18n="dp5_h">News</span>
+      <span class="demo-pin-text" data-i18n="dp5_p">A real CMS the club publishes to themselves, with an optional signup form on any post.</span>
+    </button>
+    <button type="button" class="demo-pin" data-anchor="memberships">
+      <span class="demo-pin-num">06</span>
+      <span class="demo-pin-name" data-i18n="dp6_h">Memberships</span>
+      <span class="demo-pin-text" data-i18n="dp6_p">Every tier, every price, a call to action next to each one.</span>
+    </button>
+    <button type="button" class="demo-pin" data-anchor="corporate">
+      <span class="demo-pin-num">07</span>
+      <span class="demo-pin-name" data-i18n="dp7_h">Corporate</span>
+      <span class="demo-pin-text" data-i18n="dp7_p">A dedicated funnel for company leads instead of one paragraph and a dead link.</span>
+    </button>
+    <button type="button" class="demo-pin" data-anchor="contact">
+      <span class="demo-pin-num">08</span>
+      <span class="demo-pin-name" data-i18n="dp8_h">Contact</span>
+      <span class="demo-pin-text" data-i18n="dp8_p">Address, hours, and an embedded map, everything needed for a first visit in one place.</span>
+    </button>
+  </div>
+
+  <a href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener" class="btn-ghost demo-open" data-i18n="demo_open">Open the full site in a new tab →</a>
 </section>
 
 <!-- THREE PILLARS -->
@@ -743,6 +819,17 @@ const I18N = {
     c6_name:"Memberships", c6_text:"The old site promoted trial weeks as a limited seasonal banner, implying trials were only available at certain times. The new site shows every membership tier and price year-round, with a standing invitation to try a class any time, no waiting for a promo window.",
     c7_name:"Corporate", c7_text:'The old corporate offer was one paragraph and a "Read more" link with no clear next step. The new corporate section spells out exactly what\'s included, morning sessions, team building, group classes, with a direct booking CTA and a quote turnaround time.',
     c8_name:"Contact", c8_text:'The old footer was five links and a "Made with Squarespace" credit. The new contact section gives visitors the address, metro directions, opening hours and an embedded map in one place, answering the most common first-visit questions without an extra click.',
+    demo_label:"Explore the real thing", demo_title:'Not a mockup. <em>The actual site.</em>',
+    demo_sub:"Click a feature below and the site jumps straight to it. This is the real, live build, not a screenshot.",
+    demo_open:"Open the full site in a new tab →",
+    dp1_h:"Hero", dp1_p:"Structured layout, dual calls to action, no scrolling required to know what to do.",
+    dp2_h:"Class finder", dp2_p:"One click answers the most common hesitation a first-time visitor has.",
+    dp3_h:"Progression ladder", dp3_p:"Beginner, intermediate, competition, shown as a visible path, not implied.",
+    dp4_h:"Schedule", dp4_p:"Pulled live from a spreadsheet the club edits themselves. No booking button, on purpose, the club is drop-in only.",
+    dp5_h:"News", dp5_p:"A real CMS the club publishes to themselves, with an optional signup form on any post.",
+    dp6_h:"Memberships", dp6_p:"Every tier, every price, a call to action next to each one.",
+    dp7_h:"Corporate", dp7_p:"A dedicated funnel for company leads instead of one paragraph and a dead link.",
+    dp8_h:"Contact", dp8_p:"Address, hours, and an embedded map, everything needed for a first visit in one place.",
     pillars_label:"The thinking", pillars_title:'Three problems. <em>One system.</em>',
     pillar1_name:"Members", pillar1_text:"More people through the door. Every visitor gets a clear next step, from a first look to a decision to compete.",
     pillar2_name:"Money", pillar2_text:"Revenue protected and grown. Clear pricing, self-qualifying corporate leads, and a real leak that got found and fixed.",
@@ -826,6 +913,17 @@ const I18N = {
     c6_name:"Medlemskap", c6_text:"Den gamla sajten marknadsförde provveckor som en tidsbegränsad banner för säsongen, vilket antydde att provpass bara fanns vissa perioder. Den nya sajten visar alla medlemskapsnivåer och priser året runt, med en stående inbjudan att prova ett pass när som helst, ingen väntan på ett kampanjfönster.",
     c7_name:"Företag", c7_text:'Det gamla företagserbjudandet var ett stycke och en "Läs mer"-länk utan tydligt nästa steg. Den nya företagssektionen visar exakt vad som ingår, morgonpass, teambuilding, gruppass, med en direkt bokningsknapp och svarstid för offert.',
     c8_name:"Kontakt", c8_text:'Den gamla sidfoten var fem länkar och en "Made with Squarespace"-kreditering. Den nya kontaktsektionen ger besökare adress, T-baneväg, öppettider och en inbäddad karta på ett ställe, vilket besvarar de vanligaste frågorna inför ett första besök utan ett extra klick.',
+    demo_label:"Utforska det riktiga", demo_title:'Ingen mockup. <em>Den riktiga sajten.</em>',
+    demo_sub:"Klicka på en funktion nedan så hoppar sajten direkt dit. Det här är den riktiga, live sajten, ingen skärmbild.",
+    demo_open:"Öppna hela sajten i en ny flik →",
+    dp1_h:"Hero", dp1_p:"Strukturerad layout, två call-to-actions, ingen scrollning krävs för att veta vad man ska göra.",
+    dp2_h:"Passguide", dp2_p:"Ett klick besvarar den vanligaste tveksamheten hos en förstagångsbesökare.",
+    dp3_h:"Progressionsstege", dp3_p:"Nybörjare, fortsättning, tävling, visat som en synlig väg, inte underförstått.",
+    dp4_h:"Schema", dp4_p:"Hämtas live från ett kalkylark klubben redigerar själva. Ingen bokningsknapp, medvetet, klubben är drop-in.",
+    dp5_h:"Nyheter", dp5_p:"Ett riktigt CMS klubben publicerar till själva, med ett valfritt anmälningsformulär på varje inlägg.",
+    dp6_h:"Medlemskap", dp6_p:"Varje nivå, varje pris, en call to action bredvid varje.",
+    dp7_h:"Företag", dp7_p:"En egen kanal för företagsleads istället för ett stycke och en död länk.",
+    dp8_h:"Kontakt", dp8_p:"Adress, öppettider och en inbäddad karta, allt som behövs för ett första besök på ett ställe.",
     pillars_label:"Tankarna bakom", pillars_title:'Tre problem. <em>Ett system.</em>',
     pillar1_name:"Medlemmar", pillar1_text:"Fler genom dörren. Varje besökare får ett tydligt nästa steg, från första titten till beslutet att tävla.",
     pillar2_name:"Pengar", pillar2_text:"Intäkter skyddade och ökade. Tydliga priser, självkvalificerande företagsleads, och ett riktigt läckage som hittades och lagades.",
@@ -956,6 +1054,20 @@ function initCraftTabs() {
   });
 }
 
+function initDemoPins() {
+  const iframe = document.getElementById('liveDemo');
+  const pins = document.querySelectorAll('.demo-pin');
+  if (!iframe || !pins.length) return;
+  const base = 'https://stormieperformance.com/masters-gym/';
+  pins.forEach(pin => {
+    pin.addEventListener('click', () => {
+      pins.forEach(p => p.classList.remove('active'));
+      pin.classList.add('active');
+      iframe.src = base + '#' + pin.dataset.anchor;
+    });
+  });
+}
+
 (function init() {
   let lang = 'en';
   try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
@@ -963,6 +1075,7 @@ function initCraftTabs() {
 
   initCompare();
   initCraftTabs();
+  initDemoPins();
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
@@ -976,6 +1089,7 @@ function initCraftTabs() {
 </script>
 </body>
 </html>
+
 
 
 
