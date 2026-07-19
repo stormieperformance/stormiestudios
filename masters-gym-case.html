@@ -186,21 +186,31 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 }
 .hz:hover::before, .hz:focus-visible::before { background: var(--gold); color: #0c0c0b; }
 .hz:hover, .hz:focus-visible { border-color: var(--gold-line); background: var(--gold-dim); }
-.hz-tip {
-  position: absolute; bottom: calc(100% + 10px); left: 0; width: 260px; max-width: 70vw;
-  background: var(--bg); border: 1px solid var(--gold-line); padding: 14px 16px;
-  display: flex; flex-direction: column; gap: 6px; text-align: left;
-  opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity 0.2s, transform 0.2s;
-  z-index: 5; pointer-events: none;
+.hz-tip { display: none; }
+.hz.active { border-color: var(--gold-line); background: var(--gold-dim); }
+.hz.active::before { background: var(--gold); color: #0c0c0b; }
+
+.tour-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.tour-legend-item {
+  display: flex; align-items: center; gap: 8px; background: var(--bg2); border: 1px solid var(--line);
+  padding: 10px 14px; cursor: pointer; font-family: var(--sans); transition: border-color 0.2s, background 0.2s;
 }
-.hz:hover .hz-tip, .hz:focus-visible .hz-tip, .hz.open .hz-tip { opacity: 1; visibility: visible; transform: translateY(0); }
-.hz.open { border-color: var(--gold-line); background: var(--gold-dim); }
-.hz.open::before { background: var(--gold); color: #0c0c0b; }
-.hz.below .hz-tip { bottom: auto; top: calc(100% + 10px); transform: translateY(-6px); }
-.hz.below:hover .hz-tip, .hz.below:focus-visible .hz-tip, .hz.below.open .hz-tip { transform: translateY(0); }
-.hz.right .hz-tip { left: auto; right: 0; }
-.hz-tip b { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--gold-bright); font-weight: 400; }
-.hz-tip span { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.tour-legend-item:hover { border-color: var(--gold-line); }
+.tour-legend-item.active { border-color: var(--gold); background: var(--gold-dim); }
+.tour-legend-num {
+  width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--gold-line); color: var(--gold);
+  font-size: 9px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.tour-legend-item.active .tour-legend-num { background: var(--gold); color: #0c0c0b; }
+.tour-legend-name { font-size: 12px; color: var(--text); text-align: left; }
+
+.tour-explain {
+  margin-top: 16px; padding: 26px 28px; background: var(--bg2); border: 1px solid var(--gold-line);
+  min-height: 90px; display: flex; flex-direction: column; justify-content: center; gap: 8px;
+}
+.tour-explain-empty { font-size: 13px; color: var(--muted2); font-style: italic; }
+.tour-explain b { font-family: var(--serif); font-size: 20px; font-style: italic; font-weight: 400; color: var(--gold-bright); }
+.tour-explain span { font-size: 14px; color: var(--muted); line-height: 1.8; }
 
 .pillars { padding: 88px 0; border-bottom: 1px solid var(--line); }
 .pillars-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 44px; }
@@ -320,7 +330,8 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   .compare-count{margin-left:0;width:100%;order:3}
   .pillars-grid{grid-template-columns:1fr}
   .pd-row{grid-template-columns:1fr;gap:8px}
-  .hz-tip{width:220px}
+  .tour-legend-item{padding:8px 10px}
+  .tour-explain{padding:20px 20px}
   .craft-tab{margin-right:20px}
   footer{flex-direction:column;gap:8px;text-align:center}
   .hide-mobile{display:none}
@@ -491,6 +502,8 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz1_11_h">Corporate teaser</b><span data-i18n="hz1_11_p">A quiet third link for a completely different visitor intent, without competing with the main CTAs.</span></span>
       </button>
     </div>
+    <div class="tour-legend"></div>
+    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
   <div class="tour-block">
@@ -507,6 +520,8 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz2_3_h">Class cards</b><span data-i18n="hz2_3_p">Nybörjare, Fortsättning and Tävling grouped first, all-levels classes grouped after, so the track that actually matters is easy to scan.</span></span>
       </button>
     </div>
+    <div class="tour-legend"></div>
+    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
   <div class="tour-block">
@@ -523,6 +538,8 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz3_3_h">Season notes</b><span data-i18n="hz3_3_p">An optional "important information" field the club fills in themselves, no code required.</span></span>
       </button>
     </div>
+    <div class="tour-legend"></div>
+    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
   <div class="tour-block">
@@ -536,6 +553,8 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz4_2_h">Optional signup form</b><span data-i18n="hz4_2_p">Any post can carry a name, email and custom-question form, turning an announcement into a lead capture.</span></span>
       </button>
     </div>
+    <div class="tour-legend"></div>
+    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
   <div class="tour-block">
@@ -546,6 +565,8 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz5_1_h">Every tier, priced</b><span data-i18n="hz5_1_p">Every tier, every price, a call to action next to each one. No visitor has to ask how to actually sign up.</span></span>
       </button>
     </div>
+    <div class="tour-legend"></div>
+    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
   <div class="tour-block">
@@ -556,6 +577,8 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz6_1_h">A real funnel</b><span data-i18n="hz6_1_p">Spells out exactly what's included and promises a quote within 24 hours, instead of one paragraph and a dead link.</span></span>
       </button>
     </div>
+    <div class="tour-legend"></div>
+    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
   <div class="tour-block">
@@ -566,6 +589,8 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz7_1_h">Everything in one place</b><span data-i18n="hz7_1_p">Address, metro directions, opening hours and an embedded map, answering the most common first-visit questions without an extra click.</span></span>
       </button>
     </div>
+    <div class="tour-legend"></div>
+    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 </section>
 
@@ -907,6 +932,7 @@ const I18N = {
     tour_label:"Hover to explore", tour_title:'Every part, <em>explained.</em>',
     tour_sub:"Hover or tab through any highlighted area for the thinking behind it, from layout to business value.",
     tour_soon:"Screenshot coming",
+    tour_explain_empty:"Select a numbered point above to see the explanation here.",
     tb1_title:"Hero", tb2_title:"Classes", tb3_title:"Schedule", tb4_title:"News", tb5_title:"Memberships", tb6_title:"Corporate", tb7_title:"Contact",
     hz1_1_h:"Logo, both modes", hz1_1_p:"A separate logo variant for dark and light mode, not one logo awkwardly recolored to fit both.",
     hz1_2_h:"Full navigation, every section", hz1_2_p:"The old site didn't even have nav tabs for every section. Here, every part of the site is one click away, always.",
@@ -1016,6 +1042,7 @@ const I18N = {
     tour_label:"Hovra för att utforska", tour_title:'Varje del, <em>förklarad.</em>',
     tour_sub:"Hovra eller tabba genom valfri markerad yta för tankarna bakom, från layout till affärsvärde.",
     tour_soon:"Skärmbild kommer",
+    tour_explain_empty:"Välj en numrerad punkt ovan för att se förklaringen här.",
     tb1_title:"Hero", tb2_title:"Pass", tb3_title:"Schema", tb4_title:"Nyheter", tb5_title:"Medlemskap", tb6_title:"Företag", tb7_title:"Kontakt",
     hz1_1_h:"Logotyp, båda lägena", hz1_1_p:"En egen logotypvariant för mörkt och ljust läge, inte en logotyp omfärgad på ett kompromissigt sätt för att passa båda.",
     hz1_2_h:"Full navigering, varje sektion", hz1_2_p:"Den gamla sajten hade inte ens menyflikar för alla sektioner. Här är varje del av sajten ett klick bort, alltid.",
@@ -1117,6 +1144,7 @@ function setLang(lang) {
   document.getElementById('lang-en').classList.toggle('active', lang==='en');
   document.getElementById('lang-sv').classList.toggle('active', lang==='sv');
   try { localStorage.setItem('sp-lang', lang); } catch(e) {}
+  if (typeof buildTourLegends === 'function') buildTourLegends();
 }
 
 function initCompare() {
@@ -1169,19 +1197,43 @@ function initCraftTabs() {
   });
 }
 
-function initTourHotspots() {
-  const hotspots = document.querySelectorAll('.hz');
-  if (!hotspots.length) return;
-  hotspots.forEach(hz => {
-    hz.addEventListener('click', e => {
-      e.stopPropagation();
-      const wasOpen = hz.classList.contains('open');
-      hotspots.forEach(h => h.classList.remove('open'));
-      if (!wasOpen) hz.classList.add('open');
+function buildTourLegends() {
+  document.querySelectorAll('.tour-block').forEach(block => {
+    const shot = block.querySelector('.tour-shot');
+    const legend = block.querySelector('.tour-legend');
+    const explain = block.querySelector('.tour-explain');
+    if (!shot || !legend || !explain) return;
+    const zones = Array.from(shot.querySelectorAll('.hz'));
+    if (!zones.length) return;
+
+    const activeIndex = zones.findIndex(z => z.classList.contains('active'));
+    legend.innerHTML = '';
+
+    function select(i) {
+      zones.forEach(z => z.classList.remove('active'));
+      Array.from(legend.children).forEach(b => b.classList.remove('active'));
+      zones[i].classList.add('active');
+      if (legend.children[i]) legend.children[i].classList.add('active');
+      const tip = zones[i].querySelector('.hz-tip');
+      explain.innerHTML = tip ? tip.innerHTML : '';
+    }
+
+    zones.forEach((hz, i) => {
+      const tip = hz.querySelector('.hz-tip');
+      const titleEl = tip ? tip.querySelector('b') : null;
+      const title = titleEl ? titleEl.textContent : '';
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tour-legend-item';
+      btn.innerHTML = '<span class="tour-legend-num">' + String(i + 1).padStart(2, '0') + '</span><span class="tour-legend-name"></span>';
+      btn.querySelector('.tour-legend-name').textContent = title;
+      btn.addEventListener('click', () => select(i));
+      legend.appendChild(btn);
+
+      hz.onclick = e => { e.stopPropagation(); select(i); };
     });
-  });
-  document.addEventListener('click', () => {
-    hotspots.forEach(h => h.classList.remove('open'));
+
+    if (activeIndex >= 0) select(activeIndex);
   });
 }
 
@@ -1192,7 +1244,7 @@ function initTourHotspots() {
 
   initCompare();
   initCraftTabs();
-  initTourHotspots();
+  buildTourLegends();
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
@@ -1206,6 +1258,7 @@ function initTourHotspots() {
 </script>
 </body>
 </html>
+
 
 
 
