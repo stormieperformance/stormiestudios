@@ -190,7 +190,17 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .hz.active { border-color: var(--gold-line); background: var(--gold-dim); }
 .hz.active::before { background: var(--gold); color: #0c0c0b; }
 
-.tour-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.tour-legend-toggle {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+  background: none; border: none; border-top: 1px solid var(--line); padding: 14px 2px;
+  cursor: pointer; font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted2); margin-top: 16px; transition: color 0.2s;
+}
+.tour-legend-toggle:hover { color: var(--text); }
+.tour-legend-toggle-icon { font-size: 14px; transition: transform 0.25s ease; color: var(--gold); }
+.tour-legend-toggle[aria-expanded="true"] .tour-legend-toggle-icon { transform: rotate(45deg); }
+.tour-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.tour-legend.collapsed { display: none; }
 .tour-legend-item {
   display: flex; align-items: center; gap: 8px; background: var(--bg2); border: 1px solid var(--line);
   padding: 10px 14px; cursor: pointer; font-family: var(--sans); transition: border-color 0.2s, background 0.2s;
@@ -502,7 +512,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz1_11_h">Corporate services entry point</b><span data-i18n="hz1_11_p">Introduces Masters Gym's corporate offering directly from the hero, exposing an additional business opportunity alongside the primary membership journey.</span></span>
       </button>
     </div>
-    <div class="tour-legend"></div>
+    <button type="button" class="tour-legend-toggle" aria-expanded="false">
+      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
+    </button>
+    <div class="tour-legend collapsed"></div>
     <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
@@ -520,7 +533,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz2_3_h">Visual hierarchy over alphabetical order</b><span data-i18n="hz2_3_p">Nybörjare, Fortsättning and Tävling are grouped first because they represent the track that drives long-term membership. All-levels drop-in classes are grouped after. The order communicates priority, it doesn't just organize content.</span></span>
       </button>
     </div>
-    <div class="tour-legend"></div>
+    <button type="button" class="tour-legend-toggle" aria-expanded="false">
+      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
+    </button>
+    <div class="tour-legend collapsed"></div>
     <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
@@ -541,7 +557,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz3_3_h">A safety valve for exceptions, without code</b><span data-i18n="hz3_3_p">An optional "important information" field lets the club flag holiday changes or shared-space notices themselves. Most club websites need a developer for this kind of one-off update, here it's a single cell in a spreadsheet.</span></span>
       </button>
     </div>
-    <div class="tour-legend"></div>
+    <button type="button" class="tour-legend-toggle" aria-expanded="false">
+      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
+    </button>
+    <div class="tour-legend collapsed"></div>
     <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
@@ -559,7 +578,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz4_2_h">Turning an announcement into a lead</b><span data-i18n="hz4_2_p">Any post can carry its own name, email and custom-question form. A seasonal update like morning training returning stops being just information and becomes a measurable source of interest.</span></span>
       </button>
     </div>
-    <div class="tour-legend"></div>
+    <button type="button" class="tour-legend-toggle" aria-expanded="false">
+      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
+    </button>
+    <div class="tour-legend collapsed"></div>
     <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
@@ -574,7 +596,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz5_2_h">Guiding the choice, not just listing it</b><span data-i18n="hz5_2_p">One tier is visually emphasized as the recommended option. Left to compare every plan unassisted, many visitors default to indecision, a subtle visual cue toward the sensible default measurably reduces that hesitation.</span></span>
       </button>
     </div>
-    <div class="tour-legend"></div>
+    <button type="button" class="tour-legend-toggle" aria-expanded="false">
+      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
+    </button>
+    <div class="tour-legend collapsed"></div>
     <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
@@ -586,7 +611,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz6_1_h">A second business line, not an afterthought</b><span data-i18n="hz6_1_p">Corporate training is a distinct revenue stream from membership sales, so it gets its own explanation of what's included and a concrete promise, a quote within 24 hours, instead of one paragraph and a dead link on the old site.</span></span>
       </button>
     </div>
-    <div class="tour-legend"></div>
+    <button type="button" class="tour-legend-toggle" aria-expanded="false">
+      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
+    </button>
+    <div class="tour-legend collapsed"></div>
     <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 
@@ -601,7 +629,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
         <span class="hz-tip"><b data-i18n="hz7_2_h">Accessible down to the smallest detail</b><span data-i18n="hz7_2_p">Even the map marker has a proper accessible name for screen readers. It's a detail almost nobody will consciously notice, and that's exactly the point, accessibility done well is invisible to those who don't need it and essential to those who do.</span></span>
       </button>
     </div>
-    <div class="tour-legend"></div>
+    <button type="button" class="tour-legend-toggle" aria-expanded="false">
+      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
+    </button>
+    <div class="tour-legend collapsed"></div>
     <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
   </div>
 </section>
@@ -945,6 +976,7 @@ const I18N = {
     tour_sub:"Nothing here is arbitrary. Click a numbered point for the reasoning behind it, from business value to technical implementation.",
     tour_soon:"Screenshot coming",
     tour_explain_empty:"Select a numbered point above to see the explanation here.",
+    tour_legend_toggle:"Show all points as a list",
     tb1_title:"Hero", tb2_title:"Classes", tb3_title:"Schedule", tb4_title:"News", tb5_title:"Memberships", tb6_title:"Corporate", tb7_title:"Contact",
     hz1_1_h:"Dual logo system", hz1_1_p:"Dedicated logo versions for dark and light mode preserve contrast, legibility and brand consistency instead of relying on recolored assets.",
     hz1_2_h:"Complete site navigation", hz1_2_p:"A complete navigation structure gives visitors immediate access to every major section while improving orientation and reducing unnecessary scrolling.",
@@ -1059,6 +1091,7 @@ const I18N = {
     tour_sub:"Inget här är slumpmässigt. Klicka på en numrerad punkt för resonemanget bakom den, från affärsvärde till teknisk implementation.",
     tour_soon:"Skärmbild kommer",
     tour_explain_empty:"Välj en numrerad punkt ovan för att se förklaringen här.",
+    tour_legend_toggle:"Visa alla punkter som en lista",
     tb1_title:"Hero", tb2_title:"Pass", tb3_title:"Schema", tb4_title:"Nyheter", tb5_title:"Medlemskap", tb6_title:"Företag", tb7_title:"Kontakt",
     hz1_1_h:"Dubbelt logotypsystem", hz1_1_p:"Egna logotypversioner för mörkt och ljust läge bevarar kontrast, läsbarhet och varumärkeskonsekvens istället för att förlita sig på omfärgade filer.",
     hz1_2_h:"Komplett sajtnavigering", hz1_2_p:"En komplett navigeringsstruktur ger besökare direkt tillgång till varje huvudsektion samtidigt som den förbättrar orienteringen och minskar onödig scrollning.",
@@ -1222,6 +1255,7 @@ function buildTourLegends() {
     const shot = block.querySelector('.tour-shot');
     const legend = block.querySelector('.tour-legend');
     const explain = block.querySelector('.tour-explain');
+    const toggle = block.querySelector('.tour-legend-toggle');
     if (!shot || !legend || !explain) return;
     const zones = Array.from(shot.querySelectorAll('.hz'));
     if (!zones.length) return;
@@ -1229,14 +1263,17 @@ function buildTourLegends() {
     const activeIndex = zones.findIndex(z => z.classList.contains('active'));
     legend.innerHTML = '';
 
-    function select(i) {
+    function select(i, userTriggered) {
       zones.forEach(z => z.classList.remove('active'));
       Array.from(legend.children).forEach(b => b.classList.remove('active'));
       zones[i].classList.add('active');
       if (legend.children[i]) legend.children[i].classList.add('active');
       const tip = zones[i].querySelector('.hz-tip');
       explain.innerHTML = tip ? tip.innerHTML : '';
+      if (userTriggered) block.dataset.userEngaged = '1';
     }
+    block._tourSelect = select;
+    block._tourZoneCount = zones.length;
 
     zones.forEach((hz, i) => {
       const tip = hz.querySelector('.hz-tip');
@@ -1247,13 +1284,52 @@ function buildTourLegends() {
       btn.className = 'tour-legend-item';
       btn.innerHTML = '<span class="tour-legend-num">' + String(i + 1).padStart(2, '0') + '</span><span class="tour-legend-name"></span>';
       btn.querySelector('.tour-legend-name').textContent = title;
-      btn.addEventListener('click', () => select(i));
+      btn.addEventListener('click', () => select(i, true));
       legend.appendChild(btn);
 
-      hz.onclick = e => { e.stopPropagation(); select(i); };
+      hz.onclick = e => { e.stopPropagation(); select(i, true); };
     });
 
-    if (activeIndex >= 0) select(activeIndex);
+    if (toggle && !toggle.dataset.wired) {
+      toggle.dataset.wired = '1';
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        legend.classList.toggle('collapsed', expanded);
+      });
+    }
+
+    if (activeIndex >= 0) select(activeIndex, false);
+  });
+}
+
+function initTourAutoCycle() {
+  document.querySelectorAll('.tour-block').forEach(block => {
+    if (block._autoCycleInit) return;
+    block._autoCycleInit = true;
+    let current = 0;
+    let timer = null;
+
+    function tick() {
+      if (block.dataset.userEngaged || !block._tourSelect || !block._tourZoneCount) return;
+      block._tourSelect(current, false);
+      current = (current + 1) % block._tourZoneCount;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !block.dataset.userEngaged) {
+          if (!timer) { tick(); timer = setInterval(tick, 4000); }
+        } else if (!entry.isIntersecting && timer) {
+          clearInterval(timer); timer = null;
+        }
+      });
+    }, { threshold: 0.4 });
+    observer.observe(block);
+
+    block.addEventListener('click', () => {
+      if (timer) { clearInterval(timer); timer = null; }
+    }, true);
   });
 }
 
@@ -1265,6 +1341,7 @@ function buildTourLegends() {
   initCompare();
   initCraftTabs();
   buildTourLegends();
+  initTourAutoCycle();
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
@@ -1278,6 +1355,7 @@ function buildTourLegends() {
 </script>
 </body>
 </html>
+
 
 
 
