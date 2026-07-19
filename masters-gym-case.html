@@ -170,11 +170,20 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .tour-sub { font-size: 13px; color: var(--muted2); line-height: 1.7; max-width: 520px; margin-bottom: 44px; }
 .tour-block { margin-bottom: 40px; }
 .tour-block-title { font-family: var(--serif); font-size: 20px; font-style: italic; color: var(--gold-bright); margin-bottom: 14px; }
-.tour-shot { position: relative; aspect-ratio: 16/9; border: 1px solid var(--line); background: var(--bg2); overflow: hidden; }
+.tour-shot { position: relative; aspect-ratio: 16/9; border: 1px solid var(--line); background: var(--bg2); overflow: hidden; counter-reset: hz; }
 .tour-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 1px dashed var(--line); margin: 10px; }
 .tour-placeholder-icon { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--muted2); font-size: 14px; }
 .tour-placeholder span:last-child { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); }
-.hz { position: absolute; border: 1px dashed transparent; background: transparent; cursor: pointer; padding: 0; z-index: 2; transition: border-color 0.2s, background 0.2s; }
+.hz { position: absolute; border: 1px dashed var(--line); background: transparent; cursor: pointer; padding: 0; z-index: 2; transition: border-color 0.2s, background 0.2s; counter-increment: hz; }
+.hz::before {
+  content: counter(hz); position: absolute; top: 4px; left: 4px;
+  width: 18px; height: 18px; border-radius: 50%; background: var(--bg);
+  border: 1px solid var(--gold-line); color: var(--gold);
+  font-family: var(--sans); font-size: 9px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center; z-index: 3;
+  transition: background 0.2s, color 0.2s;
+}
+.hz:hover::before, .hz:focus-visible::before { background: var(--gold); color: #0c0c0b; }
 .hz:hover, .hz:focus-visible { border-color: var(--gold-line); background: var(--gold-dim); }
 .hz-tip {
   position: absolute; bottom: calc(100% + 10px); left: 0; width: 260px; max-width: 70vw;
@@ -1178,6 +1187,7 @@ function initCraftTabs() {
 </script>
 </body>
 </html>
+
 
 
 
