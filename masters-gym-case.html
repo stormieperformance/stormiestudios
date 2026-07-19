@@ -164,6 +164,29 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .showcase-stat-sub { font-size: 12px; color: var(--muted2); line-height: 1.6; }
 
 /* PILLARS OVERVIEW */
+.tour { padding: 88px 0; border-bottom: 1px solid var(--line); }
+.tour-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 12px; }
+.tour-title em { font-style: italic; color: var(--muted); }
+.tour-sub { font-size: 13px; color: var(--muted2); line-height: 1.7; max-width: 520px; margin-bottom: 44px; }
+.tour-block { margin-bottom: 40px; }
+.tour-block-title { font-family: var(--serif); font-size: 20px; font-style: italic; color: var(--gold-bright); margin-bottom: 14px; }
+.tour-shot { position: relative; aspect-ratio: 16/9; border: 1px solid var(--line); background: var(--bg2); overflow: hidden; }
+.tour-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 1px dashed var(--line); margin: 10px; }
+.tour-placeholder-icon { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--muted2); font-size: 14px; }
+.tour-placeholder span:last-child { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); }
+.hz { position: absolute; border: 1px dashed transparent; background: transparent; cursor: pointer; padding: 0; z-index: 2; transition: border-color 0.2s, background 0.2s; }
+.hz:hover, .hz:focus-visible { border-color: var(--gold-line); background: var(--gold-dim); }
+.hz-tip {
+  position: absolute; bottom: calc(100% + 10px); left: 0; width: 260px; max-width: 70vw;
+  background: var(--bg); border: 1px solid var(--gold-line); padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 6px; text-align: left;
+  opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity 0.2s, transform 0.2s;
+  z-index: 5; pointer-events: none;
+}
+.hz:hover .hz-tip, .hz:focus-visible .hz-tip { opacity: 1; visibility: visible; transform: translateY(0); }
+.hz-tip b { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--gold-bright); font-weight: 400; }
+.hz-tip span { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
 .pillars { padding: 88px 0; border-bottom: 1px solid var(--line); }
 .pillars-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 44px; }
 .pillars-title em { font-style: italic; color: var(--muted); }
@@ -282,6 +305,8 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   .compare-count{margin-left:0;width:100%;order:3}
   .pillars-grid{grid-template-columns:1fr}
   .pd-row{grid-template-columns:1fr;gap:8px}
+  .tour-shot{aspect-ratio:4/5}
+  .hz-tip{width:220px}
   .craft-tab{margin-right:20px}
   footer{flex-direction:column;gap:8px;text-align:center}
   .hide-mobile{display:none}
@@ -405,6 +430,104 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
     <button class="compare-arrow" id="compareNext" aria-label="Next section">→</button>
     <div class="compare-dots" id="compareDots"></div>
     <span class="compare-count" id="compareCount">1 / 8</span>
+  </div>
+</section>
+
+<!-- ANNOTATED TOUR -->
+<section class="tour" id="tour">
+  <span class="section-label" data-i18n="tour_label">Hover to explore</span>
+  <h2 class="tour-title" data-i18n="tour_title">Every part, <em>explained.</em></h2>
+  <p class="tour-sub" data-i18n="tour_sub">Hover or tab through any highlighted area for the thinking behind it, from layout to business value.</p>
+
+  <div class="tour-block">
+    <h3 class="tour-block-title" data-i18n="tb1_title">Hero</h3>
+    <div class="tour-shot">
+      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
+      <button class="hz" style="top:2%;left:2%;width:96%;height:12%">
+        <span class="hz-tip"><b data-i18n="hz1_1_h">Navbar</b><span data-i18n="hz1_1_p">Logo, nav links, language toggle, dark/light toggle, and the trial-booking CTA, all in one persistent strip.</span></span>
+      </button>
+      <button class="hz" style="top:30%;left:4%;width:60%;height:30%">
+        <span class="hz-tip"><b data-i18n="hz1_2_h">Headline</b><span data-i18n="hz1_2_p">Structured layout, clear description, no scrolling required to know what the club offers.</span></span>
+      </button>
+      <button class="hz" style="top:70%;left:4%;width:55%;height:12%">
+        <span class="hz-tip"><b data-i18n="hz1_3_h">Corporate teaser</b><span data-i18n="hz1_3_p">A quiet secondary link for a completely different visitor intent, without competing with the main CTA.</span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="tour-block">
+    <h3 class="tour-block-title" data-i18n="tb2_title">Classes</h3>
+    <div class="tour-shot">
+      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
+      <button class="hz" style="top:4%;left:4%;width:92%;height:20%">
+        <span class="hz-tip"><b data-i18n="hz2_1_h">Progression ladder</b><span data-i18n="hz2_1_p">Beginner, intermediate, competition, shown as a visible path, not implied. People stay longer when they can see where they're headed.</span></span>
+      </button>
+      <button class="hz" style="top:28%;left:4%;width:92%;height:18%">
+        <span class="hz-tip"><b data-i18n="hz2_2_h">Class finder</b><span data-i18n="hz2_2_p">One click answers the single most common hesitation for a first-time visitor.</span></span>
+      </button>
+      <button class="hz" style="top:50%;left:4%;width:92%;height:46%">
+        <span class="hz-tip"><b data-i18n="hz2_3_h">Class cards</b><span data-i18n="hz2_3_p">Nybörjare, Fortsättning and Tävling grouped first, all-levels classes grouped after, so the track that actually matters is easy to scan.</span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="tour-block">
+    <h3 class="tour-block-title" data-i18n="tb3_title">Schedule</h3>
+    <div class="tour-shot">
+      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
+      <button class="hz" style="top:4%;left:4%;width:40%;height:12%">
+        <span class="hz-tip"><b data-i18n="hz3_1_h">Day selector</b><span data-i18n="hz3_1_p">A sliding pill indicator instead of flat rectangular tabs, with a day-by-day and week-grid toggle.</span></span>
+      </button>
+      <button class="hz" style="top:20%;left:4%;width:92%;height:60%">
+        <span class="hz-tip"><b data-i18n="hz3_2_h">Honest, not oversold</b><span data-i18n="hz3_2_p">No "book this class" button on purpose. Masters Gym is drop-in, so a booking button would promise something the club can't deliver.</span></span>
+      </button>
+      <button class="hz" style="top:84%;left:4%;width:92%;height:10%">
+        <span class="hz-tip"><b data-i18n="hz3_3_h">Season notes</b><span data-i18n="hz3_3_p">An optional "important information" field the club fills in themselves, no code required.</span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="tour-block">
+    <h3 class="tour-block-title" data-i18n="tb4_title">News</h3>
+    <div class="tour-shot">
+      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
+      <button class="hz" style="top:4%;left:4%;width:92%;height:55%">
+        <span class="hz-tip"><b data-i18n="hz4_1_h">Self-service CMS</b><span data-i18n="hz4_1_p">A real CMS with photo support, replacing pages that had to be built one at a time outside the site's own navigation.</span></span>
+      </button>
+      <button class="hz" style="top:64%;left:4%;width:92%;height:30%">
+        <span class="hz-tip"><b data-i18n="hz4_2_h">Optional signup form</b><span data-i18n="hz4_2_p">Any post can carry a name, email and custom-question form, turning an announcement into a lead capture.</span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="tour-block">
+    <h3 class="tour-block-title" data-i18n="tb5_title">Memberships</h3>
+    <div class="tour-shot">
+      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
+      <button class="hz" style="top:6%;left:4%;width:92%;height:80%">
+        <span class="hz-tip"><b data-i18n="hz5_1_h">Every tier, priced</b><span data-i18n="hz5_1_p">Every tier, every price, a call to action next to each one. No visitor has to ask how to actually sign up.</span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="tour-block">
+    <h3 class="tour-block-title" data-i18n="tb6_title">Corporate</h3>
+    <div class="tour-shot">
+      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
+      <button class="hz" style="top:6%;left:4%;width:92%;height:80%">
+        <span class="hz-tip"><b data-i18n="hz6_1_h">A real funnel</b><span data-i18n="hz6_1_p">Spells out exactly what's included and promises a quote within 24 hours, instead of one paragraph and a dead link.</span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="tour-block">
+    <h3 class="tour-block-title" data-i18n="tb7_title">Contact</h3>
+    <div class="tour-shot">
+      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
+      <button class="hz" style="top:6%;left:4%;width:92%;height:80%">
+        <span class="hz-tip"><b data-i18n="hz7_1_h">Everything in one place</b><span data-i18n="hz7_1_p">Address, metro directions, opening hours and an embedded map, answering the most common first-visit questions without an extra click.</span></span>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -743,6 +866,24 @@ const I18N = {
     c6_name:"Memberships", c6_text:"The old site promoted trial weeks as a limited seasonal banner, implying trials were only available at certain times. The new site shows every membership tier and price year-round, with a standing invitation to try a class any time, no waiting for a promo window.",
     c7_name:"Corporate", c7_text:'The old corporate offer was one paragraph and a "Read more" link with no clear next step. The new corporate section spells out exactly what\'s included, morning sessions, team building, group classes, with a direct booking CTA and a quote turnaround time.',
     c8_name:"Contact", c8_text:'The old footer was five links and a "Made with Squarespace" credit. The new contact section gives visitors the address, metro directions, opening hours and an embedded map in one place, answering the most common first-visit questions without an extra click.',
+    tour_label:"Hover to explore", tour_title:'Every part, <em>explained.</em>',
+    tour_sub:"Hover or tab through any highlighted area for the thinking behind it, from layout to business value.",
+    tour_soon:"Screenshot coming",
+    tb1_title:"Hero", tb2_title:"Classes", tb3_title:"Schedule", tb4_title:"News", tb5_title:"Memberships", tb6_title:"Corporate", tb7_title:"Contact",
+    hz1_1_h:"Navbar", hz1_1_p:"Logo, nav links, language toggle, dark/light toggle, and the trial-booking CTA, all in one persistent strip.",
+    hz1_2_h:"Headline", hz1_2_p:"Structured layout, clear description, no scrolling required to know what the club offers.",
+    hz1_3_h:"Corporate teaser", hz1_3_p:"A quiet secondary link for a completely different visitor intent, without competing with the main CTA.",
+    hz2_1_h:"Progression ladder", hz2_1_p:"Beginner, intermediate, competition, shown as a visible path, not implied. People stay longer when they can see where they're headed.",
+    hz2_2_h:"Class finder", hz2_2_p:"One click answers the single most common hesitation for a first-time visitor.",
+    hz2_3_h:"Class cards", hz2_3_p:"Nybörjare, Fortsättning and Tävling grouped first, all-levels classes grouped after, so the track that actually matters is easy to scan.",
+    hz3_1_h:"Day selector", hz3_1_p:"A sliding pill indicator instead of flat rectangular tabs, with a day-by-day and week-grid toggle.",
+    hz3_2_h:"Honest, not oversold", hz3_2_p:"No \"book this class\" button on purpose. Masters Gym is drop-in, so a booking button would promise something the club can't deliver.",
+    hz3_3_h:"Season notes", hz3_3_p:"An optional \"important information\" field the club fills in themselves, no code required.",
+    hz4_1_h:"Self-service CMS", hz4_1_p:"A real CMS with photo support, replacing pages that had to be built one at a time outside the site's own navigation.",
+    hz4_2_h:"Optional signup form", hz4_2_p:"Any post can carry a name, email and custom-question form, turning an announcement into a lead capture.",
+    hz5_1_h:"Every tier, priced", hz5_1_p:"Every tier, every price, a call to action next to each one. No visitor has to ask how to actually sign up.",
+    hz6_1_h:"A real funnel", hz6_1_p:"Spells out exactly what's included and promises a quote within 24 hours, instead of one paragraph and a dead link.",
+    hz7_1_h:"Everything in one place", hz7_1_p:"Address, metro directions, opening hours and an embedded map, answering the most common first-visit questions without an extra click.",
     pillars_label:"The thinking", pillars_title:'Three problems. <em>One system.</em>',
     pillar1_name:"Members", pillar1_text:"More people through the door. Every visitor gets a clear next step, from a first look to a decision to compete.",
     pillar2_name:"Money", pillar2_text:"Revenue protected and grown. Clear pricing, self-qualifying corporate leads, and a real leak that got found and fixed.",
@@ -826,6 +967,24 @@ const I18N = {
     c6_name:"Medlemskap", c6_text:"Den gamla sajten marknadsförde provveckor som en tidsbegränsad banner för säsongen, vilket antydde att provpass bara fanns vissa perioder. Den nya sajten visar alla medlemskapsnivåer och priser året runt, med en stående inbjudan att prova ett pass när som helst, ingen väntan på ett kampanjfönster.",
     c7_name:"Företag", c7_text:'Det gamla företagserbjudandet var ett stycke och en "Läs mer"-länk utan tydligt nästa steg. Den nya företagssektionen visar exakt vad som ingår, morgonpass, teambuilding, gruppass, med en direkt bokningsknapp och svarstid för offert.',
     c8_name:"Kontakt", c8_text:'Den gamla sidfoten var fem länkar och en "Made with Squarespace"-kreditering. Den nya kontaktsektionen ger besökare adress, T-baneväg, öppettider och en inbäddad karta på ett ställe, vilket besvarar de vanligaste frågorna inför ett första besök utan ett extra klick.',
+    tour_label:"Hovra för att utforska", tour_title:'Varje del, <em>förklarad.</em>',
+    tour_sub:"Hovra eller tabba genom valfri markerad yta för tankarna bakom, från layout till affärsvärde.",
+    tour_soon:"Skärmbild kommer",
+    tb1_title:"Hero", tb2_title:"Pass", tb3_title:"Schema", tb4_title:"Nyheter", tb5_title:"Medlemskap", tb6_title:"Företag", tb7_title:"Kontakt",
+    hz1_1_h:"Meny", hz1_1_p:"Logotyp, menylänkar, språkval, mörkt/ljust-läge och bokningsknappen för provpass, allt i en fast rad.",
+    hz1_2_h:"Rubrik", hz1_2_p:"Strukturerad layout, tydlig beskrivning, ingen scrollning krävs för att förstå vad klubben erbjuder.",
+    hz1_3_h:"Företagslänk", hz1_3_p:"En diskret sekundär länk för en helt annan besöksavsikt, utan att konkurrera med huvudknappen.",
+    hz2_1_h:"Progressionsstege", hz2_1_p:"Nybörjare, fortsättning, tävling, visat som en synlig väg, inte underförstått. Folk stannar längre när de kan se vart de är på väg.",
+    hz2_2_h:"Passguide", hz2_2_p:"Ett klick besvarar den vanligaste tveksamheten hos en förstagångsbesökare.",
+    hz2_3_h:"Passkort", hz2_3_p:"Nybörjare, Fortsättning och Tävling grupperade först, alla nivåer-passen grupperade efter, så det spår som faktiskt betyder något är lätt att skanna.",
+    hz3_1_h:"Dagväljare", hz3_1_p:"En glidande pill-indikator istället för platta rektangulära flikar, med växling mellan dag-för-dag och veckovy.",
+    hz3_2_h:"Ärligt, inte översålt", hz3_2_p:"Ingen \"boka det här passet\"-knapp, medvetet. Masters Gym är drop-in, så en bokningsknapp skulle lova något klubben inte kan leverera.",
+    hz3_3_h:"Säsongsnoteringar", hz3_3_p:"Ett valfritt fält för \"viktig information\" som klubben fyller i själva, ingen kod krävs.",
+    hz4_1_h:"Självbetjänat CMS", hz4_1_p:"Ett riktigt CMS med fotostöd, som ersätter sidor som fick byggas en i taget utanför sajtens egen navigering.",
+    hz4_2_h:"Valfritt anmälningsformulär", hz4_2_p:"Vilket inlägg som helst kan bära ett namn-, e-post- och frågeformulär, vilket gör en nyhet till en leadinsamling.",
+    hz5_1_h:"Varje nivå, prissatt", hz5_1_p:"Varje nivå, varje pris, en call to action bredvid varje. Ingen besökare behöver fråga hur man faktiskt blir medlem.",
+    hz6_1_h:"En riktig kanal", hz6_1_p:"Visar exakt vad som ingår och lovar en offert inom 24 timmar, istället för ett stycke och en död länk.",
+    hz7_1_h:"Allt på ett ställe", hz7_1_p:"Adress, T-baneväg, öppettider och en inbäddad karta, vilket besvarar de vanligaste frågorna inför ett första besök utan ett extra klick.",
     pillars_label:"Tankarna bakom", pillars_title:'Tre problem. <em>Ett system.</em>',
     pillar1_name:"Medlemmar", pillar1_text:"Fler genom dörren. Varje besökare får ett tydligt nästa steg, från första titten till beslutet att tävla.",
     pillar2_name:"Pengar", pillar2_text:"Intäkter skyddade och ökade. Tydliga priser, självkvalificerande företagsleads, och ett riktigt läckage som hittades och lagades.",
@@ -976,6 +1135,7 @@ function initCraftTabs() {
 </script>
 </body>
 </html>
+
 
 
 
