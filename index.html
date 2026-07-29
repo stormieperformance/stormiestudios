@@ -392,6 +392,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .segment-card:hover .segment-name { color: #fff; }
 .segment-card.wide .segment-name { flex-shrink: 0; min-width: 190px; font-size: clamp(20px, 2.4vw, 24px); }
 .segment-text { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; flex-grow: 1; }
+.intl-note { margin-top: 28px; padding: 20px 26px; border: 1px solid rgba(201,169,110,0.22); border-radius: 2px; display: flex; flex-direction: column; gap: 6px; }
+.intl-note-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.intl-note-text { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 640px; }
 .segment-link { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); transition: color 0.2s, transform 0.25s ease; align-self: flex-start; }
 .segment-card:hover .segment-link { color: var(--gold); transform: translateX(5px); }
 
@@ -755,6 +758,10 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
       <span class="segment-link" data-i18n="seg_link3">See how →</span>
     </a>
   </div>
+  <div class="intl-note">
+    <span class="intl-note-label" data-i18n="intl_label">Also building toward</span>
+    <p class="intl-note-text" data-i18n="intl_text">Websites for Muay Thai clubs in Thailand. I train Muay Thai myself, so I know a gym's culture from the inside, not just from a client brief.</p>
+  </div>
 </div></section>
 
 <!-- PROCESS -->
@@ -953,12 +960,6 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
     <svg width="22" height="22" viewBox="0 0 24 24" fill="#c9a96e" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
   </a>
 
-  <div class="footer-network">
-    <a href="https://stormiestudios.com">Stormie Studios</a>
-    <span class="dot">·</span>
-    <a href="https://stormiemoves.com">Stormie Moves</a>
-  </div>
-
   <div class="footer-row">
     <div class="footer-left">Stormie Studios By Storm Kolmodin</div>
     <div class="footer-right">stormiestudios.com</div>
@@ -995,6 +996,8 @@ const I18N = {
     trust4_body:"Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.",
     seg_label:"Who I work with",
     seg_title:"Built for the fitness industry. <em>And a few causes I care about.</em>",
+    intl_label:"Also building toward",
+    intl_text:"Websites for Muay Thai clubs in Thailand. I train Muay Thai myself, so I know a gym's culture from the inside, not just from a client brief.",
     seg1_name:"Gyms &amp; martial arts clubs",
     seg1_text:"More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.",
     seg2_name:"PTs &amp; coaches",
@@ -1075,6 +1078,8 @@ const I18N = {
     trust4_body:"Varje sajt bygger på verklig erfarenhet i branschen, inte bara på att bygga hemsidor åt den. Efter år i träningsbranschen som personlig tränare, fitnessinstruktör, gymchef och coach förstår jag hur verksamheten fungerar, både för medlemmar och personal.",
     seg_label:"Vem jag hjälper",
     seg_title:"Byggt för träningsbranschen. <em>Och några saker jag bryr mig om.</em>",
+    intl_label:"Bygger också mot",
+    intl_text:"Hemsidor åt thaiboxningsklubbar i Thailand. Jag tränar själv thaiboxning, så jag känner ett gyms kultur inifrån, inte bara från ett kundbrief.",
     seg1_name:"Gym &amp; kampsportsklubbar",
     seg1_text:"Fler provpass, fler medlemmar. En sajt som speglar er kultur lika bra som er Instagram, med tydliga vägar till provpass, medlemskap och företagsträning. Och när schemat ändras? Du uppdaterar det själv på 30 sekunder.",
     seg2_name:"PT &amp; coacher",
