@@ -1269,6 +1269,12 @@ function setLang(lang) {
     const key = el.getAttribute('data-i18n');
     if (dict[key] !== undefined) el.innerHTML = dict[key];
   });
+  if (typeof NEED_LABELS !== 'undefined' && NEED_LABELS[lang]) {
+    document.querySelectorAll('[data-need]').forEach(el => {
+      const need = el.getAttribute('data-need');
+      if (NEED_LABELS[lang][need] !== undefined) el.textContent = NEED_LABELS[lang][need];
+    });
+  }
   buildHeadline(dict.hero_headline, lang === 'th');
   document.documentElement.lang = lang;
   document.documentElement.classList.toggle('lang-th', lang === 'th');
