@@ -1391,7 +1391,7 @@ function buildHeadline(text, isThai) {
     const name = form.querySelector('#f-name').value.trim(), email = form.querySelector('#f-email').value.trim();
     if (!name || !email) return;
     btn.disabled = true; btn.style.opacity = '0.5'; err.style.display = 'none';
-    const lang = document.documentElement.lang === 'sv' ? 'sv' : 'en';
+    const lang = (function(){const l=document.documentElement.lang;return (l==='sv'||l==='th')?l:'en';})();
     fetch('https://formspree.io/f/mvznvwpk', {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
@@ -1408,31 +1408,36 @@ function buildHeadline(text, isThai) {
       name:'Masters Gym', href:'https://stormieperformance.com/masters-gym/', frame:'https://stormieperformance.com/masters-gym/', comingSoon:false,
       img:'https://stormieperformance.com/masters-gym/og-image.jpg',
       en:{cat:'Client project · Client work', desc:'A Stockholm kickboxing club, conversion structure, a self-service CMS, and a live Instagram feed. Photography and hero video still in progress on their end.', link:'View client work →'},
-      sv:{cat:'Kundprojekt · Kundarbete', desc:'En Stockholmsklubb för kickboxning, konverteringsstruktur, självbetjänings-CMS och ett direktsänt Instagramflöde. Foto och hero-video är fortfarande under arbete hos dem.', link:'Visa kundarbete →'}
+      sv:{cat:'Kundprojekt · Kundarbete', desc:'En Stockholmsklubb för kickboxning, konverteringsstruktur, självbetjänings-CMS och ett direktsänt Instagramflöde. Foto och hero-video är fortfarande under arbete hos dem.', link:'Visa kundarbete →'},
+      th:{cat:'โปรเจกต์ลูกค้า · งานลูกค้า', desc:'คลับคิกบ็อกซิ่งในสตอกโฮล์ม โครงสร้างที่เน้นการเปลี่ยนผู้เข้าชมเป็นสมาชิก ระบบ CMS ที่จัดการเองได้ และฟีด Instagram แบบเรียลไทม์ ภาพถ่ายและวิดีโอฮีโร่ยังอยู่ระหว่างดำเนินการฝั่งลูกค้า', link:'ดูงานลูกค้า →'}
     },
     {
       name:'Stormie Muay Thai', href:'stormiemuaythai.html', frame:'https://stormieperformance.com/smt-demo/', comingSoon:false,
       en:{cat:'Concept project · Martial arts club', desc:'A full club system: branded site, 3D news carousel, memberships, shop and auto-updating content.', link:'View case →'},
-      sv:{cat:'Konceptprojekt · Kampsportsklubb', desc:'Ett helt klubbsystem: varumärkt sajt, 3D-nyhetskarusell, medlemskap, shop och självuppdaterande innehåll.', link:'Visa case →'}
+      sv:{cat:'Konceptprojekt · Kampsportsklubb', desc:'Ett helt klubbsystem: varumärkt sajt, 3D-nyhetskarusell, medlemskap, shop och självuppdaterande innehåll.', link:'Visa case →'},
+      th:{cat:'โปรเจกต์คอนเซปต์ · คลับศิลปะการต่อสู้', desc:'ระบบคลับแบบครบวงจร เว็บไซต์ที่มีแบรนด์ชัดเจน แคโรเซลข่าว 3 มิติ ระบบสมาชิกภาพ ร้านค้า และเนื้อหาที่อัปเดตอัตโนมัติ', link:'ดูเคส →'}
     },
 
     {
       name:'KBK Bågskytteklubb', href:'https://stormieperformance.com/kbk-demo/', frame:'https://stormieperformance.com/kbk-demo/', comingSoon:true,
       en:{cat:'Pitch project · Archery club', desc:'A booking system demo for an archery club, built ahead of an upcoming pitch. Case study publishes after the meeting.', link:''},
-      sv:{cat:'Pitchprojekt · Bågskytteklubb', desc:'Ett bokningssystem för en bågskytteklubb, byggt inför en kommande pitch. Caset publiceras efter mötet.', link:''}
+      sv:{cat:'Pitchprojekt · Bågskytteklubb', desc:'Ett bokningssystem för en bågskytteklubb, byggt inför en kommande pitch. Caset publiceras efter mötet.', link:''},
+      th:{cat:'โปรเจกต์นำเสนอ · คลับยิงธนู', desc:'ตัวอย่างระบบจองสำหรับคลับยิงธนู สร้างขึ้นก่อนการนำเสนองาน กรณีศึกษาจะเผยแพร่หลังการประชุม', link:''}
     },
     {
       name:'Real Performance by Dante', href:'https://www.pt-real-performance-by-dante.com', frame:'https://www.pt-real-performance-by-dante.com', comingSoon:true,
       img:'https://www.pt-real-performance-by-dante.com/og-image.jpg',
       en:{cat:'Client project · Launching soon', desc:'A Stockholm-based personal trainer getting a new site built on Next.js, TypeScript, and Sanity CMS with integrated booking and client-managed content. Case study publishes on launch day.', link:''},
-      sv:{cat:'Kundprojekt · Lanseras snart', desc:'En Stockholmsbaserad personlig tränare som får en ny sajt med integrerad bokning. Caset publiceras på lanseringsdagen.', link:''}
+      sv:{cat:'Kundprojekt · Lanseras snart', desc:'En Stockholmsbaserad personlig tränare som får en ny sajt med integrerad bokning. Caset publiceras på lanseringsdagen.', link:''},
+      th:{cat:'โปรเจกต์ลูกค้า · เปิดตัวเร็ว ๆ นี้', desc:'เทรนเนอร์ส่วนบุคคลในสตอกโฮล์มที่กำลังได้เว็บไซต์ใหม่บน Next.js, TypeScript และ Sanity CMS พร้อมระบบจองในตัวและเนื้อหาที่ลูกค้าจัดการเองได้ กรณีศึกษาจะเผยแพร่ในวันเปิดตัว', link:''}
     },
 
 
     {
       name:'Clinch Athletics', href:'https://clinchathletics.com', frame:'https://clinchathletics.com', comingSoon:false,
       en:{cat:'Concept project · Combat sports brand', desc:'A concept and e-commerce brand for the combat sports industry. Premium design, strong visual identity, and a streamlined storefront built for martial arts athletes and enthusiasts.', link:'View case →'},
-      sv:{cat:'Konceptprojekt · Kampsportsmärke', desc:'Ett koncept- och e-handelsmärke för kampsportsindustrin. Premium design, stark visuell identitet och en skräddarsydd webshop för kampsportsutövare.', link:'Visa case →'}
+      sv:{cat:'Konceptprojekt · Kampsportsmärke', desc:'Ett koncept- och e-handelsmärke för kampsportsindustrin. Premium design, stark visuell identitet och en skräddarsydd webshop för kampsportsutövare.', link:'Visa case →'},
+      th:{cat:'โปรเจกต์คอนเซปต์ · แบรนด์กีฬาต่อสู้', desc:'แบรนด์คอนเซปต์และอีคอมเมิร์ซสำหรับวงการกีฬาต่อสู้ ดีไซน์พรีเมียม อัตลักษณ์ภาพที่แข็งแรง และหน้าร้านออนไลน์ที่ออกแบบมาเพื่อนักกีฬาและผู้ที่ชื่นชอบศิลปะการต่อสู้', link:'ดูเคส →'}
     }
   ];
 
@@ -1443,7 +1448,7 @@ function buildHeadline(text, isThai) {
         linkEl=document.getElementById('scLink');
   if (!stage||!track) return;
   const rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function lang(){return document.documentElement.lang==='sv'?'sv':'en';}
+  function lang(){const l=document.documentElement.lang;return (l==='sv'||l==='th')?l:'en';}
 
   const cards = ITEMS.map((item,i) => {
     const el = document.createElement('div');
