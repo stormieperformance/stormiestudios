@@ -200,6 +200,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .intro.glow-active .intro-glow { opacity: 1; }
 .intro-left, .intro-right { position: relative; z-index: 1; }
+.intro.glow-ambient .intro-glow { opacity: 0.8; animation: glowDrift 9s ease-in-out infinite; }
+@keyframes glowDrift {
+  0%   { transform: translate(calc(20% - 50%), calc(15% - 50%)); }
+  50%  { transform: translate(calc(75% - 50%), calc(55% - 50%)); }
+  100% { transform: translate(calc(20% - 50%), calc(15% - 50%)); }
+}
 .intro-left {
   padding-bottom: 80px; position: sticky; top: 40px;
   opacity: 0; animation: fadeUp 1s ease 0.3s forwards;
@@ -398,6 +404,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .segment-card::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.5s ease; }
 .segment-card:hover { background: var(--bg2); }
 .segment-card:hover::before { width: 100%; }
+.segment-card.tap-pulse { animation: cardTapPulse 0.5s ease; }
+@keyframes cardTapPulse {
+  0% { transform: perspective(700px) rotateX(0) rotateY(0) scale(1); }
+  40% { transform: perspective(700px) rotateX(2deg) rotateY(-3deg) scale(1.015); background: var(--bg2); }
+  100% { transform: perspective(700px) rotateX(0) rotateY(0) scale(1); }
+}
 .segment-card.wide { grid-column: 1 / -1; flex-direction: row; align-items: baseline; gap: 34px; padding-top: 28px; padding-bottom: 28px; }
 .segment-name { font-family: var(--serif); font-size: clamp(24px, 3vw, 32px); font-weight: 300; line-height: 1.1; color: var(--text); transition: color 0.2s; }
 .segment-card:hover .segment-name { color: #fff; }
@@ -1226,7 +1238,11 @@ function buildHeadline(text) {
 (function heroGlow() {
   const intro = document.getElementById('work');
   const glow = document.getElementById('introGlow');
-  if (!intro || !glow || window.matchMedia('(pointer: coarse)').matches) return;
+  if (!intro || !glow) return;
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    intro.classList.add('glow-ambient');
+    return;
+  }
   let raf = null, px = 0, py = 0;
   intro.addEventListener('mouseenter', () => intro.classList.add('glow-active'));
   intro.addEventListener('mouseleave', () => intro.classList.remove('glow-active'));
@@ -1243,8 +1259,16 @@ function buildHeadline(text) {
 })();
 
 (function cardTilt() {
-  if (window.matchMedia('(pointer: coarse)').matches) return;
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
   document.querySelectorAll('.segment-card').forEach(card => {
+    if (isTouch) {
+      card.addEventListener('touchstart', () => {
+        card.classList.remove('tap-pulse'); void card.offsetWidth;
+        card.classList.add('tap-pulse');
+      }, { passive: true });
+      card.addEventListener('animationend', () => card.classList.remove('tap-pulse'));
+      return;
+    }
     card.addEventListener('mousemove', (e) => {
       const r = card.getBoundingClientRect();
       const cx = (e.clientX - r.left) / r.width - 0.5;
