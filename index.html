@@ -236,6 +236,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   display: inline-block; opacity: 0; transform: translateY(28px);
   animation: wordUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
 }
+.intro-headline .word-block {
+  display: inline; transform: none; animation: fadeIn 0.9s ease forwards;
+}
 .intro-sub {
   font-size: 14px; font-weight: 300; color: var(--muted);
   line-height: 1.8; margin-bottom: 40px;
@@ -1266,7 +1269,7 @@ function setLang(lang) {
     const key = el.getAttribute('data-i18n');
     if (dict[key] !== undefined) el.innerHTML = dict[key];
   });
-  buildHeadline(dict.hero_headline);
+  buildHeadline(dict.hero_headline, lang === 'th');
   document.documentElement.lang = lang;
   document.documentElement.classList.toggle('lang-th', lang === 'th');
   document.querySelectorAll('#lang-en, #lang-en-desktop').forEach(el => el.classList.toggle('active', lang==='en'));
@@ -1276,8 +1279,12 @@ function setLang(lang) {
   try { localStorage.setItem('sp-lang', lang); } catch(e) {}
 }
 
-function buildHeadline(text) {
+function buildHeadline(text, isThai) {
   const el = document.getElementById('introHeadline'); if (!el) return;
+  if (isThai) {
+    el.innerHTML = `<span class="word word-block" style="animation-delay:0.45s">${text.replace(/&/g, '&amp;')}</span>`;
+    return;
+  }
   const words = text.replace(/&amp;/g, '&').split(' ');
   let wi = 0;
   el.innerHTML = words.map(w => {
@@ -1320,7 +1327,7 @@ function buildHeadline(text) {
 
 (function init() {
   let lang = 'en'; try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
-  buildHeadline(I18N[lang].hero_headline);
+  buildHeadline(I18N[lang].hero_headline, lang === 'th');
   if (lang !== 'en') setLang(lang);
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
@@ -1640,12 +1647,39 @@ const NEEDS = {
       title: "Vi listar ut det tillsammans.",
       text: "Inte allt passar i en kryssruta. Berätta vad du har i tankarna så tar vi reda på vad som är rätt, oavsett om det är en hel sajt, en enskild funktion eller något du inte sett gjort tidigare."
     }
+  },
+  th: {
+    members: {
+      title: "สมาชิกมากขึ้น",
+      text: "เว็บไซต์ต้องทำสิ่งเดียวให้ดี คือเปลี่ยนผู้เข้าชมให้กลายเป็นคนที่มาจริง เส้นทางที่ชัดเจนสู่เซสชันทดลอง ตารางเวลาที่อัปเดตเอง และความประทับใจแรกที่สะท้อนตัวตนจริงของยิมคุณ"
+    },
+    impression: {
+      title: "ความประทับใจแรกที่เข้ากับยิมของคุณ",
+      text: "เว็บไซต์ยิมส่วนใหญ่ดูเหมือนเทมเพลต ของคุณควรดูเหมือนถูกสร้างขึ้นอย่างตั้งใจ เพราะประสบการณ์บนเว็บไซต์คือส่วนหนึ่งของประสบการณ์ในยิม"
+    },
+    admin: {
+      title: "ใช้เวลาจัดการเว็บไซต์น้อยลง",
+      text: "อัปเดตตารางเวลาในสเปรดชีต หรือจัดการทุกอย่างผ่านแดชบอร์ด CMS ที่เรียบง่าย ขึ้นอยู่กับสิ่งที่เหมาะกับการทำงานของคุณ ไม่ว่าแบบไหน คุณควบคุมได้เองโดยไม่ต้องพึ่งนักพัฒนาในทุกการเปลี่ยนแปลงเล็ก ๆ"
+    },
+    outdated: {
+      title: "เว็บไซต์ที่สะท้อนตัวตนของคุณตอนนี้จริง ๆ",
+      text: "ถ้าเว็บไซต์ของคุณสร้างมาสามปีแล้วและไม่เคยเปลี่ยนอะไรเลย มันกำลังทำงานต่อต้านคุณอยู่ เว็บไซต์ใหม่ที่อัปเดตง่ายจะทันสมัยอยู่เสมอโดยไม่ต้องออกแรง"
+    },
+    new: {
+      title: "จุดเริ่มต้นที่แข็งแกร่งสำหรับยิมใหม่ของคุณ",
+      text: "เปิดตัวด้วยเว็บไซต์ที่ดูเหมือนคุณอยู่มานานหลายปี สมาชิกภาพ ตารางเวลา ระบบจอง และแบรนด์ พร้อมทุกอย่างตั้งแต่วันแรก"
+    },
+    other: {
+      title: "มาช่วยกันคิดดู",
+      text: "ไม่ใช่ทุกความต้องการจะเข้ากับตัวเลือกสำเร็จรูป บอกผมว่าคุณคิดอะไรอยู่ แล้วเราจะหาทางที่เหมาะสมด้วยกัน ไม่ว่าจะเป็นเว็บไซต์เต็มรูปแบบ ฟีเจอร์เดียว หรือสิ่งที่คุณไม่เคยเห็นมาก่อน"
+    }
   }
 };
 
 const NEED_LABELS = {
   en: { members:'More members', impression:'Better first impression', admin:'Easier administration', outdated:'Replace an outdated website', new:'New gym opening', other:'Something else', back:'← Back' },
-  sv: { members:'Fler medlemmar', impression:'Bättre första intryck', admin:'Enklare administration', outdated:'Ersätt en föråldrad hemsida', new:'Nytt gym öppnar', other:'Något annat', back:'← Tillbaka' }
+  sv: { members:'Fler medlemmar', impression:'Bättre första intryck', admin:'Enklare administration', outdated:'Ersätt en föråldrad hemsida', new:'Nytt gym öppnar', other:'Något annat', back:'← Tillbaka' },
+  th: { members:'สมาชิกมากขึ้น', impression:'ความประทับใจแรกที่ดีขึ้น', admin:'บริหารจัดการง่ายขึ้น', outdated:'แทนที่เว็บไซต์ที่ล้าสมัย', new:'เปิดยิมใหม่', other:'เรื่องอื่น ๆ', back:'← กลับ' }
 };
 
 (function() {
@@ -1656,7 +1690,7 @@ const NEED_LABELS = {
   const fNeed = document.getElementById('f-need');
   if (!picker) return;
 
-  function getLang() { return document.documentElement.lang === 'sv' ? 'sv' : 'en'; }
+  function getLang() { const l = document.documentElement.lang; return (l === 'sv' || l === 'th') ? l : 'en'; }
 
   function showNeed(need) {
     const lang = getLang();
