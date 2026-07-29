@@ -189,7 +189,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px;
   align-items: start; padding-top: 72px;
   border-bottom: 1px solid var(--line); overflow: hidden;
+  position: relative;
 }
+.intro-glow {
+  position: absolute; top: 0; left: 0; width: 560px; height: 560px;
+  border-radius: 50%; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle, rgba(201,169,110,0.16) 0%, rgba(201,169,110,0.05) 45%, transparent 70%);
+  transform: translate(calc(var(--gx, 50%) - 50%), calc(var(--gy, 20%) - 50%));
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.intro.glow-active .intro-glow { opacity: 1; }
+.intro-left, .intro-right { position: relative; z-index: 1; }
 .intro-left {
   padding-bottom: 80px; position: sticky; top: 40px;
   opacity: 0; animation: fadeUp 1s ease 0.3s forwards;
@@ -383,6 +393,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   background: var(--bg); padding: 38px 34px 34px; text-decoration: none; color: inherit;
   display: flex; flex-direction: column; gap: 16px; position: relative; transition: background 0.25s;
+  transform-style: preserve-3d; transition: transform 0.15s ease-out, background 0.2s; will-change: transform;
 }
 .segment-card::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.5s ease; }
 .segment-card:hover { background: var(--bg2); }
@@ -675,6 +686,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 
 <!-- INTRO -->
 <section class="intro inview" id="work">
+  <div class="intro-glow" id="introGlow" aria-hidden="true"></div>
   <div class="intro-left">
     <span class="intro-eyebrow" data-i18n="hero_eyebrow">Stockholm · Digital studio for sport & fitness brands</span>
     <h1 class="intro-headline" id="introHeadline">Custom Websites for Gyms, Coaches &amp; Martial Arts Clubs.</h1>
@@ -1209,6 +1221,38 @@ function buildHeadline(text) {
     }, { threshold: 0.1 });
     document.querySelectorAll('section').forEach(s => io.observe(s));
   } else { document.querySelectorAll('section').forEach(s => s.classList.add('inview')); }
+})();
+
+(function heroGlow() {
+  const intro = document.getElementById('work');
+  const glow = document.getElementById('introGlow');
+  if (!intro || !glow || window.matchMedia('(pointer: coarse)').matches) return;
+  let raf = null, px = 0, py = 0;
+  intro.addEventListener('mouseenter', () => intro.classList.add('glow-active'));
+  intro.addEventListener('mouseleave', () => intro.classList.remove('glow-active'));
+  intro.addEventListener('mousemove', (e) => {
+    const r = intro.getBoundingClientRect();
+    px = e.clientX - r.left; py = e.clientY - r.top;
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      intro.style.setProperty('--gx', px + 'px');
+      intro.style.setProperty('--gy', py + 'px');
+      raf = null;
+    });
+  });
+})();
+
+(function cardTilt() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  document.querySelectorAll('.segment-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const cx = (e.clientX - r.left) / r.width - 0.5;
+      const cy = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(700px) rotateX(${(-cy * 5).toFixed(2)}deg) rotateY(${(cx * 5).toFixed(2)}deg) translateZ(0)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
 })();
 
 (function() {
