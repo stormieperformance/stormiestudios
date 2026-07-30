@@ -820,6 +820,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   <div class="care-right">
     <p data-i18n="care_p1">Your content is always yours. Depending on the project, you update it yourself in a spreadsheet or through a clean CMS dashboard built for non-developers. No manuals, no agency middleman.</p>
     <p data-i18n="care_p2">Everything you don't want to think about, like hosting, security, backups and updates, I handle for a flat monthly fee. Less than what a template platform charges, with none of the limitations.</p>
+    <p data-i18n="care_p3">Your domain always stays in your own name. Your code and content can always be exported or moved, whether we keep working together or not. Nothing here locks you in.</p>
   </div>
 </section>
 
@@ -984,6 +985,14 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
       <p class="faq-q"><span data-i18n="faq6_q">Why not just use an AI website builder?</span><span class="faq-toggle">+</span></p>
       <p class="faq-a" data-i18n="faq6_a">An AI builder can generate a page in minutes, but it doesn't know how your gym actually runs. I build the schedule, membership paths and content system around your real workflow, not a generic template, and I'm a person you can reach directly when something needs to change or something breaks.</p>
     </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <p class="faq-q"><span data-i18n="faq7_q">Who owns the website and the code?</span><span class="faq-toggle">+</span></p>
+      <p class="faq-a" data-i18n="faq7_a">Your domain is always registered in your own name, never mine. The code lives in my development account while I'm actively building or maintaining it, and full ownership transfers to you once the project is paid in full. If you ever want a full export or handover, you get it.</p>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <p class="faq-q"><span data-i18n="faq8_q">What happens if I want to switch developers later?</span><span class="faq-toggle">+</span></p>
+      <p class="faq-a" data-i18n="faq8_a">You can. Your domain, content and accounts are already in your name, and you'll get the full codebase and any documentation needed to hand it to someone else. No lock-in, no ransom on your own website.</p>
+    </div>
   </div>
 </section>
 
@@ -1059,6 +1068,8 @@ const I18N = {
     faq4_q:"Can I update the website myself?", faq4_a:"Yes, most content, schedules, prices and news, is editable by you directly, no developer needed.",
     faq5_q:"Do you work outside Stockholm?", faq5_a:"Absolutely. Most of my clients are here in Stockholm today, but I work just as easily with clients anywhere else, over video calls and email.",
     faq6_q:"Why not just use an AI website builder?", faq6_a:"An AI builder can generate a page in minutes, but it doesn't know how your gym actually runs. I build the schedule, membership paths and content system around your real workflow, not a generic template, and I'm a person you can reach directly when something needs to change or something breaks.",
+    faq7_q:"Who owns the website and the code?", faq7_a:"Your domain is always registered in your own name, never mine. The code lives in my development account while I'm actively building or maintaining it, and full ownership transfers to you once the project is paid in full. If you ever want a full export or handover, you get it.",
+    faq8_q:"What happens if I want to switch developers later?", faq8_a:"You can. Your domain, content and accounts are already in your name, and you'll get the full codebase and any documentation needed to hand it to someone else. No lock-in, no ransom on your own website.",
     pro_label:"How it works", pro_title:"Three steps. No surprises.",
     pro1_h:"We talk", pro1_p:"Every club, coach and business is different. We start by understanding your goals, your clients and the role the website should play in the business.",
     pro2_h:"You see possibilities", pro2_p:"Within a week you get a first draft of your actual site. Not a sketch, a working page with your content. We adjust together until it sits right.",
@@ -1066,6 +1077,7 @@ const I18N = {
     care_title:"Easy for you.<br><span class=\"gold-shimmer\">Handled by me.</span>",
     care_p1:"Your content is always yours. Depending on the project, you update it yourself in a spreadsheet or through a clean CMS dashboard built for non-developers. No manuals, no agency middleman.",
     care_p2:"Everything you don't want to think about, like hosting, security, backups and updates, I handle for a flat monthly fee. Less than what a template platform charges, with none of the limitations.",
+    care_p3:"Your domain always stays in your own name. Your code and content can always be exported or moved, whether we keep working together or not. Nothing here locks you in.",
     inc_label:"What You Get",
     inc_title:"Every project. <em>Fully equipped.</em>",
     inc_sub:"A site built to turn visitors into members, not just look good doing it. Here's exactly what's included, no surprises.",
@@ -1141,6 +1153,8 @@ const I18N = {
     faq4_q:"Kan jag uppdatera hemsidan själv?", faq4_a:"Ja, det mesta av innehållet, scheman, priser och nyheter, redigerar du själv direkt, ingen utvecklare behövs.",
     faq5_q:"Jobbar du utanför Stockholm?", faq5_a:"Absolut. De flesta av mina kunder är här i Stockholm idag, men jag jobbar lika enkelt med kunder på andra håll, via videosamtal och mejl.",
     faq6_q:"Varför inte bara använda en AI-hemsidesbyggare?", faq6_a:"En AI-byggare kan skapa en sida på några minuter, men den vet inte hur ditt gym faktiskt fungerar. Jag bygger schemat, medlemskapsvägarna och innehållssystemet kring ert riktiga arbetssätt, inte en generisk mall, och jag är en person ni når direkt när något behöver ändras eller går sönder.",
+    faq7_q:"Vem äger webbplatsen och koden?", faq7_a:"Din domän registreras alltid i ditt eget namn, aldrig i mitt. Koden ligger i mitt utvecklingskonto medan jag aktivt bygger eller förvaltar den, och full äganderätt övergår till dig när projektet är fullt betalt. Vill du någon gång ha en fullständig export eller överlämning får du det.",
+    faq8_q:"Vad händer om jag vill byta utvecklare senare?", faq8_a:"Det går bra. Din domän, ditt innehåll och dina konton ligger redan i ditt namn, och du får hela kodbasen och den dokumentation som behövs för att lämna över till någon annan. Ingen inlåsning, ingen gisslansituation kring din egen hemsida.",
     pro_label:"Så funkar det", pro_title:"Tre steg. Inga överraskningar.",
     pro1_h:"Vi pratar", pro1_p:"En förfrågan om din klubb, dina mål och vad sajten ska åstadkomma. Inga säljpitchar, inga bindningar.",
     pro2_h:"Du ser ett utkast", pro2_p:"Inom en vecka får du ett första utkast av din riktiga sajt. Inte en skiss, en fungerande sida med ditt innehåll. Vi justerar tillsammans tills det sitter.",
@@ -1148,6 +1162,7 @@ const I18N = {
     care_title:"Enkelt för dig.<br><span class=\"gold-shimmer\">Skött av mig.</span>",
     care_p1:"Ditt innehåll är alltid ditt. Beroende på projektet uppdaterar du det själv i ett kalkylark eller via ett enkelt CMS-gränssnitt byggt för icke-utvecklare. Inga manualer, ingen mellanhands-byrå.",
     care_p2:"Allt du inte vill tänka på, som hosting, säkerhet, backup och uppdateringar, sköter jag för en fast månadskostnad. Lägre än vad en mallplattform kostar, utan deras begränsningar.",
+    care_p3:"Din domän ligger alltid i ditt eget namn. Din kod och ditt innehåll kan alltid exporteras eller flyttas, oavsett om vi fortsätter samarbeta eller inte. Inget här låser in dig.",
     inc_label:"Vad du får",
     inc_title:"Varje projekt. <em>Fullt utrustat.</em>",
     inc_sub:"En sajt byggd för att göra besökare till medlemmar, inte bara för att se bra ut. Här är exakt vad som ingår, inga överraskningar.",
@@ -1223,6 +1238,8 @@ const I18N = {
     faq4_q:"อัปเดตเว็บไซต์เองได้ไหม", faq4_a:"ได้ เนื้อหาส่วนใหญ่ ตารางเวลา ราคา และข่าวสาร คุณแก้ไขได้เองโดยตรง ไม่ต้องใช้นักพัฒนา",
     faq5_q:"ทำงานนอกสตอกโฮล์มไหม", faq5_a:"แน่นอน ลูกค้าส่วนใหญ่ของผมอยู่ที่สตอกโฮล์มตอนนี้ แต่ผมทำงานกับลูกค้าที่ไหนก็ได้เช่นกัน ผ่านวิดีโอคอลและอีเมล",
     faq6_q:"ทำไมไม่ใช้เครื่องมือสร้างเว็บไซต์ AI ไปเลย", faq6_a:"เครื่องมือ AI สร้างหน้าเว็บได้ในไม่กี่นาที แต่ไม่รู้ว่ายิมของคุณดำเนินงานจริงอย่างไร ผมสร้างตารางเวลา เส้นทางสมาชิกภาพ และระบบเนื้อหาให้เข้ากับขั้นตอนการทำงานจริงของคุณ ไม่ใช่เทมเพลตทั่วไป และผมคือคนที่คุณติดต่อได้โดยตรงเมื่อมีอะไรต้องเปลี่ยนหรือเกิดปัญหา",
+    faq7_q:"ใครเป็นเจ้าของเว็บไซต์และโค้ด", faq7_a:"โดเมนของคุณลงทะเบียนในชื่อของคุณเองเสมอ ไม่ใช่ของผม โค้ดอยู่ในบัญชีพัฒนาของผมระหว่างที่ผมกำลังสร้างหรือดูแลอยู่ และกรรมสิทธิ์เต็มรูปแบบจะโอนไปยังคุณเมื่อโปรเจกต์ชำระเงินครบถ้วน หากคุณต้องการส่งออกหรือส่งมอบทั้งหมด คุณจะได้รับมัน",
+    faq8_q:"จะเกิดอะไรขึ้นถ้าฉันอยากเปลี่ยนนักพัฒนาในภายหลัง", faq8_a:"ทำได้ครับ โดเมน เนื้อหา และบัญชีของคุณอยู่ในชื่อคุณอยู่แล้ว และคุณจะได้รับโค้ดทั้งหมดพร้อมเอกสารที่จำเป็นสำหรับส่งต่อให้คนอื่น ไม่มีการล็อกไว้ ไม่มีการยึดเว็บไซต์ของคุณเองเป็นตัวประกัน",
     pro_label:"ขั้นตอนการทำงาน", pro_title:"สามขั้นตอน ไม่มีเซอร์ไพรส์",
     pro1_h:"เราคุยกัน", pro1_p:"ทุกคลับ โค้ช และธุรกิจแตกต่างกัน เราเริ่มต้นด้วยการทำความเข้าใจเป้าหมายของคุณ ลูกค้าของคุณ และบทบาทที่เว็บไซต์ควรมีในธุรกิจ",
     pro2_h:"คุณเห็นความเป็นไปได้", pro2_p:"ภายในหนึ่งสัปดาห์ คุณจะได้เห็นร่างแรกของเว็บไซต์จริงของคุณ ไม่ใช่แค่ภาพร่าง แต่เป็นหน้าเว็บที่ใช้งานได้จริงพร้อมเนื้อหาของคุณ เราปรับแต่งร่วมกันจนกว่าจะลงตัว",
@@ -1230,6 +1247,7 @@ const I18N = {
     care_title:"ง่ายสำหรับคุณ<br><span class=\"gold-shimmer\">ผมจัดการให้</span>",
     care_p1:"เนื้อหาของคุณเป็นของคุณเสมอ ขึ้นอยู่กับโปรเจกต์ คุณอัปเดตเองผ่านสเปรดชีตหรือแดชบอร์ด CMS ที่ออกแบบมาสำหรับคนที่ไม่ใช่นักพัฒนา ไม่มีคู่มือ ไม่มีเอเจนซี่คนกลาง",
     care_p2:"ทุกอย่างที่คุณไม่อยากคิดถึง เช่น โฮสติ้ง ความปลอดภัย การสำรองข้อมูล และการอัปเดต ผมดูแลให้ในราคาคงที่รายเดือน ถูกกว่าแพลตฟอร์มเทมเพลตทั่วไป โดยไม่มีข้อจำกัด",
+    care_p3:"โดเมนของคุณเป็นชื่อของคุณเองเสมอ โค้ดและเนื้อหาของคุณสามารถส่งออกหรือย้ายได้เสมอ ไม่ว่าเราจะทำงานร่วมกันต่อหรือไม่ ไม่มีอะไรที่นี่ล็อกคุณไว้",
     inc_label:"สิ่งที่คุณจะได้รับ",
     inc_title:"ทุกโปรเจกต์ <em>พร้อมครบทุกอย่าง</em>",
     inc_sub:"เว็บไซต์ที่สร้างมาเพื่อเปลี่ยนผู้เข้าชมให้เป็นสมาชิก ไม่ใช่แค่ดูดี นี่คือสิ่งที่รวมอยู่ทั้งหมด ไม่มีเซอร์ไพรส์",
