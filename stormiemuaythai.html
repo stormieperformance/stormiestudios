@@ -52,7 +52,10 @@ a:focus-visible, button:focus-visible { outline: 1px solid var(--gold); outline-
   font-style: italic;
   background: linear-gradient(110deg, var(--gold) 30%, var(--gold-bright) 50%, var(--gold) 70%);
   background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: shimmer 7s ease-in-out infinite;
+  transform: translateZ(0); -webkit-transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  will-change: background-position;
 }
 @keyframes shimmer { 0%,100%{background-position:115% 0} 50%{background-position:-15% 0} }
 
