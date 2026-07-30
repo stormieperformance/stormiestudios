@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giving Back — Stormie Studios</title>
+  <meta name="description" content="Free custom websites for animal and wildlife welfare non-profits, from Stormie Studios." />
+  <link rel="canonical" href="https://stormiestudios.com/giving-back.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Thai:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f6f0e2; --bg2: #efe4cd; --text: #241d13;
+      --muted: rgba(36,29,19,0.58); --muted2: rgba(36,29,19,0.32); --line: rgba(36,29,19,0.12);
+      --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
+      --sans: 'DM Sans', sans-serif; --sans-thai: 'Noto Sans Thai', sans-serif;
+      --serif: 'Cormorant Garamond', serif; --serif-thai: 'Noto Serif Thai', serif;
+    }
+    html.lang-th { --sans: 'Noto Sans Thai', sans-serif; --serif: 'Noto Serif Thai', serif; }
+    body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    .page { max-width: 720px; margin: 0 auto; padding: 56px 32px 100px; }
+    .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 56px; flex-wrap: wrap; gap: 16px; }
+    .back-link { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); text-decoration: none; transition: color 0.2s ease; }
+    .back-link:hover { color: var(--gold); }
+    .lang-toggle { display: flex; align-items: center; gap: 6px; font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--muted2); }
+    .lang-toggle button { background: none; border: none; font: inherit; color: inherit; cursor: pointer; padding: 0; }
+    .lang-toggle button.active { color: var(--gold); }
+    .section-label { display: block; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin-bottom: 28px; }
+    h1 em { font-style: italic; color: var(--gold-bright); }
+    p { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--muted); margin-bottom: 18px; max-width: 560px; }
+    .form-block { margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--line); }
+    .form-title { font-family: var(--serif); font-weight: 300; font-size: 22px; margin-bottom: 20px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted2); margin-bottom: 6px; }
+    .field input, .field textarea { width: 100%; background: var(--bg2); border: 1px solid var(--line); border-radius: 2px; padding: 12px 14px; font-family: var(--sans); font-size: 14px; color: var(--text); }
+    .field textarea { resize: vertical; }
+    .btn-gold { background: var(--gold); color: var(--bg); border: none; padding: 13px 30px; font-family: var(--sans); font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; border-radius: 2px; margin-top: 6px; }
+    .note { font-size: 12px; color: var(--muted2); margin-top: 18px; }
+    .note a { color: var(--gold); }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="top-row">
+    <a href="index.html" class="back-link" data-i18n="back_link">&larr; Back to Stormie Studios</a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" id="lang-en" class="active" onclick="setLang('en')">EN</button>
+      <span>/</span>
+      <button type="button" id="lang-sv" onclick="setLang('sv')">SV</button>
+      <span>/</span>
+      <button type="button" id="lang-th" onclick="setLang('th')">TH</button>
+    </div>
+  </div>
+
+  <span class="section-label" data-i18n="giving_label">Giving Back</span>
+  <h1 data-i18n="giving_title">Free websites for animal &amp; wildlife <em>welfare organizations.</em></h1>
+  <p data-i18n="giving_p1">I've had animals in my life for as long as I can remember. I've worked as a vet nurse assistant, managed a dog day care, and today I volunteer as an animal caretaker at a non-profit farm, caring for their farm animals on weekends. Giving back to the people who dedicate their lives to protecting animals feels like the right place to start.</p>
+  <p data-i18n="giving_p2">As Stormie Studios grows, I'm offering 2-3 custom websites completely free each year to registered non-profit organizations working in animal rescue, wildlife conservation, or animal welfare.</p>
+  <p data-i18n="giving_p3">Every website is designed and built by me from scratch, so I can only take on a small number of projects. If your organization could benefit from a new website, I'd love to hear from you.</p>
+
+  <div class="form-block">
+    <h2 class="form-title" data-i18n="giving_form_title">Apply below</h2>
+    <form action="https://formspree.io/f/mvznvwpk" method="POST">
+      <div class="field"><label for="g-org" data-i18n="giving_f_org">Organization name</label><input id="g-org" type="text" name="name" required autocomplete="organization" /></div>
+      <div class="field"><label for="g-email" data-i18n="f_email">Email</label><input id="g-email" type="email" name="email" required autocomplete="email" /></div>
+      <div class="field"><label for="g-msg" data-i18n="giving_f_msg">Tell me about your organization</label><textarea id="g-msg" name="message" rows="4" required></textarea></div>
+      <input type="hidden" name="_subject" value="Stormie Studios Giving Back application" />
+      <button class="btn-gold" type="submit" data-i18n="giving_f_apply">Apply</button>
+    </form>
+    <p class="note"><span data-i18n="giving_note">For registered non-profits. A few spots available.</span> <a href="privacy.html" data-i18n="f_privacy">Privacy policy</a></p>
+  </div>
+</div>
+
+<script>
+const I18N = {
+  en: {
+    back_link:"← Back to Stormie Studios",
+    giving_label:"Giving Back",
+    giving_title:"Free websites for animal &amp; wildlife <em>welfare organizations.</em>",
+    giving_p1:"I've had animals in my life for as long as I can remember. I've worked as a vet nurse assistant, managed a dog day care, and today I volunteer as an animal caretaker at a non-profit farm, caring for their farm animals on weekends. Giving back to the people who dedicate their lives to protecting animals feels like the right place to start.",
+    giving_p2:"As Stormie Studios grows, I'm offering 2-3 custom websites completely free each year to registered non-profit organizations working in animal rescue, wildlife conservation, or animal welfare.",
+    giving_p3:"Every website is designed and built by me from scratch, so I can only take on a small number of projects. If your organization could benefit from a new website, I'd love to hear from you.",
+    giving_form_title:"Apply below",
+    giving_f_org:"Organization name", f_email:"Email", giving_f_msg:"Tell me about your organization", giving_f_apply:"Apply",
+    giving_note:"For registered non-profits. A few spots available.",
+    f_privacy:"Privacy policy"
+  },
+  sv: {
+    back_link:"← Tillbaka till Stormie Studios",
+    giving_label:"Ge tillbaka",
+    giving_title:"Gratis hemsidor till djur- och viltvårds<em>organisationer.</em>",
+    giving_p1:"Jag har haft djur i mitt liv så länge jag kan minnas. Jag har jobbat som djursjukskötarassistent, varit chef för ett hunddagis, och idag är jag helgskötare på en ideell gård där jag tar hand om gårdens djur på helgerna. Att ge tillbaka till dem som ägnar sina liv åt att skydda djur känns som rätt plats att börja.",
+    giving_p2:"I takt med att Stormie Studios växer erbjuder jag 2-3 kostnadsfria hemsidor varje år till registrerade ideella organisationer som arbetar med djurräddning, viltvård eller djurskydd.",
+    giving_p3:"Varje hemsida designas och byggs av mig från grunden, så jag kan bara ta mig an ett fåtal projekt. Om er organisation skulle ha nytta av en ny hemsida hör gärna av er.",
+    giving_form_title:"Ansök nedan",
+    giving_f_org:"Organisationens namn", f_email:"Mail", giving_f_msg:"Berätta om er organisation", giving_f_apply:"Ansök",
+    giving_note:"För registrerade ideella organisationer. Ett fåtal platser tillgängliga.",
+    f_privacy:"Integritetspolicy"
+  },
+  th: {
+    back_link:"← กลับไปที่ Stormie Studios",
+    giving_label:"คืนสู่สังคม",
+    giving_title:"เว็บไซต์ฟรีสำหรับองค์กร<em>สวัสดิภาพสัตว์และสัตว์ป่า</em>",
+    giving_p1:"ผมมีสัตว์อยู่ในชีวิตมาตั้งแต่จำความได้ เคยทำงานเป็นผู้ช่วยพยาบาลสัตวแพทย์ บริหารสถานรับเลี้ยงสุนัข และทุกวันนี้เป็นอาสาสมัครดูแลสัตว์ที่ฟาร์มไม่แสวงหากำไรในวันหยุดสุดสัปดาห์ การได้ตอบแทนคนที่อุทิศชีวิตเพื่อปกป้องสัตว์รู้สึกเหมือนเป็นจุดเริ่มต้นที่ถูกต้อง",
+    giving_p2:"เมื่อ Stormie Studios เติบโตขึ้น ผมมอบเว็บไซต์แบบสั่งทำฟรีทั้งหมด 2-3 เว็บไซต์ต่อปีให้กับองค์กรไม่แสวงหากำไรที่จดทะเบียนซึ่งทำงานด้านการช่วยเหลือสัตว์ การอนุรักษ์สัตว์ป่า หรือสวัสดิภาพสัตว์",
+    giving_p3:"ทุกเว็บไซต์ออกแบบและสร้างโดยผมเองตั้งแต่ต้น ผมจึงรับได้เพียงไม่กี่โปรเจกต์ หากองค์กรของคุณต้องการเว็บไซต์ใหม่ ผมยินดีรับฟัง",
+    giving_form_title:"สมัครด้านล่าง",
+    giving_f_org:"ชื่อองค์กร", f_email:"อีเมล", giving_f_msg:"เล่าให้ฟังเกี่ยวกับองค์กรของคุณ", giving_f_apply:"สมัคร",
+    giving_note:"สำหรับองค์กรไม่แสวงหากำไรที่จดทะเบียน มีจำนวนจำกัด",
+    f_privacy:"นโยบายความเป็นส่วนตัว"
+  }
+};
+function setLang(lang) {
+  const dict = I18N[lang]; if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.documentElement.lang = lang;
+  document.documentElement.classList.toggle('lang-th', lang === 'th');
+  document.querySelectorAll('#lang-en').forEach(el => el.classList.toggle('active', lang==='en'));
+  document.querySelectorAll('#lang-sv').forEach(el => el.classList.toggle('active', lang==='sv'));
+  document.querySelectorAll('#lang-th').forEach(el => el.classList.toggle('active', lang==='th'));
+  try { localStorage.setItem('sp-lang', lang); } catch(e) {}
+}
+(function() {
+  let lang = 'en'; try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
+  if (lang !== 'en') setLang(lang);
+})();
+</script>
+</body>
+</html>
