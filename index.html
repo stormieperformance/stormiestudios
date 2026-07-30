@@ -523,6 +523,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-a { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding-top 0.3s; }
 .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
 
+.trust-bullets { padding: 40px 24px; max-width: 980px; margin: 0 auto; }
+.trust-bullets-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; }
+.trust-bullets-list li { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 400; color: var(--muted); white-space: nowrap; }
+.trust-bullets-list svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--gold); }
+@media (max-width: 640px) { .trust-bullets-list { gap: 10px 20px; } .trust-bullets-list li { white-space: normal; font-size: 12.5px; } }
+
 /* ══ CONTACT ══ */
 .contact {
   --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
@@ -568,6 +574,18 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 .footer-row { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; }
 .footer-left { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(232,228,220,0.25); }
 .footer-right { font-family: var(--serif); font-size: 14px; font-style: italic; color: rgba(232,228,220,0.28); }
+.footer-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 28px 20px; width: 100%; max-width: 760px; text-align: left; padding-top: 8px; }
+.footer-col-title { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(201,169,110,0.55); margin-bottom: 10px; }
+.footer-col a, .footer-col .footer-plain { display: block; font-size: 12px; line-height: 2; color: rgba(232,228,220,0.42); text-decoration: none; }
+.footer-col a { transition: color 0.2s ease; }
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 760px; margin-top: 8px; padding-top: 20px; border-top: 1px solid rgba(201,169,110,0.12); gap: 16px; flex-wrap: wrap; }
+.footer-copyright { font-size: 10px; color: rgba(232,228,220,0.25); }
+@media (max-width: 640px) {
+  .footer-grid { grid-template-columns: repeat(2, minmax(0,1fr)); text-align: center; }
+  .footer-col-title { margin-bottom: 6px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
 .footer-social { display: flex; align-items: center; gap: 18px; margin-top: 4px; }
 .footer-social a { color: rgba(201,169,110,0.52); display: inline-flex; transition: color 0.2s ease, transform 0.2s ease; }
 .footer-social a:hover { color: var(--gold); transform: translateY(-1px); }
@@ -902,6 +920,16 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 </section>
 
 <!-- CONTACT -->
+<section class="trust-bullets" id="trust-bullets">
+  <ul class="trust-bullets-list">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb1">Your domain stays yours</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb2">Your content stays yours</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb3">No lock-in contracts</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb4">Direct contact with your developer</span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb5">Built in Sweden, available worldwide</span></li>
+  </ul>
+</section>
+
 <section class="contact" id="contact">
 <div class="section-inner">
   <p class="eyebrow" data-i18n="ct_label">Get in touch</p>
@@ -998,15 +1026,39 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
     <svg width="22" height="22" viewBox="0 0 24 24" fill="#c9a96e" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
   </a>
 
-  <div class="footer-row">
-    <div class="footer-left">Stormie Studios By Storm Kolmodin</div>
-    <div class="footer-right">stormiestudios.com</div>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <p class="footer-col-title" data-i18n="footer_company">Company</p>
+      <p class="footer-plain">Stormie Studios</p>
+      <p class="footer-plain" data-i18n="footer_by">By Storm Kolmodin</p>
+      <p class="footer-plain">Stockholm, Sweden</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title" data-i18n="footer_nav">Navigation</p>
+      <a href="#included" data-i18n="footer_services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about" data-i18n="footer_about">About</a>
+      <a href="#contact" data-i18n="footer_contact_link">Contact</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title" data-i18n="footer_legal">Legal</p>
+      <a href="privacy.html" data-i18n="f_privacy">Privacy Policy</a>
+      <a href="terms.html" data-i18n="footer_terms">Terms &amp; Conditions</a>
+      <a href="cookies.html" data-i18n="footer_cookies">Cookie Policy</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title" data-i18n="footer_contact">Contact</p>
+      <a href="mailto:hello@stormiestudios.com">hello@stormiestudios.com</a>
+    </div>
   </div>
 
-  <div class="footer-social">
-    <a href="mailto:hello@stormiestudios.com" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-    </a>
+  <div class="footer-bottom">
+    <p class="footer-copyright">&copy; 2026 Stormie Studios. <span data-i18n="footer_rights">All rights reserved.</span></p>
+    <div class="footer-social">
+      <a href="mailto:hello@stormiestudios.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </a>
+    </div>
   </div>
 </footer>
 </div>
@@ -1092,6 +1144,9 @@ const I18N = {
     opt4_name:"Business email setup",
     opt5_name:"Additional pages, features and improvements",
     opt_addon:"Add-on",
+    tb1:"Your domain stays yours", tb2:"Your content stays yours", tb3:"No lock-in contracts", tb4:"Direct contact with your developer", tb5:"Built in Sweden, available worldwide",
+    footer_company:"Company", footer_by:"By Storm Kolmodin", footer_nav:"Navigation", footer_services:"Services", footer_about:"About", footer_contact_link:"Contact",
+    footer_legal:"Legal", footer_terms:"Terms &amp; Conditions", footer_cookies:"Cookie Policy", footer_contact:"Contact", footer_rights:"All rights reserved.",
     ct_label:"Get in touch",
     ct_title:"What do you need <span class=\"gold-shimmer\">help with?</span>",
     ct_sub:"",
@@ -1179,6 +1234,9 @@ const I18N = {
     opt4_name:"Uppsättning av företagsmejl",
     opt5_name:"Fler sidor, funktioner och förbättringar",
     opt_addon:"Tillägg",
+    tb1:"Din domän förblir din", tb2:"Ditt innehåll förblir ditt", tb3:"Ingen inlåsning", tb4:"Direktkontakt med din utvecklare", tb5:"Byggt i Sverige, tillgängligt globalt",
+    footer_company:"Företag", footer_by:"Av Storm Kolmodin", footer_nav:"Navigering", footer_services:"Tjänster", footer_about:"Om oss", footer_contact_link:"Kontakt",
+    footer_legal:"Juridiskt", footer_terms:"Villkor", footer_cookies:"Cookiepolicy", footer_contact:"Kontakt", footer_rights:"Alla rättigheter förbehållna.",
     ct_label:"Kom igång",
     ct_title:"Vad behöver du <span class=\"gold-shimmer\">hjälp med?</span>",
     ct_sub:"",
@@ -1266,6 +1324,9 @@ const I18N = {
     opt4_name:"ตั้งค่าอีเมลธุรกิจ",
     opt5_name:"หน้าเพิ่มเติม ฟีเจอร์ และการปรับปรุง",
     opt_addon:"บริการเสริม",
+    tb1:"โดเมนของคุณเป็นของคุณเสมอ", tb2:"เนื้อหาของคุณเป็นของคุณเสมอ", tb3:"ไม่มีสัญญาผูกมัด", tb4:"ติดต่อนักพัฒนาของคุณได้โดยตรง", tb5:"สร้างในสวีเดน ให้บริการทั่วโลก",
+    footer_company:"บริษัท", footer_by:"โดย Storm Kolmodin", footer_nav:"เมนู", footer_services:"บริการ", footer_about:"เกี่ยวกับ", footer_contact_link:"ติดต่อ",
+    footer_legal:"กฎหมาย", footer_terms:"ข้อกำหนดและเงื่อนไข", footer_cookies:"นโยบายคุกกี้", footer_contact:"ติดต่อ", footer_rights:"สงวนลิขสิทธิ์",
     ct_label:"ติดต่อ",
     ct_title:"คุณต้องการความช่วยเหลือเรื่องอะไร",
     ct_sub:"",
