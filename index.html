@@ -186,6 +186,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .lang-toggle button:hover { color: var(--text); }
 .lang-toggle button.active { color: var(--gold); }
 
+.lang-float { position: fixed; left: 20px; bottom: 20px; z-index: 500; display: flex; align-items: center; gap: 7px; padding: 9px 14px; border-radius: 999px; background: rgba(28,24,20,0.92); backdrop-filter: blur(6px); border: 1px solid rgba(201,169,110,0.28); box-shadow: 0 6px 20px rgba(0,0,0,0.28); font-family: var(--serif); font-size: 13px; font-style: italic; opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity 0.35s ease, transform 0.35s ease; }
+.lang-float.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.lang-float button { background: none; border: none; font: inherit; color: rgba(232,228,220,0.62); padding: 2px 1px; cursor: pointer; transition: color 0.2s; }
+.lang-float button:hover { color: rgba(232,228,220,0.92); }
+.lang-float button.active { color: var(--gold); }
+.lang-float span { color: rgba(232,228,220,0.3); }
+@media (max-width: 640px) { .lang-float { left: 14px; bottom: 14px; padding: 8px 12px; font-size: 12px; } }
+
 /* ══ INTRO ══ */
 .intro {
   --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
@@ -679,6 +687,15 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 </head>
 <body>
 <div class="page">
+
+<!-- FLOATING LANGUAGE SWITCH -->
+<div class="lang-float" id="langFloat" role="group" aria-label="Language">
+  <button type="button" id="lang-en-float" class="active" onclick="setLang('en')">EN</button>
+  <span>/</span>
+  <button type="button" id="lang-sv-float" onclick="setLang('sv')">SV</button>
+  <span>/</span>
+  <button type="button" id="lang-th-float" onclick="setLang('th')">TH</button>
+</div>
 
 <!-- TOPBAR -->
 <header class="topbar">
@@ -1445,9 +1462,9 @@ function setLang(lang) {
   buildHeadline(dict.hero_headline, lang === 'th');
   document.documentElement.lang = lang;
   document.documentElement.classList.toggle('lang-th', lang === 'th');
-  document.querySelectorAll('#lang-en, #lang-en-desktop').forEach(el => el.classList.toggle('active', lang==='en'));
-  document.querySelectorAll('#lang-sv, #lang-sv-desktop').forEach(el => el.classList.toggle('active', lang==='sv'));
-  document.querySelectorAll('#lang-th, #lang-th-desktop').forEach(el => el.classList.toggle('active', lang==='th'));
+  document.querySelectorAll('#lang-en, #lang-en-desktop, #lang-en-float').forEach(el => el.classList.toggle('active', lang==='en'));
+  document.querySelectorAll('#lang-sv, #lang-sv-desktop, #lang-sv-float').forEach(el => el.classList.toggle('active', lang==='sv'));
+  document.querySelectorAll('#lang-th, #lang-th-desktop, #lang-th-float').forEach(el => el.classList.toggle('active', lang==='th'));
   if (typeof updateDetail === 'function') updateDetail(window._scShownIndex || 0, true);
   try { localStorage.setItem('sp-lang', lang); } catch(e) {}
 }
@@ -1465,6 +1482,18 @@ function buildHeadline(text, isThai) {
     wi++; return s;
   }).join('');
 }
+
+(function initLangFloat() {
+  const float = document.getElementById('langFloat');
+  const header = document.querySelector('.topbar');
+  if (!float || !header) return;
+  const reveal = () => {
+    const past = window.scrollY > header.offsetHeight;
+    float.classList.toggle('visible', past);
+  };
+  reveal();
+  window.addEventListener('scroll', reveal, { passive: true });
+})();
 
 (function initMenu() {
   const toggle = document.getElementById('menuToggle');
