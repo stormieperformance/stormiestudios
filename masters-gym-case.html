@@ -405,6 +405,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
     </div>
     <div class="highlight-item">
       <span class="highlight-check">✓</span>
+      <div><h3 data-i18n="hl1b_title">Prices, coach bios and photos, self-service</h3><p data-i18n="hl1b_text">Membership and PT pricing, and every coach's bio and photo, are now editable the same way, no developer needed for a price change or a new coach.</p></div>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-check">✓</span>
       <div><h3 data-i18n="hl2_title">A schedule admin anyone can run</h3><p data-i18n="hl2_text">The full weekly schedule, temporary holiday schedules, and one-off cancellations are all managed from a Google Sheet, no dashboard to learn, no login to remember.</p></div>
     </div>
     <div class="highlight-item">
@@ -807,6 +811,10 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
       <p data-i18n="pa1_p">A real CMS, with photo support, replacing pages that had to be built one at a time outside the site's own navigation.</p>
     </div>
     <div class="pd-row">
+      <h4 data-i18n="pa1b_h">Prices, coaches, classes and offers, all self-service</h4>
+      <p data-i18n="pa1b_p">What started as a CMS for news posts now covers membership and PT pricing, every coach's bio and photo, every class's description and image, and a site-wide promotional banner with its own popup, all editable from the same Studio, with the original text and photos staying live as a safe fallback for anything left blank.</p>
+    </div>
+    <div class="pd-row">
       <h4 data-i18n="pa2_h">A schedule that fits how they work</h4>
       <p data-i18n="pa2_p">Kept on a spreadsheet on purpose, genuinely the fastest way to edit fast-moving weekly class times, with checks so a typo can't break the page.</p>
     </div>
@@ -1010,6 +1018,7 @@ const I18N = {
     hl_label:"What's live today", hl_title:'Not a landing page. <em>A running system.</em>',
     hl_sub:"Everything below is live on the real site right now, built and connected end to end.",
     hl1_title:"Self-service news, no code required", hl1_text:"Staff write and publish news posts themselves through a real CMS (Sanity). No developer needed for a new announcement.",
+    hl1b_title:"Prices, coach bios and photos, self-service", hl1b_text:"Membership and PT pricing, and every coach's bio and photo, are now editable the same way, no developer needed for a price change or a new coach.",
     hl2_title:"A schedule admin anyone can run", hl2_text:"The full weekly schedule, temporary holiday schedules, and one-off cancellations are all managed from a Google Sheet, no dashboard to learn, no login to remember.",
     hl3_title:"Members get notified automatically", hl3_text:"When staff flag a class as cancelled or changed, subscribed members get an email within minutes, no group chat, no missed messages.",
     hl4_title:"One-click calendar subscription", hl4_text:"Members subscribe once and the schedule lives in their own calendar app from then on, including temporary schedules and cancellations, no manual re-checking.",
@@ -1091,6 +1100,7 @@ const I18N = {
     pa_label:"03 — Admin", pa_title:'Time <em>given back.</em>',
     pa_intro:"The old site's real problem was never that a developer had to do everything. It was that the tools didn't fit how the club actually works.",
     pa1_h:"News the club publishes itself", pa1_p:"A real CMS, with photo support, replacing pages that had to be built one at a time outside the site's own navigation.",
+    pa1b_h:"Prices, coaches, classes and offers, all self-service", pa1b_p:"What started as a CMS for news posts now covers membership and PT pricing, every coach's bio and photo, every class's description and image, and a site-wide promotional banner with its own popup, all editable from the same Studio, with the original text and photos staying live as a safe fallback for anything left blank.",
     pa2_h:"A schedule that fits how they work", pa2_p:"Kept on a spreadsheet on purpose, genuinely the fastest way to edit fast-moving weekly class times, with checks so a typo can't break the page.",
     pa3_h:"Season notes, without a developer", pa3_p:"An optional \"important information\" field the club fills in themselves when something needs flagging, no code required.",
     pa4_badge:"Planned, not yet live", pa4_h:"Automatic replies, ready to switch on", pa4_p:"A trial request will soon trigger an automatic reply with what to bring, arrival time, and location, no waiting on a manual response.",
@@ -1143,6 +1153,7 @@ const I18N = {
     hl_label:"Live redan idag", hl_title:'Inte en landningssida. <em>Ett system som körs.</em>',
     hl_sub:"Allt nedan är live på den riktiga sajten just nu, byggt och kopplat hela vägen.",
     hl1_title:"Självbetjänade nyheter, ingen kod krävs", hl1_text:"Personalen skriver och publicerar nyhetsinlägg själva genom ett riktigt CMS (Sanity). Ingen utvecklare behövs för en ny nyhet.",
+    hl1b_title:"Priser, tränarbiografier och bilder, självbetjänat", hl1b_text:"Medlemskaps- och PT-priser, samt varje tränares biografi och bild, är nu redigerbara på samma sätt, ingen utvecklare behövs för en prisändring eller en ny tränare.",
     hl2_title:"Ett schema vem som helst kan sköta", hl2_text:"Hela veckoschemat, tillfälliga lovscheman och enstaka inställda pass hanteras allt från ett Google Sheet, ingen ny panel att lära sig, inget nytt lösenord.",
     hl3_title:"Medlemmar får automatiska aviseringar", hl3_text:"När personalen markerar ett pass som inställt eller ändrat får prenumererade medlemmar ett mejl inom minuter, ingen gruppchatt, inga missade meddelanden.",
     hl4_title:"Prenumerera på schemat med ett klick", hl4_text:"Medlemmar prenumererar en gång och schemat lever sedan i deras egen kalenderapp, inklusive tillfälliga scheman och inställda pass, ingen manuell koll behövs.",
@@ -1224,6 +1235,7 @@ const I18N = {
     pa_label:"03 — Administration", pa_title:'Tid <em>tillbaka.</em>',
     pa_intro:"Den gamla sajtens verkliga problem var aldrig att en utvecklare behövde göra allt. Det var att verktygen inte passade hur klubben faktiskt arbetar.",
     pa1_h:"Nyheter klubben publicerar själva", pa1_p:"Ett riktigt CMS med fotostöd, som ersätter sidor som fick byggas en i taget utanför sajtens egen navigering.",
+    pa1b_h:"Priser, tränare, pass och erbjudanden, helt självbetjänat", pa1b_p:"Det som började som ett CMS för nyhetsinlägg täcker nu medlemskaps- och PT-priser, varje tränares biografi och bild, varje pass beskrivning och bild, samt en webbplatsövergripande erbjudandebanner med egen popup, allt redigerbart från samma Studio, där originaltexten och originalbilderna finns kvar som en säker reserv för allt som lämnas tomt.",
     pa2_h:"Ett schema som passar hur de arbetar", pa2_p:"Ligger kvar i ett kalkylblad med flit, genuint det snabbaste sättet att redigera snabbrörliga veckoscheman, med kontroller så att ett stavfel inte förstör sidan.",
     pa3_h:"Säsongsnoteringar, utan utvecklare", pa3_p:"Ett valfritt fält för \"viktig information\" som klubben fyller i själva när något behöver flaggas, ingen kod krävs.",
     pa4_badge:"Planerat, ännu inte live", pa4_h:"Automatiska svar, redo att slås på", pa4_p:"En provpassförfrågan kommer snart trigga ett automatiskt svar med vad man ska ta med, ankomsttid och adress, ingen väntan på manuellt svar.",
