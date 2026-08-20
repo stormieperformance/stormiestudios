@@ -379,58 +379,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .custom-built-right { display: flex; flex-direction: column; gap: 20px; padding-top: 6px; }
 .custom-built-tagline { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--gold-bright); line-height: 1.5; }
 .custom-built-right p:not(.custom-built-tagline) { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
-/* ══ SEGMENTS ══ */
-.segments {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg); padding: 100px 0; border-bottom: 1px solid var(--line);
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-}
-.segments-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 52px; color: var(--text); }
-.segments-title em { font-style: italic; color: var(--muted); }
-.segment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.segment-card {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg); padding: 38px 34px 34px; text-decoration: none; color: inherit;
-  display: flex; flex-direction: column; gap: 16px; position: relative; transition: background 0.25s;
-  transform-style: preserve-3d; transition: transform 0.15s ease-out, background 0.2s; will-change: transform;
-}
-.segment-card::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.5s ease; }
-.segment-card:hover { background: var(--bg2); }
-.segment-card:hover::before { width: 100%; }
-.segment-card.tap-pulse { animation: cardTapPulse 0.5s ease; }
-@keyframes cardTapPulse {
-  0% { transform: perspective(700px) rotateX(0) rotateY(0) scale(1); }
-  40% { transform: perspective(700px) rotateX(2deg) rotateY(-3deg) scale(1.015); background: var(--bg2); }
-  100% { transform: perspective(700px) rotateX(0) rotateY(0) scale(1); }
-}
-.segment-card.wide { grid-column: 1 / -1; flex-direction: row; align-items: baseline; gap: 34px; padding-top: 28px; padding-bottom: 28px; }
-.segment-name { font-family: var(--serif); font-size: clamp(24px, 3vw, 32px); font-weight: 300; line-height: 1.1; color: var(--text); transition: color 0.2s; }
-.segment-card:hover .segment-name { color: #fff; }
-.segment-card.wide .segment-name { flex-shrink: 0; min-width: 190px; font-size: clamp(20px, 2.4vw, 24px); }
-.segment-text { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; flex-grow: 1; }
-.intl-note { margin-top: 28px; padding: 20px 26px; border: 1px solid rgba(201,169,110,0.22); border-radius: 2px; display: flex; flex-direction: column; gap: 6px; }
-.intl-note-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
-.intl-note-text { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 640px; }
-.segment-link { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); transition: color 0.2s, transform 0.25s ease; align-self: flex-start; }
-.segment-card:hover .segment-link { color: var(--gold); transform: translateX(5px); }
-
-/* ══ PROCESS ══ */
-.process { padding: 100px 0; border-bottom: 1px solid var(--line); }
-.process-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; margin: 18px 0 56px; }
-.process-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 44px; }
-.step { position: relative; padding-top: 22px; }
-.step::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); transition: width 1s ease; }
-.inview .step:nth-child(1)::before { width: 64px; transition-delay: 0.1s; }
-.inview .step:nth-child(2)::before { width: 64px; transition-delay: 0.3s; }
-.inview .step:nth-child(3)::before { width: 64px; transition-delay: 0.5s; }
-.step .step-num { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--gold); margin-bottom: 16px; }
-.step h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 12px; color: var(--text); }
-.step p { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; }
-
 /* ══ CARE ══ */
 .care {
   --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
@@ -446,35 +394,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .care-title { font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text); }
 .care-right { display: flex; flex-direction: column; gap: 22px; padding-top: 8px; }
 .care-right p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
-
-/* ══ INCLUDED ══ */
-.included {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg);
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  padding: 100px 0; border-bottom: 1px solid var(--line);
-}
-.included-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 16px; color: var(--text); }
-.included-title em { font-style: italic; color: var(--muted); }
-.included-sub { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.75; max-width: 480px; margin-bottom: 44px; }
-.included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.included-item { background: var(--bg); padding: 30px 30px 28px; position: relative; }
-.included-item::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.5s ease; }
-.included-item:hover::before { width: 100%; }
-.included-num { font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--gold); }
-.included-name { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--text); margin: 8px 0 6px; line-height: 1.15; }
-.included-desc { font-size: 12.5px; font-weight: 300; color: var(--muted); line-height: 1.7; }
-.optional { margin-top: 64px; }
-.optional-title { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 24px; color: var(--text); margin: 14px 0 24px; }
-.optional-list { display: flex; flex-direction: column; }
-.optional-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 15px 0; border-top: 1px solid var(--line); }
-.optional-row:last-child { border-bottom: 1px solid var(--line); }
-.optional-info { display: flex; flex-direction: column; gap: 4px; }
-.optional-name { font-size: 14px; font-weight: 300; color: var(--text); }
-.optional-desc { font-size: 12px; font-weight: 300; color: var(--muted2); line-height: 1.65; max-width: 440px; }
-.optional-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); white-space: nowrap; padding-top: 2px; }
 
 /* ══ GIVING BACK ══ */
 .giving {
@@ -632,9 +551,6 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .sc-arrow--next { right: -4px; }
   .custom-built { padding: 44px 0; }
   .custom-built > .section-inner { grid-template-columns: 1fr; gap: 28px; }
-  .segment-grid { grid-template-columns: 1fr; }
-  .segment-card.wide { flex-direction: column; gap: 14px; }
-  .process-grid { grid-template-columns: 1fr; gap: 36px; }
   .care > .section-inner { grid-template-columns: 1fr; gap: 32px; }
   .giving { grid-template-columns: 1fr; }
   .giving-copy, .giving-form { padding: 44px 24px; }
@@ -722,7 +638,8 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
     <div class="topbar-nav-desktop">
       <a href="#work" data-i18n="nav_work">Work</a>
       <a href="about.html" data-i18n="nav_about">About</a>
-      <a href="#included" data-i18n="nav_included">What you get</a>
+      <a href="who-i-work-with.html" data-i18n="nav_segments">Who I work with</a>
+      <a href="what-you-get.html" data-i18n="nav_included">What you get</a>
       <a href="#giving" data-i18n="nav_giving">Giving Back</a>
       <a href="#faq" data-i18n="nav_faq">Faq</a>
       <div class="lang-toggle" role="group" aria-label="Language">
@@ -743,8 +660,8 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   <div class="menu-panel" id="menuPanel">
     <a href="#work" data-i18n="nav_work">Work</a>
     <a href="about.html" data-i18n="nav_about">About</a>
-    <a href="#segments" data-i18n="nav_segments">Who I work with</a>
-    <a href="#included" data-i18n="nav_included">What you get</a>
+    <a href="who-i-work-with.html" data-i18n="nav_segments">Who I work with</a>
+    <a href="what-you-get.html" data-i18n="nav_included">What you get</a>
     <a href="#giving" data-i18n="nav_giving">Giving Back</a>
     <a href="#faq" data-i18n="nav_faq">Faq</a>
     <div class="lang-toggle" role="group" aria-label="Language">
@@ -783,35 +700,6 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   </div>
 </section>
 
-<!-- SEGMENTS -->
-<section class="segments" id="segments">
-<div class="section-inner">
-  <span class="section-label" data-i18n="seg_label">Who I work with</span>
-  <h2 class="segments-title" data-i18n="seg_title">Built for the fitness industry. <em>And a few causes I care about.</em></h2>
-  <div class="segment-grid">
-    <a class="segment-card" href="masters-gym-case.html">
-      <h3 class="segment-name" data-i18n="seg1_name">Gyms &amp; martial arts clubs</h3>
-      <p class="segment-text" data-i18n="seg1_text">More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.</p>
-      <span class="segment-link" data-i18n="seg_link">See how →</span>
-    </a>
-    <a class="segment-card">
-      <h3 class="segment-name" data-i18n="seg2_name">PTs &amp; coaches</h3>
-      <p class="segment-text" data-i18n="seg2_text">Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.</p>
-      <span class="segment-link" data-i18n="seg_link2">Coming soon</span>
-    </a>
-    <a class="segment-card wide">
-      <h3 class="segment-name" data-i18n="seg3_name">Shop &amp; brand</h3>
-      <p class="segment-text" data-i18n="seg3_text">Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.</p>
-      <span class="segment-link" data-i18n="seg_link3">Coming soon</span>
-    </a>
-  </div>
-  <div class="intl-note">
-    <span class="intl-note-label" data-i18n="intl_label">Also building toward</span>
-    <p class="intl-note-text" data-i18n="intl_text">Websites for Muay Thai clubs in Thailand. I train Muay Thai myself, so I know a gym's culture from the inside, not just from a client brief.</p>
-    <p class="intl-note-thai-preview" style="font-family: var(--serif-thai); font-size: 15px; color: var(--gold); margin-top: 6px;" lang="th">เว็บไซต์สำหรับค่ายมวยไทย</p>
-  </div>
-</div></section>
-
 <!-- CARE -->
 <section class="care">
 <div class="section-inner">
@@ -822,75 +710,6 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
     <p data-i18n="care_p3">Behind the scenes, Stormie Studios manages the technical side: hosting, deployment, security, backups and maintenance for one flat monthly fee.</p>
     <p data-i18n="care_p4">Your domain, content and brand always remain yours. The underlying source code, build system and production environment remain managed by Stormie Studios. That keeps responsibility clear: you control your business and its content; I take responsibility for the technical implementation that keeps it running.</p>
     <p data-i18n="care_p5">No page-builder maintenance. No plugin stack to manage. No source code you need to understand. Just a custom website you can actually operate yourself.</p>
-  </div>
-</div>
-</section>
-
-<!-- INCLUDED -->
-<section class="included" id="included">
-<div class="section-inner">
-  <span class="section-label" data-i18n="inc_label">What You Get</span>
-  <h2 class="included-title" data-i18n="inc_title">Every project. <em>Fully equipped.</em></h2>
-  <p class="included-sub" data-i18n="inc_sub">A site built to turn visitors into members, not just look good doing it. Here's exactly what's included, no surprises.</p>
-
-  <div class="included-grid">
-    <div class="included-item">
-      <span class="included-num">i.</span>
-      <h3 class="included-name" data-i18n="inc1_name">Custom-built, not templated</h3>
-      <p class="included-desc" data-i18n="inc1_desc">Designed around your business, your brand, your members.</p>
-    </div>
-    <div class="included-item">
-      <span class="included-num">ii.</span>
-      <h3 class="included-name" data-i18n="inc2_name">Fully responsive</h3>
-      <p class="included-desc" data-i18n="inc2_desc">Looks and works right on desktop, tablet and phone.</p>
-    </div>
-    <div class="included-item">
-      <span class="included-num">iii.</span>
-      <h3 class="included-name" data-i18n="inc3_name">Self-service content</h3>
-      <p class="included-desc" data-i18n="inc3_desc">Change text, images, video, schedules, prices, staff, campaigns and news yourself, without touching the site's code or layout.</p>
-    </div>
-    <div class="included-item">
-      <span class="included-num">iv.</span>
-      <h3 class="included-name" data-i18n="inc4_name">Booking and membership paths</h3>
-      <p class="included-desc" data-i18n="inc4_desc">Clear routes from visitor to trial to paying member.</p>
-    </div>
-    <div class="included-item">
-      <span class="included-num">v.</span>
-      <h3 class="included-name" data-i18n="inc5_name">Fast, performance-focused build</h3>
-      <p class="included-desc" data-i18n="inc5_desc">Hand-coded, no bloated page-builder overhead.</p>
-    </div>
-    <div class="included-item">
-      <span class="included-num">vi.</span>
-      <h3 class="included-name" data-i18n="inc6_name">Basic SEO setup</h3>
-      <p class="included-desc" data-i18n="inc6_desc">Titles, structure and metadata set up to be found.</p>
-    </div>
-    <div class="included-item">
-      <span class="included-num">vii.</span>
-      <h3 class="included-name" data-i18n="inc7_name">Contact forms and integrations</h3>
-      <p class="included-desc" data-i18n="inc7_desc">Inquiries, social links and Google Maps where relevant.</p>
-    </div>
-    <div class="included-item">
-      <span class="included-num">viii.</span>
-      <h3 class="included-name" data-i18n="inc8_name">Domain, HTTPS and launch support</h3>
-      <p class="included-desc" data-i18n="inc8_desc">Connected, secured, and live, with help through launch day.</p>
-    </div>
-  </div>
-
-  <div class="optional">
-    <span class="section-label" data-i18n="opt_label">Optional Services</span>
-    <h3 class="optional-title" data-i18n="opt_title">For when you want more, later.</h3>
-    <div class="optional-list">
-      <div class="optional-row"><span class="optional-name" data-i18n="opt2_name">Ongoing content updates handled for you</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
-      <div class="optional-row">
-        <div class="optional-info">
-          <span class="optional-name" data-i18n="opt3_name">Google Search Console and Analytics setup</span>
-          <span class="optional-desc" data-i18n="opt3_desc">Google Analytics or Plausible connected and explained in plain language, not a raw dashboard.</span>
-        </div>
-        <span class="optional-tag" data-i18n="opt_addon">Add-on</span>
-      </div>
-      <div class="optional-row"><span class="optional-name" data-i18n="opt4_name">Business email setup</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
-      <div class="optional-row"><span class="optional-name" data-i18n="opt5_name">Additional pages, features and improvements</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
-    </div>
   </div>
 </div>
 </section>
@@ -1105,7 +924,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
     </div>
     <div class="footer-col">
       <p class="footer-col-title" data-i18n="footer_nav">Navigation</p>
-      <a href="#included" data-i18n="footer_services">Services</a>
+      <a href="what-you-get.html" data-i18n="footer_services">Services</a>
       <a href="#work">Work</a>
       <a href="about.html" data-i18n="footer_about">About</a>
       <a href="#contact" data-i18n="footer_contact_link">Contact</a>
@@ -1145,17 +964,6 @@ const I18N = {
     cb_title:"Custom-built.<br><span class=\"gold-shimmer\">Without the maintenance burden.</span>",
     cb_tagline:"The flexibility of a custom website, with the everyday simplicity people expect from a website builder.",
     cb_p1:"I build the site around your business rather than forcing your business into a template. You still update your own content through a simple CMS, while Stormie Studios manages the code, hosting and technical infrastructure behind it.",
-    seg_label:"Who I work with",
-    seg_title:"Built for the fitness industry. <em>And a few causes I care about.</em>",
-    intl_label:"Also building toward",
-    intl_text:"Websites for Muay Thai clubs in Thailand. I train Muay Thai myself, so I know a gym's culture from the inside, not just from a client brief.",
-    seg1_name:"Gyms &amp; martial arts clubs",
-    seg1_text:"More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.",
-    seg2_name:"PTs &amp; coaches",
-    seg2_text:"Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.",
-    seg3_name:"Shop &amp; brand",
-    seg3_text:"Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.",
-    seg_link:"See how →", seg_link2:"Coming soon", seg_link3:"Coming soon",
     giving_label:"Giving Back",
     giving_title:"Free websites for animal &amp; wildlife <em>welfare organizations.</em>",
     giving_p1:"I've had animals in my life for as long as I can remember. I've worked as a vet nurse assistant, managed a dog day care, and today I volunteer as an animal caretaker at a non-profit farm, caring for their farm animals on weekends. Giving back to the people who dedicate their lives to protecting animals feels like the right place to start.",
@@ -1182,25 +990,6 @@ const I18N = {
     care_p3:"Behind the scenes, Stormie Studios manages the technical side: hosting, deployment, security, backups and maintenance for one flat monthly fee.",
     care_p4:"Your domain, content and brand always remain yours. The underlying source code, build system and production environment remain managed by Stormie Studios. That keeps responsibility clear: you control your business and its content; I take responsibility for the technical implementation that keeps it running.",
     care_p5:"No page-builder maintenance. No plugin stack to manage. No source code you need to understand. Just a custom website you can actually operate yourself.",
-    inc_label:"What You Get",
-    inc_title:"Every project. <em>Fully equipped.</em>",
-    inc_sub:"A site built to turn visitors into members, not just look good doing it. Here's exactly what's included, no surprises.",
-    inc1_name:"Custom-built, not templated", inc1_desc:"Designed around your business, your brand, your members.",
-    inc2_name:"Fully responsive", inc2_desc:"Looks and works right on desktop, tablet and phone.",
-    inc3_name:"Self-service content", inc3_desc:"Change text, images, video, schedules, prices, staff, campaigns and news yourself, without touching the site's code or layout.",
-    inc4_name:"Booking and membership paths", inc4_desc:"Clear routes from visitor to trial to paying member.",
-    inc5_name:"Fast, performance-focused build", inc5_desc:"Hand-coded, no bloated page-builder overhead.",
-    inc6_name:"Basic SEO setup", inc6_desc:"Titles, structure and metadata set up to be found.",
-    inc7_name:"Contact forms and integrations", inc7_desc:"Inquiries, social links and Google Maps where relevant.",
-    inc8_name:"Domain, HTTPS and launch support", inc8_desc:"Connected, secured, and live, with help through launch day.",
-    opt_label:"Optional Services",
-    opt_title:"For when you want more, later.",
-    opt2_name:"Ongoing content updates handled for you",
-    opt3_name:"Google Search Console and Analytics setup",
-    opt3_desc:"Google Analytics or Plausible connected and explained in plain language, not a raw dashboard.",
-    opt4_name:"Business email setup",
-    opt5_name:"Additional pages, features and improvements",
-    opt_addon:"Add-on",
     tb1:"Your domain stays yours", tb2:"Your content stays yours", tb3:"Cancel hosting anytime", tb4:"Direct contact with your developer", tb5:"Built in Sweden, available worldwide",
     footer_company:"Company", footer_by:"By Storm Kolmodin", footer_nav:"Navigation", footer_services:"Services", footer_about:"About", footer_contact_link:"Contact",
     footer_registered:"Registered business in Sweden",
@@ -1235,17 +1024,6 @@ const I18N = {
     cb_title:"Skräddarsytt.<br><span class=\"gold-shimmer\">Utan underhållsbördan.</span>",
     cb_tagline:"Flexibiliteten hos en skräddarsydd webbplats, med den vardagliga enkelheten man förväntar sig av en webbplatsbyggare.",
     cb_p1:"Jag bygger sajten runt din verksamhet i stället för att pressa in din verksamhet i en mall. Du uppdaterar fortfarande ditt eget innehåll via ett enkelt CMS, medan Stormie Studios sköter koden, hostingen och den tekniska infrastrukturen bakom den.",
-    seg_label:"Vem jag hjälper",
-    seg_title:"Byggt för träningsbranschen. <em>Och några saker jag bryr mig om.</em>",
-    intl_label:"Bygger också mot",
-    intl_text:"Hemsidor åt thaiboxningsklubbar i Thailand. Jag tränar själv thaiboxning, så jag känner ett gyms kultur inifrån, inte bara från ett kundbrief.",
-    seg1_name:"Gym &amp; kampsportsklubbar",
-    seg1_text:"Fler provpass, fler medlemmar. En sajt som speglar er kultur lika bra som er Instagram, med tydliga vägar till provpass, medlemskap och företagsträning. Och när schemat ändras? Du uppdaterar det själv på 30 sekunder.",
-    seg2_name:"PT &amp; coacher",
-    seg2_text:"Fyll dina program med en personlig sajt byggd kring bokning, paket och klienthantering. Bygger just nu exakt det här åt en personlig tränare i Stockholm, lanseras snart.",
-    seg3_name:"Shop &amp; varumärke",
-    seg3_text:"Sälj merch och utrustning direkt till din community, en webbshop byggd in i sajten, inte bredvid den. En Stripe-driven butik är på gång som en del av samma tränarbygge.",
-    seg_link:"Se hur →", seg_link2:"Kommer snart", seg_link3:"Kommer snart",
     giving_label:"Ge tillbaka",
     giving_title:"Gratis hemsidor till djur- och viltvårds<em>organisationer.</em>",
     giving_p1:"Jag har haft djur i mitt liv så länge jag kan minnas. Jag har jobbat som djursjukskötarassistent, varit chef för ett hunddagis, och idag är jag helgskötare på en ideell gård där jag tar hand om gårdens djur på helgerna. Att ge tillbaka till dem som ägnar sina liv åt att skydda djur känns som rätt plats att börja.",
@@ -1272,25 +1050,6 @@ const I18N = {
     care_p3:"Bakom kulisserna sköter Stormie Studios det tekniska: hosting, driftsättning, säkerhet, backuper och underhåll för en fast månadskostnad.",
     care_p4:"Din domän, ditt innehåll och ditt varumärke förblir alltid dina. Den underliggande källkoden, byggsystemet och produktionsmiljön förblir hos Stormie Studios. Det håller ansvaret tydligt: du styr din verksamhet och dess innehåll, jag ansvarar för den tekniska implementationen som håller allt igång.",
     care_p5:"Inget page builder-underhåll. Ingen plugin-stack att hantera. Ingen källkod du behöver förstå. Bara en skräddarsydd webbplats du faktiskt kan driva själv.",
-    inc_label:"Vad du får",
-    inc_title:"Varje projekt. <em>Fullt utrustat.</em>",
-    inc_sub:"En sajt byggd för att göra besökare till medlemmar, inte bara för att se bra ut. Här är exakt vad som ingår, inga överraskningar.",
-    inc1_name:"Skräddarsytt, inte mallbaserat", inc1_desc:"Designat kring ditt företag, ditt varumärke, dina medlemmar.",
-    inc2_name:"Fullt responsivt", inc2_desc:"Ser bra ut och fungerar på desktop, surfplatta och mobil.",
-    inc3_name:"Innehåll du sköter själv", inc3_desc:"Ändra text, bilder, video, scheman, priser, personal, kampanjer och nyheter själv, utan att röra sajtens kod eller layout.",
-    inc4_name:"Boknings- och medlemsflöden", inc4_desc:"Tydliga vägar från besökare till provpass till betalande medlem.",
-    inc5_name:"Snabb, prestandafokuserad build", inc5_desc:"Handkodad, utan tunga page builder-verktyg.",
-    inc6_name:"Grundläggande SEO", inc6_desc:"Titlar, struktur och metadata som gör att ni hittas.",
-    inc7_name:"Kontaktformulär och integrationer", inc7_desc:"Förfrågningar, sociala länkar och Google Maps där relevant.",
-    inc8_name:"Domän, HTTPS och lanseringsstöd", inc8_desc:"Kopplad, säkrad och live, med hjälp genom lanseringsdagen.",
-    opt_label:"Tilläggstjänster",
-    opt_title:"För när du vill ha mer, längre fram.",
-    opt2_name:"Löpande innehållsuppdateringar",
-    opt3_name:"Google Search Console och Analytics",
-    opt3_desc:"Google Analytics eller Plausible kopplat och förklarat på ett enkelt språk, inte en rå instrumentpanel.",
-    opt4_name:"Uppsättning av företagsmejl",
-    opt5_name:"Fler sidor, funktioner och förbättringar",
-    opt_addon:"Tillägg",
     tb1:"Din domän förblir din", tb2:"Ditt innehåll förblir ditt", tb3:"Avsluta hosting när du vill", tb4:"Direktkontakt med din utvecklare", tb5:"Byggt i Sverige, tillgängligt globalt",
     footer_company:"Företag", footer_by:"Av Storm Kolmodin", footer_nav:"Navigering", footer_services:"Tjänster", footer_about:"Om oss", footer_contact_link:"Kontakt",
     footer_registered:"Registrerad verksamhet i Sverige",
@@ -1325,17 +1084,6 @@ const I18N = {
     cb_title:"สร้างเฉพาะสำหรับคุณ<br><span class=\"gold-shimmer\">โดยไม่ต้องแบกรับภาระการดูแล</span>",
     cb_tagline:"ความยืดหยุ่นของเว็บไซต์ที่สร้างเฉพาะ พร้อมความง่ายในชีวิตประจำวันแบบที่คนคาดหวังจากเว็บไซต์สำเร็จรูป",
     cb_p1:"ผมสร้างเว็บไซต์ให้เข้ากับธุรกิจของคุณ แทนที่จะบีบธุรกิจของคุณให้เข้ากับเทมเพลต คุณยังคงอัปเดตเนื้อหาของคุณเองผ่าน CMS ที่เรียบง่าย ในขณะที่ Stormie Studios ดูแลโค้ด โฮสติ้ง และโครงสร้างพื้นฐานทางเทคนิคเบื้องหลัง",
-    seg_label:"ลูกค้าที่ผมทำงานด้วย",
-    seg_title:"สร้างขึ้นเพื่อวงการฟิตเนส <em>และบางเรื่องที่ผมใส่ใจ</em>",
-    intl_label:"กำลังขยายไปสู่",
-    intl_text:"เว็บไซต์สำหรับค่ายมวยไทยในประเทศไทย ผมฝึกมวยไทยด้วยตัวเอง จึงเข้าใจวัฒนธรรมของยิมจากภายใน ไม่ใช่แค่จากบรีฟลูกค้า",
-    seg1_name:"ยิมและค่ายศิลปะการต่อสู้",
-    seg1_text:"เซสชันทดลองมากขึ้น สมาชิกมากขึ้น เว็บไซต์ที่สะท้อนวัฒนธรรมของคุณได้ดีเท่ากับ Instagram ของคุณ พร้อมเส้นทางที่ชัดเจนไปสู่พาสทดลอง สมาชิกภาพ และการฝึกอบรมองค์กร และเมื่อตารางเวลาเปลี่ยน คุณอัปเดตเองได้ใน 30 วินาที",
-    seg2_name:"เทรนเนอร์ส่วนบุคคลและโค้ช",
-    seg2_text:"เติมเต็มโปรแกรมของคุณด้วยเว็บไซต์ส่วนตัวที่สร้างขึ้นรอบระบบจอง แพ็กเกจ และการจัดการลูกค้า กำลังสร้างสิ่งนี้ให้เทรนเนอร์ส่วนบุคคลในสตอกโฮล์มอยู่ตอนนี้ เปิดตัวเร็ว ๆ นี้",
-    seg3_name:"ร้านค้าและแบรนด์",
-    seg3_text:"ขายสินค้าและอุปกรณ์ตรงถึงชุมชนของคุณ ร้านค้าออนไลน์ที่สร้างเข้าไปในเว็บไซต์ ไม่ใช่แยกต่างหาก ร้านค้าที่ขับเคลื่อนด้วย Stripe กำลังอยู่ระหว่างการพัฒนาเป็นส่วนหนึ่งของการสร้างเว็บไซต์เทรนเนอร์เดียวกัน",
-    seg_link:"ดูวิธีการ →", seg_link2:"เร็ว ๆ นี้", seg_link3:"เร็ว ๆ นี้",
     giving_label:"คืนสู่สังคม",
     giving_title:"เว็บไซต์ฟรีสำหรับองค์กร<em>สวัสดิภาพสัตว์และสัตว์ป่า</em>",
     giving_p1:"ผมมีสัตว์อยู่ในชีวิตมาตั้งแต่จำความได้ เคยทำงานเป็นผู้ช่วยพยาบาลสัตวแพทย์ บริหารสถานรับเลี้ยงสุนัข และทุกวันนี้เป็นอาสาสมัครดูแลสัตว์ที่ฟาร์มไม่แสวงหากำไรในวันหยุดสุดสัปดาห์ การได้ตอบแทนคนที่อุทิศชีวิตเพื่อปกป้องสัตว์รู้สึกเหมือนเป็นจุดเริ่มต้นที่ถูกต้อง",
@@ -1362,25 +1110,6 @@ const I18N = {
     care_p3:"เบื้องหลัง Stormie Studios ดูแลด้านเทคนิคทั้งหมด: โฮสติ้ง การดีพลอย ความปลอดภัย การสำรองข้อมูล และการบำรุงรักษา ในราคาคงที่รายเดือน",
     care_p4:"โดเมน เนื้อหา และแบรนด์ของคุณเป็นของคุณเสมอ ซอร์สโค้ด ระบบการสร้าง และสภาพแวดล้อมการใช้งานจริงอยู่ภายใต้การดูแลของ Stormie Studios สิ่งนี้ทำให้ความรับผิดชอบชัดเจน คุณดูแลธุรกิจและเนื้อหาของคุณ ส่วนผมรับผิดชอบการดำเนินการทางเทคนิคที่ทำให้ทุกอย่างทำงานได้",
     care_p5:"ไม่ต้องดูแล page builder ไม่มี plugin stack ต้องจัดการ ไม่มีซอร์สโค้ดที่คุณต้องเข้าใจ มีแค่เว็บไซต์ที่สร้างเฉพาะสำหรับคุณ ที่คุณสามารถบริหารจัดการได้เอง",
-    inc_label:"สิ่งที่คุณจะได้รับ",
-    inc_title:"ทุกโปรเจกต์ <em>พร้อมครบทุกอย่าง</em>",
-    inc_sub:"เว็บไซต์ที่สร้างมาเพื่อเปลี่ยนผู้เข้าชมให้เป็นสมาชิก ไม่ใช่แค่ดูดี นี่คือสิ่งที่รวมอยู่ทั้งหมด ไม่มีเซอร์ไพรส์",
-    inc1_name:"สร้างขึ้นเฉพาะ ไม่ใช่เทมเพลต", inc1_desc:"ออกแบบตามธุรกิจ แบรนด์ และสมาชิกของคุณ",
-    inc2_name:"รองรับทุกหน้าจอ", inc2_desc:"แสดงผลและใช้งานได้ดีบนคอมพิวเตอร์ แท็บเล็ต และมือถือ",
-    inc3_name:"จัดการเนื้อหาด้วยตัวเอง", inc3_desc:"เปลี่ยนข้อความ รูปภาพ วิดีโอ ตารางเวลา ราคา พนักงาน แคมเปญ และข่าวสารได้เอง โดยไม่ต้องแตะโค้ดหรือเลย์เอาต์ของเว็บไซต์",
-    inc4_name:"ระบบจองและเส้นทางสมาชิกภาพ", inc4_desc:"เส้นทางที่ชัดเจนจากผู้เข้าชมสู่การทดลองและสมาชิกที่จ่ายเงิน",
-    inc5_name:"สร้างขึ้นให้เร็วและเน้นประสิทธิภาพ", inc5_desc:"เขียนโค้ดเอง ไม่มีภาระจากตัวสร้างหน้าเว็บสำเร็จรูป",
-    inc6_name:"ตั้งค่า SEO พื้นฐาน", inc6_desc:"ชื่อเรื่อง โครงสร้าง และข้อมูลเมตาตั้งค่าให้ค้นหาเจอ",
-    inc7_name:"ฟอร์มติดต่อและการเชื่อมต่อระบบ", inc7_desc:"คำถาม ลิงก์โซเชียล และ Google Maps ตามความเหมาะสม",
-    inc8_name:"โดเมน HTTPS และการสนับสนุนตอนเปิดตัว", inc8_desc:"เชื่อมต่อ ปลอดภัย และใช้งานได้จริง พร้อมช่วยเหลือจนถึงวันเปิดตัว",
-    opt_label:"บริการเสริม",
-    opt_title:"สำหรับตอนที่คุณต้องการเพิ่มเติมในภายหลัง",
-    opt2_name:"จัดการอัปเดตเนื้อหาต่อเนื่องให้คุณ",
-    opt3_name:"ตั้งค่า Google Search Console และ Analytics",
-    opt3_desc:"เชื่อมต่อ Google Analytics หรือ Plausible พร้อมอธิบายให้เข้าใจง่าย ไม่ใช่แดชบอร์ดดิบ",
-    opt4_name:"ตั้งค่าอีเมลธุรกิจ",
-    opt5_name:"หน้าเพิ่มเติม ฟีเจอร์ และการปรับปรุง",
-    opt_addon:"บริการเสริม",
     tb1:"โดเมนของคุณเป็นของคุณเสมอ", tb2:"เนื้อหาของคุณเป็นของคุณเสมอ", tb3:"ยกเลิกโฮสติ้งได้ทุกเมื่อ", tb4:"ติดต่อนักพัฒนาของคุณได้โดยตรง", tb5:"สร้างในสวีเดน ให้บริการทั่วโลก",
     footer_company:"บริษัท", footer_by:"โดย Storm Kolmodin", footer_nav:"เมนู", footer_services:"บริการ", footer_about:"เกี่ยวกับ", footer_contact_link:"ติดต่อ",
     footer_registered:"จดทะเบียนธุรกิจในสวีเดน",
@@ -1602,27 +1331,6 @@ function buildHeadline(text, isThai) {
       intro.style.setProperty('--gy', py + 'px');
       raf = null;
     });
-  });
-})();
-
-(function cardTilt() {
-  const isTouch = window.matchMedia('(pointer: coarse)').matches;
-  document.querySelectorAll('.segment-card').forEach(card => {
-    if (isTouch) {
-      card.addEventListener('touchstart', () => {
-        card.classList.remove('tap-pulse'); void card.offsetWidth;
-        card.classList.add('tap-pulse');
-      }, { passive: true });
-      card.addEventListener('animationend', () => card.classList.remove('tap-pulse'));
-      return;
-    }
-    card.addEventListener('mousemove', (e) => {
-      const r = card.getBoundingClientRect();
-      const cx = (e.clientX - r.left) / r.width - 0.5;
-      const cy = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = `perspective(700px) rotateX(${(-cy * 5).toFixed(2)}deg) rotateY(${(cx * 5).toFixed(2)}deg) translateZ(0)`;
-    });
-    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
 })();
 
