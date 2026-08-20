@@ -450,6 +450,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   animation: pawWalk 8s ease-in-out infinite;
   animation-delay: var(--delay);
 }
+/* Desktop trail coordinates — unchanged from original placement */
+.giving-paws .paw:nth-of-type(1) { --x: 12%; --y: 74%; }
+.giving-paws .paw:nth-of-type(2) { --x: 26%; --y: 58%; }
+.giving-paws .paw:nth-of-type(3) { --x: 42%; --y: 66%; }
+.giving-paws .paw:nth-of-type(4) { --x: 56%; --y: 48%; }
+.giving-paws .paw:nth-of-type(5) { --x: 70%; --y: 56%; }
+.giving-paws .paw:nth-of-type(6) { --x: 83%; --y: 38%; }
 @keyframes pawWalk {
   0%, 100% { opacity: 0; }
   30%, 55% { opacity: 0.42; }
@@ -462,6 +469,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     position: absolute; inset: 0; width: 100%; height: 100%;
     min-height: 0; z-index: 0; opacity: 0.55;
   }
+  /* Mobile trail — shifted up: starts above the button, ends above the title */
+  .giving-paws .paw:nth-of-type(1) { --y: 54%; }
+  .giving-paws .paw:nth-of-type(2) { --y: 38%; }
+  .giving-paws .paw:nth-of-type(3) { --y: 46%; }
+  .giving-paws .paw:nth-of-type(4) { --y: 28%; }
+  .giving-paws .paw:nth-of-type(5) { --y: 36%; }
+  .giving-paws .paw:nth-of-type(6) { --y: 18%; }
 }
 
 /* ══ FAQ ══ */
@@ -928,12 +942,12 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
     <a href="giving-back.html" class="btn-gold" style="display:inline-block;text-decoration:none;margin-top:8px" data-i18n="giving_learn_more">Learn more &amp; apply →</a>
   </div>
   <div class="giving-paws" aria-hidden="true">
-    <svg class="paw" style="--x:12%; --y:74%; --rot:-18deg; --delay:0s"   viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
-    <svg class="paw" style="--x:26%; --y:58%; --rot:12deg;  --delay:1.25s" viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
-    <svg class="paw" style="--x:42%; --y:66%; --rot:-14deg; --delay:2.5s"  viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
-    <svg class="paw" style="--x:56%; --y:48%; --rot:16deg;  --delay:3.75s" viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
-    <svg class="paw" style="--x:70%; --y:56%; --rot:-10deg; --delay:5s"  viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
-    <svg class="paw" style="--x:83%; --y:38%; --rot:14deg;  --delay:6.3s" viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
+    <svg class="paw" style="--rot:-18deg; --delay:0s"   viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
+    <svg class="paw" style="--rot:12deg; --delay:1.25s" viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
+    <svg class="paw" style="--rot:-14deg; --delay:2.5s"  viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
+    <svg class="paw" style="--rot:16deg; --delay:3.75s" viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
+    <svg class="paw" style="--rot:-10deg; --delay:5s"  viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
+    <svg class="paw" style="--rot:14deg; --delay:6.3s" viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
   </div>
 </section>
 
