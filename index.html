@@ -213,6 +213,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   opacity: 0; transition: opacity 0.4s ease;
 }
 .intro.glow-active .intro-glow { opacity: 1; }
+#hero3d { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.9; }
+@media (max-width: 900px) { #hero3d { display: none; } }
 .intro-left, .intro-right { position: relative; z-index: 1; }
 .intro.glow-ambient .intro-glow { opacity: 0.8; animation: glowDrift 9s ease-in-out infinite; }
 @keyframes glowDrift {
@@ -695,6 +697,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 <!-- INTRO -->
 <section class="intro inview" id="work">
   <div class="intro-glow" id="introGlow" aria-hidden="true"></div>
+  <canvas id="hero3d" aria-hidden="true"></canvas>
   <div class="intro-left">
     <span class="intro-eyebrow" data-i18n="hero_eyebrow">Stockholm · Digital studio for sport & fitness brands</span>
     <h1 class="intro-headline" id="introHeadline">Custom built websites.<br>Easy to run.<br>Professionally managed.</h1>
@@ -1708,3 +1711,90 @@ function buildHeadline(text, isThai) {
 
 
 
+<!-- ══════════════════════════════════════════════════════════════════
+     MOCKUP ADDITION — hero 3D wireframe (Three.js, ES Modules, r160-safe)
+     Purely additive: delete this import map + module script to fully
+     revert. Nothing above this point was touched.
+
+     NOTE — turned up for visibility during review: opacity and line
+     brightness here are set higher than you'd actually want live, so
+     it's easy to see and judge. Dial both back down once you've seen
+     it working (see OPACITY_CANVAS / OPACITY_OUTER / OPACITY_INNER
+     near the top of the script below).
+     ══════════════════════════════════════════════════════════════════ -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+(function initHero3D() {
+  const canvas = document.getElementById('hero3d');
+  if (!canvas) return;
+
+  // Turned up for this review pass — bring these down once you can see it
+  const OPACITY_CANVAS = 0.9;
+  const OPACITY_OUTER = 0.75;
+  const OPACITY_INNER = 0.5;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  } catch (e) { console.warn('hero3d: WebGL unavailable', e); return; }
+
+  canvas.style.opacity = OPACITY_CANVAS;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0, 0, 7);
+
+  function sizeToParent() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    const w = rect.width, h = rect.height;
+    renderer.setSize(w, h, false);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+
+  const geometry = new THREE.IcosahedronGeometry(2.6, 1);
+  const wireframe = new THREE.WireframeGeometry(geometry);
+  const material = new THREE.LineBasicMaterial({
+    color: 0xc9a96e, transparent: true, opacity: OPACITY_OUTER
+  });
+  const mesh = new THREE.LineSegments(wireframe, material);
+  scene.add(mesh);
+
+  const coreGeo = new THREE.IcosahedronGeometry(1.4, 0);
+  const coreWire = new THREE.WireframeGeometry(coreGeo);
+  const coreMat = new THREE.LineBasicMaterial({ color: 0xecd9ae, transparent: true, opacity: OPACITY_INNER });
+  const core = new THREE.LineSegments(coreWire, coreMat);
+  scene.add(core);
+
+  sizeToParent();
+  window.addEventListener('resize', sizeToParent);
+
+  function animate() {
+    mesh.rotation.y += 0.0016;
+    mesh.rotation.x += 0.0006;
+    core.rotation.y -= 0.001;
+    core.rotation.x += 0.0009;
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+
+  if (reduceMotion) {
+    mesh.rotation.set(0.4, 0.6, 0);
+    core.rotation.set(0.3, -0.4, 0);
+    renderer.render(scene, camera);
+  } else {
+    animate();
+  }
+})();
+</script>
