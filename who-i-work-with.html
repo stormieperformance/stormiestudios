@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who I Work With — Stormie Studios</title>
+  <meta name="description" content="Custom websites for gyms, martial arts clubs, personal trainers and coaches, built by Stormie Studios." />
+  <link rel="canonical" href="https://stormiestudios.com/who-i-work-with.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Thai:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+      --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+      --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+      --sans: 'DM Sans', sans-serif; --sans-thai: 'Noto Sans Thai', sans-serif;
+      --serif: 'Cormorant Garamond', serif; --serif-thai: 'Noto Serif Thai', serif;
+    }
+    html.lang-th { --sans: 'Noto Sans Thai', sans-serif; --serif: 'Noto Serif Thai', serif; }
+    body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    .page { max-width: 900px; margin: 0 auto; padding: 56px 32px 100px; }
+    .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 56px; flex-wrap: wrap; gap: 16px; }
+    .back-link { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); text-decoration: none; transition: color 0.2s ease; }
+    .back-link:hover { color: var(--gold); }
+    .lang-toggle { display: flex; align-items: center; gap: 6px; font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--muted2); }
+    .lang-toggle button { background: none; border: none; font: inherit; color: inherit; cursor: pointer; padding: 0; }
+    .lang-toggle button.active { color: var(--gold); }
+    .section-label { display: block; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin-bottom: 44px; max-width: 18ch; }
+    h1 em { font-style: italic; color: var(--gold-bright); }
+
+    .segment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 44px; }
+    .segment-card { background: var(--bg); padding: 34px 30px; display: flex; flex-direction: column; gap: 14px; text-decoration: none; color: inherit; position: relative; transition: background 0.2s; }
+    .segment-card::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.5s ease; }
+    .segment-card:hover { background: var(--bg2); }
+    .segment-card:hover::before { width: 100%; }
+    .segment-card.wide { grid-column: 1 / -1; flex-direction: row; align-items: baseline; gap: 34px; padding-top: 28px; padding-bottom: 28px; }
+    .segment-name { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 24px); font-weight: 300; color: var(--text); transition: color 0.2s; }
+    .segment-card:hover .segment-name { color: #fff; }
+    .segment-card.wide .segment-name { flex-shrink: 0; min-width: 190px; }
+    .segment-text { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.75; }
+    .segment-link { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); transition: color 0.25s ease, transform 0.25s ease; display: inline-block; }
+    .segment-card:hover .segment-link { color: var(--gold); transform: translateX(5px); }
+
+    .intl-note { padding: 20px 26px; border: 1px solid rgba(201,169,110,0.22); border-radius: 2px; display: flex; flex-direction: column; gap: 6px; }
+    .intl-note-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .intl-note-text { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 560px; }
+
+    @media (max-width: 640px) {
+      .segment-grid { grid-template-columns: 1fr; }
+      .segment-card.wide { flex-direction: column; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="top-row">
+    <a href="index.html" class="back-link" data-i18n="back_link">&larr; Back to Stormie Studios</a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" id="lang-en" class="active" onclick="setLang('en')">EN</button>
+      <span>/</span>
+      <button type="button" id="lang-sv" onclick="setLang('sv')">SV</button>
+      <span>/</span>
+      <button type="button" id="lang-th" onclick="setLang('th')">TH</button>
+    </div>
+  </div>
+
+  <span class="section-label" data-i18n="seg_label">Who I work with</span>
+  <h1 data-i18n="seg_title">Built for the fitness industry. <em>And a few causes I care about.</em></h1>
+
+  <div class="segment-grid">
+    <a class="segment-card" href="masters-gym-case.html">
+      <h3 class="segment-name" data-i18n="seg1_name">Gyms &amp; martial arts clubs</h3>
+      <p class="segment-text" data-i18n="seg1_text">More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.</p>
+      <span class="segment-link" data-i18n="seg_link">See how →</span>
+    </a>
+    <a class="segment-card">
+      <h3 class="segment-name" data-i18n="seg2_name">PTs &amp; coaches</h3>
+      <p class="segment-text" data-i18n="seg2_text">Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.</p>
+      <span class="segment-link" data-i18n="seg_link2">Coming soon</span>
+    </a>
+    <a class="segment-card wide">
+      <h3 class="segment-name" data-i18n="seg3_name">Shop &amp; brand</h3>
+      <p class="segment-text" data-i18n="seg3_text">Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.</p>
+      <span class="segment-link" data-i18n="seg_link3">Coming soon</span>
+    </a>
+  </div>
+
+  <div class="intl-note">
+    <span class="intl-note-label" data-i18n="intl_label">Also building toward</span>
+    <p class="intl-note-text" data-i18n="intl_text">Websites for Muay Thai clubs in Thailand. I train Muay Thai myself, so I know a gym's culture from the inside, not just from a client brief.</p>
+    <p class="intl-note-thai-preview" style="font-family: var(--serif-thai); font-size: 15px; color: var(--gold); margin-top: 6px;" lang="th">เว็บไซต์สำหรับค่ายมวยไทย</p>
+  </div>
+</div>
+
+<script>
+const I18N = {
+  en: {
+    back_link:"← Back to Stormie Studios",
+    seg_label:"Who I work with",
+    seg_title:"Built for the fitness industry. <em>And a few causes I care about.</em>",
+    intl_label:"Also building toward",
+    intl_text:"Websites for Muay Thai clubs in Thailand. I train Muay Thai myself, so I know a gym's culture from the inside, not just from a client brief.",
+    seg1_name:"Gyms &amp; martial arts clubs",
+    seg1_text:"More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.",
+    seg2_name:"PTs &amp; coaches",
+    seg2_text:"Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.",
+    seg3_name:"Shop &amp; brand",
+    seg3_text:"Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.",
+    seg_link:"See how →", seg_link2:"Coming soon", seg_link3:"Coming soon"
+  },
+  sv: {
+    back_link:"← Tillbaka till Stormie Studios",
+    seg_label:"Vem jag hjälper",
+    seg_title:"Byggt för träningsbranschen. <em>Och några saker jag bryr mig om.</em>",
+    intl_label:"Bygger också mot",
+    intl_text:"Hemsidor åt thaiboxningsklubbar i Thailand. Jag tränar själv thaiboxning, så jag känner ett gyms kultur inifrån, inte bara från ett kundbrief.",
+    seg1_name:"Gym &amp; kampsportsklubbar",
+    seg1_text:"Fler provpass, fler medlemmar. En sajt som speglar er kultur lika bra som er Instagram, med tydliga vägar till provpass, medlemskap och företagsträning. Och när schemat ändras? Du uppdaterar det själv på 30 sekunder.",
+    seg2_name:"PT &amp; coacher",
+    seg2_text:"Fyll dina program med en personlig sajt byggd kring bokning, paket och klienthantering. Bygger just nu exakt det här åt en personlig tränare i Stockholm, lanseras snart.",
+    seg3_name:"Shop &amp; varumärke",
+    seg3_text:"Sälj merch och utrustning direkt till din community, en webbshop byggd in i sajten, inte bredvid den. En Stripe-driven butik är på gång som en del av samma tränarbygge.",
+    seg_link:"Se hur →", seg_link2:"Kommer snart", seg_link3:"Kommer snart"
+  },
+  th: {
+    back_link:"← กลับไปที่ Stormie Studios",
+    seg_label:"ลูกค้าที่ผมทำงานด้วย",
+    seg_title:"สร้างขึ้นเพื่อวงการฟิตเนส <em>และบางเรื่องที่ผมใส่ใจ</em>",
+    intl_label:"กำลังขยายไปสู่",
+    intl_text:"เว็บไซต์สำหรับค่ายมวยไทยในประเทศไทย ผมฝึกมวยไทยด้วยตัวเอง จึงเข้าใจวัฒนธรรมของยิมจากภายใน ไม่ใช่แค่จากบรีฟลูกค้า",
+    seg1_name:"ยิมและค่ายศิลปะการต่อสู้",
+    seg1_text:"เซสชันทดลองมากขึ้น สมาชิกมากขึ้น เว็บไซต์ที่สะท้อนวัฒนธรรมของคุณได้ดีเท่ากับ Instagram ของคุณ พร้อมเส้นทางที่ชัดเจนไปสู่พาสทดลอง สมาชิกภาพ และการฝึกอบรมองค์กร และเมื่อตารางเวลาเปลี่ยน คุณอัปเดตเองได้ใน 30 วินาที",
+    seg2_name:"เทรนเนอร์ส่วนบุคคลและโค้ช",
+    seg2_text:"เติมเต็มโปรแกรมของคุณด้วยเว็บไซต์ส่วนตัวที่สร้างขึ้นรอบระบบจอง แพ็กเกจ และการจัดการลูกค้า กำลังสร้างสิ่งนี้ให้เทรนเนอร์ส่วนบุคคลในสตอกโฮล์มอยู่ตอนนี้ เปิดตัวเร็ว ๆ นี้",
+    seg3_name:"ร้านค้าและแบรนด์",
+    seg3_text:"ขายสินค้าและอุปกรณ์ตรงถึงชุมชนของคุณ ร้านค้าออนไลน์ที่สร้างเข้าไปในเว็บไซต์ ไม่ใช่แยกต่างหาก ร้านค้าที่ขับเคลื่อนด้วย Stripe กำลังอยู่ระหว่างการพัฒนาเป็นส่วนหนึ่งของการสร้างเว็บไซต์เทรนเนอร์เดียวกัน",
+    seg_link:"ดูวิธีการ →", seg_link2:"เร็ว ๆ นี้", seg_link3:"เร็ว ๆ นี้"
+  }
+};
+function setLang(lang) {
+  const dict = I18N[lang]; if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.documentElement.lang = lang;
+  document.documentElement.classList.toggle('lang-th', lang === 'th');
+  document.querySelectorAll('#lang-en').forEach(el => el.classList.toggle('active', lang==='en'));
+  document.querySelectorAll('#lang-sv').forEach(el => el.classList.toggle('active', lang==='sv'));
+  document.querySelectorAll('#lang-th').forEach(el => el.classList.toggle('active', lang==='th'));
+  try { localStorage.setItem('sp-lang', lang); } catch(e) {}
+}
+(function() {
+  let lang = 'en'; try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
+  if (lang !== 'en') setLang(lang);
+})();
+</script>
+</body>
+</html>
