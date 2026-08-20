@@ -213,7 +213,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   opacity: 0; transition: opacity 0.4s ease;
 }
 .intro.glow-active .intro-glow { opacity: 1; }
-#hero3d { position: absolute; top: 0; left: 0; width: 48%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.6; }
+#hero3d { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.9; }
 @media (max-width: 768px) { #hero3d { width: 100%; height: 360px; opacity: 0.5; } }
 .intro-left, .intro-right { position: relative; z-index: 1; }
 .intro.glow-ambient .intro-glow { opacity: 0.8; animation: glowDrift 9s ease-in-out infinite; }
@@ -405,10 +405,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .care > .section-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
 }
-.care-title { font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text); position: relative; z-index: 1; }
-.care-left { position: relative; min-height: 340px; }
-#care3d { position: absolute; top: 60px; left: -10%; width: 120%; height: calc(100% - 60px); z-index: 0; pointer-events: none; opacity: 0.55; }
-@media (max-width: 768px) { .care-left { min-height: 0; } #care3d { display: none; } }
+.care-title { font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text); }
 .care-right { display: flex; flex-direction: column; gap: 22px; padding-top: 8px; }
 .care-right p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
 
@@ -734,10 +731,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 <!-- CARE -->
 <section class="care">
 <div class="section-inner">
-  <div class="care-left">
-    <h2 class="care-title" data-i18n="care_title">Easy for you.<br><span class="gold-shimmer">Professionally managed.</span></h2>
-    <canvas id="care3d" aria-hidden="true"></canvas>
-  </div>
+  <h2 class="care-title" data-i18n="care_title">Easy for you.<br><span class="gold-shimmer">Professionally managed.</span></h2>
   <div class="care-right">
     <p data-i18n="care_p1">Your website is built so you can run the parts of it that matter day to day without touching code.</p>
     <p data-i18n="care_p2">Update text, images, video, schedules, prices, staff, campaigns and news through a simple CMS or connected content system. You don't need to call a developer every time something changes, and the editing experience is designed so routine updates don't interfere with the site's layout or underlying build.</p>
@@ -1720,12 +1714,15 @@ function buildHeadline(text, isThai) {
 
 
 <!-- ══════════════════════════════════════════════════════════════════
-     3D wireframe accents (Three.js, ES Modules) — hero + Care section.
-     One shared, reusable init function. Orthographic camera used
-     deliberately: apparent size stays consistent regardless of
-     container shape (fixes the perspective-camera distortion between
-     the hero's tall box and any wider box). Delete this import map +
-     module script to fully revert both canvases.
+     MOCKUP ADDITION — hero 3D wireframe (Three.js, ES Modules, r160-safe)
+     Purely additive: delete this import map + module script to fully
+     revert. Nothing above this point was touched.
+
+     NOTE — turned up for visibility during review: opacity and line
+     brightness here are set higher than you'd actually want live, so
+     it's easy to see and judge. Dial both back down once you've seen
+     it working (see OPACITY_CANVAS / OPACITY_OUTER / OPACITY_INNER
+     near the top of the script below).
      ══════════════════════════════════════════════════════════════════ -->
 <script type="importmap">
 {
@@ -1737,91 +1734,69 @@ function buildHeadline(text, isThai) {
 <script type="module">
 import * as THREE from 'three';
 
-function initWireframeAccent(canvasId, opts) {
-  const canvas = document.getElementById(canvasId);
+(function initHero3D() {
+  const canvas = document.getElementById('hero3d');
   if (!canvas) return;
 
-  const settings = Object.assign({
-    frustum: 3.0,          // world-space vertical half-height — fixed, aspect-independent
-    opacityMain: 0.34,
-    opacityTrail: 0.09,
-    flashPeak: 0.85,
-    flashPeriod: 7.5,
-    flashWidth: 0.06,
-    flashPhase: 0,          // stagger so two instances don't flash in sync
-    rotSpeed: 0.11,
-    detail: 1
-  }, opts || {});
+  // Turned up for this review pass — bring these down once you can see it
+  const OPACITY_CANVAS = 0.9;
+  const OPACITY_OUTER = 0.75;
+  const OPACITY_INNER = 0.5;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let renderer;
   try {
     renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  } catch (e) { console.warn(canvasId + ': WebGL unavailable', e); return; }
+  } catch (e) { console.warn('hero3d: WebGL unavailable', e); return; }
+
+  canvas.style.opacity = OPACITY_CANVAS;
 
   const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 100);
-  camera.position.set(0, 0, 10);
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0, 0, 7);
 
   function sizeToParent() {
     const rect = canvas.parentElement.getBoundingClientRect();
-    if (rect.width < 4 || rect.height < 4) return;
-    renderer.setSize(rect.width, rect.height, false);
+    const w = rect.width, h = rect.height;
+    renderer.setSize(w, h, false);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    const aspect = rect.width / rect.height;
-    camera.left = -settings.frustum * aspect;
-    camera.right = settings.frustum * aspect;
-    camera.top = settings.frustum;
-    camera.bottom = -settings.frustum;
+    camera.aspect = w / h;
     camera.updateProjectionMatrix();
   }
 
-  const mainGeo = new THREE.IcosahedronGeometry(1.7, settings.detail);
-  const mainEdges = new THREE.EdgesGeometry(mainGeo);
-  const mainMat = new THREE.LineBasicMaterial({ color: 0xecd9ae, transparent: true, opacity: settings.opacityMain });
-  const shape = new THREE.LineSegments(mainEdges, mainMat);
-  scene.add(shape);
+  const geometry = new THREE.IcosahedronGeometry(2.6, 1);
+  const wireframe = new THREE.WireframeGeometry(geometry);
+  const material = new THREE.LineBasicMaterial({
+    color: 0xc9a96e, transparent: true, opacity: OPACITY_OUTER
+  });
+  const mesh = new THREE.LineSegments(wireframe, material);
+  scene.add(mesh);
 
-  const trailGeo = new THREE.IcosahedronGeometry(1.7, settings.detail);
-  const trailEdges = new THREE.EdgesGeometry(trailGeo);
-  const trailMat = new THREE.LineBasicMaterial({ color: 0xc9a96e, transparent: true, opacity: settings.opacityTrail });
-  const trail = new THREE.LineSegments(trailEdges, trailMat);
-  trail.scale.setScalar(1.22);
-  scene.add(trail);
+  const coreGeo = new THREE.IcosahedronGeometry(1.4, 0);
+  const coreWire = new THREE.WireframeGeometry(coreGeo);
+  const coreMat = new THREE.LineBasicMaterial({ color: 0xecd9ae, transparent: true, opacity: OPACITY_INNER });
+  const core = new THREE.LineSegments(coreWire, coreMat);
+  scene.add(core);
 
   sizeToParent();
   window.addEventListener('resize', sizeToParent);
 
-  const clock = new THREE.Clock();
-
-  function render() {
-    const t = clock.getElapsedTime();
-
-    if (!reduceMotion) {
-      shape.rotation.y = t * settings.rotSpeed;
-      shape.rotation.x = t * settings.rotSpeed * 0.6;
-      trail.rotation.y = -t * settings.rotSpeed * 0.7;
-      trail.rotation.x = t * settings.rotSpeed * 0.4;
-    } else {
-      shape.rotation.set(0.5, 0.7, 0);
-      trail.rotation.set(-0.4, 0.5, 0);
-    }
-
-    const cyclePos = ((t + settings.flashPhase) % settings.flashPeriod) / settings.flashPeriod;
-    let pulse = 0;
-    if (cyclePos > 1 - settings.flashWidth) {
-      const local = (cyclePos - (1 - settings.flashWidth)) / settings.flashWidth;
-      pulse = Math.sin(local * Math.PI);
-    }
-    mainMat.opacity = settings.opacityMain + pulse * (settings.flashPeak - settings.opacityMain);
-
+  function animate() {
+    mesh.rotation.y += 0.0016;
+    mesh.rotation.x += 0.0006;
+    core.rotation.y -= 0.001;
+    core.rotation.x += 0.0009;
     renderer.render(scene, camera);
-    if (!reduceMotion) requestAnimationFrame(render);
+    requestAnimationFrame(animate);
   }
-  render();
-}
 
-initWireframeAccent('hero3d',  { frustum: 2.6, flashPhase: 0 });
-initWireframeAccent('care3d',  { frustum: 2.2, flashPhase: 4.0, opacityMain: 0.30 });
+  if (reduceMotion) {
+    mesh.rotation.set(0.4, 0.6, 0);
+    core.rotation.set(0.3, -0.4, 0);
+    renderer.render(scene, camera);
+  } else {
+    animate();
+  }
+})();
 </script>
