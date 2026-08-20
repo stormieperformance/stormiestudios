@@ -405,7 +405,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .care > .section-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
 }
-.care-title { font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text); }
+.care-title { font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text); position: relative; z-index: 1; }
+.care-left { position: relative; min-height: 340px; }
+#care3d { position: absolute; top: 60px; left: -10%; width: 120%; height: calc(100% - 60px); z-index: 0; pointer-events: none; opacity: 0.55; }
+@media (max-width: 768px) { .care-left { min-height: 0; } #care3d { display: none; } }
 .care-right { display: flex; flex-direction: column; gap: 22px; padding-top: 8px; }
 .care-right p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
 
@@ -731,7 +734,10 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 <!-- CARE -->
 <section class="care">
 <div class="section-inner">
-  <h2 class="care-title" data-i18n="care_title">Easy for you.<br><span class="gold-shimmer">Professionally managed.</span></h2>
+  <div class="care-left">
+    <h2 class="care-title" data-i18n="care_title">Easy for you.<br><span class="gold-shimmer">Professionally managed.</span></h2>
+    <canvas id="care3d" aria-hidden="true"></canvas>
+  </div>
   <div class="care-right">
     <p data-i18n="care_p1">Your website is built so you can run the parts of it that matter day to day without touching code.</p>
     <p data-i18n="care_p2">Update text, images, video, schedules, prices, staff, campaigns and news through a simple CMS or connected content system. You don't need to call a developer every time something changes, and the editing experience is designed so routine updates don't interfere with the site's layout or underlying build.</p>
@@ -1712,12 +1718,14 @@ function buildHeadline(text, isThai) {
 
 
 
+
 <!-- ══════════════════════════════════════════════════════════════════
-     Hero 3D — bespoke lightning bolt wireframe (Three.js, ES Modules)
-     A custom-built bolt silhouette, not a stock primitive. Restrained
-     opacity, slow single-axis rotation, and an occasional brief
-     brightness pulse rather than constant motion or a loud shape.
-     Delete this import map + module script to fully revert.
+     3D wireframe accents (Three.js, ES Modules) — hero + Care section.
+     One shared, reusable init function. Orthographic camera used
+     deliberately: apparent size stays consistent regardless of
+     container shape (fixes the perspective-camera distortion between
+     the hero's tall box and any wider box). Delete this import map +
+     module script to fully revert both canvases.
      ══════════════════════════════════════════════════════════════════ -->
 <script type="importmap">
 {
@@ -1729,63 +1737,57 @@ function buildHeadline(text, isThai) {
 <script type="module">
 import * as THREE from 'three';
 
-(function initHero3D() {
-  const canvas = document.getElementById('hero3d');
+function initWireframeAccent(canvasId, opts) {
+  const canvas = document.getElementById(canvasId);
   if (!canvas) return;
 
-  const OPACITY_MAIN = 0.34;
-  const OPACITY_TRAIL = 0.09;
-  const FLASH_PEAK = 0.85;      // brightness the flash reaches
-  const FLASH_PERIOD_S = 7.5;   // seconds between flashes
-  const FLASH_WIDTH = 0.06;     // fraction of the cycle spent bright
+  const settings = Object.assign({
+    frustum: 3.0,          // world-space vertical half-height — fixed, aspect-independent
+    opacityMain: 0.34,
+    opacityTrail: 0.09,
+    flashPeak: 0.85,
+    flashPeriod: 7.5,
+    flashWidth: 0.06,
+    flashPhase: 0,          // stagger so two instances don't flash in sync
+    rotSpeed: 0.11,
+    detail: 1
+  }, opts || {});
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let renderer;
   try {
     renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  } catch (e) { console.warn('hero3d: WebGL unavailable', e); return; }
+  } catch (e) { console.warn(canvasId + ': WebGL unavailable', e); return; }
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-  camera.position.set(0, 0, 8);
+  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 100);
+  camera.position.set(0, 0, 10);
 
   function sizeToParent() {
     const rect = canvas.parentElement.getBoundingClientRect();
+    if (rect.width < 4 || rect.height < 4) return;
     renderer.setSize(rect.width, rect.height, false);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    camera.aspect = rect.width / rect.height;
+    const aspect = rect.width / rect.height;
+    camera.left = -settings.frustum * aspect;
+    camera.right = settings.frustum * aspect;
+    camera.top = settings.frustum;
+    camera.bottom = -settings.frustum;
     camera.updateProjectionMatrix();
   }
 
-  // ---- Bespoke bolt silhouette (not a stock geometry) ----
-  function buildBoltGeometry(scale) {
-    const pts = [
-      [0.25, 1.0], [-0.45, 0.05], [0.05, 0.05],
-      [-0.25, -1.0], [0.45, -0.05], [-0.05, -0.05]
-    ];
-    const shape = new THREE.Shape();
-    shape.moveTo(pts[0][0] * scale, pts[0][1] * scale);
-    for (let i = 1; i < pts.length; i++) shape.lineTo(pts[i][0] * scale, pts[i][1] * scale);
-    shape.closePath();
-    const geo = new THREE.ExtrudeGeometry(shape, { depth: scale * 0.16, bevelEnabled: false });
-    geo.center();
-    return geo;
-  }
+  const mainGeo = new THREE.IcosahedronGeometry(1.7, settings.detail);
+  const mainEdges = new THREE.EdgesGeometry(mainGeo);
+  const mainMat = new THREE.LineBasicMaterial({ color: 0xecd9ae, transparent: true, opacity: settings.opacityMain });
+  const shape = new THREE.LineSegments(mainEdges, mainMat);
+  scene.add(shape);
 
-  const mainGeo = buildBoltGeometry(1.95);
-  const mainEdges = new THREE.EdgesGeometry(mainGeo, 1);
-  const mainMat = new THREE.LineBasicMaterial({ color: 0xecd9ae, transparent: true, opacity: OPACITY_MAIN });
-  const bolt = new THREE.LineSegments(mainEdges, mainMat);
-  scene.add(bolt);
-
-  // Faint trailing echo, slightly larger, sitting just behind — subtle depth, not a second object
-  const trailGeo = buildBoltGeometry(1.95);
-  const trailEdges = new THREE.EdgesGeometry(trailGeo, 1);
-  const trailMat = new THREE.LineBasicMaterial({ color: 0xc9a96e, transparent: true, opacity: OPACITY_TRAIL });
+  const trailGeo = new THREE.IcosahedronGeometry(1.7, settings.detail);
+  const trailEdges = new THREE.EdgesGeometry(trailGeo);
+  const trailMat = new THREE.LineBasicMaterial({ color: 0xc9a96e, transparent: true, opacity: settings.opacityTrail });
   const trail = new THREE.LineSegments(trailEdges, trailMat);
-  trail.scale.setScalar(1.09);
-  trail.position.z = -0.4;
+  trail.scale.setScalar(1.22);
   scene.add(trail);
 
   sizeToParent();
@@ -1797,28 +1799,29 @@ import * as THREE from 'three';
     const t = clock.getElapsedTime();
 
     if (!reduceMotion) {
-      bolt.rotation.y = t * 0.11;      // slow, single-axis — silhouette stays readable
-      trail.rotation.y = t * 0.11;
-      bolt.rotation.x = Math.sin(t * 0.15) * 0.08; // subtle sway, not a tumble
-      trail.rotation.x = bolt.rotation.x;
+      shape.rotation.y = t * settings.rotSpeed;
+      shape.rotation.x = t * settings.rotSpeed * 0.6;
+      trail.rotation.y = -t * settings.rotSpeed * 0.7;
+      trail.rotation.x = t * settings.rotSpeed * 0.4;
     } else {
-      bolt.rotation.set(0.05, 0.5, 0);
-      trail.rotation.copy(bolt.rotation);
+      shape.rotation.set(0.5, 0.7, 0);
+      trail.rotation.set(-0.4, 0.5, 0);
     }
 
-    // Occasional brief brightness pulse — a controlled flash, not a flicker loop
-    const cyclePos = (t % FLASH_PERIOD_S) / FLASH_PERIOD_S;
+    const cyclePos = ((t + settings.flashPhase) % settings.flashPeriod) / settings.flashPeriod;
     let pulse = 0;
-    if (cyclePos > 1 - FLASH_WIDTH) {
-      const local = (cyclePos - (1 - FLASH_WIDTH)) / FLASH_WIDTH; // 0..1
-      pulse = Math.sin(local * Math.PI); // smooth in/out, peaks mid-flash
+    if (cyclePos > 1 - settings.flashWidth) {
+      const local = (cyclePos - (1 - settings.flashWidth)) / settings.flashWidth;
+      pulse = Math.sin(local * Math.PI);
     }
-    mainMat.opacity = OPACITY_MAIN + pulse * (FLASH_PEAK - OPACITY_MAIN);
+    mainMat.opacity = settings.opacityMain + pulse * (settings.flashPeak - settings.opacityMain);
 
     renderer.render(scene, camera);
     if (!reduceMotion) requestAnimationFrame(render);
   }
-
   render();
-})();
+}
+
+initWireframeAccent('hero3d',  { frustum: 2.6, flashPhase: 0 });
+initWireframeAccent('care3d',  { frustum: 2.2, flashPhase: 4.0, opacityMain: 0.30 });
 </script>
