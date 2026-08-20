@@ -165,67 +165,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 1px s
 .showcase-stat-sub { font-size: 12px; color: var(--muted2); line-height: 1.6; }
 
 /* PILLARS OVERVIEW */
-.tour { padding: 88px 0; border-bottom: 1px solid var(--line); }
-.tour-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 12px; }
-.tour-title em { font-style: italic; color: var(--muted); }
-.tour-sub { font-size: 13px; color: var(--muted2); line-height: 1.7; max-width: 520px; margin-bottom: 44px; }
-.tour-block { margin-bottom: 40px; }
-.tour-block-label { display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-.tour-block-title { font-family: var(--serif); font-size: 20px; font-style: italic; color: var(--gold-bright); margin-bottom: 14px; }
-.tour-block-note { font-size: 12px; color: var(--muted2); line-height: 1.7; margin: -8px 0 14px; max-width: 480px; }
-.tour-shot { position: relative; aspect-ratio: 1600/886; border: 1px solid var(--line); background: var(--bg2); overflow: hidden; counter-reset: hz; }
-.tour-shot.portrait { aspect-ratio: 1320/2389; max-width: 340px; margin: 0 auto; }
-.tour-shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.tour-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 1px dashed var(--line); margin: 10px; }
-.tour-placeholder-icon { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--muted2); font-size: 14px; }
-.tour-placeholder span:last-child { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); }
-.hz { position: absolute; border: 1px dashed var(--line); background: transparent; cursor: pointer; padding: 0; z-index: 2; transition: border-color 0.2s, background 0.2s; counter-increment: hz; }
-.hz::before {
-  content: counter(hz); position: absolute; top: 4px; left: 4px;
-  width: 18px; height: 18px; border-radius: 50%; background: var(--bg);
-  border: 1px solid var(--gold-line); color: var(--gold);
-  font-family: var(--sans); font-size: 9px; font-weight: 600;
-  display: flex; align-items: center; justify-content: center; z-index: 3;
-  transition: background 0.2s, color 0.2s;
-}
-.hz:hover::before, .hz:focus-visible::before { background: var(--gold); color: #0c0c0b; }
-.hz:hover, .hz:focus-visible { border-color: var(--gold-line); background: var(--gold-dim); }
-.hz-tip { display: none; }
-.hz.active { border-color: var(--gold-line); background: var(--gold-dim); }
-.hz.active::before { background: var(--gold); color: #0c0c0b; }
-
-.tour-legend-toggle {
-  display: flex; align-items: center; justify-content: space-between; width: 100%;
-  background: none; border: none; border-top: 1px solid var(--line); padding: 14px 2px;
-  cursor: pointer; font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--muted2); margin-top: 16px; transition: color 0.2s;
-}
-.tour-legend-toggle:hover { color: var(--text); }
-.tour-legend-toggle-icon { font-size: 14px; transition: transform 0.25s ease; color: var(--gold); }
-.tour-legend-toggle[aria-expanded="true"] .tour-legend-toggle-icon { transform: rotate(45deg); }
-.tour-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.tour-legend.collapsed { display: none; }
-.tour-legend-item {
-  display: flex; align-items: center; gap: 8px; background: var(--bg2); border: 1px solid var(--line);
-  padding: 10px 14px; cursor: pointer; font-family: var(--sans); transition: border-color 0.2s, background 0.2s;
-}
-.tour-legend-item:hover { border-color: var(--gold-line); }
-.tour-legend-item.active { border-color: var(--gold); background: var(--gold-dim); }
-.tour-legend-num {
-  width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--gold-line); color: var(--gold);
-  font-size: 9px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.tour-legend-item.active .tour-legend-num { background: var(--gold); color: #0c0c0b; }
-.tour-legend-name { font-size: 12px; color: var(--text); text-align: left; }
-
-.tour-explain {
-  margin-top: 16px; padding: 26px 28px; background: var(--bg2); border: 1px solid var(--gold-line);
-  min-height: 90px; display: flex; flex-direction: column; justify-content: center; gap: 8px;
-}
-.tour-explain-empty { font-size: 13px; color: var(--muted2); font-style: italic; }
-.tour-explain b { font-family: var(--serif); font-size: 20px; font-style: italic; font-weight: 400; color: var(--gold-bright); }
-.tour-explain span { font-size: 14px; color: var(--muted); line-height: 1.8; }
-
 .highlights { padding: 64px 0 88px; border-bottom: 1px solid var(--line); }
 .highlights-title { font-family: var(--serif); font-size: clamp(30px, 3.6vw, 44px); font-weight: 300; line-height: 1.1; margin: 18px 0 12px; }
 .highlights-title em { font-style: italic; color: var(--muted); }
@@ -615,163 +554,6 @@ footer { padding:24px 0;display:flex;justify-content:space-between;align-items:c
   </div>
 </section>
 
-<!-- ANNOTATED TOUR -->
-<section class="tour" id="tour">
-  <span class="section-label" data-i18n="tour_label">Hover to explore</span>
-  <h2 class="tour-title" data-i18n="tour_title">Every decision, <em>explained.</em></h2>
-  <p class="tour-sub" data-i18n="tour_sub">Nothing here is arbitrary. Click a numbered point for the reasoning behind it, from business value to technical implementation.</p>
-
-  <div class="tour-block">
-    <h3 class="tour-block-title" data-i18n="tb1_title">Hero</h3>
-    <div class="tour-shot">
-      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
-    </div>
-    <button type="button" class="tour-legend-toggle" aria-expanded="false">
-      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
-    </button>
-    <div class="tour-legend collapsed"></div>
-    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
-  </div>
-
-  <div class="tour-block">
-    <span class="tour-block-label" data-i18n="tb1m_label">Design choices</span>
-    <h3 class="tour-block-title" data-i18n="tb1m_title">Hero — Mobile</h3>
-    <p class="tour-block-note" data-i18n="tb1m_note">The only section shown here in its mobile form, since this is where the branding decisions are easiest to see. Every other block above and below is shown at desktop size.</p>
-    <div class="tour-shot">
-      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
-    </div>
-    <button type="button" class="tour-legend-toggle" aria-expanded="false">
-      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
-    </button>
-    <div class="tour-legend collapsed"></div>
-    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
-  </div>
-
-  <div class="tour-block">
-    <h3 class="tour-block-title" data-i18n="tb2_title">Classes</h3>
-    <p class="tour-block-note" data-i18n="tb2_note">Everything in this section exists to remove friction and hesitation for new visitors, and to give people a reason to both start and stay.</p>
-    <div class="tour-shot">
-      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
-    </div>
-    <button type="button" class="tour-legend-toggle" aria-expanded="false">
-      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
-    </button>
-    <div class="tour-legend collapsed"></div>
-    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
-  </div>
-
-  <div class="tour-block">
-    <h3 class="tour-block-title" data-i18n="tb2b_title">Class Cards</h3>
-    <div class="tour-shot">
-      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
-      <button class="hz" style="top:6%;left:4%;width:92%;height:80%">
-        <span class="hz-tip"><b data-i18n="hz2_3_h">Visual hierarchy over alphabetical order</b><span data-i18n="hz2_3_p">Nybörjare, Fortsättning and Tävling are grouped first because they represent the track that drives long-term membership. All-levels drop-in classes are grouped after. The order communicates priority, it doesn't just organize content.</span></span>
-      </button>
-    </div>
-    <button type="button" class="tour-legend-toggle" aria-expanded="false">
-      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
-    </button>
-    <div class="tour-legend collapsed"></div>
-    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
-  </div>
-
-  <div class="tour-block">
-    <h3 class="tour-block-title" data-i18n="tb3_title">Schedule</h3>
-    <div class="tour-shot">
-      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
-      <button class="hz" style="top:4%;left:4%;width:40%;height:12%">
-        <span class="hz-tip"><b data-i18n="hz3_1_h">Interaction quality as a trust signal</b><span data-i18n="hz3_1_p">A sliding pill indicator and a day/week toggle replace flat static tabs. Small interaction details like this are part of how a visitor unconsciously judges whether a business is well-run.</span></span>
-      </button>
-      <button class="hz" style="top:18%;left:4%;width:92%;height:48%">
-        <span class="hz-tip"><b data-i18n="hz3_2_h">Design honesty over feature completeness</b><span data-i18n="hz3_2_p">There is deliberately no "book this class" button. Masters Gym operates drop-in, so a booking button would promise something the club doesn't offer. Trust is worth more than looking feature-complete, especially the first time a visitor interacts with the schedule.</span></span>
-      </button>
-      <button class="hz" style="top:68%;left:4%;width:92%;height:14%">
-        <span class="hz-tip"><b data-i18n="hz3_4_h">A CMS the club already knows how to use</b><span data-i18n="hz3_4_p">The schedule is powered by a Google Sheet, not a custom admin panel. Building a bespoke booking-and-schedule system would have cost more and taken longer for no real gain here, a spreadsheet does the job and nobody has to learn anything new.</span></span>
-      </button>
-      <button class="hz" style="top:84%;left:4%;width:92%;height:10%">
-        <span class="hz-tip"><b data-i18n="hz3_3_h">A safety valve for exceptions, without code</b><span data-i18n="hz3_3_p">An optional "important information" field lets the club flag holiday changes or shared-space notices themselves. Most club websites need a developer for this kind of one-off update, here it's a single cell in a spreadsheet.</span></span>
-      </button>
-    </div>
-    <button type="button" class="tour-legend-toggle" aria-expanded="false">
-      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
-    </button>
-    <div class="tour-legend collapsed"></div>
-    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
-  </div>
-
-  <div class="tour-block">
-    <h3 class="tour-block-title" data-i18n="tb4_title">News</h3>
-    <div class="tour-shot">
-      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
-      <button class="hz" style="top:4%;left:4%;width:92%;height:36%">
-        <span class="hz-tip"><b data-i18n="hz4_1_h">Removing the developer as a bottleneck</b><span data-i18n="hz4_1_p">News, results and announcements are published through a real CMS with photo support. The previous approach required building a new page outside the site's own navigation for every update, one real example sat buried on the old site, linked only from social media because nobody could otherwise find it.</span></span>
-      </button>
-      <button class="hz" style="top:42%;left:4%;width:92%;height:20%">
-        <span class="hz-tip"><b data-i18n="hz4_3_h">Positioned for what members actually check</b><span data-i18n="hz4_3_p">News now sits directly after the schedule instead of near the footer, both are what returning members actually open the site for. Content that updates often but is buried gets fewer views regardless of how good it is.</span></span>
-      </button>
-      <button class="hz" style="top:64%;left:4%;width:92%;height:30%">
-        <span class="hz-tip"><b data-i18n="hz4_2_h">Turning an announcement into a lead</b><span data-i18n="hz4_2_p">Any post can carry its own name, email and custom-question form. A seasonal update like morning training returning stops being just information and becomes a measurable source of interest.</span></span>
-      </button>
-    </div>
-    <button type="button" class="tour-legend-toggle" aria-expanded="false">
-      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
-    </button>
-    <div class="tour-legend collapsed"></div>
-    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
-  </div>
-
-  <div class="tour-block">
-    <h3 class="tour-block-title" data-i18n="tb5_title">Memberships</h3>
-    <div class="tour-shot">
-      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
-      <button class="hz" style="top:6%;left:4%;width:92%;height:38%">
-        <span class="hz-tip"><b data-i18n="hz5_1_h">Removing the final purchase hesitation</b><span data-i18n="hz5_1_p">Every membership tier is shown with its price and a direct call to action next to it. No visitor has to email or call just to find out what something costs, that single extra step is where a lot of otherwise-interested visitors quietly drop off.</span></span>
-      </button>
-      <button class="hz" style="top:48%;left:4%;width:92%;height:38%">
-        <span class="hz-tip"><b data-i18n="hz5_2_h">Guiding the choice, not just listing it</b><span data-i18n="hz5_2_p">One tier is visually emphasized as the recommended option. Left to compare every plan unassisted, many visitors default to indecision, a subtle visual cue toward the sensible default measurably reduces that hesitation.</span></span>
-      </button>
-    </div>
-    <button type="button" class="tour-legend-toggle" aria-expanded="false">
-      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
-    </button>
-    <div class="tour-legend collapsed"></div>
-    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
-  </div>
-
-  <div class="tour-block">
-    <h3 class="tour-block-title" data-i18n="tb6_title">Corporate</h3>
-    <div class="tour-shot">
-      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
-      <button class="hz" style="top:6%;left:4%;width:92%;height:80%">
-        <span class="hz-tip"><b data-i18n="hz6_1_h">A second business line, not an afterthought</b><span data-i18n="hz6_1_p">Corporate training is a distinct revenue stream from membership sales, so it gets its own explanation of what's included and a concrete promise, a quote within 24 hours, instead of one paragraph and a dead link on the old site.</span></span>
-      </button>
-    </div>
-    <button type="button" class="tour-legend-toggle" aria-expanded="false">
-      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
-    </button>
-    <div class="tour-legend collapsed"></div>
-    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
-  </div>
-
-  <div class="tour-block">
-    <h3 class="tour-block-title" data-i18n="tb7_title">Contact</h3>
-    <div class="tour-shot">
-      <div class="tour-placeholder"><span class="tour-placeholder-icon">↗</span><span data-i18n="tour_soon">Screenshot coming</span></div>
-      <button class="hz" style="top:6%;left:4%;width:92%;height:40%">
-        <span class="hz-tip"><b data-i18n="hz7_1_h">Answering first-visit questions before they're asked</b><span data-i18n="hz7_1_p">Address, metro directions, opening hours and an embedded map sit together in one place. Every one of these is a question that otherwise becomes an email, a DM, or a visitor who gives up and doesn't ask at all.</span></span>
-      </button>
-      <button class="hz" style="top:50%;left:4%;width:92%;height:36%">
-        <span class="hz-tip"><b data-i18n="hz7_2_h">Accessible down to the smallest detail</b><span data-i18n="hz7_2_p">Even the map marker has a proper accessible name for screen readers. It's a detail almost nobody will consciously notice, and that's exactly the point, accessibility done well is invisible to those who don't need it and essential to those who do.</span></span>
-      </button>
-    </div>
-    <button type="button" class="tour-legend-toggle" aria-expanded="false">
-      <span data-i18n="tour_legend_toggle">Show all points as a list</span><span class="tour-legend-toggle-icon">+</span>
-    </button>
-    <div class="tour-legend collapsed"></div>
-    <div class="tour-explain"><p class="tour-explain-empty" data-i18n="tour_explain_empty">Select a numbered point above to see the explanation here.</p></div>
-  </div>
-</section>
-
 <!-- CTA -->
 <section class="cta-section">
   <p class="eyebrow" data-i18n="cta_label">Want something similar?</p>
@@ -818,46 +600,6 @@ const I18N = {
     c6_name:"Memberships", c6_text:"The old site promoted trial weeks as a limited seasonal banner, implying trials were only available at certain times. The new site shows every membership tier and price year-round, with a standing invitation to try a class any time, no waiting for a promo window.",
     c7_name:"Corporate", c7_text:'The old corporate offer was one paragraph and a "Read more" link with no clear next step. The new corporate section spells out exactly what\'s included, morning sessions, team building, group classes, with a direct booking CTA and a quote turnaround time.',
     c8_name:"Contact", c8_text:'The old footer was five links and a "Made with Squarespace" credit. The new contact section gives visitors the address, metro directions, opening hours and an embedded map in one place, answering the most common first-visit questions without an extra click.',
-    tour_label:"Hover to explore", tour_title:'Every decision, <em>explained.</em>',
-    tour_sub:"Nothing here is arbitrary. Click a numbered point for the reasoning behind it, from business value to technical implementation.",
-    tour_soon:"Screenshot coming",
-    tour_explain_empty:"Select a numbered point above to see the explanation here.",
-    tour_legend_toggle:"Show all points as a list",
-    tb1_title:"Hero", tb2_title:"Classes", tb3_title:"Schedule", tb4_title:"News", tb5_title:"Memberships", tb6_title:"Corporate", tb7_title:"Contact",
-    tb1m_title:"Hero — Mobile", tb1m_label:"Design choices", tb1m_note:"The only section shown here in its mobile form, since this is where the branding decisions are easiest to see. Every other block above and below is shown at desktop size.",
-    tb2_note:"Everything in this section exists to remove friction and hesitation for new visitors, and to give people a reason to both start and stay.",
-    tb2b_title:"Class Cards",
-    hz2_0_h:"Culture as a visible signal, not just a slogan", hz2_0_p:"Hard Work, Respect, Community, Everybody Is Equal scroll continuously right where a new visitor's eye lands first. Values that used to live only in conversation or on a wall inside the gym are now part of the first impression, before anyone asks what the club is actually like to train at.",
-    hzm_1_h:"A color palette, not invented", hzm_1_p:"The teal accent wasn't picked from a design tool's default palette, it was sampled directly from Masters Gym's own logo and social media material. The website matches their brand, it doesn't compete with it.",
-    hzm_2_h:"One menu icon, nothing sacrificed", hzm_2_p:"On mobile, every nav link, the language toggle and the theme switch collapse into a single hamburger menu instead of being stripped down. Smaller screen, same navigation, nothing removed to make it fit.",
-    hzm_3_h:"Typography borrowed from their own gear", hzm_3_p:"This bold, condensed display font was chosen after looking at what Masters Gym already uses on their own branded training wear and social posts. The goal wasn't a new identity, it was a website that's recognizably theirs.",
-    hzm_4_h:"A site that feels like them, not a template", hzm_4_p:"Every visual choice here, color, font, spacing, traces back to something Masters Gym already had on their kit, their logo, their existing social presence. The result reads as an extension of the club, not a redesign imposed on top of it.",
-    hz1_1_h:"Dual logo system", hz1_1_p:"Dedicated logo versions for dark and light mode preserve contrast, legibility and brand consistency instead of relying on recolored assets.",
-    hz1_2_h:"Complete site navigation", hz1_2_p:"A complete navigation structure gives visitors immediate access to every major section while improving orientation and reducing unnecessary scrolling.",
-    hz1_3_h:"Bilingual experience", hz1_3_p:"Built-in language switching makes the website accessible to both Swedish and international visitors without requiring a separate website.",
-    hz1_4_h:"Theme switching", hz1_4_p:"Visitors can choose the interface that best suits their environment while maintaining a consistent brand experience across both themes.",
-    hz1_5_h:"Sticky navigation + persistent CTA", hz1_5_p:"The navigation remains fixed while scrolling, keeping the primary CTA and all key navigation links accessible at all times. This reduces friction, improves usability, and provides a constant path to conversion without requiring visitors to scroll back to the top.",
-    hz1_6_h:"Brand positioning", hz1_6_p:'The previous website didn\'t have a hero section at all. Rather than inventing a new slogan, I researched Masters Gym\'s existing brand identity and found "Where Everyone Is Equal" on their social media. I elevated that existing philosophy into the site\'s primary message, turning one of the club\'s core values into its strongest first impression, not a new message, a stronger version of the one they already had.',
-    hz1_7_h:"Immersive hero media", hz1_7_p:"The hero begins as a lightweight image for fast loading before transitioning into video, increasing visual impact without sacrificing the initial loading experience.",
-    hz1_8_h:"Value proposition", hz1_8_p:"Supporting copy reinforces the headline and quickly explains who the gym is for, helping visitors understand the offer within seconds.",
-    hz1_9_h:"Low-friction conversion", hz1_9_p:"Designed for visitors who want to experience the gym before committing, reducing hesitation and encouraging first-time enquiries.",
-    hz1_10_h:"High-intent conversion", hz1_10_p:"A secondary CTA for visitors who have already decided to join, supporting different stages of the customer journey.",
-    hz1_11_h:"Corporate services entry point", hz1_11_p:"Introduces Masters Gym's corporate offering directly from the hero, exposing an additional business opportunity alongside the primary membership journey.",
-    hz2_1_h:"Retention through visible progress", hz2_1_p:"Beginner, intermediate and competition are shown as a visible path rather than left implied. Members who can see where they're headed stay engaged longer, this is a retention mechanism disguised as a diagram.",
-    hz2_2_h:"Reducing decision paralysis", hz2_2_p:"A single question resolves the most common hesitation for a first-time visitor: which class is actually right for me. Removing that uncertainty before it becomes a reason not to enquire is a direct conversion lever, not just a nice feature.",
-    hz2_3_h:"Visual hierarchy over alphabetical order", hz2_3_p:"Nybörjare, Fortsättning and Tävling are grouped first because they represent the track that drives long-term membership. All-levels drop-in classes are grouped after. The order communicates priority, it doesn't just organize content.",
-    hz3_1_h:"Interaction quality as a trust signal", hz3_1_p:"A sliding pill indicator and a day/week toggle replace flat static tabs. Small interaction details like this are part of how a visitor unconsciously judges whether a business is well-run.",
-    hz3_2_h:"Design honesty over feature completeness", hz3_2_p:"There is deliberately no \"book this class\" button. Masters Gym operates drop-in, so a booking button would promise something the club doesn't offer. Trust is worth more than looking feature-complete, especially the first time a visitor interacts with the schedule.",
-    hz3_4_h:"A CMS the club already knows how to use", hz3_4_p:"The schedule is powered by a Google Sheet, not a custom admin panel. Building a bespoke booking-and-schedule system would have cost more and taken longer for no real gain here, a spreadsheet does the job and nobody has to learn anything new.",
-    hz3_3_h:"A safety valve for exceptions, without code", hz3_3_p:"An optional \"important information\" field lets the club flag holiday changes or shared-space notices themselves. Most club websites need a developer for this kind of one-off update, here it's a single cell in a spreadsheet.",
-    hz4_1_h:"Removing the developer as a bottleneck", hz4_1_p:"News, results and announcements are published through a real CMS with photo support. The previous approach required building a new page outside the site's own navigation for every update, one real example sat buried on the old site, linked only from social media because nobody could otherwise find it.",
-    hz4_3_h:"Positioned for what members actually check", hz4_3_p:"News now sits directly after the schedule instead of near the footer, both are what returning members actually open the site for. Content that updates often but is buried gets fewer views regardless of how good it is.",
-    hz4_2_h:"Turning an announcement into a lead", hz4_2_p:"Any post can carry its own name, email and custom-question form. A seasonal update like morning training returning stops being just information and becomes a measurable source of interest.",
-    hz5_1_h:"Removing the final purchase hesitation", hz5_1_p:"Every membership tier is shown with its price and a direct call to action next to it. No visitor has to email or call just to find out what something costs, that single extra step is where a lot of otherwise-interested visitors quietly drop off.",
-    hz5_2_h:"Guiding the choice, not just listing it", hz5_2_p:"One tier is visually emphasized as the recommended option. Left to compare every plan unassisted, many visitors default to indecision, a subtle visual cue toward the sensible default measurably reduces that hesitation.",
-    hz6_1_h:"A second business line, not an afterthought", hz6_1_p:"Corporate training is a distinct revenue stream from membership sales, so it gets its own explanation of what's included and a concrete promise, a quote within 24 hours, instead of one paragraph and a dead link on the old site.",
-    hz7_1_h:"Answering first-visit questions before they're asked", hz7_1_p:"Address, metro directions, opening hours and an embedded map sit together in one place. Every one of these is a question that otherwise becomes an email, a DM, or a visitor who gives up and doesn't ask at all.",
-    hz7_2_h:"Accessible down to the smallest detail", hz7_2_p:"Even the map marker has a proper accessible name for screen readers. It's a detail almost nobody will consciously notice, and that's exactly the point, accessibility done well is invisible to those who don't need it and essential to those who do.",
     craft_label:"Built properly", craft_title:'The craft <em>underneath.</em>',
     craft_tab1:"The short version", craft_tab2:"Tech specs",
     craft_plain1:"Built to load fast, to work for people using a keyboard or a screen reader, and to actually get found on Google.",
@@ -909,46 +651,6 @@ const I18N = {
     c6_name:"Medlemskap", c6_text:"Den gamla sajten marknadsförde provveckor som en tidsbegränsad banner för säsongen, vilket antydde att provpass bara fanns vissa perioder. Den nya sajten visar alla medlemskapsnivåer och priser året runt, med en stående inbjudan att prova ett pass när som helst, ingen väntan på ett kampanjfönster.",
     c7_name:"Företag", c7_text:'Det gamla företagserbjudandet var ett stycke och en "Läs mer"-länk utan tydligt nästa steg. Den nya företagssektionen visar exakt vad som ingår, morgonpass, teambuilding, gruppass, med en direkt bokningsknapp och svarstid för offert.',
     c8_name:"Kontakt", c8_text:'Den gamla sidfoten var fem länkar och en "Made with Squarespace"-kreditering. Den nya kontaktsektionen ger besökare adress, T-baneväg, öppettider och en inbäddad karta på ett ställe, vilket besvarar de vanligaste frågorna inför ett första besök utan ett extra klick.',
-    tour_label:"Hovra för att utforska", tour_title:'Varje beslut, <em>förklarat.</em>',
-    tour_sub:"Inget här är slumpmässigt. Klicka på en numrerad punkt för resonemanget bakom den, från affärsvärde till teknisk implementation.",
-    tour_soon:"Skärmbild kommer",
-    tour_explain_empty:"Välj en numrerad punkt ovan för att se förklaringen här.",
-    tour_legend_toggle:"Visa alla punkter som en lista",
-    tb1_title:"Hero", tb2_title:"Pass", tb3_title:"Schema", tb4_title:"Nyheter", tb5_title:"Medlemskap", tb6_title:"Företag", tb7_title:"Kontakt",
-    tb1m_title:"Hero — Mobil", tb1m_label:"Designval", tb1m_note:"Den enda sektionen som visas i mobilformat här, eftersom det är där varumärkesbesluten syns tydligast. Alla andra block ovan och nedan visas i desktopstorlek.",
-    tb2_note:"Allt i den här sektionen finns för att ta bort friktion och tveksamhet för nya besökare, och ge folk en anledning att både börja och stanna kvar.",
-    tb2b_title:"Passkort",
-    hz2_0_h:"Kultur som en synlig signal, inte bara ett slogan", hz2_0_p:"Hard Work, Respect, Community, Everybody Is Equal rullar kontinuerligt precis där en ny besökares blick landar först. Värderingar som tidigare bara fanns i samtal eller på en vägg inne i gymmet är nu en del av det första intrycket, innan någon ens frågar hur det är att träna på klubben.",
-    hzm_1_h:"En färgpalett, inte påhittad", hzm_1_p:"Turkosaccenten valdes inte från ett designverktygs standardpalett, den hämtades direkt från Masters Gyms egen logotyp och material från sociala medier. Sajten matchar deras varumärke, den konkurrerar inte med det.",
-    hzm_2_h:"En menyikon, inget bortprioriterat", hzm_2_p:"På mobil samlas varje menylänk, språkval och temaväxling i en enda hamburgermeny istället för att strippas ner. Mindre skärm, samma navigering, inget borttaget för att få plats.",
-    hzm_3_h:"Typografi lånad från deras eget kit", hzm_3_p:"Det här fetstilta, kondenserade typsnittet valdes efter att ha tittat på vad Masters Gym redan använder på sina egna märkeskläder och sociala inlägg. Målet var inte en ny identitet, det var en sajt som märkbart är deras.",
-    hzm_4_h:"En sajt som känns som dem, inte en mall", hzm_4_p:"Varje visuellt val här, färg, typsnitt, spacing, går tillbaka till något Masters Gym redan hade på sitt kit, sin logotyp, sin befintliga närvaro i sociala medier. Resultatet läses som en förlängning av klubben, inte en ombyggnad påtvingad ovanpå den.",
-    hz1_1_h:"Dubbelt logotypsystem", hz1_1_p:"Egna logotypversioner för mörkt och ljust läge bevarar kontrast, läsbarhet och varumärkeskonsekvens istället för att förlita sig på omfärgade filer.",
-    hz1_2_h:"Komplett sajtnavigering", hz1_2_p:"En komplett navigeringsstruktur ger besökare direkt tillgång till varje huvudsektion samtidigt som den förbättrar orienteringen och minskar onödig scrollning.",
-    hz1_3_h:"Tvåspråkig upplevelse", hz1_3_p:"Inbyggd språkväxling gör sajten tillgänglig för både svenska och internationella besökare utan att kräva en separat sajt.",
-    hz1_4_h:"Temaväxling", hz1_4_p:"Besökare kan välja det gränssnitt som passar deras miljö bäst samtidigt som en konsekvent varumärkesupplevelse bibehålls i båda temana.",
-    hz1_5_h:"Fast navigering + ständig CTA", hz1_5_p:"Menyn ligger kvar fast vid scrollning, vilket håller huvudknappen och alla viktiga menylänkar tillgängliga hela tiden. Det minskar friktion, förbättrar användbarheten och ger en ständig väg till konvertering utan att besökare behöver scrolla tillbaka till toppen.",
-    hz1_6_h:"Varumärkespositionering", hz1_6_p:'Den tidigare sajten hade ingen hero-sektion alls. Istället för att hitta på ett nytt slogan researchade jag Masters Gyms befintliga varumärkesidentitet och hittade "Where Everyone Is Equal" på deras sociala medier. Jag lyfte den redan existerande filosofin till sajtens huvudbudskap, och gjorde ett av klubbens kärnvärden till dess starkaste första intryck, inget nytt budskap, en starkare version av det de redan hade.',
-    hz1_7_h:"Levande hero-media", hz1_7_p:"Heron börjar som en lättviktig bild för snabb laddning innan den övergår till video, vilket ökar det visuella intrycket utan att offra den initiala laddningsupplevelsen.",
-    hz1_8_h:"Värdeerbjudande", hz1_8_p:"Understödjande text förstärker rubriken och förklarar snabbt vem gymmet är till för, vilket hjälper besökare att förstå erbjudandet på några sekunder.",
-    hz1_9_h:"Konvertering med låg friktion", hz1_9_p:"Utformad för besökare som vill uppleva gymmet innan de bestämmer sig, vilket minskar tveksamhet och uppmuntrar första kontakt.",
-    hz1_10_h:"Konvertering med hög avsikt", hz1_10_p:"En sekundär CTA för besökare som redan har bestämt sig för att gå med, vilket stödjer olika steg i kundresan.",
-    hz1_11_h:"Ingång till företagstjänster", hz1_11_p:"Introducerar Masters Gyms företagserbjudande direkt från heron, vilket exponerar en ytterligare affärsmöjlighet vid sidan av den primära medlemsresan.",
-    hz2_1_h:"Retention genom synlig utveckling", hz2_1_p:"Nybörjare, fortsättning och tävling visas som en synlig väg istället för att vara underförstådd. Medlemmar som kan se vart de är på väg stannar kvar längre, det här är en retentionsmekanism förklädd till ett diagram.",
-    hz2_2_h:"Minskad beslutsångest", hz2_2_p:"En enda fråga löser den vanligaste tveksamheten hos en förstagångsbesökare: vilket pass passar mig egentligen. Att ta bort den osäkerheten innan den blir en anledning att inte höra av sig är en direkt konverteringsspak, inte bara en trevlig funktion.",
-    hz2_3_h:"Visuell hierarki före bokstavsordning", hz2_3_p:"Nybörjare, Fortsättning och Tävling grupperas först eftersom de representerar det spår som driver långsiktigt medlemskap. Alla nivåer-passen grupperas efter. Ordningen kommunicerar prioritet, den organiserar inte bara innehåll.",
-    hz3_1_h:"Interaktionskvalitet som förtroendesignal", hz3_1_p:"En glidande pill-indikator och en dag/vecka-växling ersätter platta statiska flikar. Små interaktionsdetaljer som den här är en del av hur en besökare omedvetet bedömer om ett företag drivs bra.",
-    hz3_2_h:"Ärlighet i designen före funktionsfullständighet", hz3_2_p:"Det finns medvetet ingen \"boka det här passet\"-knapp. Masters Gym är drop-in, så en bokningsknapp skulle lova något klubben inte erbjuder. Förtroende är värt mer än att se funktionsfullständig ut, särskilt första gången en besökare interagerar med schemat.",
-    hz3_4_h:"Ett CMS klubben redan kan använda", hz3_4_p:"Schemat drivs av ett Google Sheet, inte en skräddarsydd adminpanel. Att bygga ett eget boknings- och schemasystem hade kostat mer och tagit längre tid utan verklig vinst här, ett kalkylblad gör jobbet och ingen behöver lära sig något nytt.",
-    hz3_3_h:"En säkerhetsventil för undantag, utan kod", hz3_3_p:"Ett valfritt fält för \"viktig information\" låter klubben flagga helgdagsändringar eller delade lokaler själva. De flesta klubbsajter kräver en utvecklare för den här typen av enstaka uppdatering, här är det en enda cell i ett kalkylblad.",
-    hz4_1_h:"Utvecklaren är inte längre en flaskhals", hz4_1_p:"Nyheter, resultat och tillkännagivanden publiceras genom ett riktigt CMS med fotostöd. Det tidigare arbetssättet krävde att en ny sida byggdes utanför sajtens egen navigering för varje uppdatering, ett riktigt exempel låg begravt på den gamla sajten, länkat bara från sociala medier eftersom ingen annars kunde hitta det.",
-    hz4_3_h:"Placerat för det medlemmar faktiskt kollar", hz4_3_p:"Nyheter ligger nu direkt efter schemat istället för nära sidfoten, båda är sådant återkommande medlemmar faktiskt öppnar sajten för. Innehåll som uppdateras ofta men ligger begravt får färre visningar oavsett hur bra det är.",
-    hz4_2_h:"Gör ett inlägg till ett lead", hz4_2_p:"Vilket inlägg som helst kan bära sitt eget namn-, e-post- och frågeformulär. En säsongsuppdatering som att morgonträningen är tillbaka slutar vara bara information och blir en mätbar källa till intresse.",
-    hz5_1_h:"Tar bort den sista köptvekan", hz5_1_p:"Varje medlemskapsnivå visas med sitt pris och en direkt call to action bredvid. Ingen besökare behöver mejla eller ringa bara för att ta reda på vad något kostar, det extra steget är där många annars intresserade besökare tyst försvinner.",
-    hz5_2_h:"Vägleder valet, listar det inte bara", hz5_2_p:"En nivå är visuellt framhävd som det rekommenderade alternativet. Lämnade att jämföra varje plan själva landar många besökare i obeslutsamhet, en subtil visuell fingervisning mot det förnuftiga förvalet minskar mätbart den tveksamheten.",
-    hz6_1_h:"En andra affärsgren, inte en eftertanke", hz6_1_p:"Företagsträning är en egen intäktskälla skild från medlemskap, så den får sin egen förklaring av vad som ingår och ett konkret löfte, en offert inom 24 timmar, istället för ett stycke och en död länk på den gamla sajten.",
-    hz7_1_h:"Besvarar förstabesöksfrågor innan de ställs", hz7_1_p:"Adress, T-baneväg, öppettider och en inbäddad karta finns tillsammans på ett ställe. Var och en av dessa är en fråga som annars blir ett mejl, ett DM, eller en besökare som ger upp och inte frågar alls.",
-    hz7_2_h:"Tillgängligt ner till minsta detalj", hz7_2_p:"Även kartmarkören har ett korrekt tillgänglighetsnamn för skärmläsare. Det är en detalj nästan ingen medvetet lägger märke till, och det är precis poängen, tillgänglighet gjort rätt är osynligt för den som inte behöver det och avgörande för den som gör det.",
     craft_label:"Byggt på riktigt", craft_title:'Hantverket <em>under ytan.</em>',
     craft_tab1:"Kortversionen", craft_tab2:"Tekniska specifikationer",
     craft_plain1:"Byggt för att ladda snabbt, fungera för den som använder tangentbord eller skärmläsare, och faktiskt gå att hitta på Google.",
@@ -986,7 +688,6 @@ function setLang(lang) {
   document.getElementById('lang-en').classList.toggle('active', lang==='en');
   document.getElementById('lang-sv').classList.toggle('active', lang==='sv');
   try { localStorage.setItem('sp-lang', lang); } catch(e) {}
-  if (typeof buildTourLegends === 'function') buildTourLegends();
 }
 
 function initCompare() {
@@ -1039,89 +740,6 @@ function initCraftTabs() {
   });
 }
 
-function buildTourLegends() {
-  document.querySelectorAll('.tour-block').forEach(block => {
-    const shot = block.querySelector('.tour-shot');
-    const legend = block.querySelector('.tour-legend');
-    const explain = block.querySelector('.tour-explain');
-    const toggle = block.querySelector('.tour-legend-toggle');
-    if (!shot || !legend || !explain) return;
-    const zones = Array.from(shot.querySelectorAll('.hz'));
-    if (!zones.length) return;
-
-    const activeIndex = zones.findIndex(z => z.classList.contains('active'));
-    legend.innerHTML = '';
-
-    function select(i, userTriggered) {
-      zones.forEach(z => z.classList.remove('active'));
-      Array.from(legend.children).forEach(b => b.classList.remove('active'));
-      zones[i].classList.add('active');
-      if (legend.children[i]) legend.children[i].classList.add('active');
-      const tip = zones[i].querySelector('.hz-tip');
-      explain.innerHTML = tip ? tip.innerHTML : '';
-      if (userTriggered) block.dataset.userEngaged = '1';
-    }
-    block._tourSelect = select;
-    block._tourZoneCount = zones.length;
-
-    zones.forEach((hz, i) => {
-      const tip = hz.querySelector('.hz-tip');
-      const titleEl = tip ? tip.querySelector('b') : null;
-      const title = titleEl ? titleEl.textContent : '';
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'tour-legend-item';
-      btn.innerHTML = '<span class="tour-legend-num">' + String(i + 1).padStart(2, '0') + '</span><span class="tour-legend-name"></span>';
-      btn.querySelector('.tour-legend-name').textContent = title;
-      btn.addEventListener('click', () => select(i, true));
-      legend.appendChild(btn);
-
-      hz.onclick = e => { e.stopPropagation(); select(i, true); };
-    });
-
-    if (toggle && !toggle.dataset.wired) {
-      toggle.dataset.wired = '1';
-      toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-        legend.classList.toggle('collapsed', expanded);
-      });
-    }
-
-    if (activeIndex >= 0) select(activeIndex, false);
-  });
-}
-
-function initTourAutoCycle() {
-  document.querySelectorAll('.tour-block').forEach(block => {
-    if (block._autoCycleInit) return;
-    block._autoCycleInit = true;
-    let current = 0;
-    let timer = null;
-
-    function tick() {
-      if (block.dataset.userEngaged || !block._tourSelect || !block._tourZoneCount) return;
-      block._tourSelect(current, false);
-      current = (current + 1) % block._tourZoneCount;
-    }
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !block.dataset.userEngaged) {
-          if (!timer) { tick(); timer = setInterval(tick, 4000); }
-        } else if (!entry.isIntersecting && timer) {
-          clearInterval(timer); timer = null;
-        }
-      });
-    }, { threshold: 0.4 });
-    observer.observe(block);
-
-    block.addEventListener('click', () => {
-      if (timer) { clearInterval(timer); timer = null; }
-    }, true);
-  });
-}
-
 (function init() {
   let lang = 'en';
   try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
@@ -1129,8 +747,6 @@ function initTourAutoCycle() {
 
   initCompare();
   initCraftTabs();
-  buildTourLegends();
-  initTourAutoCycle();
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
