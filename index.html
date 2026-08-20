@@ -469,13 +469,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     position: absolute; inset: 0; width: 100%; height: 100%;
     min-height: 0; z-index: 0; opacity: 0.55;
   }
-  /* Mobile trail — confined to upper right corner, starting from the middle */
-  .giving-paws .paw:nth-of-type(1) { --x: 50%; --y: 40%; }
-  .giving-paws .paw:nth-of-type(2) { --x: 60%; --y: 32%; }
-  .giving-paws .paw:nth-of-type(3) { --x: 68%; --y: 26%; }
-  .giving-paws .paw:nth-of-type(4) { --x: 76%; --y: 20%; }
-  .giving-paws .paw:nth-of-type(5) { --x: 83%; --y: 14%; }
-  .giving-paws .paw:nth-of-type(6) { --x: 90%; --y: 6%; }
+  /* Mobile trail — confined to upper right corner, starting from the middle.
+     Alternating perpendicular offset around the diagonal path of travel,
+     like real left/right footprints, instead of a single straight line. */
+  .giving-paws .paw:nth-of-type(1) { --x: 53%; --y: 43%; }
+  .giving-paws .paw:nth-of-type(2) { --x: 57%; --y: 29%; }
+  .giving-paws .paw:nth-of-type(3) { --x: 71%; --y: 29%; }
+  .giving-paws .paw:nth-of-type(4) { --x: 73%; --y: 17%; }
+  .giving-paws .paw:nth-of-type(5) { --x: 86%; --y: 17%; }
+  .giving-paws .paw:nth-of-type(6) { --x: 87%; --y: 3%; }
 }
 
 /* ══ FAQ ══ */
