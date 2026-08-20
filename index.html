@@ -379,6 +379,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .custom-built-right { display: flex; flex-direction: column; gap: 20px; padding-top: 6px; }
 .custom-built-tagline { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--gold-bright); line-height: 1.5; }
 .custom-built-right p:not(.custom-built-tagline) { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
+/* ══ PITCH ══ */
+.pitch {
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg);
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+  padding: 72px 0; border-bottom: 1px solid var(--line);
+}
+.pitch-title { font-family: var(--serif); font-size: clamp(28px, 3.2vw, 40px); font-weight: 300; line-height: 1.3; color: var(--text); max-width: 760px; margin-bottom: 20px; }
+.pitch-sub { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; max-width: 640px; }
+
 /* ══ CARE ══ */
 .care {
   --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
@@ -700,6 +712,14 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   </div>
 </section>
 
+<!-- PITCH -->
+<section class="pitch inview">
+<div class="section-inner">
+  <h2 class="pitch-title" data-i18n="pitch_title">Custom websites built around <span class="gold-shimmer">how your business actually works.</span></h2>
+  <p class="pitch-sub" data-i18n="pitch_sub">Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.</p>
+</div>
+</section>
+
 <!-- CARE -->
 <section class="care">
 <div class="section-inner">
@@ -984,6 +1004,8 @@ const I18N = {
     faq6_q:"Why not just use an AI website builder?", faq6_a:"An AI builder can generate a page in minutes, but it doesn't know how your gym actually runs. I build the schedule, membership paths and content system around your real workflow, not a generic template, and I'm a person you can reach directly when something needs to change or something breaks.",
     faq7_q:"Who owns the website and the code?", faq7_a:"Your domain, brand, copy, images, videos and business content are always yours. Stormie Studios retains and maintains the underlying source code, development system and production setup. You're buying a custom-built, professionally managed website and the right to use it for your business, not taking on the technical responsibility of maintaining the software behind it. You remain in control of your content through the CMS, while I remain responsible for the underlying build.",
     faq9_q:"Can our IT team manage the domain and review the setup?", faq9_a:"Absolutely. Your organization can retain control of its domain, DNS and relevant third-party accounts. I'm happy to provide the technical information needed for IT or security review, including hosting, integrations, data flows and deployment architecture. The production source repository and build system remain managed by Stormie Studios, while your IT team retains control of the infrastructure and accounts that belong to your organization.",
+    pitch_title:"Custom websites built around <span class=\"gold-shimmer\">how your business actually works.</span>",
+    pitch_sub:"Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.",
     care_title:"Easy for you.<br><span class=\"gold-shimmer\">Managed by me.</span>",
     care_p1:"Your website is built so you can run the parts of it that matter day to day without touching code.",
     care_p2:"Update text, images, video, schedules, prices, staff, campaigns and news through a simple CMS or connected content system. You don't need to call a developer every time something changes, and the editing experience is designed so routine updates don't interfere with the site's layout or underlying build.",
@@ -1044,6 +1066,8 @@ const I18N = {
     faq6_q:"Varför inte bara använda en AI-hemsidesbyggare?", faq6_a:"En AI-byggare kan skapa en sida på några minuter, men den vet inte hur ditt gym faktiskt fungerar. Jag bygger schemat, medlemskapsvägarna och innehållssystemet kring ert riktiga arbetssätt, inte en generisk mall, och jag är en person ni når direkt när något behöver ändras eller går sönder.",
     faq7_q:"Vem äger webbplatsen och koden?", faq7_a:"Din domän, ditt varumärke, din text, dina bilder, videor och ditt affärsinnehåll är alltid dina. Stormie Studios behåller och underhåller den underliggande källkoden, utvecklingssystemet och produktionsmiljön. Du köper en skräddarsydd, professionellt förvaltad webbplats och rätten att använda den i din verksamhet, inte det tekniska ansvaret för att underhålla mjukvaran bakom den. Du har full kontroll över ditt innehåll via CMS:et, medan jag ansvarar för det underliggande bygget.",
     faq9_q:"Kan vårt IT-team hantera domänen och granska uppsättningen?", faq9_a:"Absolut. Er organisation kan behålla kontrollen över domänen, DNS och relevanta tredjepartskonton. Jag delar gärna den tekniska information som behövs för en IT- eller säkerhetsgranskning, inklusive hosting, integrationer, dataflöden och driftsarkitektur. Produktionens källkodsrepo och byggsystem förblir hos Stormie Studios, medan ert IT-team behåller kontrollen över infrastrukturen och kontona som tillhör er organisation.",
+    pitch_title:"Skräddarsydda webbplatser byggda kring <span class=\"gold-shimmer\">hur ditt företag faktiskt fungerar.</span>",
+    pitch_sub:"Stormie Studios designar och utvecklar snabba, distinkta webbplatser för gym, coacher och prestationsdrivna verksamheter, med de system, integrationer och funktioner som krävs för att göra sajten till en användbar del av verksamheten, inte bara något som ser bra ut.",
     care_title:"Enkelt för dig.<br><span class=\"gold-shimmer\">Skött av mig.</span>",
     care_p1:"Din webbplats är byggd så att du kan sköta de delar som spelar roll i vardagen, utan att röra kod.",
     care_p2:"Uppdatera text, bilder, video, scheman, priser, personal, kampanjer och nyheter via ett enkelt CMS eller ett kopplat innehållssystem. Du behöver inte ringa en utvecklare varje gång något ändras, och redigeringen är byggd så att vardagliga uppdateringar inte påverkar sajtens layout eller underliggande bygge.",
@@ -1104,6 +1128,8 @@ const I18N = {
     faq6_q:"ทำไมไม่ใช้เครื่องมือสร้างเว็บไซต์ AI ไปเลย", faq6_a:"เครื่องมือ AI สร้างหน้าเว็บได้ในไม่กี่นาที แต่ไม่รู้ว่ายิมของคุณดำเนินงานจริงอย่างไร ผมสร้างตารางเวลา เส้นทางสมาชิกภาพ และระบบเนื้อหาให้เข้ากับขั้นตอนการทำงานจริงของคุณ ไม่ใช่เทมเพลตทั่วไป และผมคือคนที่คุณติดต่อได้โดยตรงเมื่อมีอะไรต้องเปลี่ยนหรือเกิดปัญหา",
     faq7_q:"ใครเป็นเจ้าของเว็บไซต์และโค้ด", faq7_a:"โดเมน แบรนด์ ข้อความ รูปภาพ วิดีโอ และเนื้อหาธุรกิจของคุณเป็นของคุณเสมอ Stormie Studios ดูแลและบำรุงรักษาซอร์สโค้ด ระบบการพัฒนา และการตั้งค่าการใช้งานจริง คุณกำลังซื้อเว็บไซต์ที่สร้างเฉพาะและดูแลอย่างมืออาชีพ พร้อมสิทธิ์ในการใช้งานเพื่อธุรกิจของคุณ ไม่ใช่รับภาระทางเทคนิคในการดูแลซอฟต์แวร์เบื้องหลัง คุณควบคุมเนื้อหาของคุณผ่าน CMS ในขณะที่ผมรับผิดชอบโครงสร้างเบื้องหลัง",
     faq9_q:"ทีมไอทีของเราสามารถจัดการโดเมนและตรวจสอบระบบได้ไหม", faq9_a:"ได้แน่นอน องค์กรของคุณสามารถควบคุมโดเมน DNS และบัญชีบุคคลที่สามที่เกี่ยวข้องได้ ผมยินดีให้ข้อมูลทางเทคนิคที่จำเป็นสำหรับการตรวจสอบด้านไอทีหรือความปลอดภัย รวมถึงโฮสติ้ง การเชื่อมต่อระบบ การไหลของข้อมูล และสถาปัตยกรรมการดีพลอย ซอร์สโค้ดหลักและระบบการสร้างในการใช้งานจริงยังคงอยู่ภายใต้การดูแลของ Stormie Studios ในขณะที่ทีมไอทีของคุณควบคุมโครงสร้างพื้นฐานและบัญชีที่เป็นขององค์กรคุณ",
+    pitch_title:"เว็บไซต์ที่สร้างเฉพาะ ออกแบบตาม<span class=\"gold-shimmer\">วิธีที่ธุรกิจของคุณทำงานจริง</span>",
+    pitch_sub:"Stormie Studios ออกแบบและพัฒนาเว็บไซต์ที่รวดเร็วและมีเอกลักษณ์เฉพาะตัวสำหรับยิม โค้ช และธุรกิจที่เน้นผลลัพธ์ พร้อมระบบ การเชื่อมต่อ และฟังก์ชันที่จำเป็นเพื่อให้เว็บไซต์เป็นส่วนหนึ่งที่มีประโยชน์ต่อธุรกิจจริง ไม่ใช่แค่สิ่งที่ดูดีเท่านั้น",
     care_title:"ง่ายสำหรับคุณ<br><span class=\"gold-shimmer\">ผมจัดการให้</span>",
     care_p1:"เว็บไซต์ของคุณถูกสร้างมาให้คุณจัดการส่วนที่สำคัญในแต่ละวันได้เอง โดยไม่ต้องแตะโค้ด",
     care_p2:"อัปเดตข้อความ รูปภาพ วิดีโอ ตารางเวลา ราคา พนักงาน แคมเปญ และข่าวสาร ผ่าน CMS หรือระบบเนื้อหาที่เชื่อมต่อไว้ คุณไม่ต้องโทรหานักพัฒนาทุกครั้งที่มีการเปลี่ยนแปลง และการแก้ไขถูกออกแบบมาให้การอัปเดตทั่วไปไม่กระทบเลย์เอาต์หรือโครงสร้างพื้นฐานของเว็บไซต์",
