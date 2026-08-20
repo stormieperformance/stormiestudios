@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Stormie Studios</title>
+  <meta name="description" content="Storm Kolmodin, licensed personal trainer, agile project manager and developer, building websites for gyms, clubs and coaches." />
+  <link rel="canonical" href="https://stormiestudios.com/about.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Thai:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f6f0e2; --bg2: #efe4cd; --text: #241d13;
+      --muted: rgba(36,29,19,0.58); --muted2: rgba(36,29,19,0.32); --line: rgba(36,29,19,0.12);
+      --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
+      --sans: 'DM Sans', sans-serif; --sans-thai: 'Noto Sans Thai', sans-serif;
+      --serif: 'Cormorant Garamond', serif; --serif-thai: 'Noto Serif Thai', serif;
+    }
+    html.lang-th { --sans: 'Noto Sans Thai', sans-serif; --serif: 'Noto Serif Thai', serif; }
+    body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    .page { max-width: 780px; margin: 0 auto; padding: 56px 32px 100px; }
+    .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 56px; flex-wrap: wrap; gap: 16px; }
+    .back-link { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); text-decoration: none; transition: color 0.2s ease; }
+    .back-link:hover { color: var(--gold); }
+    .lang-toggle { display: flex; align-items: center; gap: 6px; font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--muted2); }
+    .lang-toggle button { background: none; border: none; font: inherit; color: inherit; cursor: pointer; padding: 0; }
+    .lang-toggle button.active { color: var(--gold); }
+    .section-label { display: block; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin-bottom: 28px; }
+    h1 em { font-style: italic; color: var(--gold-bright); }
+    p { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--muted); margin-bottom: 18px; max-width: 560px; }
+    .about-sign { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--muted2); margin: 8px 0 56px; }
+    .trust-label { display: block; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin: 0 0 28px; }
+    .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .trust-item { background: var(--bg); padding: 28px 28px 26px; display: flex; flex-direction: column; gap: 8px; }
+    .trust-num { font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--gold); }
+    .trust-title { font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--text); line-height: 1.15; }
+    .trust-body { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.75; margin: 0; max-width: none; }
+    @media (max-width: 640px) { .trust-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="top-row">
+    <a href="index.html" class="back-link" data-i18n="back_link">&larr; Back to Stormie Studios</a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" id="lang-en" class="active" onclick="setLang('en')">EN</button>
+      <span>/</span>
+      <button type="button" id="lang-sv" onclick="setLang('sv')">SV</button>
+      <span>/</span>
+      <button type="button" id="lang-th" onclick="setLang('th')">TH</button>
+    </div>
+  </div>
+
+  <span class="section-label" data-i18n="about_label">About</span>
+  <h1 data-i18n="about_title">Built from <em>the gym floor.</em></h1>
+  <p data-i18n="about_p1">I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.</p>
+  <p data-i18n="about_p2">Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.</p>
+  <p class="about-sign">— Storm</p>
+
+  <span class="trust-label" data-i18n="trust_label">Why it works</span>
+  <div class="trust-grid">
+    <div class="trust-item">
+      <span class="trust-num">i.</span>
+      <span class="trust-title" data-i18n="trust1_title">Licensed Personal Trainer</span>
+      <p class="trust-body" data-i18n="trust1_body">Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.</p>
+    </div>
+    <div class="trust-item">
+      <span class="trust-num">ii.</span>
+      <span class="trust-title" data-i18n="trust2_title">Agile Project Manager &amp; Developer</span>
+      <p class="trust-body" data-i18n="trust2_body">Trained at Futuregames and Stockholm University. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.</p>
+    </div>
+    <div class="trust-item">
+      <span class="trust-num">iii.</span>
+      <span class="trust-title" data-i18n="trust3_title">Former Gym Manager &amp; Fitness Instructor</span>
+      <p class="trust-body" data-i18n="trust3_body">Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.</p>
+    </div>
+    <div class="trust-item">
+      <span class="trust-num">iv.</span>
+      <span class="trust-title" data-i18n="trust4_title">Built From the Industry</span>
+      <p class="trust-body" data-i18n="trust4_body">Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const I18N = {
+  en: {
+    back_link:"← Back to Stormie Studios",
+    about_label:"About",
+    about_title:"Built from <em>the gym floor.</em>",
+    about_p1:"I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.",
+    about_p2:"Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.",
+    trust_label:"Why it works",
+    trust1_title:"Licensed Personal Trainer",
+    trust1_body:"Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.",
+    trust2_title:"Agile Project Manager &amp; Developer",
+    trust2_body:"Trained at Futuregames and Stockholm University. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.",
+    trust3_title:"Former Gym Manager &amp; Fitness Instructor",
+    trust3_body:"Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.",
+    trust4_title:"Built From the Industry",
+    trust4_body:"Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff."
+  },
+  sv: {
+    back_link:"← Tillbaka till Stormie Studios",
+    about_label:"Om mig",
+    about_title:"Byggt från <em>gymgolvet.</em>",
+    about_p1:"Jag heter Storm Kolmodin. Licensierad personlig tränare, agil projektledare och utvecklare. Jag bygger hemsidor för gym, klubbar och coacher. Inte för att jag hittade en nisch, utan för att det är världen jag själv kommer ifrån.",
+    about_p2:"Stormie Studios är en liten studio med ett enkelt löfte: du arbetar direkt med personen som bygger din sajt. Inga mellanhänder. Inga överlämningar. Inga överraskningar.",
+    trust_label:"Varför det funkar",
+    trust1_title:"Licensierad personlig tränare",
+    trust1_body:"Certifierad sedan 2018 och vidareutbildad vid Gymnastik- och idrottshögskolan (GIH). Jag vet vad som får någon att våga boka sitt första pass.",
+    trust2_title:"Agil projektledare och utvecklare",
+    trust2_body:"Utbildad vid Futuregames och Stockholms universitet. Deadlines hålls. Inga överraskningar. Du får en fungerande sajt, inte ett projekt som aldrig blir klart.",
+    trust3_title:"Tidigare gymchef och fitnessinstruktör",
+    trust3_body:"Har arbetat med träningsverksamheter sedan 2017. Jag har stått på golvet, hanterat medlemskap, planerat scheman och drivit verksamhet. Jag förstår branschen inifrån.",
+    trust4_title:"Byggt från branschen",
+    trust4_body:"Varje sajt bygger på verklig erfarenhet i branschen, inte bara på att bygga hemsidor åt den. Efter år i träningsbranschen som personlig tränare, fitnessinstruktör, gymchef och coach förstår jag hur verksamheten fungerar, både för medlemmar och personal."
+  },
+  th: {
+    back_link:"← กลับไปที่ Stormie Studios",
+    about_label:"เกี่ยวกับ",
+    about_title:"สร้างจาก <em>พื้นยิมจริง</em>",
+    about_p1:"ผมชื่อ Storm Kolmodin เทรนเนอร์ส่วนบุคคลที่ได้รับใบอนุญาต ผู้จัดการโครงการแบบอไจล์ และนักพัฒนาเว็บ ผมสร้างเว็บไซต์ให้กับยิม คลับ และโค้ช ไม่ใช่เพราะหาช่องทางธุรกิจเจอ แต่เพราะนี่คือโลกที่ผมมาจาก",
+    about_p2:"Stormie Studios เป็นสตูดิโอเล็ก ๆ ที่มีคำมั่นสัญญาง่าย ๆ คุณจะได้ทำงานโดยตรงกับคนที่สร้างเว็บไซต์ของคุณ ไม่มีคนกลาง ไม่มีการส่งต่องาน ไม่มีเรื่องเซอร์ไพรส์",
+    trust_label:"ทำไมถึงได้ผล",
+    trust1_title:"เทรนเนอร์ส่วนบุคคลที่ได้รับใบอนุญาต",
+    trust1_body:"ได้รับการรับรองตั้งแต่ปี 2018 และศึกษาต่อที่ Swedish School of Sport and Health Sciences (GIH) ผมรู้ว่าอะไรทำให้คนกล้าจองเซสชันแรกของพวกเขา",
+    trust2_title:"ผู้จัดการโครงการแบบอไจล์และนักพัฒนา",
+    trust2_body:"ฝึกฝนที่ Futuregames และมหาวิทยาลัยสตอกโฮล์ม ตรงเวลาทุกครั้ง ไม่มีเซอร์ไพรส์ คุณจะได้เว็บไซต์ที่ใช้งานได้จริง ไม่ใช่โปรเจกต์ที่ไม่มีวันเสร็จ",
+    trust3_title:"อดีตผู้จัดการยิมและผู้ฝึกสอนฟิตเนส",
+    trust3_body:"ทำงานในวงการฟิตเนสตั้งแต่ปี 2017 ผมเคยอยู่หน้างานจริง จัดการสมาชิก วางแผนตารางเวลา และดูแลการดำเนินงาน ผมเข้าใจอุตสาหกรรมนี้จากภายใน",
+    trust4_title:"สร้างจากประสบการณ์จริงในวงการ",
+    trust4_body:"ทุกโปรเจกต์อ้างอิงจากเวลาที่ผมอยู่ในวงการจริง ไม่ใช่แค่สร้างเว็บให้วงการนี้ หลังจากหลายปีในวงการฟิตเนสในฐานะเทรนเนอร์ส่วนบุคคล ผู้ฝึกสอน ผู้จัดการยิม และโค้ช ผมเข้าใจว่าธุรกิจนี้ทำงานอย่างไร ทั้งสำหรับสมาชิกและพนักงาน"
+  }
+};
+function setLang(lang) {
+  const dict = I18N[lang]; if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.documentElement.lang = lang;
+  document.documentElement.classList.toggle('lang-th', lang === 'th');
+  document.querySelectorAll('#lang-en').forEach(el => el.classList.toggle('active', lang==='en'));
+  document.querySelectorAll('#lang-sv').forEach(el => el.classList.toggle('active', lang==='sv'));
+  document.querySelectorAll('#lang-th').forEach(el => el.classList.toggle('active', lang==='th'));
+  try { localStorage.setItem('sp-lang', lang); } catch(e) {}
+}
+(function() {
+  let lang = 'en'; try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
+  if (lang !== 'en') setLang(lang);
+})();
+</script>
+</body>
+</html>
