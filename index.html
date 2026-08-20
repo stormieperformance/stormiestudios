@@ -409,10 +409,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ GIVING BACK ══ */
 .giving {
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg);
   display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+  border-bottom: 1px solid var(--line);
 }
-.giving-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 28px; }
+.giving-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 28px; color: var(--text); }
 .giving-title em { font-style: italic; color: var(--muted); }
 .giving-copy {
   display: flex; flex-direction: column; gap: 18px; justify-content: center;
@@ -723,7 +728,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 <!-- CARE -->
 <section class="care">
 <div class="section-inner">
-  <h2 class="care-title" data-i18n="care_title">Easy for you.<br><span class="gold-shimmer">Managed by me.</span></h2>
+  <h2 class="care-title" data-i18n="care_title">Easy for you.<br><span class="gold-shimmer">Professionally managed.</span></h2>
   <div class="care-right">
     <p data-i18n="care_p1">Your website is built so you can run the parts of it that matter day to day without touching code.</p>
     <p data-i18n="care_p2">Update text, images, video, schedules, prices, staff, campaigns and news through a simple CMS or connected content system. You don't need to call a developer every time something changes, and the editing experience is designed so routine updates don't interfere with the site's layout or underlying build.</p>
@@ -740,7 +745,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
   <div class="custom-built-right">
     <p class="custom-built-tagline" data-i18n="cb_tagline">The flexibility of a custom website, with the everyday simplicity people expect from a website builder.</p>
-    <p data-i18n="cb_p1">I build the site around your business rather than forcing your business into a template. You still update your own content through a simple CMS, while Stormie Studios manages the code, hosting and technical infrastructure behind it.</p>
+    <p data-i18n="cb_p1">Stormie Studios builds the site around your business rather than forcing your business into a template. You still update your own content through a simple CMS, while Stormie Studios manages the code, hosting and technical infrastructure behind it.</p>
   </div>
 </div>
 </section>
@@ -878,7 +883,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   <div class="giving-copy">
     <span class="section-label" data-i18n="giving_label">Giving Back</span>
     <h2 class="giving-title" data-i18n="giving_title">Free websites for animal &amp; wildlife <em>welfare organizations.</em></h2>
-    <p data-i18n="giving_teaser">As Stormie Studios grows, I offer 2-3 custom websites completely free each year to registered non-profits working in animal rescue, wildlife conservation, or animal welfare.</p>
+    <p data-i18n="giving_teaser">As Stormie Studios grows, 2-3 custom websites are being offered completely free each year to registered non-profits working in animal rescue, wildlife conservation, or animal welfare.</p>
     <a href="giving-back.html" class="btn-gold" style="display:inline-block;text-decoration:none;margin-top:8px" data-i18n="giving_learn_more">Learn more &amp; apply →</a>
   </div>
 </section>
@@ -983,13 +988,13 @@ const I18N = {
     hero_sub:"Built to convert visitors into members, and effortless for you to run.",
     cb_title:"Custom-built.<br><span class=\"gold-shimmer\">Without the maintenance burden.</span>",
     cb_tagline:"The flexibility of a custom website, with the everyday simplicity people expect from a website builder.",
-    cb_p1:"I build the site around your business rather than forcing your business into a template. You still update your own content through a simple CMS, while Stormie Studios manages the code, hosting and technical infrastructure behind it.",
+    cb_p1:"Stormie Studios builds the site around your business rather than forcing your business into a template. You still update your own content through a simple CMS, while Stormie Studios manages the code, hosting and technical infrastructure behind it.",
     giving_label:"Giving Back",
     giving_title:"Free websites for animal &amp; wildlife <em>welfare organizations.</em>",
     giving_p1:"I've had animals in my life for as long as I can remember. I've worked as a vet nurse assistant, managed a dog day care, and today I volunteer as an animal caretaker at a non-profit farm, caring for their farm animals on weekends. Giving back to the people who dedicate their lives to protecting animals feels like the right place to start.",
-    giving_p2:"As Stormie Studios grows, I'm offering 2-3 custom websites completely free each year to registered non-profit organizations working in animal rescue, wildlife conservation, or animal welfare.",
+    giving_p2:"As Stormie Studios grows, 2-3 custom websites are being offered completely free each year to registered non-profit organizations working in animal rescue, wildlife conservation, or animal welfare.",
     giving_p3:"Every website is designed and built by me from scratch, so I can only take on a small number of projects. If your organization could benefit from a new website, I'd love to hear from you.",
-    giving_teaser:"As Stormie Studios grows, I offer 2-3 custom websites completely free each year to registered non-profits working in animal rescue, wildlife conservation, or animal welfare.",
+    giving_teaser:"As Stormie Studios grows, 2-3 custom websites are being offered completely free each year to registered non-profits working in animal rescue, wildlife conservation, or animal welfare.",
     giving_learn_more:"Learn more &amp; apply →",
     giving_form_title:"Apply below",
     giving_f_org:"Organization name", giving_f_msg:"Tell me about your organization", giving_f_apply:"Apply",
@@ -1006,7 +1011,7 @@ const I18N = {
     faq9_q:"Can our IT team manage the domain and review the setup?", faq9_a:"Absolutely. Your organization can retain control of its domain, DNS and relevant third-party accounts. I'm happy to provide the technical information needed for IT or security review, including hosting, integrations, data flows and deployment architecture. The production source repository and build system remain managed by Stormie Studios, while your IT team retains control of the infrastructure and accounts that belong to your organization.",
     pitch_title:"Custom websites built around <span class=\"gold-shimmer\">how your business actually works.</span>",
     pitch_sub:"Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.",
-    care_title:"Easy for you.<br><span class=\"gold-shimmer\">Managed by me.</span>",
+    care_title:"Easy for you.<br><span class=\"gold-shimmer\">Professionally managed.</span>",
     care_p1:"Your website is built so you can run the parts of it that matter day to day without touching code.",
     care_p2:"Update text, images, video, schedules, prices, staff, campaigns and news through a simple CMS or connected content system. You don't need to call a developer every time something changes, and the editing experience is designed so routine updates don't interfere with the site's layout or underlying build.",
     care_p3:"Behind the scenes, Stormie Studios manages the technical side: hosting, deployment, security, backups and maintenance for one flat monthly fee.",
@@ -1045,13 +1050,13 @@ const I18N = {
     hero_sub:"Byggda för att omvandla besökare till medlemmar, och enkla för dig att sköta.",
     cb_title:"Skräddarsytt.<br><span class=\"gold-shimmer\">Utan underhållsbördan.</span>",
     cb_tagline:"Flexibiliteten hos en skräddarsydd webbplats, med den vardagliga enkelheten man förväntar sig av en webbplatsbyggare.",
-    cb_p1:"Jag bygger sajten runt din verksamhet i stället för att pressa in din verksamhet i en mall. Du uppdaterar fortfarande ditt eget innehåll via ett enkelt CMS, medan Stormie Studios sköter koden, hostingen och den tekniska infrastrukturen bakom den.",
+    cb_p1:"Stormie Studios bygger sajten runt din verksamhet i stället för att pressa in din verksamhet i en mall. Du uppdaterar fortfarande ditt eget innehåll via ett enkelt CMS, medan Stormie Studios sköter koden, hostingen och den tekniska infrastrukturen bakom den.",
     giving_label:"Ge tillbaka",
     giving_title:"Gratis hemsidor till djur- och viltvårds<em>organisationer.</em>",
     giving_p1:"Jag har haft djur i mitt liv så länge jag kan minnas. Jag har jobbat som djursjukskötarassistent, varit chef för ett hunddagis, och idag är jag helgskötare på en ideell gård där jag tar hand om gårdens djur på helgerna. Att ge tillbaka till dem som ägnar sina liv åt att skydda djur känns som rätt plats att börja.",
-    giving_p2:"I takt med att Stormie Studios växer erbjuder jag 2-3 kostnadsfria hemsidor varje år till registrerade ideella organisationer som arbetar med djurräddning, viltvård eller djurskydd.",
+    giving_p2:"I takt med att Stormie Studios växer erbjuds 2-3 kostnadsfria hemsidor varje år till registrerade ideella organisationer som arbetar med djurräddning, viltvård eller djurskydd.",
     giving_p3:"Varje hemsida designas och byggs av mig från grunden, så jag kan bara ta mig an ett fåtal projekt. Om er organisation skulle ha nytta av en ny hemsida hör gärna av er.",
-    giving_teaser:"I takt med att Stormie Studios växer erbjuder jag 2-3 kostnadsfria hemsidor varje år till registrerade ideella organisationer inom djurräddning, viltvård eller djurskydd.",
+    giving_teaser:"I takt med att Stormie Studios växer erbjuds 2-3 kostnadsfria hemsidor varje år till registrerade ideella organisationer inom djurräddning, viltvård eller djurskydd.",
     giving_learn_more:"Läs mer &amp; ansök →",
     giving_form_title:"Ansök nedan",
     giving_f_org:"Organisationens namn", giving_f_msg:"Berätta om er organisation", giving_f_apply:"Ansök",
@@ -1068,7 +1073,7 @@ const I18N = {
     faq9_q:"Kan vårt IT-team hantera domänen och granska uppsättningen?", faq9_a:"Absolut. Er organisation kan behålla kontrollen över domänen, DNS och relevanta tredjepartskonton. Jag delar gärna den tekniska information som behövs för en IT- eller säkerhetsgranskning, inklusive hosting, integrationer, dataflöden och driftsarkitektur. Produktionens källkodsrepo och byggsystem förblir hos Stormie Studios, medan ert IT-team behåller kontrollen över infrastrukturen och kontona som tillhör er organisation.",
     pitch_title:"Skräddarsydda webbplatser byggda kring <span class=\"gold-shimmer\">hur ditt företag faktiskt fungerar.</span>",
     pitch_sub:"Stormie Studios designar och utvecklar snabba, distinkta webbplatser för gym, coacher och prestationsdrivna verksamheter, med de system, integrationer och funktioner som krävs för att göra sajten till en användbar del av verksamheten, inte bara något som ser bra ut.",
-    care_title:"Enkelt för dig.<br><span class=\"gold-shimmer\">Skött av mig.</span>",
+    care_title:"Enkelt för dig.<br><span class=\"gold-shimmer\">Professionellt förvaltad.</span>",
     care_p1:"Din webbplats är byggd så att du kan sköta de delar som spelar roll i vardagen, utan att röra kod.",
     care_p2:"Uppdatera text, bilder, video, scheman, priser, personal, kampanjer och nyheter via ett enkelt CMS eller ett kopplat innehållssystem. Du behöver inte ringa en utvecklare varje gång något ändras, och redigeringen är byggd så att vardagliga uppdateringar inte påverkar sajtens layout eller underliggande bygge.",
     care_p3:"Bakom kulisserna sköter Stormie Studios det tekniska: hosting, driftsättning, säkerhet, backuper och underhåll för en fast månadskostnad.",
@@ -1107,13 +1112,13 @@ const I18N = {
     hero_sub:"ออกแบบมาเพื่อเปลี่ยนผู้เข้าชมให้เป็นสมาชิก และใช้งานง่ายสำหรับคุณ",
     cb_title:"สร้างเฉพาะสำหรับคุณ<br><span class=\"gold-shimmer\">โดยไม่ต้องแบกรับภาระการดูแล</span>",
     cb_tagline:"ความยืดหยุ่นของเว็บไซต์ที่สร้างเฉพาะ พร้อมความง่ายในชีวิตประจำวันแบบที่คนคาดหวังจากเว็บไซต์สำเร็จรูป",
-    cb_p1:"ผมสร้างเว็บไซต์ให้เข้ากับธุรกิจของคุณ แทนที่จะบีบธุรกิจของคุณให้เข้ากับเทมเพลต คุณยังคงอัปเดตเนื้อหาของคุณเองผ่าน CMS ที่เรียบง่าย ในขณะที่ Stormie Studios ดูแลโค้ด โฮสติ้ง และโครงสร้างพื้นฐานทางเทคนิคเบื้องหลัง",
+    cb_p1:"Stormie Studios สร้างเว็บไซต์ให้เข้ากับธุรกิจของคุณ แทนที่จะบีบธุรกิจของคุณให้เข้ากับเทมเพลต คุณยังคงอัปเดตเนื้อหาของคุณเองผ่าน CMS ที่เรียบง่าย ในขณะที่ Stormie Studios ดูแลโค้ด โฮสติ้ง และโครงสร้างพื้นฐานทางเทคนิคเบื้องหลัง",
     giving_label:"คืนสู่สังคม",
     giving_title:"เว็บไซต์ฟรีสำหรับองค์กร<em>สวัสดิภาพสัตว์และสัตว์ป่า</em>",
     giving_p1:"ผมมีสัตว์อยู่ในชีวิตมาตั้งแต่จำความได้ เคยทำงานเป็นผู้ช่วยพยาบาลสัตวแพทย์ บริหารสถานรับเลี้ยงสุนัข และทุกวันนี้เป็นอาสาสมัครดูแลสัตว์ที่ฟาร์มไม่แสวงหากำไรในวันหยุดสุดสัปดาห์ การได้ตอบแทนคนที่อุทิศชีวิตเพื่อปกป้องสัตว์รู้สึกเหมือนเป็นจุดเริ่มต้นที่ถูกต้อง",
-    giving_p2:"เมื่อ Stormie Studios เติบโตขึ้น ผมมอบเว็บไซต์แบบสั่งทำฟรีทั้งหมด 2-3 เว็บไซต์ต่อปีให้กับองค์กรไม่แสวงหากำไรที่จดทะเบียนซึ่งทำงานด้านการช่วยเหลือสัตว์ การอนุรักษ์สัตว์ป่า หรือสวัสดิภาพสัตว์",
+    giving_p2:"เมื่อ Stormie Studios เติบโตขึ้น เว็บไซต์แบบสั่งทำ 2-3 เว็บไซต์ต่อปีจะถูกมอบให้ฟรีแก่องค์กรไม่แสวงหากำไรที่จดทะเบียนซึ่งทำงานด้านการช่วยเหลือสัตว์ การอนุรักษ์สัตว์ป่า หรือสวัสดิภาพสัตว์",
     giving_p3:"ทุกเว็บไซต์ออกแบบและสร้างโดยผมเองตั้งแต่ต้น ผมจึงรับได้เพียงไม่กี่โปรเจกต์ หากองค์กรของคุณต้องการเว็บไซต์ใหม่ ผมยินดีรับฟัง",
-    giving_teaser:"เมื่อ Stormie Studios เติบโตขึ้น ผมมอบเว็บไซต์แบบสั่งทำฟรี 2-3 เว็บไซต์ต่อปีให้กับองค์กรไม่แสวงหากำไรที่จดทะเบียนด้านการช่วยเหลือสัตว์ การอนุรักษ์สัตว์ป่า หรือสวัสดิภาพสัตว์",
+    giving_teaser:"เมื่อ Stormie Studios เติบโตขึ้น เว็บไซต์แบบสั่งทำ 2-3 เว็บไซต์ต่อปีจะถูกมอบให้ฟรีแก่องค์กรไม่แสวงหากำไรที่จดทะเบียนด้านการช่วยเหลือสัตว์ การอนุรักษ์สัตว์ป่า หรือสวัสดิภาพสัตว์",
     giving_learn_more:"ดูเพิ่มเติม &amp; สมัคร →",
     giving_form_title:"สมัครด้านล่าง",
     giving_f_org:"ชื่อองค์กร", giving_f_msg:"เล่าให้ฟังเกี่ยวกับองค์กรของคุณ", giving_f_apply:"สมัคร",
@@ -1130,7 +1135,7 @@ const I18N = {
     faq9_q:"ทีมไอทีของเราสามารถจัดการโดเมนและตรวจสอบระบบได้ไหม", faq9_a:"ได้แน่นอน องค์กรของคุณสามารถควบคุมโดเมน DNS และบัญชีบุคคลที่สามที่เกี่ยวข้องได้ ผมยินดีให้ข้อมูลทางเทคนิคที่จำเป็นสำหรับการตรวจสอบด้านไอทีหรือความปลอดภัย รวมถึงโฮสติ้ง การเชื่อมต่อระบบ การไหลของข้อมูล และสถาปัตยกรรมการดีพลอย ซอร์สโค้ดหลักและระบบการสร้างในการใช้งานจริงยังคงอยู่ภายใต้การดูแลของ Stormie Studios ในขณะที่ทีมไอทีของคุณควบคุมโครงสร้างพื้นฐานและบัญชีที่เป็นขององค์กรคุณ",
     pitch_title:"เว็บไซต์ที่สร้างเฉพาะ ออกแบบตาม<span class=\"gold-shimmer\">วิธีที่ธุรกิจของคุณทำงานจริง</span>",
     pitch_sub:"Stormie Studios ออกแบบและพัฒนาเว็บไซต์ที่รวดเร็วและมีเอกลักษณ์เฉพาะตัวสำหรับยิม โค้ช และธุรกิจที่เน้นผลลัพธ์ พร้อมระบบ การเชื่อมต่อ และฟังก์ชันที่จำเป็นเพื่อให้เว็บไซต์เป็นส่วนหนึ่งที่มีประโยชน์ต่อธุรกิจจริง ไม่ใช่แค่สิ่งที่ดูดีเท่านั้น",
-    care_title:"ง่ายสำหรับคุณ<br><span class=\"gold-shimmer\">ผมจัดการให้</span>",
+    care_title:"ง่ายสำหรับคุณ<br><span class=\"gold-shimmer\">ดูแลอย่างมืออาชีพ</span>",
     care_p1:"เว็บไซต์ของคุณถูกสร้างมาให้คุณจัดการส่วนที่สำคัญในแต่ละวันได้เอง โดยไม่ต้องแตะโค้ด",
     care_p2:"อัปเดตข้อความ รูปภาพ วิดีโอ ตารางเวลา ราคา พนักงาน แคมเปญ และข่าวสาร ผ่าน CMS หรือระบบเนื้อหาที่เชื่อมต่อไว้ คุณไม่ต้องโทรหานักพัฒนาทุกครั้งที่มีการเปลี่ยนแปลง และการแก้ไขถูกออกแบบมาให้การอัปเดตทั่วไปไม่กระทบเลย์เอาต์หรือโครงสร้างพื้นฐานของเว็บไซต์",
     care_p3:"เบื้องหลัง Stormie Studios ดูแลด้านเทคนิคทั้งหมด: โฮสติ้ง การดีพลอย ความปลอดภัย การสำรองข้อมูล และการบำรุงรักษา ในราคาคงที่รายเดือน",
