@@ -470,14 +470,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     min-height: 0; z-index: 0; opacity: 0.55;
   }
   /* Mobile trail — confined to upper right corner, starting from the middle.
-     Alternating perpendicular offset around the diagonal path of travel,
-     like real left/right footprints, instead of a single straight line. */
-  .giving-paws .paw:nth-of-type(1) { --x: 53%; --y: 43%; }
-  .giving-paws .paw:nth-of-type(2) { --x: 57%; --y: 29%; }
-  .giving-paws .paw:nth-of-type(3) { --x: 71%; --y: 29%; }
-  .giving-paws .paw:nth-of-type(4) { --x: 73%; --y: 17%; }
-  .giving-paws .paw:nth-of-type(5) { --x: 86%; --y: 17%; }
-  .giving-paws .paw:nth-of-type(6) { --x: 87%; --y: 3%; }
+     Every step moves forward (right and up); a small alternating wobble
+     is layered on top for a natural gait, never large enough to reverse
+     the forward direction. */
+  .giving-paws .paw:nth-of-type(1) { --x: 52%; --y: 41%; }
+  .giving-paws .paw:nth-of-type(2) { --x: 56%; --y: 32%; }
+  .giving-paws .paw:nth-of-type(3) { --x: 68%; --y: 28%; }
+  .giving-paws .paw:nth-of-type(4) { --x: 72%; --y: 19%; }
+  .giving-paws .paw:nth-of-type(5) { --x: 84%; --y: 15%; }
+  .giving-paws .paw:nth-of-type(6) { --x: 88%; --y: 5%; }
 }
 
 /* ══ FAQ ══ */
