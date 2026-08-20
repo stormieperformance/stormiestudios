@@ -362,7 +362,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ ABOUT — immediately after carousel column ══ */
 .about-inline {
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg);
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
   padding: 60px 0; border-bottom: 1px solid var(--line);
+}
+.about-inline > .section-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
 }
 .about-inline-title {
@@ -374,7 +381,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .about-sign { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--muted2); margin-top: 4px; }
 
 /* ══ TRUST / CREDENTIALS ══ */
-.trust { padding: 72px 0; border-bottom: 1px solid var(--line); }
+.trust {
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg);
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+  padding: 72px 0; border-bottom: 1px solid var(--line);
+}
 .trust-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
   background: var(--line); border: 1px solid var(--line); margin-top: 32px;
@@ -614,7 +628,8 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .sc-frame iframe { transform: scale(0.5385); }
   .sc-arrow--prev { left: -4px; }
   .sc-arrow--next { right: -4px; }
-  .about-inline { grid-template-columns: 1fr; gap: 28px; padding: 44px 0; }
+  .about-inline { padding: 44px 0; }
+  .about-inline > .section-inner { grid-template-columns: 1fr; gap: 28px; }
   .trust-grid { grid-template-columns: 1fr; }
   .segment-grid { grid-template-columns: 1fr; }
   .segment-card.wide { flex-direction: column; gap: 14px; }
@@ -770,12 +785,14 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 
 <!-- ABOUT — directly under carousel -->
 <section class="about-inline inview" id="about">
+<div class="section-inner">
   <h2 class="about-inline-title" data-i18n="about_title">Built from <span class="gold-shimmer">the gym floor.</span></h2>
   <div class="about-inline-right">
     <p data-i18n="about_p1">I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.</p>
     <p data-i18n="about_p2">Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.</p>
     <p class="about-sign">— Storm</p>
   </div>
+</div>
 </section>
 
 <!-- TRUST / CREDENTIALS -->
