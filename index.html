@@ -372,6 +372,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .about-inline > .section-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
 }
+
+/* ══ CUSTOM BUILT ══ */
+.custom-built {
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg);
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+  padding: 88px 0; border-bottom: 1px solid var(--line);
+}
+.custom-built > .section-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+}
+.custom-built-title {
+  font-family: var(--serif); font-size: clamp(36px, 4.2vw, 54px);
+  font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text);
+}
+.custom-built-right { display: flex; flex-direction: column; gap: 20px; padding-top: 6px; }
+.custom-built-tagline { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--gold-bright); line-height: 1.5; }
+.custom-built-right p:not(.custom-built-tagline) { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
 .about-inline-title {
   font-family: var(--serif); font-size: clamp(36px, 4.2vw, 54px);
   font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text);
@@ -652,6 +672,8 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .sc-arrow--next { right: -4px; }
   .about-inline { padding: 44px 0; }
   .about-inline > .section-inner { grid-template-columns: 1fr; gap: 28px; }
+  .custom-built { padding: 44px 0; }
+  .custom-built > .section-inner { grid-template-columns: 1fr; gap: 28px; }
   .trust-grid { grid-template-columns: 1fr; }
   .segment-grid { grid-template-columns: 1fr; }
   .segment-card.wide { flex-direction: column; gap: 14px; }
@@ -803,6 +825,17 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
       <a class="btn-ghost sc-detail-link" id="scLink" href="#"></a>
     </div>
   </div>
+</section>
+
+<!-- CUSTOM BUILT -->
+<section class="custom-built inview" id="custom-built">
+<div class="section-inner">
+  <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
+  <div class="custom-built-right">
+    <p class="custom-built-tagline" data-i18n="cb_tagline">The flexibility of a custom website, with the everyday simplicity people expect from a website builder.</p>
+    <p data-i18n="cb_p1">I build the site around your business rather than forcing your business into a template. You still update your own content through a simple CMS, while Stormie Studios manages the code, hosting and technical infrastructure behind it.</p>
+  </div>
+</div>
 </section>
 
 <!-- ABOUT — directly under carousel -->
@@ -1112,6 +1145,9 @@ const I18N = {
     hero_eyebrow:"Stockholm · Digital studio for sport & fitness brands",
     hero_headline:"Custom Websites for Gyms, Coaches & Martial Arts Clubs.",
     hero_sub:"Built to convert visitors into members, and effortless for you to run.",
+    cb_title:"Custom-built.<br><span class=\"gold-shimmer\">Without the maintenance burden.</span>",
+    cb_tagline:"The flexibility of a custom website, with the everyday simplicity people expect from a website builder.",
+    cb_p1:"I build the site around your business rather than forcing your business into a template. You still update your own content through a simple CMS, while Stormie Studios manages the code, hosting and technical infrastructure behind it.",
     about_title:"Built from <span class=\"gold-shimmer\">the gym floor.</span>",
     about_p1:"I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.",
     about_p2:"Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.",
@@ -1199,6 +1235,9 @@ const I18N = {
     hero_eyebrow:"Stockholm · Digital studio för sport och träning",
     hero_headline:"Skräddarsydda webbplatser för gym, coacher och kampsportsklubbar.",
     hero_sub:"Byggda för att omvandla besökare till medlemmar, och enkla för dig att sköta.",
+    cb_title:"Skräddarsytt.<br><span class=\"gold-shimmer\">Utan underhållsbördan.</span>",
+    cb_tagline:"Flexibiliteten hos en skräddarsydd webbplats, med den vardagliga enkelheten man förväntar sig av en webbplatsbyggare.",
+    cb_p1:"Jag bygger sajten runt din verksamhet i stället för att pressa in din verksamhet i en mall. Du uppdaterar fortfarande ditt eget innehåll via ett enkelt CMS, medan Stormie Studios sköter koden, hostingen och den tekniska infrastrukturen bakom den.",
     about_title:"Byggt från <span class=\"gold-shimmer\">gymgolvet.</span>",
     about_p1:"Jag heter Storm Kolmodin. Licensierad personlig tränare, agil projektledare och utvecklare. Jag bygger hemsidor för gym, klubbar och coacher. Inte för att jag hittade en nisch, utan för att det är världen jag själv kommer ifrån.",
     about_p2:"Stormie Studios är en liten studio med ett enkelt löfte: du arbetar direkt med personen som bygger din sajt. Inga mellanhänder. Inga överlämningar. Inga överraskningar.",
@@ -1286,6 +1325,9 @@ const I18N = {
     hero_eyebrow:"สตอกโฮล์ม · สตูดิโอดิจิทัลสำหรับแบรนด์กีฬาและฟิตเนส",
     hero_headline:"เว็บไซต์สั่งทำ สำหรับยิม โค้ช และค่ายศิลปะการต่อสู้",
     hero_sub:"ออกแบบมาเพื่อเปลี่ยนผู้เข้าชมให้เป็นสมาชิก และใช้งานง่ายสำหรับคุณ",
+    cb_title:"สร้างเฉพาะสำหรับคุณ<br><span class=\"gold-shimmer\">โดยไม่ต้องแบกรับภาระการดูแล</span>",
+    cb_tagline:"ความยืดหยุ่นของเว็บไซต์ที่สร้างเฉพาะ พร้อมความง่ายในชีวิตประจำวันแบบที่คนคาดหวังจากเว็บไซต์สำเร็จรูป",
+    cb_p1:"ผมสร้างเว็บไซต์ให้เข้ากับธุรกิจของคุณ แทนที่จะบีบธุรกิจของคุณให้เข้ากับเทมเพลต คุณยังคงอัปเดตเนื้อหาของคุณเองผ่าน CMS ที่เรียบง่าย ในขณะที่ Stormie Studios ดูแลโค้ด โฮสติ้ง และโครงสร้างพื้นฐานทางเทคนิคเบื้องหลัง",
     about_title:"สร้างจาก <span class=\"gold-shimmer\">พื้นยิมจริง</span>",
     about_p1:"ผมชื่อ Storm Kolmodin เทรนเนอร์ส่วนบุคคลที่ได้รับใบอนุญาต ผู้จัดการโครงการแบบอไจล์ และนักพัฒนาเว็บ ผมสร้างเว็บไซต์ให้กับยิม คลับ และโค้ช ไม่ใช่เพราะหาช่องทางธุรกิจเจอ แต่เพราะนี่คือโลกที่ผมมาจาก",
     about_p2:"Stormie Studios เป็นสตูดิโอเล็ก ๆ ที่มีคำมั่นสัญญาง่าย ๆ คุณจะได้ทำงานโดยตรงกับคนที่สร้างเว็บไซต์ของคุณ ไม่มีคนกลาง ไม่มีการส่งต่องาน ไม่มีเรื่องเซอร์ไพรส์",
