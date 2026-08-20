@@ -601,20 +601,34 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .contact .eyebrow::after { margin-left: auto; margin-right: auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
 .contact-title { font-family: var(--serif); font-size: clamp(40px, 6vw, 84px); font-weight: 300; line-height: 1.02; letter-spacing: -0.02em; margin: 24px auto 18px; max-width: 18ch; color: var(--text); }
 .contact-sub { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 440px; margin: 0 auto 52px; }
-.contact-form { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; text-align: left; }
+.contact-form { max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; text-align: left; }
 .field label { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); margin-bottom: 9px; }
 .field input, .field select, .field textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--line); color: var(--text); font-family: var(--sans); font-size: 14px; font-weight: 300; padding: 9px 2px 11px; transition: border-color 0.3s; border-radius: 0; }
-.field select { appearance: none; }
+.field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted2) 50%), linear-gradient(135deg, var(--muted2) 50%, transparent 50%); background-position: calc(100% - 4px) 16px, calc(100% - 0px) 16px; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
 .field select option { background: var(--bg2); color: var(--text); }
-.field textarea { resize: vertical; min-height: 90px; }
+.field textarea { resize: vertical; min-height: 84px; }
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); outline: none; }
-.form-submit { margin-top: 14px; align-self: center; }
+.field input:disabled { opacity: 0.35; }
+.form-group { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; }
+.no-website-toggle { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 12px; font-weight: 300; color: var(--muted); cursor: pointer; }
+.no-website-toggle input { width: 14px; height: 14px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; }
+.field-block { display: flex; flex-direction: column; }
+.field-label-text { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); margin-bottom: 12px; }
+.chip-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-family: var(--sans); font-size: 12px; font-weight: 400; color: var(--muted); background: transparent; border: 1px solid var(--line); padding: 9px 15px; border-radius: 999px; cursor: pointer; transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease; }
+.chip:hover { border-color: var(--gold-line); color: var(--text); }
+.chip.active { border-color: var(--gold); color: var(--gold-bright); background: var(--gold-dim); }
+.chip:focus-visible { outline: 1px solid var(--gold); outline-offset: 2px; }
+.form-submit { margin-top: 8px; align-self: center; }
 .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
-.form-success { display: none; text-align: center; padding: 32px 0 8px; font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--gold); }
+.form-success { display: none; text-align: center; padding: 32px 0 8px; }
+.form-success h3 { font-family: var(--serif); font-size: 26px; font-weight: 300; color: var(--gold); margin-bottom: 12px; }
+.form-success p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 380px; margin: 0 auto; }
 .form-error-msg { display: none; font-size: 12px; color: #e07070; text-align: center; margin-top: 12px; letter-spacing: 0.04em; }
 .form-privacy-note { text-align: center; margin-top: 18px; font-size: 11px; }
 .form-privacy-note a { color: var(--muted2); text-decoration: none; border-bottom: 1px solid var(--line); transition: color 0.2s ease; }
 .form-privacy-note a:hover { color: var(--gold); border-color: var(--gold-line); }
+@media (max-width: 640px) { .form-group { grid-template-columns: 1fr; gap: 22px; } }
 
 /* ══ FOOTER ══ */
 /* ══ FOOTER SHELL (matches Stormie Games / Moves / Studios) ══ */
@@ -1023,16 +1037,98 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   <div class="need-response" id="needResponse" style="display:none">
     <button class="need-back" id="needBack" data-i18n="need_back">← Back</button>
     <div class="need-answer" id="needAnswer"></div>
-    <form class="contact-form" id="contactForm" novalidate>
+    <form class="contact-form" id="contactForm">
       <p class="hp-field" aria-hidden="true"><label>Skip: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label></p>
       <input type="hidden" name="need" id="f-need" value=""/>
-      <div class="field"><label for="f-name" data-i18n="f_name">Name</label><input id="f-name" type="text" name="name" required autocomplete="name" /></div>
-      <div class="field"><label for="f-email" data-i18n="f_email">Email</label><input id="f-email" type="email" name="email" required autocomplete="email" /></div>
-      <div class="field"><label for="f-msg" data-i18n="f_msg">Tell me briefly</label><textarea id="f-msg" name="message" rows="3"></textarea></div>
+
+      <div class="form-group">
+        <div class="field"><label for="f-name" data-i18n="f_name">Name</label><input id="f-name" type="text" name="name" required autocomplete="name" /></div>
+        <div class="field"><label for="f-email" data-i18n="f_email">Email</label><input id="f-email" type="email" name="email" required autocomplete="email" /></div>
+      </div>
+
+      <div class="field"><label for="f-company" data-i18n="f_company">Company / organisation</label><input id="f-company" type="text" name="company" required autocomplete="organization" /></div>
+
+      <div class="field">
+        <label for="f-website" data-i18n="f_website">Existing website</label>
+        <input id="f-website" type="url" name="website" placeholder="https://" autocomplete="url" />
+        <label class="no-website-toggle" for="f-no-website"><input type="checkbox" id="f-no-website" /><span data-i18n="f_no_website">No current website</span></label>
+      </div>
+
+      <div class="field">
+        <label for="f-need-select" data-i18n="f_need_label">What do you need?</label>
+        <select id="f-need-select" name="need_label">
+          <option value="members" data-i18n="need_members">More members</option>
+          <option value="impression" data-i18n="need_impression">Better first impression</option>
+          <option value="admin" data-i18n="need_admin">Easier administration</option>
+          <option value="outdated" data-i18n="need_outdated">Replace an outdated website</option>
+          <option value="new" data-i18n="need_new">New gym opening</option>
+          <option value="other" data-i18n="need_other">Something else</option>
+        </select>
+      </div>
+
+      <div class="field"><label for="f-msg" data-i18n="f_msg">What are you looking to improve, build or solve?</label><textarea id="f-msg" name="message" rows="3" required></textarea></div>
+
+      <div class="field-block">
+        <span class="field-label-text" data-i18n="f_features_label">Features / functionality</span>
+        <div class="chip-group" id="featuresGroup" role="group" aria-label="Features and functionality">
+          <button type="button" class="chip" data-value="cms" data-i18n="feat_cms" aria-pressed="false">Content management / CMS</button>
+          <button type="button" class="chip" data-value="schedule" data-i18n="feat_schedule" aria-pressed="false">Class schedule</button>
+          <button type="button" class="chip" data-value="booking" data-i18n="feat_booking" aria-pressed="false">Booking</button>
+          <button type="button" class="chip" data-value="membership" data-i18n="feat_membership" aria-pressed="false">Membership / sign-up</button>
+          <button type="button" class="chip" data-value="forms" data-i18n="feat_forms" aria-pressed="false">Contact or lead forms</button>
+          <button type="button" class="chip" data-value="calendar" data-i18n="feat_calendar" aria-pressed="false">Calendar integration</button>
+          <button type="button" class="chip" data-value="notifications" data-i18n="feat_notifications" aria-pressed="false">Email notifications</button>
+          <button type="button" class="chip" data-value="social" data-i18n="feat_social" aria-pressed="false">Social media integration</button>
+          <button type="button" class="chip" data-value="multilang" data-i18n="feat_multilang" aria-pressed="false">Multiple languages</button>
+          <button type="button" class="chip" data-value="ecommerce" data-i18n="feat_ecommerce" aria-pressed="false">E-commerce / payments</button>
+          <button type="button" class="chip" data-value="seo" data-i18n="feat_seo" aria-pressed="false">SEO</button>
+          <button type="button" class="chip" data-value="analytics" data-i18n="feat_analytics" aria-pressed="false">Analytics</button>
+          <button type="button" class="chip" data-value="notsure" data-i18n="feat_notsure" aria-pressed="false">Not sure yet</button>
+          <button type="button" class="chip" data-value="other" data-i18n="feat_other" aria-pressed="false">Something else</button>
+        </div>
+      </div>
+
+      <div class="field-block">
+        <span class="field-label-text" data-i18n="f_budget_label">Budget</span>
+        <div class="chip-group" id="budgetGroup" role="group" aria-label="Budget range">
+          <button type="button" class="chip" data-value="under10k" data-i18n="budget_under10k" aria-pressed="false">Under 10,000 SEK</button>
+          <button type="button" class="chip" data-value="r10to20" data-i18n="budget_10to20" aria-pressed="false">10,000–20,000 SEK</button>
+          <button type="button" class="chip" data-value="r20to40" data-i18n="budget_20to40" aria-pressed="false">20,000–40,000 SEK</button>
+          <button type="button" class="chip" data-value="r40plus" data-i18n="budget_40plus" aria-pressed="false">40,000+ SEK</button>
+          <button type="button" class="chip" data-value="notsure" data-i18n="budget_notsure" aria-pressed="false">Not sure yet</button>
+        </div>
+      </div>
+
+      <div class="field-block">
+        <span class="field-label-text" data-i18n="f_launch_label">Desired launch</span>
+        <div class="chip-group" id="launchGroup" role="group" aria-label="Desired launch timeline">
+          <button type="button" class="chip" data-value="asap" data-i18n="launch_asap" aria-pressed="false">As soon as possible</button>
+          <button type="button" class="chip" data-value="within1mo" data-i18n="launch_1mo" aria-pressed="false">Within 1 month</button>
+          <button type="button" class="chip" data-value="1to3mo" data-i18n="launch_1to3mo" aria-pressed="false">1–3 months</button>
+          <button type="button" class="chip" data-value="3to6mo" data-i18n="launch_3to6mo" aria-pressed="false">3–6 months</button>
+          <button type="button" class="chip" data-value="nodeadline" data-i18n="launch_nodeadline" aria-pressed="false">No fixed deadline</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-referral" data-i18n="f_referral_label">How did you find Stormie Studios?</label>
+        <select id="f-referral" name="referral">
+          <option value="referral" data-i18n="ref_referral">Referral</option>
+          <option value="instagram" data-i18n="ref_instagram">Instagram</option>
+          <option value="google" data-i18n="ref_google">Google</option>
+          <option value="sawsite" data-i18n="ref_sawsite">Saw another Stormie Studios website</option>
+          <option value="outreach" data-i18n="ref_outreach">Direct outreach from Stormie Studios</option>
+          <option value="other" data-i18n="ref_other">Other</option>
+        </select>
+      </div>
+
       <button class="btn-gold form-submit" type="submit" id="formSubmitBtn" data-i18n="f_send">Send →</button>
       <p class="form-error-msg" id="formError" data-i18n="f_error">Something went wrong. Please try again or email me directly.</p>
     </form>
-    <p class="form-success" id="formSuccess" data-i18n="f_success">Message received. I'll reply within 24 hours with a few follow-up questions and a rough timeline for your project.</p>
+    <div class="form-success" id="formSuccess">
+      <h3 data-i18n="f_success_title">Project request received.</h3>
+      <p data-i18n="f_success">Thanks for getting in touch. I'll review the project and get back to you within one business day.</p>
+    </div>
     <p class="form-privacy-note"><a href="/privacy.html" data-i18n="f_privacy">Privacy policy</a></p>
   </div>
 </div>
@@ -1224,9 +1320,21 @@ const I18N = {
     ct_title:"What do you need <span class=\"gold-shimmer\">help with?</span>",
     ct_sub:"",
     f_name:"Name", f_email:"Email", f_type:"What do you run?",
+    f_company:"Company / organisation", f_website:"Existing website", f_no_website:"No current website",
+    need_members:"More members", need_impression:"Better first impression", need_admin:"Easier administration", need_outdated:"Replace an outdated website", need_new:"New gym opening", need_other:"Something else",
+    f_need_label:"What do you need?",
+    f_features_label:"Features / functionality",
+    feat_cms:"Content management / CMS", feat_schedule:"Class schedule", feat_booking:"Booking", feat_membership:"Membership / sign-up", feat_forms:"Contact or lead forms", feat_calendar:"Calendar integration", feat_notifications:"Email notifications", feat_social:"Social media integration", feat_multilang:"Multiple languages", feat_ecommerce:"E-commerce / payments", feat_seo:"SEO", feat_analytics:"Analytics", feat_notsure:"Not sure yet", feat_other:"Something else",
+    f_budget_label:"Budget",
+    budget_under10k:"Under 10,000 SEK (~€900)", budget_10to20:"10,000–20,000 SEK (~€900–1,700)", budget_20to40:"20,000–40,000 SEK (~€1,700–3,500)", budget_40plus:"40,000+ SEK (~€3,500+)", budget_notsure:"Not sure yet",
+    f_launch_label:"Desired launch",
+    launch_asap:"As soon as possible", launch_1mo:"Within 1 month", launch_1to3mo:"1–3 months", launch_3to6mo:"3–6 months", launch_nodeadline:"No fixed deadline",
+    f_referral_label:"How did you find Stormie Studios?",
+    ref_referral:"Referral", ref_instagram:"Instagram", ref_google:"Google", ref_sawsite:"Saw another Stormie Studios website", ref_outreach:"Direct outreach from Stormie Studios", ref_other:"Other",
     f_type1:"Gym / club", f_type2:"PT / coach", f_type3:"Other",
-    f_msg:"Tell me briefly", f_send:"Send →",
-    f_success:"Message received. I'll reply within 24 hours with a few follow-up questions and a rough timeline for your project.",
+    f_msg:"What are you looking to improve, build or solve?", f_send:"Send →",
+    f_success_title:"Project request received.",
+    f_success:"Thanks for getting in touch. I'll review the project and get back to you within one business day.",
     f_error:"Something went wrong. Please try again or email me directly.",
     f_privacy:"Privacy policy"
   },
@@ -1314,9 +1422,21 @@ const I18N = {
     ct_title:"Vad behöver du <span class=\"gold-shimmer\">hjälp med?</span>",
     ct_sub:"",
     f_name:"Namn", f_email:"Mail", f_type:"Vad driver du?",
+    f_company:"Företag / organisation", f_website:"Nuvarande hemsida", f_no_website:"Ingen hemsida just nu",
+    need_members:"Fler medlemmar", need_impression:"Bättre första intryck", need_admin:"Enklare administration", need_outdated:"Ersätt en föråldrad hemsida", need_new:"Nytt gym öppnar", need_other:"Något annat",
+    f_need_label:"Vad behöver du?",
+    f_features_label:"Funktioner",
+    feat_cms:"Innehållshantering / CMS", feat_schedule:"Passchema", feat_booking:"Bokning", feat_membership:"Medlemskap / registrering", feat_forms:"Kontakt- eller leadformulär", feat_calendar:"Kalenderintegration", feat_notifications:"E-postaviseringar", feat_social:"Integration med sociala medier", feat_multilang:"Flera språk", feat_ecommerce:"E-handel / betalningar", feat_seo:"SEO", feat_analytics:"Analys", feat_notsure:"Vet inte än", feat_other:"Något annat",
+    f_budget_label:"Budget",
+    budget_under10k:"Under 10 000 kr", budget_10to20:"10 000–20 000 kr", budget_20to40:"20 000–40 000 kr", budget_40plus:"40 000+ kr", budget_notsure:"Vet inte än",
+    f_launch_label:"Önskad lansering",
+    launch_asap:"Så snart som möjligt", launch_1mo:"Inom 1 månad", launch_1to3mo:"1–3 månader", launch_3to6mo:"3–6 månader", launch_nodeadline:"Ingen bestämd deadline",
+    f_referral_label:"Hur hittade du Stormie Studios?",
+    ref_referral:"Rekommendation", ref_instagram:"Instagram", ref_google:"Google", ref_sawsite:"Såg en annan Stormie Studios-sajt", ref_outreach:"Direktkontakt från Stormie Studios", ref_other:"Annat",
     f_type1:"Gym / klubb", f_type2:"PT / coach", f_type3:"Annat",
-    f_msg:"Berätta kort", f_send:"Skicka →",
-    f_success:"Meddelande mottaget. Jag återkommer inom 24 timmar med några följdfrågor och en ungefärlig tidsplan för ditt projekt.",
+    f_msg:"Vad vill du förbättra, bygga eller lösa?", f_send:"Skicka →",
+    f_success_title:"Projektförfrågan mottagen.",
+    f_success:"Tack för att du hör av dig. Jag går igenom projektet och återkommer inom en arbetsdag.",
     f_error:"Något gick fel. Försök igen eller maila mig direkt.",
     f_privacy:"Integritetspolicy"
   },
@@ -1404,9 +1524,21 @@ const I18N = {
     ct_title:"คุณต้องการความช่วยเหลือเรื่องอะไร",
     ct_sub:"",
     f_name:"ชื่อ", f_email:"อีเมล", f_type:"คุณทำธุรกิจอะไร",
+    f_company:"บริษัท / องค์กร", f_website:"เว็บไซต์ปัจจุบัน", f_no_website:"ยังไม่มีเว็บไซต์",
+    need_members:"สมาชิกมากขึ้น", need_impression:"ความประทับใจแรกที่ดีขึ้น", need_admin:"บริหารจัดการง่ายขึ้น", need_outdated:"แทนที่เว็บไซต์ที่ล้าสมัย", need_new:"เปิดยิมใหม่", need_other:"เรื่องอื่น ๆ",
+    f_need_label:"คุณต้องการอะไร",
+    f_features_label:"ฟีเจอร์ / ฟังก์ชัน",
+    feat_cms:"ระบบจัดการเนื้อหา / CMS", feat_schedule:"ตารางเวลาคลาส", feat_booking:"ระบบจอง", feat_membership:"สมาชิก / สมัครใช้งาน", feat_forms:"แบบฟอร์มติดต่อหรือลูกค้าเป้าหมาย", feat_calendar:"การเชื่อมต่อปฏิทิน", feat_notifications:"การแจ้งเตือนทางอีเมล", feat_social:"การเชื่อมต่อโซเชียลมีเดีย", feat_multilang:"หลายภาษา", feat_ecommerce:"อีคอมเมิร์ซ / การชำระเงิน", feat_seo:"SEO", feat_analytics:"การวิเคราะห์ข้อมูล", feat_notsure:"ยังไม่แน่ใจ", feat_other:"อื่น ๆ",
+    f_budget_label:"งบประมาณ",
+    budget_under10k:"ต่ำกว่า 10,000 SEK", budget_10to20:"10,000–20,000 SEK", budget_20to40:"20,000–40,000 SEK", budget_40plus:"40,000+ SEK", budget_notsure:"ยังไม่แน่ใจ",
+    f_launch_label:"กำหนดเปิดตัวที่ต้องการ",
+    launch_asap:"เร็วที่สุดเท่าที่จะเป็นไปได้", launch_1mo:"ภายใน 1 เดือน", launch_1to3mo:"1–3 เดือน", launch_3to6mo:"3–6 เดือน", launch_nodeadline:"ไม่มีกำหนดตายตัว",
+    f_referral_label:"คุณรู้จัก Stormie Studios ได้อย่างไร",
+    ref_referral:"การแนะนำ", ref_instagram:"Instagram", ref_google:"Google", ref_sawsite:"เห็นเว็บไซต์อื่นของ Stormie Studios", ref_outreach:"ติดต่อโดยตรงจาก Stormie Studios", ref_other:"อื่น ๆ",
     f_type1:"ยิม / คลับ", f_type2:"เทรนเนอร์ส่วนบุคคล / โค้ช", f_type3:"อื่น ๆ",
-    f_msg:"เล่าสั้น ๆ ให้ฟัง", f_send:"ส่ง →",
-    f_success:"ได้รับข้อความแล้ว ผมจะตอบกลับภายใน 24 ชั่วโมงพร้อมคำถามเพิ่มเติมและกรอบเวลาคร่าว ๆ สำหรับโปรเจกต์ของคุณ",
+    f_msg:"คุณต้องการปรับปรุง สร้าง หรือแก้ปัญหาอะไร", f_send:"ส่ง →",
+    f_success_title:"ได้รับคำขอโปรเจกต์แล้ว",
+    f_success:"ขอบคุณที่ติดต่อมา ผมจะตรวจสอบโปรเจกต์และติดต่อกลับภายในหนึ่งวันทำการ",
     f_error:"มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้งหรืออีเมลหาผมโดยตรง",
     f_privacy:"นโยบายความเป็นส่วนตัว"
   }
@@ -1630,22 +1762,73 @@ function buildHeadline(text, isThai) {
 })();
 
 (function() {
+  function initChipGroup(id, multi) {
+    const group = document.getElementById(id);
+    if (!group) return;
+    group.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        if (multi) {
+          const active = chip.classList.toggle('active');
+          chip.setAttribute('aria-pressed', active ? 'true' : 'false');
+        } else {
+          group.querySelectorAll('.chip').forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
+          chip.classList.add('active');
+          chip.setAttribute('aria-pressed', 'true');
+        }
+      });
+    });
+  }
+  initChipGroup('featuresGroup', true);
+  initChipGroup('budgetGroup', false);
+  initChipGroup('launchGroup', false);
+
+  const noWebsiteCb = document.getElementById('f-no-website');
+  const websiteInput = document.getElementById('f-website');
+  if (noWebsiteCb && websiteInput) {
+    noWebsiteCb.addEventListener('change', () => {
+      websiteInput.disabled = noWebsiteCb.checked;
+      if (noWebsiteCb.checked) websiteInput.value = '';
+    });
+  }
+
+  function getChipLabels(id) {
+    return Array.from(document.querySelectorAll('#' + id + ' .chip.active')).map(c => c.textContent.trim());
+  }
+
   const form=document.getElementById('contactForm'),btn=document.getElementById('formSubmitBtn'),
         ok=document.getElementById('formSuccess'),err=document.getElementById('formError');
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     const hp = form.querySelector('input[name="_gotcha"]'); if (hp && hp.value) return;
-    const name = form.querySelector('#f-name').value.trim(), email = form.querySelector('#f-email').value.trim();
-    if (!name || !email) return;
+    if (!form.reportValidity()) return;
+    const name = form.querySelector('#f-name').value.trim();
+    const email = form.querySelector('#f-email').value.trim();
+    const company = form.querySelector('#f-company').value.trim();
+    const message = form.querySelector('#f-msg').value.trim();
     btn.disabled = true; btn.style.opacity = '0.5'; err.style.display = 'none';
     const lang = (function(){const l=document.documentElement.lang;return (l==='sv'||l==='th')?l:'en';})();
+    const needSelectEl = form.querySelector('#f-need-select');
+    const referralEl = form.querySelector('#f-referral');
+    const websiteVal = noWebsiteCb && noWebsiteCb.checked ? 'No current website' : (websiteInput ? websiteInput.value.trim() : '');
+    const payload = {
+      category: form.querySelector('#f-need')?.value || '',
+      name, email, company,
+      website: websiteVal || '(not provided)',
+      need_selected: needSelectEl ? (needSelectEl.selectedOptions[0]?.textContent || '') : '',
+      message,
+      features: getChipLabels('featuresGroup').join(', ') || '(none selected)',
+      budget: getChipLabels('budgetGroup')[0] || '(not selected)',
+      launch: getChipLabels('launchGroup')[0] || '(not selected)',
+      referral: referralEl ? (referralEl.selectedOptions[0]?.textContent || '') : '',
+      _subject: 'New project enquiry via stormiestudios.com'
+    };
     fetch('https://formspree.io/f/mvznvwpk', {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, need: form.querySelector('#f-need')?.value || '', message: form.querySelector('#f-msg').value.trim(), _subject: 'New request via stormiestudios.com' })
+      body: JSON.stringify(payload)
     })
-    .then(r => { if (r.ok) { form.style.display='none'; ok.style.display='block'; ok.textContent=I18N[lang].f_success; } else throw 0; })
+    .then(r => { if (r.ok) { form.style.display='none'; ok.style.display='block'; } else throw 0; })
     .catch(() => { btn.disabled=false; btn.style.opacity='1'; err.style.display='block'; err.textContent=I18N[lang].f_error; });
   });
 })();
@@ -1859,12 +2042,24 @@ function buildHeadline(text, isThai) {
     const data = NEEDS[lang][need];
     if (!data) return;
     fNeed.value = need;
+    const needSelect = document.getElementById('f-need-select');
+    if (needSelect) needSelect.value = need;
     answer.innerHTML = '<h3>' + data.title + '</h3><p>' + data.text + '</p>';
     picker.style.display = 'none';
     response.style.display = 'block';
     // reset form
     const form = document.getElementById('contactForm');
-    if (form) { form.style.display = ''; document.getElementById('formSuccess').style.display = 'none'; }
+    if (form) {
+      form.style.display = '';
+      document.getElementById('formSuccess').style.display = 'none';
+      form.reset();
+      needSelect.value = need;
+      const noWebsiteCb = document.getElementById('f-no-website');
+      const websiteInput = document.getElementById('f-website');
+      if (noWebsiteCb) noWebsiteCb.checked = false;
+      if (websiteInput) websiteInput.disabled = false;
+      document.querySelectorAll('.chip.active').forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
+    }
     const btn = document.getElementById('formSubmitBtn');
     if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
     document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
