@@ -360,19 +360,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .sc-detail-link { display: inline-block; margin-bottom: 64px; }
 .sc-hint { margin-top: 14px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); }
 
-/* ══ ABOUT — immediately after carousel column ══ */
-.about-inline {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg);
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  padding: 60px 0; border-bottom: 1px solid var(--line);
-}
-.about-inline > .section-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
-}
-
 /* ══ CUSTOM BUILT ══ */
 .custom-built {
   --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
@@ -392,47 +379,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .custom-built-right { display: flex; flex-direction: column; gap: 20px; padding-top: 6px; }
 .custom-built-tagline { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--gold-bright); line-height: 1.5; }
 .custom-built-right p:not(.custom-built-tagline) { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
-.about-inline-title {
-  font-family: var(--serif); font-size: clamp(36px, 4.2vw, 54px);
-  font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text);
-}
-.about-inline-right { display: flex; flex-direction: column; gap: 20px; padding-top: 6px; }
-.about-inline-right p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
-.about-sign { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--muted2); margin-top: 4px; }
-
-/* ══ TRUST / CREDENTIALS ══ */
-.trust {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg);
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  padding: 72px 0; border-bottom: 1px solid var(--line);
-}
-.trust-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-  background: var(--line); border: 1px solid var(--line); margin-top: 32px;
-}
-.trust-item {
-  background: var(--bg); padding: 28px 28px 26px;
-  display: flex; flex-direction: column; gap: 8px;
-  position: relative;
-}
-.trust-item::before {
-  content: ''; position: absolute; top: 0; left: 0; width: 0; height: 1px;
-  background: var(--gold); transition: width 0.5s ease;
-}
-.trust-item:hover::before { width: 100%; }
-.trust-num {
-  font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--gold);
-}
-.trust-title {
-  font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--text); line-height: 1.1;
-}
-.trust-body {
-  font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.75; margin-top: 2px;
-}
-
 /* ══ SEGMENTS ══ */
 .segments {
   --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
@@ -684,11 +630,8 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .sc-frame iframe { transform: scale(0.5385); }
   .sc-arrow--prev { left: -4px; }
   .sc-arrow--next { right: -4px; }
-  .about-inline { padding: 44px 0; }
-  .about-inline > .section-inner { grid-template-columns: 1fr; gap: 28px; }
   .custom-built { padding: 44px 0; }
   .custom-built > .section-inner { grid-template-columns: 1fr; gap: 28px; }
-  .trust-grid { grid-template-columns: 1fr; }
   .segment-grid { grid-template-columns: 1fr; }
   .segment-card.wide { flex-direction: column; gap: 14px; }
   .process-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -778,7 +721,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   <nav class="topbar-right">
     <div class="topbar-nav-desktop">
       <a href="#work" data-i18n="nav_work">Work</a>
-      <a href="#trust" data-i18n="nav_trust">Why it works</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
       <a href="#included" data-i18n="nav_included">What you get</a>
       <a href="#giving" data-i18n="nav_giving">Giving Back</a>
       <a href="#faq" data-i18n="nav_faq">Faq</a>
@@ -799,8 +742,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 
   <div class="menu-panel" id="menuPanel">
     <a href="#work" data-i18n="nav_work">Work</a>
-    <a href="#about" data-i18n="nav_about">About</a>
-    <a href="#trust" data-i18n="nav_trust">Why it works</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
     <a href="#segments" data-i18n="nav_segments">Who I work with</a>
     <a href="#included" data-i18n="nav_included">What you get</a>
     <a href="#giving" data-i18n="nav_giving">Giving Back</a>
@@ -839,47 +781,6 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
       <a class="btn-ghost sc-detail-link" id="scLink" href="#"></a>
     </div>
   </div>
-</section>
-
-<!-- ABOUT — directly under carousel -->
-<section class="about-inline inview" id="about">
-<div class="section-inner">
-  <h2 class="about-inline-title" data-i18n="about_title">Built from <span class="gold-shimmer">the gym floor.</span></h2>
-  <div class="about-inline-right">
-    <p data-i18n="about_p1">I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.</p>
-    <p data-i18n="about_p2">Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.</p>
-    <p class="about-sign">— Storm</p>
-  </div>
-</div>
-</section>
-
-<!-- TRUST / CREDENTIALS -->
-<section class="trust inview" id="trust">
-<div class="section-inner">
-  <span class="section-label" data-i18n="trust_label">Why it works</span>
-  <div class="trust-grid">
-    <div class="trust-item">
-      <span class="trust-num">i.</span>
-      <span class="trust-title" data-i18n="trust1_title">Licensed Personal Trainer</span>
-      <p class="trust-body" data-i18n="trust1_body">Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I understand what motivates people to take the first step and what keeps them coming back.</p>
-    </div>
-    <div class="trust-item">
-      <span class="trust-num">ii.</span>
-      <span class="trust-title" data-i18n="trust2_title">Agile Project Manager & Developer</span>
-      <p class="trust-body" data-i18n="trust2_body">Trained at Futuregames and Stockholm University. Projects delivered with clear communication, structured workflows and attention to detail.</p>
-    </div>
-    <div class="trust-item">
-      <span class="trust-num">iii.</span>
-      <span class="trust-title" data-i18n="trust3_title">Former Gym Manager & Fitness Instructor</span>
-      <p class="trust-body" data-i18n="trust3_body">Working in fitness since 2017. From memberships and schedules to coaching and daily operations, I understand how gyms actually run.</p>
-    </div>
-    <div class="trust-item">
-      <span class="trust-num">iv.</span>
-      <span class="trust-title" data-i18n="trust4_title">Built From the Industry</span>
-      <p class="trust-body" data-i18n="trust4_body">Every project draws on real time in the industry, not just building for it. Having worked in the fitness industry since 2017 as a personal trainer, fitness instructor, gym manager, and coach, I understand the businesses I build for.</p>
-    </div>
-  </div>
-</div>
 </section>
 
 <!-- SEGMENTS -->
@@ -1206,7 +1107,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
       <p class="footer-col-title" data-i18n="footer_nav">Navigation</p>
       <a href="#included" data-i18n="footer_services">Services</a>
       <a href="#work">Work</a>
-      <a href="#about" data-i18n="footer_about">About</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
       <a href="#contact" data-i18n="footer_contact_link">Contact</a>
     </div>
     <div class="footer-col">
@@ -1237,25 +1138,13 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 <script>
 const I18N = {
   en: {
-    nav_work:"Work", nav_about:"About", nav_trust:"Why it works", nav_segments:"Who I work with", nav_included:"What you get", nav_giving:"Giving Back", nav_faq:"Faq", nav_cta:"Request a consultation", nav_menu:"Menu",
+    nav_work:"Work", nav_about:"About", nav_segments:"Who I work with", nav_included:"What you get", nav_giving:"Giving Back", nav_faq:"Faq", nav_cta:"Request a consultation", nav_menu:"Menu",
     hero_eyebrow:"Stockholm · Digital studio for sport & fitness brands",
     hero_headline:"Custom built websites.||Easy to run.||Professionally managed.",
     hero_sub:"Built to convert visitors into members, and effortless for you to run.",
     cb_title:"Custom-built.<br><span class=\"gold-shimmer\">Without the maintenance burden.</span>",
     cb_tagline:"The flexibility of a custom website, with the everyday simplicity people expect from a website builder.",
     cb_p1:"I build the site around your business rather than forcing your business into a template. You still update your own content through a simple CMS, while Stormie Studios manages the code, hosting and technical infrastructure behind it.",
-    about_title:"Built from <span class=\"gold-shimmer\">the gym floor.</span>",
-    about_p1:"I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.",
-    about_p2:"Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.",
-    trust_label:"Why it works",
-    trust1_title:"Licensed Personal Trainer",
-    trust1_body:"Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.",
-    trust2_title:"Agile Project Manager & Developer",
-    trust2_body:"Trained at Futuregames and Stockholm University. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.",
-    trust3_title:"Former Gym Manager & Fitness Instructor",
-    trust3_body:"Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.",
-    trust4_title:"Built From the Industry",
-    trust4_body:"Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.",
     seg_label:"Who I work with",
     seg_title:"Built for the fitness industry. <em>And a few causes I care about.</em>",
     intl_label:"Also building toward",
@@ -1339,25 +1228,13 @@ const I18N = {
     f_privacy:"Privacy policy"
   },
   sv: {
-    nav_work:"Case", nav_about:"Om mig", nav_trust:"Varför det funkar", nav_segments:"Vem jag hjälper", nav_included:"Vad du får", nav_giving:"Ge tillbaka", nav_faq:"Vanliga frågor", nav_cta:"Skicka en förfrågan", nav_menu:"Meny",
+    nav_work:"Case", nav_about:"Om mig", nav_segments:"Vem jag hjälper", nav_included:"Vad du får", nav_giving:"Ge tillbaka", nav_faq:"Vanliga frågor", nav_cta:"Skicka en förfrågan", nav_menu:"Meny",
     hero_eyebrow:"Stockholm · Digital studio för sport och träning",
     hero_headline:"Skräddarsydda webbplatser.||Enkla att driva.||Professionellt förvaltade.",
     hero_sub:"Byggda för att omvandla besökare till medlemmar, och enkla för dig att sköta.",
     cb_title:"Skräddarsytt.<br><span class=\"gold-shimmer\">Utan underhållsbördan.</span>",
     cb_tagline:"Flexibiliteten hos en skräddarsydd webbplats, med den vardagliga enkelheten man förväntar sig av en webbplatsbyggare.",
     cb_p1:"Jag bygger sajten runt din verksamhet i stället för att pressa in din verksamhet i en mall. Du uppdaterar fortfarande ditt eget innehåll via ett enkelt CMS, medan Stormie Studios sköter koden, hostingen och den tekniska infrastrukturen bakom den.",
-    about_title:"Byggt från <span class=\"gold-shimmer\">gymgolvet.</span>",
-    about_p1:"Jag heter Storm Kolmodin. Licensierad personlig tränare, agil projektledare och utvecklare. Jag bygger hemsidor för gym, klubbar och coacher. Inte för att jag hittade en nisch, utan för att det är världen jag själv kommer ifrån.",
-    about_p2:"Stormie Studios är en liten studio med ett enkelt löfte: du arbetar direkt med personen som bygger din sajt. Inga mellanhänder. Inga överlämningar. Inga överraskningar.",
-    trust_label:"Varför det funkar",
-    trust1_title:"Licensierad personlig tränare",
-    trust1_body:"Certifierad sedan 2018 och vidareutbildad vid Gymnastik- och idrottshögskolan (GIH). Jag vet vad som får någon att våga boka sitt första pass.",
-    trust2_title:"Agil projektledare och utvecklare",
-    trust2_body:"Utbildad vid Futuregames och Stockholms universitet. Deadlines hålls. Inga överraskningar. Du får en fungerande sajt, inte ett projekt som aldrig blir klart.",
-    trust3_title:"Tidigare gymchef och fitnessinstruktör",
-    trust3_body:"Har arbetat med träningsverksamheter sedan 2017. Jag har stått på golvet, hanterat medlemskap, planerat scheman och drivit verksamhet. Jag förstår branschen inifrån.",
-    trust4_title:"Byggt från branschen",
-    trust4_body:"Varje sajt bygger på verklig erfarenhet i branschen, inte bara på att bygga hemsidor åt den. Efter år i träningsbranschen som personlig tränare, fitnessinstruktör, gymchef och coach förstår jag hur verksamheten fungerar, både för medlemmar och personal.",
     seg_label:"Vem jag hjälper",
     seg_title:"Byggt för träningsbranschen. <em>Och några saker jag bryr mig om.</em>",
     intl_label:"Bygger också mot",
@@ -1441,25 +1318,13 @@ const I18N = {
     f_privacy:"Integritetspolicy"
   },
   th: {
-    nav_work:"ผลงาน", nav_about:"เกี่ยวกับ", nav_trust:"ทำไมถึงได้ผล", nav_segments:"ลูกค้าที่ผมทำงานด้วย", nav_included:"สิ่งที่คุณจะได้รับ", nav_giving:"คืนสู่สังคม", nav_faq:"คำถามที่พบบ่อย", nav_cta:"ขอคำปรึกษา", nav_menu:"เมนู",
+    nav_work:"ผลงาน", nav_about:"เกี่ยวกับ", nav_segments:"ลูกค้าที่ผมทำงานด้วย", nav_included:"สิ่งที่คุณจะได้รับ", nav_giving:"คืนสู่สังคม", nav_faq:"คำถามที่พบบ่อย", nav_cta:"ขอคำปรึกษา", nav_menu:"เมนู",
     hero_eyebrow:"สตอกโฮล์ม · สตูดิโอดิจิทัลสำหรับแบรนด์กีฬาและฟิตเนส",
     hero_headline:"เว็บไซต์สั่งทำ||ใช้งานง่าย||ดูแลอย่างมืออาชีพ",
     hero_sub:"ออกแบบมาเพื่อเปลี่ยนผู้เข้าชมให้เป็นสมาชิก และใช้งานง่ายสำหรับคุณ",
     cb_title:"สร้างเฉพาะสำหรับคุณ<br><span class=\"gold-shimmer\">โดยไม่ต้องแบกรับภาระการดูแล</span>",
     cb_tagline:"ความยืดหยุ่นของเว็บไซต์ที่สร้างเฉพาะ พร้อมความง่ายในชีวิตประจำวันแบบที่คนคาดหวังจากเว็บไซต์สำเร็จรูป",
     cb_p1:"ผมสร้างเว็บไซต์ให้เข้ากับธุรกิจของคุณ แทนที่จะบีบธุรกิจของคุณให้เข้ากับเทมเพลต คุณยังคงอัปเดตเนื้อหาของคุณเองผ่าน CMS ที่เรียบง่าย ในขณะที่ Stormie Studios ดูแลโค้ด โฮสติ้ง และโครงสร้างพื้นฐานทางเทคนิคเบื้องหลัง",
-    about_title:"สร้างจาก <span class=\"gold-shimmer\">พื้นยิมจริง</span>",
-    about_p1:"ผมชื่อ Storm Kolmodin เทรนเนอร์ส่วนบุคคลที่ได้รับใบอนุญาต ผู้จัดการโครงการแบบอไจล์ และนักพัฒนาเว็บ ผมสร้างเว็บไซต์ให้กับยิม คลับ และโค้ช ไม่ใช่เพราะหาช่องทางธุรกิจเจอ แต่เพราะนี่คือโลกที่ผมมาจาก",
-    about_p2:"Stormie Studios เป็นสตูดิโอเล็ก ๆ ที่มีคำมั่นสัญญาง่าย ๆ คุณจะได้ทำงานโดยตรงกับคนที่สร้างเว็บไซต์ของคุณ ไม่มีคนกลาง ไม่มีการส่งต่องาน ไม่มีเรื่องเซอร์ไพรส์",
-    trust_label:"ทำไมถึงได้ผล",
-    trust1_title:"เทรนเนอร์ส่วนบุคคลที่ได้รับใบอนุญาต",
-    trust1_body:"ได้รับการรับรองตั้งแต่ปี 2018 และศึกษาต่อที่ Swedish School of Sport and Health Sciences (GIH) ผมรู้ว่าอะไรทำให้คนกล้าจองเซสชันแรกของพวกเขา",
-    trust2_title:"ผู้จัดการโครงการแบบอไจล์และนักพัฒนา",
-    trust2_body:"ฝึกฝนที่ Futuregames และมหาวิทยาลัยสตอกโฮล์ม ตรงเวลาทุกครั้ง ไม่มีเซอร์ไพรส์ คุณจะได้เว็บไซต์ที่ใช้งานได้จริง ไม่ใช่โปรเจกต์ที่ไม่มีวันเสร็จ",
-    trust3_title:"อดีตผู้จัดการยิมและผู้ฝึกสอนฟิตเนส",
-    trust3_body:"ทำงานในวงการฟิตเนสตั้งแต่ปี 2017 ผมเคยอยู่หน้างานจริง จัดการสมาชิก วางแผนตารางเวลา และดูแลการดำเนินงาน ผมเข้าใจอุตสาหกรรมนี้จากภายใน",
-    trust4_title:"สร้างจากประสบการณ์จริงในวงการ",
-    trust4_body:"ทุกโปรเจกต์อ้างอิงจากเวลาที่ผมอยู่ในวงการจริง ไม่ใช่แค่สร้างเว็บให้วงการนี้ หลังจากหลายปีในวงการฟิตเนสในฐานะเทรนเนอร์ส่วนบุคคล ผู้ฝึกสอน ผู้จัดการยิม และโค้ช ผมเข้าใจว่าธุรกิจนี้ทำงานอย่างไร ทั้งสำหรับสมาชิกและพนักงาน",
     seg_label:"ลูกค้าที่ผมทำงานด้วย",
     seg_title:"สร้างขึ้นเพื่อวงการฟิตเนส <em>และบางเรื่องที่ผมใส่ใจ</em>",
     intl_label:"กำลังขยายไปสู่",
