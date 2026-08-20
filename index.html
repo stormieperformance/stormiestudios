@@ -213,8 +213,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   opacity: 0; transition: opacity 0.4s ease;
 }
 .intro.glow-active .intro-glow { opacity: 1; }
-#hero3d { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.55; }
-@media (max-width: 900px) { #hero3d { display: none; } }
+#hero3d { position: absolute; top: 0; left: 0; width: 48%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.6; }
+@media (max-width: 768px) { #hero3d { width: 100%; height: 360px; opacity: 0.5; } }
 .intro-left, .intro-right { position: relative; z-index: 1; }
 .intro.glow-ambient .intro-glow { opacity: 0.8; animation: glowDrift 9s ease-in-out infinite; }
 @keyframes glowDrift {
@@ -1773,14 +1773,14 @@ import * as THREE from 'three';
     return geo;
   }
 
-  const mainGeo = buildBoltGeometry(2.3);
+  const mainGeo = buildBoltGeometry(1.95);
   const mainEdges = new THREE.EdgesGeometry(mainGeo, 1);
   const mainMat = new THREE.LineBasicMaterial({ color: 0xecd9ae, transparent: true, opacity: OPACITY_MAIN });
   const bolt = new THREE.LineSegments(mainEdges, mainMat);
   scene.add(bolt);
 
   // Faint trailing echo, slightly larger, sitting just behind — subtle depth, not a second object
-  const trailGeo = buildBoltGeometry(2.3);
+  const trailGeo = buildBoltGeometry(1.95);
   const trailEdges = new THREE.EdgesGeometry(trailGeo, 1);
   const trailMat = new THREE.LineBasicMaterial({ color: 0xc9a96e, transparent: true, opacity: OPACITY_TRAIL });
   const trail = new THREE.LineSegments(trailEdges, trailMat);
