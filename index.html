@@ -537,7 +537,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .section-inner { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
 .footer-shell { border: 0; border-top: 1px solid rgba(201,169,110,0.12); background: #0c0c0b; }
 footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
-.footer-mark { width: 24px; height: 24px; color: rgba(201,169,110,0.68); margin-bottom: 4px; }
+.footer-mark {
+  width: 24px; height: 24px; color: rgba(201,169,110,0.68); margin-bottom: 4px;
+  transform-origin: center;
+  animation: footerBoltStrike 6s ease-in-out infinite;
+}
+@keyframes footerBoltStrike {
+  0%, 92%, 100% { filter: brightness(1) drop-shadow(0 0 0 transparent); transform: scale(1); }
+  93% { filter: brightness(2.2) drop-shadow(0 0 4px rgba(201,169,110,0.85)); transform: scale(1.12); }
+  94% { filter: brightness(1) drop-shadow(0 0 0 transparent); transform: scale(1); }
+  95% { filter: brightness(2.6) drop-shadow(0 0 6px rgba(236,217,174,0.95)); transform: scale(1.16); }
+  96%, 100% { filter: brightness(1) drop-shadow(0 0 0 transparent); transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-mark { animation: none; }
+}
 .footer-mark-trigger { background: none; border: none; padding: 0; margin-bottom: 4px; cursor: pointer; color: rgba(201,169,110,0.68); transition: color 0.2s ease; }
 .footer-mark-trigger:hover { color: var(--gold); }
 .footer-mark-trigger .footer-mark { margin-bottom: 0; }
