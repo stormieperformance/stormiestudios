@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What You Get — Stormie Studios</title>
+  <meta name="description" content="Exactly what's included in every Stormie Studios website project, plus optional add-ons." />
+  <link rel="canonical" href="https://stormiestudios.com/what-you-get.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Thai:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+      --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+      --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+      --sans: 'DM Sans', sans-serif; --sans-thai: 'Noto Sans Thai', sans-serif;
+      --serif: 'Cormorant Garamond', serif; --serif-thai: 'Noto Serif Thai', serif;
+    }
+    html.lang-th { --sans: 'Noto Sans Thai', sans-serif; --serif: 'Noto Serif Thai', serif; }
+    body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    .page { max-width: 900px; margin: 0 auto; padding: 56px 32px 100px; }
+    .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 56px; flex-wrap: wrap; gap: 16px; }
+    .back-link { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); text-decoration: none; transition: color 0.2s ease; }
+    .back-link:hover { color: var(--gold); }
+    .lang-toggle { display: flex; align-items: center; gap: 6px; font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--muted2); }
+    .lang-toggle button { background: none; border: none; font: inherit; color: inherit; cursor: pointer; padding: 0; }
+    .lang-toggle button.active { color: var(--gold); }
+    .section-label { display: block; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin-bottom: 16px; }
+    h1 em { font-style: italic; color: var(--gold-bright); }
+    .sub { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 520px; margin-bottom: 44px; }
+
+    .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 56px; }
+    .included-item { background: var(--bg); padding: 30px 30px 28px; position: relative; }
+    .included-item::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.5s ease; }
+    .included-item:hover::before { width: 100%; }
+    .included-num { font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--gold); }
+    .included-name { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--text); margin: 8px 0 6px; line-height: 1.15; }
+    .included-desc { font-size: 12.5px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+
+    .optional-title { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 24px; color: var(--text); margin: 0 0 24px; }
+    .optional-list { display: flex; flex-direction: column; }
+    .optional-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 15px 0; border-top: 1px solid var(--line); }
+    .optional-row:last-child { border-bottom: 1px solid var(--line); }
+    .optional-name { font-size: 14px; font-weight: 300; color: var(--text); }
+    .optional-desc { font-size: 12px; font-weight: 300; color: var(--muted2); line-height: 1.65; max-width: 440px; }
+    .optional-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); white-space: nowrap; padding-top: 2px; }
+
+    @media (max-width: 640px) { .included-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="top-row">
+    <a href="index.html" class="back-link" data-i18n="back_link">&larr; Back to Stormie Studios</a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" id="lang-en" class="active" onclick="setLang('en')">EN</button>
+      <span>/</span>
+      <button type="button" id="lang-sv" onclick="setLang('sv')">SV</button>
+      <span>/</span>
+      <button type="button" id="lang-th" onclick="setLang('th')">TH</button>
+    </div>
+  </div>
+
+  <span class="section-label" data-i18n="inc_label">What You Get</span>
+  <h1 data-i18n="inc_title">Every project. <em>Fully equipped.</em></h1>
+  <p class="sub" data-i18n="inc_sub">A site built to turn visitors into members, not just look good doing it. Here's exactly what's included, no surprises.</p>
+
+  <div class="included-grid">
+    <div class="included-item">
+      <span class="included-num">i.</span>
+      <h3 class="included-name" data-i18n="inc1_name">Custom-built, not templated</h3>
+      <p class="included-desc" data-i18n="inc1_desc">Designed around your business, your brand, your members.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">ii.</span>
+      <h3 class="included-name" data-i18n="inc2_name">Fully responsive</h3>
+      <p class="included-desc" data-i18n="inc2_desc">Looks and works right on desktop, tablet and phone.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">iii.</span>
+      <h3 class="included-name" data-i18n="inc3_name">Self-service content</h3>
+      <p class="included-desc" data-i18n="inc3_desc">Change text, images, video, schedules, prices, staff, campaigns and news yourself, without touching the site's code or layout.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">iv.</span>
+      <h3 class="included-name" data-i18n="inc4_name">Booking and membership paths</h3>
+      <p class="included-desc" data-i18n="inc4_desc">Clear routes from visitor to trial to paying member.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">v.</span>
+      <h3 class="included-name" data-i18n="inc5_name">Fast, performance-focused build</h3>
+      <p class="included-desc" data-i18n="inc5_desc">Hand-coded, no bloated page-builder overhead.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">vi.</span>
+      <h3 class="included-name" data-i18n="inc6_name">Basic SEO setup</h3>
+      <p class="included-desc" data-i18n="inc6_desc">Titles, structure and metadata set up to be found.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">vii.</span>
+      <h3 class="included-name" data-i18n="inc7_name">Contact forms and integrations</h3>
+      <p class="included-desc" data-i18n="inc7_desc">Inquiries, social links and Google Maps where relevant.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-num">viii.</span>
+      <h3 class="included-name" data-i18n="inc8_name">Domain, HTTPS and launch support</h3>
+      <p class="included-desc" data-i18n="inc8_desc">Connected, secured, and live, with help through launch day.</p>
+    </div>
+  </div>
+
+  <div class="optional">
+    <span class="section-label" data-i18n="opt_label">Optional Services</span>
+    <h2 class="optional-title" data-i18n="opt_title">For when you want more, later.</h2>
+    <div class="optional-list">
+      <div class="optional-row"><span class="optional-name" data-i18n="opt2_name">Ongoing content updates handled for you</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
+      <div class="optional-row">
+        <div class="optional-info">
+          <span class="optional-name" data-i18n="opt3_name">Google Search Console and Analytics setup</span>
+          <span class="optional-desc" data-i18n="opt3_desc">Google Analytics or Plausible connected and explained in plain language, not a raw dashboard.</span>
+        </div>
+        <span class="optional-tag" data-i18n="opt_addon">Add-on</span>
+      </div>
+      <div class="optional-row"><span class="optional-name" data-i18n="opt4_name">Business email setup</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
+      <div class="optional-row"><span class="optional-name" data-i18n="opt5_name">Additional pages, features and improvements</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const I18N = {
+  en: {
+    back_link:"← Back to Stormie Studios",
+    inc_label:"What You Get",
+    inc_title:"Every project. <em>Fully equipped.</em>",
+    inc_sub:"A site built to turn visitors into members, not just look good doing it. Here's exactly what's included, no surprises.",
+    inc1_name:"Custom-built, not templated", inc1_desc:"Designed around your business, your brand, your members.",
+    inc2_name:"Fully responsive", inc2_desc:"Looks and works right on desktop, tablet and phone.",
+    inc3_name:"Self-service content", inc3_desc:"Change text, images, video, schedules, prices, staff, campaigns and news yourself, without touching the site's code or layout.",
+    inc4_name:"Booking and membership paths", inc4_desc:"Clear routes from visitor to trial to paying member.",
+    inc5_name:"Fast, performance-focused build", inc5_desc:"Hand-coded, no bloated page-builder overhead.",
+    inc6_name:"Basic SEO setup", inc6_desc:"Titles, structure and metadata set up to be found.",
+    inc7_name:"Contact forms and integrations", inc7_desc:"Inquiries, social links and Google Maps where relevant.",
+    inc8_name:"Domain, HTTPS and launch support", inc8_desc:"Connected, secured, and live, with help through launch day.",
+    opt_label:"Optional Services",
+    opt_title:"For when you want more, later.",
+    opt2_name:"Ongoing content updates handled for you",
+    opt3_name:"Google Search Console and Analytics setup",
+    opt3_desc:"Google Analytics or Plausible connected and explained in plain language, not a raw dashboard.",
+    opt4_name:"Business email setup",
+    opt5_name:"Additional pages, features and improvements",
+    opt_addon:"Add-on"
+  },
+  sv: {
+    back_link:"← Tillbaka till Stormie Studios",
+    inc_label:"Vad du får",
+    inc_title:"Varje projekt. <em>Fullt utrustat.</em>",
+    inc_sub:"En sajt byggd för att göra besökare till medlemmar, inte bara för att se bra ut. Här är exakt vad som ingår, inga överraskningar.",
+    inc1_name:"Skräddarsytt, inte mallbaserat", inc1_desc:"Designat kring ditt företag, ditt varumärke, dina medlemmar.",
+    inc2_name:"Fullt responsivt", inc2_desc:"Ser bra ut och fungerar på desktop, surfplatta och mobil.",
+    inc3_name:"Innehåll du sköter själv", inc3_desc:"Ändra text, bilder, video, scheman, priser, personal, kampanjer och nyheter själv, utan att röra sajtens kod eller layout.",
+    inc4_name:"Boknings- och medlemsflöden", inc4_desc:"Tydliga vägar från besökare till provpass till betalande medlem.",
+    inc5_name:"Snabb, prestandafokuserad build", inc5_desc:"Handkodad, utan tunga page builder-verktyg.",
+    inc6_name:"Grundläggande SEO", inc6_desc:"Titlar, struktur och metadata som gör att ni hittas.",
+    inc7_name:"Kontaktformulär och integrationer", inc7_desc:"Förfrågningar, sociala länkar och Google Maps där relevant.",
+    inc8_name:"Domän, HTTPS och lanseringsstöd", inc8_desc:"Kopplad, säkrad och live, med hjälp genom lanseringsdagen.",
+    opt_label:"Tilläggstjänster",
+    opt_title:"För när du vill ha mer, längre fram.",
+    opt2_name:"Löpande innehållsuppdateringar",
+    opt3_name:"Google Search Console och Analytics",
+    opt3_desc:"Google Analytics eller Plausible kopplat och förklarat på ett enkelt språk, inte en rå instrumentpanel.",
+    opt4_name:"Uppsättning av företagsmejl",
+    opt5_name:"Fler sidor, funktioner och förbättringar",
+    opt_addon:"Tillägg"
+  },
+  th: {
+    back_link:"← กลับไปที่ Stormie Studios",
+    inc_label:"สิ่งที่คุณจะได้รับ",
+    inc_title:"ทุกโปรเจกต์ <em>พร้อมครบทุกอย่าง</em>",
+    inc_sub:"เว็บไซต์ที่สร้างมาเพื่อเปลี่ยนผู้เข้าชมให้เป็นสมาชิก ไม่ใช่แค่ดูดี นี่คือสิ่งที่รวมอยู่ทั้งหมด ไม่มีเซอร์ไพรส์",
+    inc1_name:"สร้างขึ้นเฉพาะ ไม่ใช่เทมเพลต", inc1_desc:"ออกแบบตามธุรกิจ แบรนด์ และสมาชิกของคุณ",
+    inc2_name:"รองรับทุกหน้าจอ", inc2_desc:"แสดงผลและใช้งานได้ดีบนคอมพิวเตอร์ แท็บเล็ต และมือถือ",
+    inc3_name:"จัดการเนื้อหาด้วยตัวเอง", inc3_desc:"เปลี่ยนข้อความ รูปภาพ วิดีโอ ตารางเวลา ราคา พนักงาน แคมเปญ และข่าวสารได้เอง โดยไม่ต้องแตะโค้ดหรือเลย์เอาต์ของเว็บไซต์",
+    inc4_name:"ระบบจองและเส้นทางสมาชิกภาพ", inc4_desc:"เส้นทางที่ชัดเจนจากผู้เข้าชมสู่การทดลองและสมาชิกที่จ่ายเงิน",
+    inc5_name:"สร้างขึ้นให้เร็วและเน้นประสิทธิภาพ", inc5_desc:"เขียนโค้ดเอง ไม่มีภาระจากตัวสร้างหน้าเว็บสำเร็จรูป",
+    inc6_name:"ตั้งค่า SEO พื้นฐาน", inc6_desc:"ชื่อเรื่อง โครงสร้าง และข้อมูลเมตาตั้งค่าให้ค้นหาเจอ",
+    inc7_name:"ฟอร์มติดต่อและการเชื่อมต่อระบบ", inc7_desc:"คำถาม ลิงก์โซเชียล และ Google Maps ตามความเหมาะสม",
+    inc8_name:"โดเมน HTTPS และการสนับสนุนตอนเปิดตัว", inc8_desc:"เชื่อมต่อ ปลอดภัย และใช้งานได้จริง พร้อมช่วยเหลือจนถึงวันเปิดตัว",
+    opt_label:"บริการเสริม",
+    opt_title:"สำหรับตอนที่คุณต้องการเพิ่มเติมในภายหลัง",
+    opt2_name:"จัดการอัปเดตเนื้อหาต่อเนื่องให้คุณ",
+    opt3_name:"ตั้งค่า Google Search Console และ Analytics",
+    opt3_desc:"เชื่อมต่อ Google Analytics หรือ Plausible พร้อมอธิบายให้เข้าใจง่าย ไม่ใช่แดชบอร์ดดิบ",
+    opt4_name:"ตั้งค่าอีเมลธุรกิจ",
+    opt5_name:"หน้าเพิ่มเติม ฟีเจอร์ และการปรับปรุง",
+    opt_addon:"บริการเสริม"
+  }
+};
+function setLang(lang) {
+  const dict = I18N[lang]; if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.documentElement.lang = lang;
+  document.documentElement.classList.toggle('lang-th', lang === 'th');
+  document.querySelectorAll('#lang-en').forEach(el => el.classList.toggle('active', lang==='en'));
+  document.querySelectorAll('#lang-sv').forEach(el => el.classList.toggle('active', lang==='sv'));
+  document.querySelectorAll('#lang-th').forEach(el => el.classList.toggle('active', lang==='th'));
+  try { localStorage.setItem('sp-lang', lang); } catch(e) {}
+}
+(function() {
+  let lang = 'en'; try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
+  if (lang !== 'en') setLang(lang);
+})();
+</script>
+</body>
+</html>
