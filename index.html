@@ -467,7 +467,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ CARE ══ */
 .care {
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg);
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
   padding: 100px 0; border-bottom: 1px solid var(--line);
+}
+.care > .section-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
 }
 .care-title { font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; }
@@ -475,7 +482,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .care-right p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
 
 /* ══ INCLUDED ══ */
-.included { padding: 100px 0; border-bottom: 1px solid var(--line); }
+.included {
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg);
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+  padding: 100px 0; border-bottom: 1px solid var(--line);
+}
 .included-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 16px; color: var(--text); }
 .included-title em { font-style: italic; color: var(--muted); }
 .included-sub { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.75; max-width: 480px; margin-bottom: 44px; }
@@ -542,7 +556,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-a { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding-top 0.3s; }
 .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
 
-.trust-bullets { padding: 40px 24px; max-width: 980px; margin: 0 auto; }
+.trust-bullets {
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg);
+  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+  padding: 40px 24px;
+}
+.trust-bullets-list { max-width: 980px; margin: 0 auto; }
 .trust-bullets-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; }
 .trust-bullets-list li { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 400; color: var(--muted); white-space: nowrap; }
 .trust-bullets-list svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--gold); }
@@ -634,7 +656,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .segment-grid { grid-template-columns: 1fr; }
   .segment-card.wide { flex-direction: column; gap: 14px; }
   .process-grid { grid-template-columns: 1fr; gap: 36px; }
-  .care { grid-template-columns: 1fr; gap: 32px; }
+  .care > .section-inner { grid-template-columns: 1fr; gap: 32px; }
   .giving { grid-template-columns: 1fr; }
   .giving-copy, .giving-form { padding: 44px 24px; }
   .contact { padding: 76px 0 64px; }
@@ -855,16 +877,19 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 
 <!-- CARE -->
 <section class="care">
+<div class="section-inner">
   <h2 class="care-title" data-i18n="care_title">Easy for you.<br><span class="gold-shimmer">Handled by me.</span></h2>
   <div class="care-right">
     <p data-i18n="care_p1">You update it yourself, in a spreadsheet or a clean CMS dashboard built for non-developers. No manuals, no agency middleman, and nothing you touch can break it: leave a field blank or delete something by accident, and the site falls back to a design that already works.</p>
     <p data-i18n="care_p2">Hosting, security, backups and updates are available too, one flat monthly fee, less than a template platform charges, with none of the limitations.</p>
     <p data-i18n="care_p3">Your domain stays in your name from day one. If we ever part ways, you get a full static export of the live site to take with you, no lock-in, nothing left behind.</p>
   </div>
+</div>
 </section>
 
 <!-- INCLUDED -->
 <section class="included" id="included">
+<div class="section-inner">
   <span class="section-label" data-i18n="inc_label">What You Get</span>
   <h2 class="included-title" data-i18n="inc_title">Every project. <em>Fully equipped.</em></h2>
   <p class="included-sub" data-i18n="inc_sub">A site built to turn visitors into members, not just look good doing it. Here's exactly what's included, no surprises.</p>
@@ -935,6 +960,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
       <div class="optional-row"><span class="optional-name" data-i18n="opt5_name">Additional pages, features and improvements</span><span class="optional-tag" data-i18n="opt_addon">Add-on</span></div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- CONTACT -->
