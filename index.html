@@ -237,7 +237,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .intro-headline {
   font-family: var(--serif); font-size: clamp(40px, 5.2vw, 72px);
-  font-weight: 300; line-height: 1.02; margin-bottom: 24px; overflow: hidden;
+  font-weight: 300; line-height: 1.14; margin-bottom: 24px; overflow: hidden;
   color: var(--text);
 }
 .intro-headline .word {
@@ -807,7 +807,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   <div class="intro-glow" id="introGlow" aria-hidden="true"></div>
   <div class="intro-left">
     <span class="intro-eyebrow" data-i18n="hero_eyebrow">Stockholm · Digital studio for sport & fitness brands</span>
-    <h1 class="intro-headline" id="introHeadline">Custom built Websites. Easy to run. Professionally managed.</h1>
+    <h1 class="intro-headline" id="introHeadline">Custom built websites.<br>Easy to run.<br>Professionally managed.</h1>
     <p class="intro-sub" data-i18n="hero_sub">Built to convert visitors into members, and effortless for you to run.</p>
     <a class="btn-gold intro-cta" href="#contact" data-i18n="nav_cta">Request a consultation</a>
   </div>
@@ -890,15 +890,15 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
       <p class="segment-text" data-i18n="seg1_text">More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.</p>
       <span class="segment-link" data-i18n="seg_link">See how →</span>
     </a>
-    <a class="segment-card" href="erikstrand.html">
+    <a class="segment-card">
       <h3 class="segment-name" data-i18n="seg2_name">PTs &amp; coaches</h3>
-      <p class="segment-text" data-i18n="seg2_text">Fill your programs. A personal site with booking, packages and payments, so a follower becomes a client without you chasing DMs. New prices, new offers, new testimonials: you change them yourself, between two sessions.</p>
-      <span class="segment-link" data-i18n="seg_link2">See how →</span>
+      <p class="segment-text" data-i18n="seg2_text">Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.</p>
+      <span class="segment-link" data-i18n="seg_link2">Coming soon</span>
     </a>
-    <a class="segment-card wide" href="ecommerce.html">
+    <a class="segment-card wide">
       <h3 class="segment-name" data-i18n="seg3_name">Shop &amp; brand</h3>
-      <p class="segment-text" data-i18n="seg3_text">Sell merch and gear straight to your community. An online store built into your site, not next to it.</p>
-      <span class="segment-link" data-i18n="seg_link3">See how →</span>
+      <p class="segment-text" data-i18n="seg3_text">Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.</p>
+      <span class="segment-link" data-i18n="seg_link3">Coming soon</span>
     </a>
   </div>
   <div class="intl-note">
@@ -1143,7 +1143,7 @@ const I18N = {
   en: {
     nav_work:"Work", nav_about:"About", nav_trust:"Why it works", nav_segments:"Who I work with", nav_included:"What you get", nav_giving:"Giving Back", nav_faq:"Faq", nav_cta:"Request a consultation", nav_menu:"Menu",
     hero_eyebrow:"Stockholm · Digital studio for sport & fitness brands",
-    hero_headline:"Custom built Websites. Easy to run. Professionally managed.",
+    hero_headline:"Custom built websites.||Easy to run.||Professionally managed.",
     hero_sub:"Built to convert visitors into members, and effortless for you to run.",
     cb_title:"Custom-built.<br><span class=\"gold-shimmer\">Without the maintenance burden.</span>",
     cb_tagline:"The flexibility of a custom website, with the everyday simplicity people expect from a website builder.",
@@ -1167,10 +1167,10 @@ const I18N = {
     seg1_name:"Gyms &amp; martial arts clubs",
     seg1_text:"More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.",
     seg2_name:"PTs &amp; coaches",
-    seg2_text:"Fill your programs. A personal site with booking, packages and payments, so a follower becomes a client without you chasing DMs. New prices, new offers, new testimonials: you change them yourself, between two sessions.",
+    seg2_text:"Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.",
     seg3_name:"Shop &amp; brand",
-    seg3_text:"Sell merch and gear straight to your community. An online store built into your site, not next to it.",
-    seg_link:"See how →", seg_link2:"See how →", seg_link3:"See how →",
+    seg3_text:"Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.",
+    seg_link:"See how →", seg_link2:"Coming soon", seg_link3:"Coming soon",
     giving_label:"Giving Back",
     giving_title:"Free websites for animal &amp; wildlife <em>welfare organizations.</em>",
     giving_p1:"I've had animals in my life for as long as I can remember. I've worked as a vet nurse assistant, managed a dog day care, and today I volunteer as an animal caretaker at a non-profit farm, caring for their farm animals on weekends. Giving back to the people who dedicate their lives to protecting animals feels like the right place to start.",
@@ -1233,7 +1233,7 @@ const I18N = {
   sv: {
     nav_work:"Case", nav_about:"Om mig", nav_trust:"Varför det funkar", nav_segments:"Vem jag hjälper", nav_included:"Vad du får", nav_giving:"Ge tillbaka", nav_faq:"Vanliga frågor", nav_cta:"Skicka en förfrågan", nav_menu:"Meny",
     hero_eyebrow:"Stockholm · Digital studio för sport och träning",
-    hero_headline:"Skräddarsydda webbplatser. Enkla att driva. Professionellt förvaltade.",
+    hero_headline:"Skräddarsydda webbplatser.||Enkla att driva.||Professionellt förvaltade.",
     hero_sub:"Byggda för att omvandla besökare till medlemmar, och enkla för dig att sköta.",
     cb_title:"Skräddarsytt.<br><span class=\"gold-shimmer\">Utan underhållsbördan.</span>",
     cb_tagline:"Flexibiliteten hos en skräddarsydd webbplats, med den vardagliga enkelheten man förväntar sig av en webbplatsbyggare.",
@@ -1257,10 +1257,10 @@ const I18N = {
     seg1_name:"Gym &amp; kampsportsklubbar",
     seg1_text:"Fler provpass, fler medlemmar. En sajt som speglar er kultur lika bra som er Instagram, med tydliga vägar till provpass, medlemskap och företagsträning. Och när schemat ändras? Du uppdaterar det själv på 30 sekunder.",
     seg2_name:"PT &amp; coacher",
-    seg2_text:"Fyll dina program. En personlig sajt med bokning, paket och betalning, så att en följare blir en klient utan att du behöver jaga DM:s. Nya priser, nya erbjudanden, nya omdömen: du ändrar dem själv, mellan två pass.",
+    seg2_text:"Fyll dina program med en personlig sajt byggd kring bokning, paket och klienthantering. Bygger just nu exakt det här åt en personlig tränare i Stockholm, lanseras snart.",
     seg3_name:"Shop &amp; varumärke",
-    seg3_text:"Sälj merch och utrustning direkt till din community. En webbshop byggd in i din sajt, inte bredvid den.",
-    seg_link:"Se hur →", seg_link2:"Se hur →", seg_link3:"Se hur →",
+    seg3_text:"Sälj merch och utrustning direkt till din community, en webbshop byggd in i sajten, inte bredvid den. En Stripe-driven butik är på gång som en del av samma tränarbygge.",
+    seg_link:"Se hur →", seg_link2:"Kommer snart", seg_link3:"Kommer snart",
     giving_label:"Ge tillbaka",
     giving_title:"Gratis hemsidor till djur- och viltvårds<em>organisationer.</em>",
     giving_p1:"Jag har haft djur i mitt liv så länge jag kan minnas. Jag har jobbat som djursjukskötarassistent, varit chef för ett hunddagis, och idag är jag helgskötare på en ideell gård där jag tar hand om gårdens djur på helgerna. Att ge tillbaka till dem som ägnar sina liv åt att skydda djur känns som rätt plats att börja.",
@@ -1323,7 +1323,7 @@ const I18N = {
   th: {
     nav_work:"ผลงาน", nav_about:"เกี่ยวกับ", nav_trust:"ทำไมถึงได้ผล", nav_segments:"ลูกค้าที่ผมทำงานด้วย", nav_included:"สิ่งที่คุณจะได้รับ", nav_giving:"คืนสู่สังคม", nav_faq:"คำถามที่พบบ่อย", nav_cta:"ขอคำปรึกษา", nav_menu:"เมนู",
     hero_eyebrow:"สตอกโฮล์ม · สตูดิโอดิจิทัลสำหรับแบรนด์กีฬาและฟิตเนส",
-    hero_headline:"เว็บไซต์สั่งทำ ใช้งานง่าย ดูแลอย่างมืออาชีพ",
+    hero_headline:"เว็บไซต์สั่งทำ||ใช้งานง่าย||ดูแลอย่างมืออาชีพ",
     hero_sub:"ออกแบบมาเพื่อเปลี่ยนผู้เข้าชมให้เป็นสมาชิก และใช้งานง่ายสำหรับคุณ",
     cb_title:"สร้างเฉพาะสำหรับคุณ<br><span class=\"gold-shimmer\">โดยไม่ต้องแบกรับภาระการดูแล</span>",
     cb_tagline:"ความยืดหยุ่นของเว็บไซต์ที่สร้างเฉพาะ พร้อมความง่ายในชีวิตประจำวันแบบที่คนคาดหวังจากเว็บไซต์สำเร็จรูป",
@@ -1347,10 +1347,10 @@ const I18N = {
     seg1_name:"ยิมและค่ายศิลปะการต่อสู้",
     seg1_text:"เซสชันทดลองมากขึ้น สมาชิกมากขึ้น เว็บไซต์ที่สะท้อนวัฒนธรรมของคุณได้ดีเท่ากับ Instagram ของคุณ พร้อมเส้นทางที่ชัดเจนไปสู่พาสทดลอง สมาชิกภาพ และการฝึกอบรมองค์กร และเมื่อตารางเวลาเปลี่ยน คุณอัปเดตเองได้ใน 30 วินาที",
     seg2_name:"เทรนเนอร์ส่วนบุคคลและโค้ช",
-    seg2_text:"เติมเต็มโปรแกรมของคุณ เว็บไซต์ส่วนตัวพร้อมระบบจอง แพ็กเกจ และการชำระเงิน เพื่อให้ผู้ติดตามกลายเป็นลูกค้าโดยไม่ต้องไล่ตอบ DM ราคาใหม่ ข้อเสนอใหม่ รีวิวใหม่ คุณเปลี่ยนเองได้ระหว่างสองเซสชัน",
+    seg2_text:"เติมเต็มโปรแกรมของคุณด้วยเว็บไซต์ส่วนตัวที่สร้างขึ้นรอบระบบจอง แพ็กเกจ และการจัดการลูกค้า กำลังสร้างสิ่งนี้ให้เทรนเนอร์ส่วนบุคคลในสตอกโฮล์มอยู่ตอนนี้ เปิดตัวเร็ว ๆ นี้",
     seg3_name:"ร้านค้าและแบรนด์",
-    seg3_text:"ขายสินค้าและอุปกรณ์ตรงถึงชุมชนของคุณ ร้านค้าออนไลน์ที่สร้างเข้าไปในเว็บไซต์ของคุณ ไม่ใช่แยกต่างหาก",
-    seg_link:"ดูวิธีการ →", seg_link2:"ดูวิธีการ →", seg_link3:"ดูวิธีการ →",
+    seg3_text:"ขายสินค้าและอุปกรณ์ตรงถึงชุมชนของคุณ ร้านค้าออนไลน์ที่สร้างเข้าไปในเว็บไซต์ ไม่ใช่แยกต่างหาก ร้านค้าที่ขับเคลื่อนด้วย Stripe กำลังอยู่ระหว่างการพัฒนาเป็นส่วนหนึ่งของการสร้างเว็บไซต์เทรนเนอร์เดียวกัน",
+    seg_link:"ดูวิธีการ →", seg_link2:"เร็ว ๆ นี้", seg_link3:"เร็ว ๆ นี้",
     giving_label:"คืนสู่สังคม",
     giving_title:"เว็บไซต์ฟรีสำหรับองค์กร<em>สวัสดิภาพสัตว์และสัตว์ป่า</em>",
     giving_p1:"ผมมีสัตว์อยู่ในชีวิตมาตั้งแต่จำความได้ เคยทำงานเป็นผู้ช่วยพยาบาลสัตวแพทย์ บริหารสถานรับเลี้ยงสุนัข และทุกวันนี้เป็นอาสาสมัครดูแลสัตว์ที่ฟาร์มไม่แสวงหากำไรในวันหยุดสุดสัปดาห์ การได้ตอบแทนคนที่อุทิศชีวิตเพื่อปกป้องสัตว์รู้สึกเหมือนเป็นจุดเริ่มต้นที่ถูกต้อง",
@@ -1523,16 +1523,22 @@ function setLang(lang) {
 
 function buildHeadline(text, isThai) {
   const el = document.getElementById('introHeadline'); if (!el) return;
+  const lines = text.split('||');
+  let wi = 0;
   if (isThai) {
-    el.innerHTML = `<span class="word word-block" style="animation-delay:0.45s">${text.replace(/&/g, '&amp;')}</span>`;
+    el.innerHTML = lines.map(line => {
+      const s = `<span class="word word-block" style="animation-delay:${0.45 + wi * 0.07}s">${line.replace(/&/g, '&amp;')}</span>`;
+      wi++; return s;
+    }).join('<br>');
     return;
   }
-  const words = text.replace(/&amp;/g, '&').split(' ');
-  let wi = 0;
-  el.innerHTML = words.map(w => {
-    const s = `<span class="word" style="animation-delay:${0.45 + wi * 0.07}s">${w.replace(/&/g, '&amp;')}\u00a0</span>`;
-    wi++; return s;
-  }).join('');
+  el.innerHTML = lines.map(line => {
+    const words = line.replace(/&amp;/g, '&').split(' ');
+    return words.map(w => {
+      const s = `<span class="word" style="animation-delay:${0.45 + wi * 0.07}s">${w.replace(/&/g, '&amp;')}\u00a0</span>`;
+      wi++; return s;
+    }).join('');
+  }).join('<br>');
 }
 
 (function initMenu() {
