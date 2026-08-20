@@ -214,6 +214,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .intro.glow-active .intro-glow { opacity: 1; }
 #hero3d { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.9; }
+@media (max-width: 768px) { #hero3d { height: 380px; opacity: 0.75; } }
 @media (max-width: 768px) { #hero3d { width: 100%; height: 360px; opacity: 0.5; } }
 .intro-left, .intro-right { position: relative; z-index: 1; }
 .intro.glow-ambient .intro-glow { opacity: 0.8; animation: glowDrift 9s ease-in-out infinite; }
@@ -1758,7 +1759,12 @@ import * as THREE from 'three';
 
   function sizeToParent() {
     const rect = canvas.parentElement.getBoundingClientRect();
-    const w = rect.width, h = rect.height;
+    const isMobile = window.innerWidth <= 768;
+    const w = rect.width;
+    // On mobile, .intro stacks (headline + carousel), making the parent very
+    // tall and narrow, nothing like the desktop box this camera was tuned
+    // for. Cap the height so it measures roughly the headline area only.
+    const h = isMobile ? Math.min(rect.height, 380) : rect.height;
     renderer.setSize(w, h, false);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     camera.aspect = w / h;
