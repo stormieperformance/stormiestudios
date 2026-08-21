@@ -444,8 +444,52 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
   background: var(--bg);
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+  position: relative;
   padding: 100px 0 40px;
 }
+/* ══ BLUEPRINT DRAWING ══
+   Architectural-drawing marks — compass circles, crosshairs, dimension
+   lines with tick marks, an angle line, a drafting arc — scattered
+   around the box. Each element continuously draws itself in, holds,
+   then fades and redraws on a loop, like a hand sketching and
+   re-sketching the same technical drawing. Lines/circles live in one
+   SVG (percentage-based, so they scale with the box); the "600" / "90°"
+   labels are separate HTML spans so their font-size is never distorted
+   by the SVG's non-uniform scaling. */
+.cb-blueprint {
+  position: absolute; inset: -30px; pointer-events: none; overflow: visible;
+  width: calc(100% + 60px); height: calc(100% + 60px);
+}
+.cb-blueprint path, .cb-blueprint circle {
+  fill: none; stroke: var(--gold); stroke-width: 1; opacity: 0;
+  stroke-dasharray: var(--len); stroke-dashoffset: var(--len);
+  animation: cbDraw 11s cubic-bezier(0.65,0,0.35,1) infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes cbDraw {
+  0% { stroke-dashoffset: var(--len); opacity: 0; }
+  8% { opacity: 0.55; }
+  38%, 62% { stroke-dashoffset: 0; opacity: 0.55; }
+  92% { opacity: 0; stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: var(--len); opacity: 0; }
+}
+.cb-label {
+  position: absolute; font-family: var(--sans); font-size: 10px; letter-spacing: 0.08em;
+  color: var(--gold); opacity: 0; white-space: nowrap; pointer-events: none;
+  animation: cbLabel 11s cubic-bezier(0.65,0,0.35,1) infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes cbLabel {
+  0%, 30% { opacity: 0; }
+  40%, 62% { opacity: 0.65; }
+  75%, 100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cb-blueprint path, .cb-blueprint circle { animation: none; stroke-dashoffset: 0; opacity: 0.4; }
+  .cb-label { animation: none; opacity: 0.55; }
+}
+@media (max-width: 768px) { .cb-blueprint, .cb-label { display: none; } }
+
 .custom-built > .section-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
   border: 1px solid var(--gold-line); padding: 64px 64px;
@@ -1001,6 +1045,36 @@ section.inview .faq-title, section.inview .faq-item {
 <!-- CUSTOM BUILT -->
 <section class="custom-built" id="custom-built">
 <div class="section-inner">
+  <div class="cb-blueprint" aria-hidden="true">
+  <svg viewBox="0 0 1000 320" preserveAspectRatio="none" width="100%" height="100%" style="position:absolute;inset:0;overflow:visible;">
+    <!-- top-left compass circle + crosshair -->
+    <circle cx="40" cy="40" r="32" style="--len:201; --delay:0s"/>
+    <path d="M10 40 H70 M40 10 V70" style="--len:120; --delay:0.4s"/>
+    <!-- bottom-right compass circle + crosshair -->
+    <circle cx="960" cy="280" r="32" style="--len:201; --delay:2.2s"/>
+    <path d="M930 280 H990 M960 250 V310" style="--len:120; --delay:2.6s"/>
+    <!-- top dimension line with end + middle ticks -->
+    <path d="M20 -15 H980" style="--len:960; --delay:0.9s"/>
+    <path d="M20 -22 V-8" style="--len:14; --delay:1.3s"/>
+    <path d="M980 -22 V-8" style="--len:14; --delay:1.35s"/>
+    <path d="M260 -20 V-10" style="--len:10; --delay:1.4s"/>
+    <path d="M500 -20 V-10" style="--len:10; --delay:1.42s"/>
+    <path d="M740 -20 V-10" style="--len:10; --delay:1.44s"/>
+    <!-- bottom mirrored dimension line -->
+    <path d="M20 335 H980" style="--len:960; --delay:3.1s"/>
+    <path d="M20 328 V342" style="--len:14; --delay:3.5s"/>
+    <path d="M980 328 V342" style="--len:14; --delay:3.55s"/>
+    <!-- right-side angle line -->
+    <path d="M1015 180 V300" style="--len:120; --delay:1.8s"/>
+    <path d="M1008 180 H1022" style="--len:14; --delay:2.1s"/>
+    <path d="M1008 300 H1022" style="--len:14; --delay:2.15s"/>
+    <!-- drafting arc, top-right -->
+    <path d="M840 -30 A160 160 0 0 1 1000 70" style="--len:250; --delay:1.1s"/>
+  </svg>
+  <span class="cb-label" style="left:50%; top:-42px; transform:translateX(-50%); animation-delay:1.6s;">600</span>
+  <span class="cb-label" style="left:50%; bottom:-42px; transform:translateX(-50%); animation-delay:3.8s;">600</span>
+  <span class="cb-label" style="right:-52px; top:calc(50% - 6px); animation-delay:2.3s;">90°</span>
+  </div>
   <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
   <div class="custom-built-right">
     <p class="custom-built-tagline" data-i18n="cb_tagline">The flexibility of a custom website, with the everyday simplicity people expect from a website builder.</p>
