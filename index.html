@@ -209,7 +209,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
    which also switches language). Not a persistent switcher; the menu's own
    language toggle covers that already. */
 .lang-bubble {
-  position: fixed; left: 20px; bottom: 20px; z-index: 500;
+  position: fixed; right: 20px; bottom: 20px; z-index: 500;
   padding: 12px 18px; border-radius: 999px;
   background: rgba(28,24,20,0.94); backdrop-filter: blur(6px);
   border: 1px solid rgba(201,169,110,0.32); box-shadow: 0 8px 24px rgba(0,0,0,0.32);
@@ -220,7 +220,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .lang-bubble.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .lang-bubble:hover { border-color: var(--gold); color: rgba(232,228,220,1); }
-@media (max-width: 640px) { .lang-bubble { left: 14px; bottom: 14px; padding: 10px 15px; font-size: 12px; max-width: calc(100vw - 28px); } }
+@media (max-width: 640px) { .lang-bubble { right: 14px; bottom: 14px; padding: 10px 15px; font-size: 12px; max-width: calc(100vw - 28px); } }
 @media (prefers-reduced-motion: reduce) { .lang-bubble { transition: opacity 0.2s ease; transform: none; } }
 
 /* ══ INTRO ══ */
