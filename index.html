@@ -228,7 +228,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .lang-bubble.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .lang-bubble:hover { border-color: var(--gold); color: rgba(232,228,220,1); }
-@media (max-width: 640px) { .lang-bubble { right: 14px; bottom: 14px; padding: 10px 15px; font-size: 12px; max-width: calc(100vw - 28px); } }
+.lang-bubble-prompt { cursor: default; display: flex; align-items: center; gap: 10px; border-radius: 14px; padding: 10px 12px; }
+.lang-bubble-prompt span.lang-bubble-label { padding-right: 2px; white-space: nowrap; }
+.lang-bubble-options { display: flex; gap: 6px; }
+.lang-bubble-options button {
+  background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.28);
+  color: rgba(232,228,220,0.9); font-family: var(--sans); font-size: 13px;
+  border-radius: 999px; padding: 6px 12px; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.lang-bubble-options button:hover, .lang-bubble-options button:focus-visible { background: rgba(201,169,110,0.22); border-color: var(--gold); color: var(--gold); }
+@media (max-width: 640px) { .lang-bubble { right: 14px; bottom: 14px; padding: 10px 15px; font-size: 12px; max-width: calc(100vw - 28px); } .lang-bubble-prompt { flex-wrap: wrap; } }
 @media (prefers-reduced-motion: reduce) { .lang-bubble { transition: opacity 0.2s ease; transform: none; } }
 
 /* ══ INTRO ══ */
@@ -1535,18 +1544,39 @@ function buildHeadline(text, isThai) {
 
     setTimeout(() => {
       const current = document.documentElement.lang || 'en';
-      const suggestion = current === 'en'
-        ? { text: '🇹🇭 Prefer Thai? Tap here', target: 'th' }
-        : { text: '🇬🇧 Prefer English? Tap here', target: 'en' };
-      bubble.textContent = suggestion.text;
-      bubble.classList.add('visible');
+      const prompts = { en: 'Choose your language', sv: 'Välj språk', th: 'เลือกภาษา' };
+      const options = [
+        { code: 'en', label: '🇬🇧 EN' },
+        { code: 'sv', label: '🇸🇪 SV' },
+        { code: 'th', label: '🇹🇭 TH' }
+      ];
+      bubble.innerHTML = '';
+      bubble.classList.add('lang-bubble-prompt');
 
-      const dismissTimer = setTimeout(() => bubble.classList.remove('visible'), 6000);
-      bubble.addEventListener('click', () => {
-        clearTimeout(dismissTimer);
-        bubble.classList.remove('visible');
-        setLang(suggestion.target);
-      }, { once: true });
+      const label = document.createElement('span');
+      label.className = 'lang-bubble-label';
+      label.textContent = prompts[current] || prompts.en;
+      bubble.appendChild(label);
+
+      const optWrap = document.createElement('div');
+      optWrap.className = 'lang-bubble-options';
+      bubble.appendChild(optWrap);
+
+      let dismissTimer = setTimeout(() => bubble.classList.remove('visible'), 8000);
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = opt.label;
+        if (opt.code === current) btn.classList.add('active');
+        btn.addEventListener('click', () => {
+          clearTimeout(dismissTimer);
+          bubble.classList.remove('visible');
+          setLang(opt.code);
+        });
+        optWrap.appendChild(btn);
+      });
+
+      bubble.classList.add('visible');
     }, 1800);
   })();
 
