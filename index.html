@@ -805,37 +805,40 @@ section.inview .faq-title, section.inview .faq-item {
   transform: none;
 }
 
-/* Big sweeping box entrances — these three boxes get a large, attention-
-   grabbing slide-in from alternating sides, layered on top of the gentle
-   content fade above. */
+/* "Curtain" reveal — a solid panel with a thin gold leading edge sweeps
+   away to unveil each box, like unveiling a plaque. Reads far more
+   premium than a lateral content slide; the box itself never moves,
+   only the curtain covering it does. */
 .pitch > .section-inner,
-.custom-built > .section-inner {
-  opacity: 0;
-  transform: translateX(-100vw);
-  transition: opacity 2.6s ease-out, transform 2.6s cubic-bezier(0.16,1,0.3,1);
-}
+.custom-built > .section-inner,
 .trust-bullets-list {
-  opacity: 0;
-  transform: translateX(100vw);
-  transition: opacity 2.6s ease-out, transform 2.6s cubic-bezier(0.16,1,0.3,1);
+  position: relative;
+  overflow: hidden;
 }
-section.pitch.inview > .section-inner,
-section.custom-built.inview > .section-inner,
-section.inview .trust-bullets-list {
-  opacity: 1;
-  transform: none;
+.pitch > .section-inner::after,
+.custom-built > .section-inner::after,
+.trust-bullets-list::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 5; pointer-events: none;
+  background: #0c0c0b;
+  box-shadow: inset -3px 0 0 0 #c9a96e;
+  transform-origin: left; transform: scaleX(1);
+  transition: transform 2.4s cubic-bezier(0.65,0,0.35,1);
 }
-@media (max-width: 640px) {
-  .pitch > .section-inner, .custom-built > .section-inner {
-    transform: translateX(-100vw);
-  }
-  .trust-bullets-list {
-    transform: translateX(100vw);
-  }
+.trust-bullets-list::after {
+  transform-origin: right; transform: scaleX(1);
+  box-shadow: inset 3px 0 0 0 #c9a96e;
+}
+section.pitch.inview > .section-inner::after,
+section.custom-built.inview > .section-inner::after {
+  transform: scaleX(0);
+}
+section.inview .trust-bullets-list::after {
+  transform: scaleX(0);
 }
 @media (prefers-reduced-motion: reduce) {
-  .pitch > .section-inner, .custom-built > .section-inner, .trust-bullets-list {
-    opacity: 1; transform: none; transition: none;
+  .pitch > .section-inner::after, .custom-built > .section-inner::after, .trust-bullets-list::after {
+    transform: scaleX(0); transition: none;
   }
 }
 
