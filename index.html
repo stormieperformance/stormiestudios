@@ -1531,17 +1531,15 @@ function buildHeadline(text, isThai) {
   (function langBubble() {
     const bubble = document.getElementById('langBubble');
     if (!bubble) return;
-    const SHOWN_KEY = 'sp-lang-bubble-shown';
-    try { if (sessionStorage.getItem(SHOWN_KEY)) return; } catch(e) {}
+    // Shows on every page load/reload — no longer gated to once per session.
 
     setTimeout(() => {
       const current = document.documentElement.lang || 'en';
       const suggestion = current === 'en'
-        ? { text: '🇸🇪 Prefer Swedish? Tap here', target: 'sv' }
+        ? { text: '🇹🇭 Prefer Thai? Tap here', target: 'th' }
         : { text: '🇬🇧 Prefer English? Tap here', target: 'en' };
       bubble.textContent = suggestion.text;
       bubble.classList.add('visible');
-      try { sessionStorage.setItem(SHOWN_KEY, '1'); } catch(e) {}
 
       const dismissTimer = setTimeout(() => bubble.classList.remove('visible'), 6000);
       bubble.addEventListener('click', () => {
