@@ -1593,7 +1593,8 @@ function buildHeadline(text, isThai) {
     return el;
   });
 
-  let pos=0,target=0,shownIdx=-1,rafId=null;
+  let pos=0,target=0,shownIdx=-1,rafId=null,lastFrameT=null,autoScrollActive=false;
+  const DRIFT_PER_MS=1/45000; // one full card-position every 45s — slow, continuous, never stops
   function sp(){return window.innerWidth<=768?148:292;}
   function mod(n,m){return((n%m)+m)%m;}
   function nearestIdx(){return mod(Math.round(pos),N);}
@@ -1612,12 +1613,24 @@ function buildHeadline(text, isThai) {
     if(active!==shownIdx&&Math.abs(pos-Math.round(pos))<0.45) updateDetail(active,false);
   }
 
-  function tick(){
+  // Single persistent loop: eases toward a manual target when one is pending
+  // (drag, arrow, thumbnail click), otherwise drifts pos forward continuously
+  // at a slow constant rate — genuine perpetual motion, not discrete steps.
+  function tick(now){
+    if(lastFrameT===null)lastFrameT=now;
+    const dt=now-lastFrameT;lastFrameT=now;
     const diff=target-pos;
-    if(Math.abs(diff)<0.001){pos=target;render();rafId=null;return;}
-    pos+=diff*(rm?1:0.13);render();rafId=requestAnimationFrame(tick);
+    if(Math.abs(diff)>0.001){
+      pos+=diff*(rm?1:0.13);
+    }else if(autoScrollActive&&!rm){
+      pos+=DRIFT_PER_MS*dt;target=pos;
+    }else{
+      pos=target;
+    }
+    render();
+    rafId=requestAnimationFrame(tick);
   }
-  function startTween(){if(rafId===null)rafId=requestAnimationFrame(tick);}
+  function startTween(){if(rafId===null){lastFrameT=null;rafId=requestAnimationFrame(tick);}}
   function goTo(i){const d=(()=>{let x=mod(i-target,N);if(x>N/2)x-=N;return x;})();target+=d;startTween();}
   function step(d){target+=d;startTween();}
 
@@ -1658,16 +1671,15 @@ function buildHeadline(text, isThai) {
     });
   }
 
-  // Auto-scroll: very slow, smooth, same eased 3D motion as manual navigation.
-  // Pauses on hover/drag, resumes shortly after. Off entirely if the visitor
-  // prefers reduced motion.
-  let autoScrollTimer=null;
+  // Auto-scroll: continuous, never-stopping drift (see DRIFT_PER_MS in tick()
+  // above), same eased 3D motion as manual navigation. Pauses on hover/drag,
+  // resumes shortly after. Off entirely if the visitor prefers reduced motion.
   function startAutoScroll(){
     if(rm) return;
-    stopAutoScroll();
-    autoScrollTimer=setInterval(()=>{ step(1); }, 6000);
+    autoScrollActive=true;
+    startTween();
   }
-  function stopAutoScroll(){clearInterval(autoScrollTimer);autoScrollTimer=null;}
+  function stopAutoScroll(){autoScrollActive=false;}
   stage.addEventListener('mouseenter',stopAutoScroll);
   stage.addEventListener('mouseleave',startAutoScroll);
   stage.addEventListener('pointerdown',stopAutoScroll);
