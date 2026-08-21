@@ -686,6 +686,82 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.85;
 }
 
+
+/* ══════════════════════════════════════════════════════════════════
+   SCROLL REVEAL — content fades and slides gently into place as each
+   section enters the viewport. Driven entirely by the existing
+   IntersectionObserver, which already adds .inview to every <section>
+   the first time it's seen (see script at the bottom of the page).
+   This block just gives that class real visual weight instead of the
+   single decorative underline it previously controlled alone.
+   ══════════════════════════════════════════════════════════════════ */
+.pitch-title, .pitch-sub,
+.care-title, .care-right p,
+.custom-built-title, .custom-built-tagline, .custom-built-right p,
+.trust-bullets-list li,
+.giving-copy > *,
+.contact-title, .need-grid .need-btn,
+.faq-title, .faq-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+section.inview .pitch-title, section.inview .pitch-sub,
+section.inview .care-title, section.inview .care-right p,
+section.inview .custom-built-title, section.inview .custom-built-tagline, section.inview .custom-built-right p,
+section.inview .trust-bullets-list li,
+section.inview .giving-copy > *,
+section.inview .contact-title, section.inview .need-grid .need-btn,
+section.inview .faq-title, section.inview .faq-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered timing for multi-item groups — each element a beat behind the last */
+.care-right p:nth-child(1) { transition-delay: 0s; }
+.care-right p:nth-child(2) { transition-delay: 0.08s; }
+.care-right p:nth-child(3) { transition-delay: 0.16s; }
+.care-right p:nth-child(4) { transition-delay: 0.24s; }
+.care-right p:nth-child(5) { transition-delay: 0.32s; }
+
+.trust-bullets-list li:nth-child(1) { transition-delay: 0s; }
+.trust-bullets-list li:nth-child(2) { transition-delay: 0.07s; }
+.trust-bullets-list li:nth-child(3) { transition-delay: 0.14s; }
+.trust-bullets-list li:nth-child(4) { transition-delay: 0.21s; }
+.trust-bullets-list li:nth-child(5) { transition-delay: 0.28s; }
+
+.giving-copy > *:nth-child(1) { transition-delay: 0s; }
+.giving-copy > *:nth-child(2) { transition-delay: 0.1s; }
+.giving-copy > *:nth-child(3) { transition-delay: 0.2s; }
+.giving-copy > *:nth-child(4) { transition-delay: 0.3s; }
+
+.need-grid .need-btn:nth-child(1) { transition-delay: 0s; }
+.need-grid .need-btn:nth-child(2) { transition-delay: 0.06s; }
+.need-grid .need-btn:nth-child(3) { transition-delay: 0.12s; }
+.need-grid .need-btn:nth-child(4) { transition-delay: 0.18s; }
+.need-grid .need-btn:nth-child(5) { transition-delay: 0.24s; }
+.need-grid .need-btn:nth-child(6) { transition-delay: 0.3s; }
+
+.faq-item:nth-child(1) { transition-delay: 0.05s; }
+.faq-item:nth-child(2) { transition-delay: 0.1s; }
+.faq-item:nth-child(3) { transition-delay: 0.15s; }
+.faq-item:nth-child(4) { transition-delay: 0.2s; }
+.faq-item:nth-child(5) { transition-delay: 0.25s; }
+.faq-item:nth-child(6) { transition-delay: 0.3s; }
+.faq-item:nth-child(7) { transition-delay: 0.35s; }
+.faq-item:nth-child(8) { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pitch-title, .pitch-sub,
+  .care-title, .care-right p,
+  .custom-built-title, .custom-built-tagline, .custom-built-right p,
+  .trust-bullets-list li,
+  .giving-copy > *,
+  .contact-title, .need-grid .need-btn,
+  .faq-title, .faq-item {
+    opacity: 1; transform: none; transition: none;
+  }
+}
 </style>
 </head>
 <body>
@@ -776,7 +852,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 </section>
 
 <!-- PITCH -->
-<section class="pitch inview">
+<section class="pitch">
 <div class="section-inner">
   <h2 class="pitch-title" data-i18n="pitch_title">Custom websites built around <span class="gold-shimmer">how your business actually works.</span></h2>
   <p class="pitch-sub" data-i18n="pitch_sub">Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.</p>
@@ -798,7 +874,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 </section>
 
 <!-- CUSTOM BUILT -->
-<section class="custom-built inview" id="custom-built">
+<section class="custom-built" id="custom-built">
 <div class="section-inner">
   <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
   <div class="custom-built-right">
