@@ -74,15 +74,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ FRAMED BOXES ══
    Shared "picture frame" treatment — a second, fainter line inset from
-   the outer border — kept on Giving Back and trust-bullets only.
-   Custom-Built, Pitch, FAQ, and the Contact box use a plain single
-   border. */
-.giving-copy,
-.trust-bullets-list {
+   the outer border — kept on Giving Back only. Custom-Built, Pitch,
+   FAQ, trust-bullets, and the Contact box use a plain single border. */
+.giving-copy {
   --frame-inset: 8px;
 }
-.giving-copy::before,
-.trust-bullets-list::before {
+.giving-copy::before {
   content: '';
   position: absolute;
   inset: var(--frame-inset);
