@@ -434,7 +434,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   font-family: var(--serif); font-size: clamp(36px, 4.2vw, 54px);
   font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text);
 }
-.custom-built-right { gap: 20px; padding-top: 0; }
+.custom-built-right { display: flex; flex-direction: column; gap: 20px; padding-top: 0; }
 .custom-built-tagline { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--gold-bright); line-height: 1.5; }
 .custom-built-right p:not(.custom-built-tagline) { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
 /* ══ PITCH ══ */
@@ -581,7 +581,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   border-bottom: 1px solid var(--line);
 }
 .trust-bullets-list { max-width: 980px; margin: 0 auto; }
-.trust-bullets-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; }
+.trust-bullets-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; border: 1px solid var(--gold-line); padding: 32px 40px; }
 .trust-bullets-list li { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 400; color: var(--muted); white-space: nowrap; }
 .trust-bullets-list svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--gold); }
 @media (max-width: 640px) { .trust-bullets-list { gap: 10px 20px; } .trust-bullets-list li { white-space: normal; font-size: 12.5px; } }
@@ -959,11 +959,9 @@ section.inview .faq-title, section.inview .faq-item {
 
 <!-- CUSTOM BUILT -->
 <section class="custom-built" id="custom-built">
-<div class="section-inner">
-  <div class="cb-box cb-box-left">
-    <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
-  </div>
-  <div class="cb-box custom-built-right">
+<div class="section-inner cb-box">
+  <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
+  <div class="custom-built-right">
     <p class="custom-built-tagline" data-i18n="cb_tagline">The flexibility of a custom website, with the everyday simplicity people expect from a website builder.</p>
     <p data-i18n="cb_p1">Stormie Studios builds the site around your business rather than forcing your business into a template. You still update your own content through a simple CMS, while Stormie Studios manages the code, hosting and technical infrastructure behind it.</p>
   </div>
@@ -972,7 +970,7 @@ section.inview .faq-title, section.inview .faq-item {
 
 <!-- CONTACT -->
 <section class="trust-bullets" id="trust-bullets">
-  <ul class="trust-bullets-list">
+  <ul class="trust-bullets-list cb-box">
     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb1">Your domain stays yours</span></li>
     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb2">Your content stays yours</span></li>
     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb3">Cancel hosting anytime</span></li>
