@@ -99,20 +99,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .btn-gold::before {
   content: ''; position: absolute; top: 0; left: -130%; width: 55%; height: 100%;
   background: linear-gradient(100deg, transparent, rgba(236,217,174,0.22), transparent);
-  transform: skewX(-18deg); transition: left 0.7s ease;
+  transform: skewX(-18deg) translateX(0);
+  animation: btnShineAuto 6.5s ease-in-out infinite;
+  animation-delay: 1.2s;
 }
-/* :active covers mobile tap (no real hover on touch) with the same shine,
-   fill and letter-spacing treatment hover already gets on desktop, plus a
-   small press-down scale for tactile feedback. :focus-visible matches for
-   keyboard users. */
+/* Shine sweeps on its own periodically, same as Masters Gym's buttons —
+   transform-based (not left), so it's GPU-composited and never triggers
+   layout reflow, matching the fix already applied on Masters Gym's shine. */
+@keyframes btnShineAuto {
+  0%, 78% { transform: skewX(-18deg) translateX(0); }
+  92% { transform: skewX(-18deg) translateX(545%); }
+  100% { transform: skewX(-18deg) translateX(545%); }
+}
+/* :active covers mobile tap (no real hover on touch) with the same fill
+   and letter-spacing treatment hover already gets on desktop, plus a small
+   press-down scale for tactile feedback. :focus-visible matches for
+   keyboard users. The idle shine keeps sweeping regardless of these states. */
 .btn-gold:hover, .btn-gold:active, .btn-gold:focus-visible {
   color: var(--gold-bright); border-color: var(--gold); background: var(--gold-dim); letter-spacing: 0.2em;
 }
-.btn-gold:hover::before, .btn-gold:active::before { left: 170%; }
 .btn-gold:active { transform: scale(0.97); }
 .btn-gold:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
-  .btn-gold { animation: none; }
+  .btn-gold, .btn-gold::before { animation: none; }
 }
 
 .btn-ghost {
