@@ -467,8 +467,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 @keyframes cbDraw {
   0% { stroke-dashoffset: var(--len); opacity: 0; }
-  8% { opacity: var(--op, 0.55); }
-  38%, 62% { stroke-dashoffset: 0; opacity: var(--op, 0.55); }
+  8% { opacity: var(--op, 0.32); }
+  38%, 62% { stroke-dashoffset: 0; opacity: var(--op, 0.32); }
   92% { opacity: 0; stroke-dashoffset: 0; }
   100% { stroke-dashoffset: var(--len); opacity: 0; }
 }
@@ -478,8 +478,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .cb-blueprint .cb-fast { animation-name: cbDrawFast; }
 @keyframes cbDrawFast {
   0% { stroke-dashoffset: var(--len); opacity: 0; }
-  40% { opacity: var(--op, 0.55); }
-  55%, 62% { stroke-dashoffset: 0; opacity: var(--op, 0.55); }
+  40% { opacity: var(--op, 0.32); }
+  55%, 62% { stroke-dashoffset: 0; opacity: var(--op, 0.32); }
   92% { opacity: 0; stroke-dashoffset: 0; }
   100% { stroke-dashoffset: var(--len); opacity: 0; }
 }
@@ -491,18 +491,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 @keyframes cbLabel {
   0%, 30% { opacity: 0; }
-  40%, 62% { opacity: 0.65; }
+  40%, 62% { opacity: 0.4; }
   75%, 100% { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .cb-blueprint path, .cb-blueprint circle, .cb-blueprint rect { animation: none; stroke-dashoffset: 0; opacity: 0.4; }
-  .cb-label { animation: none; opacity: 0.55; }
+  .cb-blueprint path, .cb-blueprint circle, .cb-blueprint rect { animation: none; stroke-dashoffset: 0; opacity: 0.24; }
+  .cb-label { animation: none; opacity: 0.32; }
 }
 .cb-svg-mobile, .cb-label-mobile { display: none; }
 @media (max-width: 768px) {
   .cb-svg-desktop, .cb-label-desktop { display: none; }
   .cb-svg-mobile, .cb-label-mobile { display: block; }
-  .cb-blueprint { inset: -20px; width: calc(100% + 40px); height: calc(100% + 40px); }
+  .cb-blueprint { inset: -14px; width: calc(100% + 28px); height: calc(100% + 28px); }
 }
 
 .custom-built > .section-inner {
@@ -1112,13 +1112,13 @@ section.inview .faq-title, section.inview .faq-item {
     <path class="cb-fast" d="M6 26 H46 M26 6 V46" style="--len:80; --delay:1.6s"/>
     <circle cx="314" cy="454" r="20" style="--len:126; --delay:3.4s"/>
     <path class="cb-fast" d="M294 454 H334 M314 434 V474" style="--len:80; --delay:5s"/>
-    <path class="cb-fast" d="M170 -12 V-24" style="--len:12; --delay:6s"/>
-    <path class="cb-fast" d="M-24 240 H-12" style="--len:12; --delay:6.2s"/>
-    <path class="cb-fast" d="M352 240 H364" style="--len:12; --delay:6.4s"/>
-    <path d="M260 -20 A40 40 0 0 1 340 20" style="--len:63; --delay:1.1s"/>
+    <path class="cb-fast" d="M170 -10 V-18" style="--len:8; --delay:6s"/>
+    <path class="cb-fast" d="M-14 240 H-4" style="--len:10; --delay:6.2s"/>
+    <path class="cb-fast" d="M344 240 H354" style="--len:10; --delay:6.4s"/>
+    <path d="M260 -16 A32 32 0 0 1 340 16" style="--len:50; --delay:1.1s"/>
   </svg>
-  <span class="cb-label cb-label-mobile" style="left:50%; top:-30px; transform:translateX(-50%); animation-delay:1.6s;">600</span>
-  <span class="cb-label cb-label-mobile" style="right:-42px; top:calc(50% - 6px); animation-delay:2.3s;">90°</span>
+  <span class="cb-label cb-label-mobile" style="left:50%; top:-24px; transform:translateX(-50%); animation-delay:1.6s;">600</span>
+  <span class="cb-label cb-label-mobile" style="right:-30px; top:calc(50% - 6px); animation-delay:2.3s;">90°</span>
   </div>
   <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
   <div class="custom-built-right">
