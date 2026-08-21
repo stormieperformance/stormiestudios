@@ -459,7 +459,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   position: absolute; inset: -30px; pointer-events: none; overflow: visible;
   width: calc(100% + 60px); height: calc(100% + 60px);
 }
-.cb-blueprint path, .cb-blueprint circle {
+.cb-blueprint path, .cb-blueprint circle, .cb-blueprint rect {
   fill: none; stroke: var(--gold); stroke-width: 1; opacity: 0;
   stroke-dasharray: var(--len); stroke-dashoffset: var(--len);
   animation: cbDraw 11s cubic-bezier(0.65,0,0.35,1) infinite;
@@ -484,7 +484,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   75%, 100% { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .cb-blueprint path, .cb-blueprint circle { animation: none; stroke-dashoffset: 0; opacity: 0.4; }
+  .cb-blueprint path, .cb-blueprint circle, .cb-blueprint rect { animation: none; stroke-dashoffset: 0; opacity: 0.4; }
   .cb-label { animation: none; opacity: 0.55; }
 }
 .cb-svg-mobile, .cb-label-mobile { display: none; }
@@ -496,7 +496,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .custom-built > .section-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
-  border: 1px solid var(--gold-line); padding: 64px 64px;
+  border: 1px solid var(--gold-dim); padding: 64px 64px;
   position: relative; background: var(--bg); z-index: 1;
 }
 .custom-built-title {
@@ -1050,11 +1050,17 @@ section.inview .faq-title, section.inview .faq-item {
 <section class="custom-built" id="custom-built">
 <div class="section-inner">
   <div class="cb-blueprint" aria-hidden="true">
+  <!-- Box outline itself, drawn in as part of the same animation. A
+       0-1000/0-1000 viewBox always maps exactly to the box's true edges
+       regardless of its real aspect ratio. -->
+  <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" width="100%" height="100%" style="position:absolute;inset:0;overflow:visible;">
+    <rect x="1" y="1" width="998" height="998" vector-effect="non-scaling-stroke" style="--len:3992; --delay:0s"/>
+  </svg>
   <!-- Desktop version: full set of marks, wide-box proportioned viewBox -->
   <svg class="cb-svg-desktop" viewBox="0 0 1000 320" preserveAspectRatio="none" width="100%" height="100%" style="position:absolute;inset:0;overflow:visible;">
     <!-- top-left compass circle + crosshair -->
-    <circle cx="40" cy="40" r="32" style="--len:201; --delay:0s"/>
-    <path d="M10 40 H70 M40 10 V70" style="--len:120; --delay:0.4s"/>
+    <circle cx="40" cy="40" r="32" style="--len:201; --delay:0.6s"/>
+    <path d="M10 40 H70 M40 10 V70" style="--len:120; --delay:1s"/>
     <!-- bottom-right compass circle + crosshair -->
     <circle cx="960" cy="280" r="32" style="--len:201; --delay:2.2s"/>
     <path d="M930 280 H990 M960 250 V310" style="--len:120; --delay:2.6s"/>
