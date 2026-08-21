@@ -805,42 +805,6 @@ section.inview .faq-title, section.inview .faq-item {
   transform: none;
 }
 
-/* "Curtain" reveal — a solid panel with a thin gold leading edge sweeps
-   away to unveil each box, like unveiling a plaque. Reads far more
-   premium than a lateral content slide; the box itself never moves,
-   only the curtain covering it does. */
-.pitch > .section-inner,
-.custom-built > .section-inner,
-.trust-bullets-list {
-  position: relative;
-  overflow: hidden;
-}
-.pitch > .section-inner::after,
-.custom-built > .section-inner::after,
-.trust-bullets-list::after {
-  content: '';
-  position: absolute; inset: 0; z-index: 5; pointer-events: none;
-  background: #0c0c0b;
-  box-shadow: inset -3px 0 0 0 #c9a96e;
-  transform-origin: left; transform: scaleX(1);
-  transition: transform 2.4s cubic-bezier(0.65,0,0.35,1);
-}
-.trust-bullets-list::after {
-  transform-origin: right; transform: scaleX(1);
-  box-shadow: inset 3px 0 0 0 #c9a96e;
-}
-section.pitch.inview > .section-inner::after,
-section.custom-built.inview > .section-inner::after {
-  transform: scaleX(0);
-}
-section.inview .trust-bullets-list::after {
-  transform: scaleX(0);
-}
-@media (prefers-reduced-motion: reduce) {
-  .pitch > .section-inner::after, .custom-built > .section-inner::after, .trust-bullets-list::after {
-    transform: scaleX(0); transition: none;
-  }
-}
 
 
 .care-right p:nth-child(1) { transition-delay: 0s; }
