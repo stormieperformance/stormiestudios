@@ -78,8 +78,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   -webkit-text-fill-color: transparent;
   animation: shimmer 7s ease-in-out infinite;
 }
-.pitch-title .gold-shimmer, .care-title .gold-shimmer {
+.pitch-title .gold-shimmer {
   background: none; color: #ede7d9; -webkit-text-fill-color: #ede7d9; animation: none;
+}
+.care-title .gold-shimmer {
+  background: none; color: #241d13; -webkit-text-fill-color: #241d13; animation: none;
 }
 
 @keyframes shimmer { 0%,100%{background-position:115% 0} 50%{background-position:-15% 0} }
@@ -449,9 +452,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ CARE ══ */
 .care {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  --bg: #ffffff; --bg2: #ffffff; --text: #241d13;
+  --muted: #2b2a27; --muted2: rgba(36,29,19,0.32); --line: rgba(36,29,19,0.12);
+  --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
   background: var(--bg);
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
   padding: 100px 0; border-bottom: 1px solid var(--line);
@@ -459,11 +462,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .care-bg-video {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; opacity: 0.4; z-index: 0; pointer-events: none;
+  object-fit: cover; opacity: 0.16; z-index: 0; pointer-events: none;
+  filter: grayscale(0.3) brightness(1.35) contrast(0.9);
 }
 .care-bg-overlay {
   position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(180deg, var(--bg) 0%, rgba(12,12,11,0.72) 40%, rgba(12,12,11,0.72) 60%, var(--bg) 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, rgba(255,255,255,0.82) 40%, rgba(255,255,255,0.82) 60%, var(--bg) 100%);
 }
 .care > .section-inner {
   position: relative; z-index: 1;
@@ -472,7 +476,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) { .care-bg-video { display: none; } }
 .care-title { font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--gold); }
 .care-right { display: flex; flex-direction: column; gap: 22px; padding-top: 8px; }
-.care-right p { font-size: 14px; font-weight: 300; color: rgba(237,231,217,0.82); line-height: 1.85; }
+.care-right p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
 
 /* ══ GIVING BACK ══ */
 .giving {
