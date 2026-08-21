@@ -445,11 +445,45 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   background: var(--bg);
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
   padding: 100px 0 40px;
+  position: relative;
 }
+/* ══ BLUEPRINT DRAW-IN ══
+   Architectural-drawing style marks (corner crosshairs, dimension
+   ticks, angle label) that draw themselves in around the box the first
+   time it scrolls into view — echoes the paw-trail treatment elsewhere
+   but as a technical sketch rather than footprints. */
+.cb-blueprint {
+  position: absolute; inset: -28px; pointer-events: none; overflow: visible;
+}
+.cb-blueprint path, .cb-blueprint circle, .cb-blueprint line {
+  fill: none; stroke: var(--gold); stroke-width: 1;
+  opacity: 0.55;
+  transition: stroke-dashoffset 1.8s ease-out;
+}
+.cb-blueprint text {
+  fill: var(--gold); opacity: 0;
+  font-family: var(--sans); font-size: 10px; letter-spacing: 0.08em;
+  transition: opacity 1.2s ease-out 1.4s;
+}
+section.custom-built.inview .cb-blueprint path,
+section.custom-built.inview .cb-blueprint circle,
+section.custom-built.inview .cb-blueprint line {
+  stroke-dashoffset: 0;
+}
+section.custom-built.inview .cb-blueprint circle:nth-of-type(2) { transition-delay: 0.3s; }
+section.custom-built.inview .cb-blueprint path:nth-of-type(2) { transition-delay: 0.2s; }
+section.custom-built.inview .cb-blueprint line:nth-of-type(2) { transition-delay: 0.4s; }
+section.custom-built.inview .cb-blueprint line:nth-of-type(3) { transition-delay: 0.5s; }
+section.custom-built.inview .cb-blueprint text { opacity: 0.6; }
+@media (prefers-reduced-motion: reduce) {
+  .cb-blueprint path, .cb-blueprint circle, .cb-blueprint line { stroke-dashoffset: 0; transition: none; }
+  .cb-blueprint text { opacity: 0.6; transition: none; }
+}
+@media (max-width: 768px) { .cb-blueprint { display: none; } }
 .custom-built > .section-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
   border: 1px solid var(--gold-line); padding: 64px 64px;
-  position: relative;
+  position: relative; background: var(--bg); z-index: 1;
 }
 .custom-built-title {
   font-family: var(--serif); font-size: clamp(36px, 4.2vw, 54px);
@@ -1001,6 +1035,18 @@ section.inview .faq-title, section.inview .faq-item {
 <!-- CUSTOM BUILT -->
 <section class="custom-built" id="custom-built">
 <div class="section-inner">
+  <svg class="cb-blueprint" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <circle cx="4" cy="4" r="4" stroke-dasharray="26" stroke-dashoffset="26" vector-effect="non-scaling-stroke"/>
+    <path d="M0 4 H8 M4 0 V8" stroke-dasharray="16" stroke-dashoffset="16" vector-effect="non-scaling-stroke"/>
+    <circle cx="96" cy="96" r="4" stroke-dasharray="26" stroke-dashoffset="26" vector-effect="non-scaling-stroke"/>
+    <path d="M92 96 H100 M96 92 V100" stroke-dasharray="16" stroke-dashoffset="16" vector-effect="non-scaling-stroke"/>
+    <line x1="0" y1="-4" x2="100" y2="-4" stroke-dasharray="100" stroke-dashoffset="100" vector-effect="non-scaling-stroke"/>
+    <line x1="0" y1="-6" x2="0" y2="-2" stroke-dasharray="4" stroke-dashoffset="4" vector-effect="non-scaling-stroke"/>
+    <line x1="100" y1="-6" x2="100" y2="-2" stroke-dasharray="4" stroke-dashoffset="4" vector-effect="non-scaling-stroke"/>
+    <text x="46" y="-8" font-size="3">600</text>
+    <line x1="104" y1="70" x2="104" y2="100" stroke-dasharray="30" stroke-dashoffset="30" vector-effect="non-scaling-stroke"/>
+    <text x="105.5" y="88" font-size="3">90°</text>
+  </svg>
   <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
   <div class="custom-built-right">
     <p class="custom-built-tagline" data-i18n="cb_tagline">The flexibility of a custom website, with the everyday simplicity people expect from a website builder.</p>
