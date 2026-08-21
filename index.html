@@ -484,17 +484,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
   border-bottom: 1px solid var(--line);
   position: relative;
+  padding: 100px 0;
 }
 .giving-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 28px; color: var(--text); }
 .giving-title em { font-style: italic; color: var(--muted); }
 .giving-copy {
   display: flex; flex-direction: column; gap: 18px; justify-content: center;
-  padding: 160px 56px 140px max(48px, calc((100vw - 1080px)/2 + 48px));
-  position: relative; z-index: 1;
-}
-.giving-copy::before {
-  content: ''; position: absolute; inset: 100px 24px 80px max(24px, calc((100vw - 1080px)/2 + 24px));
-  border: 1px solid var(--gold-line); pointer-events: none; z-index: -1;
+  padding: 44px 48px;
+  margin: 0 24px 0 max(24px, calc((100vw - 1080px)/2 + 24px));
+  border: 1px solid var(--gold-line);
+  position: relative;
 }
 .giving-copy p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
 .giving-cta { align-self: flex-start; margin-top: 6px; }
@@ -504,7 +503,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
   background: var(--bg); border-radius: 0;
   display: flex; flex-direction: column; gap: 22px; justify-content: center;
-  padding: 100px max(48px, calc((100vw - 1080px)/2 + 48px)) 100px 56px;
+  padding: 44px max(48px, calc((100vw - 1080px)/2 + 48px)) 44px 56px;
 }
 .giving-form-title { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--gold-bright); margin: 0 0 4px; }
 .giving-note { font-size: 11px; font-weight: 300; color: var(--muted2); line-height: 1.7; }
@@ -703,8 +702,8 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .custom-built > .section-inner { grid-template-columns: 1fr; gap: 28px; }
   .care > .section-inner { grid-template-columns: 1fr; gap: 32px; }
   .giving { grid-template-columns: 1fr; }
-  .giving-copy, .giving-form { padding: 100px 32px; }
-  .giving-copy::before { inset: 60px 16px 60px; }
+  .giving-copy { padding: 32px 24px; margin: 0 16px; }
+  .giving-form { padding: 32px 24px; }
   .faq-inner { padding: 32px 24px; }
   .contact-box { padding: 40px 20px 36px; margin: 0 4px; }
   .need-response { padding: 32px 20px; margin: 0 4px; }
