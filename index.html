@@ -591,6 +591,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .contact .eyebrow::after { margin-left: auto; margin-right: auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
 .contact-title { font-family: var(--serif); font-size: clamp(40px, 6vw, 84px); font-weight: 300; line-height: 1.02; letter-spacing: -0.02em; margin: 24px auto 18px; max-width: 18ch; color: var(--text); }
+.contact-box {
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
+  background: var(--bg); border: 1px solid var(--gold-line);
+  padding: 64px 48px 56px; max-width: 760px; margin: 0 auto;
+}
 .contact-sub { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 440px; margin: 0 auto 52px; }
 .contact-form { max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; text-align: left; }
 .field label { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); margin-bottom: 9px; }
@@ -697,6 +704,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .giving-copy::before { inset: 16px; }
   .faq-inner { padding: 32px 24px; }
   .contact { padding: 76px 0 64px; }
+  .contact-box { padding: 40px 20px 36px; margin: 0 4px; }
   .footer-row { gap: 5px; text-align: center; }
   footer { padding: 36px 24px 30px; gap: 14px; }
   .footer-network { max-width: 320px; line-height: 1.8; }
@@ -714,11 +722,10 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 .need-grid {
   display: flex; flex-direction: column; gap: 2px;
   margin-top: 32px;
-  border: 1px solid var(--gold-line); padding: 3px;
 }
 .need-btn {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --bg: #0c0c0b; --bg2: #17150f; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.14);
   --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   width: 100%; background: var(--bg2); border: 1px solid var(--line);
   color: var(--text); font-family: var(--sans); font-size: 15px; font-weight: 300;
@@ -964,18 +971,20 @@ section.inview .faq-title, section.inview .faq-item {
 
 <section class="contact" id="contact">
 <div class="section-inner">
-  <p class="eyebrow" data-i18n="ct_label">Get in touch</p>
-  <h2 class="contact-title" data-i18n="ct_title">What do you need <span class="gold-shimmer">help with?</span></h2>
+  <div class="contact-box">
+    <p class="eyebrow" data-i18n="ct_label">Get in touch</p>
+    <h2 class="contact-title" data-i18n="ct_title">What do you need <span class="gold-shimmer">help with?</span></h2>
 
-  <!-- NEED PICKER -->
-  <div class="need-picker" id="needPicker">
-    <div class="need-grid">
-      <button class="need-btn" data-need="members" data-i18n-need="need_members">More members</button>
-      <button class="need-btn" data-need="impression" data-i18n-need="need_impression">Better first impression</button>
-      <button class="need-btn" data-need="admin" data-i18n-need="need_admin">Easier administration</button>
-      <button class="need-btn" data-need="outdated" data-i18n-need="need_outdated">Replace an outdated website</button>
-      <button class="need-btn" data-need="new" data-i18n-need="need_new">New gym opening</button>
-      <button class="need-btn" data-need="other" data-i18n-need="need_other">Something else</button>
+    <!-- NEED PICKER -->
+    <div class="need-picker" id="needPicker">
+      <div class="need-grid">
+        <button class="need-btn" data-need="members" data-i18n-need="need_members">More members</button>
+        <button class="need-btn" data-need="impression" data-i18n-need="need_impression">Better first impression</button>
+        <button class="need-btn" data-need="admin" data-i18n-need="need_admin">Easier administration</button>
+        <button class="need-btn" data-need="outdated" data-i18n-need="need_outdated">Replace an outdated website</button>
+        <button class="need-btn" data-need="new" data-i18n-need="need_new">New gym opening</button>
+        <button class="need-btn" data-need="other" data-i18n-need="need_other">Something else</button>
+      </div>
     </div>
   </div>
 
