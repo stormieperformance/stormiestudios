@@ -583,8 +583,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .trust-bullets-list { max-width: 980px; margin: 0 auto; }
 .trust-bullets-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; border: 1px solid var(--gold-line); padding: 32px 40px; }
-.trust-bullets-list li { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 400; color: var(--muted); white-space: nowrap; }
-.trust-bullets-list svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--gold); }
+.trust-bullets-list li {
+  display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 400; white-space: nowrap;
+  background: #0c0c0b; color: #ede7d9;
+  border: 1px solid rgba(201,169,110,0.35);
+  border-radius: 999px; padding: 11px 22px;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.trust-bullets-list li:hover { border-color: rgba(201,169,110,0.7); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+.trust-bullets-list svg { width: 14px; height: 14px; flex-shrink: 0; color: #c9a96e; }
 @media (max-width: 640px) { .trust-bullets-list { gap: 10px 20px; padding: 24px 20px; box-sizing: border-box; } .trust-bullets-list li { white-space: normal; font-size: 12.5px; } }
 
 /* ══ CONTACT ══ */
