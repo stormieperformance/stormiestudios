@@ -489,11 +489,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .giving-title em { font-style: italic; color: var(--muted); }
 .giving-copy {
   display: flex; flex-direction: column; gap: 18px; justify-content: center;
-  padding: 100px 56px 64px max(48px, calc((100vw - 1080px)/2 + 48px));
+  padding: 160px 56px 140px max(48px, calc((100vw - 1080px)/2 + 48px));
   position: relative; z-index: 1;
 }
 .giving-copy::before {
-  content: ''; position: absolute; inset: 56px 24px 24px max(24px, calc((100vw - 1080px)/2 + 24px));
+  content: ''; position: absolute; inset: 100px 24px 80px max(24px, calc((100vw - 1080px)/2 + 24px));
   border: 1px solid var(--gold-line); pointer-events: none; z-index: -1;
 }
 .giving-copy p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
@@ -704,8 +704,8 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .custom-built > .section-inner { grid-template-columns: 1fr; gap: 28px; }
   .care > .section-inner { grid-template-columns: 1fr; gap: 32px; }
   .giving { grid-template-columns: 1fr; }
-  .giving-copy, .giving-form { padding: 56px 32px; }
-  .giving-copy::before { inset: 40px 16px 16px; }
+  .giving-copy, .giving-form { padding: 88px 32px; }
+  .giving-copy::before { inset: 56px 16px 32px; }
   .faq-inner { padding: 32px 24px; }
   .contact { padding: 76px 0 64px; }
   .contact-box { padding: 40px 20px 36px; margin: 0 4px; }
