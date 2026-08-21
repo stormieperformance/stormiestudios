@@ -805,7 +805,38 @@ section.inview .faq-title, section.inview .faq-item {
   transform: none;
 }
 
-/* Staggered timing for multi-item groups — each element a beat behind the last */
+/* Big sweeping box entrances — these three boxes get a large, attention-
+   grabbing slide-in from alternating sides, layered on top of the gentle
+   content fade above. */
+.pitch > .section-inner,
+.custom-built > .section-inner {
+  opacity: 0;
+  transform: translateX(-140px);
+  transition: opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.1s cubic-bezier(0.16,1,0.3,1);
+}
+.trust-bullets-list {
+  opacity: 0;
+  transform: translateX(140px);
+  transition: opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.1s cubic-bezier(0.16,1,0.3,1);
+}
+section.inview .pitch > .section-inner,
+section.inview .custom-built > .section-inner,
+section.inview .trust-bullets-list {
+  opacity: 1;
+  transform: none;
+}
+@media (max-width: 640px) {
+  .pitch > .section-inner, .custom-built > .section-inner, .trust-bullets-list {
+    transform: translateX(0) translateY(60px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pitch > .section-inner, .custom-built > .section-inner, .trust-bullets-list {
+    opacity: 1; transform: none; transition: none;
+  }
+}
+
+
 .care-right p:nth-child(1) { transition-delay: 0s; }
 .care-right p:nth-child(2) { transition-delay: 0.08s; }
 .care-right p:nth-child(3) { transition-delay: 0.16s; }
