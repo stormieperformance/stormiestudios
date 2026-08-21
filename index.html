@@ -73,23 +73,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
 
 /* ══ FRAMED BOXES ══
-   Shared "picture frame" treatment for every gold-bordered content box
-   on the site: a second, fainter line inset from the outer border, so
-   each box reads as an actual frame rather than a plain rectangle. */
+   Shared "picture frame" treatment — a second, fainter line inset from
+   the outer border — kept on the Pitch box and the white boxes only.
+   FAQ and the Contact box reverted back to a plain single border. */
 .pitch > .section-inner,
 .custom-built > .section-inner,
 .giving-copy,
-.faq-inner,
-.trust-bullets-list,
-.contact-box {
-  --frame-inset: 18px;
+.trust-bullets-list {
+  --frame-inset: 8px;
 }
 .pitch > .section-inner::before,
 .custom-built > .section-inner::before,
 .giving-copy::before,
-.faq-inner::before,
-.trust-bullets-list::before,
-.contact-box::before {
+.trust-bullets-list::before {
   content: '';
   position: absolute;
   inset: var(--frame-inset);
