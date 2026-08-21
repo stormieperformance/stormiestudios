@@ -583,9 +583,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ CONTACT ══ */
 .contact {
-  --bg: #ffffff; --bg2: #ffffff; --text: #241d13;
-  --muted: #2b2a27; --muted2: rgba(36,29,19,0.32); --line: rgba(36,29,19,0.12);
-  --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
+  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
+  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
+  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   background: var(--bg); padding: 114px 0 102px; border-bottom: 1px solid var(--line); text-align: center;
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
 }
@@ -705,6 +705,7 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .faq-inner { padding: 32px 24px; }
   .contact { padding: 76px 0 64px; }
   .contact-box { padding: 40px 20px 36px; margin: 0 4px; }
+  .need-response { padding: 32px 20px; margin: 0 4px; }
   .footer-row { gap: 5px; text-align: center; }
   footer { padding: 36px 24px 30px; gap: 14px; }
   .footer-network { max-width: 320px; line-height: 1.8; }
@@ -744,7 +745,13 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
 .need-btn:hover { background: var(--bg); border-color: var(--gold-line); padding-left: 36px; }
 .need-btn:hover::before { width: 100%; }
 .need-btn:hover::after { color: var(--gold); transform: translateY(-50%) translateX(4px); }
-.need-response { max-width: 600px; margin: 0 auto; }
+.need-response {
+  --bg: #ffffff; --bg2: #ffffff; --text: #241d13;
+  --muted: #2b2a27; --muted2: rgba(36,29,19,0.32); --line: rgba(36,29,19,0.12);
+  --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
+  max-width: 600px; margin: 0 auto; background: var(--bg); border: 1px solid var(--line);
+  padding: 44px 40px; text-align: left; color: var(--text);
+}
 .need-back {
   background: none; border: none; font-family: var(--sans); font-size: 10px;
   letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2);
