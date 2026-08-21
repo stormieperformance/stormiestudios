@@ -1658,9 +1658,15 @@ function buildHeadline(text, isThai) {
     });
   }
 
-  // Auto-scroll disabled — manual navigation only (arrows, drag)
+  // Auto-scroll: very slow, smooth, same eased 3D motion as manual navigation.
+  // Pauses on hover/drag, resumes shortly after. Off entirely if the visitor
+  // prefers reduced motion.
   let autoScrollTimer=null;
-  function startAutoScroll(){}
+  function startAutoScroll(){
+    if(rm) return;
+    stopAutoScroll();
+    autoScrollTimer=setInterval(()=>{ step(1); }, 6000);
+  }
   function stopAutoScroll(){clearInterval(autoScrollTimer);autoScrollTimer=null;}
   stage.addEventListener('mouseenter',stopAutoScroll);
   stage.addEventListener('mouseleave',startAutoScroll);
