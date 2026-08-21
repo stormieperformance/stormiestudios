@@ -74,14 +74,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ FRAMED BOXES ══
    Shared "picture frame" treatment — a second, fainter line inset from
-   the outer border — kept on the white boxes only. Pitch, FAQ, and the
-   Contact box use a plain single border. */
-.custom-built > .section-inner,
+   the outer border — kept on Giving Back and trust-bullets only.
+   Custom-Built, Pitch, FAQ, and the Contact box use a plain single
+   border. */
 .giving-copy,
 .trust-bullets-list {
   --frame-inset: 8px;
 }
-.custom-built > .section-inner::before,
 .giving-copy::before,
 .trust-bullets-list::before {
   content: '';
