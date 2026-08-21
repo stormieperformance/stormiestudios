@@ -427,13 +427,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   padding: 100px 0; border-bottom: 1px solid var(--line);
 }
 .custom-built > .section-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch;
 }
+.cb-box { border: 1px solid var(--gold-line); padding: 44px 48px; display: flex; flex-direction: column; justify-content: center; }
 .custom-built-title {
   font-family: var(--serif); font-size: clamp(36px, 4.2vw, 54px);
   font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text);
 }
-.custom-built-right { display: flex; flex-direction: column; gap: 20px; padding-top: 6px; }
+.custom-built-right { gap: 20px; padding-top: 0; }
 .custom-built-tagline { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--gold-bright); line-height: 1.5; }
 .custom-built-right p:not(.custom-built-tagline) { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
 /* ══ PITCH ══ */
@@ -959,8 +960,10 @@ section.inview .faq-title, section.inview .faq-item {
 <!-- CUSTOM BUILT -->
 <section class="custom-built" id="custom-built">
 <div class="section-inner">
-  <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
-  <div class="custom-built-right">
+  <div class="cb-box cb-box-left">
+    <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
+  </div>
+  <div class="cb-box custom-built-right">
     <p class="custom-built-tagline" data-i18n="cb_tagline">The flexibility of a custom website, with the everyday simplicity people expect from a website builder.</p>
     <p data-i18n="cb_p1">Stormie Studios builds the site around your business rather than forcing your business into a template. You still update your own content through a simple CMS, while Stormie Studios manages the code, hosting and technical infrastructure behind it.</p>
   </div>
