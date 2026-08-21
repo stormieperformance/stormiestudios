@@ -74,13 +74,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ══ FRAMED BOXES ══
    Shared "picture frame" treatment — a second, fainter line inset from
-   the outer border — kept on Giving Back and trust-bullets only.
-   Custom-Built, Pitch, FAQ, and the Contact box use a plain single
-   border. */
+   the outer border — kept on Giving Back, trust-bullets, and Custom-
+   Built. Pitch, FAQ, and the Contact box use a plain single border. */
+.custom-built > .section-inner,
 .giving-copy,
 .trust-bullets-list {
   --frame-inset: 8px;
 }
+.custom-built > .section-inner::before,
 .giving-copy::before,
 .trust-bullets-list::before {
   content: '';
@@ -447,45 +448,41 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   padding: 100px 0 40px;
 }
 /* ══ BLUEPRINT DRAWING ══
-   Architectural-drawing marks — compass circles, crosshairs, dimension
-   lines with tick marks, an angle line, a drafting arc — scattered
-   around the box. Each element continuously draws itself in, holds,
-   then fades and redraws on a loop, like a hand sketching and
-   re-sketching the same technical drawing. Lines/circles live in one
-   SVG (percentage-based, so they scale with the box); the "600" / "90°"
-   labels are separate HTML spans so their font-size is never distorted
-   by the SVG's non-uniform scaling. */
+   Faint architectural-drawing marks — compass circles, crosshairs, a
+   drafting arc, an angle label — scattered around the box, echoing a
+   hand-drawn technical sketch. Kept deliberately faint (low opacity,
+   thin strokes) rather than a bold graphic element. */
 .cb-blueprint {
   position: absolute; inset: -30px; pointer-events: none; overflow: visible;
   width: calc(100% + 60px); height: calc(100% + 60px);
 }
-.cb-blueprint path, .cb-blueprint circle, .cb-blueprint rect {
-  fill: none; stroke: var(--gold); stroke-width: 1; opacity: 0;
+.cb-blueprint path, .cb-blueprint circle {
+  fill: none; stroke: var(--gold); stroke-width: 0.75; opacity: 0;
   stroke-dasharray: var(--len); stroke-dashoffset: var(--len);
-  animation: cbDraw 11s cubic-bezier(0.65,0,0.35,1) infinite;
+  animation: cbDraw 14s cubic-bezier(0.65,0,0.35,1) infinite;
   animation-delay: var(--delay, 0s);
 }
 @keyframes cbDraw {
   0% { stroke-dashoffset: var(--len); opacity: 0; }
-  8% { opacity: 0.55; }
-  38%, 62% { stroke-dashoffset: 0; opacity: 0.55; }
+  10% { opacity: 0.22; }
+  40%, 60% { stroke-dashoffset: 0; opacity: 0.22; }
   92% { opacity: 0; stroke-dashoffset: 0; }
   100% { stroke-dashoffset: var(--len); opacity: 0; }
 }
 .cb-label {
-  position: absolute; font-family: var(--sans); font-size: 10px; letter-spacing: 0.08em;
+  position: absolute; font-family: var(--sans); font-size: 9px; letter-spacing: 0.08em;
   color: var(--gold); opacity: 0; white-space: nowrap; pointer-events: none;
-  animation: cbLabel 11s cubic-bezier(0.65,0,0.35,1) infinite;
+  animation: cbLabel 14s cubic-bezier(0.65,0,0.35,1) infinite;
   animation-delay: var(--delay, 0s);
 }
 @keyframes cbLabel {
-  0%, 30% { opacity: 0; }
-  40%, 62% { opacity: 0.65; }
+  0%, 32% { opacity: 0; }
+  42%, 60% { opacity: 0.35; }
   75%, 100% { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .cb-blueprint path, .cb-blueprint circle, .cb-blueprint rect { animation: none; stroke-dashoffset: 0; opacity: 0.4; }
-  .cb-label { animation: none; opacity: 0.55; }
+  .cb-blueprint path, .cb-blueprint circle { animation: none; stroke-dashoffset: 0; opacity: 0.18; }
+  .cb-label { animation: none; opacity: 0.3; }
 }
 .cb-svg-mobile, .cb-label-mobile { display: none; }
 @media (max-width: 768px) {
@@ -496,7 +493,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .custom-built > .section-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
-  border: 1px solid var(--gold-dim); padding: 64px 64px;
+  border: 1px solid var(--gold-line); padding: 64px 64px;
   position: relative; background: var(--bg); z-index: 1;
 }
 .custom-built-title {
@@ -1050,56 +1047,25 @@ section.inview .faq-title, section.inview .faq-item {
 <section class="custom-built" id="custom-built">
 <div class="section-inner">
   <div class="cb-blueprint" aria-hidden="true">
-  <!-- Box outline itself, drawn in as part of the same animation. A
-       0-1000/0-1000 viewBox always maps exactly to the box's true edges
-       regardless of its real aspect ratio. -->
-  <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" width="100%" height="100%" style="position:absolute;inset:0;overflow:visible;">
-    <rect x="1" y="1" width="998" height="998" vector-effect="non-scaling-stroke" style="--len:3992; --delay:0s"/>
-  </svg>
-  <!-- Desktop version: full set of marks, wide-box proportioned viewBox -->
+  <!-- Desktop: corner compass marks + a faint drafting arc + angle label -->
   <svg class="cb-svg-desktop" viewBox="0 0 1000 320" preserveAspectRatio="none" width="100%" height="100%" style="position:absolute;inset:0;overflow:visible;">
-    <!-- top-left compass circle + crosshair -->
-    <circle cx="40" cy="40" r="32" style="--len:201; --delay:0.6s"/>
-    <path d="M10 40 H70 M40 10 V70" style="--len:120; --delay:1s"/>
-    <!-- bottom-right compass circle + crosshair -->
-    <circle cx="960" cy="280" r="32" style="--len:201; --delay:2.2s"/>
-    <path d="M930 280 H990 M960 250 V310" style="--len:120; --delay:2.6s"/>
-    <!-- top dimension line with end + middle ticks -->
-    <path d="M20 -15 H980" style="--len:960; --delay:0.9s"/>
-    <path d="M20 -22 V-8" style="--len:14; --delay:1.3s"/>
-    <path d="M980 -22 V-8" style="--len:14; --delay:1.35s"/>
-    <path d="M260 -20 V-10" style="--len:10; --delay:1.4s"/>
-    <path d="M500 -20 V-10" style="--len:10; --delay:1.42s"/>
-    <path d="M740 -20 V-10" style="--len:10; --delay:1.44s"/>
-    <!-- bottom mirrored dimension line -->
-    <path d="M20 335 H980" style="--len:960; --delay:3.1s"/>
-    <path d="M20 328 V342" style="--len:14; --delay:3.5s"/>
-    <path d="M980 328 V342" style="--len:14; --delay:3.55s"/>
-    <!-- right-side angle line -->
-    <path d="M1015 180 V300" style="--len:120; --delay:1.8s"/>
-    <path d="M1008 180 H1022" style="--len:14; --delay:2.1s"/>
-    <path d="M1008 300 H1022" style="--len:14; --delay:2.15s"/>
-    <!-- drafting arc, top-right -->
-    <path d="M840 -30 A160 160 0 0 1 1000 70" style="--len:250; --delay:1.1s"/>
+    <circle cx="30" cy="30" r="26" style="--len:163; --delay:0s"/>
+    <path d="M6 30 H54 M30 6 V54" style="--len:96; --delay:0.5s"/>
+    <circle cx="970" cy="290" r="26" style="--len:163; --delay:2.4s"/>
+    <path d="M946 290 H994 M970 266 V314" style="--len:96; --delay:2.9s"/>
+    <path d="M870 -25 A150 150 0 0 1 1000 60" style="--len:230; --delay:1.3s"/>
   </svg>
-  <span class="cb-label cb-label-desktop" style="left:50%; top:-42px; transform:translateX(-50%); animation-delay:1.6s;">600</span>
-  <span class="cb-label cb-label-desktop" style="left:50%; bottom:-42px; transform:translateX(-50%); animation-delay:3.8s;">600</span>
-  <span class="cb-label cb-label-desktop" style="right:-52px; top:calc(50% - 6px); animation-delay:2.3s;">90°</span>
+  <span class="cb-label cb-label-desktop" style="right:-46px; top:calc(50% - 6px); animation-delay:1.9s;">90°</span>
 
-  <!-- Mobile version: fewer marks, tall-box proportioned viewBox so
-       nothing stretches into ovals or skewed lines on a narrow screen -->
+  <!-- Mobile: same idea, tall-box proportioned viewBox -->
   <svg class="cb-svg-mobile" viewBox="0 0 340 480" preserveAspectRatio="none" width="100%" height="100%" style="position:absolute;inset:0;overflow:visible;">
-    <circle cx="26" cy="26" r="20" style="--len:126; --delay:0s"/>
-    <path d="M6 26 H46 M26 6 V46" style="--len:80; --delay:0.4s"/>
-    <circle cx="314" cy="454" r="20" style="--len:126; --delay:2.2s"/>
-    <path d="M294 454 H334 M314 434 V474" style="--len:80; --delay:2.6s"/>
-    <path d="M170 -12 V-24" style="--len:12; --delay:0.9s"/>
-    <path d="M-24 240 H-12" style="--len:12; --delay:1.4s"/>
-    <path d="M352 240 H364" style="--len:12; --delay:1.8s"/>
-    <path d="M260 -20 A40 40 0 0 1 340 20" style="--len:63; --delay:1.1s"/>
+    <circle cx="24" cy="24" r="18" style="--len:113; --delay:0s"/>
+    <path d="M6 24 H42 M24 6 V42" style="--len:72; --delay:0.5s"/>
+    <circle cx="316" cy="456" r="18" style="--len:113; --delay:2.4s"/>
+    <path d="M298 456 H334 M316 438 V474" style="--len:72; --delay:2.9s"/>
+    <path d="M260 -18 A36 36 0 0 1 340 18" style="--len:57; --delay:1.3s"/>
   </svg>
-  <span class="cb-label cb-label-mobile" style="left:50%; top:-30px; transform:translateX(-50%); animation-delay:1.6s;">600</span>
-  <span class="cb-label cb-label-mobile" style="right:-42px; top:calc(50% - 6px); animation-delay:2.3s;">90°</span>
+  <span class="cb-label cb-label-mobile" style="right:-38px; top:calc(50% - 6px); animation-delay:1.9s;">90°</span>
   </div>
   <h2 class="custom-built-title" data-i18n="cb_title">Custom-built.<br><span class="gold-shimmer">Without the maintenance burden.</span></h2>
   <div class="custom-built-right">
