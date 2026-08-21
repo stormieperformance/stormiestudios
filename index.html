@@ -467,8 +467,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 @keyframes cbDraw {
   0% { stroke-dashoffset: var(--len); opacity: 0; }
-  8% { opacity: 0.55; }
-  38%, 62% { stroke-dashoffset: 0; opacity: 0.55; }
+  8% { opacity: var(--op, 0.55); }
+  38%, 62% { stroke-dashoffset: 0; opacity: var(--op, 0.55); }
+  92% { opacity: 0; stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: var(--len); opacity: 0; }
+}
+/* Faster draw curve for small accent marks (crosshairs, ticks, hatch
+   lines) that should visibly snap in only once a nearby slower shape
+   — like a compass circle — has finished drawing, not simultaneously. */
+.cb-blueprint .cb-fast { animation-name: cbDrawFast; }
+@keyframes cbDrawFast {
+  0% { stroke-dashoffset: var(--len); opacity: 0; }
+  40% { opacity: var(--op, 0.55); }
+  55%, 62% { stroke-dashoffset: 0; opacity: var(--op, 0.55); }
   92% { opacity: 0; stroke-dashoffset: 0; }
   100% { stroke-dashoffset: var(--len); opacity: 0; }
 }
@@ -1058,44 +1069,52 @@ section.inview .faq-title, section.inview .faq-item {
   </svg>
   <!-- Desktop version: full set of marks, wide-box proportioned viewBox -->
   <svg class="cb-svg-desktop" viewBox="0 0 1000 320" preserveAspectRatio="none" width="100%" height="100%" style="position:absolute;inset:0;overflow:visible;">
-    <!-- top-left compass circle + crosshair -->
-    <circle cx="40" cy="40" r="32" style="--len:201; --delay:0.6s"/>
-    <path d="M10 40 H70 M40 10 V70" style="--len:120; --delay:1s"/>
-    <!-- bottom-right compass circle + crosshair -->
-    <circle cx="960" cy="280" r="32" style="--len:201; --delay:2.2s"/>
-    <path d="M930 280 H990 M960 250 V310" style="--len:120; --delay:2.6s"/>
+    <!-- large soft background circle behind bottom-right corner -->
+    <circle cx="960" cy="280" r="70" style="--len:440; --delay:1.9s; --op:0.12"/>
+    <!-- top-left compass circle, then its crosshair once the circle is done -->
+    <circle cx="40" cy="40" r="32" style="--len:201; --delay:0.4s"/>
+    <path class="cb-fast" d="M10 40 H70 M40 10 V70" style="--len:120; --delay:2.2s"/>
+    <!-- small dash-dot tick to the left of the top-left circle -->
+    <path class="cb-fast" d="M-30 40 H0" style="--len:30; --delay:2.6s"/>
+    <!-- bottom-right compass circle, then its crosshair once the circle is done -->
+    <circle cx="960" cy="280" r="32" style="--len:201; --delay:4.4s"/>
+    <path class="cb-fast" d="M930 280 H990 M960 250 V310" style="--len:120; --delay:6.2s"/>
+    <!-- diagonal hatch marks near bottom-right -->
+    <path class="cb-fast" d="M1004 264 L1018 250 M1004 278 L1024 258 M1004 292 L1018 278" style="--len:60; --delay:6.6s"/>
+    <!-- small plus mark along the right edge, mid-height -->
+    <path class="cb-fast" d="M1000 140 H1012 M1006 134 V146" style="--len:24; --delay:1.5s"/>
     <!-- top dimension line with end + middle ticks -->
     <path d="M20 -15 H980" style="--len:960; --delay:0.9s"/>
-    <path d="M20 -22 V-8" style="--len:14; --delay:1.3s"/>
-    <path d="M980 -22 V-8" style="--len:14; --delay:1.35s"/>
-    <path d="M260 -20 V-10" style="--len:10; --delay:1.4s"/>
-    <path d="M500 -20 V-10" style="--len:10; --delay:1.42s"/>
-    <path d="M740 -20 V-10" style="--len:10; --delay:1.44s"/>
+    <path class="cb-fast" d="M20 -22 V-8" style="--len:14; --delay:5s"/>
+    <path class="cb-fast" d="M980 -22 V-8" style="--len:14; --delay:5.05s"/>
+    <path class="cb-fast" d="M260 -20 V-10" style="--len:10; --delay:5.1s"/>
+    <path class="cb-fast" d="M500 -20 V-10" style="--len:10; --delay:5.15s"/>
+    <path class="cb-fast" d="M740 -20 V-10" style="--len:10; --delay:5.2s"/>
     <!-- bottom mirrored dimension line -->
     <path d="M20 335 H980" style="--len:960; --delay:3.1s"/>
-    <path d="M20 328 V342" style="--len:14; --delay:3.5s"/>
-    <path d="M980 328 V342" style="--len:14; --delay:3.55s"/>
+    <path class="cb-fast" d="M20 328 V342" style="--len:14; --delay:7.2s"/>
+    <path class="cb-fast" d="M980 328 V342" style="--len:14; --delay:7.25s"/>
     <!-- right-side angle line -->
     <path d="M1015 180 V300" style="--len:120; --delay:1.8s"/>
-    <path d="M1008 180 H1022" style="--len:14; --delay:2.1s"/>
-    <path d="M1008 300 H1022" style="--len:14; --delay:2.15s"/>
+    <path class="cb-fast" d="M1008 180 H1022" style="--len:14; --delay:5.6s"/>
+    <path class="cb-fast" d="M1008 300 H1022" style="--len:14; --delay:5.65s"/>
     <!-- drafting arc, top-right -->
     <path d="M840 -30 A160 160 0 0 1 1000 70" style="--len:250; --delay:1.1s"/>
   </svg>
   <span class="cb-label cb-label-desktop" style="left:50%; top:-42px; transform:translateX(-50%); animation-delay:1.6s;">600</span>
   <span class="cb-label cb-label-desktop" style="left:50%; bottom:-42px; transform:translateX(-50%); animation-delay:3.8s;">600</span>
-  <span class="cb-label cb-label-desktop" style="right:-52px; top:calc(50% - 6px); animation-delay:2.3s;">90°</span>
+  <span class="cb-label cb-label-desktop" style="right:-40px; top:calc(50% - 6px); animation-delay:2.3s;">90°</span>
 
   <!-- Mobile version: fewer marks, tall-box proportioned viewBox so
        nothing stretches into ovals or skewed lines on a narrow screen -->
   <svg class="cb-svg-mobile" viewBox="0 0 340 480" preserveAspectRatio="none" width="100%" height="100%" style="position:absolute;inset:0;overflow:visible;">
     <circle cx="26" cy="26" r="20" style="--len:126; --delay:0s"/>
-    <path d="M6 26 H46 M26 6 V46" style="--len:80; --delay:0.4s"/>
-    <circle cx="314" cy="454" r="20" style="--len:126; --delay:2.2s"/>
-    <path d="M294 454 H334 M314 434 V474" style="--len:80; --delay:2.6s"/>
-    <path d="M170 -12 V-24" style="--len:12; --delay:0.9s"/>
-    <path d="M-24 240 H-12" style="--len:12; --delay:1.4s"/>
-    <path d="M352 240 H364" style="--len:12; --delay:1.8s"/>
+    <path class="cb-fast" d="M6 26 H46 M26 6 V46" style="--len:80; --delay:1.6s"/>
+    <circle cx="314" cy="454" r="20" style="--len:126; --delay:3.4s"/>
+    <path class="cb-fast" d="M294 454 H334 M314 434 V474" style="--len:80; --delay:5s"/>
+    <path class="cb-fast" d="M170 -12 V-24" style="--len:12; --delay:6s"/>
+    <path class="cb-fast" d="M-24 240 H-12" style="--len:12; --delay:6.2s"/>
+    <path class="cb-fast" d="M352 240 H364" style="--len:12; --delay:6.4s"/>
     <path d="M260 -20 A40 40 0 0 1 340 20" style="--len:63; --delay:1.1s"/>
   </svg>
   <span class="cb-label cb-label-mobile" style="left:50%; top:-30px; transform:translateX(-50%); animation-delay:1.6s;">600</span>
