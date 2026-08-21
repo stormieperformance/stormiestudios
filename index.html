@@ -85,15 +85,35 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   font-family: var(--sans); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--gold); background: transparent; border: 1px solid var(--gold-line);
   padding: 14px 30px; text-decoration: none;
-  transition: color 0.3s, border-color 0.3s, background 0.3s, letter-spacing 0.35s;
+  transition: color 0.3s, border-color 0.3s, background 0.3s, letter-spacing 0.35s, transform 0.15s;
+  animation: btnAmbientPulse 5.5s ease-in-out infinite;
+}
+/* Occasional restrained border/glow pulse — same idle-flash language used
+   on the hero and footer bolt. Animates border-color/box-shadow directly
+   (not a pseudo-element) so it isn't clipped by overflow:hidden below. */
+@keyframes btnAmbientPulse {
+  0%, 85%, 100% { border-color: var(--gold-line); box-shadow: 0 0 0 rgba(201,169,110,0); }
+  91% { border-color: var(--gold); box-shadow: 0 0 14px rgba(201,169,110,0.28); }
+  96% { border-color: var(--gold-line); box-shadow: 0 0 0 rgba(201,169,110,0); }
 }
 .btn-gold::before {
   content: ''; position: absolute; top: 0; left: -130%; width: 55%; height: 100%;
   background: linear-gradient(100deg, transparent, rgba(236,217,174,0.22), transparent);
   transform: skewX(-18deg); transition: left 0.7s ease;
 }
-.btn-gold:hover { color: var(--gold-bright); border-color: var(--gold); background: var(--gold-dim); letter-spacing: 0.2em; }
-.btn-gold:hover::before { left: 170%; }
+/* :active covers mobile tap (no real hover on touch) with the same shine,
+   fill and letter-spacing treatment hover already gets on desktop, plus a
+   small press-down scale for tactile feedback. :focus-visible matches for
+   keyboard users. */
+.btn-gold:hover, .btn-gold:active, .btn-gold:focus-visible {
+  color: var(--gold-bright); border-color: var(--gold); background: var(--gold-dim); letter-spacing: 0.2em;
+}
+.btn-gold:hover::before, .btn-gold:active::before { left: 170%; }
+.btn-gold:active { transform: scale(0.97); }
+.btn-gold:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .btn-gold { animation: none; }
+}
 
 .btn-ghost {
   font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
