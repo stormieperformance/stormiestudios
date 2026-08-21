@@ -100,15 +100,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   content: ''; position: absolute; top: 0; left: -130%; width: 55%; height: 100%;
   background: linear-gradient(100deg, transparent, rgba(236,217,174,0.22), transparent);
   transform: skewX(-18deg) translateX(0);
-  animation: btnShineAuto 6.5s ease-in-out infinite;
+  animation: btnShineAuto 4s ease-in-out infinite;
   animation-delay: 1.2s;
 }
-/* Shine sweeps on its own periodically, same as Masters Gym's buttons —
-   transform-based (not left), so it's GPU-composited and never triggers
-   layout reflow, matching the fix already applied on Masters Gym's shine. */
+/* Matches the timing/feel of Clinch Athletics' hero button (4s cycle, hold
+   until 60%, glide across the remaining 40%) — transform-based here rather
+   than left, so it's GPU-composited and never triggers layout reflow. */
 @keyframes btnShineAuto {
-  0%, 78% { transform: skewX(-18deg) translateX(0); }
-  92% { transform: skewX(-18deg) translateX(545%); }
+  0%, 60% { transform: skewX(-18deg) translateX(0); }
   100% { transform: skewX(-18deg) translateX(545%); }
 }
 /* :active covers mobile tap (no real hover on touch) with the same fill
