@@ -1073,9 +1073,8 @@ section.inview .faq-title, section.inview .faq-item {
     <path d="M-15 40 H95 M40 -15 V95" style="--len:220; --delay:0.4s"/>
     <!-- small dash-dot tick to the left of the top-left mark -->
     <path class="cb-fast" d="M-30 40 H0" style="--len:30; --delay:2s"/>
-    <!-- bottom-right compass circle, then its crosshair once the circle is done -->
-    <circle cx="960" cy="280" r="32" style="--len:201; --delay:4.4s"/>
-    <path class="cb-fast" d="M930 280 H990 M960 250 V310" style="--len:120; --delay:6.2s"/>
+    <!-- bottom-right drafting arc, matching the top-right one's style -->
+    <path d="M840 350 A160 160 0 0 0 1000 250" style="--len:230; --delay:4.4s"/>
     <!-- diagonal hatch marks near bottom-right -->
     <path class="cb-fast" d="M1004 264 L1018 250 M1004 278 L1024 258 M1004 292 L1018 278" style="--len:60; --delay:6.6s"/>
     <!-- small plus mark along the right edge, mid-height -->
@@ -1106,8 +1105,7 @@ section.inview .faq-title, section.inview .faq-item {
        nothing stretches into ovals or skewed lines on a narrow screen -->
   <svg class="cb-svg-mobile" viewBox="0 0 340 480" preserveAspectRatio="none" width="100%" height="100%" style="position:absolute;inset:0;overflow:visible;">
     <path d="M-14 26 H66 M26 -14 V66" style="--len:160; --delay:0s"/>
-    <circle cx="314" cy="454" r="20" style="--len:126; --delay:3.4s"/>
-    <path class="cb-fast" d="M294 454 H334 M314 434 V474" style="--len:80; --delay:5s"/>
+    <path d="M260 496 A80 80 0 0 1 340 416" style="--len:126; --delay:3.4s"/>
     <path class="cb-fast" d="M170 -10 V-18" style="--len:8; --delay:6s"/>
     <path class="cb-fast" d="M-14 240 H-4" style="--len:10; --delay:6.2s"/>
     <path class="cb-fast" d="M344 240 H354" style="--len:10; --delay:6.4s"/>
