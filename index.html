@@ -18,9 +18,9 @@
   /* ============ SHOWCASE (exact port of the original 3D carousel: physics tween + drag) ============ */
   .showcase { position: relative; z-index: 1; width: 100%; margin-top: 80px; }
   .sc-stage { position: relative; height: 520px; perspective: 1200px; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-  .sc-track { position: absolute; inset: 0; transform-style: preserve-3d; left: 50%; }
+  .sc-track { position: absolute; inset: 0; transform-style: preserve-3d; }
   .sc-card {
-    position: absolute; top: 50%; left: 0; width: 248px; height: 488px; margin: -244px 0 0 -124px;
+    position: absolute; top: 50%; left: 50%; width: 248px; height: 488px; margin: -244px 0 0 -124px;
     border-radius: 14px; border: 1px solid var(--line); background: var(--bg2);
     overflow: hidden; will-change: transform, opacity; cursor: pointer;
     transition: border-color 0.3s, box-shadow 0.4s; transform-style: preserve-3d;
