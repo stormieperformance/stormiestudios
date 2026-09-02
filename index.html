@@ -46,6 +46,11 @@
   .bullet { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
   .bullet::before { content: '\2713'; color: var(--accent); font-weight: 700; }
 
+  .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .care-grid p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
+  .care-grid p.emphasis { color: var(--text); font-weight: 500; }
+  .care-grid p.close { font-style: italic; color: var(--text); font-size: 17px; }
+
   .contact { text-align: center; }
   .contact-box { max-width: 640px; margin: 0 auto; }
   .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 36px; text-align: left; }
@@ -83,7 +88,7 @@
     .hero { padding: 80px 16px 40px; }
     .sc-card { width: 190px; height: 260px; margin: -130px 0 0 -95px; }
     .sc-frame-wrap iframe { transform: scale(0.198); }
-    .need-grid, .row2 { grid-template-columns: 1fr; }
+    .need-grid, .row2, .care-grid { grid-template-columns: 1fr; }
     .hero-grid { gap: 40px; }
   }
 </style>
@@ -157,6 +162,22 @@
     <p class="eyebrow">Selected work</p>
     <h2>Custom websites built around how your business actually works.</h2>
     <p class="sub">Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.</p>
+  </div>
+</section>
+
+<section id="care">
+  <div class="inner care-grid">
+    <div>
+      <h2>Easy for you.<br>Professionally managed.</h2>
+    </div>
+    <div>
+      <p>Your website is built so you can manage what changes day to day, without touching code.</p>
+      <p>Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.</p>
+      <p>Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.</p>
+      <p>Your domain, content and brand remain yours.</p>
+      <p class="emphasis">No page builder maintenance. No plugin stack. No code to manage.</p>
+      <p class="close">Just a custom website you can actually operate yourself.</p>
+    </div>
   </div>
 </section>
 
