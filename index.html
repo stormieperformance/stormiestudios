@@ -1,2085 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Stormie Studios · Custom websites for gyms, coaches & martial arts clubs</title>
-<meta name="description" content="Custom websites for gyms, martial arts clubs and personal trainers. Built to turn visitors into members. Also free websites for animal and wildlife welfare non-profits. Stockholm." />
-<meta name="author" content="Storm Kolmodin" />
-<meta property="og:title" content="Stormie Studios · Custom websites for gyms, coaches & martial arts clubs" />
-<meta property="og:description" content="Custom websites for gyms, martial arts clubs and coaches. Plus free sites for animal and wildlife welfare organizations." />
-<meta property="og:url" content="https://stormiestudios.com" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://stormiestudios.com/og-image.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="627" />
-<meta name="twitter:image" content="https://stormiestudios.com/og-image.jpg" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Stormie Studios" />
-<meta name="twitter:description" content="Custom websites for gyms, coaches & martial arts clubs. Stockholm." />
-<link rel="canonical" href="https://stormiestudios.com" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Stormie Studios — Redesign Test</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+Thai:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --bg: #f6f0e2;
-  --bg2: #efe4cd;
-  --text: #241d13;
-  --muted: rgba(36,29,19,0.58);
-  --muted2: rgba(36,29,19,0.32);
-  --line: rgba(36,29,19,0.12);
-  --gold: #a8763e;
-  --gold-bright: #7d5a2c;
-  --gold-dim: rgba(168,118,62,0.14);
-  --gold-line: rgba(168,118,62,0.4);
-  --sans: 'DM Sans', sans-serif;
-  --sans-thai: 'Noto Sans Thai', sans-serif;
-  --serif: 'Cormorant Garamond', serif;
-  --serif-thai: 'Noto Serif Thai', serif;
-}
-html.lang-th {
-  --sans: 'Noto Sans Thai', sans-serif;
-  --serif: 'Noto Serif Thai', serif;
-}
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-}
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  min-height: 100vh;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.045;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-}
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-  outline: 1px solid var(--gold); outline-offset: 3px;
-}
-.page { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 48px; }
-
-/* ── shared ── */
-.eyebrow { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
-.eyebrow::after { content: ''; display: block; width: 0; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin-top: 12px; transition: width 1s ease 0.15s; }
-.inview .eyebrow::after { width: 56px; }
-.section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
-
-/* ══ FRAMED BOXES ══
-   Shared "picture frame" treatment — a second, fainter line inset from
-   the outer border — kept on Giving Back only. Custom-Built, Pitch,
-   FAQ, trust-bullets, and the Contact box use a plain single border. */
-.giving-copy {
-  --frame-inset: 8px;
-}
-.giving-copy::before {
-  content: '';
-  position: absolute;
-  inset: var(--frame-inset);
-  border: 1px solid var(--gold-dim);
-  pointer-events: none;
-}
-
-.gold-shimmer {
-  font-style: italic;
-  background: linear-gradient(110deg, var(--gold) 30%, var(--gold-bright) 50%, var(--gold) 70%);
-  background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 7s ease-in-out infinite;
-}
-.care-title .gold-shimmer {
-  background: none; color: #ede7d9; -webkit-text-fill-color: #ede7d9; animation: none;
-}
-
-@keyframes shimmer { 0%,100%{background-position:115% 0} 50%{background-position:-15% 0} }
-
-.btn-gold {
-  position: relative; display: inline-block; overflow: hidden;
-  font-family: var(--sans); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--gold); background: transparent; border: 1px solid var(--gold-line);
-  padding: 14px 30px; text-decoration: none;
-  transition: color 0.3s, border-color 0.3s, background 0.3s, letter-spacing 0.35s, transform 0.15s;
-  animation: btnAmbientPulse 5.5s ease-in-out infinite;
-}
-.intro-cta { color: var(--text); }
-/* Occasional restrained border/glow pulse — same idle-flash language used
-   on the hero and footer bolt. Animates border-color/box-shadow directly
-   (not a pseudo-element) so it isn't clipped by overflow:hidden below. */
-@keyframes btnAmbientPulse {
-  0%, 85%, 100% { border-color: var(--gold-line); box-shadow: 0 0 0 rgba(201,169,110,0); }
-  91% { border-color: var(--gold); box-shadow: 0 0 14px rgba(201,169,110,0.28); }
-  96% { border-color: var(--gold-line); box-shadow: 0 0 0 rgba(201,169,110,0); }
-}
-.btn-gold::before {
-  content: ''; position: absolute; top: 0; left: -130%; width: 55%; height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(236,217,174,0.22), transparent);
-  transform: skewX(-18deg) translateX(0);
-  animation: btnShineAuto 4s ease-in-out infinite;
-  animation-delay: 1.2s;
-}
-/* Matches the timing/feel of Clinch Athletics' hero button (4s cycle, hold
-   until 60%, glide across the remaining 40%) — transform-based here rather
-   than left, so it's GPU-composited and never triggers layout reflow. */
-@keyframes btnShineAuto {
-  0%, 60% { transform: skewX(-18deg) translateX(0); }
-  100% { transform: skewX(-18deg) translateX(545%); }
-}
-/* :active covers mobile tap (no real hover on touch) with the same fill
-   and letter-spacing treatment hover already gets on desktop, plus a small
-   press-down scale for tactile feedback. :focus-visible matches for
-   keyboard users. The idle shine keeps sweeping regardless of these states. */
-.btn-gold:hover, .btn-gold:active, .btn-gold:focus-visible {
-  color: var(--gold-bright); border-color: var(--gold); background: var(--gold-dim); letter-spacing: 0.2em;
-}
-.btn-gold:active { transform: scale(0.97); }
-.btn-gold:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) {
-  .btn-gold, .btn-gold::before { animation: none; }
-}
-
-.btn-ghost {
-  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--muted); text-decoration: none; position: relative; padding-bottom: 4px;
-}
-.btn-ghost::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--line); }
-.btn-ghost::before { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.45s ease; z-index: 1; }
-.btn-ghost:hover { color: var(--text); }
-.btn-ghost:hover::before { width: 100%; }
-
-/* ── topbar ── */
-.topbar {
-  --text: #ede7d9; --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.42);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  position: sticky; top: 0; z-index: 30;
-  display: flex; justify-content: space-between; align-items: center;
-  padding-top: 18px; padding-bottom: 18px;
-  padding-left: max(48px, calc((100vw - 1080px)/2 + 48px));
-  padding-right: max(48px, calc((100vw - 1080px)/2 + 48px));
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  border: 0; border-bottom: 1px solid rgba(168,118,62,0.16);
-  background: #08090a;
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  backdrop-filter: blur(20px) saturate(140%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 12px 30px rgba(0,0,0,0.25);
-  opacity: 0; animation: fadeIn 0.8s ease 0.1s forwards;
-}
-.topbar-left { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); white-space: nowrap; flex-shrink: 0; }
-.topbar-mark { width: 13px; height: 13px; color: var(--gold); flex-shrink: 0; }
-.topbar-right { display: flex; gap: 24px; align-items: center; flex-shrink: 1; min-width: 0; }
-
-.topbar-nav-desktop { display: flex; align-items: center; gap: 16px; flex-shrink: 1; min-width: 0; }
-.topbar-nav-desktop a { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted2); text-decoration: none; transition: color 0.2s ease; white-space: nowrap; }
-.topbar-nav-desktop a:hover { color: var(--text); }
-.topbar-nav-desktop .lang-toggle { padding-left: 14px; margin-left: 2px; border-left: 1px solid rgba(168,118,62,0.2); flex-shrink: 0; }
-.topbar-nav-desktop a.cta-link {
-  font-family: var(--sans); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--text); border: 1px solid var(--gold-line); padding: 9px 14px; text-decoration: none;
-  transition: color 0.25s, border-color 0.25s, background 0.25s; flex-shrink: 0;
-}
-.topbar-nav-desktop a.cta-link:hover { color: var(--gold-bright); border-color: var(--gold); background: var(--gold-dim); }
-
-.menu-toggle {
-  display: none;
-  align-items: center; gap: 12px;
-  background: none; border: none; cursor: pointer;
-  font-family: var(--sans); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--muted2); padding: 6px 2px;
-  transition: color 0.25s ease;
-}
-.menu-toggle:hover, .menu-toggle.open { color: var(--text); }
-.menu-toggle-lines { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 20px; }
-.menu-toggle-lines i { display: block; height: 1px; width: 100%; background: var(--gold); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.2s ease; }
-.menu-toggle.open .menu-toggle-lines i:first-child { transform: translateY(3px) rotate(40deg); }
-.menu-toggle.open .menu-toggle-lines i:last-child { transform: translateY(-3px) rotate(-40deg); }
-
-.menu-panel {
-  position: absolute; top: 100%; right: 48px;
-  min-width: 260px;
-  background: #08090a;
-  -webkit-backdrop-filter: blur(22px) saturate(140%);
-  backdrop-filter: blur(22px) saturate(140%);
-  border: 1px solid rgba(168,118,62,0.18);
-  box-shadow: 0 24px 50px rgba(0,0,0,0.5);
-  padding: 26px 26px 28px;
-  display: flex; flex-direction: column; gap: 16px;
-  opacity: 0; transform: translateY(-6px);
-  pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1), transform 0.3s cubic-bezier(0.16,1,0.3,1);
-  z-index: 29;
-}
-.menu-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.menu-panel a {
-  font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 19px;
-  color: var(--text); text-decoration: none; transition: color 0.2s ease;
-}
-.menu-panel a:hover { color: var(--gold); }
-.menu-panel .lang-toggle { padding-top: 4px; border-top: 1px solid rgba(168,118,62,0.14); margin-top: 2px; }
-.menu-panel a.cta-link {
-  display: block; text-align: center; margin-top: 6px;
-  font-family: var(--sans); font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--text); border: 1px solid var(--gold-line); padding: 12px 18px;
-  transition: color 0.25s, border-color 0.25s, background 0.25s;
-}
-.menu-panel a.cta-link:hover { color: var(--gold-bright); border-color: var(--gold); background: var(--gold-dim); }
-.lang-toggle { display: flex; align-items: center; gap: 6px; font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--muted2); }
-.lang-toggle button { background: none; border: none; font: inherit; color: var(--muted2); padding: 2px 1px; transition: color 0.2s; }
-.lang-toggle button:hover { color: var(--text); }
-.lang-toggle button.active { color: var(--gold); }
-
-/* One-time language suggestion bubble — shown once per session, then
-   dismissed for good (auto after a few seconds, or immediately on click/tap
-   which also switches language). Not a persistent switcher; the menu's own
-   language toggle covers that already. */
-.lang-bubble {
-  position: fixed; right: 20px; bottom: 20px; z-index: 500;
-  padding: 12px 18px; border-radius: 999px;
-  background: rgba(28,24,20,0.94); backdrop-filter: blur(6px);
-  border: 1px solid rgba(201,169,110,0.32); box-shadow: 0 8px 24px rgba(0,0,0,0.32);
-  font-family: var(--sans); font-size: 13px; color: rgba(232,228,220,0.85);
-  cursor: pointer; user-select: none;
-  opacity: 0; transform: translateY(10px); pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.lang-bubble.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.lang-bubble:hover { border-color: var(--gold); color: rgba(232,228,220,1); }
-.lang-bubble-prompt { cursor: default; display: flex; align-items: center; gap: 10px; border-radius: 14px; padding: 10px 12px; }
-.lang-bubble-prompt span.lang-bubble-label { padding-right: 2px; white-space: nowrap; }
-.lang-bubble-options { display: flex; gap: 6px; }
-.lang-bubble-options button {
-  background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.28);
-  color: rgba(232,228,220,0.9); font-family: var(--sans); font-size: 13px;
-  border-radius: 999px; padding: 6px 12px; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s;
-}
-.lang-bubble-options button:hover, .lang-bubble-options button:focus-visible { background: rgba(201,169,110,0.22); border-color: var(--gold); color: var(--gold); }
-@media (max-width: 640px) { .lang-bubble { right: 14px; bottom: 14px; padding: 10px 15px; font-size: 12px; max-width: calc(100vw - 28px); } .lang-bubble-prompt { flex-wrap: wrap; } }
-@media (prefers-reduced-motion: reduce) { .lang-bubble { transition: opacity 0.2s ease; transform: none; } }
-
-/* ══ INTRO ══ */
-.intro {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg);
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  padding-left: max(48px, calc((100vw - 1080px)/2 + 48px));
-  padding-right: max(48px, calc((100vw - 1080px)/2 + 48px));
-  display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px;
-  align-items: start; padding-top: 72px;
-  border-bottom: 1px solid var(--line); overflow: hidden;
-  position: relative;
-}
-.intro-glow {
-  position: absolute; top: 0; left: 0; width: 560px; height: 560px;
-  border-radius: 50%; pointer-events: none; z-index: 0;
-  background: radial-gradient(circle, rgba(201,169,110,0.16) 0%, rgba(201,169,110,0.05) 45%, transparent 70%);
-  transform: translate(calc(var(--gx, 50%) - 50%), calc(var(--gy, 20%) - 50%));
-  opacity: 0; transition: opacity 0.4s ease;
-}
-.intro.glow-active .intro-glow { opacity: 1; }
-#hero3d { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.9; }
-@media (max-width: 768px) { #hero3d { height: 380px; opacity: 0.75; } }
-@media (max-width: 768px) { #hero3d { width: 100%; height: 360px; opacity: 0.5; } }
-.intro-left, .intro-right { position: relative; z-index: 1; }
-.intro.glow-ambient .intro-glow { opacity: 0.8; animation: glowDrift 9s ease-in-out infinite; }
-@keyframes glowDrift {
-  0%   { transform: translate(calc(20% - 50%), calc(15% - 50%)); }
-  50%  { transform: translate(calc(75% - 50%), calc(55% - 50%)); }
-  100% { transform: translate(calc(20% - 50%), calc(15% - 50%)); }
-}
-.intro-left {
-  padding-bottom: 80px; position: sticky; top: 40px;
-  opacity: 0; animation: fadeUp 1s ease 0.3s forwards;
-}
-.intro-eyebrow {
-  display: block; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text);
-  margin-bottom: 28px;
-}
-.intro-eyebrow::after {
-  content: ''; display: block; width: 0; height: 1px;
-  background: linear-gradient(90deg, var(--gold), transparent);
-  margin-top: 10px; transition: width 1s ease 0.6s;
-}
-.intro.inview .intro-eyebrow::after { width: 48px; }
-
-.intro-headline {
-  font-family: var(--serif); font-size: clamp(40px, 5.2vw, 72px);
-  font-weight: 300; line-height: 1.14; margin-bottom: 24px; overflow: hidden;
-  color: var(--text);
-}
-.intro-headline .word {
-  display: inline-block; opacity: 0; transform: translateY(28px);
-  animation: wordUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
-}
-.intro-headline .word-block {
-  display: inline; transform: none; animation: fadeIn 0.9s ease forwards;
-}
-.intro-sub {
-  font-size: 14px; font-weight: 300; color: var(--muted);
-  line-height: 1.8; margin-bottom: 40px;
-  opacity: 0; animation: fadeUp 0.8s ease 1.1s forwards;
-}
-.intro-cta { opacity: 0; animation: fadeUp 0.8s ease 1.3s forwards; display: inline-block; }
-
-@keyframes wordUp { to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-.intro-right {
-  padding-bottom: 80px; opacity: 0; animation: fadeUp 1s ease 0.5s forwards; min-width: 0;
-}
-
-/* ══ CAROUSEL ══ */
-.sc-stage {
-  position: relative; height: 520px; perspective: 1200px;
-  touch-action: pan-y; user-select: none; -webkit-user-select: none;
-}
-.sc-track { position: absolute; inset: 0; transform-style: preserve-3d; }
-.sc-card {
-  position: absolute; top: 50%; left: 50%;
-  width: 248px; height: 488px; margin: -244px 0 0 -124px;
-  border: 1px solid var(--line); background: var(--bg2);
-  overflow: hidden; will-change: transform, opacity;
-  transition: border-color 0.3s, box-shadow 0.4s;
-  transform-style: preserve-3d; cursor: pointer;
-}
-.sc-card.is-active {
-  border-color: var(--gold-line);
-  box-shadow: 0 0 0 1px var(--gold-line), 0 40px 80px rgba(0,0,0,0.7);
-  cursor: grab;
-}
-.sc-stage.is-dragging .sc-card { transition: none; cursor: grabbing; }
-.tilt-shine { position: absolute; inset: 0; z-index: 10; pointer-events: none; opacity: 0; transition: opacity 0.3s; }
-.sc-card::after {
-  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 40%; background: linear-gradient(180deg, transparent, rgba(7,7,6,0.94));
-  pointer-events: none;
-}
-
-/* Launching soon card style */
-.sc-card.is-coming-soon {
-  cursor: default;
-}
-.sc-card.is-coming-soon.is-active { cursor: default; }
-.sc-coming-soon-inner {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  overflow: hidden; background: var(--bg2);
-}
-.sc-coming-soon-img {
-  width: 100%; flex: 1; object-fit: cover; object-position: center top;
-  display: block; opacity: 0.55;
-  filter: grayscale(20%);
-}
-.sc-coming-soon-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(7,7,6,0.97) 100%);
-}
-.sc-coming-soon-label {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 20px 18px 18px;
-  z-index: 2;
-}
-.sc-coming-soon-status {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 6px;
-}
-.sc-coming-soon-dot {
-  width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
-  animation: pulse 2.6s ease-in-out infinite; flex-shrink: 0;
-}
-@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(168,118,62,0.5)} 50%{box-shadow:0 0 0 7px rgba(168,118,62,0)} }
-.sc-coming-soon-name {
-  font-family: var(--serif); font-size: 20px; font-weight: 300;
-  color: var(--text); line-height: 1.1;
-}
-
-.sc-fallback {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  text-align: center; padding: 24px;
-  font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--muted);
-  background: radial-gradient(130% 80% at 50% 0%, rgba(168,118,62,0.08), transparent 60%), var(--bg2);
-}
-.sc-frame { position: absolute; inset: 0; overflow: hidden; pointer-events: none; background: var(--bg2); }
-.sc-frame iframe { width: 390px; height: 880px; border: 0; transform: scale(0.6359); transform-origin: top left; pointer-events: none; }
-.sc-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px 16px 14px; z-index: 2; pointer-events: none; }
-.sc-caption .sc-card-name { font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--text); line-height: 1.1; }
-.sc-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%); z-index: 30;
-  width: 40px; height: 40px; border: 1px solid var(--line); background: rgba(12,12,11,0.75);
-  color: var(--muted); font-size: 18px; line-height: 1; cursor: pointer; backdrop-filter: blur(6px);
-  transition: color 0.2s, border-color 0.2s, transform 0.2s;
-}
-.sc-arrow:hover { color: var(--gold); border-color: var(--gold-line); }
-.sc-arrow--prev { left: -20px; }
-.sc-arrow--next { right: -20px; }
-.sc-arrow--prev:hover { transform: translateY(-50%) translateX(-3px); }
-.sc-arrow--next:hover { transform: translateY(-50%) translateX(3px); }
-.sc-detail {
-  margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.sc-detail.is-switching { opacity: 0; transform: translateY(6px); }
-.sc-cat { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-.sc-detail h3 { font-family: var(--serif); font-size: clamp(22px, 2.4vw, 30px); font-weight: 300; line-height: 1.05; margin-bottom: 8px; color: var(--text); }
-.sc-desc { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
-.sc-detail-link { display: inline-block; margin-bottom: 64px; }
-.sc-hint { margin-top: 14px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); }
-
-/* ══ PITCH ══ */
-.pitch {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg);
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  padding: 100px 0; border-bottom: 1px solid var(--line);
-  position: relative; overflow: hidden;
-}
-.pitch > .section-inner { padding: 56px 64px; position: relative; z-index: 1; }
-.pitch-title { font-family: var(--serif); font-size: clamp(32px, 3.8vw, 48px); font-weight: 300; line-height: 1.15; color: var(--text); max-width: 760px; margin-bottom: 20px; }
-.pitch-sub { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; max-width: 640px; }
-
-/* ══ CARE ══ */
-.care {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg);
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  padding: 100px 0; border-bottom: 1px solid var(--line);
-  position: relative; overflow: hidden;
-}
-.care-bg-video {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; opacity: 0.4; z-index: 0; pointer-events: none;
-}
-.care-bg-overlay {
-  position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(180deg, var(--bg) 0%, rgba(12,12,11,0.72) 40%, rgba(12,12,11,0.72) 60%, var(--bg) 100%);
-}
-.care > .section-inner {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
-}
-@media (prefers-reduced-motion: reduce) { .care-bg-video { display: none; } }
-.care-title { font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text); }
-.care-right { display: flex; flex-direction: column; gap: 20px; padding-top: 20px; max-width: 440px; }
-.care-right p { font-size: 14px; font-weight: 300; color: rgba(237,231,217,0.82); line-height: 1.85; }
-.care-right p.care-emphasis { color: var(--text); font-weight: 500; letter-spacing: 0.01em; }
-.care-right p.care-close { font-family: var(--serif); font-style: italic; font-size: 17px; font-weight: 400; color: var(--gold-bright); line-height: 1.6; margin-top: 4px; }
-
-/* ══ GIVING BACK ══ */
-.giving {
-  --bg: #ffffff; --bg2: #ffffff; --text: #241d13;
-  --muted: #2b2a27; --muted2: rgba(36,29,19,0.32); --line: rgba(36,29,19,0.12);
-  --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
-  background: var(--bg);
-  display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  border-bottom: 1px solid var(--line);
-  position: relative;
-  padding: 100px 0;
-}
-.giving-title { font-family: var(--serif); font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin: 18px 0 28px; color: var(--text); }
-.giving-title em { font-style: italic; color: var(--muted); }
-.giving-copy {
-  display: flex; flex-direction: column; gap: 18px; justify-content: center;
-  padding: 44px 48px;
-  margin: 0 24px 0 max(24px, calc((100vw - 1080px)/2 + 24px));
-  border: 1px solid var(--gold-line);
-  position: relative;
-}
-.giving-copy p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; }
-.giving-cta { align-self: flex-start; margin-top: 6px; }
-.giving-form {
-  --bg: #f6f0e2; --bg2: #f6f0e2; --text: #241d13;
-  --muted: #2b2a27; --muted2: rgba(36,29,19,0.32); --line: rgba(36,29,19,0.12);
-  --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
-  background: var(--bg); border-radius: 0;
-  display: flex; flex-direction: column; gap: 22px; justify-content: center;
-  padding: 44px max(48px, calc((100vw - 1080px)/2 + 48px)) 44px 56px;
-}
-.giving-form-title { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--gold-bright); margin: 0 0 4px; }
-.giving-note { font-size: 11px; font-weight: 300; color: var(--muted2); line-height: 1.7; }
-.giving-note a { color: var(--muted2); transition: color 0.2s; }
-.giving-note a:hover { color: var(--gold); }
-.giving-paws { position: relative; width: 100%; min-height: 260px; }
-.paw {
-  position: absolute; left: var(--x); top: var(--y);
-  width: 30px; height: 30px; transform: rotate(var(--rot)); transform-origin: center;
-  fill: var(--gold); opacity: 0;
-  animation: pawWalk 8s ease-in-out infinite;
-  animation-delay: var(--delay);
-}
-/* Desktop trail coordinates — unchanged from original placement */
-.giving-paws .paw:nth-of-type(1) { --x: 12%; --y: 74%; }
-.giving-paws .paw:nth-of-type(2) { --x: 26%; --y: 58%; }
-.giving-paws .paw:nth-of-type(3) { --x: 42%; --y: 66%; }
-.giving-paws .paw:nth-of-type(4) { --x: 56%; --y: 48%; }
-.giving-paws .paw:nth-of-type(5) { --x: 70%; --y: 56%; }
-.giving-paws .paw:nth-of-type(6) { --x: 83%; --y: 38%; }
-@keyframes pawWalk {
-  0%, 100% { opacity: 0; }
-  30%, 55% { opacity: 0.42; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .paw { animation: none; opacity: 0.28; }
-}
-@media (max-width: 768px) {
-  .giving-paws {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    min-height: 0; z-index: 0; opacity: 0.55;
+  :root {
+    --transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
-  /* Mobile trail — confined to upper right corner, starting from the middle.
-     Every step moves forward (right and up); a small alternating wobble
-     is layered on top for a natural gait, never large enough to reverse
-     the forward direction. */
-  .giving-paws .paw:nth-of-type(1) { --x: 52%; --y: 41%; }
-  .giving-paws .paw:nth-of-type(2) { --x: 56%; --y: 32%; }
-  .giving-paws .paw:nth-of-type(3) { --x: 68%; --y: 28%; }
-  .giving-paws .paw:nth-of-type(4) { --x: 72%; --y: 19%; }
-  .giving-paws .paw:nth-of-type(5) { --x: 84%; --y: 15%; }
-  .giving-paws .paw:nth-of-type(6) { --x: 88%; --y: 5%; }
-}
-
-/* ══ FAQ ══ */
-.faq {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg); padding-top: 100px; padding-bottom: 100px; border-bottom: 1px solid var(--line);
-  padding-left: max(48px, calc((100vw - 1080px)/2 + 48px));
-  padding-right: max(48px, calc((100vw - 1080px)/2 + 48px));
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-}
-.faq-title { font-family: var(--serif); font-size: clamp(30px, 4vw, 44px); font-weight: 300; color: var(--text); margin: 16px 0 36px; }
-.faq-inner { padding: 44px 48px; position: relative; }
-.faq-list { display: flex; flex-direction: column; max-width: 640px; }
-.faq-item { padding: 20px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
-.faq-item:first-of-type { border-top: 1px solid var(--line); }
-.faq-q { font-size: 15px; font-weight: 400; color: var(--text); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.faq-toggle { font-size: 20px; color: var(--gold); flex-shrink: 0; transition: transform 0.2s; line-height: 1; }
-.faq-item.open .faq-toggle { transform: rotate(45deg); }
-.faq-a { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding-top 0.3s; }
-.faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
-
-.trust-bullets {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg);
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  padding: 100px 24px;
-  border-bottom: 1px solid var(--line);
-}
-.trust-bullets-list { max-width: 980px; margin: 0 auto; }
-.trust-bullets-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; padding: 32px 40px; position: relative; }
-.trust-bullets-list li { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 400; color: var(--muted); white-space: nowrap; }
-.trust-bullets-list svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--gold); transform: scale(0.4); opacity: 0; transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease; transition-delay: inherit; }
-section.inview .trust-bullets-list svg { transform: scale(1); opacity: 1; }
-@media (max-width: 640px) { .trust-bullets-list { gap: 10px 20px; padding: 24px 20px; box-sizing: border-box; } .trust-bullets-list li { white-space: normal; font-size: 12.5px; } }
-
-/* ══ CONTACT ══ */
-.contact {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg); padding: 100px 0; border-bottom: 1px solid var(--line); text-align: center;
-  width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-}
-.contact .eyebrow::after { margin-left: auto; margin-right: auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-.contact-title { font-family: var(--serif); font-size: clamp(40px, 6vw, 84px); font-weight: 300; line-height: 1.02; letter-spacing: -0.02em; margin: 24px auto 18px; max-width: 18ch; color: var(--text); }
-.contact-box {
-  --bg: #0c0c0b; --bg2: #111110; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.10);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  background: var(--bg); border: 1px solid var(--line);
-  padding: 64px 48px 56px; max-width: 760px; margin: 0 auto;
-  position: relative;
-}
-.contact-sub { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 440px; margin: 0 auto 52px; }
-.contact-form { max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; text-align: left; }
-.field label { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); margin-bottom: 9px; }
-.field input, .field select, .field textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--line); color: var(--text); font-family: var(--sans); font-size: 14px; font-weight: 300; padding: 9px 2px 11px; transition: border-color 0.3s; border-radius: 0; }
-.field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted2) 50%), linear-gradient(135deg, var(--muted2) 50%, transparent 50%); background-position: calc(100% - 4px) 16px, calc(100% - 0px) 16px; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
-.field select option { background: var(--bg2); color: var(--text); }
-.field textarea { resize: vertical; min-height: 84px; }
-.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); outline: none; }
-.field input:disabled { opacity: 0.35; }
-.form-group { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; }
-.no-website-toggle { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 12px; font-weight: 300; color: var(--muted); cursor: pointer; }
-.no-website-toggle input { width: 14px; height: 14px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; }
-.field-block { display: flex; flex-direction: column; }
-.field-label-text { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); margin-bottom: 12px; }
-.chip-group { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font-family: var(--sans); font-size: 12px; font-weight: 400; color: var(--muted); background: transparent; border: 1px solid var(--line); padding: 9px 15px; border-radius: 999px; cursor: pointer; transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease; }
-.chip:hover { border-color: var(--gold-line); color: var(--text); }
-.chip.active { border-color: var(--gold); color: var(--gold-bright); background: var(--gold-dim); }
-.chip:focus-visible { outline: 1px solid var(--gold); outline-offset: 2px; }
-.form-submit { margin-top: 8px; align-self: center; }
-.hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
-.form-success { display: none; text-align: center; padding: 32px 0 8px; }
-.form-success h3 { font-family: var(--serif); font-size: 26px; font-weight: 300; color: var(--gold); margin-bottom: 12px; }
-.form-success p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 380px; margin: 0 auto; }
-.form-error-msg { display: none; font-size: 12px; color: #e07070; text-align: center; margin-top: 12px; letter-spacing: 0.04em; }
-.form-privacy-note { text-align: center; margin-top: 18px; font-size: 11px; }
-.form-privacy-note a { color: var(--muted2); text-decoration: none; border-bottom: 1px solid var(--line); transition: color 0.2s ease; }
-.form-privacy-note a:hover { color: var(--gold); border-color: var(--gold-line); }
-@media (max-width: 640px) { .form-group { grid-template-columns: 1fr; gap: 22px; } }
-
-/* ══ FOOTER ══ */
-/* ══ FOOTER SHELL (matches Stormie Games / Moves / Studios) ══ */
-.hud-frame { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
-.section-inner { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
-.footer-shell { border: 0; border-top: 1px solid rgba(201,169,110,0.12); background: #0c0c0b; }
-footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
-.footer-mark {
-  width: 24px; height: 24px; color: rgba(201,169,110,0.68); margin-bottom: 4px;
-  transform-origin: center;
-  animation: footerBoltStrike 6s ease-in-out infinite;
-}
-@keyframes footerBoltStrike {
-  0%, 92%, 100% { filter: brightness(1) drop-shadow(0 0 0 transparent); transform: scale(1); }
-  93% { filter: brightness(2.2) drop-shadow(0 0 4px rgba(201,169,110,0.85)); transform: scale(1.12); }
-  94% { filter: brightness(1) drop-shadow(0 0 0 transparent); transform: scale(1); }
-  95% { filter: brightness(2.6) drop-shadow(0 0 6px rgba(236,217,174,0.95)); transform: scale(1.16); }
-  96%, 100% { filter: brightness(1) drop-shadow(0 0 0 transparent); transform: scale(1); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .footer-mark { animation: none; }
-}
-.footer-mark-trigger { background: none; border: none; padding: 0; margin-bottom: 4px; cursor: pointer; color: rgba(201,169,110,0.68); transition: color 0.2s ease; }
-.footer-mark-trigger:hover { color: var(--gold); }
-.footer-mark-trigger .footer-mark { margin-bottom: 0; }
-.footer-heart { display: inline-flex; margin-bottom: 4px; opacity: 0.7; transition: opacity 0.2s; text-decoration: none; }
-.footer-heart:hover { opacity: 1; }
-.footer-network { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; }
-.footer-network a { color: rgba(232,228,220,0.30); text-decoration: none; transition: color 0.2s ease; }
-.footer-network a:hover { color: var(--gold); }
-.footer-network .dot { color: rgba(201,169,110,0.32); }
-.footer-row { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; }
-.footer-left { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(232,228,220,0.25); }
-.footer-right { font-family: var(--serif); font-size: 14px; font-style: italic; color: rgba(232,228,220,0.28); }
-.footer-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 28px 20px; width: 100%; max-width: 760px; text-align: left; padding-top: 8px; }
-.footer-col-title { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(201,169,110,0.55); margin-bottom: 10px; }
-.footer-col a, .footer-col .footer-plain { display: block; font-size: 12px; line-height: 2; color: rgba(232,228,220,0.42); text-decoration: none; }
-.footer-col a { transition: color 0.2s ease; }
-.footer-col a:hover { color: var(--gold); }
-.footer-bottom { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 760px; margin-top: 8px; padding-top: 20px; border-top: 1px solid rgba(201,169,110,0.12); gap: 16px; flex-wrap: wrap; }
-.footer-copyright { font-size: 10px; color: rgba(232,228,220,0.25); }
-@media (max-width: 640px) {
-  .footer-grid { grid-template-columns: repeat(2, minmax(0,1fr)); text-align: center; }
-  .footer-col-title { margin-bottom: 6px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-}
-.footer-social { display: flex; align-items: center; gap: 18px; margin-top: 4px; }
-.footer-social a { color: rgba(201,169,110,0.52); display: inline-flex; transition: color 0.2s ease, transform 0.2s ease; }
-.footer-social a:hover { color: var(--gold); transform: translateY(-1px); }
-.footer-social svg { width: 17px; height: 17px; }
-
-/* ══ MOBILE ══ */
-@media (max-width: 900px) {
-  .topbar-nav-desktop { display: none; }
-  .menu-toggle { display: inline-flex; }
-}
-
-@media (max-width: 768px) {
-  .page { padding: 0 24px; }
-  .intro { grid-template-columns: 1fr; gap: 0; padding-top: 48px; }
-  .intro-left { position: static; padding-bottom: 36px; }
-  .intro-headline { font-size: clamp(34px, 9vw, 52px); }
-  .intro-sub { margin-bottom: 28px; }
-  .intro-right { padding-bottom: 0; }
-  .sc-stage { height: 440px; }
-  .sc-card { width: 210px; height: 412px; margin: -206px 0 0 -105px; }
-  .sc-frame iframe { transform: scale(0.5385); }
-  .sc-arrow--prev { left: -4px; }
-  .sc-arrow--next { right: -4px; }
-  .pitch > .section-inner { padding: 36px 24px; box-sizing: border-box; margin-left: 16px; margin-right: 16px; width: auto; }
-  .care > .section-inner { grid-template-columns: 1fr; gap: 40px; }
-  .care-right { gap: 18px; padding-top: 0; max-width: none; }
-  .giving { grid-template-columns: 1fr; }
-  .giving-copy { padding: 32px 24px; margin: 0 16px; }
-  .giving-form { padding: 32px 24px; }
-  .faq-inner { padding: 32px 24px; }
-  .contact-box { padding: 40px 20px 36px; margin: 0 4px; }
-  .need-response { padding: 32px 20px; margin: 0 4px; }
-  .footer-row { gap: 5px; text-align: center; }
-  footer { padding: 36px 24px 30px; gap: 14px; }
-  .footer-network { max-width: 320px; line-height: 1.8; }
-  .section-inner { padding: 0 24px; }
-  .topbar { padding-top: 14px; padding-bottom: 14px; }
-  .topbar-left { font-size: 9px; letter-spacing: 0.14em; }
-  .topbar-nav-desktop { display: none; }
-  .menu-toggle { display: inline-flex; }
-  .menu-panel { right: 24px; left: 24px; min-width: 0; }
-  .hide-mobile { display: none; }
-}
-
-/* ══ NEED PICKER ══ */
-.need-picker { max-width: 600px; margin: 0 auto; }
-.need-grid {
-  display: flex; flex-direction: column; gap: 2px;
-  margin-top: 32px;
-}
-.need-btn {
-  --bg: #0c0c0b; --bg2: #0c0c0b; --text: #ede7d9;
-  --muted: rgba(237,231,217,0.55); --muted2: rgba(237,231,217,0.30); --line: rgba(237,231,217,0.14);
-  --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
-  width: 100%; background: var(--bg2); border: 1px solid var(--line);
-  color: var(--text); font-family: var(--sans); font-size: 15px; font-weight: 300;
-  padding: 20px 28px; text-align: left; cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, padding-left 0.3s;
-  position: relative;
-}
-.need-btn::before {
-  content: ''; position: absolute; top: 0; left: 0; width: 0; height: 1px;
-  background: var(--gold); transition: width 0.4s ease;
-}
-.need-btn::after {
-  content: '→'; position: absolute; right: 28px; top: 50%; transform: translateY(-50%);
-  color: var(--gold); transition: color 0.2s, transform 0.25s ease;
-}
-.need-btn:hover { background: var(--bg); border-color: var(--gold-line); padding-left: 36px; }
-.need-btn:hover::before { width: 100%; }
-.need-btn:hover::after { color: var(--gold); transform: translateY(-50%) translateX(4px); }
-.need-response {
-  --bg: #ffffff; --bg2: #ffffff; --text: #241d13;
-  --muted: #2b2a27; --muted2: rgba(36,29,19,0.32); --line: rgba(36,29,19,0.12);
-  --gold: #a8763e; --gold-bright: #7d5a2c; --gold-dim: rgba(168,118,62,0.14); --gold-line: rgba(168,118,62,0.4);
-  max-width: 600px; margin: 0 auto; background: var(--bg); border: 1px solid var(--line);
-  padding: 44px 40px; text-align: left; color: var(--text);
-}
-.need-back {
-  background: none; border: none; font-family: var(--sans); font-size: 10px;
-  letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2);
-  cursor: pointer; padding: 0; margin-bottom: 32px; transition: color 0.2s;
-}
-.need-back:hover { color: var(--text); }
-.need-answer {
-  border-left: 2px solid var(--gold); padding-left: 24px; margin-bottom: 40px;
-}
-.need-answer h3 {
-  font-family: var(--serif); font-size: 24px; font-weight: 300;
-  color: var(--text); margin-bottom: 10px; line-height: 1.1;
-}
-.need-answer p {
-  font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.85;
-}
-
-
-/* ══════════════════════════════════════════════════════════════════
-   SCROLL REVEAL — content fades and slides gently into place as each
-   section enters the viewport. Driven entirely by the existing
-   IntersectionObserver, which already adds .inview to every <section>
-   the first time it's seen (see script at the bottom of the page).
-   This block just gives that class real visual weight instead of the
-   single decorative underline it previously controlled alone.
-   ══════════════════════════════════════════════════════════════════ */
-.pitch-title, .pitch-sub,
-.care-title, .care-right p,
-.trust-bullets-list li,
-.giving-copy > *,
-.contact-title, .need-grid .need-btn,
-.faq-title, .faq-item {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
-}
-section.inview .pitch-title, section.inview .pitch-sub,
-section.inview .care-title, section.inview .care-right p,
-section.inview .trust-bullets-list li,
-section.inview .giving-copy > *,
-section.inview .contact-title, section.inview .need-grid .need-btn,
-section.inview .faq-title, section.inview .faq-item {
-  opacity: 1;
-  transform: none;
-}
-
-
-
-.care-right p:nth-child(1) { transition-delay: 0s; }
-.care-right p:nth-child(2) { transition-delay: 0.08s; }
-.care-right p:nth-child(3) { transition-delay: 0.16s; }
-.care-right p:nth-child(4) { transition-delay: 0.24s; }
-.care-right p:nth-child(5) { transition-delay: 0.32s; }
-.care-right p:nth-child(6) { transition-delay: 0.4s; }
-
-.trust-bullets-list li:nth-child(1) { transition-delay: 0s; }
-.trust-bullets-list li:nth-child(2) { transition-delay: 0.22s; }
-.trust-bullets-list li:nth-child(3) { transition-delay: 0.44s; }
-.trust-bullets-list li:nth-child(4) { transition-delay: 0.66s; }
-.trust-bullets-list li:nth-child(5) { transition-delay: 0.88s; }
-
-.giving-copy > *:nth-child(1) { transition-delay: 0s; }
-.giving-copy > *:nth-child(2) { transition-delay: 0.1s; }
-.giving-copy > *:nth-child(3) { transition-delay: 0.2s; }
-.giving-copy > *:nth-child(4) { transition-delay: 0.3s; }
-
-.need-grid .need-btn:nth-child(1) { transition-delay: 0s; }
-.need-grid .need-btn:nth-child(2) { transition-delay: 0.06s; }
-.need-grid .need-btn:nth-child(3) { transition-delay: 0.12s; }
-.need-grid .need-btn:nth-child(4) { transition-delay: 0.18s; }
-.need-grid .need-btn:nth-child(5) { transition-delay: 0.24s; }
-.need-grid .need-btn:nth-child(6) { transition-delay: 0.3s; }
-
-.faq-item:nth-child(1) { transition-delay: 0.05s; }
-.faq-item:nth-child(2) { transition-delay: 0.1s; }
-.faq-item:nth-child(3) { transition-delay: 0.15s; }
-.faq-item:nth-child(4) { transition-delay: 0.2s; }
-.faq-item:nth-child(5) { transition-delay: 0.25s; }
-.faq-item:nth-child(6) { transition-delay: 0.3s; }
-.faq-item:nth-child(7) { transition-delay: 0.35s; }
-.faq-item:nth-child(8) { transition-delay: 0.4s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .pitch-title, .pitch-sub,
-  .care-title, .care-right p,
-    .trust-bullets-list li,
-  .giving-copy > *,
-  .contact-title, .need-grid .need-btn,
-  .faq-title, .faq-item {
-    opacity: 1; transform: none; transition: none;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg); color: var(--text);
+    transition: var(--transition);
   }
-}
+
+  /* ============ THEME A: LIGHT, BLUE ACCENT ============ */
+  [data-theme="a"] {
+    --bg: #fbfbfd; --bg2: #f5f5f7; --text: #1d1d1f; --muted: #6e6e73; --muted2: #86868b;
+    --line: #d2d2d7; --accent: #0071e3; --accent-text: #ffffff; --card: #ffffff;
+  }
+  /* ============ THEME B: DARK, WHITE ACCENT ============ */
+  [data-theme="b"] {
+    --bg: #000000; --bg2: #111113; --text: #f5f5f7; --muted: #a1a1a6; --muted2: #86868b;
+    --line: #2a2a2c; --accent: #f5f5f7; --accent-text: #000000; --card: #0a0a0c;
+  }
+  /* ============ THEME C: LIGHT, ORANGE ACCENT ============ */
+  [data-theme="c"] {
+    --bg: #ffffff; --bg2: #f7f6f4; --text: #111111; --muted: #6e6e73; --muted2: #86868b;
+    --line: #e2e2e2; --accent: #ff4d1c; --accent-text: #ffffff; --card: #ffffff;
+  }
+
+  .theme-switcher { display: none; }
+
+  header { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .logo { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+  nav { display: flex; align-items: center; gap: 26px; }
+  nav a { font-size: 13px; color: var(--muted); text-decoration: none; cursor: pointer; }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .lang-select { display: flex; gap: 6px; font-size: 12px; }
+  .lang-select button { border: none; background: transparent; color: var(--muted2); cursor: pointer; font-family: inherit; padding: 0; }
+  .lang-select button.active { color: var(--text); font-weight: 600; }
+  .icon-toggle { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .icon-toggle svg { width: 15px; height: 15px; stroke: var(--muted); }
+  .nav-cta { background: var(--accent); color: var(--accent-text); padding: 10px 20px; border-radius: 980px; font-size: 13px; font-weight: 500; text-decoration: none; }
+
+  section { padding: 120px 48px; border-bottom: 1px solid var(--line); }
+  .inner { max-width: 980px; margin: 0 auto; }
+
+  .hero { position: relative; min-height: 100vh; overflow: hidden; display: flex; align-items: flex-end; }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .hero-bg-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s ease; overflow: hidden; background: var(--bg2); }
+  .hero-bg-slide.active { opacity: 1; }
+  .hero-bg-slide iframe { position: absolute; top: 50%; left: 50%; width: 1920px; height: 1200px; border: 0; pointer-events: none; transform: translate(-50%, -50%) scale(var(--sc, 1)); }
+  .hero-bg-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.75) 100%); }
+  .hero-content { position: relative; z-index: 2; width: 100%; text-align: left; padding: 0 48px 90px; }
+  .hero-content .inner { max-width: 700px; }
+  .hero-content .eyebrow { color: rgba(255,255,255,0.75); }
+  .hero-content h1 { color: #fff; }
+  .hero-content p.sub { color: rgba(255,255,255,0.75); }
+  .hero-case-label { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .hero-case-label .dot { width: 6px; height: 6px; border-radius: 50%; background: #34c759; }
+  .hero-case-label span { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .hero-nav { position: absolute; bottom: 40px; right: 48px; z-index: 3; display: flex; align-items: center; gap: 14px; }
+  .hero-dots { display: flex; gap: 6px; }
+  .hero-dots button { width: 6px; height: 6px; border-radius: 50%; border: none; background: rgba(255,255,255,0.35); cursor: pointer; padding: 0; }
+  .hero-dots button.active { background: #fff; width: 20px; border-radius: 3px; }
+  .hero-arrows { display: flex; gap: 8px; }
+  .hero-arrows button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.25); backdrop-filter: blur(6px); cursor: pointer; color: #fff; font-size: 17px; }
+  @media (max-width: 768px) {
+    .hero-content { padding: 0 20px 60px; text-align: center; }
+    .hero-nav { right: 50%; transform: translateX(50%); bottom: 20px; }
+  }
+  .hero-grid { display: flex; flex-direction: column; gap: 0; text-align: center; align-items: center; }
+  .hero-grid .btn { margin-top: 28px; }
+  .eyebrow { font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 20px; }
+  h1 { font-size: clamp(38px, 4.8vw, 60px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 22px; }
+  .hero p.sub { font-size: 17px; color: var(--muted); max-width: 460px; margin: 0 auto 32px; line-height: 1.55; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 34px; border-radius: 980px; background: var(--accent); color: var(--accent-text); font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; font-family: inherit; }
+  .btn-outline { background: transparent; border: 1px solid var(--line); color: var(--text); }
+
+  @media (max-width: 768px) {
+    .hero { min-height: 82vh; padding: 60px 16px; }
+    .sc-card { width: 190px; height: 300px; margin: -150px 0 0 -95px; }
+    .sc-frame-wrap iframe { transform: scale(0.198); }
+
+  }
+
+  h2 { font-size: clamp(28px, 3.6vw, 44px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px; }
+  section p.sub { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.65; }
+
+  .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .care-grid p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
+  .care-grid p.emphasis { color: var(--text); font-weight: 500; }
+  .care-grid p.close { font-style: italic; color: var(--text); font-size: 17px; }
+
+  .bullets { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; text-align: center; }
+  .bullet { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .bullet::before { content: '✓'; color: var(--accent); font-weight: 700; }
+
+  .contact { text-align: center; }
+  .contact-box { max-width: 640px; margin: 0 auto; }
+  .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 36px; text-align: left; }
+  .need-btn { padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); font-size: 14px; font-weight: 500; font-family: inherit; cursor: pointer; text-align: left; transition: var(--transition); }
+  .need-btn:hover { border-color: var(--accent); background: var(--bg2); }
+  .need-response { max-width: 620px; margin: 0 auto; text-align: left; }
+  .need-back { border: none; background: transparent; color: var(--muted); font-size: 13px; cursor: pointer; font-family: inherit; margin-bottom: 24px; padding: 0; }
+  .need-answer h3 { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
+  .need-answer p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
+  .contact form { display: flex; flex-direction: column; gap: 20px; }
+  .field label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 8px; }
+  .field input, .field select, .field textarea { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font-family: inherit; font-size: 14px; }
+  .field textarea { min-height: 80px; resize: vertical; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .no-website-toggle { display: flex !important; align-items: center; gap: 8px; font-size: 12px !important; font-weight: 400 !important; color: var(--muted) !important; margin-top: 8px; }
+  .no-website-toggle input { width: auto !important; }
+  .field-label-text { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 10px; }
+  .chip-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 8px 14px; border-radius: 980px; border: 1px solid var(--line); background: var(--card); color: var(--muted); font-size: 12px; font-family: inherit; cursor: pointer; transition: var(--transition); }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+  .form-privacy-note { font-size: 12px; color: var(--muted2); margin-top: 4px; }
+  .form-privacy-note a { color: var(--muted); }
+  .form-success { display: none; text-align: center; padding: 40px 0; }
+  .form-success h3 { font-size: 22px; margin-bottom: 10px; }
+  .form-success p { font-size: 14px; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.6; }
+
+  .giving { background: var(--bg2); }
+  .giving-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+  /* ============ ABOUT ============ */
+  .about-sign { font-style: italic; color: var(--muted2); font-size: 15px; margin-top: 8px; }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
+  .why-item { background: var(--card); padding: 28px 28px 26px; }
+  .why-num { display: block; font-style: italic; font-size: 12px; color: var(--accent); margin-bottom: 8px; }
+  .why-title { display: block; font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+  .why-body { font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+  /* ============ SEGMENTS (Who I work with) ============ */
+  .segments-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
+  .segments-grid .segment-full { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .segment-item { background: var(--card); padding: 32px; }
+  .segment-name { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+  .segment-text { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; max-width: 420px; }
+  .segment-link { font-size: 12px; font-weight: 600; color: var(--accent); }
+  @media (max-width: 768px) { .why-grid, .segments-grid { grid-template-columns: 1fr; } .segments-grid .segment-full { flex-direction: column; align-items: flex-start; } }
+  .giving-grid p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+  .giving-img { aspect-ratio: 4/3; border-radius: 16px; background: var(--card); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; color: var(--muted2); font-size: 13px; }
+
+  .faq-item { border-bottom: 1px solid var(--line); padding: 22px 0; cursor: pointer; }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 500; }
+  .faq-toggle { font-size: 20px; color: var(--muted); transition: transform 0.25s; }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .faq-item.open .faq-a { max-height: 240px; padding-top: 12px; }
+
+  footer { padding: 64px 48px 32px; }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 980px; margin: 0 auto 40px; }
+  .footer-col-title { font-size: 12px; font-weight: 600; margin-bottom: 14px; }
+  .footer-col p, .footer-col a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 8px; }
+  .footer-bottom { max-width: 980px; margin: 0 auto; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 12px; color: var(--muted2); }
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media (max-width: 768px) {
+    header { padding: 16px 20px; } nav { display: none; }
+    section { padding: 72px 20px; }
+    .care-grid, .giving-grid, .row2 { grid-template-columns: 1fr; gap: 32px; }
+    .hero-grid { gap: 40px; }
+  }
 </style>
 </head>
-<body>
-<div class="page">
+<body data-theme="c">
 
-<!-- LANGUAGE SUGGESTION BUBBLE — appears once per session, then dismisses -->
-<div class="lang-bubble" id="langBubble" role="status" aria-live="polite"></div>
-
-<!-- TOPBAR -->
-<header class="topbar">
-  <span class="topbar-left">
-    <svg class="topbar-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
-      <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/>
-    </svg>
-    Stormie Studios
-  </span>
-  <nav class="topbar-right">
-    <div class="topbar-nav-desktop">
-      <a href="#work" data-i18n="nav_work">Work</a>
-      <a href="about.html" data-i18n="nav_about">About</a>
-      <a href="who-i-work-with.html" data-i18n="nav_segments">Who I work with</a>
-      <a href="what-you-get.html" data-i18n="nav_included">What you get</a>
-      <a href="#giving" data-i18n="nav_giving">Giving Back</a>
-      <a href="#faq" data-i18n="nav_faq">Faq</a>
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" id="lang-en-desktop" class="active" onclick="setLang('en')">EN</button>
-        <span>/</span>
-        <button type="button" id="lang-sv-desktop" onclick="setLang('sv')">SV</button>
-        <span>/</span>
-        <button type="button" id="lang-th-desktop" onclick="setLang('th')">TH</button>
-      </div>
-      <a href="#contact" class="cta-link" data-i18n="nav_cta">Request a consultation</a>
-    </div>
-    <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuPanel">
-      <span data-i18n="nav_menu">Menu</span>
-      <span class="menu-toggle-lines" aria-hidden="true"><i></i><i></i></span>
-    </button>
+<header>
+  <div class="logo">STORMIE STUDIOS</div>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#segments">Who I work with</a>
+    <a href="#care">What you get</a>
+    <a href="#giving">Giving back</a>
+    <a href="#faq">Faq</a>
   </nav>
-
-  <div class="menu-panel" id="menuPanel">
-    <a href="#work" data-i18n="nav_work">Work</a>
-    <a href="about.html" data-i18n="nav_about">About</a>
-    <a href="who-i-work-with.html" data-i18n="nav_segments">Who I work with</a>
-    <a href="what-you-get.html" data-i18n="nav_included">What you get</a>
-    <a href="#giving" data-i18n="nav_giving">Giving Back</a>
-    <a href="#faq" data-i18n="nav_faq">Faq</a>
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button type="button" id="lang-en" class="active" onclick="setLang('en')">EN</button>
-      <span>/</span>
-      <button type="button" id="lang-sv" onclick="setLang('sv')">SV</button>
-      <span>/</span>
-      <button type="button" id="lang-th" onclick="setLang('th')">TH</button>
+  <div class="nav-right">
+    <div class="lang-select">
+      <button class="active" data-lang="en">EN</button><span style="color:var(--line)">/</span>
+      <button data-lang="sv">SV</button><span style="color:var(--line)">/</span>
+      <button data-lang="th">TH</button>
     </div>
-    <a href="#contact" class="cta-link" data-i18n="nav_cta">Request a consultation</a>
+    <button class="icon-toggle" id="modeToggle" aria-label="Toggle dark mode">
+      <svg id="modeIcon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a class="nav-cta" href="#contact">Request a consultation</a>
   </div>
 </header>
 
-<!-- INTRO -->
-<section class="intro inview" id="work">
-  <div class="intro-glow" id="introGlow" aria-hidden="true"></div>
-  <canvas id="hero3d" aria-hidden="true"></canvas>
-  <div class="intro-left">
-    <span class="intro-eyebrow" data-i18n="hero_eyebrow">Stockholm · Digital studio for sport & fitness brands</span>
-    <h1 class="intro-headline" id="introHeadline">Custom websites.<br>Built to perform.<br>Professionally managed.</h1>
-    <p class="intro-sub" data-i18n="hero_sub">Built to convert visitors into members, and effortless for you to run.</p>
-    <a class="btn-gold intro-cta" href="#contact" data-i18n="nav_cta">Request a consultation</a>
+<section class="hero">
+  <div class="hero-content">
+    <div class="inner hero-grid">
+      <p class="eyebrow">Stockholm — Digital studio for sport &amp; fitness brands</p>
+      <h1>Custom websites.<br>Built to perform.<br><span style="color: var(--accent);">Professionally managed.</span></h1>
+      <p class="sub">Built to convert visitors into members, and effortless for you to run.</p>
+      <a class="btn" href="#contact">Request a consultation</a>
+    </div>
   </div>
-
-  <div class="intro-right">
-    <div class="sc-stage" id="scStage" aria-roledescription="carousel" aria-label="Case showcase">
-      <button class="sc-arrow sc-arrow--prev" id="scPrev" aria-label="Previous">&#8249;</button>
+  <div class="showcase">
+    <div class="sc-stage" id="scStage">
       <div class="sc-track" id="scTrack"></div>
-      <button class="sc-arrow sc-arrow--next" id="scNext" aria-label="Next">&#8250;</button>
     </div>
-    <div class="sc-detail" id="scDetail" aria-live="polite">
-      <p class="sc-cat" id="scCat"></p>
-      <h3 id="scName"></h3>
-      <p class="sc-desc" id="scDesc"></p>
-      <a class="btn-ghost sc-detail-link" id="scLink" href="#"></a>
+  </div>
+  <div class="showcase-nav">
+    <div class="showcase-arrows"><button id="scPrev" aria-label="Previous">‹</button></div>
+    <div class="showcase-dots" id="scDots"></div>
+    <div class="showcase-arrows"><button id="scNext" aria-label="Next">›</button></div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="inner">
+    <p class="eyebrow">Selected work</p>
+    <h2>Custom websites built around how your business actually works.</h2>
+    <p class="sub">Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.</p>
+  </div>
+</section>
+
+<section id="about">
+  <div class="inner">
+    <p class="eyebrow">About</p>
+    <h2>Built from <span style="color: var(--accent);">the gym floor.</span></h2>
+    <p class="sub">I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.</p>
+    <p class="sub">Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.</p>
+    <p class="about-sign">— Storm</p>
+    <div class="why-grid">
+      <div class="why-item"><span class="why-num">i.</span><span class="why-title">Licensed Personal Trainer</span><p class="why-body">Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.</p></div>
+      <div class="why-item"><span class="why-num">ii.</span><span class="why-title">Agile Project Manager &amp; Developer</span><p class="why-body">Trained at Futuregames and Stockholm University. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.</p></div>
+      <div class="why-item"><span class="why-num">iii.</span><span class="why-title">Former Gym Manager &amp; Fitness Instructor</span><p class="why-body">Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.</p></div>
+      <div class="why-item"><span class="why-num">iv.</span><span class="why-title">Built From the Industry</span><p class="why-body">Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.</p></div>
     </div>
   </div>
 </section>
 
-<!-- PITCH -->
-<section class="pitch">
-<div class="section-inner">
-  <h2 class="pitch-title" data-i18n="pitch_title">Custom websites built around <span class="gold-shimmer">how your business actually works.</span></h2>
-  <p class="pitch-sub" data-i18n="pitch_sub">Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.</p>
-</div>
-</section>
-
-<!-- CARE -->
-<section class="care">
-  <video class="care-bg-video" autoplay muted loop playsinline poster="care-bg-poster.jpg" aria-hidden="true">
-    <source src="care-bg.mp4" type="video/mp4">
-  </video>
-  <div class="care-bg-overlay" aria-hidden="true"></div>
-<div class="section-inner">
-  <h2 class="care-title" data-i18n="care_title">Easy for you.<br><span class="gold-shimmer">Professionally managed.</span></h2>
-  <div class="care-right">
-    <p data-i18n="care_p1">Your website is built so you can manage what changes day to day, without touching code.</p>
-    <p data-i18n="care_p2">Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.</p>
-    <p data-i18n="care_p3">Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.</p>
-    <p data-i18n="care_p4">Your domain, content and brand remain yours.</p>
-    <p class="care-emphasis" data-i18n="care_p5">No page builder maintenance. No plugin stack. No code to manage.</p>
-    <p class="care-close" data-i18n="care_p6">Just a custom website you can actually operate yourself.</p>
+<section id="segments">
+  <div class="inner">
+    <p class="eyebrow">Who I work with</p>
+    <h2>Built for the fitness industry.<br><span style="color: var(--accent);">And a few causes I care about.</span></h2>
+    <div class="segments-grid">
+      <div class="segment-item">
+        <h3 class="segment-name">Gyms &amp; martial arts clubs</h3>
+        <p class="segment-text">More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.</p>
+        <span class="segment-link">See how →</span>
+      </div>
+      <div class="segment-item">
+        <h3 class="segment-name">PTs &amp; coaches</h3>
+        <p class="segment-text">Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.</p>
+        <span class="segment-link" style="color: var(--muted2);">Coming soon</span>
+      </div>
+      <div class="segment-item segment-full">
+        <div>
+          <h3 class="segment-name">Shop &amp; brand</h3>
+          <p class="segment-text" style="margin-bottom: 0;">Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.</p>
+        </div>
+        <span class="segment-link" style="color: var(--muted2); white-space: nowrap;">Coming soon</span>
+      </div>
+    </div>
   </div>
-</div>
 </section>
 
-<!-- CUSTOM BUILT -->
-
-<!-- CONTACT -->
-<section class="trust-bullets" id="trust-bullets">
-  <ul class="trust-bullets-list">
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb1">Your domain stays yours</span></li>
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb2">Your content stays yours</span></li>
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb3">Cancel hosting anytime</span></li>
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb4">Direct contact with your developer</span></li>
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tb5">Built in Sweden, available worldwide</span></li>
-  </ul>
+<section id="care" class="care">
+  <div class="inner care-grid">
+    <div>
+      <h2>Easy for you.<br>Professionally managed.</h2>
+    </div>
+    <div>
+      <p>Your website is built so you can manage what changes day to day, without touching code.</p>
+      <p>Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.</p>
+      <p>Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.</p>
+      <p>Your domain, content and brand remain yours.</p>
+      <p class="emphasis">No page builder maintenance. No plugin stack. No code to manage.</p>
+      <p class="close">Just a custom website you can actually operate yourself.</p>
+    </div>
+  </div>
 </section>
 
-<section class="contact" id="contact">
-<div class="section-inner">
-  <div class="contact-box">
-    <p class="eyebrow" data-i18n="ct_label">Get in touch</p>
-    <h2 class="contact-title" data-i18n="ct_title">What do you need <span class="gold-shimmer">help with?</span></h2>
+<section>
+  <div class="inner">
+    <div class="bullets">
+      <span class="bullet">Your domain stays yours</span>
+      <span class="bullet">Your content stays yours</span>
+      <span class="bullet">Cancel hosting anytime</span>
+      <span class="bullet">Direct contact with your developer</span>
+      <span class="bullet">Built in Sweden, available worldwide</span>
+    </div>
+  </div>
+</section>
 
-    <!-- NEED PICKER -->
-    <div class="need-picker" id="needPicker">
+<section id="contact" class="contact">
+  <div class="inner">
+    <div class="contact-box" id="needPicker">
+      <p class="eyebrow">Get in touch</p>
+      <h2>What do you need <span style="color: var(--accent);">help with?</span></h2>
       <div class="need-grid">
-        <button class="need-btn" data-need="members" data-i18n-need="need_members">More members</button>
-        <button class="need-btn" data-need="impression" data-i18n-need="need_impression">Better first impression</button>
-        <button class="need-btn" data-need="admin" data-i18n-need="need_admin">Easier administration</button>
-        <button class="need-btn" data-need="outdated" data-i18n-need="need_outdated">Replace an outdated website</button>
-        <button class="need-btn" data-need="new" data-i18n-need="need_new">New gym opening</button>
-        <button class="need-btn" data-need="other" data-i18n-need="need_other">Something else</button>
+        <button class="need-btn" data-need="members">More members</button>
+        <button class="need-btn" data-need="impression">Better first impression</button>
+        <button class="need-btn" data-need="admin">Easier administration</button>
+        <button class="need-btn" data-need="outdated">Replace an outdated website</button>
+        <button class="need-btn" data-need="new">New gym opening</button>
+        <button class="need-btn" data-need="other">Something else</button>
       </div>
     </div>
-  </div>
 
-  <!-- NEED RESPONSE — shown after picking -->
-  <div class="need-response" id="needResponse" style="display:none">
-    <button class="need-back" id="needBack" data-i18n="need_back">← Back</button>
-    <div class="need-answer" id="needAnswer"></div>
-    <form class="contact-form" id="contactForm">
-      <p class="hp-field" aria-hidden="true"><label>Skip: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label></p>
-      <input type="hidden" name="need" id="f-need" value=""/>
-
-      <div class="form-group">
-        <div class="field"><label for="f-name" data-i18n="f_name">Name</label><input id="f-name" type="text" name="name" required autocomplete="name" /></div>
-        <div class="field"><label for="f-email" data-i18n="f_email">Email</label><input id="f-email" type="email" name="email" required autocomplete="email" /></div>
-      </div>
-
-      <div class="field"><label for="f-company" data-i18n="f_company">Company / organisation</label><input id="f-company" type="text" name="company" required autocomplete="organization" /></div>
-
-      <div class="field">
-        <label for="f-website" data-i18n="f_website">Existing website</label>
-        <input id="f-website" type="url" name="website" placeholder="https://" autocomplete="url" />
-        <label class="no-website-toggle" for="f-no-website"><input type="checkbox" id="f-no-website" /><span data-i18n="f_no_website">No current website</span></label>
-      </div>
-
-      <div class="field">
-        <label for="f-need-select" data-i18n="f_need_label">What do you need?</label>
-        <select id="f-need-select" name="need_label">
-          <option value="members" data-i18n="need_members">More members</option>
-          <option value="impression" data-i18n="need_impression">Better first impression</option>
-          <option value="admin" data-i18n="need_admin">Easier administration</option>
-          <option value="outdated" data-i18n="need_outdated">Replace an outdated website</option>
-          <option value="new" data-i18n="need_new">New gym opening</option>
-          <option value="other" data-i18n="need_other">Something else</option>
-        </select>
-      </div>
-
-      <div class="field"><label for="f-msg" data-i18n="f_msg">What are you looking to improve, build or solve?</label><textarea id="f-msg" name="message" rows="3" required></textarea></div>
-
-      <div class="field-block">
-        <span class="field-label-text" data-i18n="f_features_label">Features / functionality</span>
-        <div class="chip-group" id="featuresGroup" role="group" aria-label="Features and functionality">
-          <button type="button" class="chip" data-value="cms" data-i18n="feat_cms" aria-pressed="false">Content management / CMS</button>
-          <button type="button" class="chip" data-value="schedule" data-i18n="feat_schedule" aria-pressed="false">Class schedule</button>
-          <button type="button" class="chip" data-value="booking" data-i18n="feat_booking" aria-pressed="false">Booking</button>
-          <button type="button" class="chip" data-value="membership" data-i18n="feat_membership" aria-pressed="false">Membership / sign-up</button>
-          <button type="button" class="chip" data-value="forms" data-i18n="feat_forms" aria-pressed="false">Contact or lead forms</button>
-          <button type="button" class="chip" data-value="calendar" data-i18n="feat_calendar" aria-pressed="false">Calendar integration</button>
-          <button type="button" class="chip" data-value="notifications" data-i18n="feat_notifications" aria-pressed="false">Email notifications</button>
-          <button type="button" class="chip" data-value="social" data-i18n="feat_social" aria-pressed="false">Social media integration</button>
-          <button type="button" class="chip" data-value="multilang" data-i18n="feat_multilang" aria-pressed="false">Multiple languages</button>
-          <button type="button" class="chip" data-value="ecommerce" data-i18n="feat_ecommerce" aria-pressed="false">E-commerce / payments</button>
-          <button type="button" class="chip" data-value="seo" data-i18n="feat_seo" aria-pressed="false">SEO</button>
-          <button type="button" class="chip" data-value="analytics" data-i18n="feat_analytics" aria-pressed="false">Analytics</button>
-          <button type="button" class="chip" data-value="notsure" data-i18n="feat_notsure" aria-pressed="false">Not sure yet</button>
-          <button type="button" class="chip" data-value="other" data-i18n="feat_other" aria-pressed="false">Something else</button>
+    <div class="need-response" id="needResponse" style="display:none">
+      <button class="need-back" id="needBack">← Back</button>
+      <div class="need-answer" id="needAnswer"></div>
+      <form id="contactForm" onsubmit="event.preventDefault(); document.getElementById('needResponse').querySelector('form').style.display='none'; document.getElementById('formSuccess').style.display='block';">
+        <div class="row2">
+          <div class="field"><label>Name</label><input type="text" required /></div>
+          <div class="field"><label>Email</label><input type="email" required /></div>
         </div>
-      </div>
-
-      <div class="field-block">
-        <span class="field-label-text" data-i18n="f_budget_label">Budget</span>
-        <div class="chip-group" id="budgetGroup" role="group" aria-label="Budget range">
-          <button type="button" class="chip" data-value="under10k" data-i18n="budget_under10k" aria-pressed="false">Under 10,000 SEK</button>
-          <button type="button" class="chip" data-value="r10to20" data-i18n="budget_10to20" aria-pressed="false">10,000–20,000 SEK</button>
-          <button type="button" class="chip" data-value="r20to40" data-i18n="budget_20to40" aria-pressed="false">20,000–40,000 SEK</button>
-          <button type="button" class="chip" data-value="r40plus" data-i18n="budget_40plus" aria-pressed="false">40,000+ SEK</button>
-          <button type="button" class="chip" data-value="notsure" data-i18n="budget_notsure" aria-pressed="false">Not sure yet</button>
+        <div class="field"><label>Company / organisation</label><input type="text" required /></div>
+        <div class="field">
+          <label>Existing website</label>
+          <input type="url" placeholder="https://" />
+          <label class="no-website-toggle"><input type="checkbox" /><span>No current website</span></label>
         </div>
-      </div>
-
-      <div class="field-block">
-        <span class="field-label-text" data-i18n="f_launch_label">Desired launch</span>
-        <div class="chip-group" id="launchGroup" role="group" aria-label="Desired launch timeline">
-          <button type="button" class="chip" data-value="asap" data-i18n="launch_asap" aria-pressed="false">As soon as possible</button>
-          <button type="button" class="chip" data-value="within1mo" data-i18n="launch_1mo" aria-pressed="false">Within 1 month</button>
-          <button type="button" class="chip" data-value="1to3mo" data-i18n="launch_1to3mo" aria-pressed="false">1–3 months</button>
-          <button type="button" class="chip" data-value="3to6mo" data-i18n="launch_3to6mo" aria-pressed="false">3–6 months</button>
-          <button type="button" class="chip" data-value="nodeadline" data-i18n="launch_nodeadline" aria-pressed="false">No fixed deadline</button>
+        <div class="field"><label>What are you looking to improve, build or solve?</label><textarea required></textarea></div>
+        <div class="field-block">
+          <span class="field-label-text">Features / functionality</span>
+          <div class="chip-group">
+            <button type="button" class="chip">Content management / CMS</button>
+            <button type="button" class="chip">Class schedule</button>
+            <button type="button" class="chip">Booking</button>
+            <button type="button" class="chip">Membership / sign-up</button>
+            <button type="button" class="chip">Contact or lead forms</button>
+            <button type="button" class="chip">Calendar integration</button>
+            <button type="button" class="chip">E-commerce / payments</button>
+            <button type="button" class="chip">Not sure yet</button>
+          </div>
         </div>
+        <div class="field-block">
+          <span class="field-label-text">Budget</span>
+          <div class="chip-group">
+            <button type="button" class="chip">Under 10,000 SEK</button>
+            <button type="button" class="chip">10,000–20,000 SEK</button>
+            <button type="button" class="chip">20,000–40,000 SEK</button>
+            <button type="button" class="chip">40,000+ SEK</button>
+            <button type="button" class="chip">Not sure yet</button>
+          </div>
+        </div>
+        <div class="field-block">
+          <span class="field-label-text">Desired launch</span>
+          <div class="chip-group">
+            <button type="button" class="chip">As soon as possible</button>
+            <button type="button" class="chip">Within 1 month</button>
+            <button type="button" class="chip">1–3 months</button>
+            <button type="button" class="chip">3–6 months</button>
+            <button type="button" class="chip">No fixed deadline</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>How did you find Stormie Studios?</label>
+          <select>
+            <option>Referral</option><option>Instagram</option><option>Google</option>
+            <option>Saw another Stormie Studios website</option><option>Direct outreach</option><option>Other</option>
+          </select>
+        </div>
+        <button class="btn" type="submit" style="align-self: flex-start;">Send →</button>
+        <p class="form-privacy-note"><a href="#">Privacy policy</a></p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <h3>Request received.</h3>
+        <p>I'll review your project details and get back to you within one business day. If it looks like a good fit, I'll send you a link to book a consultation.</p>
       </div>
-
-      <div class="field">
-        <label for="f-referral" data-i18n="f_referral_label">How did you find Stormie Studios?</label>
-        <select id="f-referral" name="referral">
-          <option value="referral" data-i18n="ref_referral">Referral</option>
-          <option value="instagram" data-i18n="ref_instagram">Instagram</option>
-          <option value="google" data-i18n="ref_google">Google</option>
-          <option value="sawsite" data-i18n="ref_sawsite">Saw another Stormie Studios website</option>
-          <option value="outreach" data-i18n="ref_outreach">Direct outreach from Stormie Studios</option>
-          <option value="other" data-i18n="ref_other">Other</option>
-        </select>
-      </div>
-
-      <button class="btn-gold form-submit" type="submit" id="formSubmitBtn" data-i18n="f_send">Send →</button>
-      <p class="form-error-msg" id="formError" data-i18n="f_error">Something went wrong. Please try again or email me directly.</p>
-    </form>
-    <div class="form-success" id="formSuccess">
-      <h3 data-i18n="f_success_title">Request received.</h3>
-      <p data-i18n="f_success">I'll review your project details and get back to you within one business day. If it looks like a good fit, I'll send you a link to book a consultation.</p>
     </div>
-    <p class="form-privacy-note"><a href="/privacy.html" data-i18n="f_privacy">Privacy policy</a></p>
-  </div>
-</div>
-</section>
-
-<section class="giving" id="giving">
-  <div class="giving-copy">
-    <span class="section-label" data-i18n="giving_label">Giving Back</span>
-    <h2 class="giving-title" data-i18n="giving_title">Free websites for animal &amp; wildlife <em>welfare organizations.</em></h2>
-    <p data-i18n="giving_teaser">As Stormie Studios grows, 2-3 custom websites are being offered completely free each year to registered non-profits working in animal rescue, wildlife conservation, or animal welfare.</p>
-    <a href="giving-back.html" class="btn-gold" style="display:inline-block;text-decoration:none;margin-top:8px" data-i18n="giving_learn_more">Learn more &amp; apply →</a>
-  </div>
-  <div class="giving-paws" aria-hidden="true">
-    <svg class="paw" style="--rot:-18deg; --delay:0s"   viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
-    <svg class="paw" style="--rot:12deg; --delay:1.25s" viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
-    <svg class="paw" style="--rot:-14deg; --delay:2.5s"  viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
-    <svg class="paw" style="--rot:16deg; --delay:3.75s" viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
-    <svg class="paw" style="--rot:-10deg; --delay:5s"  viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
-    <svg class="paw" style="--rot:14deg; --delay:6.3s" viewBox="0 0 100 100"><ellipse cx="50" cy="68" rx="24" ry="20"/><circle cx="20" cy="38" r="11"/><circle cx="42" cy="20" r="11"/><circle cx="66" cy="20" r="11"/><circle cx="86" cy="38" r="10"/></svg>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq" id="faq">
-<div class="faq-inner">
-  <span class="section-label" data-i18n="faq_label">Faq</span>
-  <h2 class="faq-title" data-i18n="faq_title">Common questions.</h2>
-  <div class="faq-list">
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <p class="faq-q"><span data-i18n="faq1_q">How long does a project take?</span><span class="faq-toggle">+</span></p>
-      <p class="faq-a" data-i18n="faq1_a">Most projects launch within a few weeks of our first call, depending on scope and how quickly content comes together.</p>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <p class="faq-q"><span data-i18n="faq2_q">Do you provide hosting?</span><span class="faq-toggle">+</span></p>
-      <p class="faq-a" data-i18n="faq2_a">Yes, always. Hosting, security, backups and updates are handled by me for one flat monthly fee, that's how every site stays fast, secure and online.</p>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <p class="faq-q"><span data-i18n="faq3_q">Can you use my existing domain?</span><span class="faq-toggle">+</span></p>
-      <p class="faq-a" data-i18n="faq3_a">Yes, I connect your existing domain and set up HTTPS as part of the build.</p>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <p class="faq-q"><span data-i18n="faq4_q">Can I update the website myself?</span><span class="faq-toggle">+</span></p>
-      <p class="faq-a" data-i18n="faq4_a">Yes — hero video, photos, pricing, staff or coach profiles, class listings, campaign banners, all of it. Nearly every image and text block across the site is yours to update directly, no developer needed, and nothing breaks even if you leave a field blank.</p>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <p class="faq-q"><span data-i18n="faq5_q">Do you work outside Stockholm?</span><span class="faq-toggle">+</span></p>
-      <p class="faq-a" data-i18n="faq5_a">Absolutely. Most of my clients are here in Stockholm today, but I work just as easily with clients anywhere else, over video calls and email.</p>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <p class="faq-q"><span data-i18n="faq6_q">Why not just use an AI website builder?</span><span class="faq-toggle">+</span></p>
-      <p class="faq-a" data-i18n="faq6_a">An AI builder can generate a page in minutes, but it doesn't know how your gym actually runs. I build the schedule, membership paths and content system around your real workflow, not a generic template, and I'm a person you can reach directly when something needs to change or something breaks.</p>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <p class="faq-q"><span data-i18n="faq7_q">Who owns the website and the code?</span><span class="faq-toggle">+</span></p>
-      <p class="faq-a" data-i18n="faq7_a">Your domain, brand, copy, images, videos and business content are always yours. Stormie Studios retains and maintains the underlying source code, development system and production setup. You're buying a custom-built, professionally managed website and the right to use it for your business, not taking on the technical responsibility of maintaining the software behind it. You remain in control of your content through the CMS, while I remain responsible for the underlying build.</p>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <p class="faq-q"><span data-i18n="faq9_q">Can our IT team manage the domain and review the setup?</span><span class="faq-toggle">+</span></p>
-      <p class="faq-a" data-i18n="faq9_a">Absolutely. Your organization can retain control of its domain, DNS and relevant third-party accounts. I'm happy to provide the technical information needed for IT or security review, including hosting, integrations, data flows and deployment architecture. The production source repository and build system remain managed by Stormie Studios, while your IT team retains control of the infrastructure and accounts that belong to your organization.</p>
+<section id="giving" class="giving">
+  <div class="inner giving-grid">
+    <div class="giving-img">Photo placeholder</div>
+    <div>
+      <h2>Free websites for animal &amp; wildlife welfare organizations.</h2>
+      <p>I've had animals in my life for as long as I can remember. I've worked as a vet nurse assistant, managed a dog day care, and today I volunteer as an animal caretaker at a non-profit farm, caring for their farm animals on weekends.</p>
+      <p>As Stormie Studios grows, 2-3 custom websites are offered completely free each year to registered non-profit organizations working in animal rescue, wildlife conservation, or animal welfare.</p>
+      <a class="btn btn-outline" href="#contact">Apply for a free website</a>
     </div>
   </div>
-</div>
 </section>
 
-<div class="hud-frame footer-shell">
+<section id="faq">
+  <div class="inner">
+    <p class="eyebrow">Questions</p>
+    <h2 style="margin-bottom: 40px;">Frequently asked questions</h2>
+    <div id="faqList"></div>
+  </div>
+</section>
+
 <footer>
-  <button type="button" class="footer-mark-trigger" aria-label="A little something extra" onclick="document.querySelector('.footer-heart').style.display='inline-flex';this.style.display='none';">
-    <svg class="footer-mark" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true">
-      <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/>
-    </svg>
-  </button>
-  <a href="quote.html" class="footer-heart" aria-label="A little something extra" style="display:none">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="#c9a96e" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-  </a>
-
   <div class="footer-grid">
     <div class="footer-col">
-      <p class="footer-col-title" data-i18n="footer_company">Company</p>
-      <p class="footer-plain">Stormie Studios</p>
-      <p class="footer-plain" data-i18n="footer_by">By Storm Kolmodin</p>
-      <p class="footer-plain">Stockholm, Sweden</p>
-      <p class="footer-plain" data-i18n="footer_registered">Registered business in Sweden</p>
+      <p class="footer-col-title">Company</p>
+      <p>Stormie Studios</p>
+      <p>By Storm Kolmodin</p>
+      <p>Stockholm, Sweden</p>
+      <p>Registered business in Sweden</p>
     </div>
     <div class="footer-col">
-      <p class="footer-col-title" data-i18n="footer_nav">Navigation</p>
-      <a href="what-you-get.html" data-i18n="footer_services">Services</a>
+      <p class="footer-col-title">Navigation</p>
+      <a href="#care">Services</a>
       <a href="#work">Work</a>
-      <a href="about.html" data-i18n="footer_about">About</a>
-      <a href="#contact" data-i18n="footer_contact_link">Contact</a>
+      <a href="#faq">Faq</a>
+      <a href="#contact">Contact</a>
     </div>
     <div class="footer-col">
-      <p class="footer-col-title" data-i18n="footer_legal">Legal</p>
-      <a href="privacy.html" data-i18n="f_privacy">Privacy Policy</a>
-      <a href="terms.html" data-i18n="footer_terms">Terms &amp; Conditions</a>
-      <a href="cookies.html" data-i18n="footer_cookies">Cookie Policy</a>
+      <p class="footer-col-title">Legal</p>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="cookies.html">Cookie Policy</a>
     </div>
     <div class="footer-col">
-      <p class="footer-col-title" data-i18n="footer_contact">Contact</p>
+      <p class="footer-col-title">Contact</p>
       <a href="mailto:hello@stormiestudios.com">hello@stormiestudios.com</a>
     </div>
   </div>
-
   <div class="footer-bottom">
-    <p class="footer-copyright">&copy; 2026 Stormie Studios. <span data-i18n="footer_rights">All rights reserved.</span></p>
-    <div class="footer-social">
-      <a href="mailto:hello@stormiestudios.com" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-      </a>
-    </div>
+    <p>© 2026 Stormie Studios. All rights reserved.</p>
+    <p>Redesign test build — not linked from the live site.</p>
   </div>
 </footer>
-</div>
 
-</div>
+
 
 <script>
-const I18N = {
-  en: {
-    nav_work:"Work", nav_about:"About", nav_segments:"Who I work with", nav_included:"What you get", nav_giving:"Giving Back", nav_faq:"Faq", nav_cta:"Request a consultation", nav_menu:"Menu",
-    hero_eyebrow:"Stockholm · Digital studio for sport & fitness brands",
-    hero_headline:"Custom websites.||Built to perform.||Professionally managed.",
-    hero_sub:"Built to convert visitors into members, and effortless for you to run.",
-    giving_label:"Giving Back",
-    giving_title:"Free websites for animal &amp; wildlife <em>welfare organizations.</em>",
-    giving_p1:"I've had animals in my life for as long as I can remember. I've worked as a vet nurse assistant, managed a dog day care, and today I volunteer as an animal caretaker at a non-profit farm, caring for their farm animals on weekends. Giving back to the people who dedicate their lives to protecting animals feels like the right place to start.",
-    giving_p2:"As Stormie Studios grows, 2-3 custom websites are being offered completely free each year to registered non-profit organizations working in animal rescue, wildlife conservation, or animal welfare.",
-    giving_p3:"Every website is designed and built by me from scratch, so I can only take on a small number of projects. If your organization could benefit from a new website, I'd love to hear from you.",
-    giving_teaser:"As Stormie Studios grows, 2-3 custom websites are being offered completely free each year to registered non-profits working in animal rescue, wildlife conservation, or animal welfare.",
-    giving_learn_more:"Learn more &amp; apply →",
-    giving_form_title:"Apply below",
-    giving_f_org:"Organization name", giving_f_msg:"Tell me about your organization", giving_f_apply:"Apply",
-    giving_note:"For registered non-profits. A few spots available.",
-    faq_label:"Faq",
-    faq_title:"Common questions.",
-    faq1_q:"How long does a project take?", faq1_a:"Most projects launch within a few weeks of our first call, depending on scope and how quickly content comes together.",
-    faq2_q:"Do you provide hosting?", faq2_a:"Yes, always. Hosting, security, backups and updates are handled by me for one flat monthly fee, that's how every site stays fast, secure and online.",
-    faq3_q:"Can you use my existing domain?", faq3_a:"Yes, I connect your existing domain and set up HTTPS as part of the build.",
-    faq4_q:"Can I update the website myself?", faq4_a:"Yes — hero video, photos, pricing, staff or coach profiles, class listings, campaign banners, all of it. Nearly every image and text block across the site is yours to update directly, no developer needed, and nothing breaks even if you leave a field blank.",
-    faq5_q:"Do you work outside Stockholm?", faq5_a:"Absolutely. Most of my clients are here in Stockholm today, but I work just as easily with clients anywhere else, over video calls and email.",
-    faq6_q:"Why not just use an AI website builder?", faq6_a:"An AI builder can generate a page in minutes, but it doesn't know how your gym actually runs. I build the schedule, membership paths and content system around your real workflow, not a generic template, and I'm a person you can reach directly when something needs to change or something breaks.",
-    faq7_q:"Who owns the website and the code?", faq7_a:"Your domain, brand, copy, images, videos and business content are always yours. Stormie Studios retains and maintains the underlying source code, development system and production setup. You're buying a custom-built, professionally managed website and the right to use it for your business, not taking on the technical responsibility of maintaining the software behind it. You remain in control of your content through the CMS, while I remain responsible for the underlying build.",
-    faq9_q:"Can our IT team manage the domain and review the setup?", faq9_a:"Absolutely. Your organization can retain control of its domain, DNS and relevant third-party accounts. I'm happy to provide the technical information needed for IT or security review, including hosting, integrations, data flows and deployment architecture. The production source repository and build system remain managed by Stormie Studios, while your IT team retains control of the infrastructure and accounts that belong to your organization.",
-    pitch_title:"Custom websites built around <span class=\"gold-shimmer\">how your business actually works.</span>",
-    pitch_sub:"Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.",
-    care_title:"Easy for you.<br><span class=\"gold-shimmer\">Professionally managed.</span>",
-    care_p1:"Your website is built so you can manage what changes day to day, without touching code.",
-    care_p2:"Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.",
-    care_p3:"Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.",
-    care_p4:"Your domain, content and brand remain yours.",
-    care_p5:"No page builder maintenance. No plugin stack. No code to manage.",
-    care_p6:"Just a custom website you can actually operate yourself.",
-    tb1:"Your domain stays yours", tb2:"Your content stays yours", tb3:"Cancel hosting anytime", tb4:"Direct contact with your developer", tb5:"Built in Sweden, available worldwide",
-    footer_company:"Company", footer_by:"By Storm Kolmodin", footer_nav:"Navigation", footer_services:"Services", footer_about:"About", footer_contact_link:"Contact",
-    footer_registered:"Registered business in Sweden",
-    footer_legal:"Legal", footer_terms:"Terms &amp; Conditions", footer_cookies:"Cookie Policy", footer_contact:"Contact", footer_rights:"All rights reserved.",
-    ct_label:"Get in touch",
-    ct_title:"What do you need <span class=\"gold-shimmer\">help with?</span>",
-    ct_sub:"",
-    f_name:"Name", f_email:"Email", f_type:"What do you run?",
-    f_company:"Company / organisation", f_website:"Existing website", f_no_website:"No current website",
-    need_members:"More members", need_impression:"Better first impression", need_admin:"Easier administration", need_outdated:"Replace an outdated website", need_new:"New gym opening", need_other:"Something else",
-    f_need_label:"What do you need?",
-    f_features_label:"Features / functionality",
-    feat_cms:"Content management / CMS", feat_schedule:"Class schedule", feat_booking:"Booking", feat_membership:"Membership / sign-up", feat_forms:"Contact or lead forms", feat_calendar:"Calendar integration", feat_notifications:"Email notifications", feat_social:"Social media integration", feat_multilang:"Multiple languages", feat_ecommerce:"E-commerce / payments", feat_seo:"SEO", feat_analytics:"Analytics", feat_notsure:"Not sure yet", feat_other:"Something else",
-    f_budget_label:"Budget",
-    budget_under10k:"Under 10,000 SEK (~€900)", budget_10to20:"10,000–20,000 SEK (~€900–1,700)", budget_20to40:"20,000–40,000 SEK (~€1,700–3,500)", budget_40plus:"40,000+ SEK (~€3,500+)", budget_notsure:"Not sure yet",
-    f_launch_label:"Desired launch",
-    launch_asap:"As soon as possible", launch_1mo:"Within 1 month", launch_1to3mo:"1–3 months", launch_3to6mo:"3–6 months", launch_nodeadline:"No fixed deadline",
-    f_referral_label:"How did you find Stormie Studios?",
-    ref_referral:"Referral", ref_instagram:"Instagram", ref_google:"Google", ref_sawsite:"Saw another Stormie Studios website", ref_outreach:"Direct outreach from Stormie Studios", ref_other:"Other",
-    f_type1:"Gym / club", f_type2:"PT / coach", f_type3:"Other",
-    f_msg:"What are you looking to improve, build or solve?", f_send:"Send →",
-    f_success_title:"Request received.",
-    f_success:"I'll review your project details and get back to you within one business day. If it looks like a good fit, I'll send you a link to book a consultation.",
-    f_error:"Something went wrong. Please try again or email me directly.",
-    f_privacy:"Privacy policy"
-  },
-  sv: {
-    nav_work:"Case", nav_about:"Om mig", nav_segments:"Vem jag hjälper", nav_included:"Vad du får", nav_giving:"Ge tillbaka", nav_faq:"Vanliga frågor", nav_cta:"Skicka en förfrågan", nav_menu:"Meny",
-    hero_eyebrow:"Stockholm · Digital studio för sport och träning",
-    hero_headline:"Skräddarsydda webbplatser.||Byggda för prestation.||Professionellt förvaltade.",
-    hero_sub:"Byggda för att omvandla besökare till medlemmar, och enkla för dig att sköta.",
-    giving_label:"Ge tillbaka",
-    giving_title:"Gratis hemsidor till djur- och viltvårds<em>organisationer.</em>",
-    giving_p1:"Jag har haft djur i mitt liv så länge jag kan minnas. Jag har jobbat som djursjukskötarassistent, varit chef för ett hunddagis, och idag är jag helgskötare på en ideell gård där jag tar hand om gårdens djur på helgerna. Att ge tillbaka till dem som ägnar sina liv åt att skydda djur känns som rätt plats att börja.",
-    giving_p2:"I takt med att Stormie Studios växer erbjuds 2-3 kostnadsfria hemsidor varje år till registrerade ideella organisationer som arbetar med djurräddning, viltvård eller djurskydd.",
-    giving_p3:"Varje hemsida designas och byggs av mig från grunden, så jag kan bara ta mig an ett fåtal projekt. Om er organisation skulle ha nytta av en ny hemsida hör gärna av er.",
-    giving_teaser:"I takt med att Stormie Studios växer erbjuds 2-3 kostnadsfria hemsidor varje år till registrerade ideella organisationer inom djurräddning, viltvård eller djurskydd.",
-    giving_learn_more:"Läs mer &amp; ansök →",
-    giving_form_title:"Ansök nedan",
-    giving_f_org:"Organisationens namn", giving_f_msg:"Berätta om er organisation", giving_f_apply:"Ansök",
-    giving_note:"För registrerade ideella organisationer. Ett fåtal platser tillgängliga.",
-    faq_label:"Vanliga frågor",
-    faq_title:"Vanliga frågor.",
-    faq1_q:"Hur lång tid tar ett projekt?", faq1_a:"De flesta projekt lanseras inom några veckor efter vårt första samtal, beroende på omfattning och hur snabbt innehållet kommer på plats.",
-    faq2_q:"Erbjuder du hosting?", faq2_a:"Ja, alltid. Hosting, säkerhet, backuper och uppdateringar sköts av mig för en fast månadskostnad, det är så varje sajt hålls snabb, säker och igång.",
-    faq3_q:"Kan jag använda min befintliga domän?", faq3_a:"Ja, jag kopplar din befintliga domän och sätter upp HTTPS som en del av bygget.",
-    faq4_q:"Kan jag uppdatera hemsidan själv?", faq4_a:"Ja — hero-video, bilder, priser, personal- eller tränarprofiler, passbeskrivningar, kampanjbanners, allt. Nästan varje bild och textblock på sajten uppdaterar du själv direkt, ingen utvecklare behövs, och inget går sönder även om du lämnar ett fält tomt.",
-    faq5_q:"Jobbar du utanför Stockholm?", faq5_a:"Absolut. De flesta av mina kunder är här i Stockholm idag, men jag jobbar lika enkelt med kunder på andra håll, via videosamtal och mejl.",
-    faq6_q:"Varför inte bara använda en AI-hemsidesbyggare?", faq6_a:"En AI-byggare kan skapa en sida på några minuter, men den vet inte hur ditt gym faktiskt fungerar. Jag bygger schemat, medlemskapsvägarna och innehållssystemet kring ert riktiga arbetssätt, inte en generisk mall, och jag är en person ni når direkt när något behöver ändras eller går sönder.",
-    faq7_q:"Vem äger webbplatsen och koden?", faq7_a:"Din domän, ditt varumärke, din text, dina bilder, videor och ditt affärsinnehåll är alltid dina. Stormie Studios behåller och underhåller den underliggande källkoden, utvecklingssystemet och produktionsmiljön. Du köper en skräddarsydd, professionellt förvaltad webbplats och rätten att använda den i din verksamhet, inte det tekniska ansvaret för att underhålla mjukvaran bakom den. Du har full kontroll över ditt innehåll via CMS:et, medan jag ansvarar för det underliggande bygget.",
-    faq9_q:"Kan vårt IT-team hantera domänen och granska uppsättningen?", faq9_a:"Absolut. Er organisation kan behålla kontrollen över domänen, DNS och relevanta tredjepartskonton. Jag delar gärna den tekniska information som behövs för en IT- eller säkerhetsgranskning, inklusive hosting, integrationer, dataflöden och driftsarkitektur. Produktionens källkodsrepo och byggsystem förblir hos Stormie Studios, medan ert IT-team behåller kontrollen över infrastrukturen och kontona som tillhör er organisation.",
-    pitch_title:"Skräddarsydda webbplatser byggda kring <span class=\"gold-shimmer\">hur ditt företag faktiskt fungerar.</span>",
-    pitch_sub:"Stormie Studios designar och utvecklar snabba, distinkta webbplatser för gym, coacher och prestationsdrivna verksamheter, med de system, integrationer och funktioner som krävs för att göra sajten till en användbar del av verksamheten, inte bara något som ser bra ut.",
-    care_title:"Enkelt för dig.<br><span class=\"gold-shimmer\">Professionellt förvaltad.</span>",
-    care_p1:"Din webbplats är byggd så att du kan sköta det som ändras i vardagen, utan att röra kod.",
-    care_p2:"Uppdatera text, bilder, scheman, priser och innehåll via ett enkelt CMS, medan Stormie Studios sköter det tekniska bakom kulisserna.",
-    care_p3:"Hosting, driftsättning, säkerhet, backuper och underhåll sköts för en fast månadskostnad.",
-    care_p4:"Din domän, ditt innehåll och ditt varumärke förblir alltid dina.",
-    care_p5:"Inget page builder-underhåll. Ingen plugin-stack. Ingen kod att hantera.",
-    care_p6:"Bara en skräddarsydd webbplats du faktiskt kan driva själv.",
-    tb1:"Din domän förblir din", tb2:"Ditt innehåll förblir ditt", tb3:"Avsluta hosting när du vill", tb4:"Direktkontakt med din utvecklare", tb5:"Byggt i Sverige, tillgängligt globalt",
-    footer_company:"Företag", footer_by:"Av Storm Kolmodin", footer_nav:"Navigering", footer_services:"Tjänster", footer_about:"Om oss", footer_contact_link:"Kontakt",
-    footer_registered:"Registrerad verksamhet i Sverige",
-    footer_legal:"Juridiskt", footer_terms:"Villkor", footer_cookies:"Cookiepolicy", footer_contact:"Kontakt", footer_rights:"Alla rättigheter förbehållna.",
-    ct_label:"Kom igång",
-    ct_title:"Vad behöver du <span class=\"gold-shimmer\">hjälp med?</span>",
-    ct_sub:"",
-    f_name:"Namn", f_email:"Mail", f_type:"Vad driver du?",
-    f_company:"Företag / organisation", f_website:"Nuvarande hemsida", f_no_website:"Ingen hemsida just nu",
-    need_members:"Fler medlemmar", need_impression:"Bättre första intryck", need_admin:"Enklare administration", need_outdated:"Ersätt en föråldrad hemsida", need_new:"Nytt gym öppnar", need_other:"Något annat",
-    f_need_label:"Vad behöver du?",
-    f_features_label:"Funktioner",
-    feat_cms:"Innehållshantering / CMS", feat_schedule:"Passchema", feat_booking:"Bokning", feat_membership:"Medlemskap / registrering", feat_forms:"Kontakt- eller leadformulär", feat_calendar:"Kalenderintegration", feat_notifications:"E-postaviseringar", feat_social:"Integration med sociala medier", feat_multilang:"Flera språk", feat_ecommerce:"E-handel / betalningar", feat_seo:"SEO", feat_analytics:"Analys", feat_notsure:"Vet inte än", feat_other:"Något annat",
-    f_budget_label:"Budget",
-    budget_under10k:"Under 10 000 kr", budget_10to20:"10 000–20 000 kr", budget_20to40:"20 000–40 000 kr", budget_40plus:"40 000+ kr", budget_notsure:"Vet inte än",
-    f_launch_label:"Önskad lansering",
-    launch_asap:"Så snart som möjligt", launch_1mo:"Inom 1 månad", launch_1to3mo:"1–3 månader", launch_3to6mo:"3–6 månader", launch_nodeadline:"Ingen bestämd deadline",
-    f_referral_label:"Hur hittade du Stormie Studios?",
-    ref_referral:"Rekommendation", ref_instagram:"Instagram", ref_google:"Google", ref_sawsite:"Såg en annan Stormie Studios-sajt", ref_outreach:"Direktkontakt från Stormie Studios", ref_other:"Annat",
-    f_type1:"Gym / klubb", f_type2:"PT / coach", f_type3:"Annat",
-    f_msg:"Vad vill du förbättra, bygga eller lösa?", f_send:"Skicka →",
-    f_success_title:"Förfrågan mottagen.",
-    f_success:"Jag går igenom dina projektdetaljer och återkommer inom en arbetsdag. Om det verkar vara en bra match skickar jag en länk för att boka ett samtal.",
-    f_error:"Något gick fel. Försök igen eller maila mig direkt.",
-    f_privacy:"Integritetspolicy"
-  },
-  th: {
-    nav_work:"ผลงาน", nav_about:"เกี่ยวกับ", nav_segments:"ลูกค้าที่ผมทำงานด้วย", nav_included:"สิ่งที่คุณจะได้รับ", nav_giving:"คืนสู่สังคม", nav_faq:"คำถามที่พบบ่อย", nav_cta:"ขอคำปรึกษา", nav_menu:"เมนู",
-    hero_eyebrow:"สตอกโฮล์ม · สตูดิโอดิจิทัลสำหรับแบรนด์กีฬาและฟิตเนส",
-    hero_headline:"เว็บไซต์สั่งทำ||สร้างมาเพื่อประสิทธิภาพ||ดูแลอย่างมืออาชีพ",
-    hero_sub:"ออกแบบมาเพื่อเปลี่ยนผู้เข้าชมให้เป็นสมาชิก และใช้งานง่ายสำหรับคุณ",
-    giving_label:"คืนสู่สังคม",
-    giving_title:"เว็บไซต์ฟรีสำหรับองค์กร<em>สวัสดิภาพสัตว์และสัตว์ป่า</em>",
-    giving_p1:"ผมมีสัตว์อยู่ในชีวิตมาตั้งแต่จำความได้ เคยทำงานเป็นผู้ช่วยพยาบาลสัตวแพทย์ บริหารสถานรับเลี้ยงสุนัข และทุกวันนี้เป็นอาสาสมัครดูแลสัตว์ที่ฟาร์มไม่แสวงหากำไรในวันหยุดสุดสัปดาห์ การได้ตอบแทนคนที่อุทิศชีวิตเพื่อปกป้องสัตว์รู้สึกเหมือนเป็นจุดเริ่มต้นที่ถูกต้อง",
-    giving_p2:"เมื่อ Stormie Studios เติบโตขึ้น เว็บไซต์แบบสั่งทำ 2-3 เว็บไซต์ต่อปีจะถูกมอบให้ฟรีแก่องค์กรไม่แสวงหากำไรที่จดทะเบียนซึ่งทำงานด้านการช่วยเหลือสัตว์ การอนุรักษ์สัตว์ป่า หรือสวัสดิภาพสัตว์",
-    giving_p3:"ทุกเว็บไซต์ออกแบบและสร้างโดยผมเองตั้งแต่ต้น ผมจึงรับได้เพียงไม่กี่โปรเจกต์ หากองค์กรของคุณต้องการเว็บไซต์ใหม่ ผมยินดีรับฟัง",
-    giving_teaser:"เมื่อ Stormie Studios เติบโตขึ้น เว็บไซต์แบบสั่งทำ 2-3 เว็บไซต์ต่อปีจะถูกมอบให้ฟรีแก่องค์กรไม่แสวงหากำไรที่จดทะเบียนด้านการช่วยเหลือสัตว์ การอนุรักษ์สัตว์ป่า หรือสวัสดิภาพสัตว์",
-    giving_learn_more:"ดูเพิ่มเติม &amp; สมัคร →",
-    giving_form_title:"สมัครด้านล่าง",
-    giving_f_org:"ชื่อองค์กร", giving_f_msg:"เล่าให้ฟังเกี่ยวกับองค์กรของคุณ", giving_f_apply:"สมัคร",
-    giving_note:"สำหรับองค์กรไม่แสวงหากำไรที่จดทะเบียน มีจำนวนจำกัด",
-    faq_label:"คำถามที่พบบ่อย",
-    faq_title:"คำถามทั่วไป",
-    faq1_q:"โปรเจกต์ใช้เวลานานแค่ไหน", faq1_a:"โปรเจกต์ส่วนใหญ่เปิดตัวภายในไม่กี่สัปดาห์หลังจากคุยกันครั้งแรก ขึ้นอยู่กับขอบเขตงานและความเร็วในการเตรียมเนื้อหา",
-    faq2_q:"คุณมีบริการโฮสติ้งไหม", faq2_a:"มี เสมอ โฮสติ้ง ความปลอดภัย การสำรองข้อมูล และการอัปเดต ดูแลโดยผมในราคาคงที่รายเดือน นี่คือวิธีที่ทำให้ทุกเว็บไซต์เร็ว ปลอดภัย และออนไลน์อยู่เสมอ",
-    faq3_q:"ใช้โดเมนที่มีอยู่แล้วได้ไหม", faq3_a:"ได้ ผมจะเชื่อมต่อโดเมนเดิมของคุณและตั้งค่า HTTPS ให้เป็นส่วนหนึ่งของการสร้างเว็บไซต์",
-    faq4_q:"อัปเดตเว็บไซต์เองได้ไหม", faq4_a:"ได้ ตั้งแต่วิดีโอหน้าแรก รูปภาพ ราคา โปรไฟล์พนักงานหรือโค้ช รายละเอียดคลาส แบนเนอร์แคมเปญ ทุกอย่าง เกือบทุกรูปภาพและข้อความบนเว็บไซต์คุณแก้ไขได้เองโดยตรง ไม่ต้องใช้นักพัฒนา และไม่มีทางพังแม้จะเว้นช่องว่างไว้",
-    faq5_q:"ทำงานนอกสตอกโฮล์มไหม", faq5_a:"แน่นอน ลูกค้าส่วนใหญ่ของผมอยู่ที่สตอกโฮล์มตอนนี้ แต่ผมทำงานกับลูกค้าที่ไหนก็ได้เช่นกัน ผ่านวิดีโอคอลและอีเมล",
-    faq6_q:"ทำไมไม่ใช้เครื่องมือสร้างเว็บไซต์ AI ไปเลย", faq6_a:"เครื่องมือ AI สร้างหน้าเว็บได้ในไม่กี่นาที แต่ไม่รู้ว่ายิมของคุณดำเนินงานจริงอย่างไร ผมสร้างตารางเวลา เส้นทางสมาชิกภาพ และระบบเนื้อหาให้เข้ากับขั้นตอนการทำงานจริงของคุณ ไม่ใช่เทมเพลตทั่วไป และผมคือคนที่คุณติดต่อได้โดยตรงเมื่อมีอะไรต้องเปลี่ยนหรือเกิดปัญหา",
-    faq7_q:"ใครเป็นเจ้าของเว็บไซต์และโค้ด", faq7_a:"โดเมน แบรนด์ ข้อความ รูปภาพ วิดีโอ และเนื้อหาธุรกิจของคุณเป็นของคุณเสมอ Stormie Studios ดูแลและบำรุงรักษาซอร์สโค้ด ระบบการพัฒนา และการตั้งค่าการใช้งานจริง คุณกำลังซื้อเว็บไซต์ที่สร้างเฉพาะและดูแลอย่างมืออาชีพ พร้อมสิทธิ์ในการใช้งานเพื่อธุรกิจของคุณ ไม่ใช่รับภาระทางเทคนิคในการดูแลซอฟต์แวร์เบื้องหลัง คุณควบคุมเนื้อหาของคุณผ่าน CMS ในขณะที่ผมรับผิดชอบโครงสร้างเบื้องหลัง",
-    faq9_q:"ทีมไอทีของเราสามารถจัดการโดเมนและตรวจสอบระบบได้ไหม", faq9_a:"ได้แน่นอน องค์กรของคุณสามารถควบคุมโดเมน DNS และบัญชีบุคคลที่สามที่เกี่ยวข้องได้ ผมยินดีให้ข้อมูลทางเทคนิคที่จำเป็นสำหรับการตรวจสอบด้านไอทีหรือความปลอดภัย รวมถึงโฮสติ้ง การเชื่อมต่อระบบ การไหลของข้อมูล และสถาปัตยกรรมการดีพลอย ซอร์สโค้ดหลักและระบบการสร้างในการใช้งานจริงยังคงอยู่ภายใต้การดูแลของ Stormie Studios ในขณะที่ทีมไอทีของคุณควบคุมโครงสร้างพื้นฐานและบัญชีที่เป็นขององค์กรคุณ",
-    pitch_title:"เว็บไซต์ที่สร้างเฉพาะ ออกแบบตาม<span class=\"gold-shimmer\">วิธีที่ธุรกิจของคุณทำงานจริง</span>",
-    pitch_sub:"Stormie Studios ออกแบบและพัฒนาเว็บไซต์ที่รวดเร็วและมีเอกลักษณ์เฉพาะตัวสำหรับยิม โค้ช และธุรกิจที่เน้นผลลัพธ์ พร้อมระบบ การเชื่อมต่อ และฟังก์ชันที่จำเป็นเพื่อให้เว็บไซต์เป็นส่วนหนึ่งที่มีประโยชน์ต่อธุรกิจจริง ไม่ใช่แค่สิ่งที่ดูดีเท่านั้น",
-    care_title:"ง่ายสำหรับคุณ<br><span class=\"gold-shimmer\">ดูแลอย่างมืออาชีพ</span>",
-    care_p1:"เว็บไซต์ของคุณถูกสร้างมาให้คุณจัดการสิ่งที่เปลี่ยนแปลงในแต่ละวันได้เอง โดยไม่ต้องแตะโค้ด",
-    care_p2:"อัปเดตข้อความ รูปภาพ ตารางเวลา ราคา และเนื้อหา ผ่าน CMS ที่ใช้งานง่าย ในขณะที่ Stormie Studios ดูแลด้านเทคนิคเบื้องหลัง",
-    care_p3:"โฮสติ้ง การดีพลอย ความปลอดภัย การสำรองข้อมูล และการบำรุงรักษา ดูแลให้ในราคาคงที่รายเดือน",
-    care_p4:"โดเมน เนื้อหา และแบรนด์ของคุณเป็นของคุณเสมอ",
-    care_p5:"ไม่ต้องดูแล page builder ไม่มี plugin stack ต้องจัดการ ไม่มีโค้ดที่ต้องดูแล",
-    care_p6:"มีแค่เว็บไซต์ที่สร้างเฉพาะสำหรับคุณ ที่คุณสามารถบริหารจัดการได้เอง",
-    tb1:"โดเมนของคุณเป็นของคุณเสมอ", tb2:"เนื้อหาของคุณเป็นของคุณเสมอ", tb3:"ยกเลิกโฮสติ้งได้ทุกเมื่อ", tb4:"ติดต่อนักพัฒนาของคุณได้โดยตรง", tb5:"สร้างในสวีเดน ให้บริการทั่วโลก",
-    footer_company:"บริษัท", footer_by:"โดย Storm Kolmodin", footer_nav:"เมนู", footer_services:"บริการ", footer_about:"เกี่ยวกับ", footer_contact_link:"ติดต่อ",
-    footer_registered:"จดทะเบียนธุรกิจในสวีเดน",
-    footer_legal:"กฎหมาย", footer_terms:"ข้อกำหนดและเงื่อนไข", footer_cookies:"นโยบายคุกกี้", footer_contact:"ติดต่อ", footer_rights:"สงวนลิขสิทธิ์",
-    ct_label:"ติดต่อ",
-    ct_title:"คุณต้องการความช่วยเหลือเรื่องอะไร",
-    ct_sub:"",
-    f_name:"ชื่อ", f_email:"อีเมล", f_type:"คุณทำธุรกิจอะไร",
-    f_company:"บริษัท / องค์กร", f_website:"เว็บไซต์ปัจจุบัน", f_no_website:"ยังไม่มีเว็บไซต์",
-    need_members:"สมาชิกมากขึ้น", need_impression:"ความประทับใจแรกที่ดีขึ้น", need_admin:"บริหารจัดการง่ายขึ้น", need_outdated:"แทนที่เว็บไซต์ที่ล้าสมัย", need_new:"เปิดยิมใหม่", need_other:"เรื่องอื่น ๆ",
-    f_need_label:"คุณต้องการอะไร",
-    f_features_label:"ฟีเจอร์ / ฟังก์ชัน",
-    feat_cms:"ระบบจัดการเนื้อหา / CMS", feat_schedule:"ตารางเวลาคลาส", feat_booking:"ระบบจอง", feat_membership:"สมาชิก / สมัครใช้งาน", feat_forms:"แบบฟอร์มติดต่อหรือลูกค้าเป้าหมาย", feat_calendar:"การเชื่อมต่อปฏิทิน", feat_notifications:"การแจ้งเตือนทางอีเมล", feat_social:"การเชื่อมต่อโซเชียลมีเดีย", feat_multilang:"หลายภาษา", feat_ecommerce:"อีคอมเมิร์ซ / การชำระเงิน", feat_seo:"SEO", feat_analytics:"การวิเคราะห์ข้อมูล", feat_notsure:"ยังไม่แน่ใจ", feat_other:"อื่น ๆ",
-    f_budget_label:"งบประมาณ",
-    budget_under10k:"ต่ำกว่า 10,000 SEK", budget_10to20:"10,000–20,000 SEK", budget_20to40:"20,000–40,000 SEK", budget_40plus:"40,000+ SEK", budget_notsure:"ยังไม่แน่ใจ",
-    f_launch_label:"กำหนดเปิดตัวที่ต้องการ",
-    launch_asap:"เร็วที่สุดเท่าที่จะเป็นไปได้", launch_1mo:"ภายใน 1 เดือน", launch_1to3mo:"1–3 เดือน", launch_3to6mo:"3–6 เดือน", launch_nodeadline:"ไม่มีกำหนดตายตัว",
-    f_referral_label:"คุณรู้จัก Stormie Studios ได้อย่างไร",
-    ref_referral:"การแนะนำ", ref_instagram:"Instagram", ref_google:"Google", ref_sawsite:"เห็นเว็บไซต์อื่นของ Stormie Studios", ref_outreach:"ติดต่อโดยตรงจาก Stormie Studios", ref_other:"อื่น ๆ",
-    f_type1:"ยิม / คลับ", f_type2:"เทรนเนอร์ส่วนบุคคล / โค้ช", f_type3:"อื่น ๆ",
-    f_msg:"คุณต้องการปรับปรุง สร้าง หรือแก้ปัญหาอะไร", f_send:"ส่ง →",
-    f_success_title:"ได้รับคำขอแล้ว",
-    f_success:"ผมจะตรวจสอบรายละเอียดโปรเจกต์ของคุณและติดต่อกลับภายในหนึ่งวันทำการ หากดูเหมาะสม ผมจะส่งลิงก์ให้คุณจองเวลาปรึกษา",
-    f_error:"มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้งหรืออีเมลหาผมโดยตรง",
-    f_privacy:"นโยบายความเป็นส่วนตัว"
-  }
-};
-
-const NEEDS = {
-  en: {
-    members: {
-      title: "More members.",
-      text: "The site needs to do one thing well: turn visitors into people who actually show up. Clear paths to trial sessions, a schedule that updates itself, and a first impression that reflects what your gym actually is."
-    },
-    impression: {
-      title: "A first impression that matches your gym.",
-      text: "Most gym sites look like templates. Yours should look like you built it on purpose, because the experience of the site is part of the experience of the gym."
-    },
-    admin: {
-      title: "Less time managing a website.",
-      text: "Update your schedule in a spreadsheet, or manage everything through a clean CMS dashboard depending on what fits your workflow. Either way, you stay in control without needing a developer for every small change."
-    },
-    outdated: {
-      title: "A site that actually represents you now.",
-      text: "If your website was built three years ago and nothing has changed, it's working against you. A new site that's easy to update means it stays current without effort."
-    },
-    new: {
-      title: "A strong start for your new gym.",
-      text: "Launch with a site that looks like you've been around for years. Memberships, schedule, booking and brand, all in place from day one."
-    },
-    other: {
-      title: "Let's figure it out together.",
-      text: "Not every brief fits a checkbox. Tell me what's on your mind and we'll work out what makes sense, whether it's a full site, a single feature, or something you haven't seen done before."
-    }
-  },
-  sv: {
-    members: {
-      title: "Fler medlemmar.",
-      text: "Sajten ska göra en sak bra: omvandla besökare till personer som faktiskt dyker upp. Tydliga vägar till provpass, ett schema som uppdaterar sig självt och ett första intryck som speglar vad ditt gym faktiskt är."
-    },
-    impression: {
-      title: "Ett första intryck som matchar ditt gym.",
-      text: "De flesta gymhemsidor ser ut som mallar. Din borde se ut som att den byggts med avsikt, för upplevelsen av sajten är en del av upplevelsen av gymmet."
-    },
-    admin: {
-      title: "Mindre tid med att hantera en hemsida.",
-      text: "Uppdatera schemat i ett kalkylark, eller hantera allt via ett enkelt CMS-gränssnitt beroende på vad som passar dig. Oavsett förblir du i kontroll utan att behöva en utvecklare för varje liten ändring."
-    },
-    outdated: {
-      title: "En sajt som faktiskt representerar dig nu.",
-      text: "Om din hemsida byggdes för tre år sedan och ingenting har förändrats jobbar den emot dig. En ny sajt som är enkel att uppdatera gör att den håller sig aktuell utan ansträngning."
-    },
-    new: {
-      title: "En stark start för ditt nya gym.",
-      text: "Lansera med en sajt som ser ut som om du har funnits i åratal. Medlemskap, schema, bokning och varumärke, allt på plats från dag ett."
-    },
-    other: {
-      title: "Vi listar ut det tillsammans.",
-      text: "Inte allt passar i en kryssruta. Berätta vad du har i tankarna så tar vi reda på vad som är rätt, oavsett om det är en hel sajt, en enskild funktion eller något du inte sett gjort tidigare."
-    }
-  },
-  th: {
-    members: {
-      title: "สมาชิกมากขึ้น",
-      text: "เว็บไซต์ต้องทำสิ่งเดียวให้ดี คือเปลี่ยนผู้เข้าชมให้กลายเป็นคนที่มาจริง เส้นทางที่ชัดเจนสู่เซสชันทดลอง ตารางเวลาที่อัปเดตเอง และความประทับใจแรกที่สะท้อนตัวตนจริงของยิมคุณ"
-    },
-    impression: {
-      title: "ความประทับใจแรกที่เข้ากับยิมของคุณ",
-      text: "เว็บไซต์ยิมส่วนใหญ่ดูเหมือนเทมเพลต ของคุณควรดูเหมือนถูกสร้างขึ้นอย่างตั้งใจ เพราะประสบการณ์บนเว็บไซต์คือส่วนหนึ่งของประสบการณ์ในยิม"
-    },
-    admin: {
-      title: "ใช้เวลาจัดการเว็บไซต์น้อยลง",
-      text: "อัปเดตตารางเวลาในสเปรดชีต หรือจัดการทุกอย่างผ่านแดชบอร์ด CMS ที่เรียบง่าย ขึ้นอยู่กับสิ่งที่เหมาะกับการทำงานของคุณ ไม่ว่าแบบไหน คุณควบคุมได้เองโดยไม่ต้องพึ่งนักพัฒนาในทุกการเปลี่ยนแปลงเล็ก ๆ"
-    },
-    outdated: {
-      title: "เว็บไซต์ที่สะท้อนตัวตนของคุณตอนนี้จริง ๆ",
-      text: "ถ้าเว็บไซต์ของคุณสร้างมาสามปีแล้วและไม่เคยเปลี่ยนอะไรเลย มันกำลังทำงานต่อต้านคุณอยู่ เว็บไซต์ใหม่ที่อัปเดตง่ายจะทันสมัยอยู่เสมอโดยไม่ต้องออกแรง"
-    },
-    new: {
-      title: "จุดเริ่มต้นที่แข็งแกร่งสำหรับยิมใหม่ของคุณ",
-      text: "เปิดตัวด้วยเว็บไซต์ที่ดูเหมือนคุณอยู่มานานหลายปี สมาชิกภาพ ตารางเวลา ระบบจอง และแบรนด์ พร้อมทุกอย่างตั้งแต่วันแรก"
-    },
-    other: {
-      title: "มาช่วยกันคิดดู",
-      text: "ไม่ใช่ทุกความต้องการจะเข้ากับตัวเลือกสำเร็จรูป บอกผมว่าคุณคิดอะไรอยู่ แล้วเราจะหาทางที่เหมาะสมด้วยกัน ไม่ว่าจะเป็นเว็บไซต์เต็มรูปแบบ ฟีเจอร์เดียว หรือสิ่งที่คุณไม่เคยเห็นมาก่อน"
-    }
-  }
-};
-
-const NEED_LABELS = {
-  en: { members:'More members', impression:'Better first impression', admin:'Easier administration', outdated:'Replace an outdated website', new:'New gym opening', other:'Something else', back:'← Back' },
-  sv: { members:'Fler medlemmar', impression:'Bättre första intryck', admin:'Enklare administration', outdated:'Ersätt en föråldrad hemsida', new:'Nytt gym öppnar', other:'Något annat', back:'← Tillbaka' },
-  th: { members:'สมาชิกมากขึ้น', impression:'ความประทับใจแรกที่ดีขึ้น', admin:'บริหารจัดการง่ายขึ้น', outdated:'แทนที่เว็บไซต์ที่ล้าสมัย', new:'เปิดยิมใหม่', other:'เรื่องอื่น ๆ', back:'← กลับ' }
-};
-
-function setLang(lang) {
-  const dict = I18N[lang]; if (!dict) return;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (dict[key] !== undefined) el.innerHTML = dict[key];
-  });
-  if (typeof NEED_LABELS !== 'undefined' && NEED_LABELS[lang]) {
-    document.querySelectorAll('[data-need]').forEach(el => {
-      const need = el.getAttribute('data-need');
-      if (NEED_LABELS[lang][need] !== undefined) el.textContent = NEED_LABELS[lang][need];
-    });
-  }
-  buildHeadline(dict.hero_headline, lang === 'th');
-  document.documentElement.lang = lang;
-  document.documentElement.classList.toggle('lang-th', lang === 'th');
-  document.querySelectorAll('#lang-en, #lang-en-desktop').forEach(el => el.classList.toggle('active', lang==='en'));
-  document.querySelectorAll('#lang-sv, #lang-sv-desktop').forEach(el => el.classList.toggle('active', lang==='sv'));
-  document.querySelectorAll('#lang-th, #lang-th-desktop').forEach(el => el.classList.toggle('active', lang==='th'));
-  if (typeof updateDetail === 'function') updateDetail(window._scShownIndex || 0, true);
-  try { localStorage.setItem('sp-lang', lang); } catch(e) {}
-}
-
-function buildHeadline(text, isThai) {
-  const el = document.getElementById('introHeadline'); if (!el) return;
-  const lines = text.split('||');
-  let wi = 0;
-  if (isThai) {
-    el.innerHTML = lines.map(line => {
-      const s = `<span class="word word-block" style="animation-delay:${0.45 + wi * 0.07}s">${line.replace(/&/g, '&amp;')}</span>`;
-      wi++; return s;
-    }).join('<br>');
-    return;
-  }
-  el.innerHTML = lines.map(line => {
-    const words = line.replace(/&amp;/g, '&').split(' ');
-    return words.map(w => {
-      const s = `<span class="word" style="animation-delay:${0.45 + wi * 0.07}s">${w.replace(/&/g, '&amp;')}\u00a0</span>`;
-      wi++; return s;
-    }).join('');
-  }).join('<br>');
-}
-
-(function initMenu() {
-  const toggle = document.getElementById('menuToggle');
-  const panel = document.getElementById('menuPanel');
-  if (!toggle || !panel) return;
-
-  const closeMenu = () => {
-    toggle.classList.remove('open');
-    panel.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-  };
-  const openMenu = () => {
-    toggle.classList.add('open');
-    panel.classList.add('open');
-    toggle.setAttribute('aria-expanded', 'true');
-  };
-
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    panel.classList.contains('open') ? closeMenu() : openMenu();
-  });
-
-  document.addEventListener('click', (e) => {
-    if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== toggle) closeMenu();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
-  });
-
-  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-})();
-
-(function init() {
-  let lang = 'en'; try { lang = localStorage.getItem('sp-lang') || 'en'; } catch(e) {}
-  buildHeadline(I18N[lang].hero_headline, lang === 'th');
-  if (lang !== 'en') setLang(lang);
-
-  // One-time language suggestion bubble — shows once per session, then
-  // dismisses for good. Not a persistent switcher (the menu already has one).
-  (function langBubble() {
-    const bubble = document.getElementById('langBubble');
-    if (!bubble) return;
-    // Shows on every page load/reload — no longer gated to once per session.
-
-    setTimeout(() => {
-      const current = document.documentElement.lang || 'en';
-      const prompts = { en: 'Choose your language', sv: 'Välj språk', th: 'เลือกภาษา' };
-      const options = [
-        { code: 'en', label: '🇬🇧 EN' },
-        { code: 'sv', label: '🇸🇪 SV' },
-        { code: 'th', label: '🇹🇭 TH' }
-      ];
-      bubble.innerHTML = '';
-      bubble.classList.add('lang-bubble-prompt');
-
-      const label = document.createElement('span');
-      label.className = 'lang-bubble-label';
-      label.textContent = prompts[current] || prompts.en;
-      bubble.appendChild(label);
-
-      const optWrap = document.createElement('div');
-      optWrap.className = 'lang-bubble-options';
-      bubble.appendChild(optWrap);
-
-      let dismissTimer = setTimeout(() => bubble.classList.remove('visible'), 8000);
-      options.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.textContent = opt.label;
-        if (opt.code === current) btn.classList.add('active');
-        btn.addEventListener('click', () => {
-          clearTimeout(dismissTimer);
-          bubble.classList.remove('visible');
-          setLang(opt.code);
-        });
-        optWrap.appendChild(btn);
-      });
-
-      bubble.classList.add('visible');
-    }, 1800);
-  })();
-
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('inview'); io.unobserve(e.target); }});
-    }, { threshold: 0.1 });
-    document.querySelectorAll('section').forEach(s => io.observe(s));
-  } else { document.querySelectorAll('section').forEach(s => s.classList.add('inview')); }
-})();
-
-(function heroGlow() {
-  const intro = document.getElementById('work');
-  const glow = document.getElementById('introGlow');
-  if (!intro || !glow) return;
-  if (window.matchMedia('(pointer: coarse)').matches) {
-    intro.classList.add('glow-ambient');
-    return;
-  }
-  let raf = null, px = 0, py = 0;
-  intro.addEventListener('mouseenter', () => intro.classList.add('glow-active'));
-  intro.addEventListener('mouseleave', () => intro.classList.remove('glow-active'));
-  intro.addEventListener('mousemove', (e) => {
-    const r = intro.getBoundingClientRect();
-    px = e.clientX - r.left; py = e.clientY - r.top;
-    if (raf) return;
-    raf = requestAnimationFrame(() => {
-      intro.style.setProperty('--gx', px + 'px');
-      intro.style.setProperty('--gy', py + 'px');
-      raf = null;
-    });
-  });
-})();
-
-(function() {
-  function initChipGroup(id, multi) {
-    const group = document.getElementById(id);
-    if (!group) return;
-    group.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        if (multi) {
-          const active = chip.classList.toggle('active');
-          chip.setAttribute('aria-pressed', active ? 'true' : 'false');
-        } else {
-          group.querySelectorAll('.chip').forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
-          chip.classList.add('active');
-          chip.setAttribute('aria-pressed', 'true');
-        }
-      });
-    });
-  }
-  initChipGroup('featuresGroup', true);
-  initChipGroup('budgetGroup', false);
-  initChipGroup('launchGroup', false);
-
-  const noWebsiteCb = document.getElementById('f-no-website');
-  const websiteInput = document.getElementById('f-website');
-  if (noWebsiteCb && websiteInput) {
-    noWebsiteCb.addEventListener('change', () => {
-      websiteInput.disabled = noWebsiteCb.checked;
-      if (noWebsiteCb.checked) websiteInput.value = '';
-    });
-  }
-
-  function getChipLabels(id) {
-    return Array.from(document.querySelectorAll('#' + id + ' .chip.active')).map(c => c.textContent.trim());
-  }
-
-  const form=document.getElementById('contactForm'),btn=document.getElementById('formSubmitBtn'),
-        ok=document.getElementById('formSuccess'),err=document.getElementById('formError');
-  if (!form) return;
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const hp = form.querySelector('input[name="_gotcha"]'); if (hp && hp.value) return;
-    if (!form.reportValidity()) return;
-    const name = form.querySelector('#f-name').value.trim();
-    const email = form.querySelector('#f-email').value.trim();
-    const company = form.querySelector('#f-company').value.trim();
-    const message = form.querySelector('#f-msg').value.trim();
-    btn.disabled = true; btn.style.opacity = '0.5'; err.style.display = 'none';
-    const lang = (function(){const l=document.documentElement.lang;return (l==='sv'||l==='th')?l:'en';})();
-    const needSelectEl = form.querySelector('#f-need-select');
-    const referralEl = form.querySelector('#f-referral');
-    const websiteVal = noWebsiteCb && noWebsiteCb.checked ? 'No current website' : (websiteInput ? websiteInput.value.trim() : '');
-    const payload = {
-      category: form.querySelector('#f-need')?.value || '',
-      name, email, company,
-      website: websiteVal || '(not provided)',
-      need_selected: needSelectEl ? (needSelectEl.selectedOptions[0]?.textContent || '') : '',
-      message,
-      features: getChipLabels('featuresGroup').join(', ') || '(none selected)',
-      budget: getChipLabels('budgetGroup')[0] || '(not selected)',
-      launch: getChipLabels('launchGroup')[0] || '(not selected)',
-      referral: referralEl ? (referralEl.selectedOptions[0]?.textContent || '') : '',
-      _subject: 'New project enquiry via stormiestudios.com'
-    };
-    fetch('https://formspree.io/f/mvznvwpk', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-    .then(r => { if (r.ok) { form.style.display='none'; ok.style.display='block'; } else throw 0; })
-    .catch(() => { btn.disabled=false; btn.style.opacity='1'; err.style.display='block'; err.textContent=I18N[lang].f_error; });
-  });
-})();
-
-(function() {
-  const ITEMS = [
-    {
-      name:'Masters Gym', href:'https://stormieperformance.com/masters-gym/', frame:'https://stormieperformance.com/masters-gym/', comingSoon:false,
-      img:'https://stormieperformance.com/masters-gym/og-image.jpg',
-      en:{cat:'Client project · Client work', desc:'A Stockholm kickboxing club, conversion structure, a self-service CMS, and a live Instagram feed.', link:'View client work →'},
-      sv:{cat:'Kundprojekt · Kundarbete', desc:'En Stockholmsklubb för kickboxning, konverteringsstruktur, självbetjänings-CMS och ett direktsänt Instagramflöde.', link:'Visa kundarbete →'},
-      th:{cat:'โปรเจกต์ลูกค้า · งานลูกค้า', desc:'คลับคิกบ็อกซิ่งในสตอกโฮล์ม โครงสร้างที่เน้นการเปลี่ยนผู้เข้าชมเป็นสมาชิก ระบบ CMS ที่จัดการเองได้ และฟีด Instagram แบบเรียลไทม์', link:'ดูงานลูกค้า →'}
-    },
-
-    {
-      name:'KBK Bågskytteklubb', href:'https://stormieperformance.com/kbk-demo/', frame:'https://stormieperformance.com/kbk-demo/', comingSoon:true,
-      en:{cat:'Pitch project · Archery club', desc:'A booking system demo for an archery club, built ahead of an upcoming pitch. Case study publishes after the meeting.', link:''},
-      sv:{cat:'Pitchprojekt · Bågskytteklubb', desc:'Ett bokningssystem för en bågskytteklubb, byggt inför en kommande pitch. Caset publiceras efter mötet.', link:''},
-      th:{cat:'โปรเจกต์นำเสนอ · คลับยิงธนู', desc:'ตัวอย่างระบบจองสำหรับคลับยิงธนู สร้างขึ้นก่อนการนำเสนองาน กรณีศึกษาจะเผยแพร่หลังการประชุม', link:''}
-    },
-    {
-      name:'Performance By Dante', href:'https://performance-by-dante.vercel.app', frame:'https://performance-by-dante.vercel.app', comingSoon:true,
-      en:{cat:'Client project · Launching soon', desc:'A Stockholm-based personal trainer getting a new site built on Next.js and Tailwind, with a full client intake form and an expandable background story. Case study publishes on launch day.', link:'Preview site →'},
-      sv:{cat:'Kundprojekt · Lanseras snart', desc:'En Stockholmsbaserad personlig tränare som får en ny sajt byggd på Next.js och Tailwind, med ett komplett klientformulär och en utbyggbar bakgrundsberättelse. Caset publiceras på lanseringsdagen.', link:'Förhandsgranska →'},
-      th:{cat:'โปรเจกต์ลูกค้า · เปิดตัวเร็ว ๆ นี้', desc:'เทรนเนอร์ส่วนบุคคลในสตอกโฮล์มที่กำลังได้เว็บไซต์ใหม่บน Next.js และ Tailwind พร้อมแบบฟอร์มลูกค้าแบบเต็มรูปแบบและเรื่องราวเบื้องหลังที่ขยายได้ กรณีศึกษาจะเผยแพร่ในวันเปิดตัว', link:'ดูตัวอย่าง →'}
-    },
-
-
-    {
-      name:'Clinch Athletics', href:'https://clinchathletics.com', frame:'https://clinchathletics.com', comingSoon:false,
-      en:{cat:'Concept project · Combat sports brand', desc:'A concept and e-commerce brand for the combat sports industry. Premium design, strong visual identity, and a streamlined storefront built for martial arts athletes and enthusiasts.', link:'View case →'},
-      sv:{cat:'Konceptprojekt · Kampsportsmärke', desc:'Ett koncept- och e-handelsmärke för kampsportsindustrin. Premium design, stark visuell identitet och en skräddarsydd webshop för kampsportsutövare.', link:'Visa case →'},
-      th:{cat:'โปรเจกต์คอนเซปต์ · แบรนด์กีฬาต่อสู้', desc:'แบรนด์คอนเซปต์และอีคอมเมิร์ซสำหรับวงการกีฬาต่อสู้ ดีไซน์พรีเมียม อัตลักษณ์ภาพที่แข็งแรง และหน้าร้านออนไลน์ที่ออกแบบมาเพื่อนักกีฬาและผู้ที่ชื่นชอบศิลปะการต่อสู้', link:'ดูเคส →'}
-    }
+  const faqs = [
+    ["How long does a project take?", "Most projects launch within a few weeks of our first call, depending on scope and how quickly content comes together."],
+    ["Do you provide hosting?", "Yes, always. Hosting, security, backups and updates are handled by me for one flat monthly fee, that's how every site stays fast, secure and online."],
+    ["Can you use my existing domain?", "Yes, I connect your existing domain and set up HTTPS as part of the build."],
+    ["Can I update the website myself?", "Yes — hero video, photos, pricing, staff or coach profiles, class listings, campaign banners, all of it. Nearly every image and text block across the site is yours to update directly, no developer needed."],
+    ["Do you work outside Stockholm?", "Absolutely. Most of my clients are here in Stockholm today, but I work just as easily with clients anywhere else, over video calls and email."],
+    ["Why not just use an AI website builder?", "An AI builder can generate a page in minutes, but it doesn't know how your gym actually runs. I build the schedule, membership paths and content system around your real workflow, not a generic template."],
+    ["Who owns the website and the code?", "Your domain, brand, copy, images, videos and business content are always yours. Stormie Studios retains and maintains the underlying source code, development system and production setup."],
   ];
+  const faqList = document.getElementById('faqList');
+  faqs.forEach(([q, a]) => {
+    const item = document.createElement('div');
+    item.className = 'faq-item';
+    item.innerHTML = `<div class="faq-q">${q}<span class="faq-toggle">+</span></div><div class="faq-a">${a}</div>`;
+    item.addEventListener('click', () => item.classList.toggle('open'));
+    faqList.appendChild(item);
+  });
 
-  const N=ITEMS.length;
-  const stage=document.getElementById('scStage'), track=document.getElementById('scTrack'),
-        detail=document.getElementById('scDetail'), catEl=document.getElementById('scCat'),
-        nameEl=document.getElementById('scName'), descEl=document.getElementById('scDesc'),
-        linkEl=document.getElementById('scLink');
-  if (!stage||!track) return;
-  const rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function lang(){const l=document.documentElement.lang;return (l==='sv'||l==='th')?l:'en';}
+  const ITEMS = [
+    { name: 'Masters Gym', url: 'stormieperformance.com/masters-gym', frame: 'https://stormieperformance.com/masters-gym/', comingSoon: false, cat: 'Client project · Client work' },
+    { name: 'KBK Bågskytteklubb', url: 'stormieperformance.com/kbk-demo', frame: 'https://stormieperformance.com/kbk-demo/', comingSoon: true, cat: 'Pitch project · Archery club' },
+    { name: 'Performance By Dante', url: 'performance-by-dante.vercel.app', frame: 'https://performance-by-dante.vercel.app', comingSoon: true, cat: 'Client project · Launching soon' },
+    { name: 'Clinch Athletics', url: 'clinchathletics.com', frame: 'https://clinchathletics.com', comingSoon: false, cat: 'Concept project · Combat sports brand' },
+  ];
+  const N = ITEMS.length;
+  let active = 0;
+  const track = document.getElementById('scTrack');
+  const scDots = document.getElementById('scDots');
+  const SPACING = window.innerWidth <= 768 ? 150 : 260;
 
-  const cards = ITEMS.map((item,i) => {
+  const cards = ITEMS.map((item, i) => {
     const el = document.createElement('div');
-    el.className = 'sc-card' + (item.comingSoon ? ' is-coming-soon' : '');
-    el.setAttribute('role','button'); el.setAttribute('tabindex','0'); el.setAttribute('aria-label',item.name);
-
-    if (item.comingSoon) {
-      // Coming soon card: screenshot image + overlay
-      el.innerHTML =
-        `<div class="sc-coming-soon-inner">` +
-          `<img class="sc-coming-soon-img" src="${item.frame}" alt="${item.name}" onerror="this.style.display='none'" loading="lazy" />` +
-          `<div class="sc-coming-soon-overlay"></div>` +
-          `<div class="sc-coming-soon-label">` +
-            `<div class="sc-coming-soon-status"><span class="sc-coming-soon-dot"></span><span>Launching soon</span></div>` +
-            `<span class="sc-coming-soon-name">${item.name}</span>` +
-          `</div>` +
-        `</div>`;
-      // Use iframe as fallback for the live sites
-      const iframe = document.createElement('iframe');
-      iframe.src = item.frame;
-      iframe.style.cssText = 'position:absolute;top:0;left:0;width:390px;height:880px;border:0;transform:scale(0.6359);transform-origin:top left;pointer-events:none;';
-      iframe.setAttribute('loading','lazy');
-      iframe.setAttribute('scrolling','no');
-      iframe.setAttribute('tabindex','-1');
-      iframe.setAttribute('aria-hidden','true');
-      // wrap in sc-frame
-      const frameDiv = document.createElement('div');
-      frameDiv.className = 'sc-frame';
-      frameDiv.appendChild(iframe);
-      el.appendChild(frameDiv);
-    } else {
-      el.innerHTML =
-        `<div class="sc-fallback">${item.name}</div>` +
-        `<div class="sc-frame"><iframe src="${item.frame}" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title=""></iframe></div>` +
-        `<div class="tilt-shine"></div>` +
-        `<div class="sc-caption"><span class="sc-card-name">${item.name}</span></div>`;
-    }
-
-    el.addEventListener('click', () => {
-      if (dragMoved) return;
-      if (item.comingSoon) return; // no click on coming soon
-      if (i===nearestIdx()) { window.location.href=item.href; return; }
-      goTo(i);
-    });
-    el.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); if(!item.comingSoon) goTo(i); }});
+    el.className = 'sc-card';
+    el.innerHTML = `
+      <div class="sc-card-body">
+        <div class="sc-fallback">${item.name}</div>
+        <div class="sc-frame-wrap"><iframe src="${item.frame}" loading="lazy" scrolling="no" tabindex="-1" title="${item.name}"></iframe></div>
+        ${item.comingSoon ? '<div class="sc-soon-badge">Launching soon</div>' : ''}
+        <div class="sc-caption-bar"><p class="sc-cat">${item.cat}</p><h3 class="sc-name">${item.name}</h3></div>
+      </div>`;
+    el.addEventListener('click', () => { if (i !== active) { active = i; render(); } });
     track.appendChild(el);
     return el;
   });
 
-  let pos=0,target=0,shownIdx=-1,rafId=null,lastFrameT=null,autoScrollActive=false;
-  const DRIFT_PER_MS=1/45000; // one full card-position every 45s — slow, continuous, never stops
-  function sp(){return window.innerWidth<=768?148:292;}
-  function mod(n,m){return((n%m)+m)%m;}
-  function nearestIdx(){return mod(Math.round(pos),N);}
-
-  function render(){
-    const s=sp(),active=nearestIdx();
-    cards.forEach((card,i)=>{
-      const off=(()=>{let o=mod(i-pos,N);if(o>N/2)o-=N;return o;})();
-      const abs=Math.abs(off),vis=abs<=1.85;
-      card.style.opacity=vis?String(Math.max(0,1-abs*0.38)):'0';
-      card.style.pointerEvents=vis?'auto':'none';
-      card.style.zIndex=String(100-Math.round(abs*10));
-      card.style.transform=`translateX(${(off*s).toFixed(1)}px) translateZ(${(-abs*180).toFixed(1)}px) rotateY(${(-off*18).toFixed(2)}deg)`;
-      card.classList.toggle('is-active',i===active&&Math.abs(pos-target)<0.02);
+  function render() {
+    cards.forEach((el, i) => {
+      let offset = i - active;
+      if (offset > N / 2) offset -= N;
+      if (offset < -N / 2) offset += N;
+      const abs = Math.abs(offset);
+      const x = offset * SPACING;
+      const z = -abs * 110;
+      const rotY = offset * -24;
+      const scale = abs === 0 ? 1 : 0.8;
+      const opacity = abs > 2 ? 0 : 1 - abs * 0.3;
+      el.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rotY}deg) scale(${scale})`;
+      el.style.opacity = opacity;
+      el.style.zIndex = 10 - abs;
+      el.style.pointerEvents = abs > 2 ? 'none' : 'auto';
+      el.classList.toggle('is-active', abs === 0);
+      el.classList.toggle('is-side', abs !== 0);
     });
-    if(active!==shownIdx&&Math.abs(pos-Math.round(pos))<0.45) updateDetail(active,false);
+    [...scDots.children].forEach((d, i) => d.classList.toggle('active', i === active));
   }
-
-  // Single persistent loop: eases toward a manual target when one is pending
-  // (drag, arrow, thumbnail click), otherwise drifts pos forward continuously
-  // at a slow constant rate — genuine perpetual motion, not discrete steps.
-  function tick(now){
-    if(lastFrameT===null)lastFrameT=now;
-    const dt=now-lastFrameT;lastFrameT=now;
-    const diff=target-pos;
-    if(Math.abs(diff)>0.001){
-      pos+=diff*(rm?1:0.13);
-    }else if(autoScrollActive&&!rm){
-      pos+=DRIFT_PER_MS*dt;target=pos;
-    }else{
-      pos=target;
-    }
-    render();
-    rafId=requestAnimationFrame(tick);
-  }
-  function startTween(){if(rafId===null){lastFrameT=null;rafId=requestAnimationFrame(tick);}}
-  function goTo(i){const d=(()=>{let x=mod(i-target,N);if(x>N/2)x-=N;return x;})();target+=d;startTween();}
-  function step(d){target+=d;startTween();}
-
-  let dragging=false,dragStartX=0,dragStartPos=0,dragMoved=false;
-  stage.addEventListener('pointerdown',e=>{
-    if(e.target.closest('.sc-arrow'))return;
-    dragging=true;dragMoved=false;dragStartX=e.clientX;dragStartPos=pos;
-    stage.classList.add('is-dragging');if(rafId!==null){cancelAnimationFrame(rafId);rafId=null;}
-    stage.setPointerCapture(e.pointerId);
+  ITEMS.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.addEventListener('click', () => { active = i; render(); });
+    scDots.appendChild(dot);
   });
-  stage.addEventListener('pointermove',e=>{
-    if(!dragging)return;const dx=e.clientX-dragStartX;
-    if(Math.abs(dx)>6)dragMoved=true;pos=dragStartPos-dx/sp();render();
+  document.getElementById('scPrev').addEventListener('click', () => { active = (active - 1 + N) % N; render(); });
+  document.getElementById('scNext').addEventListener('click', () => { active = (active + 1) % N; render(); });
+  render();
+  setInterval(() => { active = (active + 1) % N; render(); }, 6000);
+
+  const themeBtns = document.querySelectorAll('[data-theme-btn]');
+  function setTheme(t) {
+    document.body.setAttribute('data-theme', t);
+    localStorage.setItem('ss-theme', t);
+    modeIcon.innerHTML = t === 'b'
+      ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'
+      : '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  }
+  const modeIcon = document.getElementById('modeIcon');
+  const modeToggle = document.getElementById('modeToggle');
+  modeToggle.addEventListener('click', () => {
+    const current = document.body.getAttribute('data-theme');
+    setTheme(current === 'b' ? 'c' : 'b');
   });
-  function endDrag(){
-    if(!dragging)return;dragging=false;stage.classList.remove('is-dragging');
-    target=Math.round(pos);startTween();setTimeout(()=>{dragMoved=false;},0);
-  }
-  stage.addEventListener('pointerup',endDrag);stage.addEventListener('pointercancel',endDrag);
+  const saved = localStorage.getItem('ss-theme');
+  setTheme(saved === 'b' ? 'b' : 'c');
 
-  // tilt on desktop only, skip coming-soon cards
-  if(!window.matchMedia('(hover:none)').matches){
-    stage.addEventListener('mousemove',e=>{
-      const active=nearestIdx();const card=cards[active];
-      if(!card||ITEMS[active].comingSoon)return;
-      const rect=card.getBoundingClientRect();
-      const dx=(e.clientX-rect.left-rect.width/2)/(rect.width/2);
-      const dy=(e.clientY-rect.top-rect.height/2)/(rect.height/2);
-      const off=(()=>{let o=mod(active-pos,N);if(o>N/2)o-=N;return o;})();
-      const abs=Math.abs(off);
-      card.style.transform=`translateX(${(off*sp()).toFixed(1)}px) translateZ(${(-abs*180).toFixed(1)}px) rotateY(${(-off*18+dx*8).toFixed(2)}deg) rotateX(${(-dy*6).toFixed(2)}deg)`;
-      const shine=card.querySelector('.tilt-shine');
-      if(shine){const px=((dx+1)/2*100).toFixed(0),py=((dy+1)/2*100).toFixed(0);shine.style.background=`radial-gradient(circle at ${px}% ${py}%, rgba(236,217,174,0.10) 0%, transparent 65%)`;shine.style.opacity='1';}
+  // Language selector — visual only in this test build; full SV/TH copy
+  // isn't wired in yet, this just tracks the active pill.
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-lang]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
     });
-    stage.addEventListener('mouseleave',()=>{
-      const card=cards[nearestIdx()];if(!card)return;
-      const shine=card.querySelector('.tilt-shine');if(shine)shine.style.opacity='0';render();
-    });
-  }
+  });
 
-  // Auto-scroll: continuous, never-stopping drift (see DRIFT_PER_MS in tick()
-  // above), same eased 3D motion as manual navigation. Pauses on hover/drag,
-  // resumes shortly after. Off entirely if the visitor prefers reduced motion.
-  function startAutoScroll(){
-    if(rm) return;
-    autoScrollActive=true;
-    startTween();
-  }
-  function stopAutoScroll(){autoScrollActive=false;}
-  stage.addEventListener('mouseenter',stopAutoScroll);
-  stage.addEventListener('mouseleave',startAutoScroll);
-  stage.addEventListener('pointerdown',stopAutoScroll);
-  stage.addEventListener('pointerup',()=>setTimeout(startAutoScroll,2000));
-  stage.addEventListener('pointercancel',()=>setTimeout(startAutoScroll,2000));
-  startAutoScroll();
-
-  document.getElementById('scPrev').addEventListener('click',()=>step(-1));
-  document.getElementById('scNext').addEventListener('click',()=>step(1));
-  stage.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();step(-1);}if(e.key==='ArrowRight'){e.preventDefault();step(1);}});
-
-  window.updateDetail=function(i,instant){
-    window._scShownIndex=i;shownIdx=i;
-    const apply=()=>{
-      const item=ITEMS[i];const t=item[lang()];
-      catEl.textContent=t.cat;
-      nameEl.textContent=item.name;
-      descEl.textContent=t.desc;
-      if(t.link){linkEl.textContent=t.link;linkEl.setAttribute('href',item.href);linkEl.style.display='';}
-      else{linkEl.style.display='none';}
-      detail.classList.remove('is-switching');
-    };
-    if(rm||instant){apply();return;}
-    detail.classList.add('is-switching');setTimeout(apply,180);
+  // Need picker → qualification form
+  const NEEDS = {
+    members: { title: "More members.", text: "The site needs to do one thing well: turn visitors into people who actually show up. Clear paths to trial sessions, a schedule that updates itself, and a first impression that reflects what your gym actually is." },
+    impression: { title: "A first impression that matches your gym.", text: "Most gym sites look like templates. Yours should look like you built it on purpose, because the experience of the site is part of the experience of the gym." },
+    admin: { title: "Less time managing a website.", text: "Update your schedule in a spreadsheet, or manage everything through a clean CMS dashboard depending on what fits your workflow. Either way, you stay in control without needing a developer for every small change." },
+    outdated: { title: "A site that actually represents you now.", text: "If your website was built three years ago and nothing has changed, it's working against you. A new site that's easy to update means it stays current without effort." },
+    new: { title: "A strong start for your new gym.", text: "Launch with a site that looks like you've been around for years. Memberships, schedule, booking and brand, all in place from day one." },
+    other: { title: "Let's figure it out together.", text: "Not every brief fits a checkbox. Tell me what's on your mind and we'll work out what makes sense, whether it's a full site, a single feature, or something you haven't seen done before." },
   };
-
-  new MutationObserver(()=>updateDetail(shownIdx,true))
-    .observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
-  window.addEventListener('resize',render);
-  render();updateDetail(0,true);
-})();
-
-// ══ NEED PICKER ══
-
-
-(function() {
-  const picker = document.getElementById('needPicker');
-  const response = document.getElementById('needResponse');
-  const answer = document.getElementById('needAnswer');
-  const backBtn = document.getElementById('needBack');
-  const fNeed = document.getElementById('f-need');
-  if (!picker) return;
-
-  function getLang() { const l = document.documentElement.lang; return (l === 'sv' || l === 'th') ? l : 'en'; }
-
-  function showNeed(need) {
-    const lang = getLang();
-    const data = NEEDS[lang][need];
-    if (!data) return;
-    fNeed.value = need;
-    const needSelect = document.getElementById('f-need-select');
-    if (needSelect) needSelect.value = need;
-    answer.innerHTML = '<h3>' + data.title + '</h3><p>' + data.text + '</p>';
-    picker.style.display = 'none';
-    response.style.display = 'block';
-    // reset form
-    const form = document.getElementById('contactForm');
-    if (form) {
-      form.style.display = '';
-      document.getElementById('formSuccess').style.display = 'none';
-      form.reset();
-      needSelect.value = need;
-      const noWebsiteCb = document.getElementById('f-no-website');
-      const websiteInput = document.getElementById('f-website');
-      if (noWebsiteCb) noWebsiteCb.checked = false;
-      if (websiteInput) websiteInput.disabled = false;
-      document.querySelectorAll('.chip.active').forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
-    }
-    const btn = document.getElementById('formSubmitBtn');
-    if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function showPicker() {
-    picker.style.display = '';
-    response.style.display = 'none';
-  }
-
+  const needPicker = document.getElementById('needPicker');
+  const needResponse = document.getElementById('needResponse');
+  const needAnswer = document.getElementById('needAnswer');
   document.querySelectorAll('.need-btn').forEach(btn => {
-    btn.addEventListener('click', () => showNeed(btn.getAttribute('data-need')));
-  });
-
-  backBtn.addEventListener('click', showPicker);
-
-  // update labels on lang change
-  function updateNeedLabels() {
-    const lang = getLang();
-    const labels = NEED_LABELS[lang];
-    document.querySelectorAll('.need-btn').forEach(btn => {
-      const need = btn.getAttribute('data-need');
-      if (labels[need]) btn.textContent = labels[need];
+    btn.addEventListener('click', () => {
+      const data = NEEDS[btn.dataset.need];
+      needAnswer.innerHTML = `<h3>${data.title}</h3><p>${data.text}</p>`;
+      needPicker.style.display = 'none';
+      needResponse.style.display = 'block';
+      needResponse.querySelector('form').style.display = 'flex';
+      document.getElementById('formSuccess').style.display = 'none';
     });
-    if (backBtn) backBtn.textContent = labels.back;
-    // if response is visible, re-render answer
-    if (response.style.display !== 'none' && fNeed.value) {
-      const data = NEEDS[lang][fNeed.value];
-      if (data) answer.innerHTML = '<h3>' + data.title + '</h3><p>' + data.text + '</p>';
-    }
-  }
-
-  // hook into existing setLang
-  const _origSetLang = window.setLang;
-  window.setLang = function(lang) {
-    _origSetLang(lang);
-    updateNeedLabels();
-  };
-})();
-
-</script>
-
-
-
-
-
-<!-- ══════════════════════════════════════════════════════════════════
-     MOCKUP ADDITION — hero 3D wireframe (Three.js, ES Modules, r160-safe)
-     Purely additive: delete this import map + module script to fully
-     revert. Nothing above this point was touched.
-
-     NOTE — turned up for visibility during review: opacity and line
-     brightness here are set higher than you'd actually want live, so
-     it's easy to see and judge. Dial both back down once you've seen
-     it working (see OPACITY_CANVAS / OPACITY_OUTER / OPACITY_INNER
-     near the top of the script below).
-     ══════════════════════════════════════════════════════════════════ -->
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"
-  }
-}
-</script>
-<script type="module">
-import * as THREE from 'three';
-
-(function initHero3D() {
-  const canvas = document.getElementById('hero3d');
-  if (!canvas) return;
-
-  // Turned up for this review pass — bring these down once you can see it
-  const OPACITY_CANVAS = 0.9;
-  const OPACITY_OUTER = 0.75;
-  const OPACITY_INNER = 0.5;
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  } catch (e) { console.warn('hero3d: WebGL unavailable', e); return; }
-
-  canvas.style.opacity = OPACITY_CANVAS;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-  camera.position.set(0, 0, 7);
-
-  function sizeToParent() {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    const isMobile = window.innerWidth <= 768;
-    const w = rect.width;
-    // On mobile, .intro stacks (headline + carousel), making the parent very
-    // tall and narrow, nothing like the desktop box this camera was tuned
-    // for. Cap the height so it measures roughly the headline area only.
-    const h = isMobile ? Math.min(rect.height, 380) : rect.height;
-    renderer.setSize(w, h, false);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  }
-
-  const geometry = new THREE.IcosahedronGeometry(2.6, 1);
-  const wireframe = new THREE.WireframeGeometry(geometry);
-  const material = new THREE.LineBasicMaterial({
-    color: 0xc9a96e, transparent: true, opacity: OPACITY_OUTER
   });
-  const mesh = new THREE.LineSegments(wireframe, material);
-  scene.add(mesh);
-
-  const coreGeo = new THREE.IcosahedronGeometry(1.4, 0);
-  const coreWire = new THREE.WireframeGeometry(coreGeo);
-  const coreMat = new THREE.LineBasicMaterial({ color: 0xecd9ae, transparent: true, opacity: OPACITY_INNER });
-  const core = new THREE.LineSegments(coreWire, coreMat);
-  scene.add(core);
-
-  sizeToParent();
-  window.addEventListener('resize', sizeToParent);
-
-  function animate() {
-    mesh.rotation.y += 0.0016;
-    mesh.rotation.x += 0.0006;
-    core.rotation.y -= 0.001;
-    core.rotation.x += 0.0009;
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
-  }
-
-  if (reduceMotion) {
-    mesh.rotation.set(0.4, 0.6, 0);
-    core.rotation.set(0.3, -0.4, 0);
-    renderer.render(scene, camera);
-  } else {
-    animate();
-  }
-})();
+  document.getElementById('needBack').addEventListener('click', () => {
+    needResponse.style.display = 'none';
+    needPicker.style.display = 'block';
+  });
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.setAttribute('aria-pressed', chip.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+  });
 </script>
+
+</body>
+</html>
