@@ -16,28 +16,28 @@
   .hero p.sub { font-size: 17px; color: var(--muted); max-width: 460px; margin: 0 auto 32px; line-height: 1.55; }
 
   /* ============ SHOWCASE (3D carousel, below the headline) ============ */
-  .showcase { position: relative; z-index: 1; width: 100%; height: 380px; margin-top: 56px; display: flex; align-items: center; justify-content: center; }
-  .sc-stage { position: relative; width: 100%; height: 100%; perspective: 1600px; pointer-events: none; }
+  .showcase { position: relative; z-index: 1; width: 100%; height: 560px; margin-top: 80px; display: flex; align-items: center; justify-content: center; }
+  .sc-stage { position: relative; width: 100%; height: 100%; perspective: 2000px; pointer-events: none; }
   .sc-track { position: absolute; inset: 0; transform-style: preserve-3d; display: flex; align-items: center; justify-content: center; }
   .sc-card {
-    position: absolute; top: 50%; left: 50%; width: 260px; height: 340px; margin: -170px 0 0 -130px;
+    position: absolute; top: 50%; left: 50%; width: 340px; height: 480px; margin: -240px 0 0 -170px;
     border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line);
     box-shadow: 0 30px 70px rgba(0,0,0,0.35); cursor: pointer; pointer-events: auto;
     transition: transform 0.7s cubic-bezier(0.22,0.61,0.36,1), opacity 0.7s, filter 0.7s;
   }
   .sc-card-body { position: relative; width: 100%; height: 100%; }
   .sc-frame-wrap { position: absolute; inset: 0; overflow: hidden; background: var(--bg2); }
-  .sc-frame-wrap iframe { position: absolute; top: 0; left: 0; width: 960px; height: 1520px; border: 0; transform: scale(0.271); transform-origin: top left; pointer-events: none; }
+  .sc-frame-wrap iframe { position: absolute; top: 0; left: 0; width: 900px; height: 1270px; border: 0; transform: scale(0.378); transform-origin: top left; pointer-events: none; }
   .sc-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: var(--muted2); }
-  .sc-soon-badge { position: absolute; top: 10px; right: 10px; z-index: 2; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(0,0,0,0.55); color: #fff; padding: 4px 9px; border-radius: 980px; display: flex; align-items: center; gap: 5px; }
-  .sc-soon-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #34c759; }
-  .sc-caption-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 16px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); z-index: 2; }
-  .sc-cat { font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 3px; }
-  .sc-name { font-size: 15px; font-weight: 600; color: #fff; }
+  .sc-soon-badge { position: absolute; top: 12px; right: 12px; z-index: 2; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(0,0,0,0.55); color: #fff; padding: 5px 10px; border-radius: 980px; display: flex; align-items: center; gap: 6px; }
+  .sc-soon-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #34c759; }
+  .sc-caption-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 20px; background: linear-gradient(to top, rgba(0,0,0,0.82), transparent); z-index: 2; }
+  .sc-cat { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
+  .sc-name { font-size: 18px; font-weight: 600; color: #fff; }
   .sc-card.is-side { opacity: 0.55; filter: blur(2px); }
   .sc-card.is-active { opacity: 1; filter: none; }
 
-  .showcase-nav { position: relative; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 18px; z-index: 3; }
+  .showcase-nav { position: relative; margin-top: 28px; display: flex; align-items: center; justify-content: center; gap: 18px; z-index: 3; }
   .showcase-dots { display: flex; gap: 6px; }
   .showcase-dots button { width: 6px; height: 6px; border-radius: 50%; border: none; background: var(--line); cursor: pointer; padding: 0; }
   .showcase-dots button.active { background: var(--accent); width: 18px; border-radius: 3px; }
@@ -50,9 +50,46 @@
   .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 14px; color: var(--muted); line-height: 1.7; }
   .faq-item.open .faq-a { max-height: 240px; padding-top: 12px; }
 
+  .bullets { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; text-align: center; }
+  .bullet { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .bullet::before { content: '\2713'; color: var(--accent); font-weight: 700; }
+
+  .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .care-grid p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
+  .care-grid p.emphasis { color: var(--text); font-weight: 500; }
+  .care-grid p.close { font-style: italic; color: var(--text); font-size: 17px; }
+
+  .contact { text-align: center; }
+  .contact-box { max-width: 640px; margin: 0 auto; }
+  .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 36px; text-align: left; }
+  .need-btn { padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); font-size: 14px; font-weight: 500; font-family: inherit; cursor: pointer; text-align: left; transition: var(--transition); }
+  .need-btn:hover { border-color: var(--accent); background: var(--bg2); }
+  .need-response { max-width: 620px; margin: 0 auto; text-align: left; }
+  .need-back { border: none; background: transparent; color: var(--muted); font-size: 13px; cursor: pointer; font-family: inherit; margin-bottom: 24px; padding: 0; }
+  .need-answer h3 { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
+  .need-answer p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
+  .contact form { display: flex; flex-direction: column; gap: 20px; }
+  .field label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 8px; }
+  .field input, .field select, .field textarea { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font-family: inherit; font-size: 14px; }
+  .field textarea { min-height: 80px; resize: vertical; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .no-website-toggle { display: flex !important; align-items: center; gap: 8px; font-size: 12px !important; font-weight: 400 !important; color: var(--muted) !important; margin-top: 8px; }
+  .no-website-toggle input { width: auto !important; }
+  .field-label-text { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 10px; }
+  .chip-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 8px 14px; border-radius: 980px; border: 1px solid var(--line); background: var(--card); color: var(--muted); font-size: 12px; font-family: inherit; cursor: pointer; transition: var(--transition); }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+  .form-privacy-note { font-size: 12px; color: var(--muted2); margin-top: 4px; }
+  .form-privacy-note a { color: var(--muted); }
+  .form-success { display: none; text-align: center; padding: 40px 0; }
+  .form-success h3 { font-size: 22px; margin-bottom: 10px; }
+  .form-success p { font-size: 14px; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.6; }
+
   @media (max-width: 768px) {
-    .sc-card { width: 190px; height: 260px; margin: -130px 0 0 -95px; }
-    .sc-frame-wrap iframe { transform: scale(0.198); }
+    .showcase { height: 440px; margin-top: 56px; }
+    .sc-card { width: 240px; height: 340px; margin: -170px 0 0 -120px; }
+    .sc-frame-wrap iframe { width: 900px; height: 1270px; transform: scale(0.267); }
+    .need-grid, .row2, .care-grid { grid-template-columns: 1fr; }
   }
 
 </style>
@@ -311,7 +348,7 @@
   let active = 0;
   const track = document.getElementById('scTrack');
   const scDots = document.getElementById('scDots');
-  const SPACING = window.innerWidth <= 768 ? 150 : 260;
+  const SPACING = window.innerWidth <= 768 ? 210 : 360;
 
   const cards = ITEMS.map((item, i) => {
     const el = document.createElement('div');
