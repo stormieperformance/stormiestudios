@@ -443,16 +443,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   padding: 100px 0; border-bottom: 1px solid var(--line);
   position: relative; overflow: hidden;
 }
-.pitch-bg-video {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; opacity: 0.4; z-index: 0; pointer-events: none;
-}
-.pitch-bg-overlay {
-  position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(180deg, var(--bg) 0%, rgba(12,12,11,0.72) 40%, rgba(12,12,11,0.72) 60%, var(--bg) 100%);
-}
 .pitch > .section-inner { border: 1px solid var(--gold-line); padding: 56px 64px; position: relative; z-index: 1; }
-@media (prefers-reduced-motion: reduce) { .pitch-bg-video { display: none; } }
 .pitch-title { font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; line-height: 1.1; color: var(--text); max-width: 760px; margin-bottom: 20px; }
 .pitch-sub { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.85; max-width: 640px; }
 
@@ -944,10 +935,6 @@ section.inview .faq-title, section.inview .faq-item {
 
 <!-- PITCH -->
 <section class="pitch">
-  <video class="pitch-bg-video" autoplay muted loop playsinline poster="care-bg-poster.jpg" aria-hidden="true">
-    <source src="care-bg.mp4" type="video/mp4">
-  </video>
-  <div class="pitch-bg-overlay" aria-hidden="true"></div>
 <div class="section-inner">
   <h2 class="pitch-title" data-i18n="pitch_title">Custom websites built around <span class="gold-shimmer">how your business actually works.</span></h2>
   <p class="pitch-sub" data-i18n="pitch_sub">Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.</p>
