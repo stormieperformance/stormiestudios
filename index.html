@@ -15,27 +15,28 @@
   .hero-grid .btn { margin-top: 28px; }
   .hero p.sub { font-size: 17px; color: var(--muted); max-width: 460px; margin: 0 auto 32px; line-height: 1.55; }
 
-  /* ============ SHOWCASE (3D carousel, below the headline) ============ */
-  .showcase { position: relative; z-index: 1; width: 100%; height: 560px; margin-top: 80px; display: flex; align-items: center; justify-content: center; }
-  .sc-stage { position: relative; width: 100%; height: 100%; perspective: 2000px; pointer-events: none; }
-  .sc-track { position: absolute; inset: 0; transform-style: preserve-3d; display: flex; align-items: center; justify-content: center; }
+  /* ============ SHOWCASE (exact port of the original 3D carousel: physics tween + drag) ============ */
+  .showcase { position: relative; z-index: 1; width: 100%; margin-top: 80px; }
+  .sc-stage { position: relative; height: 520px; perspective: 1200px; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .sc-track { position: absolute; inset: 0; transform-style: preserve-3d; left: 50%; }
   .sc-card {
-    position: absolute; top: 50%; left: 50%; width: 340px; height: 480px; margin: -240px 0 0 -170px;
-    border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line);
-    box-shadow: 0 30px 70px rgba(0,0,0,0.35); cursor: pointer; pointer-events: auto;
-    transition: transform 0.7s cubic-bezier(0.22,0.61,0.36,1), opacity 0.7s, filter 0.7s;
+    position: absolute; top: 50%; left: 0; width: 248px; height: 488px; margin: -244px 0 0 -124px;
+    border-radius: 14px; border: 1px solid var(--line); background: var(--bg2);
+    overflow: hidden; will-change: transform, opacity; cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.4s; transform-style: preserve-3d;
   }
+  .sc-card.is-active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 40px 80px rgba(0,0,0,0.5); cursor: grab; }
+  .sc-stage.is-dragging .sc-card { transition: none; cursor: grabbing; }
+  .sc-card::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 40%; background: linear-gradient(180deg, transparent, rgba(0,0,0,0.85)); pointer-events: none; }
   .sc-card-body { position: relative; width: 100%; height: 100%; }
   .sc-frame-wrap { position: absolute; inset: 0; overflow: hidden; background: var(--bg2); }
-  .sc-frame-wrap iframe { position: absolute; top: 0; left: 0; width: 900px; height: 1270px; border: 0; transform: scale(0.378); transform-origin: top left; pointer-events: none; }
+  .sc-frame-wrap iframe { position: absolute; top: 0; left: 0; width: 390px; height: 880px; border: 0; transform: scale(0.6359); transform-origin: top left; pointer-events: none; }
   .sc-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: var(--muted2); }
   .sc-soon-badge { position: absolute; top: 12px; right: 12px; z-index: 2; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(0,0,0,0.55); color: #fff; padding: 5px 10px; border-radius: 980px; display: flex; align-items: center; gap: 6px; }
   .sc-soon-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #34c759; }
-  .sc-caption-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 20px; background: linear-gradient(to top, rgba(0,0,0,0.82), transparent); z-index: 2; }
+  .sc-caption-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 20px; z-index: 2; pointer-events: none; }
   .sc-cat { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
   .sc-name { font-size: 18px; font-weight: 600; color: #fff; }
-  .sc-card.is-side { opacity: 0.55; filter: blur(2px); }
-  .sc-card.is-active { opacity: 1; filter: none; }
 
   .showcase-nav { position: relative; margin-top: 28px; display: flex; align-items: center; justify-content: center; gap: 18px; z-index: 3; }
   .showcase-dots { display: flex; gap: 6px; }
@@ -86,9 +87,9 @@
   .form-success p { font-size: 14px; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.6; }
 
   @media (max-width: 768px) {
-    .showcase { height: 440px; margin-top: 56px; }
-    .sc-card { width: 240px; height: 340px; margin: -170px 0 0 -120px; }
-    .sc-frame-wrap iframe { width: 900px; height: 1270px; transform: scale(0.267); }
+    .sc-stage { height: 440px; }
+    .sc-card { width: 210px; height: 412px; margin: -206px 0 0 -105px; }
+    .sc-frame-wrap iframe { width: 390px; height: 880px; transform: scale(0.5385); }
     .need-grid, .row2, .care-grid { grid-template-columns: 1fr; }
   }
 
@@ -166,21 +167,6 @@
   </div>
 </section>
 
-<section id="care">
-  <div class="inner care-grid">
-    <div>
-      <h2>Easy for you.<br>Professionally managed.</h2>
-    </div>
-    <div>
-      <p>Your website is built so you can manage what changes day to day, without touching code.</p>
-      <p>Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.</p>
-      <p>Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.</p>
-      <p>Your domain, content and brand remain yours.</p>
-      <p class="emphasis">No page builder maintenance. No plugin stack. No code to manage.</p>
-      <p class="close">Just a custom website you can actually operate yourself.</p>
-    </div>
-  </div>
-</section>
 
 <section>
   <div class="inner">
@@ -345,14 +331,16 @@
     { name: 'Clinch Athletics', url: 'clinchathletics.com', frame: 'https://clinchathletics.com', comingSoon: false, cat: 'Concept project \u00b7 Combat sports brand' },
   ];
   const N = ITEMS.length;
-  let active = 0;
+  const stage = document.getElementById('scStage');
   const track = document.getElementById('scTrack');
   const scDots = document.getElementById('scDots');
-  const SPACING = window.innerWidth <= 768 ? 210 : 360;
 
-  const cards = ITEMS.map((item, i) => {
+  const cards = ITEMS.map((item) => {
     const el = document.createElement('div');
     el.className = 'sc-card';
+    el.setAttribute('role', 'button');
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('aria-label', item.name);
     el.innerHTML = `
       <div class="sc-card-body">
         <div class="sc-fallback">${item.name}</div>
@@ -360,40 +348,107 @@
         ${item.comingSoon ? '<div class="sc-soon-badge">Launching soon</div>' : ''}
         <div class="sc-caption-bar"><p class="sc-cat">${item.cat}</p><h3 class="sc-name">${item.name}</h3></div>
       </div>`;
-    el.addEventListener('click', () => { if (i !== active) { active = i; render(); } });
     track.appendChild(el);
     return el;
   });
 
+  let pos = 0, target = 0, rafId = null;
+  const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function sp() { return window.innerWidth <= 768 ? 148 : 292; }
+  function mod(n, m) { return ((n % m) + m) % m; }
+  function nearestIdx() { return mod(Math.round(pos), N); }
+
   function render() {
-    cards.forEach((el, i) => {
-      let offset = i - active;
-      if (offset > N / 2) offset -= N;
-      if (offset < -N / 2) offset += N;
-      const abs = Math.abs(offset);
-      const x = offset * SPACING;
-      const z = -abs * 110;
-      const rotY = offset * -24;
-      const scale = abs === 0 ? 1 : 0.8;
-      const opacity = abs > 2 ? 0 : 1 - abs * 0.3;
-      el.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rotY}deg) scale(${scale})`;
-      el.style.opacity = opacity;
-      el.style.zIndex = 10 - abs;
-      el.style.pointerEvents = abs > 2 ? 'none' : 'auto';
-      el.classList.toggle('is-active', abs === 0);
-      el.classList.toggle('is-side', abs !== 0);
+    const s = sp(), active = nearestIdx();
+    cards.forEach((card, i) => {
+      let off = mod(i - pos, N);
+      if (off > N / 2) off -= N;
+      const abs = Math.abs(off), vis = abs <= 1.85;
+      card.style.opacity = vis ? String(Math.max(0, 1 - abs * 0.38)) : '0';
+      card.style.pointerEvents = vis ? 'auto' : 'none';
+      card.style.zIndex = String(100 - Math.round(abs * 10));
+      card.style.transform = `translateX(${(off * s).toFixed(1)}px) translateZ(${(-abs * 180).toFixed(1)}px) rotateY(${(-off * 18).toFixed(2)}deg)`;
+      card.classList.toggle('is-active', i === active && Math.abs(pos - target) < 0.02);
     });
     [...scDots.children].forEach((d, i) => d.classList.toggle('active', i === active));
   }
+
+  function tick() {
+    const diff = target - pos;
+    if (Math.abs(diff) < 0.001) { pos = target; render(); rafId = null; return; }
+    pos += diff * (rm ? 1 : 0.13);
+    render();
+    rafId = requestAnimationFrame(tick);
+  }
+  function startTween() { if (rafId === null) rafId = requestAnimationFrame(tick); }
+  function goTo(i) {
+    let d = mod(i - target, N);
+    if (d > N / 2) d -= N;
+    target += d;
+    startTween();
+  }
+  function step(d) { target += d; startTween(); }
+
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => { if (!dragMoved && i !== nearestIdx()) goTo(i); });
+    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goTo(i); } });
+  });
+
+  let dragging = false, dragStartX = 0, dragStartPos = 0, dragMoved = false;
+  stage.addEventListener('pointerdown', (e) => {
+    if (e.target.closest('.showcase-arrows')) return;
+    dragging = true; dragMoved = false; dragStartX = e.clientX; dragStartPos = pos;
+    stage.classList.add('is-dragging');
+    if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+    stage.setPointerCapture(e.pointerId);
+  });
+  stage.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - dragStartX;
+    if (Math.abs(dx) > 6) dragMoved = true;
+    pos = dragStartPos - dx / sp();
+    render();
+  });
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    stage.classList.remove('is-dragging');
+    target = Math.round(pos);
+    startTween();
+    setTimeout(() => { dragMoved = false; }, 0);
+  }
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
+
   ITEMS.forEach((_, i) => {
     const dot = document.createElement('button');
-    dot.addEventListener('click', () => { active = i; render(); });
+    dot.addEventListener('click', () => goTo(i));
     scDots.appendChild(dot);
   });
-  document.getElementById('scPrev').addEventListener('click', () => { active = (active - 1 + N) % N; render(); });
-  document.getElementById('scNext').addEventListener('click', () => { active = (active + 1) % N; render(); });
+
+  // Auto-scroll: advance one card every 4s, pause on hover/drag
+  let autoScrollTimer = null;
+  function startAutoScroll() {
+    if (autoScrollTimer) return;
+    autoScrollTimer = setInterval(() => { if (!dragging) { target += 1; startTween(); } }, 4000);
+  }
+  function stopAutoScroll() { clearInterval(autoScrollTimer); autoScrollTimer = null; }
+  stage.addEventListener('mouseenter', stopAutoScroll);
+  stage.addEventListener('mouseleave', startAutoScroll);
+  stage.addEventListener('pointerdown', stopAutoScroll);
+  stage.addEventListener('pointerup', () => setTimeout(startAutoScroll, 2000));
+  stage.addEventListener('pointercancel', () => setTimeout(startAutoScroll, 2000));
+  startAutoScroll();
+
+  document.getElementById('scPrev').addEventListener('click', () => step(-1));
+  document.getElementById('scNext').addEventListener('click', () => step(1));
+  stage.setAttribute('tabindex', '0');
+  stage.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+  });
+
   render();
-  setInterval(() => { active = (active + 1) % N; render(); }, 6000);
 
   const NEEDS = {
     members: { title: "More members.", text: "The site needs to do one thing well: turn visitors into people who actually show up. Clear paths to trial sessions, a schedule that updates itself, and a first impression that reflects what your gym actually is." },
