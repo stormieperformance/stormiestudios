@@ -544,7 +544,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   --gold: #c9a96e; --gold-bright: #ecd9ae; --gold-dim: rgba(201,169,110,0.14); --gold-line: rgba(201,169,110,0.4);
   background: var(--bg);
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
-  padding: 100px 0; border-bottom: 1px solid var(--line);
+  padding: 72px 0; border-bottom: 1px solid var(--line);
   position: relative; overflow: hidden;
 }
 .care-bg-video {
@@ -561,8 +561,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 @media (prefers-reduced-motion: reduce) { .care-bg-video { display: none; } }
 .care-title { font-family: var(--serif); font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; color: var(--text); }
-.care-right { display: flex; flex-direction: column; gap: 22px; padding-top: 8px; }
+.care-right { display: flex; flex-direction: column; gap: 20px; padding-top: 20px; max-width: 440px; }
 .care-right p { font-size: 14px; font-weight: 300; color: rgba(237,231,217,0.82); line-height: 1.85; }
+.care-right p.care-emphasis { color: var(--text); font-weight: 500; letter-spacing: 0.01em; }
+.care-right p.care-close { font-family: var(--serif); font-style: italic; font-size: 17px; font-weight: 400; color: var(--gold-bright); line-height: 1.6; margin-top: 4px; }
 
 /* ══ GIVING BACK ══ */
 .giving {
@@ -793,7 +795,8 @@ footer { max-width: 1080px; margin: 0 auto; padding: 42px 48px 34px; display: fl
   .sc-arrow--next { right: -4px; }
   .custom-built > .section-inner { grid-template-columns: 1fr; gap: 28px; padding: 36px 24px; box-sizing: border-box; margin-left: 16px; margin-right: 16px; width: auto; }
   .pitch > .section-inner { padding: 36px 24px; box-sizing: border-box; margin-left: 16px; margin-right: 16px; width: auto; }
-  .care > .section-inner { grid-template-columns: 1fr; gap: 32px; }
+  .care > .section-inner { grid-template-columns: 1fr; gap: 40px; }
+  .care-right { gap: 18px; padding-top: 0; max-width: none; }
   .giving { grid-template-columns: 1fr; }
   .giving-copy { padding: 32px 24px; margin: 0 16px; }
   .giving-form { padding: 32px 24px; }
@@ -1045,12 +1048,12 @@ section.inview .faq-title, section.inview .faq-item {
 <div class="section-inner">
   <h2 class="care-title" data-i18n="care_title">Easy for you.<br><span class="gold-shimmer">Professionally managed.</span></h2>
   <div class="care-right">
-    <p data-i18n="care_p1">Your website is built so you can manage the things that change day to day without touching code.</p>
-    <p data-i18n="care_p2">Update text, images, video, schedules, prices, staff, campaigns and news through a simple CMS or connected content system. You don't need to call a developer every time something changes, and the editing experience is designed so routine updates don't interfere with the site's layout or underlying build.</p>
-    <p data-i18n="care_p3">Behind the scenes, Stormie Studios handles hosting, deployment, security, backups and maintenance for one flat monthly fee.</p>
-    <p data-i18n="care_p4">Your domain, content and brand remain yours. Stormie Studios manages the source code, technical infrastructure and production environment that keep everything running.</p>
-    <p data-i18n="care_p5">No page builder maintenance. No plugin stack. No code to manage.</p>
-    <p data-i18n="care_p6">Just a custom website you can actually operate yourself.</p>
+    <p data-i18n="care_p1">Your website is built so you can manage what changes day to day — without touching code.</p>
+    <p data-i18n="care_p2">Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.</p>
+    <p data-i18n="care_p3">Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.</p>
+    <p data-i18n="care_p4">Your domain, content and brand remain yours.</p>
+    <p class="care-emphasis" data-i18n="care_p5">No page builder maintenance. No plugin stack. No code to manage.</p>
+    <p class="care-close" data-i18n="care_p6">Just a custom website you can actually operate yourself.</p>
   </div>
 </div>
 </section>
@@ -1396,10 +1399,10 @@ const I18N = {
     pitch_title:"Custom websites built around <span class=\"gold-shimmer\">how your business actually works.</span>",
     pitch_sub:"Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.",
     care_title:"Easy for you.<br><span class=\"gold-shimmer\">Professionally managed.</span>",
-    care_p1:"Your website is built so you can manage the things that change day to day without touching code.",
-    care_p2:"Update text, images, video, schedules, prices, staff, campaigns and news through a simple CMS or connected content system. You don't need to call a developer every time something changes, and the editing experience is designed so routine updates don't interfere with the site's layout or underlying build.",
-    care_p3:"Behind the scenes, Stormie Studios handles hosting, deployment, security, backups and maintenance for one flat monthly fee.",
-    care_p4:"Your domain, content and brand remain yours. Stormie Studios manages the source code, technical infrastructure and production environment that keep everything running.",
+    care_p1:"Your website is built so you can manage what changes day to day — without touching code.",
+    care_p2:"Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.",
+    care_p3:"Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.",
+    care_p4:"Your domain, content and brand remain yours.",
     care_p5:"No page builder maintenance. No plugin stack. No code to manage.",
     care_p6:"Just a custom website you can actually operate yourself.",
     tb1:"Your domain stays yours", tb2:"Your content stays yours", tb3:"Cancel hosting anytime", tb4:"Direct contact with your developer", tb5:"Built in Sweden, available worldwide",
@@ -1459,11 +1462,12 @@ const I18N = {
     pitch_title:"Skräddarsydda webbplatser byggda kring <span class=\"gold-shimmer\">hur ditt företag faktiskt fungerar.</span>",
     pitch_sub:"Stormie Studios designar och utvecklar snabba, distinkta webbplatser för gym, coacher och prestationsdrivna verksamheter, med de system, integrationer och funktioner som krävs för att göra sajten till en användbar del av verksamheten, inte bara något som ser bra ut.",
     care_title:"Enkelt för dig.<br><span class=\"gold-shimmer\">Professionellt förvaltad.</span>",
-    care_p1:"Din webbplats är byggd så att du kan sköta de delar som spelar roll i vardagen, utan att röra kod.",
-    care_p2:"Uppdatera text, bilder, video, scheman, priser, personal, kampanjer och nyheter via ett enkelt CMS eller ett kopplat innehållssystem. Du behöver inte ringa en utvecklare varje gång något ändras, och redigeringen är byggd så att vardagliga uppdateringar inte påverkar sajtens layout eller underliggande bygge.",
-    care_p3:"Bakom kulisserna sköter Stormie Studios det tekniska: hosting, driftsättning, säkerhet, backuper och underhåll för en fast månadskostnad.",
-    care_p4:"Din domän, ditt innehåll och ditt varumärke förblir alltid dina. Den underliggande källkoden, byggsystemet och produktionsmiljön förblir hos Stormie Studios. Det håller ansvaret tydligt: du styr din verksamhet och dess innehåll, jag ansvarar för den tekniska implementationen som håller allt igång.",
-    care_p5:"Inget page builder-underhåll. Ingen plugin-stack att hantera. Ingen källkod du behöver förstå. Bara en skräddarsydd webbplats du faktiskt kan driva själv.",
+    care_p1:"Din webbplats är byggd så att du kan sköta det som ändras i vardagen — utan att röra kod.",
+    care_p2:"Uppdatera text, bilder, scheman, priser och innehåll via ett enkelt CMS, medan Stormie Studios sköter det tekniska bakom kulisserna.",
+    care_p3:"Hosting, driftsättning, säkerhet, backuper och underhåll sköts för en fast månadskostnad.",
+    care_p4:"Din domän, ditt innehåll och ditt varumärke förblir alltid dina.",
+    care_p5:"Inget page builder-underhåll. Ingen plugin-stack. Ingen kod att hantera.",
+    care_p6:"Bara en skräddarsydd webbplats du faktiskt kan driva själv.",
     tb1:"Din domän förblir din", tb2:"Ditt innehåll förblir ditt", tb3:"Avsluta hosting när du vill", tb4:"Direktkontakt med din utvecklare", tb5:"Byggt i Sverige, tillgängligt globalt",
     footer_company:"Företag", footer_by:"Av Storm Kolmodin", footer_nav:"Navigering", footer_services:"Tjänster", footer_about:"Om oss", footer_contact_link:"Kontakt",
     footer_registered:"Registrerad verksamhet i Sverige",
@@ -1521,11 +1525,12 @@ const I18N = {
     pitch_title:"เว็บไซต์ที่สร้างเฉพาะ ออกแบบตาม<span class=\"gold-shimmer\">วิธีที่ธุรกิจของคุณทำงานจริง</span>",
     pitch_sub:"Stormie Studios ออกแบบและพัฒนาเว็บไซต์ที่รวดเร็วและมีเอกลักษณ์เฉพาะตัวสำหรับยิม โค้ช และธุรกิจที่เน้นผลลัพธ์ พร้อมระบบ การเชื่อมต่อ และฟังก์ชันที่จำเป็นเพื่อให้เว็บไซต์เป็นส่วนหนึ่งที่มีประโยชน์ต่อธุรกิจจริง ไม่ใช่แค่สิ่งที่ดูดีเท่านั้น",
     care_title:"ง่ายสำหรับคุณ<br><span class=\"gold-shimmer\">ดูแลอย่างมืออาชีพ</span>",
-    care_p1:"เว็บไซต์ของคุณถูกสร้างมาให้คุณจัดการส่วนที่สำคัญในแต่ละวันได้เอง โดยไม่ต้องแตะโค้ด",
-    care_p2:"อัปเดตข้อความ รูปภาพ วิดีโอ ตารางเวลา ราคา พนักงาน แคมเปญ และข่าวสาร ผ่าน CMS หรือระบบเนื้อหาที่เชื่อมต่อไว้ คุณไม่ต้องโทรหานักพัฒนาทุกครั้งที่มีการเปลี่ยนแปลง และการแก้ไขถูกออกแบบมาให้การอัปเดตทั่วไปไม่กระทบเลย์เอาต์หรือโครงสร้างพื้นฐานของเว็บไซต์",
-    care_p3:"เบื้องหลัง Stormie Studios ดูแลด้านเทคนิคทั้งหมด: โฮสติ้ง การดีพลอย ความปลอดภัย การสำรองข้อมูล และการบำรุงรักษา ในราคาคงที่รายเดือน",
-    care_p4:"โดเมน เนื้อหา และแบรนด์ของคุณเป็นของคุณเสมอ ซอร์สโค้ด ระบบการสร้าง และสภาพแวดล้อมการใช้งานจริงอยู่ภายใต้การดูแลของ Stormie Studios สิ่งนี้ทำให้ความรับผิดชอบชัดเจน คุณดูแลธุรกิจและเนื้อหาของคุณ ส่วนผมรับผิดชอบการดำเนินการทางเทคนิคที่ทำให้ทุกอย่างทำงานได้",
-    care_p5:"ไม่ต้องดูแล page builder ไม่มี plugin stack ต้องจัดการ ไม่มีซอร์สโค้ดที่คุณต้องเข้าใจ มีแค่เว็บไซต์ที่สร้างเฉพาะสำหรับคุณ ที่คุณสามารถบริหารจัดการได้เอง",
+    care_p1:"เว็บไซต์ของคุณถูกสร้างมาให้คุณจัดการสิ่งที่เปลี่ยนแปลงในแต่ละวันได้เอง โดยไม่ต้องแตะโค้ด",
+    care_p2:"อัปเดตข้อความ รูปภาพ ตารางเวลา ราคา และเนื้อหา ผ่าน CMS ที่ใช้งานง่าย ในขณะที่ Stormie Studios ดูแลด้านเทคนิคเบื้องหลัง",
+    care_p3:"โฮสติ้ง การดีพลอย ความปลอดภัย การสำรองข้อมูล และการบำรุงรักษา ดูแลให้ในราคาคงที่รายเดือน",
+    care_p4:"โดเมน เนื้อหา และแบรนด์ของคุณเป็นของคุณเสมอ",
+    care_p5:"ไม่ต้องดูแล page builder ไม่มี plugin stack ต้องจัดการ ไม่มีโค้ดที่ต้องดูแล",
+    care_p6:"มีแค่เว็บไซต์ที่สร้างเฉพาะสำหรับคุณ ที่คุณสามารถบริหารจัดการได้เอง",
     tb1:"โดเมนของคุณเป็นของคุณเสมอ", tb2:"เนื้อหาของคุณเป็นของคุณเสมอ", tb3:"ยกเลิกโฮสติ้งได้ทุกเมื่อ", tb4:"ติดต่อนักพัฒนาของคุณได้โดยตรง", tb5:"สร้างในสวีเดน ให้บริการทั่วโลก",
     footer_company:"บริษัท", footer_by:"โดย Storm Kolmodin", footer_nav:"เมนู", footer_services:"บริการ", footer_about:"เกี่ยวกับ", footer_contact_link:"ติดต่อ",
     footer_registered:"จดทะเบียนธุรกิจในสวีเดน",
