@@ -1,0 +1,85 @@
+:root {
+  --transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg); color: var(--text);
+  transition: var(--transition);
+}
+
+/* ============ THEME A: LIGHT, BLUE ACCENT (unused by default, kept for reference) ============ */
+[data-theme="a"] {
+  --bg: #fbfbfd; --bg2: #f5f5f7; --text: #1d1d1f; --muted: #6e6e73; --muted2: #86868b;
+  --line: #d2d2d7; --accent: #0071e3; --accent-text: #ffffff; --card: #ffffff;
+}
+/* ============ THEME B: DARK, WHITE ACCENT ============ */
+[data-theme="b"] {
+  --bg: #000000; --bg2: #111113; --text: #f5f5f7; --muted: #a1a1a6; --muted2: #86868b;
+  --line: #2a2a2c; --accent: #f5f5f7; --accent-text: #000000; --card: #0a0a0c;
+}
+/* ============ THEME C: LIGHT, ORANGE ACCENT (default) ============ */
+[data-theme="c"] {
+  --bg: #ffffff; --bg2: #f7f6f4; --text: #111111; --muted: #6e6e73; --muted2: #86868b;
+  --line: #e2e2e2; --accent: #ff4d1c; --accent-text: #ffffff; --card: #ffffff;
+}
+
+/* ============ HEADER / NAV ============ */
+header { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.logo { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+nav.main-nav { display: flex; align-items: center; gap: 26px; }
+nav.main-nav a { font-size: 13px; color: var(--muted); text-decoration: none; cursor: pointer; }
+nav.main-nav a:hover { color: var(--text); }
+.nav-right { display: flex; align-items: center; gap: 18px; }
+.lang-select { display: flex; gap: 6px; font-size: 12px; }
+.lang-select button { border: none; background: transparent; color: var(--muted2); cursor: pointer; font-family: inherit; padding: 0; }
+.lang-select button.active { color: var(--text); font-weight: 600; }
+.icon-toggle { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.icon-toggle svg { width: 15px; height: 15px; stroke: var(--muted); }
+
+/* Hamburger button — hidden on desktop, shown on mobile */
+.hamburger-btn { display: none; width: 36px; height: 36px; border: none; background: transparent; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
+.hamburger-btn span { display: block; width: 22px; height: 2px; background: var(--text); transition: transform 0.25s ease, opacity 0.25s ease; }
+.hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger-btn.open span:nth-child(2) { opacity: 0; }
+.hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu { display: none; position: fixed; inset: 0; top: 73px; z-index: 99; background: var(--bg); flex-direction: column; padding: 32px 24px; overflow-y: auto; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 22px; font-weight: 500; color: var(--text); text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.mobile-menu-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 28px; padding-top: 20px; }
+.mobile-menu-controls .lang-select { font-size: 15px; gap: 10px; }
+
+/* ============ TYPOGRAPHY / LAYOUT PRIMITIVES ============ */
+section { padding: 120px 48px; border-bottom: 1px solid var(--line); }
+.inner { max-width: 980px; margin: 0 auto; }
+.eyebrow { font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 20px; }
+h1 { font-size: clamp(38px, 4.8vw, 60px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 22px; color: var(--text); }
+h2 { font-size: clamp(28px, 3.6vw, 44px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px; color: var(--text); }
+section p.sub { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.65; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 34px; border-radius: 980px; background: var(--accent); color: var(--accent-text); font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; font-family: inherit; }
+.btn-outline { background: transparent; border: 1px solid var(--line); color: var(--text); }
+
+/* ============ PAGE HERO (used by About / Who I Work With / What You Get) ============ */
+.page-hero { padding: 160px 48px 80px; text-align: center; }
+.page-hero .eyebrow { text-align: center; }
+
+/* ============ FOOTER ============ */
+footer { padding: 64px 48px 32px; }
+.footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 980px; margin: 0 auto 40px; }
+.footer-col-title { font-size: 12px; font-weight: 600; margin-bottom: 14px; color: var(--text); }
+.footer-col p, .footer-col a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 8px; }
+.footer-bottom { max-width: 980px; margin: 0 auto; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 12px; color: var(--muted2); }
+
+@media (max-width: 900px) {
+  nav.main-nav { display: none; }
+  .nav-right .lang-select, .nav-right .icon-toggle { display: none; }
+  .hamburger-btn { display: flex; }
+  header { padding: 16px 20px; }
+  section { padding: 72px 20px; }
+  .page-hero { padding: 120px 20px 56px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}

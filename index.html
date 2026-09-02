@@ -4,65 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Stormie Studios — Redesign Test</title>
+<title>Stormie Studios &mdash; Custom websites for gyms, coaches &amp; fitness brands</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-  :root {
-    --transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg); color: var(--text);
-    transition: var(--transition);
-  }
-
-  /* ============ THEME A: LIGHT, BLUE ACCENT ============ */
-  [data-theme="a"] {
-    --bg: #fbfbfd; --bg2: #f5f5f7; --text: #1d1d1f; --muted: #6e6e73; --muted2: #86868b;
-    --line: #d2d2d7; --accent: #0071e3; --accent-text: #ffffff; --card: #ffffff;
-  }
-  /* ============ THEME B: DARK, WHITE ACCENT ============ */
-  [data-theme="b"] {
-    --bg: #000000; --bg2: #111113; --text: #f5f5f7; --muted: #a1a1a6; --muted2: #86868b;
-    --line: #2a2a2c; --accent: #f5f5f7; --accent-text: #000000; --card: #0a0a0c;
-  }
-  /* ============ THEME C: LIGHT, ORANGE ACCENT ============ */
-  [data-theme="c"] {
-    --bg: #ffffff; --bg2: #f7f6f4; --text: #111111; --muted: #6e6e73; --muted2: #86868b;
-    --line: #e2e2e2; --accent: #ff4d1c; --accent-text: #ffffff; --card: #ffffff;
-  }
-
-  .theme-switcher { display: none; }
-
-  header { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-  .logo { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
-  nav { display: flex; align-items: center; gap: 26px; }
-  nav a { font-size: 13px; color: var(--muted); text-decoration: none; cursor: pointer; }
-  .nav-right { display: flex; align-items: center; gap: 18px; }
-  .lang-select { display: flex; gap: 6px; font-size: 12px; }
-  .lang-select button { border: none; background: transparent; color: var(--muted2); cursor: pointer; font-family: inherit; padding: 0; }
-  .lang-select button.active { color: var(--text); font-weight: 600; }
-  .icon-toggle { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-  .icon-toggle svg { width: 15px; height: 15px; stroke: var(--muted); }
-  .nav-cta { background: var(--accent); color: var(--accent-text); padding: 10px 20px; border-radius: 980px; font-size: 13px; font-weight: 500; text-decoration: none; }
-
-  section { padding: 120px 48px; border-bottom: 1px solid var(--line); }
-  .inner { max-width: 980px; margin: 0 auto; }
-
   .hero { position: relative; text-align: center; padding: 140px 24px 60px; overflow: hidden; }
   .hero-content { position: relative; z-index: 2; }
   .hero-grid { display: flex; flex-direction: column; gap: 0; text-align: center; align-items: center; }
   .hero-grid .btn { margin-top: 28px; }
-  .eyebrow { font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 20px; }
-  h1 { font-size: clamp(38px, 4.8vw, 60px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 22px; }
   .hero p.sub { font-size: 17px; color: var(--muted); max-width: 460px; margin: 0 auto 32px; line-height: 1.55; }
-  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 34px; border-radius: 980px; background: var(--accent); color: var(--accent-text); font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; font-family: inherit; }
-  .btn-outline { background: transparent; border: 1px solid var(--line); color: var(--text); }
 
-  /* ============ SHOWCASE (3D carousel, below the headline) ============ */
   .showcase { position: relative; z-index: 1; width: 100%; height: 380px; margin-top: 56px; display: flex; align-items: center; justify-content: center; }
   .sc-stage { position: relative; width: 100%; height: 100%; perspective: 1600px; pointer-events: none; }
   .sc-track { position: absolute; inset: 0; transform-style: preserve-3d; display: flex; align-items: center; justify-content: center; }
@@ -89,23 +41,10 @@
   .showcase-dots button { width: 6px; height: 6px; border-radius: 50%; border: none; background: var(--line); cursor: pointer; padding: 0; }
   .showcase-dots button.active { background: var(--accent); width: 18px; border-radius: 3px; }
   .showcase-arrows button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); cursor: pointer; color: var(--text); font-size: 16px; }
-  @media (max-width: 768px) {
-    .hero { padding: 80px 16px 40px; }
-    .sc-card { width: 190px; height: 260px; margin: -130px 0 0 -95px; }
-    .sc-frame-wrap iframe { transform: scale(0.198); }
-  }
-
-  h2 { font-size: clamp(28px, 3.6vw, 44px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px; }
-  section p.sub { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.65; }
-
-  .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-  .care-grid p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
-  .care-grid p.emphasis { color: var(--text); font-weight: 500; }
-  .care-grid p.close { font-style: italic; color: var(--text); font-size: 17px; }
 
   .bullets { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; text-align: center; }
   .bullet { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
-  .bullet::before { content: '✓'; color: var(--accent); font-weight: 700; }
+  .bullet::before { content: '\2713'; color: var(--accent); font-weight: 700; }
 
   .contact { text-align: center; }
   .contact-box { max-width: 640px; margin: 0 auto; }
@@ -133,28 +72,6 @@
   .form-success h3 { font-size: 22px; margin-bottom: 10px; }
   .form-success p { font-size: 14px; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.6; }
 
-  .giving { background: var(--bg2); }
-  .giving-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-
-  /* ============ ABOUT ============ */
-  .about-sign { font-style: italic; color: var(--muted2); font-size: 15px; margin-top: 8px; }
-  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
-  .why-item { background: var(--card); padding: 28px 28px 26px; }
-  .why-num { display: block; font-style: italic; font-size: 12px; color: var(--accent); margin-bottom: 8px; }
-  .why-title { display: block; font-size: 18px; font-weight: 600; margin-bottom: 10px; }
-  .why-body { font-size: 13px; color: var(--muted); line-height: 1.75; }
-
-  /* ============ SEGMENTS (Who I work with) ============ */
-  .segments-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
-  .segments-grid .segment-full { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  .segment-item { background: var(--card); padding: 32px; }
-  .segment-name { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
-  .segment-text { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; max-width: 420px; }
-  .segment-link { font-size: 12px; font-weight: 600; color: var(--accent); }
-  @media (max-width: 768px) { .why-grid, .segments-grid { grid-template-columns: 1fr; } .segments-grid .segment-full { flex-direction: column; align-items: flex-start; } }
-  .giving-grid p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
-  .giving-img { aspect-ratio: 4/3; border-radius: 16px; background: var(--card); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; color: var(--muted2); font-size: 13px; }
-
   .faq-item { border-bottom: 1px solid var(--line); padding: 22px 0; cursor: pointer; }
   .faq-q { display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 500; }
   .faq-toggle { font-size: 20px; color: var(--muted); transition: transform 0.25s; }
@@ -162,20 +79,11 @@
   .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 14px; color: var(--muted); line-height: 1.7; }
   .faq-item.open .faq-a { max-height: 240px; padding-top: 12px; }
 
-  footer { padding: 64px 48px 32px; }
-  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 980px; margin: 0 auto 40px; }
-  .footer-col-title { font-size: 12px; font-weight: 600; margin-bottom: 14px; }
-  .footer-col p, .footer-col a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 8px; }
-  .footer-bottom { max-width: 980px; margin: 0 auto; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 12px; color: var(--muted2); }
   @media (max-width: 768px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-  }
-
-  @media (max-width: 768px) {
-    header { padding: 16px 20px; } nav { display: none; }
-    section { padding: 72px 20px; }
-    .care-grid, .giving-grid, .row2 { grid-template-columns: 1fr; gap: 32px; }
+    .hero { padding: 80px 16px 40px; }
+    .sc-card { width: 190px; height: 260px; margin: -130px 0 0 -95px; }
+    .sc-frame-wrap iframe { transform: scale(0.198); }
+    .need-grid, .row2 { grid-template-columns: 1fr; }
     .hero-grid { gap: 40px; }
   }
 </style>
@@ -183,13 +91,12 @@
 <body data-theme="c">
 
 <header>
-  <div class="logo">STORMIE STUDIOS</div>
-  <nav>
+  <a class="logo" href="index.html">STORMIE STUDIOS</a>
+  <nav class="main-nav">
     <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="#segments">Who I work with</a>
-    <a href="#care">What you get</a>
-    <a href="#giving">Giving back</a>
+    <a href="about.html">About</a>
+    <a href="who-i-work-with.html">Who I work with</a>
+    <a href="what-you-get.html">What you get</a>
     <a href="#faq">Faq</a>
   </nav>
   <div class="nav-right">
@@ -198,17 +105,36 @@
       <button data-lang="sv">SV</button><span style="color:var(--line)">/</span>
       <button data-lang="th">TH</button>
     </div>
-    <button class="icon-toggle" id="modeToggle" aria-label="Toggle dark mode">
-      <svg id="modeIcon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <button class="icon-toggle" data-mode-toggle aria-label="Toggle dark mode">
+      <svg data-mode-icon viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
     </button>
-    <a class="nav-cta" href="#contact">Request a consultation</a>
+    <button class="hamburger-btn" data-hamburger aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+
+<div class="mobile-menu" data-mobile-menu>
+  <a href="#work">Work</a>
+  <a href="about.html">About</a>
+  <a href="who-i-work-with.html">Who I work with</a>
+  <a href="what-you-get.html">What you get</a>
+  <a href="#faq">Faq</a>
+  <a href="#contact">Request a consultation</a>
+  <div class="mobile-menu-controls">
+    <div class="lang-select">
+      <button class="active" data-lang="en">EN</button><span style="color:var(--line)">/</span>
+      <button data-lang="sv">SV</button><span style="color:var(--line)">/</span>
+      <button data-lang="th">TH</button>
+    </div>
+    <button class="icon-toggle" data-mode-toggle aria-label="Toggle dark mode">
+      <svg data-mode-icon viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</div>
 
 <section class="hero">
   <div class="hero-content">
     <div class="inner hero-grid">
-      <p class="eyebrow">Stockholm — Digital studio for sport &amp; fitness brands</p>
+      <p class="eyebrow">Stockholm &mdash; Digital studio for sport &amp; fitness brands</p>
       <h1>Custom websites.<br>Built to perform.<br><span style="color: var(--accent);">Professionally managed.</span></h1>
       <p class="sub">Built to convert visitors into members, and effortless for you to run.</p>
       <a class="btn" href="#contact">Request a consultation</a>
@@ -220,9 +146,9 @@
     </div>
   </div>
   <div class="showcase-nav">
-    <div class="showcase-arrows"><button id="scPrev" aria-label="Previous">‹</button></div>
+    <div class="showcase-arrows"><button id="scPrev" aria-label="Previous">&lsaquo;</button></div>
     <div class="showcase-dots" id="scDots"></div>
-    <div class="showcase-arrows"><button id="scNext" aria-label="Next">›</button></div>
+    <div class="showcase-arrows"><button id="scNext" aria-label="Next">&rsaquo;</button></div>
   </div>
 </section>
 
@@ -231,64 +157,6 @@
     <p class="eyebrow">Selected work</p>
     <h2>Custom websites built around how your business actually works.</h2>
     <p class="sub">Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.</p>
-  </div>
-</section>
-
-<section id="about">
-  <div class="inner">
-    <p class="eyebrow">About</p>
-    <h2>Built from <span style="color: var(--accent);">the gym floor.</span></h2>
-    <p class="sub">I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.</p>
-    <p class="sub">Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.</p>
-    <p class="about-sign">— Storm</p>
-    <div class="why-grid">
-      <div class="why-item"><span class="why-num">i.</span><span class="why-title">Licensed Personal Trainer</span><p class="why-body">Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.</p></div>
-      <div class="why-item"><span class="why-num">ii.</span><span class="why-title">Agile Project Manager &amp; Developer</span><p class="why-body">Trained at Futuregames and Stockholm University. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.</p></div>
-      <div class="why-item"><span class="why-num">iii.</span><span class="why-title">Former Gym Manager &amp; Fitness Instructor</span><p class="why-body">Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.</p></div>
-      <div class="why-item"><span class="why-num">iv.</span><span class="why-title">Built From the Industry</span><p class="why-body">Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="segments">
-  <div class="inner">
-    <p class="eyebrow">Who I work with</p>
-    <h2>Built for the fitness industry.<br><span style="color: var(--accent);">And a few causes I care about.</span></h2>
-    <div class="segments-grid">
-      <div class="segment-item">
-        <h3 class="segment-name">Gyms &amp; martial arts clubs</h3>
-        <p class="segment-text">More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.</p>
-        <span class="segment-link">See how →</span>
-      </div>
-      <div class="segment-item">
-        <h3 class="segment-name">PTs &amp; coaches</h3>
-        <p class="segment-text">Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.</p>
-        <span class="segment-link" style="color: var(--muted2);">Coming soon</span>
-      </div>
-      <div class="segment-item segment-full">
-        <div>
-          <h3 class="segment-name">Shop &amp; brand</h3>
-          <p class="segment-text" style="margin-bottom: 0;">Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.</p>
-        </div>
-        <span class="segment-link" style="color: var(--muted2); white-space: nowrap;">Coming soon</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="care" class="care">
-  <div class="inner care-grid">
-    <div>
-      <h2>Easy for you.<br>Professionally managed.</h2>
-    </div>
-    <div>
-      <p>Your website is built so you can manage what changes day to day, without touching code.</p>
-      <p>Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.</p>
-      <p>Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.</p>
-      <p>Your domain, content and brand remain yours.</p>
-      <p class="emphasis">No page builder maintenance. No plugin stack. No code to manage.</p>
-      <p class="close">Just a custom website you can actually operate yourself.</p>
-    </div>
   </div>
 </section>
 
@@ -320,7 +188,7 @@
     </div>
 
     <div class="need-response" id="needResponse" style="display:none">
-      <button class="need-back" id="needBack">← Back</button>
+      <button class="need-back" id="needBack">&larr; Back</button>
       <div class="need-answer" id="needAnswer"></div>
       <form id="contactForm" onsubmit="event.preventDefault(); document.getElementById('needResponse').querySelector('form').style.display='none'; document.getElementById('formSuccess').style.display='block';">
         <div class="row2">
@@ -351,8 +219,8 @@
           <span class="field-label-text">Budget</span>
           <div class="chip-group">
             <button type="button" class="chip">Under 10,000 SEK</button>
-            <button type="button" class="chip">10,000–20,000 SEK</button>
-            <button type="button" class="chip">20,000–40,000 SEK</button>
+            <button type="button" class="chip">10,000&ndash;20,000 SEK</button>
+            <button type="button" class="chip">20,000&ndash;40,000 SEK</button>
             <button type="button" class="chip">40,000+ SEK</button>
             <button type="button" class="chip">Not sure yet</button>
           </div>
@@ -362,8 +230,8 @@
           <div class="chip-group">
             <button type="button" class="chip">As soon as possible</button>
             <button type="button" class="chip">Within 1 month</button>
-            <button type="button" class="chip">1–3 months</button>
-            <button type="button" class="chip">3–6 months</button>
+            <button type="button" class="chip">1&ndash;3 months</button>
+            <button type="button" class="chip">3&ndash;6 months</button>
             <button type="button" class="chip">No fixed deadline</button>
           </div>
         </div>
@@ -374,25 +242,13 @@
             <option>Saw another Stormie Studios website</option><option>Direct outreach</option><option>Other</option>
           </select>
         </div>
-        <button class="btn" type="submit" style="align-self: flex-start;">Send →</button>
-        <p class="form-privacy-note"><a href="#">Privacy policy</a></p>
+        <button class="btn" type="submit" style="align-self: flex-start;">Send &rarr;</button>
+        <p class="form-privacy-note"><a href="privacy.html">Privacy policy</a></p>
       </form>
       <div class="form-success" id="formSuccess">
         <h3>Request received.</h3>
         <p>I'll review your project details and get back to you within one business day. If it looks like a good fit, I'll send you a link to book a consultation.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="giving" class="giving">
-  <div class="inner giving-grid">
-    <div class="giving-img">Photo placeholder</div>
-    <div>
-      <h2>Free websites for animal &amp; wildlife welfare organizations.</h2>
-      <p>I've had animals in my life for as long as I can remember. I've worked as a vet nurse assistant, managed a dog day care, and today I volunteer as an animal caretaker at a non-profit farm, caring for their farm animals on weekends.</p>
-      <p>As Stormie Studios grows, 2-3 custom websites are offered completely free each year to registered non-profit organizations working in animal rescue, wildlife conservation, or animal welfare.</p>
-      <a class="btn btn-outline" href="#contact">Apply for a free website</a>
     </div>
   </div>
 </section>
@@ -416,10 +272,12 @@
     </div>
     <div class="footer-col">
       <p class="footer-col-title">Navigation</p>
-      <a href="#care">Services</a>
-      <a href="#work">Work</a>
-      <a href="#faq">Faq</a>
-      <a href="#contact">Contact</a>
+      <a href="what-you-get.html">Services</a>
+      <a href="index.html#work">Work</a>
+      <a href="about.html">About</a>
+      <a href="who-i-work-with.html">Who I work with</a>
+      <a href="index.html#faq">Faq</a>
+      <a href="index.html#contact">Contact</a>
     </div>
     <div class="footer-col">
       <p class="footer-col-title">Legal</p>
@@ -433,19 +291,18 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Stormie Studios. All rights reserved.</p>
-    <p>Redesign test build — not linked from the live site.</p>
+    <p>&copy; 2026 Stormie Studios. All rights reserved.</p>
+    <p>Built by Stormie Studios.</p>
   </div>
 </footer>
 
-
-
+<script src="nav.js"></script>
 <script>
   const faqs = [
     ["How long does a project take?", "Most projects launch within a few weeks of our first call, depending on scope and how quickly content comes together."],
     ["Do you provide hosting?", "Yes, always. Hosting, security, backups and updates are handled by me for one flat monthly fee, that's how every site stays fast, secure and online."],
     ["Can you use my existing domain?", "Yes, I connect your existing domain and set up HTTPS as part of the build."],
-    ["Can I update the website myself?", "Yes — hero video, photos, pricing, staff or coach profiles, class listings, campaign banners, all of it. Nearly every image and text block across the site is yours to update directly, no developer needed."],
+    ["Can I update the website myself?", "Yes \u2014 hero video, photos, pricing, staff or coach profiles, class listings, campaign banners, all of it. Nearly every image and text block across the site is yours to update directly, no developer needed."],
     ["Do you work outside Stockholm?", "Absolutely. Most of my clients are here in Stockholm today, but I work just as easily with clients anywhere else, over video calls and email."],
     ["Why not just use an AI website builder?", "An AI builder can generate a page in minutes, but it doesn't know how your gym actually runs. I build the schedule, membership paths and content system around your real workflow, not a generic template."],
     ["Who owns the website and the code?", "Your domain, brand, copy, images, videos and business content are always yours. Stormie Studios retains and maintains the underlying source code, development system and production setup."],
@@ -460,10 +317,10 @@
   });
 
   const ITEMS = [
-    { name: 'Masters Gym', url: 'stormieperformance.com/masters-gym', frame: 'https://stormieperformance.com/masters-gym/', comingSoon: false, cat: 'Client project · Client work' },
-    { name: 'KBK Bågskytteklubb', url: 'stormieperformance.com/kbk-demo', frame: 'https://stormieperformance.com/kbk-demo/', comingSoon: true, cat: 'Pitch project · Archery club' },
-    { name: 'Performance By Dante', url: 'performance-by-dante.vercel.app', frame: 'https://performance-by-dante.vercel.app', comingSoon: true, cat: 'Client project · Launching soon' },
-    { name: 'Clinch Athletics', url: 'clinchathletics.com', frame: 'https://clinchathletics.com', comingSoon: false, cat: 'Concept project · Combat sports brand' },
+    { name: 'Masters Gym', url: 'stormieperformance.com/masters-gym', frame: 'https://stormieperformance.com/masters-gym/', comingSoon: false, cat: 'Client project \u00b7 Client work' },
+    { name: 'KBK B\u00e5gskytteklubb', url: 'stormieperformance.com/kbk-demo', frame: 'https://stormieperformance.com/kbk-demo/', comingSoon: true, cat: 'Pitch project \u00b7 Archery club' },
+    { name: 'Performance By Dante', url: 'performance-by-dante.vercel.app', frame: 'https://performance-by-dante.vercel.app', comingSoon: true, cat: 'Client project \u00b7 Launching soon' },
+    { name: 'Clinch Athletics', url: 'clinchathletics.com', frame: 'https://clinchathletics.com', comingSoon: false, cat: 'Concept project \u00b7 Combat sports brand' },
   ];
   const N = ITEMS.length;
   let active = 0;
@@ -516,33 +373,6 @@
   render();
   setInterval(() => { active = (active + 1) % N; render(); }, 6000);
 
-  const themeBtns = document.querySelectorAll('[data-theme-btn]');
-  function setTheme(t) {
-    document.body.setAttribute('data-theme', t);
-    localStorage.setItem('ss-theme', t);
-    modeIcon.innerHTML = t === 'b'
-      ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'
-      : '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
-  }
-  const modeIcon = document.getElementById('modeIcon');
-  const modeToggle = document.getElementById('modeToggle');
-  modeToggle.addEventListener('click', () => {
-    const current = document.body.getAttribute('data-theme');
-    setTheme(current === 'b' ? 'c' : 'b');
-  });
-  const saved = localStorage.getItem('ss-theme');
-  setTheme(saved === 'b' ? 'b' : 'c');
-
-  // Language selector — visual only in this test build; full SV/TH copy
-  // isn't wired in yet, this just tracks the active pill.
-  document.querySelectorAll('[data-lang]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-lang]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-
-  // Need picker → qualification form
   const NEEDS = {
     members: { title: "More members.", text: "The site needs to do one thing well: turn visitors into people who actually show up. Clear paths to trial sessions, a schedule that updates itself, and a first impression that reflects what your gym actually is." },
     impression: { title: "A first impression that matches your gym.", text: "Most gym sites look like templates. Yours should look like you built it on purpose, because the experience of the site is part of the experience of the gym." },
