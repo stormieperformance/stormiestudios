@@ -15,21 +15,20 @@
   .hero-grid .btn { margin-top: 28px; }
   .hero p.sub { font-size: 17px; color: var(--muted); max-width: 460px; margin: 0 auto 32px; line-height: 1.55; }
 
-  /* ============ SHOWCASE (Squarespace-style: staggered cards, native scroll-snap) ============ */
-  .showcase-wrap { position: relative; margin-top: 56px; }
-  .showcase { display: flex; align-items: center; gap: 28px; overflow-x: auto; overflow-y: visible; padding: 40px 50vw 60px; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  /* ============ SHOWCASE (Squarespace-style: one featured card + peeking neighbors, real whitespace) ============ */
+  .showcase-wrap { position: relative; margin-top: 64px; }
+  .showcase { display: flex; align-items: center; gap: 56px; overflow-x: auto; overflow-y: visible; padding: 50px 50vw 70px; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .showcase::-webkit-scrollbar { display: none; }
 
   .sc-card {
     position: relative; flex: 0 0 auto; scroll-snap-align: center;
-    width: 420px; aspect-ratio: 16/10; border-radius: 14px; overflow: hidden;
+    width: 340px; aspect-ratio: 16/10; border-radius: 14px; overflow: hidden;
     background: var(--card); border: 1px solid var(--line);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.22); cursor: pointer;
-    transition: transform 0.35s cubic-bezier(0.22,0.61,0.36,1), box-shadow 0.35s;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.16); cursor: pointer;
+    opacity: 0.55; transform: scale(0.88);
+    transition: transform 0.4s cubic-bezier(0.22,0.61,0.36,1), opacity 0.4s, width 0.4s, box-shadow 0.4s;
   }
-  .sc-card:nth-child(odd) { transform: translateY(18px); }
-  .sc-card:nth-child(even) { transform: translateY(-10px); }
-  .sc-card:hover { transform: translateY(-4px) scale(1.015); box-shadow: 0 32px 76px rgba(0,0,0,0.3); }
+  .sc-card.featured { width: 560px; opacity: 1; transform: scale(1); box-shadow: 0 32px 80px rgba(0,0,0,0.28); z-index: 2; }
 
   .sc-chrome { display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); background: var(--bg2); }
   .sc-chrome span { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
@@ -37,7 +36,7 @@
 
   .sc-card-body { position: relative; width: 100%; height: calc(100% - 33px); }
   .sc-frame-wrap { position: absolute; inset: 0; overflow: hidden; background: var(--bg2); }
-  .sc-frame-wrap iframe { position: absolute; top: 0; left: 0; width: 1600px; height: 1000px; border: 0; transform: scale(0.2625); transform-origin: top left; pointer-events: none; }
+  .sc-frame-wrap iframe { position: absolute; top: 0; left: 0; width: 1600px; height: 1000px; border: 0; transform-origin: top left; pointer-events: none; }
   .sc-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: var(--muted2); }
   .sc-soon-badge { position: absolute; top: 10px; right: 10px; z-index: 2; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(0,0,0,0.55); color: #fff; padding: 4px 9px; border-radius: 980px; display: flex; align-items: center; gap: 5px; }
   .sc-soon-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #34c759; }
@@ -50,6 +49,19 @@
   .showcase-dots button { width: 6px; height: 6px; border-radius: 50%; border: none; background: var(--line); cursor: pointer; padding: 0; }
   .showcase-dots button.active { background: var(--accent); width: 18px; border-radius: 3px; }
   .showcase-arrows button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); cursor: pointer; color: var(--text); font-size: 16px; }
+
+  @media (max-width: 768px) {
+    .showcase { gap: 28px; padding: 30px 32vw 50px; }
+    .sc-card {
+      width: 210px; aspect-ratio: 9/18.5; border-radius: 34px;
+      background: #0b0b0d; border: none; padding: 12px 8px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    }
+    .sc-card.featured { width: 240px; }
+    .sc-card::before { content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 60px; height: 18px; border-radius: 10px; background: #0b0b0d; z-index: 4; }
+    .sc-chrome { display: none; }
+    .sc-card-body { height: 100%; border-radius: 22px; overflow: hidden; }
+  }
 
   @media (max-width: 768px) {
     .showcase { gap: 18px; padding: 30px 30vw 50px; }
@@ -396,14 +408,32 @@
     });
     return closest;
   }
+  function layoutFrame(el) {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const nativeW = isMobile ? 900 : 1600;
+    const nativeH = isMobile ? 1900 : 1000;
+    const iframe = el.querySelector('.sc-frame-wrap iframe');
+    const body = el.querySelector('.sc-card-body');
+    if (!iframe || !body) return;
+    const scale = body.clientWidth / nativeW;
+    iframe.style.width = nativeW + 'px';
+    iframe.style.height = nativeH + 'px';
+    iframe.style.transform = `scale(${scale})`;
+  }
   function updateDots() {
     const idx = currentIndex();
     [...scDots.children].forEach((d, i) => d.classList.toggle('active', i === idx));
+    cards.forEach((el, i) => {
+      el.classList.toggle('featured', i === idx);
+      requestAnimationFrame(() => layoutFrame(el));
+    });
   }
   track.addEventListener('scroll', () => { window.requestAnimationFrame(updateDots); }, { passive: true });
+  window.addEventListener('resize', () => cards.forEach(layoutFrame));
   document.getElementById('scPrev').addEventListener('click', () => scrollToCard(Math.max(0, currentIndex() - 1)));
   document.getElementById('scNext').addEventListener('click', () => scrollToCard(Math.min(N - 1, currentIndex() + 1)));
   updateDots();
+  setTimeout(() => cards.forEach(layoutFrame), 60);
 
   const NEEDS = {
     members: { title: "More members.", text: "The site needs to do one thing well: turn visitors into people who actually show up. Clear paths to trial sessions, a schedule that updates itself, and a first impression that reflects what your gym actually is." },
