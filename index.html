@@ -43,6 +43,13 @@
   .showcase-dots button.active { background: var(--accent); width: 18px; border-radius: 3px; }
   .showcase-arrows button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); cursor: pointer; color: var(--text); font-size: 16px; }
 
+  .faq-item { border-bottom: 1px solid var(--line); padding: 22px 0; cursor: pointer; }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 500; }
+  .faq-toggle { font-size: 20px; color: var(--muted); transition: transform 0.25s; }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .faq-item.open .faq-a { max-height: 240px; padding-top: 12px; }
+
   @media (max-width: 768px) {
     .sc-card { width: 190px; height: 260px; margin: -130px 0 0 -95px; }
     .sc-frame-wrap iframe { transform: scale(0.198); }
