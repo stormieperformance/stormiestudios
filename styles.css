@@ -27,7 +27,11 @@ body {
 
 /* ============ HEADER / NAV ============ */
 header { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-.logo { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+.logo { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; }
+.logo-bolt { width: 16px; height: 26px; fill: var(--accent); flex-shrink: 0; }
+.logo-word { line-height: 1; }
+.logo-word .l1 { display: block; font-size: 17px; font-weight: 800; letter-spacing: 0.08em; }
+.logo-word .l2 { display: block; font-size: 10px; font-weight: 500; letter-spacing: 0.32em; color: var(--muted); margin-top: 2px; }
 nav.main-nav { display: flex; align-items: center; gap: 26px; }
 nav.main-nav a { font-size: 13px; color: var(--muted); text-decoration: none; cursor: pointer; }
 nav.main-nav a:hover { color: var(--text); }
@@ -37,6 +41,7 @@ nav.main-nav a:hover { color: var(--text); }
 .lang-select button.active { color: var(--text); font-weight: 600; }
 .icon-toggle { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .icon-toggle svg { width: 15px; height: 15px; stroke: var(--muted); }
+.btn-nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--accent-text); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 11px 18px; border-radius: 980px; text-decoration: none; white-space: nowrap; }
 
 /* Hamburger button — hidden on desktop, shown on mobile */
 .hamburger-btn { display: none; width: 36px; height: 36px; border: none; background: transparent; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
@@ -75,7 +80,7 @@ footer { padding: 64px 48px 32px; }
 
 @media (max-width: 900px) {
   nav.main-nav { display: none; }
-  .nav-right .lang-select, .nav-right .icon-toggle { display: none; }
+  .nav-right .lang-select, .nav-right .icon-toggle, .btn-nav-cta { display: none; }
   .hamburger-btn { display: flex; }
   header { padding: 16px 20px; }
   section { padding: 72px 20px; }

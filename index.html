@@ -9,62 +9,67 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .hero { position: relative; text-align: center; padding: 140px 24px 60px; overflow: hidden; }
+  .hero { position: relative; text-align: center; padding: 140px 24px 60px; }
   .hero-content { position: relative; z-index: 2; }
   .hero-grid { display: flex; flex-direction: column; gap: 0; text-align: center; align-items: center; }
   .hero-grid .btn { margin-top: 28px; }
 
-  /* ============ HERO TEXT ENTRANCE: letter vortex-to-word reveal (GSAP-driven) ============ */
-  @keyframes heroFadeUp {
-    0% { opacity: 0; transform: translateY(16px); }
-    100% { opacity: 1; transform: translateY(0); }
+  /* ============ HERO 2: diagonal split, new brand system ============ */
+  .hero2 { position: relative; background: var(--bg); padding: 150px 48px 100px; overflow: hidden; }
+  .hero2-shape {
+    position: absolute; inset: 0; z-index: 0;
+    background: #0b0b0b;
+    clip-path: polygon(38% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
-  .tornado-line { display: inline-block; opacity: 0; }
-  .hero-grid .eyebrow { opacity: 0; animation: heroFadeUp 0.6s ease 0s both; }
-  .hero-grid p.sub { opacity: 0; animation: heroFadeUp 0.7s ease 2.5s both; }
-  .hero-grid .btn { opacity: 0; animation: heroFadeUp 0.7s ease 2.65s both; }
-  @media (prefers-reduced-motion: reduce) {
-    .tornado-line { opacity: 1 !important; }
-    .hero-grid .eyebrow, .hero-grid p.sub, .hero-grid .btn { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .hero2-inner { position: relative; z-index: 1; max-width: 640px; }
+  .eyebrow2 { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+  .eyebrow2.on-dark { color: rgba(255,255,255,0.55); }
+  .hero2-title { font-size: clamp(36px, 5vw, 58px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.06; color: var(--text); margin-bottom: 14px; }
+  .hero2-tag { font-size: clamp(15px, 1.8vw, 19px); font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+  .hero2-sub { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 420px; margin-bottom: 32px; }
+  .hero2-btn { padding: 15px 26px; font-size: 13px; }
+
+  /* ============ FEATURED WORK ============ */
+  .featured-work { background: #0b0b0b; color: #fff; padding: 0 48px 90px; margin-top: -1px; border-bottom: none; }
+  .fw-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; max-width: 1180px; margin: 0 auto 40px; flex-wrap: wrap; }
+  .fw-head h2 { color: #fff; font-size: clamp(24px, 3vw, 34px); margin-bottom: 0; }
+  .fw-arrows { display: flex; gap: 12px; }
+  .fw-arrows button { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--accent); background: transparent; color: var(--accent); cursor: pointer; font-size: 18px; }
+  .fw-arrows button:hover { background: var(--accent); color: #0b0b0b; }
+
+  .fw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1180px; margin: 0 auto; }
+  .fw-card { display: flex; flex-direction: column; }
+  .fw-shot { aspect-ratio: 4/5; border-radius: 12px; overflow: hidden; background: #16171a; border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; }
+  .fw-shot-1 { background: linear-gradient(155deg, #1a1a1a, #262626); }
+  .fw-shot-2 { background: linear-gradient(155deg, #1c1712, #2b2015); }
+  .fw-shot-3 { background: linear-gradient(155deg, #14181c, #1e2429); }
+  .fw-shot-placeholder { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; text-transform: uppercase; }
+  .fw-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .fw-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+  .fw-name { font-size: 16px; font-weight: 700; color: #fff; }
+  .fw-cat { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+  .fw-arrow-link { color: var(--accent); flex-shrink: 0; display: flex; }
+
+  .fw-dots { display: none; gap: 6px; justify-content: center; margin-top: 24px; }
+  .fw-dots button { width: 6px; height: 6px; border-radius: 50%; border: none; background: rgba(255,255,255,0.25); padding: 0; cursor: pointer; }
+  .fw-dots button.active { background: var(--accent); width: 18px; border-radius: 3px; }
+
+  .feature-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1180px; margin: 64px auto 0; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .feature-item { display: flex; align-items: flex-start; gap: 12px; }
+  .feature-item svg { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+  .feature-title { font-size: 14px; font-weight: 700; color: #fff; }
+  .feature-desc { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; line-height: 1.4; }
+
+  @media (max-width: 900px) {
+    .hero2 { padding: 120px 20px 70px; }
+    .hero2-shape { clip-path: polygon(0% 62%, 100% 42%, 100% 100%, 0% 100%); }
+    .featured-work { padding: 0 20px 60px; }
+    .fw-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 4px; scrollbar-width: none; }
+    .fw-grid::-webkit-scrollbar { display: none; }
+    .fw-card { scroll-snap-align: center; }
+    .fw-dots { display: flex; }
+    .feature-strip { grid-template-columns: 1fr 1fr; }
   }
-  .hero p.sub { font-size: 17px; color: var(--muted); max-width: 460px; margin: 0 auto 32px; line-height: 1.55; }
-
-  /* ============ SHOWCASE (exact port of the original 3D carousel: physics tween + drag) ============ */
-  .showcase { position: relative; z-index: 1; width: 100%; margin-top: 80px; }
-  .sc-stage { position: relative; height: 520px; perspective: 1200px; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-  .sc-track { position: absolute; inset: 0; transform-style: preserve-3d; }
-  .sc-card {
-    position: absolute; top: 50%; left: 50%; width: 248px; height: 488px; margin: -244px 0 0 -124px;
-    border-radius: 14px; border: 1px solid var(--line); background: var(--bg2);
-    overflow: hidden; will-change: transform, opacity; cursor: pointer;
-    transition: border-color 0.3s, box-shadow 0.4s; transform-style: preserve-3d;
-  }
-  .sc-card.is-active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 40px 80px rgba(0,0,0,0.5); cursor: grab; }
-  .sc-stage.is-dragging .sc-card { transition: none; cursor: grabbing; }
-  .sc-card::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 40%; background: linear-gradient(180deg, transparent, rgba(0,0,0,0.85)); pointer-events: none; }
-  .sc-card-body { position: relative; width: 100%; height: 100%; }
-  .sc-frame-wrap { position: absolute; inset: 0; overflow: hidden; background: var(--bg2); }
-  .sc-frame-wrap iframe { position: absolute; top: 0; left: 0; width: 390px; height: 880px; border: 0; transform: scale(0.6359); transform-origin: top left; pointer-events: none; }
-  .sc-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: var(--muted2); }
-  .sc-soon-badge { position: absolute; top: 12px; right: 12px; z-index: 2; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(0,0,0,0.55); color: #fff; padding: 5px 10px; border-radius: 980px; display: flex; align-items: center; gap: 6px; }
-  .sc-soon-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #34c759; }
-  .sc-caption-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 20px; z-index: 2; pointer-events: none; }
-  .sc-cat { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
-  .sc-name { font-size: 18px; font-weight: 600; color: #fff; }
-
-  .showcase-nav { position: relative; margin-top: 28px; display: flex; align-items: center; justify-content: center; gap: 18px; z-index: 3; }
-  .showcase-dots { display: flex; gap: 6px; }
-  .showcase-dots button { width: 6px; height: 6px; border-radius: 50%; border: none; background: var(--line); cursor: pointer; padding: 0; }
-  .showcase-dots button.active { background: var(--accent); width: 18px; border-radius: 3px; }
-  .showcase-arrows button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); cursor: pointer; color: var(--text); font-size: 16px; }
-
-  .sc-detail { max-width: 620px; margin: 28px auto 0; text-align: center; transition: opacity 0.25s ease, transform 0.25s ease; }
-  .sc-detail.is-switching { opacity: 0; transform: translateY(6px); }
-  .sc-detail .sc-detail-cat { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-  .sc-detail h3 { font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; line-height: 1.15; margin-bottom: 8px; }
-  .sc-detail-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
-  .sc-detail-link { display: inline-block; }
-  .sc-hint { margin-top: 14px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); }
 
   .faq-item { border-bottom: 1px solid var(--line); padding: 22px 0; cursor: pointer; }
   .faq-q { display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 500; }
@@ -120,13 +125,15 @@
 <body data-theme="c">
 
 <header>
-  <a class="logo" href="index.html">STORMIE STUDIOS</a>
+  <a class="logo" href="index.html">
+    <svg class="logo-bolt" viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg"><polygon points="16,0 2,22 11,22 8,40 22,16 13,16"/></svg>
+    <span class="logo-word"><span class="l1">STORMIE</span><span class="l2">STUDIOS</span></span>
+  </a>
   <nav class="main-nav">
     <a href="#work">Work</a>
+    <a href="what-you-get.html">Services</a>
     <a href="about.html">About</a>
-    <a href="who-i-work-with.html">Who I work with</a>
-    <a href="what-you-get.html">What you get</a>
-    <a href="#faq">Faq</a>
+    <a href="who-i-work-with.html">Process</a>
   </nav>
   <div class="nav-right">
     <div class="lang-select">
@@ -137,16 +144,16 @@
     <button class="icon-toggle" data-mode-toggle aria-label="Toggle dark mode">
       <svg data-mode-icon viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
     </button>
+    <a class="btn-nav-cta" href="#contact">Request a consultation <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     <button class="hamburger-btn" data-hamburger aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <div class="mobile-menu" data-mobile-menu>
   <a href="#work">Work</a>
+  <a href="what-you-get.html">Services</a>
   <a href="about.html">About</a>
-  <a href="who-i-work-with.html">Who I work with</a>
-  <a href="what-you-get.html">What you get</a>
-  <a href="#faq">Faq</a>
+  <a href="who-i-work-with.html">Process</a>
   <a href="#contact">Request a consultation</a>
   <div class="mobile-menu-controls">
     <div class="lang-select">
@@ -160,43 +167,97 @@
   </div>
 </div>
 
-<section class="hero">
-  <div class="hero-content">
-    <div class="inner hero-grid">
-      <p class="eyebrow">Stockholm &mdash; Digital studio for sport &amp; fitness brands</p>
-      <h1>
-        <span class="tornado-line">Custom websites.</span><br>
-        <span class="tornado-line">Built to perform.</span><br>
-        <span class="tornado-line" style="color: var(--accent);">Professionally managed.</span>
-      </h1>
-      <p class="sub">Built to convert visitors into members, and effortless for you to run.</p>
-      <a class="btn" href="#contact">Request a consultation</a>
-    </div>
-  </div>
-  <div class="showcase">
-    <div class="sc-stage" id="scStage">
-      <div class="sc-track" id="scTrack"></div>
-    </div>
-  </div>
-  <div class="showcase-nav">
-    <div class="showcase-arrows"><button id="scPrev" aria-label="Previous">&lsaquo;</button></div>
-    <div class="showcase-dots" id="scDots"></div>
-    <div class="showcase-arrows"><button id="scNext" aria-label="Next">&rsaquo;</button></div>
-  </div>
-  <div class="sc-detail" id="scDetail" aria-live="polite">
-    <p class="sc-detail-cat" id="scDetailCat"></p>
-    <h3 id="scDetailName"></h3>
-    <p class="sc-detail-desc" id="scDetailDesc"></p>
-    <a class="btn-outline sc-detail-link" id="scDetailLink" href="#" target="_blank" rel="noopener noreferrer"></a>
-    <p class="sc-hint">Drag to spin, or use the arrows</p>
+<section class="hero2">
+  <div class="hero2-shape" aria-hidden="true"></div>
+  <div class="hero2-inner">
+    <p class="eyebrow2">/ Digital studio for sport &amp; fitness brands /</p>
+    <h1 class="hero2-title">Custom websites.<br>Built to perform.</h1>
+    <p class="hero2-tag">Professionally managed.</p>
+    <p class="hero2-sub">Built to convert visitors into members, and effortless for you to run.</p>
+    <a class="btn-nav-cta hero2-btn" href="#contact">Request a consultation
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
   </div>
 </section>
 
-<section id="work">
-  <div class="inner">
-    <p class="eyebrow">Selected work</p>
-    <h2>Custom websites built around how your business actually works.</h2>
-    <p class="sub">Stormie Studios designs and develops fast, distinctive websites for gyms, coaches and performance-driven businesses, with the systems, integrations and functionality needed to turn the site into a useful part of the business, not just something that looks good.</p>
+<section id="work" class="featured-work">
+  <div class="fw-head">
+    <div>
+      <p class="eyebrow2 on-dark">Featured work</p>
+      <h2>Websites for brands that perform.</h2>
+    </div>
+    <div class="fw-arrows">
+      <button id="fwPrev" aria-label="Previous">&lsaquo;</button>
+      <button id="fwNext" aria-label="Next">&rsaquo;</button>
+    </div>
+  </div>
+
+  <div class="fw-grid" id="fwGrid">
+    <div class="fw-card">
+      <div class="fw-shot fw-shot-1">
+        <span class="fw-shot-placeholder">Screenshot coming</span>
+      </div>
+      <div class="fw-meta">
+        <div>
+          <p class="fw-name">Masters Gym</p>
+          <p class="fw-cat">Webbplats</p>
+        </div>
+        <a href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener noreferrer" class="fw-arrow-link" aria-label="View Masters Gym">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="fw-card">
+      <div class="fw-shot fw-shot-2">
+        <span class="fw-shot-placeholder">Screenshot coming</span>
+      </div>
+      <div class="fw-meta">
+        <div>
+          <p class="fw-name">Clinch Athletics</p>
+          <p class="fw-cat">E-commerce</p>
+        </div>
+        <a href="https://clinchathletics.com" target="_blank" rel="noopener noreferrer" class="fw-arrow-link" aria-label="View Clinch Athletics">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="fw-card">
+      <div class="fw-shot fw-shot-3">
+        <span class="fw-shot-placeholder">Screenshot coming</span>
+      </div>
+      <div class="fw-meta">
+        <div>
+          <p class="fw-name">Performance By Dante</p>
+          <p class="fw-cat">Webbplats</p>
+        </div>
+        <a href="https://performance-by-dante.vercel.app" target="_blank" rel="noopener noreferrer" class="fw-arrow-link" aria-label="View Performance By Dante">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="fw-dots" id="fwDots"></div>
+
+  <div class="feature-strip">
+    <div class="feature-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <div><p class="feature-title">Custom design</p><p class="feature-desc">Built around your brand</p></div>
+    </div>
+    <div class="feature-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+      <div><p class="feature-title">Built to convert</p><p class="feature-desc">Websites that turn visitors into members</p></div>
+    </div>
+    <div class="feature-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <div><p class="feature-title">Easy to manage</p><p class="feature-desc">Effortless for you to run</p></div>
+    </div>
+    <div class="feature-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+      <div><p class="feature-title">Ongoing support</p><p class="feature-desc">We're with you all the way</p></div>
+    </div>
   </div>
 </section>
 
@@ -341,76 +402,6 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script>
-  // Hero headline: each line's letters start scattered around a small tight
-  // vortex (spinning cluster), swirl briefly, then peel off and fly to their
-  // correct position in the word, fading in as they land.
-  (function () {
-    const lines = document.querySelectorAll('.tornado-line');
-    if (!lines.length) return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || typeof gsap === 'undefined') {
-      lines.forEach((l) => { l.style.opacity = '1'; });
-      return;
-    }
-
-    lines.forEach((line, lineIndex) => {
-      const text = line.textContent;
-      line.textContent = '';
-      line.style.opacity = '1';
-      const chars = [];
-      text.split(' ').forEach((word, wi, arr) => {
-        const wordWrap = document.createElement('span');
-        wordWrap.style.display = 'inline-block';
-        wordWrap.style.whiteSpace = 'nowrap';
-        [...word].forEach((ch) => {
-          const span = document.createElement('span');
-          span.textContent = ch;
-          span.style.display = 'inline-block';
-          span.style.willChange = 'transform, opacity';
-          wordWrap.appendChild(span);
-          chars.push(span);
-        });
-        line.appendChild(wordWrap);
-        if (wi < arr.length - 1) line.appendChild(document.createTextNode(' '));
-      });
-
-      const RADIUS = 34;
-      const lineDelay = 0.15 + lineIndex * 0.55;
-
-      chars.forEach((span, i) => {
-        const startAngle = (i / chars.length) * 360 + lineIndex * 50;
-        const swirlAngle = startAngle + 260;
-        const rad0 = startAngle * Math.PI / 180;
-        const rad1 = swirlAngle * Math.PI / 180;
-
-        gsap.set(span, {
-          x: Math.cos(rad0) * RADIUS,
-          y: Math.sin(rad0) * RADIUS,
-          rotation: startAngle,
-          scale: 0.25,
-          opacity: 0,
-        });
-
-        const tl = gsap.timeline({ delay: lineDelay + i * 0.014 });
-        tl.to(span, {
-          x: Math.cos(rad1) * RADIUS,
-          y: Math.sin(rad1) * RADIUS,
-          rotation: swirlAngle,
-          scale: 0.55,
-          opacity: 0.85,
-          duration: 0.32,
-          ease: 'power1.in',
-        }).to(span, {
-          x: 0, y: 0, rotation: 0, scale: 1, opacity: 1,
-          duration: 0.55,
-          ease: 'back.out(1.8)',
-        });
-      });
-    });
-  })();
-</script>
 <script src="nav.js"></script>
 <script>
   const faqs = [
@@ -431,168 +422,46 @@
     faqList.appendChild(item);
   });
 
-  const ITEMS = [
-    { name: 'Masters Gym', url: 'stormieperformance.com/masters-gym', href: 'https://stormieperformance.com/masters-gym/', frame: 'https://stormieperformance.com/masters-gym/', comingSoon: false, cat: 'Client project \u00b7 Client work', desc: 'A Stockholm gym with a full new site: class schedules, membership paths, corporate training and a self-updating content system.', link: 'View case \u2192' },
-    { name: 'KBK B\u00e5gskytteklubb', url: 'stormieperformance.com/kbk-demo', href: 'https://stormieperformance.com/kbk-demo/', frame: 'https://stormieperformance.com/kbk-demo/', comingSoon: true, cat: 'Pitch project \u00b7 Archery club', desc: 'A booking system demo for an archery club, built ahead of an upcoming pitch. Case study publishes after the meeting.', link: '' },
-    { name: 'Performance By Dante', url: 'performance-by-dante.vercel.app', href: 'https://performance-by-dante.vercel.app', frame: 'https://performance-by-dante.vercel.app', comingSoon: true, cat: 'Client project \u00b7 Launching soon', desc: 'A Stockholm-based personal trainer getting a new site with a full client intake form and an expandable background story. Case study publishes on launch day.', link: '' },
-    { name: 'Clinch Athletics', url: 'clinchathletics.com', href: 'https://clinchathletics.com', frame: 'https://clinchathletics.com', comingSoon: false, cat: 'Concept project \u00b7 Combat sports brand', desc: 'A concept and e-commerce brand for the combat sports industry. Premium design, strong visual identity, and a streamlined storefront built for martial arts athletes and enthusiasts.', link: 'View case \u2192' },
-  ];
-  const N = ITEMS.length;
-  const stage = document.getElementById('scStage');
-  const track = document.getElementById('scTrack');
-  const scDots = document.getElementById('scDots');
-
-  const cards = ITEMS.map((item) => {
-    const el = document.createElement('div');
-    el.className = 'sc-card';
-    el.setAttribute('role', 'button');
-    el.setAttribute('tabindex', '0');
-    el.setAttribute('aria-label', item.name);
-    el.innerHTML = `
-      <div class="sc-card-body">
-        <div class="sc-fallback">${item.name}</div>
-        <div class="sc-frame-wrap"><iframe src="${item.frame}" loading="lazy" scrolling="no" tabindex="-1" title="${item.name}"></iframe></div>
-        ${item.comingSoon ? '<div class="sc-soon-badge">Launching soon</div>' : ''}
-        <div class="sc-caption-bar"><p class="sc-cat">${item.cat}</p><h3 class="sc-name">${item.name}</h3></div>
-      </div>`;
-    track.appendChild(el);
-    return el;
-  });
-
-  let pos = 0, target = 0, rafId = null;
-  const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function sp() { return window.innerWidth <= 768 ? 148 : 292; }
-  function mod(n, m) { return ((n % m) + m) % m; }
-  function nearestIdx() { return mod(Math.round(pos), N); }
-
-  function render() {
-    const s = sp(), active = nearestIdx();
-    cards.forEach((card, i) => {
-      let off = mod(i - pos, N);
-      if (off > N / 2) off -= N;
-      const abs = Math.abs(off), vis = abs <= 1.85;
-      card.style.opacity = vis ? String(Math.max(0, 1 - abs * 0.38)) : '0';
-      card.style.pointerEvents = vis ? 'auto' : 'none';
-      card.style.zIndex = String(100 - Math.round(abs * 10));
-      card.style.transform = `translateX(${(off * s).toFixed(1)}px) translateZ(${(-abs * 180).toFixed(1)}px) rotateY(${(-off * 18).toFixed(2)}deg)`;
-      card.classList.toggle('is-active', i === active && Math.abs(pos - target) < 0.02);
-    });
-    [...scDots.children].forEach((d, i) => d.classList.toggle('active', i === active));
-    if (active !== shownIdx && Math.abs(pos - Math.round(pos)) < 0.45) updateDetail(active, false);
-  }
-
-  let shownIdx = -1;
-  const detail = document.getElementById('scDetail');
-  const detailCat = document.getElementById('scDetailCat');
-  const detailName = document.getElementById('scDetailName');
-  const detailDesc = document.getElementById('scDetailDesc');
-  const detailLink = document.getElementById('scDetailLink');
-  function updateDetail(i, instant) {
-    shownIdx = i;
-    const apply = () => {
-      const item = ITEMS[i];
-      detailCat.textContent = item.cat;
-      detailName.textContent = item.name;
-      detailDesc.textContent = item.desc;
-      if (item.link) {
-        detailLink.textContent = item.link;
-        detailLink.setAttribute('href', item.href);
-        detailLink.style.display = '';
-      } else {
-        detailLink.style.display = 'none';
-      }
-      detail.classList.remove('is-switching');
-    };
-    if (rm || instant) { apply(); return; }
-    detail.classList.add('is-switching');
-    setTimeout(apply, 180);
-  }
-
-  const DRIFT_PER_MS = 1 / 45000; // one full card-position every 45s - slow, continuous, never stops
-  let autoScrollActive = true;
-  let lastFrameT = null;
-  function tick(now) {
-    if (lastFrameT === null) lastFrameT = now;
-    const dt = now - lastFrameT;
-    lastFrameT = now;
-    const diff = target - pos;
-    if (Math.abs(diff) > 0.001) {
-      pos += diff * (rm ? 1 : 0.13);
-    } else if (autoScrollActive && !rm) {
-      pos += DRIFT_PER_MS * dt;
-      target = pos;
-    } else {
-      pos = target;
-    }
-    render();
-    rafId = requestAnimationFrame(tick);
-  }
-  function startTween() { if (rafId === null) { lastFrameT = null; rafId = requestAnimationFrame(tick); } }
-  function goTo(i) {
-    let d = mod(i - target, N);
-    if (d > N / 2) d -= N;
-    target += d;
-    startTween();
-  }
-  function step(d) { target += d; startTween(); }
-
-  cards.forEach((card, i) => {
-    card.addEventListener('click', () => { if (!dragMoved && i !== nearestIdx()) goTo(i); });
-    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goTo(i); } });
-  });
-
-  let dragging = false, dragStartX = 0, dragStartPos = 0, dragMoved = false;
-  stage.addEventListener('pointerdown', (e) => {
-    if (e.target.closest('.showcase-arrows')) return;
-    dragging = true; dragMoved = false; dragStartX = e.clientX; dragStartPos = pos;
-    stage.classList.add('is-dragging');
-    if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
-    stage.setPointerCapture(e.pointerId);
-  });
-  stage.addEventListener('pointermove', (e) => {
-    if (!dragging) return;
-    const dx = e.clientX - dragStartX;
-    if (Math.abs(dx) > 6) dragMoved = true;
-    pos = dragStartPos - dx / sp();
-    render();
-  });
-  function endDrag() {
-    if (!dragging) return;
-    dragging = false;
-    stage.classList.remove('is-dragging');
-    target = Math.round(pos);
-    startTween();
-    setTimeout(() => { dragMoved = false; }, 0);
-  }
-  stage.addEventListener('pointerup', endDrag);
-  stage.addEventListener('pointercancel', endDrag);
-
-  ITEMS.forEach((_, i) => {
+  // Featured work grid: on mobile it's a horizontal scroll-snap row (one
+  // card per view), on desktop all cards sit side by side already.
+  const fwGrid = document.getElementById('fwGrid');
+  const fwDots = document.getElementById('fwDots');
+  const fwCards = [...fwGrid.children];
+  fwCards.forEach((_, i) => {
     const dot = document.createElement('button');
-    dot.addEventListener('click', () => goTo(i));
-    scDots.appendChild(dot);
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      fwCards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    });
+    fwDots.appendChild(dot);
   });
-
-  // Continuous slow auto-glide: pauses on hover/drag, resumes shortly after
-  function stopAutoScroll() { autoScrollActive = false; }
-  function startAutoScroll() { if (rm) return; autoScrollActive = true; startTween(); }
-  stage.addEventListener('mouseenter', stopAutoScroll);
-  stage.addEventListener('mouseleave', startAutoScroll);
-  stage.addEventListener('pointerdown', stopAutoScroll);
-  stage.addEventListener('pointerup', () => setTimeout(startAutoScroll, 2000));
-  stage.addEventListener('pointercancel', () => setTimeout(startAutoScroll, 2000));
-  startAutoScroll();
-
-  document.getElementById('scPrev').addEventListener('click', () => step(-1));
-  document.getElementById('scNext').addEventListener('click', () => step(1));
-  stage.setAttribute('tabindex', '0');
-  stage.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
-    if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+  function fwUpdateDots() {
+    const center = fwGrid.scrollLeft + fwGrid.clientWidth / 2;
+    let closest = 0, minDist = Infinity;
+    fwCards.forEach((el, i) => {
+      const dist = Math.abs((el.offsetLeft + el.offsetWidth / 2) - center);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    [...fwDots.children].forEach((d, i) => d.classList.toggle('active', i === closest));
+  }
+  fwGrid.addEventListener('scroll', () => window.requestAnimationFrame(fwUpdateDots), { passive: true });
+  function fwCurrentIndex() {
+    const center = fwGrid.scrollLeft + fwGrid.clientWidth / 2;
+    let closest = 0, minDist = Infinity;
+    fwCards.forEach((el, i) => {
+      const dist = Math.abs((el.offsetLeft + el.offsetWidth / 2) - center);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    return closest;
+  }
+  document.getElementById('fwPrev').addEventListener('click', () => {
+    const i = Math.max(0, fwCurrentIndex() - 1);
+    fwCards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
   });
-
-  render();
-  updateDetail(0, true);
+  document.getElementById('fwNext').addEventListener('click', () => {
+    const i = Math.min(fwCards.length - 1, fwCurrentIndex() + 1);
+    fwCards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  });
 
   const NEEDS = {
     members: { title: "More members.", text: "The site needs to do one thing well: turn visitors into people who actually show up. Clear paths to trial sessions, a schedule that updates itself, and a first impression that reflects what your gym actually is." },
