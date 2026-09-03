@@ -13,6 +13,31 @@
   .hero-content { position: relative; z-index: 2; }
   .hero-grid { display: flex; flex-direction: column; gap: 0; text-align: center; align-items: center; }
   .hero-grid .btn { margin-top: 28px; }
+
+  /* ============ HERO TEXT ENTRANCE: tornado/vortex-in ============ */
+  @keyframes tornadoIn {
+    0% { opacity: 0; transform: perspective(600px) rotate(-46deg) rotateX(28deg) scale(2.6) translateY(-38px); filter: blur(16px); }
+    55% { opacity: 1; filter: blur(2px); }
+    78% { transform: perspective(600px) rotate(4deg) rotateX(-3deg) scale(0.97) translateY(2px); filter: blur(0); }
+    100% { opacity: 1; transform: perspective(600px) rotate(0deg) rotateX(0deg) scale(1) translateY(0); filter: blur(0); }
+  }
+  @keyframes heroFadeUp {
+    0% { opacity: 0; transform: translateY(16px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  h1 { perspective: 800px; }
+  .tornado-line {
+    display: inline-block;
+    transform-origin: 50% 60%;
+    animation: tornadoIn 0.95s cubic-bezier(0.16, 0.8, 0.24, 1) both;
+    will-change: transform, opacity, filter;
+  }
+  .hero-grid .eyebrow { opacity: 0; animation: heroFadeUp 0.6s ease 0s both; }
+  .hero-grid p.sub { opacity: 0; animation: heroFadeUp 0.7s ease 1.15s both; }
+  .hero-grid .btn { opacity: 0; animation: heroFadeUp 0.7s ease 1.3s both; }
+  @media (prefers-reduced-motion: reduce) {
+    .tornado-line, .hero-grid .eyebrow, .hero-grid p.sub, .hero-grid .btn { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+  }
   .hero p.sub { font-size: 17px; color: var(--muted); max-width: 460px; margin: 0 auto 32px; line-height: 1.55; }
 
   /* ============ SHOWCASE (exact port of the original 3D carousel: physics tween + drag) ============ */
@@ -150,7 +175,11 @@
   <div class="hero-content">
     <div class="inner hero-grid">
       <p class="eyebrow">Stockholm &mdash; Digital studio for sport &amp; fitness brands</p>
-      <h1>Custom websites.<br>Built to perform.<br><span style="color: var(--accent);">Professionally managed.</span></h1>
+      <h1>
+        <span class="tornado-line" style="animation-delay: 0.2s;">Custom websites.</span><br>
+        <span class="tornado-line" style="animation-delay: 0.36s;">Built to perform.</span><br>
+        <span class="tornado-line" style="color: var(--accent); animation-delay: 0.52s;">Professionally managed.</span>
+      </h1>
       <p class="sub">Built to convert visitors into members, and effortless for you to run.</p>
       <a class="btn" href="#contact">Request a consultation</a>
     </div>
