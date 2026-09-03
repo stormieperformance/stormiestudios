@@ -46,7 +46,9 @@
   .fw-arrows button:hover { background: var(--accent); color: #0b0b0b; }
 
   .fw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1180px; margin: 0 auto; }
-  .fw-card { display: flex; flex-direction: column; }
+  .fw-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
+  .fw-shot img { transition: transform 0.4s ease; }
+  .fw-card:hover .fw-shot img { transform: scale(1.04); }
   .fw-shot { aspect-ratio: 4/5; border-radius: 12px; overflow: hidden; background: #16171a; border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; }
   .fw-shot-1 { background: linear-gradient(155deg, #1a1a1a, #262626); }
   .fw-shot-2 { background: linear-gradient(155deg, #1c1712, #2b2015); }
@@ -198,50 +200,50 @@
   </div>
 
   <div class="fw-grid" id="fwGrid">
-    <div class="fw-card">
+    <a class="fw-card" href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener noreferrer">
       <div class="fw-shot fw-shot-1">
-        <span class="fw-shot-placeholder">Screenshot coming</span>
+        <img src="shot-masters-gym.jpg" alt="Masters Gym website" loading="lazy">
       </div>
       <div class="fw-meta">
         <div>
           <p class="fw-name">Masters Gym</p>
           <p class="fw-cat">Website</p>
         </div>
-        <a href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener noreferrer" class="fw-arrow-link" aria-label="View Masters Gym">
+        <span class="fw-arrow-link" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+        </span>
       </div>
-    </div>
+    </a>
 
-    <div class="fw-card">
+    <a class="fw-card" href="https://clinchathletics.com" target="_blank" rel="noopener noreferrer">
       <div class="fw-shot fw-shot-2">
-        <span class="fw-shot-placeholder">Screenshot coming</span>
+        <img src="shot-clinch-athletics.jpg" alt="Clinch Athletics website" loading="lazy">
       </div>
       <div class="fw-meta">
         <div>
           <p class="fw-name">Clinch Athletics</p>
           <p class="fw-cat">E-commerce</p>
         </div>
-        <a href="https://clinchathletics.com" target="_blank" rel="noopener noreferrer" class="fw-arrow-link" aria-label="View Clinch Athletics">
+        <span class="fw-arrow-link" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+        </span>
       </div>
-    </div>
+    </a>
 
-    <div class="fw-card">
+    <a class="fw-card" href="https://performance-by-dante.vercel.app" target="_blank" rel="noopener noreferrer">
       <div class="fw-shot fw-shot-3">
-        <span class="fw-shot-placeholder">Screenshot coming</span>
+        <img src="shot-performance-by-dante.jpg" alt="Performance By Dante website" loading="lazy">
       </div>
       <div class="fw-meta">
         <div>
           <p class="fw-name">Performance By Dante</p>
           <p class="fw-cat">Website</p>
         </div>
-        <a href="https://performance-by-dante.vercel.app" target="_blank" rel="noopener noreferrer" class="fw-arrow-link" aria-label="View Performance By Dante">
+        <span class="fw-arrow-link" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+        </span>
       </div>
-    </div>
+    </a>
   </div>
 
   <div class="fw-dots" id="fwDots"></div>
