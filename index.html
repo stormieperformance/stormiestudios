@@ -21,6 +21,13 @@
     background: #0b0b0b;
     clip-path: polygon(52% 0%, 100% 0%, 100% 100%, 30% 100%);
   }
+  .hero2-shape::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 900' preserveAspectRatio='none'%3E%3Cpolyline points='560,40 480,260 540,260 430,560 480,560 380,860' fill='none' stroke='%23ffffff' stroke-opacity='0.07' stroke-width='3'/%3E%3Cpolyline points='700,120 660,300 700,300 630,600' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-size: cover; background-position: center;
+    pointer-events: none;
+  }
   .hero2-inner { position: relative; z-index: 1; max-width: 500px; }
   .eyebrow2 { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
   .eyebrow2.on-dark { color: rgba(255,255,255,0.55); }

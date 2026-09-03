@@ -28,7 +28,7 @@ body {
 /* ============ HEADER / NAV ============ */
 header { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
 .logo { display: flex; align-items: center; color: var(--text); text-decoration: none; }
-.logo-img { height: 30px; width: auto; display: block; transition: filter 0.2s ease; }
+.logo-img { height: 46px; width: auto; display: block; transition: filter 0.2s ease; }
 [data-theme="b"] .logo-img { filter: invert(1) brightness(1.15); }
 nav.main-nav { display: flex; align-items: center; gap: 26px; }
 nav.main-nav a { font-size: 13px; color: var(--muted); text-decoration: none; cursor: pointer; }
