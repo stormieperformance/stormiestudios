@@ -404,9 +404,12 @@
     setTimeout(apply, 180);
   }
 
+  const GLIDE_SPEED = 0.00065; // fraction of one card-step per frame - continuous slow auto-rotate
+  let glideActive = true;
   function tick() {
+    if (glideActive && !dragging) target += GLIDE_SPEED;
     const diff = target - pos;
-    if (Math.abs(diff) < 0.001) { pos = target; render(); rafId = null; return; }
+    if (Math.abs(diff) < 0.00005 && !glideActive) { pos = target; render(); rafId = null; return; }
     pos += diff * (rm ? 1 : 0.13);
     render();
     rafId = requestAnimationFrame(tick);
@@ -457,18 +460,14 @@
     scDots.appendChild(dot);
   });
 
-  // Auto-scroll: advance one card every 4s, pause on hover/drag
-  let autoScrollTimer = null;
-  function startAutoScroll() {
-    if (autoScrollTimer) return;
-    autoScrollTimer = setInterval(() => { if (!dragging) { target += 1; startTween(); } }, 4000);
-  }
-  function stopAutoScroll() { clearInterval(autoScrollTimer); autoScrollTimer = null; }
+  // Continuous slow auto-glide: pauses on hover/drag, resumes shortly after
+  function stopAutoScroll() { glideActive = false; }
+  function startAutoScroll() { glideActive = true; startTween(); }
   stage.addEventListener('mouseenter', stopAutoScroll);
   stage.addEventListener('mouseleave', startAutoScroll);
   stage.addEventListener('pointerdown', stopAutoScroll);
-  stage.addEventListener('pointerup', () => setTimeout(startAutoScroll, 2000));
-  stage.addEventListener('pointercancel', () => setTimeout(startAutoScroll, 2000));
+  stage.addEventListener('pointerup', () => setTimeout(startAutoScroll, 1200));
+  stage.addEventListener('pointercancel', () => setTimeout(startAutoScroll, 1200));
   startAutoScroll();
 
   document.getElementById('scPrev').addEventListener('click', () => step(-1));
