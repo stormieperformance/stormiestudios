@@ -14,27 +14,32 @@
   .hero-grid { display: flex; flex-direction: column; gap: 0; text-align: center; align-items: center; }
   .hero-grid .btn { margin-top: 28px; }
 
-  /* ============ HERO TEXT ENTRANCE: tornado/vortex-in ============ */
+  /* ============ HERO TEXT ENTRANCE: swirling 3D tornado funnel ============ */
   @keyframes tornadoIn {
-    0% { opacity: 0; transform: perspective(600px) rotate(-46deg) rotateX(28deg) scale(2.6) translateY(-38px); filter: blur(16px); }
-    55% { opacity: 1; filter: blur(2px); }
-    78% { transform: perspective(600px) rotate(4deg) rotateX(-3deg) scale(0.97) translateY(2px); filter: blur(0); }
-    100% { opacity: 1; transform: perspective(600px) rotate(0deg) rotateX(0deg) scale(1) translateY(0); filter: blur(0); }
+    0%   { opacity: 0;   transform: translate3d(160px, -90px, -520px) rotateY(1080deg) rotateZ(50deg)  scale(0.15); filter: blur(18px); }
+    14%  { opacity: 0.5; transform: translate3d(-130px, 60px, -420px) rotateY(860deg)  rotateZ(-42deg) scale(0.26); filter: blur(15px); }
+    28%  { opacity: 0.75;transform: translate3d(95px, -55px, -320px)  rotateY(660deg)  rotateZ(34deg)  scale(0.4);  filter: blur(11px); }
+    42%  { opacity: 0.85;transform: translate3d(-65px, 34px, -230px)  rotateY(470deg)  rotateZ(-26deg) scale(0.55); filter: blur(8px); }
+    56%  { opacity: 0.9; transform: translate3d(40px, -20px, -150px)  rotateY(300deg)  rotateZ(18deg)  scale(0.68); filter: blur(5px); }
+    70%  { opacity: 0.95;transform: translate3d(-22px, 11px, -85px)   rotateY(160deg)  rotateZ(-11deg) scale(0.8);  filter: blur(3px); }
+    84%  { opacity: 1;   transform: translate3d(9px, -5px, -30px)     rotateY(55deg)   rotateZ(5deg)   scale(0.92); filter: blur(1px); }
+    100% { opacity: 1;   transform: translate3d(0, 0, 0)              rotateY(0deg)    rotateZ(0deg)   scale(1);    filter: blur(0); }
   }
   @keyframes heroFadeUp {
     0% { opacity: 0; transform: translateY(16px); }
     100% { opacity: 1; transform: translateY(0); }
   }
-  h1 { perspective: 800px; }
+  h1 { perspective: 1000px; }
   .tornado-line {
     display: inline-block;
+    transform-style: preserve-3d;
     transform-origin: 50% 60%;
-    animation: tornadoIn 0.95s cubic-bezier(0.16, 0.8, 0.24, 1) both;
+    animation: tornadoIn 1.3s cubic-bezier(0.2, 0.7, 0.15, 1) both;
     will-change: transform, opacity, filter;
   }
   .hero-grid .eyebrow { opacity: 0; animation: heroFadeUp 0.6s ease 0s both; }
-  .hero-grid p.sub { opacity: 0; animation: heroFadeUp 0.7s ease 1.15s both; }
-  .hero-grid .btn { opacity: 0; animation: heroFadeUp 0.7s ease 1.3s both; }
+  .hero-grid p.sub { opacity: 0; animation: heroFadeUp 0.7s ease 1.55s both; }
+  .hero-grid .btn { opacity: 0; animation: heroFadeUp 0.7s ease 1.7s both; }
   @media (prefers-reduced-motion: reduce) {
     .tornado-line, .hero-grid .eyebrow, .hero-grid p.sub, .hero-grid .btn { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
   }
@@ -176,9 +181,9 @@
     <div class="inner hero-grid">
       <p class="eyebrow">Stockholm &mdash; Digital studio for sport &amp; fitness brands</p>
       <h1>
-        <span class="tornado-line" style="animation-delay: 0.2s;">Custom websites.</span><br>
-        <span class="tornado-line" style="animation-delay: 0.36s;">Built to perform.</span><br>
-        <span class="tornado-line" style="color: var(--accent); animation-delay: 0.52s;">Professionally managed.</span>
+        <span class="tornado-line" style="animation-delay: 0.15s;">Custom websites.</span><br>
+        <span class="tornado-line" style="animation-delay: 0.38s;">Built to perform.</span><br>
+        <span class="tornado-line" style="color: var(--accent); animation-delay: 0.61s;">Professionally managed.</span>
       </h1>
       <p class="sub">Built to convert visitors into members, and effortless for you to run.</p>
       <a class="btn" href="#contact">Request a consultation</a>
