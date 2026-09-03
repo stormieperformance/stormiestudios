@@ -359,14 +359,22 @@
       const text = line.textContent;
       line.textContent = '';
       line.style.opacity = '1';
-      const chars = [...text].map((ch) => {
-        const span = document.createElement('span');
-        span.textContent = ch === ' ' ? '\u00A0' : ch;
-        span.style.display = 'inline-block';
-        span.style.willChange = 'transform, opacity';
-        line.appendChild(span);
-        return ch === ' ' ? null : span;
-      }).filter(Boolean);
+      const chars = [];
+      text.split(' ').forEach((word, wi, arr) => {
+        const wordWrap = document.createElement('span');
+        wordWrap.style.display = 'inline-block';
+        wordWrap.style.whiteSpace = 'nowrap';
+        [...word].forEach((ch) => {
+          const span = document.createElement('span');
+          span.textContent = ch;
+          span.style.display = 'inline-block';
+          span.style.willChange = 'transform, opacity';
+          wordWrap.appendChild(span);
+          chars.push(span);
+        });
+        line.appendChild(wordWrap);
+        if (wi < arr.length - 1) line.appendChild(document.createTextNode(' '));
+      });
 
       const RADIUS = 34;
       const lineDelay = 0.15 + lineIndex * 0.55;
