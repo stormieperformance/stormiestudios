@@ -17,7 +17,7 @@ body {
 /* ============ THEME B: DARK, WHITE ACCENT ============ */
 [data-theme="b"] {
   --bg: #000000; --bg2: #111113; --text: #f5f5f7; --muted: #a1a1a6; --muted2: #86868b;
-  --line: #2a2a2c; --accent: #f5f5f7; --accent-text: #000000; --card: #0a0a0c;
+  --line: #2a2a2c; --accent: #ff4d1c; --accent-text: #ffffff; --card: #0a0a0c;
 }
 /* ============ THEME C: LIGHT, ORANGE ACCENT (default) ============ */
 [data-theme="c"] {
