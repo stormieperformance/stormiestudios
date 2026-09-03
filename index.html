@@ -31,6 +31,7 @@
   .hero2-inner { position: relative; z-index: 1; max-width: 500px; }
   .eyebrow2 { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
   .eyebrow2.on-dark { color: rgba(255,255,255,0.55); }
+  .eyebrow2-slash { color: var(--accent); }
   .hero2-title { font-size: clamp(36px, 5vw, 58px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.06; color: var(--text); margin-bottom: 14px; }
   .hero2-tag { font-size: clamp(15px, 1.8vw, 19px); font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
   .hero2-sub { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 420px; margin-bottom: 32px; }
@@ -69,7 +70,7 @@
 
   @media (max-width: 900px) {
     .hero2 { padding: 120px 20px 70px; }
-    .hero2-shape { clip-path: polygon(0% 62%, 100% 42%, 100% 100%, 0% 100%); }
+    .hero2-shape { clip-path: polygon(0% 96%, 100% 90%, 100% 100%, 0% 100%); }
     .featured-work { padding: 0 20px 60px; }
     .fw-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 4px; scrollbar-width: none; }
     .fw-grid::-webkit-scrollbar { display: none; }
@@ -174,7 +175,7 @@
 <section class="hero2">
   <div class="hero2-shape" aria-hidden="true"></div>
   <div class="hero2-inner">
-    <p class="eyebrow2">/ Digital studio for sport &amp; fitness brands /</p>
+    <p class="eyebrow2"><span class="eyebrow2-slash">/</span> Digital studio for sport &amp; fitness brands <span class="eyebrow2-slash">/</span></p>
     <h1 class="hero2-title">Custom websites.<br>Built to perform.</h1>
     <p class="hero2-tag">Professionally managed.</p>
     <p class="hero2-sub">Built to convert visitors into members, and effortless for you to run.</p>
