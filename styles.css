@@ -28,10 +28,10 @@ body {
 /* ============ HEADER / NAV ============ */
 header { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
 .logo { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; }
-.logo-bolt { width: 16px; height: 26px; fill: var(--accent); flex-shrink: 0; }
+.logo-bolt { width: 14px; height: 34px; fill: var(--accent); flex-shrink: 0; }
 .logo-word { line-height: 1; }
-.logo-word .l1 { display: block; font-size: 17px; font-weight: 800; letter-spacing: 0.08em; }
-.logo-word .l2 { display: block; font-size: 10px; font-weight: 500; letter-spacing: 0.32em; color: var(--muted); margin-top: 2px; }
+.logo-word .l1 { display: block; font-size: 19px; font-weight: 900; letter-spacing: 0.03em; }
+.logo-word .l2 { display: block; font-size: 10px; font-weight: 400; letter-spacing: 0.4em; color: var(--muted); margin-top: 3px; }
 nav.main-nav { display: flex; align-items: center; gap: 26px; }
 nav.main-nav a { font-size: 13px; color: var(--muted); text-decoration: none; cursor: pointer; }
 nav.main-nav a:hover { color: var(--text); }
