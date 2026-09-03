@@ -78,7 +78,7 @@ footer { padding: 64px 48px 32px; }
 
 @media (max-width: 900px) {
   nav.main-nav { display: none; }
-  .nav-right .lang-select, .nav-right .icon-toggle, .btn-nav-cta { display: none; }
+  .nav-right .lang-select, .nav-right .icon-toggle, .nav-right .btn-nav-cta { display: none; }
   .hamburger-btn { display: flex; }
   header { padding: 16px 20px; }
   section { padding: 72px 20px; }
