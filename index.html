@@ -404,17 +404,26 @@
     setTimeout(apply, 180);
   }
 
-  const GLIDE_SPEED = 0.00065; // fraction of one card-step per frame - continuous slow auto-rotate
-  let glideActive = true;
-  function tick() {
-    if (glideActive && !dragging) target += GLIDE_SPEED;
+  const DRIFT_PER_MS = 1 / 45000; // one full card-position every 45s - slow, continuous, never stops
+  let autoScrollActive = true;
+  let lastFrameT = null;
+  function tick(now) {
+    if (lastFrameT === null) lastFrameT = now;
+    const dt = now - lastFrameT;
+    lastFrameT = now;
     const diff = target - pos;
-    if (Math.abs(diff) < 0.00005 && !glideActive) { pos = target; render(); rafId = null; return; }
-    pos += diff * (rm ? 1 : 0.13);
+    if (Math.abs(diff) > 0.001) {
+      pos += diff * (rm ? 1 : 0.13);
+    } else if (autoScrollActive && !rm) {
+      pos += DRIFT_PER_MS * dt;
+      target = pos;
+    } else {
+      pos = target;
+    }
     render();
     rafId = requestAnimationFrame(tick);
   }
-  function startTween() { if (rafId === null) rafId = requestAnimationFrame(tick); }
+  function startTween() { if (rafId === null) { lastFrameT = null; rafId = requestAnimationFrame(tick); } }
   function goTo(i) {
     let d = mod(i - target, N);
     if (d > N / 2) d -= N;
@@ -461,13 +470,13 @@
   });
 
   // Continuous slow auto-glide: pauses on hover/drag, resumes shortly after
-  function stopAutoScroll() { glideActive = false; }
-  function startAutoScroll() { glideActive = true; startTween(); }
+  function stopAutoScroll() { autoScrollActive = false; }
+  function startAutoScroll() { if (rm) return; autoScrollActive = true; startTween(); }
   stage.addEventListener('mouseenter', stopAutoScroll);
   stage.addEventListener('mouseleave', startAutoScroll);
   stage.addEventListener('pointerdown', stopAutoScroll);
-  stage.addEventListener('pointerup', () => setTimeout(startAutoScroll, 1200));
-  stage.addEventListener('pointercancel', () => setTimeout(startAutoScroll, 1200));
+  stage.addEventListener('pointerup', () => setTimeout(startAutoScroll, 2000));
+  stage.addEventListener('pointercancel', () => setTimeout(startAutoScroll, 2000));
   startAutoScroll();
 
   document.getElementById('scPrev').addEventListener('click', () => step(-1));
