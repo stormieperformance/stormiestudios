@@ -44,6 +44,14 @@
   .showcase-dots button.active { background: var(--accent); width: 18px; border-radius: 3px; }
   .showcase-arrows button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); cursor: pointer; color: var(--text); font-size: 16px; }
 
+  .sc-detail { max-width: 620px; margin: 28px auto 0; text-align: center; transition: opacity 0.25s ease, transform 0.25s ease; }
+  .sc-detail.is-switching { opacity: 0; transform: translateY(6px); }
+  .sc-detail .sc-detail-cat { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .sc-detail h3 { font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; line-height: 1.15; margin-bottom: 8px; }
+  .sc-detail-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+  .sc-detail-link { display: inline-block; }
+  .sc-hint { margin-top: 14px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); }
+
   .faq-item { border-bottom: 1px solid var(--line); padding: 22px 0; cursor: pointer; }
   .faq-q { display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 500; }
   .faq-toggle { font-size: 20px; color: var(--muted); transition: transform 0.25s; }
@@ -157,6 +165,13 @@
     <div class="showcase-dots" id="scDots"></div>
     <div class="showcase-arrows"><button id="scNext" aria-label="Next">&rsaquo;</button></div>
   </div>
+  <div class="sc-detail" id="scDetail" aria-live="polite">
+    <p class="sc-detail-cat" id="scDetailCat"></p>
+    <h3 id="scDetailName"></h3>
+    <p class="sc-detail-desc" id="scDetailDesc"></p>
+    <a class="btn-outline sc-detail-link" id="scDetailLink" href="#" target="_blank" rel="noopener noreferrer"></a>
+    <p class="sc-hint">Drag to spin, or use the arrows</p>
+  </div>
 </section>
 
 <section id="work">
@@ -167,18 +182,6 @@
   </div>
 </section>
 
-
-<section>
-  <div class="inner">
-    <div class="bullets">
-      <span class="bullet">Your domain stays yours</span>
-      <span class="bullet">Your content stays yours</span>
-      <span class="bullet">Cancel hosting anytime</span>
-      <span class="bullet">Direct contact with your developer</span>
-      <span class="bullet">Built in Sweden, available worldwide</span>
-    </div>
-  </div>
-</section>
 
 <section id="contact" class="contact">
   <div class="inner">
@@ -325,10 +328,10 @@
   });
 
   const ITEMS = [
-    { name: 'Masters Gym', url: 'stormieperformance.com/masters-gym', frame: 'https://stormieperformance.com/masters-gym/', comingSoon: false, cat: 'Client project \u00b7 Client work' },
-    { name: 'KBK B\u00e5gskytteklubb', url: 'stormieperformance.com/kbk-demo', frame: 'https://stormieperformance.com/kbk-demo/', comingSoon: true, cat: 'Pitch project \u00b7 Archery club' },
-    { name: 'Performance By Dante', url: 'performance-by-dante.vercel.app', frame: 'https://performance-by-dante.vercel.app', comingSoon: true, cat: 'Client project \u00b7 Launching soon' },
-    { name: 'Clinch Athletics', url: 'clinchathletics.com', frame: 'https://clinchathletics.com', comingSoon: false, cat: 'Concept project \u00b7 Combat sports brand' },
+    { name: 'Masters Gym', url: 'stormieperformance.com/masters-gym', href: 'https://stormieperformance.com/masters-gym/', frame: 'https://stormieperformance.com/masters-gym/', comingSoon: false, cat: 'Client project \u00b7 Client work', desc: 'A Stockholm gym with a full new site: class schedules, membership paths, corporate training and a self-updating content system.', link: 'View case \u2192' },
+    { name: 'KBK B\u00e5gskytteklubb', url: 'stormieperformance.com/kbk-demo', href: 'https://stormieperformance.com/kbk-demo/', frame: 'https://stormieperformance.com/kbk-demo/', comingSoon: true, cat: 'Pitch project \u00b7 Archery club', desc: 'A booking system demo for an archery club, built ahead of an upcoming pitch. Case study publishes after the meeting.', link: '' },
+    { name: 'Performance By Dante', url: 'performance-by-dante.vercel.app', href: 'https://performance-by-dante.vercel.app', frame: 'https://performance-by-dante.vercel.app', comingSoon: true, cat: 'Client project \u00b7 Launching soon', desc: 'A Stockholm-based personal trainer getting a new site with a full client intake form and an expandable background story. Case study publishes on launch day.', link: '' },
+    { name: 'Clinch Athletics', url: 'clinchathletics.com', href: 'https://clinchathletics.com', frame: 'https://clinchathletics.com', comingSoon: false, cat: 'Concept project \u00b7 Combat sports brand', desc: 'A concept and e-commerce brand for the combat sports industry. Premium design, strong visual identity, and a streamlined storefront built for martial arts athletes and enthusiasts.', link: 'View case \u2192' },
   ];
   const N = ITEMS.length;
   const stage = document.getElementById('scStage');
@@ -371,6 +374,34 @@
       card.classList.toggle('is-active', i === active && Math.abs(pos - target) < 0.02);
     });
     [...scDots.children].forEach((d, i) => d.classList.toggle('active', i === active));
+    if (active !== shownIdx && Math.abs(pos - Math.round(pos)) < 0.45) updateDetail(active, false);
+  }
+
+  let shownIdx = -1;
+  const detail = document.getElementById('scDetail');
+  const detailCat = document.getElementById('scDetailCat');
+  const detailName = document.getElementById('scDetailName');
+  const detailDesc = document.getElementById('scDetailDesc');
+  const detailLink = document.getElementById('scDetailLink');
+  function updateDetail(i, instant) {
+    shownIdx = i;
+    const apply = () => {
+      const item = ITEMS[i];
+      detailCat.textContent = item.cat;
+      detailName.textContent = item.name;
+      detailDesc.textContent = item.desc;
+      if (item.link) {
+        detailLink.textContent = item.link;
+        detailLink.setAttribute('href', item.href);
+        detailLink.style.display = '';
+      } else {
+        detailLink.style.display = 'none';
+      }
+      detail.classList.remove('is-switching');
+    };
+    if (rm || instant) { apply(); return; }
+    detail.classList.add('is-switching');
+    setTimeout(apply, 180);
   }
 
   function tick() {
@@ -449,6 +480,7 @@
   });
 
   render();
+  updateDetail(0, true);
 
   const NEEDS = {
     members: { title: "More members.", text: "The site needs to do one thing well: turn visitors into people who actually show up. Clear paths to trial sessions, a schedule that updates itself, and a first impression that reflects what your gym actually is." },
