@@ -126,9 +126,12 @@
   #faq { position: relative; overflow: hidden; padding-bottom: 220px; border-bottom: none; }
   .faq-shape { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0; background: #0b0b0b; clip-path: polygon(0% 100%, 100% 30%, 100% 100%); }
   .contact-box { max-width: 640px; margin: 0 auto; }
-  .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 36px; text-align: left; }
-  .need-btn { padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); font-size: 14px; font-weight: 500; font-family: inherit; cursor: pointer; text-align: left; transition: var(--transition); }
-  .need-btn:hover { border-color: var(--accent); background: var(--bg2); }
+  .need-subtext { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-top: 12px; max-width: 440px; }
+  .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; text-align: left; }
+  .need-btn { display: flex; align-items: center; gap: 14px; padding: 22px 20px; border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; background: rgba(255,255,255,0.02); color: #fff; font-size: 15px; font-weight: 500; font-family: inherit; cursor: pointer; text-align: left; transition: var(--transition); }
+  .need-btn svg { flex-shrink: 0; color: rgba(255,255,255,0.7); transition: color 0.2s ease; }
+  .need-btn:hover, .need-btn.is-selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 0 24px rgba(255,77,28,0.25); }
+  .need-btn:hover svg, .need-btn.is-selected svg { color: var(--accent); }
   .need-response { max-width: 620px; margin: 0 auto; text-align: left; }
   .need-back { border: none; background: transparent; color: var(--muted); font-size: 13px; cursor: pointer; font-family: inherit; margin-bottom: 24px; padding: 0; }
   .need-answer h3 { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
@@ -318,14 +321,33 @@
   <div class="inner">
     <div class="contact-box" id="needPicker">
       <p class="eyebrow"><span class="eyebrow2-slash">/</span> Get in touch <span class="eyebrow2-slash">/</span></p>
-      <h2>What do you need <span style="color: var(--accent);">help with?</span></h2>
+      <h2>What do you need <span style="color: var(--accent);">help</span> with?</h2>
+      <p class="need-subtext">Tell us what's most important right now and we'll show you how we can help.</p>
       <div class="need-grid">
-        <button class="need-btn" data-need="members">More members</button>
-        <button class="need-btn" data-need="impression">Better first impression</button>
-        <button class="need-btn" data-need="admin">Easier administration</button>
-        <button class="need-btn" data-need="outdated">Replace an outdated website</button>
-        <button class="need-btn" data-need="new">New gym opening</button>
-        <button class="need-btn" data-need="other">Something else</button>
+        <button class="need-btn" data-need="members">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>More members</span>
+        </button>
+        <button class="need-btn" data-need="impression">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Better first impression</span>
+        </button>
+        <button class="need-btn" data-need="admin">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Easier administration</span>
+        </button>
+        <button class="need-btn" data-need="outdated">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          <span>Replace an outdated website</span>
+        </button>
+        <button class="need-btn" data-need="new">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          <span>New gym opening</span>
+        </button>
+        <button class="need-btn" data-need="other">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          <span>Something else</span>
+        </button>
       </div>
     </div>
 
