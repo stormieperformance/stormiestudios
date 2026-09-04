@@ -38,7 +38,7 @@
   // Shared strings used identically across every page (nav, footer, common CTA).
   var SHARED_I18N = {
     en: {
-      nav_work: 'Work', nav_services: 'Services', nav_about: 'About', nav_process: 'Process',
+      nav_work: 'Work', nav_services: 'Who I work with', nav_about: 'About', nav_process: 'What you get',
       nav_cta: 'Request a consultation',
       footer_tagline1: 'Digital studio for sport &amp; fitness brands.',
       footer_tagline2: 'Websites that perform.<br>Professionally managed.',
@@ -51,7 +51,7 @@
       footer_credit: 'Built by Stormie Studios.',
     },
     sv: {
-      nav_work: 'Arbete', nav_services: 'Tjänster', nav_about: 'Om oss', nav_process: 'Process',
+      nav_work: 'Arbete', nav_services: 'Vem jag jobbar med', nav_about: 'Om oss', nav_process: 'Vad ni får',
       nav_cta: 'Boka konsultation',
       footer_tagline1: 'Digital studio för sport- &amp; träningsvarumärken.',
       footer_tagline2: 'Webbplatser som presterar.<br>Professionellt förvaltade.',
@@ -64,7 +64,7 @@
       footer_credit: 'Byggd av Stormie Studios.',
     },
     th: {
-      nav_work: 'ผลงาน', nav_services: 'บริการ', nav_about: 'เกี่ยวกับเรา', nav_process: 'กระบวนการ',
+      nav_work: 'ผลงาน', nav_services: 'ลูกค้าที่เหมาะกับเรา', nav_about: 'เกี่ยวกับเรา', nav_process: 'สิ่งที่คุณจะได้รับ',
       nav_cta: 'ขอคำปรึกษา',
       footer_tagline1: 'สตูดิโอดิจิทัลสำหรับแบรนด์กีฬาและฟิตเนส',
       footer_tagline2: 'เว็บไซต์ที่ให้ผลลัพธ์<br>ดูแลอย่างมืออาชีพ',
