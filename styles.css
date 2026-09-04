@@ -40,7 +40,16 @@ nav.main-nav a:hover { color: var(--text); }
 .lang-select button.active { color: var(--text); font-weight: 600; }
 .icon-toggle { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .icon-toggle svg { width: 15px; height: 15px; stroke: var(--muted); }
-.btn-nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--accent-text); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 11px 18px; border-radius: 980px; text-decoration: none; white-space: nowrap; }
+.btn-nav-cta { position: relative; display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--accent-text); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 11px 18px; border-radius: 980px; text-decoration: none; white-space: nowrap; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease; animation: ctaPulse 2.8s ease-in-out infinite; }
+.btn-nav-cta svg { transition: transform 0.25s ease; }
+.btn-nav-cta:hover { transform: scale(1.06); box-shadow: 0 8px 24px rgba(255,77,28,0.4); animation-play-state: paused; }
+.btn-nav-cta:hover svg { transform: translateX(4px); }
+.btn-nav-cta:active { transform: scale(0.97); }
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,77,28,0.45); }
+  50% { box-shadow: 0 0 0 9px rgba(255,77,28,0); }
+}
+@media (prefers-reduced-motion: reduce) { .btn-nav-cta { animation: none; } }
 
 /* Hamburger button — hidden on desktop, shown on mobile */
 .hamburger-btn { display: none; width: 36px; height: 36px; border: none; background: transparent; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
@@ -63,7 +72,10 @@ h1 { font-size: clamp(38px, 4.8vw, 60px); font-weight: 600; letter-spacing: -0.0
 h2 { font-size: clamp(28px, 3.6vw, 44px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px; color: var(--text); }
 section p.sub { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.65; }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 34px; border-radius: 980px; background: var(--accent); color: var(--accent-text); font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; font-family: inherit; }
+.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 16px 34px; border-radius: 980px; background: var(--accent); color: var(--accent-text); font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; font-family: inherit; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease; animation: ctaPulse 2.8s ease-in-out infinite; }
+.btn:hover { transform: scale(1.05); box-shadow: 0 8px 24px rgba(255,77,28,0.4); animation-play-state: paused; }
+.btn:active { transform: scale(0.97); }
+@media (prefers-reduced-motion: reduce) { .btn { animation: none; } }
 .btn-outline { background: transparent; border: 1px solid var(--line); color: var(--text); }
 
 /* ============ PAGE HERO (used by About / Who I Work With / What You Get) ============ */
@@ -75,7 +87,16 @@ footer { background: #0b0b0b; color: #fff; padding: 64px 48px 32px; }
 footer .logo-img { filter: invert(1) brightness(1.15); }
 .footer-top { max-width: 980px; margin: 0 auto 40px; }
 .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; margin-bottom: 14px; max-width: 320px; }
-.footer-email-btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); color: var(--accent); font-size: 14px; padding: 12px 20px; border-radius: 980px; text-decoration: none; margin-bottom: 20px; }
+.footer-email-btn { position: relative; display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); color: var(--accent); font-size: 14px; padding: 12px 20px; border-radius: 980px; text-decoration: none; margin-bottom: 20px; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease; animation: emailPulse 2.8s ease-in-out infinite; }
+.footer-email-btn svg { transition: transform 0.3s ease; }
+.footer-email-btn:hover { background: var(--accent); color: #fff; transform: scale(1.05); box-shadow: 0 8px 24px rgba(255,77,28,0.35); animation-play-state: paused; }
+.footer-email-btn:hover svg { transform: translateY(-2px) rotate(-6deg); }
+.footer-email-btn:active { transform: scale(0.97); }
+@keyframes emailPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,77,28,0.35); }
+  50% { box-shadow: 0 0 0 8px rgba(255,77,28,0); }
+}
+@media (prefers-reduced-motion: reduce) { .footer-email-btn { animation: none; } }
 .footer-social { display: flex; gap: 10px; }
 .footer-social-icon { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); display: flex; align-items: center; justify-content: center; text-decoration: none; }
 .footer-divider { display: flex; align-items: center; gap: 18px; max-width: 980px; margin: 0 auto 40px; }
