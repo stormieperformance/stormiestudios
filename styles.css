@@ -71,9 +71,18 @@ section p.sub { font-size: 16px; color: var(--muted); max-width: 560px; line-hei
 
 /* ============ FOOTER ============ */
 footer { background: #0b0b0b; color: #fff; padding: 64px 48px 32px; }
-.footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 980px; margin: 0 auto 40px; }
-.footer-col-title { font-size: 12px; font-weight: 600; margin-bottom: 14px; color: #fff; }
-.footer-col p, .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 8px; }
+footer .logo-img { filter: invert(1) brightness(1.15); }
+.footer-top { max-width: 980px; margin: 0 auto 40px; }
+.footer-tagline { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; margin-bottom: 14px; max-width: 320px; }
+.footer-email-btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); color: var(--accent); font-size: 14px; padding: 12px 20px; border-radius: 980px; text-decoration: none; margin-bottom: 20px; }
+.footer-social { display: flex; gap: 10px; }
+.footer-social-icon { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); display: flex; align-items: center; justify-content: center; text-decoration: none; }
+.footer-divider { display: flex; align-items: center; gap: 18px; max-width: 980px; margin: 0 auto 40px; }
+.footer-divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.14); }
+.footer-divider-bolt { width: 10px; height: 22px; fill: rgba(255,255,255,0.3); flex-shrink: 0; }
+.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 980px; margin: 0 auto 40px; }
+.footer-col-title { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px; color: rgba(255,255,255,0.45); }
+.footer-col p, .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.85); text-decoration: none; margin-bottom: 10px; }
 .footer-bottom { max-width: 980px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.4); }
 
 @media (max-width: 900px) {
@@ -83,6 +92,6 @@ footer { background: #0b0b0b; color: #fff; padding: 64px 48px 32px; }
   header { padding: 16px 20px; }
   section { padding: 72px 20px; }
   .page-hero { padding: 120px 20px 56px; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
