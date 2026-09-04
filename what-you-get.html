@@ -14,14 +14,14 @@
   .eyebrow2-slash { color: var(--accent); }
 
   /* ---- Hero (white, ends in diagonal into black) ---- */
-  .wyg-hero { position: relative; overflow: hidden; padding: 100px 48px 260px; }
+  .wyg-hero { position: relative; overflow: hidden; padding: 100px 48px 130px; border-bottom: none; }
   .wyg-hero-inner { position: relative; z-index: 1; max-width: 620px; }
   .wyg-hero h1 { margin-bottom: 18px; }
-  .wyg-hero-sub { font-size: 17px; color: var(--muted); line-height: 1.6; max-width: 480px; margin-bottom: 32px; }
+  .wyg-hero-sub { font-size: 17px; color: var(--muted); line-height: 1.6; max-width: 480px; margin-bottom: 0; }
   .wyg-hero-shape { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0; background: #0b0b0b; clip-path: polygon(0% 100%, 100% 30%, 100% 100%); }
 
   /* ---- Fully managed (black section) ---- */
-  .wyg-managed { position: relative; background: #0b0b0b; color: #fff; padding: 90px 48px 260px; overflow: hidden; }
+  .wyg-managed { position: relative; background: #0b0b0b; color: #fff; padding: 90px 48px 260px; overflow: hidden; border-bottom: none; }
   .wyg-managed-inner { position: relative; z-index: 1; max-width: 620px; }
   .wyg-managed h2 { color: #fff; margin-bottom: 18px; }
   .wyg-managed-sub { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 480px; margin-bottom: 48px; }
@@ -34,7 +34,7 @@
   .fm-card-desc { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.55; }
 
   /* ---- Yours, always (white section) ---- */
-  .wyg-yours { position: relative; overflow: hidden; padding: 90px 48px 260px; }
+  .wyg-yours { position: relative; overflow: hidden; padding: 90px 48px 260px; border-bottom: none; }
   .wyg-yours-inner { position: relative; z-index: 1; max-width: 620px; }
   .wyg-yours-sub { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 480px; margin-bottom: 44px; }
   .wyg-yours-shape { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0; background: #0b0b0b; clip-path: polygon(0% 100%, 100% 30%, 100% 100%); }
@@ -44,7 +44,7 @@
   .wyg-benefit svg { color: var(--accent); width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
 
   /* ---- Final CTA (black, centered) ---- */
-  .wyg-cta { position: relative; text-align: center; background: #0b0b0b; color: #fff; padding: 110px 48px 130px; }
+  .wyg-cta { position: relative; text-align: center; background: #0b0b0b; color: #fff; padding: 110px 48px 130px; border-bottom: none; }
   .wyg-cta .eyebrow2 { display: block; text-align: center; }
   .wyg-cta h2 { color: #fff; max-width: 640px; margin: 0 auto 32px; }
 
@@ -53,7 +53,7 @@
   }
 
   @media (max-width: 768px) {
-    .wyg-hero { padding: 70px 20px 170px; }
+    .wyg-hero { padding: 70px 20px 90px; }
     .wyg-managed { padding: 60px 20px 170px; }
     .wyg-yours { padding: 60px 20px 170px; }
     .wyg-hero-shape, .wyg-managed-shape, .wyg-yours-shape { height: 130px; clip-path: polygon(0% 100%, 100% 45%, 100% 100%); }
@@ -107,7 +107,6 @@
     <p class="eyebrow2" data-i18n="wyg_eyebrow"><span class="eyebrow2-slash">/</span> What you get <span class="eyebrow2-slash">/</span></p>
     <h1 data-i18n="wyg_h1">Easy for you.<br><span style="color: var(--accent);">Professionally managed.</span></h1>
     <p class="wyg-hero-sub" data-i18n="wyg_sub">A custom website you can update yourself&mdash;with the technical side handled for you.</p>
-    <a class="btn" href="index.html#contact" data-i18n="nav_cta">Request a consultation</a>
   </div>
   <div class="wyg-hero-shape" aria-hidden="true"></div>
 </section>
