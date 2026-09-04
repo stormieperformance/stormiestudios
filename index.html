@@ -15,11 +15,11 @@
   .hero-grid .btn { margin-top: 28px; }
 
   /* ============ HERO 2: diagonal split, new brand system ============ */
-  .hero2 { position: relative; background: var(--bg); padding: 130px 48px 160px; overflow: hidden; border-bottom: none; }
+  .hero2 { position: relative; background: var(--bg); padding: 130px 48px 220px; overflow: hidden; border-bottom: none; }
   .hero2-shape {
-    position: absolute; inset: 0; z-index: 0;
+    position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0;
     background: #0b0b0b;
-    clip-path: polygon(52% 0%, 100% 0%, 100% 100%, 30% 100%);
+    clip-path: polygon(0% 100%, 100% 30%, 100% 100%);
   }
   .hero2-shape::before {
     content: '';
@@ -87,9 +87,9 @@
   .feature-desc { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; line-height: 1.4; }
 
   @media (max-width: 900px) {
-    .hero2 { padding: 120px 20px 110px; }
+    .hero2 { padding: 120px 20px 130px; }
     .hero2-btn { display: flex; width: fit-content; padding: 12px 18px; font-size: 11px; gap: 6px; }
-    .hero2-shape { clip-path: polygon(0% 96%, 100% 80%, 100% 100%, 0% 100%); }
+    .hero2-shape { height: 130px; clip-path: polygon(0% 100%, 100% 45%, 100% 100%); }
     .featured-work { padding: 0 20px 130px; }
     .featured-work-shape { height: 130px; clip-path: polygon(0% 100%, 100% 45%, 100% 100%); }
     #care, .contact, #faq { padding-bottom: 130px; }
