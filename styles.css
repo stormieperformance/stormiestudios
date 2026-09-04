@@ -114,6 +114,7 @@ footer .logo-img { filter: invert(1) brightness(1.15); }
   letter-spacing: 0.1em;
   background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.4) 45%, var(--accent) 50%, rgba(255,255,255,0.4) 55%, rgba(255,255,255,0.4) 100%);
   color: transparent;
+  -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
   background-clip: text; -webkit-background-clip: text;
   animation: footerShimmer 9s linear infinite;
