@@ -38,11 +38,11 @@
   // Shared strings used identically across every page (nav, footer, common CTA).
   var SHARED_I18N = {
     en: {
-      nav_work: 'Work', nav_services: 'Services', nav_about: 'About', nav_process: 'Process',
+      nav_work: 'Work', nav_services: 'What you get', nav_about: 'About', nav_process: 'Process',
       nav_cta: 'Request a consultation',
       footer_tagline1: 'Digital studio for sport &amp; fitness brands.',
       footer_tagline2: 'Websites that perform.<br>Professionally managed.',
-      footer_nav_title: 'Navigation', footer_nav_services: 'Services', footer_nav_work: 'Work',
+      footer_nav_title: 'Navigation', footer_nav_services: 'What you get', footer_nav_work: 'Work',
       footer_nav_about: 'About', footer_nav_who: 'Who I work with', footer_nav_faq: 'FAQ', footer_nav_contact: 'Contact',
       footer_company_title: 'Company', footer_company_name: 'Stormie Studios', footer_company_by: 'By Storm Kolmodin',
       footer_company_city: 'Stockholm, Sweden', footer_company_reg: 'Registered business in Sweden',
@@ -51,11 +51,11 @@
       footer_credit: 'Built by Stormie Studios.',
     },
     sv: {
-      nav_work: 'Arbete', nav_services: 'Tjänster', nav_about: 'Om oss', nav_process: 'Process',
+      nav_work: 'Arbete', nav_services: 'Vad ni får', nav_about: 'Om oss', nav_process: 'Process',
       nav_cta: 'Boka konsultation',
       footer_tagline1: 'Digital studio för sport- &amp; träningsvarumärken.',
       footer_tagline2: 'Webbplatser som presterar.<br>Professionellt förvaltade.',
-      footer_nav_title: 'Navigering', footer_nav_services: 'Tjänster', footer_nav_work: 'Arbete',
+      footer_nav_title: 'Navigering', footer_nav_services: 'Vad ni får', footer_nav_work: 'Arbete',
       footer_nav_about: 'Om oss', footer_nav_who: 'Vem jag jobbar med', footer_nav_faq: 'Vanliga frågor', footer_nav_contact: 'Kontakt',
       footer_company_title: 'Företag', footer_company_name: 'Stormie Studios', footer_company_by: 'Av Storm Kolmodin',
       footer_company_city: 'Stockholm, Sverige', footer_company_reg: 'Registrerad verksamhet i Sverige',
@@ -64,11 +64,11 @@
       footer_credit: 'Byggd av Stormie Studios.',
     },
     th: {
-      nav_work: 'ผลงาน', nav_services: 'บริการ', nav_about: 'เกี่ยวกับเรา', nav_process: 'กระบวนการ',
+      nav_work: 'ผลงาน', nav_services: 'สิ่งที่คุณจะได้รับ', nav_about: 'เกี่ยวกับเรา', nav_process: 'กระบวนการ',
       nav_cta: 'ขอคำปรึกษา',
       footer_tagline1: 'สตูดิโอดิจิทัลสำหรับแบรนด์กีฬาและฟิตเนส',
       footer_tagline2: 'เว็บไซต์ที่ให้ผลลัพธ์<br>ดูแลอย่างมืออาชีพ',
-      footer_nav_title: 'เมนู', footer_nav_services: 'บริการ', footer_nav_work: 'ผลงาน',
+      footer_nav_title: 'เมนู', footer_nav_services: 'สิ่งที่คุณจะได้รับ', footer_nav_work: 'ผลงาน',
       footer_nav_about: 'เกี่ยวกับเรา', footer_nav_who: 'ลูกค้าที่เหมาะกับเรา', footer_nav_faq: 'คำถามที่พบบ่อย', footer_nav_contact: 'ติดต่อเรา',
       footer_company_title: 'บริษัท', footer_company_name: 'Stormie Studios', footer_company_by: 'โดย Storm Kolmodin',
       footer_company_city: 'สตอกโฮล์ม สวีเดน', footer_company_reg: 'จดทะเบียนธุรกิจในสวีเดน',
