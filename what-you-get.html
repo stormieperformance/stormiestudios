@@ -77,34 +77,75 @@
 
 <section class="page-hero">
   <div class="inner">
-    <p class="eyebrow">What you get</p>
-    <h1>Easy for you.<br><span style="color: var(--accent);">Professionally managed.</span></h1>
+    <p class="eyebrow" data-i18n="wyg_eyebrow">What you get</p>
+    <h1 data-i18n="wyg_h1">Easy for you.<br><span style="color: var(--accent);">Professionally managed.</span></h1>
   </div>
 </section>
 <section>
   <div class="inner" style="max-width: 640px;">
     <div>
-      <p>Your website is built so you can manage what changes day to day, without touching code.</p>
-      <p>Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.</p>
-      <p>Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.</p>
-      <p>Your domain, content and brand remain yours.</p>
-      <p class="emphasis">No page builder maintenance. No plugin stack. No code to manage.</p>
-      <p class="close">Just a custom website you can actually operate yourself.</p>
-      <a class="btn" href="index.html#contact" style="margin-top: 24px;">Request a consultation</a>
+      <p data-i18n="wyg_p1">Your website is built so you can manage what changes day to day, without touching code.</p>
+      <p data-i18n="wyg_p2">Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.</p>
+      <p data-i18n="wyg_p3">Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.</p>
+      <p data-i18n="wyg_p4">Your domain, content and brand remain yours.</p>
+      <p class="emphasis" data-i18n="wyg_p5">No page builder maintenance. No plugin stack. No code to manage.</p>
+      <p class="close" data-i18n="wyg_p6">Just a custom website you can actually operate yourself.</p>
+      <a class="btn" href="index.html#contact" style="margin-top: 24px;" data-i18n="nav_cta">Request a consultation</a>
     </div>
   </div>
 </section>
 <section>
   <div class="inner">
     <div class="bullets">
-      <span class="bullet">Your domain stays yours</span>
-      <span class="bullet">Your content stays yours</span>
-      <span class="bullet">Cancel hosting anytime</span>
-      <span class="bullet">Direct contact with your developer</span>
-      <span class="bullet">Built in Sweden, available worldwide</span>
+      <span class="bullet" data-i18n="wyg_b1">Your domain stays yours</span>
+      <span class="bullet" data-i18n="wyg_b2">Your content stays yours</span>
+      <span class="bullet" data-i18n="wyg_b3">Cancel hosting anytime</span>
+      <span class="bullet" data-i18n="wyg_b4">Direct contact with your developer</span>
+      <span class="bullet" data-i18n="wyg_b5">Built in Sweden, available worldwide</span>
     </div>
   </div>
 </section>
+
+<script>
+  window.PAGE_I18N = {
+    en: {
+      wyg_eyebrow: 'What you get',
+      wyg_h1: 'Easy for you.<br><span style="color: var(--accent);">Professionally managed.</span>',
+      wyg_p1: 'Your website is built so you can manage what changes day to day, without touching code.',
+      wyg_p2: 'Update text, images, schedules, prices and content through a simple CMS, while Stormie Studios handles the technical side behind the scenes.',
+      wyg_p3: 'Hosting, deployment, security, backups and maintenance are managed for one flat monthly fee.',
+      wyg_p4: 'Your domain, content and brand remain yours.',
+      wyg_p5: 'No page builder maintenance. No plugin stack. No code to manage.',
+      wyg_p6: 'Just a custom website you can actually operate yourself.',
+      wyg_b1: 'Your domain stays yours', wyg_b2: 'Your content stays yours', wyg_b3: 'Cancel hosting anytime',
+      wyg_b4: 'Direct contact with your developer', wyg_b5: 'Built in Sweden, available worldwide',
+    },
+    sv: {
+      wyg_eyebrow: 'Vad ni f\u00e5r',
+      wyg_h1: 'Enkelt f\u00f6r er.<br><span style="color: var(--accent);">Professionellt f\u00f6rvaltat.</span>',
+      wyg_p1: 'Er webbplats byggs s\u00e5 att ni kan sk\u00f6ta det som \u00e4ndras l\u00f6pande, utan att r\u00f6ra kod.',
+      wyg_p2: 'Uppdatera text, bilder, scheman, priser och inneh\u00e5ll via ett enkelt CMS, medan Stormie Studios sk\u00f6ter det tekniska bakom kulisserna.',
+      wyg_p3: 'Hosting, driftsättning, s\u00e4kerhet, backuper och underh\u00e5ll sk\u00f6ts f\u00f6r en fast m\u00e5nadsavgift.',
+      wyg_p4: 'Er dom\u00e4n, ert inneh\u00e5ll och varum\u00e4rke f\u00f6rblir era.',
+      wyg_p5: 'Inget sidbyggarunderh\u00e5ll. Ingen plugin-stack. Ingen kod att sk\u00f6ta.',
+      wyg_p6: 'Bara en skr\u00e4ddarsydd webbplats ni faktiskt kan driva sj\u00e4lva.',
+      wyg_b1: 'Er dom\u00e4n f\u00f6rblir er', wyg_b2: 'Ert inneh\u00e5ll f\u00f6rblir ert', wyg_b3: 'Avsluta hosting n\u00e4r som helst',
+      wyg_b4: 'Direktkontakt med er utvecklare', wyg_b5: 'Byggd i Sverige, tillg\u00e4nglig v\u00e4rlden \u00f6ver',
+    },
+    th: {
+      wyg_eyebrow: '\u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e08\u0e30\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a',
+      wyg_h1: '\u0e07\u0e48\u0e32\u0e22\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e38\u0e13<br><span style="color: var(--accent);">\u0e14\u0e39\u0e41\u0e25\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e21\u0e37\u0e2d\u0e2d\u0e32\u0e0a\u0e35\u0e1e</span>',
+      wyg_p1: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a\u0e21\u0e32\u0e43\u0e2b\u0e49\u0e04\u0e38\u0e13\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e41\u0e1b\u0e25\u0e07\u0e43\u0e19\u0e41\u0e15\u0e48\u0e25\u0e30\u0e27\u0e31\u0e19\u0e44\u0e14\u0e49\u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e41\u0e15\u0e30\u0e42\u0e04\u0e49\u0e14',
+      wyg_p2: '\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21 \u0e23\u0e39\u0e1b\u0e20\u0e32\u0e1e \u0e15\u0e32\u0e23\u0e32\u0e07\u0e40\u0e27\u0e25\u0e32 \u0e23\u0e32\u0e04\u0e32 \u0e41\u0e25\u0e30\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e1c\u0e48\u0e32\u0e19 CMS \u0e07\u0e48\u0e32\u0e22\u0e46 \u0e02\u0e13\u0e30\u0e17\u0e35\u0e48 Stormie Studios \u0e14\u0e39\u0e41\u0e25\u0e14\u0e49\u0e32\u0e19\u0e40\u0e17\u0e04\u0e19\u0e34\u0e04\u0e40\u0e1a\u0e37\u0e49\u0e2d\u0e07\u0e2b\u0e25\u0e31\u0e07',
+      wyg_p3: '\u0e01\u0e32\u0e23\u0e42\u0e2e\u0e2a\u0e15\u0e34\u0e49\u0e07 \u0e01\u0e32\u0e23\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19 \u0e04\u0e27\u0e32\u0e21\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22 \u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25 \u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e1a\u0e33\u0e23\u0e38\u0e07\u0e23\u0e31\u0e01\u0e29\u0e32\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e43\u0e19\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21\u0e23\u0e32\u0e22\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e04\u0e07\u0e17\u0e35\u0e48',
+      wyg_p4: '\u0e42\u0e14\u0e40\u0e21\u0e19 \u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32 \u0e41\u0e25\u0e30\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e22\u0e31\u0e07\u0e04\u0e07\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13',
+      wyg_p5: '\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e14\u0e39\u0e41\u0e25\u0e15\u0e31\u0e27\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e40\u0e27\u0e47\u0e1a \u0e44\u0e21\u0e48\u0e21\u0e35\u0e1b\u0e25\u0e31\u0e01\u0e2d\u0e34\u0e19 \u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e42\u0e04\u0e49\u0e14',
+      wyg_p6: '\u0e40\u0e1e\u0e35\u0e22\u0e07\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e17\u0e35\u0e48\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e40\u0e2d\u0e07\u0e44\u0e14\u0e49\u0e08\u0e23\u0e34\u0e07',
+      wyg_b1: '\u0e42\u0e14\u0e40\u0e21\u0e19\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e2a\u0e21\u0e2d', wyg_b2: '\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e2a\u0e21\u0e2d', wyg_b3: '\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01\u0e42\u0e2e\u0e2a\u0e15\u0e34\u0e49\u0e07\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e44\u0e2b\u0e23\u0e48\u0e01\u0e47\u0e44\u0e14\u0e49',
+      wyg_b4: '\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e19\u0e31\u0e01\u0e1e\u0e31\u0e12\u0e19\u0e32\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07', wyg_b5: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e43\u0e19\u0e2a\u0e27\u0e35\u0e40\u0e14\u0e19 \u0e43\u0e2b\u0e49\u0e1a\u0e23\u0e34\u0e01\u0e32\u0e23\u0e17\u0e31\u0e48\u0e27\u0e42\u0e25\u0e01',
+    },
+  };
+</script>
 
 <footer>
   <div class="footer-top">

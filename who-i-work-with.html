@@ -77,33 +77,74 @@
 
 <section class="page-hero">
   <div class="inner">
-    <p class="eyebrow">Who I work with</p>
-    <h1>Built for the fitness industry.<br><span style="color: var(--accent);">And a few causes I care about.</span></h1>
+    <p class="eyebrow" data-i18n="who_eyebrow">Who I work with</p>
+    <h1 data-i18n="who_h1">Built for the fitness industry.<br><span style="color: var(--accent);">And a few causes I care about.</span></h1>
   </div>
 </section>
 <section>
   <div class="inner">
     <div class="segments-grid">
       <div class="segment-item">
-        <h3 class="segment-name">Gyms &amp; martial arts clubs</h3>
-        <p class="segment-text">More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.</p>
-        <span class="segment-link">See how &rarr;</span>
+        <h3 class="segment-name" data-i18n="who_1_t">Gyms &amp; martial arts clubs</h3>
+        <p class="segment-text" data-i18n="who_1_d">More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.</p>
+        <span class="segment-link" data-i18n="who_1_link">See how &rarr;</span>
       </div>
       <div class="segment-item">
-        <h3 class="segment-name">PTs &amp; coaches</h3>
-        <p class="segment-text">Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.</p>
-        <span class="segment-link" style="color: var(--muted2);">Coming soon</span>
+        <h3 class="segment-name" data-i18n="who_2_t">PTs &amp; coaches</h3>
+        <p class="segment-text" data-i18n="who_2_d">Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.</p>
+        <span class="segment-link" style="color: var(--muted2);" data-i18n="who_coming_soon">Coming soon</span>
       </div>
       <div class="segment-item segment-full">
         <div>
-          <h3 class="segment-name">Shop &amp; brand</h3>
-          <p class="segment-text" style="margin-bottom: 0;">Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.</p>
+          <h3 class="segment-name" data-i18n="who_3_t">Shop &amp; brand</h3>
+          <p class="segment-text" style="margin-bottom: 0;" data-i18n="who_3_d">Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.</p>
         </div>
-        <span class="segment-link" style="color: var(--muted2); white-space: nowrap;">Coming soon</span>
+        <span class="segment-link" style="color: var(--muted2); white-space: nowrap;" data-i18n="who_coming_soon">Coming soon</span>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  window.PAGE_I18N = {
+    en: {
+      who_eyebrow: 'Who I work with',
+      who_h1: 'Built for the fitness industry.<br><span style="color: var(--accent);">And a few causes I care about.</span>',
+      who_1_t: 'Gyms &amp; martial arts clubs',
+      who_1_d: 'More trial sessions, more members. A site that reflects your culture as well as your Instagram does, with clear paths to trial passes, memberships and corporate training. And when the schedule changes? You update it yourself in 30 seconds.',
+      who_1_link: 'See how &rarr;',
+      who_2_t: 'PTs &amp; coaches',
+      who_2_d: 'Fill your programs with a personal site built around booking, packages and client management. Currently building exactly this for a Stockholm personal trainer, launching soon.',
+      who_3_t: 'Shop &amp; brand',
+      who_3_d: 'Sell merch and gear straight to your community, an online store built into the site, not next to it. A Stripe-powered shop is in the works as part of that same personal trainer build.',
+      who_coming_soon: 'Coming soon',
+    },
+    sv: {
+      who_eyebrow: 'Vem jag jobbar med',
+      who_h1: 'Byggd f\u00f6r fitnessbranschen.<br><span style="color: var(--accent);">Och n\u00e5gra saker jag bryr mig om.</span>',
+      who_1_t: 'Gym &amp; kampsportsklubbar',
+      who_1_d: 'Fler provpass, fler medlemmar. En sida som speglar er kultur lika bra som ert Instagram, med tydliga v\u00e4gar till provpass, medlemskap och f\u00f6retagstr\u00e4ning. Och n\u00e4r schemat \u00e4ndras? Ni uppdaterar det sj\u00e4lva p\u00e5 30 sekunder.',
+      who_1_link: 'Se hur &rarr;',
+      who_2_t: 'PT:er &amp; tr\u00e4nare',
+      who_2_d: 'Fyll era program med en personlig sida byggd kring bokning, paket och klienthantering. Bygger just nu exakt detta f\u00f6r en personlig tr\u00e4nare i Stockholm, lanseras snart.',
+      who_3_t: 'Butik &amp; varum\u00e4rke',
+      who_3_d: 'S\u00e4lj merch och utrustning direkt till er community, en webbutik inbyggd i sidan, inte vid sidan av. En Stripe-driven butik \u00e4r p\u00e5 g\u00e5ng som en del av samma projekt f\u00f6r den personliga tr\u00e4naren.',
+      who_coming_soon: 'Kommer snart',
+    },
+    th: {
+      who_eyebrow: '\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32\u0e17\u0e35\u0e48\u0e40\u0e23\u0e32\u0e17\u0e33\u0e07\u0e32\u0e19\u0e14\u0e49\u0e27\u0e22',
+      who_h1: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2d\u0e38\u0e15\u0e2a\u0e32\u0e2b\u0e01\u0e23\u0e23\u0e21\u0e1f\u0e34\u0e15\u0e40\u0e19\u0e2a<br><span style="color: var(--accent);">\u0e41\u0e25\u0e30\u0e2d\u0e35\u0e01\u0e2b\u0e25\u0e32\u0e22\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e17\u0e35\u0e48\u0e40\u0e23\u0e32\u0e43\u0e2a\u0e48\u0e43\u0e08</span>',
+      who_1_t: '\u0e22\u0e34\u0e21\u0e41\u0e25\u0e30\u0e2a\u0e42\u0e21\u0e2a\u0e23\u0e28\u0e34\u0e25\u0e1b\u0e30\u0e1b\u0e49\u0e2d\u0e07\u0e01\u0e31\u0e19\u0e15\u0e31\u0e27',
+      who_1_d: '\u0e04\u0e25\u0e32\u0e2a\u0e17\u0e14\u0e25\u0e2d\u0e07\u0e21\u0e32\u0e01\u0e02\u0e36\u0e49\u0e19 \u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e21\u0e32\u0e01\u0e02\u0e36\u0e49\u0e19 \u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e17\u0e35\u0e48\u0e2a\u0e30\u0e17\u0e49\u0e2d\u0e19\u0e27\u0e31\u0e12\u0e19\u0e18\u0e23\u0e23\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e44\u0e14\u0e49\u0e14\u0e35\u0e40\u0e17\u0e48\u0e32 Instagram \u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e2a\u0e49\u0e19\u0e17\u0e32\u0e07\u0e17\u0e35\u0e48\u0e0a\u0e31\u0e14\u0e40\u0e08\u0e19\u0e2a\u0e39\u0e48\u0e04\u0e25\u0e32\u0e2a\u0e17\u0e14\u0e25\u0e2d\u0e07 \u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01 \u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e2d\u0e1a\u0e23\u0e21\u0e2d\u0e07\u0e04\u0e4c\u0e01\u0e23 \u0e41\u0e25\u0e30\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e15\u0e32\u0e23\u0e32\u0e07\u0e40\u0e27\u0e25\u0e32\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19? \u0e04\u0e38\u0e13\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e40\u0e2d\u0e07\u0e44\u0e14\u0e49\u0e43\u0e19 30 \u0e27\u0e34\u0e19\u0e32\u0e17\u0e35',
+      who_1_link: '\u0e14\u0e39\u0e27\u0e34\u0e18\u0e35\u0e01\u0e32\u0e23 &rarr;',
+      who_2_t: '\u0e40\u0e17\u0e23\u0e19\u0e40\u0e19\u0e2d\u0e23\u0e4c\u0e2a\u0e48\u0e27\u0e19\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e41\u0e25\u0e30\u0e42\u0e04\u0e49\u0e0a',
+      who_2_d: '\u0e40\u0e15\u0e34\u0e21\u0e40\u0e15\u0e47\u0e21\u0e42\u0e1b\u0e23\u0e41\u0e01\u0e23\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e14\u0e49\u0e27\u0e22\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a\u0e23\u0e2d\u0e1a\u0e01\u0e32\u0e23\u0e08\u0e2d\u0e07 \u0e41\u0e1e\u0e04\u0e40\u0e01\u0e08 \u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32 \u0e02\u0e13\u0e30\u0e19\u0e35\u0e49\u0e01\u0e33\u0e25\u0e31\u0e07\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e2a\u0e34\u0e48\u0e07\u0e19\u0e35\u0e49\u0e43\u0e2b\u0e49\u0e40\u0e17\u0e23\u0e19\u0e40\u0e19\u0e2d\u0e23\u0e4c\u0e2a\u0e48\u0e27\u0e19\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e43\u0e19\u0e2a\u0e15\u0e2d\u0e01\u0e42\u0e2e\u0e25\u0e21\u0e4c \u0e40\u0e23\u0e47\u0e27\u0e46 \u0e19\u0e35\u0e49',
+      who_3_t: '\u0e23\u0e49\u0e32\u0e19\u0e04\u0e49\u0e32\u0e41\u0e25\u0e30\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c',
+      who_3_d: '\u0e02\u0e32\u0e22\u0e2a\u0e34\u0e19\u0e04\u0e49\u0e32\u0e41\u0e25\u0e30\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07\u0e43\u0e2b\u0e49\u0e0a\u0e38\u0e21\u0e0a\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e23\u0e49\u0e32\u0e19\u0e04\u0e49\u0e32\u0e2d\u0e2d\u0e19\u0e44\u0e25\u0e19\u0e4c\u0e17\u0e35\u0e48\u0e1d\u0e31\u0e07\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e41\u0e22\u0e01\u0e2d\u0e2d\u0e01\u0e44\u0e1b \u0e23\u0e49\u0e32\u0e19\u0e04\u0e49\u0e32\u0e17\u0e35\u0e48\u0e02\u0e31\u0e1a\u0e40\u0e04\u0e25\u0e37\u0e48\u0e2d\u0e19\u0e14\u0e49\u0e27\u0e22 Stripe \u0e01\u0e33\u0e25\u0e31\u0e07\u0e2d\u0e22\u0e39\u0e48\u0e23\u0e30\u0e2b\u0e27\u0e48\u0e32\u0e07\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e02\u0e2d\u0e07\u0e42\u0e1b\u0e23\u0e40\u0e08\u0e01\u0e15\u0e4c\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e19',
+      who_coming_soon: '\u0e40\u0e23\u0e47\u0e27\u0e46 \u0e19\u0e35\u0e49',
+    },
+  };
+</script>
 
 <footer>
   <div class="footer-top">

@@ -77,24 +77,70 @@
 
 <section class="page-hero">
   <div class="inner">
-    <p class="eyebrow">About</p>
-    <h1>Built from <span style="color: var(--accent);">the gym floor.</span></h1>
+    <p class="eyebrow" data-i18n="about_eyebrow">About</p>
+    <h1 data-i18n="about_h1">Built from <span style="color: var(--accent);">the gym floor.</span></h1>
   </div>
 </section>
 <section>
   <div class="inner">
-    <p class="sub" style="max-width: 700px;">I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.</p>
-    <p class="sub" style="max-width: 700px; margin-top: 16px;">Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.</p>
+    <p class="sub" style="max-width: 700px;" data-i18n="about_p1">I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.</p>
+    <p class="sub" style="max-width: 700px; margin-top: 16px;" data-i18n="about_p2">Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.</p>
     <p class="about-sign">&mdash; Storm</p>
     <div class="why-grid">
-      <div class="why-item"><span class="why-num">i.</span><span class="why-title">Licensed Personal Trainer</span><p class="why-body">Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.</p></div>
-      <div class="why-item"><span class="why-num">ii.</span><span class="why-title">Agile Project Manager &amp; Developer</span><p class="why-body">Trained in Agile Project Management at Futuregames, Computer and Systems Sciences at Stockholm University, AI at KTH Royal Institute of Technology, and Web Development at Luleå University of Technology. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.</p></div>
-      <div class="why-item"><span class="why-num">iii.</span><span class="why-title">Former Gym Manager &amp; Fitness Instructor</span><p class="why-body">Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.</p></div>
-      <div class="why-item"><span class="why-num">iv.</span><span class="why-title">Built From the Industry</span><p class="why-body">Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.</p></div>
+      <div class="why-item"><span class="why-num">i.</span><span class="why-title" data-i18n="about_w1_t">Licensed Personal Trainer</span><p class="why-body" data-i18n="about_w1_d">Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.</p></div>
+      <div class="why-item"><span class="why-num">ii.</span><span class="why-title" data-i18n="about_w2_t">Agile Project Manager &amp; Developer</span><p class="why-body" data-i18n="about_w2_d">Trained in Agile Project Management at Futuregames, Computer and Systems Sciences at Stockholm University, AI at KTH Royal Institute of Technology, and Web Development at Luleå University of Technology. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.</p></div>
+      <div class="why-item"><span class="why-num">iii.</span><span class="why-title" data-i18n="about_w3_t">Former Gym Manager &amp; Fitness Instructor</span><p class="why-body" data-i18n="about_w3_d">Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.</p></div>
+      <div class="why-item"><span class="why-num">iv.</span><span class="why-title" data-i18n="about_w4_t">Built From the Industry</span><p class="why-body" data-i18n="about_w4_d">Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.</p></div>
     </div>
   </div>
 </section>
 
+<script>
+  window.PAGE_I18N = {
+    en: {
+      about_eyebrow: 'About',
+      about_h1: 'Built from <span style="color: var(--accent);">the gym floor.</span>',
+      about_p1: "I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.",
+      about_p2: "Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.",
+      about_w1_t: 'Licensed Personal Trainer',
+      about_w1_d: 'Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.',
+      about_w2_t: 'Agile Project Manager &amp; Developer',
+      about_w2_d: 'Trained in Agile Project Management at Futuregames, Computer and Systems Sciences at Stockholm University, AI at KTH Royal Institute of Technology, and Web Development at Luleå University of Technology. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.',
+      about_w3_t: 'Former Gym Manager &amp; Fitness Instructor',
+      about_w3_d: 'Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.',
+      about_w4_t: 'Built From the Industry',
+      about_w4_d: 'Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.',
+    },
+    sv: {
+      about_eyebrow: 'Om oss',
+      about_h1: 'Byggd fr\u00e5n <span style="color: var(--accent);">gymgolvet.</span>',
+      about_p1: 'Jag heter Storm Kolmodin. Licensierad personlig tr\u00e4nare, agil projektledare och utvecklare. Jag bygger webbplatser f\u00f6r gym, klubbar och tr\u00e4nare. Inte f\u00f6r att jag hittade en nisch, utan f\u00f6r att det \u00e4r v\u00e4rlden jag kommer ifr\u00e5n.',
+      about_p2: 'Stormie Studios \u00e4r en liten studio med ett enkelt l\u00f6fte: ni jobbar direkt med personen som bygger er sida. Inga mellanh\u00e4nder. Inga \u00f6verl\u00e4mningar. Inga \u00f6verraskningar.',
+      about_w1_t: 'Licensierad Personlig Tr\u00e4nare',
+      about_w1_d: 'Certifierad sedan 2018 och vidareutbildad vid Gymnastik- och idrottsh\u00f6gskolan (GIH). Jag vet vad som f\u00e5r n\u00e5gon att v\u00e5ga boka sitt f\u00f6rsta pass.',
+      about_w2_t: 'Agil Projektledare &amp; Utvecklare',
+      about_w2_d: 'Utbildad i agil projektledning p\u00e5 Futuregames, Data- och systemvetenskap vid Stockholms universitet, AI p\u00e5 KTH Kungliga Tekniska h\u00f6gskolan, och Webbutveckling vid Lule\u00e5 tekniska universitet. Deadlines h\u00e5lls. Inga \u00f6verraskningar. Ni f\u00e5r en fungerande sida, inte ett projekt som aldrig blir klart.',
+      about_w3_t: 'F.d. Gymchef &amp; Tr\u00e4ningsinstrukt\u00f6r',
+      about_w3_d: 'Verksam inom fitness sedan 2017. Jag har st\u00e5tt p\u00e5 golvet, sk\u00f6tt medlemskap, planerat scheman och drivit verksamhet. Jag f\u00f6rst\u00e5r branschen inifr\u00e5n.',
+      about_w4_t: 'Byggd fr\u00e5n Branschen',
+      about_w4_d: 'Varje projekt bygger p\u00e5 riktig tid i branschen, inte bara byggande f\u00f6r den. Efter \u00e5r i fitnessbranschen som personlig tr\u00e4nare, tr\u00e4ningsinstrukt\u00f6r, gymchef och coach f\u00f6rst\u00e5r jag hur verksamheten fungerar, b\u00e5de f\u00f6r medlemmar och personal.',
+    },
+    th: {
+      about_eyebrow: '\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e40\u0e23\u0e32',
+      about_h1: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19\u0e08\u0e32\u0e01<span style="color: var(--accent);">\u0e1e\u0e37\u0e49\u0e19\u0e22\u0e34\u0e21</span>',
+      about_p1: '\u0e1c\u0e21\u0e0a\u0e37\u0e48\u0e2d Storm Kolmodin \u0e40\u0e17\u0e23\u0e19\u0e40\u0e19\u0e2d\u0e23\u0e4c\u0e2a\u0e48\u0e27\u0e19\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e17\u0e35\u0e48\u0e21\u0e35\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15 \u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23\u0e41\u0e1a\u0e1a Agile \u0e41\u0e25\u0e30\u0e19\u0e31\u0e01\u0e1e\u0e31\u0e12\u0e19\u0e32 \u0e1c\u0e21\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e43\u0e2b\u0e49\u0e22\u0e34\u0e21 \u0e2a\u0e42\u0e21\u0e2a\u0e23 \u0e41\u0e25\u0e30\u0e42\u0e04\u0e49\u0e0a \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e40\u0e1e\u0e23\u0e32\u0e30\u0e1c\u0e21\u0e2b\u0e32\u0e0a\u0e48\u0e2d\u0e07\u0e27\u0e48\u0e32\u0e07\u0e40\u0e08\u0e2d \u0e41\u0e15\u0e48\u0e40\u0e1e\u0e23\u0e32\u0e30\u0e19\u0e35\u0e48\u0e04\u0e37\u0e2d\u0e42\u0e25\u0e01\u0e17\u0e35\u0e48\u0e1c\u0e21\u0e21\u0e32\u0e08\u0e32\u0e01',
+      about_p2: 'Stormie Studios \u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e15\u0e39\u0e14\u0e34\u0e42\u0e2d\u0e02\u0e19\u0e32\u0e14\u0e40\u0e25\u0e47\u0e01\u0e17\u0e35\u0e48\u0e21\u0e35\u0e04\u0e33\u0e21\u0e31\u0e48\u0e19\u0e2a\u0e31\u0e0d\u0e07\u0e48\u0e32\u0e22\u0e46 \u0e04\u0e38\u0e13\u0e08\u0e30\u0e44\u0e14\u0e49\u0e17\u0e33\u0e07\u0e32\u0e19\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07\u0e01\u0e31\u0e1a\u0e04\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e04\u0e19\u0e01\u0e25\u0e32\u0e07 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e32\u0e23\u0e2a\u0e48\u0e07\u0e21\u0e2d\u0e1a\u0e07\u0e32\u0e19 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e44\u0e1e\u0e23\u0e2a\u0e4c',
+      about_w1_t: '\u0e40\u0e17\u0e23\u0e19\u0e40\u0e19\u0e2d\u0e23\u0e4c\u0e2a\u0e48\u0e27\u0e19\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e17\u0e35\u0e48\u0e21\u0e35\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15',
+      about_w1_d: '\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e23\u0e31\u0e1a\u0e23\u0e2d\u0e07\u0e15\u0e31\u0e49\u0e07\u0e41\u0e15\u0e48\u0e1b\u0e35 2018 \u0e41\u0e25\u0e30\u0e28\u0e36\u0e01\u0e29\u0e32\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21\u0e17\u0e35\u0e48\u0e42\u0e23\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e01\u0e35\u0e2c\u0e32\u0e41\u0e25\u0e30\u0e27\u0e34\u0e17\u0e22\u0e32\u0e28\u0e32\u0e2a\u0e15\u0e23\u0e4c\u0e2a\u0e38\u0e02\u0e20\u0e32\u0e1e\u0e2a\u0e27\u0e35\u0e40\u0e14\u0e19 (GIH) \u0e1c\u0e21\u0e23\u0e39\u0e49\u0e14\u0e35\u0e27\u0e48\u0e32\u0e2d\u0e30\u0e44\u0e23\u0e17\u0e33\u0e43\u0e2b\u0e49\u0e04\u0e19\u0e01\u0e25\u0e49\u0e32\u0e08\u0e2d\u0e07\u0e04\u0e25\u0e32\u0e2a\u0e41\u0e23\u0e01',
+      about_w2_t: '\u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23 Agile &amp; \u0e19\u0e31\u0e01\u0e1e\u0e31\u0e12\u0e19\u0e32',
+      about_w2_d: '\u0e2d\u0e1a\u0e23\u0e21\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23\u0e41\u0e1a\u0e1a Agile \u0e17\u0e35\u0e48 Futuregames, \u0e27\u0e34\u0e17\u0e22\u0e32\u0e01\u0e32\u0e23\u0e04\u0e2d\u0e21\u0e1e\u0e34\u0e27\u0e40\u0e15\u0e2d\u0e23\u0e4c\u0e41\u0e25\u0e30\u0e23\u0e30\u0e1a\u0e1a\u0e17\u0e35\u0e48\u0e21\u0e2b\u0e32\u0e27\u0e34\u0e17\u0e22\u0e32\u0e25\u0e31\u0e22\u0e2a\u0e15\u0e2d\u0e01\u0e42\u0e2e\u0e25\u0e21\u0e4c \u0e1b\u0e31\u0e0d\u0e0d\u0e32\u0e1b\u0e23\u0e30\u0e14\u0e34\u0e29\u0e10\u0e4c\u0e17\u0e35\u0e48 KTH Royal Institute of Technology \u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e1e\u0e31\u0e12\u0e19\u0e32\u0e40\u0e27\u0e47\u0e1a\u0e17\u0e35\u0e48 Lule\u00e5 University of Technology \u0e17\u0e33\u0e07\u0e32\u0e19\u0e15\u0e23\u0e07\u0e40\u0e27\u0e25\u0e32\u0e40\u0e2a\u0e21\u0e2d \u0e44\u0e21\u0e48\u0e21\u0e35\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e44\u0e1e\u0e23\u0e2a\u0e4c \u0e04\u0e38\u0e13\u0e08\u0e30\u0e44\u0e14\u0e49\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e44\u0e14\u0e49\u0e08\u0e23\u0e34\u0e07 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e21\u0e35\u0e27\u0e31\u0e19\u0e40\u0e2a\u0e23\u0e47\u0e08',
+      about_w3_t: '\u0e2d\u0e14\u0e35\u0e15\u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e22\u0e34\u0e21 &amp; \u0e04\u0e23\u0e39\u0e1f\u0e34\u0e15\u0e40\u0e19\u0e2a',
+      about_w3_d: '\u0e17\u0e33\u0e07\u0e32\u0e19\u0e14\u0e49\u0e32\u0e19\u0e1f\u0e34\u0e15\u0e40\u0e19\u0e2a\u0e15\u0e31\u0e49\u0e07\u0e41\u0e15\u0e48\u0e1b\u0e35 2017 \u0e1c\u0e21\u0e40\u0e04\u0e22\u0e2d\u0e22\u0e39\u0e48\u0e2b\u0e19\u0e49\u0e32\u0e07\u0e32\u0e19 \u0e14\u0e39\u0e41\u0e25\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01 \u0e27\u0e32\u0e07\u0e41\u0e1c\u0e19\u0e15\u0e32\u0e23\u0e32\u0e07\u0e40\u0e27\u0e25\u0e32 \u0e41\u0e25\u0e30\u0e1a\u0e23\u0e34\u0e2b\u0e32\u0e23\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e07\u0e32\u0e19 \u0e1c\u0e21\u0e40\u0e02\u0e49\u0e32\u0e43\u0e08\u0e2d\u0e38\u0e15\u0e2a\u0e32\u0e2b\u0e01\u0e23\u0e23\u0e21\u0e19\u0e35\u0e49\u0e08\u0e32\u0e01\u0e20\u0e32\u0e22\u0e43\u0e19',
+      about_w4_t: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19\u0e08\u0e32\u0e01\u0e2d\u0e38\u0e15\u0e2a\u0e32\u0e2b\u0e01\u0e23\u0e23\u0e21\u0e08\u0e23\u0e34\u0e07',
+      about_w4_d: '\u0e17\u0e38\u0e01\u0e42\u0e1b\u0e23\u0e40\u0e08\u0e01\u0e15\u0e4c\u0e2d\u0e32\u0e28\u0e31\u0e22\u0e1b\u0e23\u0e30\u0e2a\u0e1a\u0e01\u0e32\u0e23\u0e13\u0e4c\u0e08\u0e23\u0e34\u0e07\u0e43\u0e19\u0e2d\u0e38\u0e15\u0e2a\u0e32\u0e2b\u0e01\u0e23\u0e23\u0e21 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e41\u0e04\u0e48\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e21\u0e31\u0e19 \u0e2b\u0e25\u0e31\u0e07\u0e08\u0e32\u0e01\u0e2b\u0e25\u0e32\u0e22\u0e1b\u0e35\u0e43\u0e19\u0e27\u0e07\u0e01\u0e32\u0e23\u0e1f\u0e34\u0e15\u0e40\u0e19\u0e2a\u0e43\u0e19\u0e10\u0e32\u0e19\u0e30\u0e40\u0e17\u0e23\u0e19\u0e40\u0e19\u0e2d\u0e23\u0e4c\u0e2a\u0e48\u0e27\u0e19\u0e1a\u0e38\u0e04\u0e04\u0e25 \u0e04\u0e23\u0e39\u0e1f\u0e34\u0e15\u0e40\u0e19\u0e2a \u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e22\u0e34\u0e21 \u0e41\u0e25\u0e30\u0e42\u0e04\u0e49\u0e0a \u0e1c\u0e21\u0e40\u0e02\u0e49\u0e32\u0e43\u0e08\u0e27\u0e48\u0e32\u0e18\u0e38\u0e23\u0e01\u0e34\u0e08\u0e17\u0e33\u0e07\u0e32\u0e19\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e44\u0e23 \u0e17\u0e31\u0e49\u0e07\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e41\u0e25\u0e30\u0e17\u0e35\u0e21\u0e07\u0e32\u0e19',
+    },
+  };
+</script>
 <footer>
   <div class="footer-top">
     <a class="logo" href="index.html">
