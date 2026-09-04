@@ -49,7 +49,12 @@
   .hero2-btn { padding: 15px 26px; font-size: 13px; }
 
   /* ============ FEATURED WORK ============ */
-  .featured-work { background: #0b0b0b; color: #fff; padding: 0 48px 90px; margin-top: -1px; border-bottom: none; }
+  .featured-work { position: relative; background: #0b0b0b; color: #fff; padding: 0 48px 220px; margin-top: -1px; border-bottom: none; overflow: hidden; }
+  .featured-work-shape {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0;
+    background: var(--bg);
+    clip-path: polygon(0% 100%, 100% 30%, 100% 100%);
+  }
   .fw-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; max-width: 1180px; margin: 0 auto 40px; flex-wrap: wrap; }
   .fw-head h2 { color: #fff; font-size: clamp(24px, 3vw, 34px); margin-bottom: 0; }
   .fw-arrows { display: flex; gap: 12px; }
@@ -85,7 +90,8 @@
     .hero2 { padding: 120px 20px 70px; }
     .hero2-btn { display: flex; width: fit-content; padding: 12px 18px; font-size: 11px; gap: 6px; }
     .hero2-shape { clip-path: polygon(0% 96%, 100% 80%, 100% 100%, 0% 100%); }
-    .featured-work { padding: 0 20px 60px; }
+    .featured-work { padding: 0 20px 130px; }
+    .featured-work-shape { height: 130px; clip-path: polygon(0% 100%, 100% 45%, 100% 100%); }
     .fw-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 4px; scrollbar-width: none; }
     .fw-grid::-webkit-scrollbar { display: none; }
     .fw-card { scroll-snap-align: center; }
@@ -278,6 +284,7 @@
       <div><p class="feature-title">Ongoing support</p><p class="feature-desc">We're with you all the way</p></div>
     </div>
   </div>
+  <div class="featured-work-shape" aria-hidden="true"></div>
 </section>
 
 
