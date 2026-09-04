@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Stormie Studios &mdash; Custom websites for gyms, coaches &amp; fitness brands</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
   .hero { position: relative; text-align: center; padding: 140px 24px 60px; }
@@ -172,10 +172,10 @@
 <header>
   <a class="logo" href="index.html"><img src="logo.png" alt="Stormie Studios" class="logo-img"></a>
   <nav class="main-nav">
-    <a href="#work">Work</a>
-    <a href="what-you-get.html">Services</a>
-    <a href="about.html">About</a>
-    <a href="who-i-work-with.html">Process</a>
+    <a href="#work" data-i18n="nav_work">Work</a>
+    <a href="what-you-get.html" data-i18n="nav_services">Services</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="who-i-work-with.html" data-i18n="nav_process">Process</a>
   </nav>
   <div class="nav-right">
     <div class="lang-select">
@@ -191,11 +191,11 @@
 </header>
 
 <div class="mobile-menu" data-mobile-menu>
-  <a href="#work">Work</a>
-  <a href="what-you-get.html">Services</a>
-  <a href="about.html">About</a>
-  <a href="who-i-work-with.html">Process</a>
-  <a href="#contact">Request a consultation</a>
+  <a href="#work" data-i18n="nav_work">Work</a>
+  <a href="what-you-get.html" data-i18n="nav_services">Services</a>
+  <a href="about.html" data-i18n="nav_about">About</a>
+  <a href="who-i-work-with.html" data-i18n="nav_process">Process</a>
+  <a href="#contact" data-i18n="nav_cta">Request a consultation</a>
   <div class="mobile-menu-controls">
     <div class="lang-select">
       <button class="active" data-lang="en">EN</button><span style="color:var(--line)">/</span>
@@ -211,11 +211,12 @@
 <section class="hero2">
   <div class="hero2-shape" aria-hidden="true"></div>
   <div class="hero2-inner">
-    <p class="eyebrow2"><span class="eyebrow2-slash">/</span> Digital studio for sport &amp; fitness brands <span class="eyebrow2-slash">/</span></p>
-    <h1 class="hero2-title"><span class="tornado-line">Custom websites.</span><br><span class="tornado-line">Built to perform.</span></h1>
-    <p class="hero2-tag hero2-tag-sweep">Professionally managed.</p>
-    <p class="hero2-sub">Built to convert visitors into members, and effortless for you to run.</p>
-    <a class="btn-nav-cta hero2-btn" href="#contact">Request a consultation
+    <p class="eyebrow2" data-i18n="hero_eyebrow"><span class="eyebrow2-slash">/</span> Digital studio for sport &amp; fitness brands <span class="eyebrow2-slash">/</span></p>
+    <h1 class="hero2-title"><span class="tornado-line" data-i18n="hero_h1_1">Custom websites.</span><br><span class="tornado-line" data-i18n="hero_h1_2">Built to perform.</span></h1>
+    <p class="hero2-tag hero2-tag-sweep" data-i18n="hero_tag">Professionally managed.</p>
+    <p class="hero2-sub" data-i18n="hero_sub">Built to convert visitors into members, and effortless for you to run.</p>
+    <a class="btn-nav-cta hero2-btn" href="#contact">
+      <span data-i18n="hero_cta">Request a consultation</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
   </div>
@@ -224,8 +225,8 @@
 <section id="work" class="featured-work">
   <div class="fw-head">
     <div>
-      <p class="eyebrow2 on-dark"><span class="eyebrow2-slash">/</span> Featured work <span class="eyebrow2-slash">/</span></p>
-      <h2>Websites for brands that perform.</h2>
+      <p class="eyebrow2 on-dark" data-i18n="fw_eyebrow"><span class="eyebrow2-slash">/</span> Featured work <span class="eyebrow2-slash">/</span></p>
+      <h2 data-i18n="fw_h2">Websites for brands that perform.</h2>
     </div>
     <div class="fw-arrows">
       <button id="fwPrev" aria-label="Previous">&lsaquo;</button>
@@ -241,7 +242,7 @@
       <div class="fw-meta">
         <div>
           <p class="fw-name">Masters Gym</p>
-          <p class="fw-cat">Website</p>
+          <p class="fw-cat" data-i18n="fw_cat_website">Website</p>
         </div>
         <span class="fw-arrow-link" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -256,7 +257,7 @@
       <div class="fw-meta">
         <div>
           <p class="fw-name">Clinch Athletics</p>
-          <p class="fw-cat">E-commerce</p>
+          <p class="fw-cat" data-i18n="fw_cat_ecom">E-commerce</p>
         </div>
         <span class="fw-arrow-link" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -271,7 +272,7 @@
       <div class="fw-meta">
         <div>
           <p class="fw-name">Performance By Dante</p>
-          <p class="fw-cat">Website</p>
+          <p class="fw-cat" data-i18n="fw_cat_website">Website</p>
         </div>
         <span class="fw-arrow-link" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -285,19 +286,19 @@
   <div class="feature-strip">
     <div class="feature-item">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      <div><p class="feature-title">Custom design</p><p class="feature-desc">Built around your brand</p></div>
+      <div><p class="feature-title" data-i18n="feat_1_t">Custom design</p><p class="feature-desc" data-i18n="feat_1_d">Built around your brand</p></div>
     </div>
     <div class="feature-item">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-      <div><p class="feature-title">Built to convert</p><p class="feature-desc">Websites that turn visitors into members</p></div>
+      <div><p class="feature-title" data-i18n="feat_2_t">Built to convert</p><p class="feature-desc" data-i18n="feat_2_d">Websites that turn visitors into members</p></div>
     </div>
     <div class="feature-item">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      <div><p class="feature-title">Easy to manage</p><p class="feature-desc">Effortless for you to run</p></div>
+      <div><p class="feature-title" data-i18n="feat_3_t">Easy to manage</p><p class="feature-desc" data-i18n="feat_3_d">Effortless for you to run</p></div>
     </div>
     <div class="feature-item">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-      <div><p class="feature-title">Ongoing support</p><p class="feature-desc">We're with you all the way</p></div>
+      <div><p class="feature-title" data-i18n="feat_4_t">Ongoing support</p><p class="feature-desc" data-i18n="feat_4_d">We&#39;re with you all the way</p></div>
     </div>
   </div>
   <div class="featured-work-shape" aria-hidden="true"></div>
@@ -306,40 +307,40 @@
 
 <section id="care">
   <div class="inner">
-    <p class="eyebrow2"><span class="eyebrow2-slash">/</span> Easy for you. Professionally managed. <span class="eyebrow2-slash">/</span></p>
-    <h2 class="care-title">You run your gym.<br>We run the <span style="color: var(--accent);">tech.</span></h2>
-    <p class="care-sub">Your website should be a growth engine, not another task on your list. Update content in a simple CMS while Stormie Studios handles the technical side behind the scenes.</p>
+    <p class="eyebrow2" data-i18n="care_eyebrow"><span class="eyebrow2-slash">/</span> Easy for you. Professionally managed. <span class="eyebrow2-slash">/</span></p>
+    <h2 class="care-title" data-i18n="care_h2">You run your gym.<br>We run the <span style="color: var(--accent);">tech.</span></h2>
+    <p class="care-sub" data-i18n="care_sub">Your website should be a growth engine, not another task on your list. Update content in a simple CMS while Stormie Studios handles the technical side behind the scenes.</p>
 
     <div class="care-cards">
       <div class="care-card">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        <h3>Built to convert</h3>
-        <p>Strategy, design and UX that turn visitors into members.</p>
+        <h3 data-i18n="care_1_t">Built to convert</h3>
+        <p data-i18n="care_1_d">Strategy, design and UX that turn visitors into members.</p>
       </div>
       <div class="care-card">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        <h3>Easy to update</h3>
-        <p>Update text, images, schedules and prices in a simple CMS.</p>
+        <h3 data-i18n="care_2_t">Easy to update</h3>
+        <p data-i18n="care_2_d">Update text, images, schedules and prices in a simple CMS.</p>
       </div>
       <div class="care-card">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        <h3>Fully managed</h3>
-        <p>Hosting, security, backups and maintenance are included.</p>
+        <h3 data-i18n="care_3_t">Fully managed</h3>
+        <p data-i18n="care_3_d">Hosting, security, backups and maintenance are included.</p>
       </div>
       <div class="care-card">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="18"/><path d="M15 9.5c0-1.4-1.34-2.5-3-2.5s-3 1.1-3 2.5 1.34 2 3 2 3 .6 3 2-1.34 2.5-3 2.5-3-1.1-3-2.5"/></svg>
-        <h3>Fixed monthly fee</h3>
-        <p>One flat rate. No surprises. Focus on your members.</p>
+        <h3 data-i18n="care_4_t">Fixed monthly fee</h3>
+        <p data-i18n="care_4_d">One flat rate. No surprises. Focus on your members.</p>
       </div>
       <div class="care-card">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <h3>Yours, always</h3>
-        <p>Your domain, content and brand remain 100% yours.</p>
+        <h3 data-i18n="care_5_t">Yours, always</h3>
+        <p data-i18n="care_5_d">Your domain, content and brand remain 100% yours.</p>
       </div>
       <div class="care-card care-card-dark">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        <p class="care-card-dark-title">No page builder maintenance. No plugin stack. No code to manage.</p>
-        <p class="care-card-dark-emphasis">Just a custom website you can actually operate yourself.</p>
+        <p class="care-card-dark-title" data-i18n="care_6_t">No page builder maintenance. No plugin stack. No code to manage.</p>
+        <p class="care-card-dark-emphasis" data-i18n="care_6_d">Just a custom website you can actually operate yourself.</p>
       </div>
     </div>
   </div>
@@ -349,98 +350,98 @@
 <section id="contact" class="contact">
   <div class="inner">
     <div class="contact-box" id="needPicker">
-      <p class="eyebrow2 on-dark"><span class="eyebrow2-slash">/</span> Get in touch <span class="eyebrow2-slash">/</span></p>
-      <h2>What do you need <span style="color: var(--accent);">help</span> with?</h2>
-      <p class="need-subtext">Tell us what's most important right now and we'll show you how we can help.</p>
+      <p class="eyebrow2 on-dark" data-i18n="contact_eyebrow"><span class="eyebrow2-slash">/</span> Get in touch <span class="eyebrow2-slash">/</span></p>
+      <h2 data-i18n="contact_h2">What do you need <span style="color: var(--accent);">help</span> with?</h2>
+      <p class="need-subtext" data-i18n="contact_sub">Tell us what&#39;s most important right now and we&#39;ll show you how we can help.</p>
       <div class="need-grid">
         <button class="need-btn" data-need="members">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <span>More members</span>
+          <span data-i18n="need_members">More members</span>
         </button>
         <button class="need-btn" data-need="impression">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <span>Better first impression</span>
+          <span data-i18n="need_impression">Better first impression</span>
         </button>
         <button class="need-btn" data-need="admin">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span>Easier administration</span>
+          <span data-i18n="need_admin">Easier administration</span>
         </button>
         <button class="need-btn" data-need="outdated">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-          <span>Replace an outdated website</span>
+          <span data-i18n="need_outdated">Replace an outdated website</span>
         </button>
         <button class="need-btn" data-need="new">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-          <span>New gym opening</span>
+          <span data-i18n="need_new">New gym opening</span>
         </button>
         <button class="need-btn" data-need="other">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-          <span>Something else</span>
+          <span data-i18n="need_other">Something else</span>
         </button>
       </div>
     </div>
 
     <div class="need-response" id="needResponse" style="display:none">
-      <button class="need-back" id="needBack">&larr; Back</button>
+      <button class="need-back" id="needBack" data-i18n="need_back">&larr; Back</button>
       <div class="need-answer" id="needAnswer"></div>
       <form id="contactForm" onsubmit="event.preventDefault(); document.getElementById('needResponse').querySelector('form').style.display='none'; document.getElementById('formSuccess').style.display='block';">
         <div class="row2">
-          <div class="field"><label>Name</label><input type="text" required /></div>
-          <div class="field"><label>Email</label><input type="email" required /></div>
+          <div class="field"><label data-i18n="f_name">Name</label><input type="text" required /></div>
+          <div class="field"><label data-i18n="f_email">Email</label><input type="email" required /></div>
         </div>
-        <div class="field"><label>Company / organisation</label><input type="text" required /></div>
+        <div class="field"><label data-i18n="f_company">Company / organisation</label><input type="text" required /></div>
         <div class="field">
-          <label>Existing website</label>
+          <label data-i18n="f_website">Existing website</label>
           <input type="url" placeholder="https://" />
-          <label class="no-website-toggle"><input type="checkbox" /><span>No current website</span></label>
+          <label class="no-website-toggle"><input type="checkbox" /><span data-i18n="f_no_website">No current website</span></label>
         </div>
-        <div class="field"><label>What are you looking to improve, build or solve?</label><textarea required></textarea></div>
+        <div class="field"><label data-i18n="f_goal">What are you looking to improve, build or solve?</label><textarea required></textarea></div>
         <div class="field-block">
-          <span class="field-label-text">Features / functionality</span>
+          <span class="field-label-text" data-i18n="f_features_label">Features / functionality</span>
           <div class="chip-group">
-            <button type="button" class="chip">Content management / CMS</button>
-            <button type="button" class="chip">Class schedule</button>
-            <button type="button" class="chip">Booking</button>
-            <button type="button" class="chip">Membership / sign-up</button>
-            <button type="button" class="chip">Contact or lead forms</button>
-            <button type="button" class="chip">Calendar integration</button>
-            <button type="button" class="chip">E-commerce / payments</button>
-            <button type="button" class="chip">Not sure yet</button>
+            <button type="button" class="chip" data-i18n="chip_cms">Content management / CMS</button>
+            <button type="button" class="chip" data-i18n="chip_schedule">Class schedule</button>
+            <button type="button" class="chip" data-i18n="chip_booking">Booking</button>
+            <button type="button" class="chip" data-i18n="chip_membership">Membership / sign-up</button>
+            <button type="button" class="chip" data-i18n="chip_leadforms">Contact or lead forms</button>
+            <button type="button" class="chip" data-i18n="chip_calendar">Calendar integration</button>
+            <button type="button" class="chip" data-i18n="chip_ecom">E-commerce / payments</button>
+            <button type="button" class="chip" data-i18n="chip_notsure1">Not sure yet</button>
           </div>
         </div>
         <div class="field-block">
-          <span class="field-label-text">Budget</span>
+          <span class="field-label-text" data-i18n="f_budget_label">Budget</span>
           <div class="chip-group">
-            <button type="button" class="chip">Under 10,000 SEK</button>
-            <button type="button" class="chip">10,000&ndash;20,000 SEK</button>
-            <button type="button" class="chip">20,000&ndash;40,000 SEK</button>
-            <button type="button" class="chip">40,000+ SEK</button>
-            <button type="button" class="chip">Not sure yet</button>
+            <button type="button" class="chip" data-i18n="chip_budget1">Under 10,000 SEK</button>
+            <button type="button" class="chip" data-i18n="chip_budget2">10,000&ndash;20,000 SEK</button>
+            <button type="button" class="chip" data-i18n="chip_budget3">20,000&ndash;40,000 SEK</button>
+            <button type="button" class="chip" data-i18n="chip_budget4">40,000+ SEK</button>
+            <button type="button" class="chip" data-i18n="chip_notsure2">Not sure yet</button>
           </div>
         </div>
         <div class="field-block">
-          <span class="field-label-text">Desired launch</span>
+          <span class="field-label-text" data-i18n="f_launch_label">Desired launch</span>
           <div class="chip-group">
-            <button type="button" class="chip">As soon as possible</button>
-            <button type="button" class="chip">Within 1 month</button>
-            <button type="button" class="chip">1&ndash;3 months</button>
-            <button type="button" class="chip">3&ndash;6 months</button>
-            <button type="button" class="chip">No fixed deadline</button>
+            <button type="button" class="chip" data-i18n="chip_asap">As soon as possible</button>
+            <button type="button" class="chip" data-i18n="chip_1month">Within 1 month</button>
+            <button type="button" class="chip" data-i18n="chip_3months">1&ndash;3 months</button>
+            <button type="button" class="chip" data-i18n="chip_6months">3&ndash;6 months</button>
+            <button type="button" class="chip" data-i18n="chip_nodeadline">No fixed deadline</button>
           </div>
         </div>
         <div class="field">
-          <label>How did you find Stormie Studios?</label>
+          <label data-i18n="f_found">How did you find Stormie Studios?</label>
           <select>
-            <option>Referral</option><option>Instagram</option><option>Google</option>
-            <option>Saw another Stormie Studios website</option><option>Direct outreach</option><option>Other</option>
+            <option data-i18n="opt_referral">Referral</option><option data-i18n="opt_instagram">Instagram</option><option data-i18n="opt_google">Google</option>
+            <option data-i18n="opt_sawsite">Saw another Stormie Studios website</option><option data-i18n="opt_outreach">Direct outreach</option><option data-i18n="opt_other">Other</option>
           </select>
         </div>
-        <button class="btn" type="submit" style="align-self: flex-start;">Send &rarr;</button>
-        <p class="form-privacy-note"><a href="privacy.html">Privacy policy</a></p>
+        <button class="btn" type="submit" style="align-self: flex-start;" data-i18n="f_send">Send &rarr;</button>
+        <p class="form-privacy-note"><a href="privacy.html" data-i18n="f_privacy">Privacy policy</a></p>
       </form>
       <div class="form-success" id="formSuccess">
-        <h3>Request received.</h3>
-        <p>I'll review your project details and get back to you within one business day. If it looks like a good fit, I'll send you a link to book a consultation.</p>
+        <h3 data-i18n="f_success_h">Request received.</h3>
+        <p data-i18n="f_success_p">I&#39;ll review your project details and get back to you within one business day. If it looks like a good fit, I&#39;ll send you a link to book a consultation.</p>
       </div>
     </div>
   </div>
@@ -449,8 +450,8 @@
 
 <section id="faq">
   <div class="inner">
-    <p class="eyebrow2"><span class="eyebrow2-slash">/</span> Questions <span class="eyebrow2-slash">/</span></p>
-    <h2 style="margin-bottom: 40px;">Frequently asked questions</h2>
+    <p class="eyebrow2" data-i18n="faq_eyebrow"><span class="eyebrow2-slash">/</span> Questions <span class="eyebrow2-slash">/</span></p>
+    <h2 style="margin-bottom: 40px;" data-i18n="faq_h2">Frequently asked questions</h2>
     <div id="faqList"></div>
   </div>
   <div class="faq-shape" aria-hidden="true"></div>
@@ -461,8 +462,8 @@
     <a class="logo" href="index.html">
       <img src="logo.png" alt="Stormie Studios" class="logo-img">
     </a>
-    <p class="footer-tagline">Digital studio for sport &amp; fitness brands.</p>
-    <p class="footer-tagline">Websites that perform.<br>Professionally managed.</p>
+    <p class="footer-tagline" data-i18n="footer_tagline1">Digital studio for sport &amp; fitness brands.</p>
+    <p class="footer-tagline" data-i18n="footer_tagline2">Websites that perform.<br>Professionally managed.</p>
     <a class="footer-email-btn" href="mailto:hello@stormiestudios.com">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       hello@stormiestudios.com
@@ -488,32 +489,32 @@
 
   <div class="footer-grid">
     <div class="footer-col">
-      <p class="footer-col-title">Navigation</p>
-      <a href="what-you-get.html">Services</a>
-      <a href="index.html#work">Work</a>
-      <a href="about.html">About</a>
-      <a href="who-i-work-with.html">Who I work with</a>
-      <a href="index.html#faq">FAQ</a>
-      <a href="index.html#contact">Contact</a>
+      <p class="footer-col-title" data-i18n="footer_nav_title">Navigation</p>
+      <a href="what-you-get.html" data-i18n="footer_nav_services">Services</a>
+      <a href="index.html#work" data-i18n="footer_nav_work">Work</a>
+      <a href="about.html" data-i18n="footer_nav_about">About</a>
+      <a href="who-i-work-with.html" data-i18n="footer_nav_who">Who I work with</a>
+      <a href="index.html#faq" data-i18n="footer_nav_faq">FAQ</a>
+      <a href="index.html#contact" data-i18n="footer_nav_contact">Contact</a>
     </div>
     <div class="footer-col">
-      <p class="footer-col-title">Company</p>
-      <p>Stormie Studios</p>
-      <p>By Storm Kolmodin</p>
-      <p>Stockholm, Sweden</p>
-      <p>Registered business in Sweden</p>
+      <p class="footer-col-title" data-i18n="footer_company_title">Company</p>
+      <p data-i18n="footer_company_name">Stormie Studios</p>
+      <p data-i18n="footer_company_by">By Storm Kolmodin</p>
+      <p data-i18n="footer_company_city">Stockholm, Sweden</p>
+      <p data-i18n="footer_company_reg">Registered business in Sweden</p>
     </div>
     <div class="footer-col">
-      <p class="footer-col-title">Legal</p>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms &amp; Conditions</a>
-      <a href="cookies.html">Cookie Policy</a>
+      <p class="footer-col-title" data-i18n="footer_legal_title">Legal</p>
+      <a href="privacy.html" data-i18n="footer_legal_privacy">Privacy Policy</a>
+      <a href="terms.html" data-i18n="footer_legal_terms">Terms &amp; Conditions</a>
+      <a href="cookies.html" data-i18n="footer_legal_cookie">Cookie Policy</a>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; 2026 Stormie Studios. All rights reserved.</p>
-    <p><span class="footer-credit-shimmer">Built by Stormie Studios.</span></p>
+    <p data-i18n="footer_rights">&copy; 2026 Stormie Studios. All rights reserved.</p>
+    <p><span class="footer-credit-shimmer" data-i18n="footer_credit">Built by Stormie Studios.</span></p>
   </div>
 </footer>
 
@@ -595,25 +596,48 @@
     }
   })();
 </script>
-<script src="nav.js"></script>
 <script>
-  const faqs = [
-    ["How long does a project take?", "Most projects launch within a few weeks of our first call, depending on scope and how quickly content comes together."],
-    ["Do you provide hosting?", "Yes, always. Hosting, security, backups and updates are handled by me for one flat monthly fee, that's how every site stays fast, secure and online."],
-    ["Can you use my existing domain?", "Yes, I connect your existing domain and set up HTTPS as part of the build."],
-    ["Can I update the website myself?", "Yes \u2014 hero video, photos, pricing, staff or coach profiles, class listings, campaign banners, all of it. Nearly every image and text block across the site is yours to update directly, no developer needed."],
-    ["Do you work outside Stockholm?", "Absolutely. Most of my clients are here in Stockholm today, but I work just as easily with clients anywhere else, over video calls and email."],
-    ["Why not just use an AI website builder?", "An AI builder can generate a page in minutes, but it doesn't know how your gym actually runs. I build the schedule, membership paths and content system around your real workflow, not a generic template."],
-    ["Who owns the website and the code?", "Your domain, brand, copy, images, videos and business content are always yours. Stormie Studios retains and maintains the underlying source code, development system and production setup."],
-  ];
+  const FAQS_I18N = {
+    en: [
+      ["How long does a project take?", "Most projects launch within a few weeks of our first call, depending on scope and how quickly content comes together."],
+      ["Do you provide hosting?", "Yes, always. Hosting, security, backups and updates are handled by me for one flat monthly fee, that's how every site stays fast, secure and online."],
+      ["Can you use my existing domain?", "Yes, I connect your existing domain and set up HTTPS as part of the build."],
+      ["Can I update the website myself?", "Yes \u2014 hero video, photos, pricing, staff or coach profiles, class listings, campaign banners, all of it. Nearly every image and text block across the site is yours to update directly, no developer needed."],
+      ["Do you work outside Stockholm?", "Absolutely. Most of my clients are here in Stockholm today, but I work just as easily with clients anywhere else, over video calls and email."],
+      ["Why not just use an AI website builder?", "An AI builder can generate a page in minutes, but it doesn't know how your gym actually runs. I build the schedule, membership paths and content system around your real workflow, not a generic template."],
+      ["Who owns the website and the code?", "Your domain, brand, copy, images, videos and business content are always yours. Stormie Studios retains and maintains the underlying source code, development system and production setup."],
+    ],
+    sv: [
+      ["Hur lång tid tar ett projekt?", "De flesta projekt lanseras inom några veckor efter vårt första samtal, beroende på omfattning och hur snabbt innehållet kommer på plats."],
+      ["Ingår hosting?", "Ja, alltid. Hosting, säkerhet, backuper och uppdateringar sköts av mig för en fast månadsavgift \u2014 så håller sidan sig snabb, säker och tillgänglig."],
+      ["Kan ni använda min befintliga domän?", "Ja, jag kopplar din befintliga domän och ordnar HTTPS som en del av bygget."],
+      ["Kan jag uppdatera webbplatsen själv?", "Ja \u2014 hero-video, bilder, priser, personal- eller tränarprofiler, schema, kampanjbanners, allt. Nästan varje bild och textblock på sidan kan du uppdatera direkt, ingen utvecklare behövs."],
+      ["Jobbar ni utanför Stockholm?", "Absolut. De flesta av mina kunder finns i Stockholm idag, men jag jobbar lika enkelt med kunder på andra håll, via videosamtal och mejl."],
+      ["Varför inte bara använda en AI-hemsidebyggare?", "En AI-byggare kan skapa en sida på några minuter, men den vet inte hur ditt gym faktiskt fungerar. Jag bygger schema, medlemsflöden och innehållssystem kring ert riktiga arbetssätt, inte en generisk mall."],
+      ["Vem äger webbplatsen och koden?", "Din domän, ditt varumärke, texter, bilder, videor och affärsinnehåll är alltid dina. Stormie Studios behåller och underhåller den underliggande källkoden, utvecklingssystemet och produktionsmiljön."],
+    ],
+    th: [
+      ["โปรเจกต์ใช้เวลานานแค่ไหน?", "โปรเจกต์ส่วนใหญ่เปิดตัวภายในไม่กี่สัปดาห์หลังการพูดคุยครั้งแรก ขึ้นอยู่กับขอบเขตงานและความเร็วในการเตรียมเนื้อหา"],
+      ["มีบริการโฮสติ้งไหม?", "มีเสมอ การโฮสติ้ง ความปลอดภัย การสำรองข้อมูล และการอัปเดตดูแลโดยเราในค่าธรรมเนียมรายเดือนคงที่ เว็บไซต์จึงเร็ว ปลอดภัย และออนไลน์อยู่เสมอ"],
+      ["ใช้โดเมนเดิมของฉันได้ไหม?", "ได้ เราจะเชื่อมต่อโดเมนเดิมของคุณและตั้งค่า HTTPS ให้เป็นส่วนหนึ่งของการสร้างเว็บไซต์"],
+      ["ฉันสามารถอัปเดตเว็บไซต์เองได้ไหม?", "ได้ \u2014 วิดีโอหน้าแรก รูปภาพ ราคา โปรไฟล์พนักงานหรือโค้ช ตารางคลาส แบนเนอร์แคมเปญ ทุกอย่าง เกือบทุกรูปภาพและข้อความบนเว็บไซต์คุณสามารถอัปเดตได้เอง ไม่ต้องใช้นักพัฒนา"],
+      ["ทำงานนอกสตอกโฮล์มไหม?", "แน่นอน ลูกค้าส่วนใหญ่ของเราอยู่ในสตอกโฮล์ม แต่เราทำงานกับลูกค้าที่อื่นได้ง่ายเช่นกัน ผ่านวิดีโอคอลและอีเมล"],
+      ["ทำไมไม่ใช้ตัวสร้างเว็บไซต์ AI ไปเลย?", "ตัวสร้างเว็บไซต์ AI สามารถสร้างหน้าเว็บได้ในไม่กี่นาที แต่มันไม่รู้ว่ายิมของคุณทำงานอย่างไรจริงๆ เราสร้างตารางเวลา เส้นทางสมาชิก และระบบเนื้อหารอบการทำงานจริงของคุณ ไม่ใช่เทมเพลตทั่วไป"],
+      ["ใครเป็นเจ้าของเว็บไซต์และโค้ด?", "โดเมน แบรนด์ เนื้อหา รูปภาพ วิดีโอ และเนื้อหาทางธุรกิจของคุณเป็นของคุณเสมอ Stormie Studios เก็บรักษาและดูแลซอร์สโค้ด ระบบพัฒนา และสภาพแวดล้อมการใช้งานจริง"],
+    ],
+  };
   const faqList = document.getElementById('faqList');
-  faqs.forEach(([q, a]) => {
-    const item = document.createElement('div');
-    item.className = 'faq-item';
-    item.innerHTML = `<div class="faq-q">${q}<span class="faq-toggle">+</span></div><div class="faq-a">${a}</div>`;
-    item.addEventListener('click', () => item.classList.toggle('open'));
-    faqList.appendChild(item);
-  });
+  function renderFaqs(lang) {
+    faqList.innerHTML = '';
+    (FAQS_I18N[lang] || FAQS_I18N.en).forEach(([q, a]) => {
+      const item = document.createElement('div');
+      item.className = 'faq-item';
+      item.innerHTML = `<div class="faq-q">${q}<span class="faq-toggle">+</span></div><div class="faq-a">${a}</div>`;
+      item.addEventListener('click', () => item.classList.toggle('open'));
+      faqList.appendChild(item);
+    });
+  }
+  renderFaqs('en');
 
   // Featured work grid: on mobile it's a horizontal scroll-snap row (one
   // card per view), on desktop all cards sit side by side already.
@@ -656,21 +680,45 @@
     fwCards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
   });
 
-  const NEEDS = {
-    members: { title: "More members.", text: "The site needs to do one thing well: turn visitors into people who actually show up. Clear paths to trial sessions, a schedule that updates itself, and a first impression that reflects what your gym actually is." },
-    impression: { title: "A first impression that matches your gym.", text: "Most gym sites look like templates. Yours should look like you built it on purpose, because the experience of the site is part of the experience of the gym." },
-    admin: { title: "Less time managing a website.", text: "Update your schedule in a spreadsheet, or manage everything through a clean CMS dashboard depending on what fits your workflow. Either way, you stay in control without needing a developer for every small change." },
-    outdated: { title: "A site that actually represents you now.", text: "If your website was built three years ago and nothing has changed, it's working against you. A new site that's easy to update means it stays current without effort." },
-    new: { title: "A strong start for your new gym.", text: "Launch with a site that looks like you've been around for years. Memberships, schedule, booking and brand, all in place from day one." },
-    other: { title: "Let's figure it out together.", text: "Not every brief fits a checkbox. Tell me what's on your mind and we'll work out what makes sense, whether it's a full site, a single feature, or something you haven't seen done before." },
+  const NEEDS_I18N = {
+    en: {
+      members: { title: "More members.", text: "The site needs to do one thing well: turn visitors into people who actually show up. Clear paths to trial sessions, a schedule that updates itself, and a first impression that reflects what your gym actually is." },
+      impression: { title: "A first impression that matches your gym.", text: "Most gym sites look like templates. Yours should look like you built it on purpose, because the experience of the site is part of the experience of the gym." },
+      admin: { title: "Less time managing a website.", text: "Update your schedule in a spreadsheet, or manage everything through a clean CMS dashboard depending on what fits your workflow. Either way, you stay in control without needing a developer for every small change." },
+      outdated: { title: "A site that actually represents you now.", text: "If your website was built three years ago and nothing has changed, it's working against you. A new site that's easy to update means it stays current without effort." },
+      new: { title: "A strong start for your new gym.", text: "Launch with a site that looks like you've been around for years. Memberships, schedule, booking and brand, all in place from day one." },
+      other: { title: "Let's figure it out together.", text: "Not every brief fits a checkbox. Tell me what's on your mind and we'll work out what makes sense, whether it's a full site, a single feature, or something you haven't seen done before." },
+    },
+    sv: {
+      members: { title: "Fler medlemmar.", text: "Sidan behöver göra en sak bra: förvandla besökare till människor som faktiskt dyker upp. Tydliga vägar till provpass, ett schema som uppdaterar sig själv, och ett första intryck som speglar vad ert gym verkligen är." },
+      impression: { title: "Ett första intryck som matchar ert gym.", text: "De flesta gymsidor ser ut som mallar. Er ska se ut som ni byggt den med flit, för upplevelsen av sidan är en del av upplevelsen av gymmet." },
+      admin: { title: "Mindre tid på att sköta en webbplats.", text: "Uppdatera schemat i ett kalkylark, eller sköt allt via en ren CMS-dashboard beroende på vad som passar ert arbetssätt. Oavsett behåller ni kontrollen utan att behöva en utvecklare för varje liten ändring." },
+      outdated: { title: "En sida som faktiskt speglar er idag.", text: "Om er webbplats byggdes för tre år sedan och inget har ändrats jobbar den emot er. En ny sida som är lätt att uppdatera håller sig aktuell utan ansträngning." },
+      new: { title: "En stark start för ert nya gym.", text: "Lansera med en sida som ser ut att ha funnits i åratal. Medlemskap, schema, bokning och varumärke, allt på plats från dag ett." },
+      other: { title: "Vi löser det tillsammans.", text: "Alla behov passar inte i en ruta. Berätta vad ni funderar på så tar vi fram vad som är vettigt \u2014 en hel sida, en enskild funktion, eller något ni inte sett förut." },
+    },
+    th: {
+      members: { title: "สมาชิกเพิ่มขึ้น", text: "เว็บไซต์ต้องทำสิ่งหนึ่งให้ดี คือเปลี่ยนผู้เข้าชมให้เป็นคนที่มาจริง เส้นทางที่ชัดเจนสู่คลาสทดลอง ตารางเวลาที่อัปเดตตัวเอง และความประทับใจแรกที่สะท้อนตัวตนของยิมคุณ" },
+      impression: { title: "ความประทับใจแรกที่เข้ากับยิมของคุณ", text: "เว็บไซต์ยิมส่วนใหญ่ดูเหมือนเทมเพลต ของคุณควรดูเหมือนสร้างมาอย่างตั้งใจ เพราะประสบการณ์บนเว็บไซต์คือส่วนหนึ่งของประสบการณ์ในยิม" },
+      admin: { title: "ใช้เวลาจัดการเว็บไซต์น้อยลง", text: "อัปเดตตารางเวลาในสเปรดชีต หรือจัดการทุกอย่างผ่านแดชบอร์ด CMS ที่ใช้งานง่าย แล้วแต่ว่าเหมาะกับวิธีทำงานของคุณ ไม่ว่าแบบไหนคุณควบคุมได้เองโดยไม่ต้องพึ่งนักพัฒนาทุกครั้งที่ต้องแก้ไขเล็กน้อย" },
+      outdated: { title: "เว็บไซต์ที่สะท้อนตัวตนคุณตอนนี้จริงๆ", text: "ถ้าเว็บไซต์ของคุณสร้างมาสามปีแล้วและไม่เคยเปลี่ยนแปลง มันกำลังเป็นผลเสียต่อคุณ เว็บไซต์ใหม่ที่อัปเดตง่ายจะทันสมัยอยู่เสมอโดยไม่ต้องใช้ความพยายาม" },
+      new: { title: "จุดเริ่มต้นที่แข็งแกร่งสำหรับยิมใหม่ของคุณ", text: "เปิดตัวด้วยเว็บไซต์ที่ดูเหมือนเปิดมานานหลายปี ระบบสมาชิก ตารางเวลา การจอง และแบรนด์ พร้อมทั้งหมดตั้งแต่วันแรก" },
+      other: { title: "มาคิดหาทางออกด้วยกัน", text: "ไม่ใช่ทุกความต้องการจะเข้ากับตัวเลือกสำเร็จรูป บอกเราว่าคุณกำลังคิดอะไรอยู่ แล้วเราจะช่วยหาสิ่งที่เหมาะสม ไม่ว่าจะเป็นเว็บไซต์เต็มรูปแบบ ฟีเจอร์เดียว หรือสิ่งที่คุณไม่เคยเห็นมาก่อน" },
+    },
   };
+  let currentLang = 'en';
+  let currentNeedKey = null;
   const needPicker = document.getElementById('needPicker');
   const needResponse = document.getElementById('needResponse');
   const needAnswer = document.getElementById('needAnswer');
+  function renderNeedAnswer(key) {
+    const data = NEEDS_I18N[currentLang][key];
+    needAnswer.innerHTML = `<h3>${data.title}</h3><p>${data.text}</p>`;
+  }
   document.querySelectorAll('.need-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const data = NEEDS[btn.dataset.need];
-      needAnswer.innerHTML = `<h3>${data.title}</h3><p>${data.text}</p>`;
+      currentNeedKey = btn.dataset.need;
+      renderNeedAnswer(currentNeedKey);
       needPicker.style.display = 'none';
       needResponse.style.display = 'block';
       needResponse.querySelector('form').style.display = 'flex';
@@ -680,13 +728,177 @@
   document.getElementById('needBack').addEventListener('click', () => {
     needResponse.style.display = 'none';
     needPicker.style.display = 'block';
+    currentNeedKey = null;
   });
   document.querySelectorAll('.chip').forEach(chip => {
     chip.addEventListener('click', () => {
       chip.setAttribute('aria-pressed', chip.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
     });
   });
+
+  // ---------- Page-specific translations (merged with shared nav/footer strings in nav.js) ----------
+  window.PAGE_I18N = {
+    en: {
+      hero_eyebrow: '<span class="eyebrow2-slash">/</span> Digital studio for sport &amp; fitness brands <span class="eyebrow2-slash">/</span>',
+      hero_h1_1: 'Custom websites.', hero_h1_2: 'Built to perform.',
+      hero_tag: 'Professionally managed.',
+      hero_sub: 'Built to convert visitors into members, and effortless for you to run.',
+      hero_cta: 'Request a consultation',
+      fw_eyebrow: '<span class="eyebrow2-slash">/</span> Featured work <span class="eyebrow2-slash">/</span>',
+      fw_h2: 'Websites for brands that perform.',
+      fw_cat_website: 'Website', fw_cat_ecom: 'E-commerce',
+      feat_1_t: 'Custom design', feat_1_d: 'Built around your brand',
+      feat_2_t: 'Built to convert', feat_2_d: 'Websites that turn visitors into members',
+      feat_3_t: 'Easy to manage', feat_3_d: 'Effortless for you to run',
+      feat_4_t: 'Ongoing support', feat_4_d: "We're with you all the way",
+      care_eyebrow: '<span class="eyebrow2-slash">/</span> Easy for you. Professionally managed. <span class="eyebrow2-slash">/</span>',
+      care_h2: 'You run your gym.<br>We run the <span style="color: var(--accent);">tech.</span>',
+      care_sub: 'Your website should be a growth engine, not another task on your list. Update content in a simple CMS while Stormie Studios handles the technical side behind the scenes.',
+      care_1_t: 'Built to convert', care_1_d: 'Strategy, design and UX that turn visitors into members.',
+      care_2_t: 'Easy to update', care_2_d: 'Update text, images, schedules and prices in a simple CMS.',
+      care_3_t: 'Fully managed', care_3_d: 'Hosting, security, backups and maintenance are included.',
+      care_4_t: 'Fixed monthly fee', care_4_d: 'One flat rate. No surprises. Focus on your members.',
+      care_5_t: 'Yours, always', care_5_d: 'Your domain, content and brand remain 100% yours.',
+      care_6_t: 'No page builder maintenance. No plugin stack. No code to manage.',
+      care_6_d: 'Just a custom website you can actually operate yourself.',
+      contact_eyebrow: '<span class="eyebrow2-slash">/</span> Get in touch <span class="eyebrow2-slash">/</span>',
+      contact_h2: 'What do you need <span style="color: var(--accent);">help</span> with?',
+      contact_sub: "Tell us what's most important right now and we'll show you how we can help.",
+      need_members: 'More members', need_impression: 'Better first impression', need_admin: 'Easier administration',
+      need_outdated: 'Replace an outdated website', need_new: 'New gym opening', need_other: 'Something else',
+      need_back: '&larr; Back',
+      f_name: 'Name', f_email: 'Email', f_company: 'Company / organisation', f_website: 'Existing website',
+      f_no_website: 'No current website', f_goal: 'What are you looking to improve, build or solve?',
+      f_features_label: 'Features / functionality',
+      chip_cms: 'Content management / CMS', chip_schedule: 'Class schedule', chip_booking: 'Booking',
+      chip_membership: 'Membership / sign-up', chip_leadforms: 'Contact or lead forms', chip_calendar: 'Calendar integration',
+      chip_ecom: 'E-commerce / payments', chip_notsure1: 'Not sure yet',
+      f_budget_label: 'Budget',
+      chip_budget1: 'Under 10,000 SEK', chip_budget2: '10,000&ndash;20,000 SEK', chip_budget3: '20,000&ndash;40,000 SEK',
+      chip_budget4: '40,000+ SEK', chip_notsure2: 'Not sure yet',
+      f_launch_label: 'Desired launch',
+      chip_asap: 'As soon as possible', chip_1month: 'Within 1 month', chip_3months: '1&ndash;3 months',
+      chip_6months: '3&ndash;6 months', chip_nodeadline: 'No fixed deadline',
+      f_found: 'How did you find Stormie Studios?',
+      opt_referral: 'Referral', opt_instagram: 'Instagram', opt_google: 'Google',
+      opt_sawsite: 'Saw another Stormie Studios website', opt_outreach: 'Direct outreach', opt_other: 'Other',
+      f_send: 'Send &rarr;', f_privacy: 'Privacy policy',
+      f_success_h: 'Request received.',
+      f_success_p: "I'll review your project details and get back to you within one business day. If it looks like a good fit, I'll send you a link to book a consultation.",
+      faq_eyebrow: '<span class="eyebrow2-slash">/</span> Questions <span class="eyebrow2-slash">/</span>',
+      faq_h2: 'Frequently asked questions',
+    },
+    sv: {
+      hero_eyebrow: '<span class="eyebrow2-slash">/</span> Digital studio f\u00f6r sport- &amp; tr\u00e4ningsvarum\u00e4rken <span class="eyebrow2-slash">/</span>',
+      hero_h1_1: 'Skr\u00e4ddarsydda webbplatser.', hero_h1_2: 'Byggda f\u00f6r resultat.',
+      hero_tag: 'Professionellt f\u00f6rvaltade.',
+      hero_sub: 'Byggda f\u00f6r att omvandla bes\u00f6kare till medlemmar, och enkla f\u00f6r er att sk\u00f6ta.',
+      hero_cta: 'Boka konsultation',
+      fw_eyebrow: '<span class="eyebrow2-slash">/</span> Utvalda projekt <span class="eyebrow2-slash">/</span>',
+      fw_h2: 'Webbplatser f\u00f6r varum\u00e4rken som presterar.',
+      fw_cat_website: 'Webbplats', fw_cat_ecom: 'E-handel',
+      feat_1_t: 'Skr\u00e4ddarsydd design', feat_1_d: 'Byggd kring ert varum\u00e4rke',
+      feat_2_t: 'Byggd f\u00f6r konvertering', feat_2_d: 'Webbplatser som f\u00f6rvandlar bes\u00f6kare till medlemmar',
+      feat_3_t: 'L\u00e4tt att sk\u00f6ta', feat_3_d: 'Enkelt f\u00f6r er att driva',
+      feat_4_t: 'L\u00f6pande support', feat_4_d: 'Vi finns med hela v\u00e4gen',
+      care_eyebrow: '<span class="eyebrow2-slash">/</span> Enkelt f\u00f6r er. Professionellt f\u00f6rvaltat. <span class="eyebrow2-slash">/</span>',
+      care_h2: 'Ni driver ert gym.<br>Vi sk\u00f6ter <span style="color: var(--accent);">tekniken.</span>',
+      care_sub: 'Er webbplats ska vara en tillv\u00e4xtmotor, inte \u00e4nnu en uppgift p\u00e5 listan. Uppdatera inneh\u00e5ll i ett enkelt CMS medan Stormie Studios sk\u00f6ter det tekniska bakom kulisserna.',
+      care_1_t: 'Byggd f\u00f6r konvertering', care_1_d: 'Strategi, design och UX som f\u00f6rvandlar bes\u00f6kare till medlemmar.',
+      care_2_t: 'L\u00e4tt att uppdatera', care_2_d: 'Uppdatera text, bilder, scheman och priser i ett enkelt CMS.',
+      care_3_t: 'Helt f\u00f6rvaltat', care_3_d: 'Hosting, s\u00e4kerhet, backuper och underh\u00e5ll ing\u00e5r.',
+      care_4_t: 'Fast m\u00e5nadsavgift', care_4_d: 'En fast avgift. Inga \u00f6verraskningar. Fokusera p\u00e5 era medlemmar.',
+      care_5_t: 'Alltid ert', care_5_d: 'Er dom\u00e4n, ert inneh\u00e5ll och varum\u00e4rke f\u00f6rblir 100% era.',
+      care_6_t: 'Inget sidbyggarunderh\u00e5ll. Ingen plugin-stack. Ingen kod att sk\u00f6ta.',
+      care_6_d: 'Bara en skr\u00e4ddarsydd webbplats ni faktiskt kan driva sj\u00e4lva.',
+      contact_eyebrow: '<span class="eyebrow2-slash">/</span> H\u00f6r av er <span class="eyebrow2-slash">/</span>',
+      contact_h2: 'Vad beh\u00f6ver ni <span style="color: var(--accent);">hj\u00e4lp</span> med?',
+      contact_sub: 'Ber\u00e4tta vad som \u00e4r viktigast just nu s\u00e5 visar vi hur vi kan hj\u00e4lpa till.',
+      need_members: 'Fler medlemmar', need_impression: 'B\u00e4ttre f\u00f6rsta intryck', need_admin: 'Enklare administration',
+      need_outdated: 'Ers\u00e4tta en f\u00f6r\u00e5ldrad webbplats', need_new: 'Nytt gym som \u00f6ppnar', need_other: 'N\u00e5got annat',
+      need_back: '&larr; Tillbaka',
+      f_name: 'Namn', f_email: 'E-post', f_company: 'F\u00f6retag / organisation', f_website: 'Befintlig webbplats',
+      f_no_website: 'Ingen nuvarande webbplats', f_goal: 'Vad vill ni f\u00f6rb\u00e4ttra, bygga eller l\u00f6sa?',
+      f_features_label: 'Funktioner',
+      chip_cms: 'Inneh\u00e5llshantering / CMS', chip_schedule: 'Schema', chip_booking: 'Bokning',
+      chip_membership: 'Medlemskap / registrering', chip_leadforms: 'Kontakt- eller intresseformul\u00e4r', chip_calendar: 'Kalenderintegration',
+      chip_ecom: 'E-handel / betalningar', chip_notsure1: 'Inte s\u00e4ker \u00e4nnu',
+      f_budget_label: 'Budget',
+      chip_budget1: 'Under 10 000 kr', chip_budget2: '10 000\u201320 000 kr', chip_budget3: '20 000\u201340 000 kr',
+      chip_budget4: '40 000+ kr', chip_notsure2: 'Inte s\u00e4ker \u00e4nnu',
+      f_launch_label: '\u00d6nskad lansering',
+      chip_asap: 'S\u00e5 snart som m\u00f6jligt', chip_1month: 'Inom 1 m\u00e5nad', chip_3months: '1\u20133 m\u00e5nader',
+      chip_6months: '3\u20136 m\u00e5nader', chip_nodeadline: 'Ingen best\u00e4md deadline',
+      f_found: 'Hur hittade ni Stormie Studios?',
+      opt_referral: 'Rekommendation', opt_instagram: 'Instagram', opt_google: 'Google',
+      opt_sawsite: 'Sett en annan Stormie Studios-webbplats', opt_outreach: 'Direktkontakt', opt_other: 'Annat',
+      f_send: 'Skicka &rarr;', f_privacy: 'Integritetspolicy',
+      f_success_h: 'F\u00f6rfr\u00e5gan mottagen.',
+      f_success_p: 'Jag g\u00e5r igenom era projektdetaljer och \u00e5terkommer inom en arbetsdag. Om det verkar vara en bra match skickar jag en l\u00e4nk f\u00f6r att boka en konsultation.',
+      faq_eyebrow: '<span class="eyebrow2-slash">/</span> Fr\u00e5gor <span class="eyebrow2-slash">/</span>',
+      faq_h2: 'Vanliga fr\u00e5gor',
+    },
+    th: {
+      hero_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e2a\u0e15\u0e39\u0e14\u0e34\u0e42\u0e2d\u0e14\u0e34\u0e08\u0e34\u0e17\u0e31\u0e25\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c\u0e01\u0e35\u0e2c\u0e32\u0e41\u0e25\u0e30\u0e1f\u0e34\u0e15\u0e40\u0e19\u0e2a <span class="eyebrow2-slash">/</span>',
+      hero_h1_1: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a\u0e40\u0e09\u0e1e\u0e32\u0e30', hero_h1_2: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e21\u0e32\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e43\u0e2b\u0e49\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c',
+      hero_tag: '\u0e14\u0e39\u0e41\u0e25\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e21\u0e37\u0e2d\u0e2d\u0e32\u0e0a\u0e35\u0e1e',
+      hero_sub: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e21\u0e32\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e0a\u0e21\u0e43\u0e2b\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01 \u0e41\u0e25\u0e30\u0e14\u0e39\u0e41\u0e25\u0e07\u0e48\u0e32\u0e22\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e38\u0e13',
+      hero_cta: '\u0e02\u0e2d\u0e04\u0e33\u0e1b\u0e23\u0e36\u0e01\u0e29\u0e32',
+      fw_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e1c\u0e25\u0e07\u0e32\u0e19\u0e40\u0e14\u0e48\u0e19 <span class="eyebrow2-slash">/</span>',
+      fw_h2: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c\u0e17\u0e35\u0e48\u0e43\u0e2b\u0e49\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c',
+      fw_cat_website: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c', fw_cat_ecom: '\u0e2d\u0e35\u0e04\u0e2d\u0e21\u0e40\u0e21\u0e34\u0e23\u0e4c\u0e0b',
+      feat_1_t: '\u0e14\u0e35\u0e44\u0e0b\u0e19\u0e4c\u0e40\u0e09\u0e1e\u0e32\u0e30', feat_1_d: '\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a\u0e15\u0e32\u0e21\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13',
+      feat_2_t: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e21\u0e32\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e0a\u0e21', feat_2_d: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e17\u0e35\u0e48\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e0a\u0e21\u0e43\u0e2b\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01',
+      feat_3_t: '\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e07\u0e48\u0e32\u0e22', feat_3_d: '\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e07\u0e48\u0e32\u0e22\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e38\u0e13',
+      feat_4_t: '\u0e01\u0e32\u0e23\u0e2a\u0e19\u0e31\u0e1a\u0e2a\u0e19\u0e38\u0e19\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e15\u0e48\u0e2d\u0e40\u0e19\u0e37\u0e48\u0e2d\u0e07', feat_4_d: '\u0e40\u0e23\u0e32\u0e2d\u0e22\u0e39\u0e48\u0e40\u0e04\u0e35\u0e22\u0e07\u0e02\u0e49\u0e32\u0e07\u0e04\u0e38\u0e13\u0e40\u0e2a\u0e21\u0e2d',
+      care_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e07\u0e48\u0e32\u0e22\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e38\u0e13 \u0e14\u0e39\u0e41\u0e25\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e21\u0e37\u0e2d\u0e2d\u0e32\u0e0a\u0e35\u0e1e <span class="eyebrow2-slash">/</span>',
+      care_h2: '\u0e04\u0e38\u0e13\u0e14\u0e39\u0e41\u0e25\u0e22\u0e34\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13<br>\u0e40\u0e23\u0e32\u0e14\u0e39\u0e41\u0e25 <span style="color: var(--accent);">\u0e40\u0e17\u0e04\u0e42\u0e19\u0e42\u0e25\u0e22\u0e35</span>',
+      care_sub: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e04\u0e27\u0e23\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c\u0e02\u0e31\u0e1a\u0e40\u0e04\u0e25\u0e37\u0e48\u0e2d\u0e19\u0e01\u0e32\u0e23\u0e40\u0e15\u0e34\u0e1a\u0e42\u0e15 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e07\u0e32\u0e19\u0e2d\u0e35\u0e01\u0e0a\u0e34\u0e49\u0e19\u0e43\u0e19\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e43\u0e19 CMS \u0e07\u0e48\u0e32\u0e22\u0e46 \u0e02\u0e13\u0e30\u0e17\u0e35\u0e48 Stormie Studios \u0e14\u0e39\u0e41\u0e25\u0e14\u0e49\u0e32\u0e19\u0e40\u0e17\u0e04\u0e19\u0e34\u0e04\u0e40\u0e1a\u0e37\u0e49\u0e2d\u0e07\u0e2b\u0e25\u0e31\u0e07',
+      care_1_t: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e21\u0e32\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e0a\u0e21', care_1_d: '\u0e01\u0e25\u0e22\u0e38\u0e17\u0e18\u0e4c \u0e14\u0e35\u0e44\u0e0b\u0e19\u0e4c \u0e41\u0e25\u0e30 UX \u0e17\u0e35\u0e48\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e0a\u0e21\u0e43\u0e2b\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01',
+      care_2_t: '\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e07\u0e48\u0e32\u0e22', care_2_d: '\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21 \u0e23\u0e39\u0e1b\u0e20\u0e32\u0e1e \u0e15\u0e32\u0e23\u0e32\u0e07\u0e40\u0e27\u0e25\u0e32 \u0e41\u0e25\u0e30\u0e23\u0e32\u0e04\u0e32\u0e43\u0e19 CMS \u0e07\u0e48\u0e32\u0e22\u0e46',
+      care_3_t: '\u0e14\u0e39\u0e41\u0e25\u0e40\u0e15\u0e47\u0e21\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a', care_3_d: '\u0e42\u0e2e\u0e2a\u0e15\u0e34\u0e49\u0e07 \u0e04\u0e27\u0e32\u0e21\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22 \u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25 \u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e1a\u0e33\u0e23\u0e38\u0e07\u0e23\u0e31\u0e01\u0e29\u0e32\u0e23\u0e27\u0e21\u0e2d\u0e22\u0e39\u0e48\u0e14\u0e49\u0e27\u0e22',
+      care_4_t: '\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21\u0e23\u0e32\u0e22\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e04\u0e07\u0e17\u0e35\u0e48', care_4_d: '\u0e2d\u0e31\u0e15\u0e23\u0e32\u0e04\u0e07\u0e17\u0e35\u0e48\u0e40\u0e14\u0e35\u0e22\u0e27 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e44\u0e1e\u0e23\u0e2a\u0e4c \u0e40\u0e19\u0e49\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13',
+      care_5_t: '\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e2a\u0e21\u0e2d', care_5_d: '\u0e42\u0e14\u0e40\u0e21\u0e19 \u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32 \u0e41\u0e25\u0e30\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 100%',
+      care_6_t: '\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e14\u0e39\u0e41\u0e25\u0e15\u0e31\u0e27\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e40\u0e27\u0e47\u0e1a \u0e44\u0e21\u0e48\u0e21\u0e35\u0e1b\u0e25\u0e31\u0e01\u0e2d\u0e34\u0e19 \u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e42\u0e04\u0e49\u0e14',
+      care_6_d: '\u0e40\u0e1e\u0e35\u0e22\u0e07\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e17\u0e35\u0e48\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e40\u0e2d\u0e07\u0e44\u0e14\u0e49\u0e08\u0e23\u0e34\u0e07',
+      contact_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e40\u0e23\u0e32 <span class="eyebrow2-slash">/</span>',
+      contact_h2: '\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23<span style="color: var(--accent);">\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d</span>\u0e14\u0e49\u0e32\u0e19\u0e44\u0e2b\u0e19?',
+      contact_sub: '\u0e1a\u0e2d\u0e01\u0e40\u0e23\u0e32\u0e27\u0e48\u0e32\u0e2d\u0e30\u0e44\u0e23\u0e2a\u0e33\u0e04\u0e31\u0e0d\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e15\u0e2d\u0e19\u0e19\u0e35\u0e49 \u0e41\u0e25\u0e49\u0e27\u0e40\u0e23\u0e32\u0e08\u0e30\u0e41\u0e2a\u0e14\u0e07\u0e43\u0e2b\u0e49\u0e40\u0e2b\u0e47\u0e19\u0e27\u0e48\u0e32\u0e40\u0e23\u0e32\u0e0a\u0e48\u0e27\u0e22\u0e44\u0e14\u0e49\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e44\u0e23',
+      need_members: '\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e02\u0e36\u0e49\u0e19', need_impression: '\u0e04\u0e27\u0e32\u0e21\u0e1b\u0e23\u0e30\u0e17\u0e31\u0e1a\u0e43\u0e08\u0e41\u0e23\u0e01\u0e17\u0e35\u0e48\u0e14\u0e35\u0e02\u0e36\u0e49\u0e19', need_admin: '\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e07\u0e48\u0e32\u0e22\u0e02\u0e36\u0e49\u0e19',
+      need_outdated: '\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e17\u0e35\u0e48\u0e25\u0e49\u0e32\u0e2a\u0e21\u0e31\u0e22', need_new: '\u0e40\u0e1b\u0e34\u0e14\u0e22\u0e34\u0e21\u0e43\u0e2b\u0e21\u0e48', need_other: '\u0e2d\u0e37\u0e48\u0e19\u0e46',
+      need_back: '&larr; \u0e01\u0e25\u0e31\u0e1a',
+      f_name: '\u0e0a\u0e37\u0e48\u0e2d', f_email: '\u0e2d\u0e35\u0e40\u0e21\u0e25', f_company: '\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17 / \u0e2d\u0e07\u0e04\u0e4c\u0e01\u0e23', f_website: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e17\u0e35\u0e48\u0e21\u0e35\u0e2d\u0e22\u0e39\u0e48',
+      f_no_website: '\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e21\u0e35\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c', f_goal: '\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e1b\u0e23\u0e31\u0e1a\u0e1b\u0e23\u0e38\u0e07 \u0e2a\u0e23\u0e49\u0e32\u0e07 \u0e2b\u0e23\u0e37\u0e2d\u0e41\u0e01\u0e49\u0e1b\u0e31\u0e0d\u0e2b\u0e32\u0e2d\u0e30\u0e44\u0e23?',
+      f_features_label: '\u0e04\u0e38\u0e13\u0e2a\u0e21\u0e1a\u0e31\u0e15\u0e34 / \u0e1f\u0e35\u0e40\u0e08\u0e2d\u0e23\u0e4c',
+      chip_cms: '\u0e23\u0e30\u0e1a\u0e1a\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32 / CMS', chip_schedule: '\u0e15\u0e32\u0e23\u0e32\u0e07\u0e04\u0e25\u0e32\u0e2a', chip_booking: '\u0e01\u0e32\u0e23\u0e08\u0e2d\u0e07',
+      chip_membership: '\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01 / \u0e2a\u0e21\u0e31\u0e04\u0e23', chip_leadforms: '\u0e41\u0e1a\u0e1a\u0e1f\u0e2d\u0e23\u0e4c\u0e21\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d', chip_calendar: '\u0e01\u0e32\u0e23\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e15\u0e48\u0e2d\u0e1b\u0e0f\u0e34\u0e17\u0e34\u0e19',
+      chip_ecom: '\u0e2d\u0e35\u0e04\u0e2d\u0e21\u0e40\u0e21\u0e34\u0e23\u0e4c\u0e0b / \u0e01\u0e32\u0e23\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e07\u0e34\u0e19', chip_notsure1: '\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e41\u0e19\u0e48\u0e43\u0e08',
+      f_budget_label: '\u0e07\u0e1a\u0e1b\u0e23\u0e30\u0e21\u0e32\u0e13',
+      chip_budget1: '\u0e15\u0e48\u0e33\u0e01\u0e27\u0e48\u0e32 10,000 SEK', chip_budget2: '10,000\u201320,000 SEK', chip_budget3: '20,000\u201340,000 SEK',
+      chip_budget4: '40,000+ SEK', chip_notsure2: '\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e41\u0e19\u0e48\u0e43\u0e08',
+      f_launch_label: '\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e01\u0e32\u0e23\u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27',
+      chip_asap: '\u0e40\u0e23\u0e47\u0e27\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e40\u0e17\u0e48\u0e32\u0e17\u0e35\u0e48\u0e08\u0e30\u0e17\u0e33\u0e44\u0e14\u0e49', chip_1month: '\u0e20\u0e32\u0e22\u0e43\u0e19 1 \u0e40\u0e14\u0e37\u0e2d\u0e19', chip_3months: '1\u20133 \u0e40\u0e14\u0e37\u0e2d\u0e19',
+      chip_6months: '3\u20136 \u0e40\u0e14\u0e37\u0e2d\u0e19', chip_nodeadline: '\u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e40\u0e27\u0e25\u0e32\u0e15\u0e32\u0e22\u0e15\u0e31\u0e27',
+      f_found: '\u0e04\u0e38\u0e13\u0e23\u0e39\u0e49\u0e08\u0e31\u0e01 Stormie Studios \u0e44\u0e14\u0e49\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e44\u0e23?',
+      opt_referral: '\u0e01\u0e32\u0e23\u0e41\u0e19\u0e30\u0e19\u0e33', opt_instagram: 'Instagram', opt_google: 'Google',
+      opt_sawsite: '\u0e40\u0e2b\u0e47\u0e19\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c Stormie Studios \u0e2d\u0e37\u0e48\u0e19', opt_outreach: '\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07', opt_other: '\u0e2d\u0e37\u0e48\u0e19\u0e46',
+      f_send: '\u0e2a\u0e48\u0e07 &rarr;', f_privacy: '\u0e19\u0e42\u0e22\u0e1a\u0e32\u0e22\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27',
+      f_success_h: '\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e04\u0e33\u0e02\u0e2d\u0e41\u0e25\u0e49\u0e27',
+      f_success_p: '\u0e40\u0e23\u0e32\u0e08\u0e30\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e41\u0e25\u0e30\u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e01\u0e25\u0e31\u0e1a\u0e20\u0e32\u0e22\u0e43\u0e19\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e27\u0e31\u0e19\u0e17\u0e33\u0e01\u0e32\u0e23 \u0e2b\u0e32\u0e01\u0e14\u0e39\u0e40\u0e2b\u0e21\u0e32\u0e30\u0e2a\u0e21 \u0e40\u0e23\u0e32\u0e08\u0e30\u0e2a\u0e48\u0e07\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e08\u0e2d\u0e07\u0e04\u0e34\u0e27\u0e43\u0e2b\u0e49\u0e04\u0e38\u0e13',
+      faq_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e04\u0e33\u0e16\u0e32\u0e21 <span class="eyebrow2-slash">/</span>',
+      faq_h2: '\u0e04\u0e33\u0e16\u0e32\u0e21\u0e17\u0e35\u0e48\u0e1e\u0e1a\u0e1a\u0e48\u0e2d\u0e22',
+    },
+  };
+
+  window.onLangChange = function (lang) {
+    currentLang = lang;
+    renderFaqs(lang);
+    if (currentNeedKey && needResponse.style.display !== 'none') {
+      renderNeedAnswer(currentNeedKey);
+    }
+  };
 </script>
+<script src="nav.js"></script>
 
 </body>
 </html>
