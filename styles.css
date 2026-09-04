@@ -104,8 +104,7 @@ footer .logo-img { filter: invert(1) brightness(1.15); }
 .footer-social-icon { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); display: flex; align-items: center; justify-content: center; text-decoration: none; }
 .footer-divider { display: flex; align-items: center; gap: 18px; max-width: 980px; margin: 0 auto 40px; }
 .footer-divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.14); }
-.footer-divider-bolt { width: 10px; height: 22px; flex-shrink: 0; position: relative; overflow: hidden; display: inline-block; opacity: 0.4; }
-.footer-divider-bolt img { position: absolute; top: -1.25px; left: -1.35px; height: 24.6px; width: auto; max-width: none; filter: invert(1) brightness(1.15); }
+.footer-divider-bolt { width: 10px; height: 22px; flex-shrink: 0; fill: rgba(255,255,255,0.4); }
 .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 980px; margin: 0 auto 40px; }
 .footer-col-title { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px; color: rgba(255,255,255,0.45); }
 .footer-col p, .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.85); text-decoration: none; margin-bottom: 10px; }
