@@ -25,19 +25,9 @@
   .eyebrow2 { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
   .eyebrow2.on-dark { color: rgba(255,255,255,0.55); }
   .eyebrow2-slash { color: var(--accent); }
+  .eyebrow2.footer-credit-shimmer { color: transparent; letter-spacing: 0.14em; }
   .hero2-title { font-size: clamp(36px, 5vw, 58px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.06; color: var(--text); margin-bottom: 14px; }
-  .tornado-line { display: inline-block; opacity: 0; }
   .hero2-tag { font-size: clamp(15px, 1.8vw, 19px); font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
-  .hero2-tag-sweep { opacity: 0; transform: translateX(-40px); }
-  .hero2-tag-sweep.sweep-in { animation: sweepInLeft 0.6s cubic-bezier(0.16, 0.8, 0.24, 1) forwards; }
-  @keyframes sweepInLeft {
-    0% { opacity: 0; transform: translateX(-40px); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .tornado-line { opacity: 1 !important; }
-    .hero2-tag-sweep { opacity: 1 !important; transform: none !important; animation: none !important; }
-  }
   .hero2-sub { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 420px; margin-bottom: 32px; }
   .hero2-btn { padding: 15px 26px; font-size: 13px; }
 
@@ -211,9 +201,9 @@
 <section class="hero2">
   <div class="hero2-shape" aria-hidden="true"></div>
   <div class="hero2-inner">
-    <p class="eyebrow2" data-i18n="hero_eyebrow"><span class="eyebrow2-slash">/</span> Digital studio for sport &amp; fitness brands <span class="eyebrow2-slash">/</span></p>
-    <h1 class="hero2-title"><span class="tornado-line" data-i18n="hero_h1_1">Custom websites.</span><br><span class="tornado-line" data-i18n="hero_h1_2">Built to perform.</span></h1>
-    <p class="hero2-tag hero2-tag-sweep" data-i18n="hero_tag">Professionally managed.</p>
+    <p class="eyebrow2 footer-credit-shimmer" data-i18n="hero_eyebrow"><span class="eyebrow2-slash">/</span> Digital studio for sport &amp; fitness brands <span class="eyebrow2-slash">/</span></p>
+    <h1 class="hero2-title"><span data-i18n="hero_h1_1">Custom websites.</span><br><span data-i18n="hero_h1_2">Built to perform.</span></h1>
+    <p class="hero2-tag" data-i18n="hero_tag">Professionally managed.</p>
     <p class="hero2-sub" data-i18n="hero_sub">Built to convert visitors into members, and effortless for you to run.</p>
     <a class="btn-nav-cta hero2-btn" href="#contact">
       <span data-i18n="hero_cta">Request a consultation</span>
@@ -225,7 +215,7 @@
 <section id="work" class="featured-work">
   <div class="fw-head">
     <div>
-      <p class="eyebrow2 on-dark" data-i18n="fw_eyebrow"><span class="eyebrow2-slash">/</span> Featured work <span class="eyebrow2-slash">/</span></p>
+      <p class="eyebrow2 on-dark footer-credit-shimmer" data-i18n="fw_eyebrow"><span class="eyebrow2-slash">/</span> Featured work <span class="eyebrow2-slash">/</span></p>
       <h2 data-i18n="fw_h2">Websites for brands that perform.</h2>
     </div>
     <div class="fw-arrows">
@@ -307,7 +297,7 @@
 
 <section id="care">
   <div class="inner">
-    <p class="eyebrow2" data-i18n="care_eyebrow"><span class="eyebrow2-slash">/</span> Easy for you. Professionally managed. <span class="eyebrow2-slash">/</span></p>
+    <p class="eyebrow2 footer-credit-shimmer" data-i18n="care_eyebrow"><span class="eyebrow2-slash">/</span> Easy for you. Professionally managed. <span class="eyebrow2-slash">/</span></p>
     <h2 class="care-title" data-i18n="care_h2">You run your gym.<br>We run the <span style="color: var(--accent);">tech.</span></h2>
     <p class="care-sub" data-i18n="care_sub">Your website should be a growth engine, not another task on your list. Update content in a simple CMS while Stormie Studios handles the technical side behind the scenes.</p>
 
@@ -350,7 +340,7 @@
 <section id="contact" class="contact">
   <div class="inner">
     <div class="contact-box" id="needPicker">
-      <p class="eyebrow2 on-dark" data-i18n="contact_eyebrow"><span class="eyebrow2-slash">/</span> Get in touch <span class="eyebrow2-slash">/</span></p>
+      <p class="eyebrow2 on-dark footer-credit-shimmer" data-i18n="contact_eyebrow"><span class="eyebrow2-slash">/</span> Get in touch <span class="eyebrow2-slash">/</span></p>
       <h2 data-i18n="contact_h2">What do you need <span style="color: var(--accent);">help</span> with?</h2>
       <p class="need-subtext" data-i18n="contact_sub">Tell us what&#39;s most important right now and we&#39;ll show you how we can help.</p>
       <div class="need-grid">
@@ -450,7 +440,7 @@
 
 <section id="faq">
   <div class="inner">
-    <p class="eyebrow2" data-i18n="faq_eyebrow"><span class="eyebrow2-slash">/</span> Questions <span class="eyebrow2-slash">/</span></p>
+    <p class="eyebrow2 footer-credit-shimmer" data-i18n="faq_eyebrow"><span class="eyebrow2-slash">/</span> Questions <span class="eyebrow2-slash">/</span></p>
     <h2 style="margin-bottom: 40px;" data-i18n="faq_h2">Frequently asked questions</h2>
     <div id="faqList"></div>
   </div>
@@ -518,84 +508,6 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script>
-  // Hero headline: letters swirl in from a small vortex, then the tag line
-  // sweeps in from the left once both headline lines have landed.
-  (function () {
-    const lines = document.querySelectorAll('.tornado-line');
-    const tag = document.querySelector('.hero2-tag-sweep');
-    if (!lines.length) return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || typeof gsap === 'undefined') {
-      lines.forEach((l) => { l.style.opacity = '1'; });
-      if (tag) tag.classList.add('sweep-in');
-      return;
-    }
-
-    let maxFinish = 0;
-    lines.forEach((line, lineIndex) => {
-      const text = line.textContent;
-      line.textContent = '';
-      line.style.opacity = '1';
-      const chars = [];
-      text.split(' ').forEach((word, wi, arr) => {
-        const wordWrap = document.createElement('span');
-        wordWrap.style.display = 'inline-block';
-        wordWrap.style.whiteSpace = 'nowrap';
-        [...word].forEach((ch) => {
-          const span = document.createElement('span');
-          span.textContent = ch;
-          span.style.display = 'inline-block';
-          span.style.willChange = 'transform, opacity';
-          wordWrap.appendChild(span);
-          chars.push(span);
-        });
-        line.appendChild(wordWrap);
-        if (wi < arr.length - 1) line.appendChild(document.createTextNode(' '));
-      });
-
-      const RADIUS = 34;
-      const lineDelay = 0.15 + lineIndex * 0.55;
-
-      chars.forEach((span, i) => {
-        const startAngle = (i / chars.length) * 360 + lineIndex * 50;
-        const swirlAngle = startAngle + 260;
-        const rad0 = startAngle * Math.PI / 180;
-        const rad1 = swirlAngle * Math.PI / 180;
-
-        gsap.set(span, {
-          x: Math.cos(rad0) * RADIUS,
-          y: Math.sin(rad0) * RADIUS,
-          rotation: startAngle,
-          scale: 0.25,
-          opacity: 0,
-        });
-
-        const charDelay = lineDelay + i * 0.014;
-        const tl = gsap.timeline({ delay: charDelay });
-        tl.to(span, {
-          x: Math.cos(rad1) * RADIUS,
-          y: Math.sin(rad1) * RADIUS,
-          rotation: swirlAngle,
-          scale: 0.55,
-          opacity: 0.85,
-          duration: 0.32,
-          ease: 'power1.in',
-        }).to(span, {
-          x: 0, y: 0, rotation: 0, scale: 1, opacity: 1,
-          duration: 0.55,
-          ease: 'back.out(1.8)',
-        });
-        maxFinish = Math.max(maxFinish, charDelay + 0.32 + 0.55);
-      });
-    });
-
-    if (tag) {
-      setTimeout(() => tag.classList.add('sweep-in'), (maxFinish + 0.15) * 1000);
-    }
-  })();
-</script>
 <script>
   const FAQS_I18N = {
     en: [
