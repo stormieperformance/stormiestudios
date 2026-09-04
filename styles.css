@@ -31,8 +31,8 @@ header { position: sticky; top: 0; z-index: 100; display: flex; align-items: cen
 .logo { display: flex; align-items: center; color: var(--text); text-decoration: none; }
 .logo-img { height: 46px; width: auto; display: block; transition: filter 0.2s ease; }
 [data-theme="b"] .logo-img { filter: invert(1) brightness(1.15); }
-nav.main-nav { display: flex; align-items: center; gap: 26px; }
-nav.main-nav a { font-size: 13px; color: var(--muted); text-decoration: none; cursor: pointer; }
+nav.main-nav { display: flex; align-items: center; gap: 36px; }
+nav.main-nav a { font-size: 17px; font-weight: 500; color: var(--muted); text-decoration: none; cursor: pointer; }
 nav.main-nav a:hover { color: var(--text); }
 .nav-right { display: flex; align-items: center; gap: 18px; }
 .lang-select { display: flex; gap: 6px; font-size: 12px; }
