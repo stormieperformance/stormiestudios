@@ -14,16 +14,19 @@ body {
 [data-theme="a"] {
   --bg: #fbfbfd; --bg2: #f5f5f7; --text: #1d1d1f; --muted: #6e6e73; --muted2: #86868b;
   --line: #d2d2d7; --accent: #0071e3; --accent-text: #ffffff; --card: #ffffff;
+  --shimmer-base: rgba(0,0,0,0.55);
 }
 /* ============ THEME B: DARK, WHITE ACCENT ============ */
 [data-theme="b"] {
   --bg: #000000; --bg2: #111113; --text: #f5f5f7; --muted: #a1a1a6; --muted2: #86868b;
   --line: #2a2a2c; --accent: #ff4d1c; --accent-text: #ffffff; --card: #0a0a0c;
+  --shimmer-base: rgba(255,255,255,0.4);
 }
 /* ============ THEME C: LIGHT, ORANGE ACCENT (default) ============ */
 [data-theme="c"] {
   --bg: #ffffff; --bg2: #f7f6f4; --text: #111111; --muted: #6e6e73; --muted2: #86868b;
   --line: #e2e2e2; --accent: #ff4d1c; --accent-text: #ffffff; --card: #ffffff;
+  --shimmer-base: rgba(0,0,0,0.55);
 }
 
 /* ============ HEADER / NAV ============ */
@@ -113,9 +116,12 @@ footer .logo-img { filter: invert(1) brightness(1.15); }
   color: transparent;
   background-size: 200% 100%;
   background-clip: text; -webkit-background-clip: text;
-  animation: footerShimmer 5s linear infinite;
+  animation: footerShimmer 9s linear infinite;
   transition: filter 0.3s ease;
   position: relative;
+}
+.footer-credit-shimmer.on-light {
+  background: linear-gradient(90deg, var(--shimmer-base) 0%, var(--shimmer-base) 45%, var(--accent) 50%, var(--shimmer-base) 55%, var(--shimmer-base) 100%);
 }
 .footer-credit-shimmer:hover { filter: drop-shadow(0 0 6px rgba(255,77,28,0.5)); animation-play-state: paused; }
 @keyframes footerShimmer {
