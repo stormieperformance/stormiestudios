@@ -92,6 +92,8 @@
     .hero2-shape { clip-path: polygon(0% 96%, 100% 80%, 100% 100%, 0% 100%); }
     .featured-work { padding: 0 20px 130px; }
     .featured-work-shape { height: 130px; clip-path: polygon(0% 100%, 100% 45%, 100% 100%); }
+    #care, .contact, #faq { padding-bottom: 130px; }
+    .care-shape, .contact-shape, .faq-shape { height: 130px; clip-path: polygon(0% 100%, 100% 45%, 100% 100%); }
     .fw-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 4px; scrollbar-width: none; }
     .fw-grid::-webkit-scrollbar { display: none; }
     .fw-card { scroll-snap-align: center; }
@@ -115,7 +117,14 @@
   .care-grid p.emphasis { color: var(--text); font-weight: 500; }
   .care-grid p.close { font-style: italic; color: var(--text); font-size: 17px; }
 
-  .contact { text-align: center; }
+  .contact { position: relative; text-align: center; background: #0b0b0b; color: #fff; padding-bottom: 220px; border-bottom: none; overflow: hidden; }
+  .contact .eyebrow { color: rgba(255,255,255,0.55); }
+  .contact h2 { color: #fff; }
+  .contact-shape { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0; background: var(--bg); clip-path: polygon(0% 100%, 100% 30%, 100% 100%); }
+  #care { position: relative; overflow: hidden; padding-bottom: 220px; border-bottom: none; }
+  .care-shape { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0; background: #0b0b0b; clip-path: polygon(0% 100%, 100% 30%, 100% 100%); }
+  #faq { position: relative; overflow: hidden; padding-bottom: 220px; border-bottom: none; }
+  .faq-shape { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0; background: #0b0b0b; clip-path: polygon(0% 100%, 100% 30%, 100% 100%); }
   .contact-box { max-width: 640px; margin: 0 auto; }
   .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 36px; text-align: left; }
   .need-btn { padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); font-size: 14px; font-weight: 500; font-family: inherit; cursor: pointer; text-align: left; transition: var(--transition); }
@@ -302,6 +311,7 @@
       <p class="close">Just a custom website you can actually operate yourself.</p>
     </div>
   </div>
+  <div class="care-shape" aria-hidden="true"></div>
 </section>
 
 <section id="contact" class="contact">
@@ -383,6 +393,7 @@
       </div>
     </div>
   </div>
+  <div class="contact-shape" aria-hidden="true"></div>
 </section>
 
 <section id="faq">
@@ -391,6 +402,7 @@
     <h2 style="margin-bottom: 40px;">Frequently asked questions</h2>
     <div id="faqList"></div>
   </div>
+  <div class="faq-shape" aria-hidden="true"></div>
 </section>
 
 <footer>
