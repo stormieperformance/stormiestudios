@@ -9,29 +9,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .about-sign { font-style: italic; color: var(--muted2); font-size: 15px; margin-top: 8px; }
-  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
-  .why-item { background: var(--card); padding: 28px 28px 26px; }
-  .why-num { display: block; font-style: italic; font-size: 12px; color: var(--accent); margin-bottom: 8px; }
-  .why-title { display: block; font-size: 18px; font-weight: 600; margin-bottom: 10px; }
-  .why-body { font-size: 13px; color: var(--muted); line-height: 1.75; }
+  .eyebrow2 { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+  .eyebrow2-slash { color: var(--accent); }
 
-  .segments-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
-  .segments-grid .segment-full { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  .segment-item { background: var(--card); padding: 32px; }
-  .segment-name { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
-  .segment-text { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; max-width: 420px; }
-  .segment-link { font-size: 12px; font-weight: 600; color: var(--accent); }
+  /* ---- Hero + intro (white, ends in diagonal into black) ---- */
+  .about-hero { position: relative; overflow: hidden; padding: 100px 48px 130px; border-bottom: none; }
+  .about-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+  .about-hero h1 { margin-bottom: 30px; }
+  .about-intro-p { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 700px; margin-bottom: 18px; }
+  .about-intro-p strong { color: var(--text); font-weight: 700; }
+  .about-sign { color: var(--accent); font-weight: 700; font-size: 16px; margin-top: 8px; }
+  .about-hero-shape { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0; background: #0b0b0b; clip-path: polygon(0% 100%, 100% 30%, 100% 100%); }
 
-  .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-  .care-grid p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
-  .care-grid p.emphasis { color: var(--text); font-weight: 500; }
-  .care-grid p.close { font-style: italic; color: var(--text); font-size: 17px; }
-  .bullets { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; text-align: center; }
-  .bullet { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
-  .bullet::before { content: '\2713'; color: var(--accent); font-weight: 700; }
+  /* ---- Credentials (black section) ---- */
+  .about-credentials { position: relative; background: #0b0b0b; color: #fff; padding: 90px 48px 90px; overflow: hidden; border-bottom: none; }
+  .about-cards { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 14px; max-width: 700px; }
+  .about-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 14px; padding: 26px; }
+  .about-card-num { display: block; color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+  .about-card-title { display: block; font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .about-card-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; }
 
-  @media (max-width: 768px) { .why-grid, .segments-grid, .care-grid { grid-template-columns: 1fr; } .segments-grid .segment-full { flex-direction: column; align-items: flex-start; } }
+  @media (max-width: 768px) {
+    .about-hero { padding: 70px 20px 90px; }
+    .about-hero-shape { height: 130px; clip-path: polygon(0% 100%, 100% 45%, 100% 100%); }
+    .about-credentials { padding: 60px 20px 70px; }
+  }
 </style>
 </head>
 <body data-theme="c">
@@ -74,23 +76,40 @@
   </div>
 </div>
 
-
-<section class="page-hero">
-  <div class="inner">
-    <p class="eyebrow" data-i18n="about_eyebrow">About</p>
+<section class="about-hero">
+  <div class="inner about-hero-inner">
+    <p class="eyebrow2" data-i18n="about_eyebrow"><span class="eyebrow2-slash">/</span> About <span class="eyebrow2-slash">/</span></p>
     <h1 data-i18n="about_h1">Built from <span style="color: var(--accent);">the gym floor.</span></h1>
-  </div>
-</section>
-<section>
-  <div class="inner">
-    <p class="sub" style="max-width: 700px;" data-i18n="about_p1">I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.</p>
-    <p class="sub" style="max-width: 700px; margin-top: 16px;" data-i18n="about_p2">Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.</p>
+    <p class="about-intro-p" data-i18n="about_p1">I&#39;m Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it&#39;s the world I come from.</p>
+    <p class="about-intro-p" data-i18n="about_p2">Stormie Studios is a small studio with a simple promise: you&#39;ll work directly with the person building your site. <strong>No middlemen. No handovers. No surprises.</strong></p>
     <p class="about-sign">&mdash; Storm</p>
-    <div class="why-grid">
-      <div class="why-item"><span class="why-num">i.</span><span class="why-title" data-i18n="about_w1_t">Licensed Personal Trainer</span><p class="why-body" data-i18n="about_w1_d">Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.</p></div>
-      <div class="why-item"><span class="why-num">ii.</span><span class="why-title" data-i18n="about_w2_t">Agile Project Manager &amp; Developer</span><p class="why-body" data-i18n="about_w2_d">Trained in Agile Project Management at Futuregames, Computer and Systems Sciences at Stockholm University, AI at KTH Royal Institute of Technology, and Web Development at Luleå University of Technology. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.</p></div>
-      <div class="why-item"><span class="why-num">iii.</span><span class="why-title" data-i18n="about_w3_t">Former Gym Manager &amp; Fitness Instructor</span><p class="why-body" data-i18n="about_w3_d">Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.</p></div>
-      <div class="why-item"><span class="why-num">iv.</span><span class="why-title" data-i18n="about_w4_t">Built From the Industry</span><p class="why-body" data-i18n="about_w4_d">Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.</p></div>
+  </div>
+  <div class="about-hero-shape" aria-hidden="true"></div>
+</section>
+
+<section class="about-credentials">
+  <div class="inner">
+    <div class="about-cards">
+      <div class="about-card">
+        <span class="about-card-num">i.</span>
+        <span class="about-card-title" data-i18n="about_w1_t">Licensed Personal Trainer</span>
+        <p class="about-card-desc" data-i18n="about_w1_d">Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.</p>
+      </div>
+      <div class="about-card">
+        <span class="about-card-num">ii.</span>
+        <span class="about-card-title" data-i18n="about_w2_t">Agile Project Manager &amp; Developer</span>
+        <p class="about-card-desc" data-i18n="about_w2_d">Trained in Agile Project Management at Futuregames, Computer and Systems Sciences at Stockholm University, AI at KTH Royal Institute of Technology, and Web Development at Lule\u00e5 University of Technology. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.</p>
+      </div>
+      <div class="about-card">
+        <span class="about-card-num">iii.</span>
+        <span class="about-card-title" data-i18n="about_w3_t">Former Gym Manager &amp; Fitness Instructor</span>
+        <p class="about-card-desc" data-i18n="about_w3_d">Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.</p>
+      </div>
+      <div class="about-card">
+        <span class="about-card-num">iv.</span>
+        <span class="about-card-title" data-i18n="about_w4_t">Built From the Industry</span>
+        <p class="about-card-desc" data-i18n="about_w4_d">Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -98,24 +117,24 @@
 <script>
   window.PAGE_I18N = {
     en: {
-      about_eyebrow: 'About',
+      about_eyebrow: '<span class="eyebrow2-slash">/</span> About <span class="eyebrow2-slash">/</span>',
       about_h1: 'Built from <span style="color: var(--accent);">the gym floor.</span>',
       about_p1: "I'm Storm Kolmodin. Licensed personal trainer, agile project manager, and developer. I build websites for gyms, clubs, and coaches. Not because I found a niche, but because it's the world I come from.",
-      about_p2: "Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. No middlemen. No handovers. No surprises.",
+      about_p2: "Stormie Studios is a small studio with a simple promise: you'll work directly with the person building your site. <strong>No middlemen. No handovers. No surprises.</strong>",
       about_w1_t: 'Licensed Personal Trainer',
       about_w1_d: 'Certified since 2018 and further educated at the Swedish School of Sport and Health Sciences (GIH). I know what makes someone dare to book their first session.',
       about_w2_t: 'Agile Project Manager &amp; Developer',
-      about_w2_d: 'Trained in Agile Project Management at Futuregames, Computer and Systems Sciences at Stockholm University, AI at KTH Royal Institute of Technology, and Web Development at Luleå University of Technology. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.',
+      about_w2_d: 'Trained in Agile Project Management at Futuregames, Computer and Systems Sciences at Stockholm University, AI at KTH Royal Institute of Technology, and Web Development at Lule\u00e5 University of Technology. Deadlines kept. No surprises. You get a working site, not a project that never gets finished.',
       about_w3_t: 'Former Gym Manager &amp; Fitness Instructor',
       about_w3_d: 'Working in fitness since 2017. I have been on the floor, managed memberships, planned schedules and run operations. I understand the industry from the inside.',
       about_w4_t: 'Built From the Industry',
       about_w4_d: 'Every project draws on real time in the industry, not just building for it. After years in the fitness industry as a personal trainer, fitness instructor, gym manager and coach, I understand how the business works, for both members and staff.',
     },
     sv: {
-      about_eyebrow: 'Om oss',
+      about_eyebrow: '<span class="eyebrow2-slash">/</span> Om oss <span class="eyebrow2-slash">/</span>',
       about_h1: 'Byggd fr\u00e5n <span style="color: var(--accent);">gymgolvet.</span>',
       about_p1: 'Jag heter Storm Kolmodin. Licensierad personlig tr\u00e4nare, agil projektledare och utvecklare. Jag bygger webbplatser f\u00f6r gym, klubbar och tr\u00e4nare. Inte f\u00f6r att jag hittade en nisch, utan f\u00f6r att det \u00e4r v\u00e4rlden jag kommer ifr\u00e5n.',
-      about_p2: 'Stormie Studios \u00e4r en liten studio med ett enkelt l\u00f6fte: ni jobbar direkt med personen som bygger er sida. Inga mellanh\u00e4nder. Inga \u00f6verl\u00e4mningar. Inga \u00f6verraskningar.',
+      about_p2: 'Stormie Studios \u00e4r en liten studio med ett enkelt l\u00f6fte: ni jobbar direkt med personen som bygger er sida. <strong>Inga mellanh\u00e4nder. Inga \u00f6verl\u00e4mningar. Inga \u00f6verraskningar.</strong>',
       about_w1_t: 'Licensierad Personlig Tr\u00e4nare',
       about_w1_d: 'Certifierad sedan 2018 och vidareutbildad vid Gymnastik- och idrottsh\u00f6gskolan (GIH). Jag vet vad som f\u00e5r n\u00e5gon att v\u00e5ga boka sitt f\u00f6rsta pass.',
       about_w2_t: 'Agil Projektledare &amp; Utvecklare',
@@ -126,10 +145,10 @@
       about_w4_d: 'Varje projekt bygger p\u00e5 riktig tid i branschen, inte bara byggande f\u00f6r den. Efter \u00e5r i fitnessbranschen som personlig tr\u00e4nare, tr\u00e4ningsinstrukt\u00f6r, gymchef och coach f\u00f6rst\u00e5r jag hur verksamheten fungerar, b\u00e5de f\u00f6r medlemmar och personal.',
     },
     th: {
-      about_eyebrow: '\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e40\u0e23\u0e32',
+      about_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a\u0e40\u0e23\u0e32 <span class="eyebrow2-slash">/</span>',
       about_h1: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19\u0e08\u0e32\u0e01<span style="color: var(--accent);">\u0e1e\u0e37\u0e49\u0e19\u0e22\u0e34\u0e21</span>',
       about_p1: '\u0e1c\u0e21\u0e0a\u0e37\u0e48\u0e2d Storm Kolmodin \u0e40\u0e17\u0e23\u0e19\u0e40\u0e19\u0e2d\u0e23\u0e4c\u0e2a\u0e48\u0e27\u0e19\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e17\u0e35\u0e48\u0e21\u0e35\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15 \u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23\u0e41\u0e1a\u0e1a Agile \u0e41\u0e25\u0e30\u0e19\u0e31\u0e01\u0e1e\u0e31\u0e12\u0e19\u0e32 \u0e1c\u0e21\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e43\u0e2b\u0e49\u0e22\u0e34\u0e21 \u0e2a\u0e42\u0e21\u0e2a\u0e23 \u0e41\u0e25\u0e30\u0e42\u0e04\u0e49\u0e0a \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e40\u0e1e\u0e23\u0e32\u0e30\u0e1c\u0e21\u0e2b\u0e32\u0e0a\u0e48\u0e2d\u0e07\u0e27\u0e48\u0e32\u0e07\u0e40\u0e08\u0e2d \u0e41\u0e15\u0e48\u0e40\u0e1e\u0e23\u0e32\u0e30\u0e19\u0e35\u0e48\u0e04\u0e37\u0e2d\u0e42\u0e25\u0e01\u0e17\u0e35\u0e48\u0e1c\u0e21\u0e21\u0e32\u0e08\u0e32\u0e01',
-      about_p2: 'Stormie Studios \u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e15\u0e39\u0e14\u0e34\u0e42\u0e2d\u0e02\u0e19\u0e32\u0e14\u0e40\u0e25\u0e47\u0e01\u0e17\u0e35\u0e48\u0e21\u0e35\u0e04\u0e33\u0e21\u0e31\u0e48\u0e19\u0e2a\u0e31\u0e0d\u0e07\u0e48\u0e32\u0e22\u0e46 \u0e04\u0e38\u0e13\u0e08\u0e30\u0e44\u0e14\u0e49\u0e17\u0e33\u0e07\u0e32\u0e19\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07\u0e01\u0e31\u0e1a\u0e04\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e04\u0e19\u0e01\u0e25\u0e32\u0e07 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e32\u0e23\u0e2a\u0e48\u0e07\u0e21\u0e2d\u0e1a\u0e07\u0e32\u0e19 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e44\u0e1e\u0e23\u0e2a\u0e4c',
+      about_p2: 'Stormie Studios \u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e15\u0e39\u0e14\u0e34\u0e42\u0e2d\u0e02\u0e19\u0e32\u0e14\u0e40\u0e25\u0e47\u0e01\u0e17\u0e35\u0e48\u0e21\u0e35\u0e04\u0e33\u0e21\u0e31\u0e48\u0e19\u0e2a\u0e31\u0e0d\u0e07\u0e48\u0e32\u0e22\u0e46 \u0e04\u0e38\u0e13\u0e08\u0e30\u0e44\u0e14\u0e49\u0e17\u0e33\u0e07\u0e32\u0e19\u0e42\u0e14\u0e22\u0e15\u0e23\u0e07\u0e01\u0e31\u0e1a\u0e04\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 <strong>\u0e44\u0e21\u0e48\u0e21\u0e35\u0e04\u0e19\u0e01\u0e25\u0e32\u0e07 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e32\u0e23\u0e2a\u0e48\u0e07\u0e21\u0e2d\u0e1a\u0e07\u0e32\u0e19 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e44\u0e1e\u0e23\u0e2a\u0e4c</strong>',
       about_w1_t: '\u0e40\u0e17\u0e23\u0e19\u0e40\u0e19\u0e2d\u0e23\u0e4c\u0e2a\u0e48\u0e27\u0e19\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e17\u0e35\u0e48\u0e21\u0e35\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15',
       about_w1_d: '\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e23\u0e31\u0e1a\u0e23\u0e2d\u0e07\u0e15\u0e31\u0e49\u0e07\u0e41\u0e15\u0e48\u0e1b\u0e35 2018 \u0e41\u0e25\u0e30\u0e28\u0e36\u0e01\u0e29\u0e32\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21\u0e17\u0e35\u0e48\u0e42\u0e23\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e01\u0e35\u0e2c\u0e32\u0e41\u0e25\u0e30\u0e27\u0e34\u0e17\u0e22\u0e32\u0e28\u0e32\u0e2a\u0e15\u0e23\u0e4c\u0e2a\u0e38\u0e02\u0e20\u0e32\u0e1e\u0e2a\u0e27\u0e35\u0e40\u0e14\u0e19 (GIH) \u0e1c\u0e21\u0e23\u0e39\u0e49\u0e14\u0e35\u0e27\u0e48\u0e32\u0e2d\u0e30\u0e44\u0e23\u0e17\u0e33\u0e43\u0e2b\u0e49\u0e04\u0e19\u0e01\u0e25\u0e49\u0e32\u0e08\u0e2d\u0e07\u0e04\u0e25\u0e32\u0e2a\u0e41\u0e23\u0e01',
       about_w2_t: '\u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23 Agile &amp; \u0e19\u0e31\u0e01\u0e1e\u0e31\u0e12\u0e19\u0e32',
