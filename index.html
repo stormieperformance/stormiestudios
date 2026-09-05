@@ -103,15 +103,27 @@
   .bullet::before { content: '\2713'; color: var(--accent); font-weight: 700; }
 
   .care-title { font-size: clamp(30px, 4vw, 46px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
-  .care-sub { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 560px; margin-bottom: 40px; }
-  .care-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .care-card { display: flex; flex-direction: column; align-items: flex-start; text-align: left; border: 1px solid #dedede; border-radius: 14px; padding: 19px; background: #fbfaf8; }
-  .care-card svg { color: var(--accent); width: 20px; height: 20px; margin-bottom: 10px; flex-shrink: 0; }
-  .care-card h3 { font-size: 15px; font-weight: 700; color: #111; margin-bottom: 5px; line-height: 1.3; }
-  .care-card p { font-size: 12.5px; color: #6e6e73; line-height: 1.4; }
-  .care-card-dark { background: #101010; border-color: #101010; }
-  .care-card-dark .care-card-dark-title { font-size: 14px; font-weight: 700; color: #f5f5f5 !important; line-height: 1.42; margin: 12px 0 20px; }
-  .care-card-dark .care-card-dark-emphasis { font-size: 12.5px; color: var(--accent) !important; font-weight: 700; line-height: 1.4; }
+  .care-sub { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 560px; margin-bottom: 0; }
+
+  .care-columns { margin-top: 56px; }
+  .care-group-title { font-size: clamp(21px, 2.4vw, 26px); font-weight: 800; letter-spacing: -0.01em; margin-bottom: 12px; }
+  .care-group-body { font-size: 15px; color: var(--muted); line-height: 1.65; max-width: 460px; }
+  .care-divider { height: 1px; background: var(--line); margin: 36px 0; }
+
+  .care-info-rows { display: flex; flex-direction: column; gap: 28px; }
+  .care-info-row { display: flex; align-items: flex-start; gap: 14px; }
+  .care-info-slash { color: var(--accent); font-weight: 700; font-size: 18px; line-height: 1.3; flex-shrink: 0; }
+  .care-info-row h4 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .care-info-row p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+
+  @media (min-width: 900px) {
+    .care-columns { display: grid; grid-template-columns: 1fr 1fr; }
+    .care-columns .care-group:first-child { padding-right: 50px; }
+    .care-columns .care-group:last-child { padding-left: 50px; border-left: 1px solid var(--line); }
+    .care-columns .care-divider { display: none; }
+    .care-info-rows { flex-direction: row; gap: 60px; }
+    .care-info-row { flex: 1; }
+  }
 
   .contact { position: relative; text-align: center; background: #0b0b0b; color: #fff; padding-bottom: 220px; border-bottom: none; overflow: hidden; }
   .contact .eyebrow { color: rgba(255,255,255,0.55); }
@@ -151,12 +163,6 @@
 
   @media (max-width: 768px) {
     .need-grid, .row2 { grid-template-columns: 1fr; }
-    .care-cards { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .care-card { padding: 17px; border-radius: 12px; min-height: 154px; }
-    .care-card h3 { font-size: 14px; }
-    .care-card p { font-size: 12px; }
-    .care-card-dark .care-card-dark-title { font-size: 13px; margin: 10px 0 17px; }
-    .care-card-dark .care-card-dark-emphasis { font-size: 12px; }
   }
 
 </style>
@@ -303,38 +309,38 @@
   <div class="inner">
     <p class="eyebrow2" data-i18n="care_eyebrow"><span class="eyebrow2-slash">/</span> Easy for you. Professionally managed. <span class="eyebrow2-slash">/</span></p>
     <h2 class="care-title" data-i18n="care_h2">You run your gym.<br>We run the <span style="color: var(--accent);">tech.</span></h2>
-    <p class="care-sub" data-i18n="care_sub">Your website should be a growth engine, not another task on your list. Update content in a simple CMS while Stormie Studios handles the technical side behind the scenes.</p>
+    <p class="care-sub" data-i18n="care_sub">Update your content when you need to. We handle the hosting, maintenance and technical upkeep.</p>
 
-    <div class="care-cards">
-      <div class="care-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        <h3 data-i18n="care_1_t">Built to convert</h3>
-        <p data-i18n="care_1_d">Strategy, design and UX that turn visitors into members.</p>
+    <div class="care-columns">
+      <div class="care-group">
+        <p class="eyebrow2" data-i18n="care_your_eyebrow"><span class="eyebrow2-slash">/</span> Your side <span class="eyebrow2-slash">/</span></p>
+        <h3 class="care-group-title" data-i18n="care_your_t">Your content. Your control.</h3>
+        <p class="care-group-body" data-i18n="care_your_d">Change text, images, schedules and prices through a simple content editor.</p>
       </div>
-      <div class="care-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        <h3 data-i18n="care_2_t">Easy to update</h3>
-        <p data-i18n="care_2_d">Update text, images, schedules and prices in a simple CMS.</p>
+      <div class="care-divider" aria-hidden="true"></div>
+      <div class="care-group">
+        <p class="eyebrow2" data-i18n="care_our_eyebrow"><span class="eyebrow2-slash">/</span> Our side <span class="eyebrow2-slash">/</span></p>
+        <h3 class="care-group-title" data-i18n="care_our_t">The technical work, handled.</h3>
+        <p class="care-group-body" data-i18n="care_our_d">Custom design with clear routes to enquiries and sign-ups. Hosting, security, backups and maintenance included.</p>
       </div>
-      <div class="care-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        <h3 data-i18n="care_3_t">Fully managed</h3>
-        <p data-i18n="care_3_d">Hosting, security, backups and maintenance are included.</p>
+    </div>
+
+    <div class="care-divider" aria-hidden="true"></div>
+
+    <div class="care-info-rows">
+      <div class="care-info-row">
+        <span class="care-info-slash">/</span>
+        <div>
+          <h4 data-i18n="care_4_t">Fixed monthly fee</h4>
+          <p data-i18n="care_4_d">One agreed monthly fee for ongoing management.</p>
+        </div>
       </div>
-      <div class="care-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="18"/><path d="M15 9.5c0-1.4-1.34-2.5-3-2.5s-3 1.1-3 2.5 1.34 2 3 2 3 .6 3 2-1.34 2.5-3 2.5-3-1.1-3-2.5"/></svg>
-        <h3 data-i18n="care_4_t">Fixed monthly fee</h3>
-        <p data-i18n="care_4_d">One flat rate. No surprises. Focus on your members.</p>
-      </div>
-      <div class="care-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <h3 data-i18n="care_5_t">Yours, always</h3>
-        <p data-i18n="care_5_d">Your domain, content and brand remain 100% yours.</p>
-      </div>
-      <div class="care-card care-card-dark">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        <p class="care-card-dark-title" data-i18n="care_6_t">No page builder maintenance. No plugin stack. No code to manage.</p>
-        <p class="care-card-dark-emphasis" data-i18n="care_6_d">Just a custom website you can actually operate yourself.</p>
+      <div class="care-info-row">
+        <span class="care-info-slash">/</span>
+        <div>
+          <h4 data-i18n="care_5_t">Yours, always</h4>
+          <p data-i18n="care_5_d">Your domain, content and brand remain yours.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -669,14 +675,15 @@
       feat_4_t: 'Ongoing support', feat_4_d: "We're with you all the way",
       care_eyebrow: '<span class="eyebrow2-slash">/</span> Easy for you. Professionally managed. <span class="eyebrow2-slash">/</span>',
       care_h2: 'You run your gym.<br>We run the <span style="color: var(--accent);">tech.</span>',
-      care_sub: 'Your website should be a growth engine, not another task on your list. Update content in a simple CMS while Stormie Studios handles the technical side behind the scenes.',
-      care_1_t: 'Built to convert', care_1_d: 'Strategy, design and UX that turn visitors into members.',
-      care_2_t: 'Easy to update', care_2_d: 'Update text, images, schedules and prices in a simple CMS.',
-      care_3_t: 'Fully managed', care_3_d: 'Hosting, security, backups and maintenance are included.',
-      care_4_t: 'Fixed monthly fee', care_4_d: 'One flat rate. No surprises. Focus on your members.',
-      care_5_t: 'Yours, always', care_5_d: 'Your domain, content and brand remain 100% yours.',
-      care_6_t: 'No page builder maintenance. No plugin stack. No code to manage.',
-      care_6_d: 'Just a custom website you can actually operate yourself.',
+      care_sub: 'Update your content when you need to. We handle the hosting, maintenance and technical upkeep.',
+      care_your_eyebrow: '<span class="eyebrow2-slash">/</span> Your side <span class="eyebrow2-slash">/</span>',
+      care_your_t: 'Your content. Your control.',
+      care_your_d: 'Change text, images, schedules and prices through a simple content editor.',
+      care_our_eyebrow: '<span class="eyebrow2-slash">/</span> Our side <span class="eyebrow2-slash">/</span>',
+      care_our_t: 'The technical work, handled.',
+      care_our_d: 'Custom design with clear routes to enquiries and sign-ups. Hosting, security, backups and maintenance included.',
+      care_4_t: 'Fixed monthly fee', care_4_d: 'One agreed monthly fee for ongoing management.',
+      care_5_t: 'Yours, always', care_5_d: 'Your domain, content and brand remain yours.',
       contact_eyebrow: '<span class="eyebrow2-slash">/</span> Get in touch <span class="eyebrow2-slash">/</span>',
       contact_h2: 'What do you need <span style="color: var(--accent);">help</span> with?',
       contact_sub: "Tell us what's most important right now and we'll show you how we can help.",
@@ -719,14 +726,15 @@
       feat_4_t: 'L\u00f6pande support', feat_4_d: 'Vi finns med hela v\u00e4gen',
       care_eyebrow: '<span class="eyebrow2-slash">/</span> Enkelt f\u00f6r er. Professionellt f\u00f6rvaltat. <span class="eyebrow2-slash">/</span>',
       care_h2: 'Ni driver ert gym.<br>Vi sk\u00f6ter <span style="color: var(--accent);">tekniken.</span>',
-      care_sub: 'Er webbplats ska vara en tillv\u00e4xtmotor, inte \u00e4nnu en uppgift p\u00e5 listan. Uppdatera inneh\u00e5ll i ett enkelt CMS medan Stormie Studios sk\u00f6ter det tekniska bakom kulisserna.',
-      care_1_t: 'Byggd f\u00f6r konvertering', care_1_d: 'Strategi, design och UX som f\u00f6rvandlar bes\u00f6kare till medlemmar.',
-      care_2_t: 'L\u00e4tt att uppdatera', care_2_d: 'Uppdatera text, bilder, scheman och priser i ett enkelt CMS.',
-      care_3_t: 'Helt f\u00f6rvaltat', care_3_d: 'Hosting, s\u00e4kerhet, backuper och underh\u00e5ll ing\u00e5r.',
-      care_4_t: 'Fast m\u00e5nadsavgift', care_4_d: 'En fast avgift. Inga \u00f6verraskningar. Fokusera p\u00e5 era medlemmar.',
-      care_5_t: 'Alltid ert', care_5_d: 'Er dom\u00e4n, ert inneh\u00e5ll och varum\u00e4rke f\u00f6rblir 100% era.',
-      care_6_t: 'Inget sidbyggarunderh\u00e5ll. Ingen plugin-stack. Ingen kod att sk\u00f6ta.',
-      care_6_d: 'Bara en skr\u00e4ddarsydd webbplats ni faktiskt kan driva sj\u00e4lva.',
+      care_sub: 'Uppdatera ert inneh\u00e5ll n\u00e4r ni beh\u00f6ver. Vi sk\u00f6ter hosting, underh\u00e5ll och det tekniska.',
+      care_your_eyebrow: '<span class="eyebrow2-slash">/</span> Er sida <span class="eyebrow2-slash">/</span>',
+      care_your_t: 'Ert inneh\u00e5ll. Er kontroll.',
+      care_your_d: '\u00c4ndra text, bilder, scheman och priser via en enkel inneh\u00e5llsredigerare.',
+      care_our_eyebrow: '<span class="eyebrow2-slash">/</span> V\u00e5r sida <span class="eyebrow2-slash">/</span>',
+      care_our_t: 'Det tekniska arbetet, sk\u00f6tt.',
+      care_our_d: 'Skr\u00e4ddarsydd design med tydliga v\u00e4gar till f\u00f6rfr\u00e5gningar och anm\u00e4lningar. Hosting, s\u00e4kerhet, backuper och underh\u00e5ll ing\u00e5r.',
+      care_4_t: 'Fast m\u00e5nadsavgift', care_4_d: 'En \u00f6verenskommen m\u00e5nadsavgift f\u00f6r l\u00f6pande f\u00f6rvaltning.',
+      care_5_t: 'Alltid ert', care_5_d: 'Er dom\u00e4n, ert inneh\u00e5ll och varum\u00e4rke f\u00f6rblir era.',
       contact_eyebrow: '<span class="eyebrow2-slash">/</span> H\u00f6r av er <span class="eyebrow2-slash">/</span>',
       contact_h2: 'Vad beh\u00f6ver ni <span style="color: var(--accent);">hj\u00e4lp</span> med?',
       contact_sub: 'Ber\u00e4tta vad som \u00e4r viktigast just nu s\u00e5 visar vi hur vi kan hj\u00e4lpa till.',
@@ -769,14 +777,15 @@
       feat_4_t: '\u0e01\u0e32\u0e23\u0e2a\u0e19\u0e31\u0e1a\u0e2a\u0e19\u0e38\u0e19\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e15\u0e48\u0e2d\u0e40\u0e19\u0e37\u0e48\u0e2d\u0e07', feat_4_d: '\u0e40\u0e23\u0e32\u0e2d\u0e22\u0e39\u0e48\u0e40\u0e04\u0e35\u0e22\u0e07\u0e02\u0e49\u0e32\u0e07\u0e04\u0e38\u0e13\u0e40\u0e2a\u0e21\u0e2d',
       care_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e07\u0e48\u0e32\u0e22\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e38\u0e13 \u0e14\u0e39\u0e41\u0e25\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e21\u0e37\u0e2d\u0e2d\u0e32\u0e0a\u0e35\u0e1e <span class="eyebrow2-slash">/</span>',
       care_h2: '\u0e04\u0e38\u0e13\u0e14\u0e39\u0e41\u0e25\u0e22\u0e34\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13<br>\u0e40\u0e23\u0e32\u0e14\u0e39\u0e41\u0e25 <span style="color: var(--accent);">\u0e40\u0e17\u0e04\u0e42\u0e19\u0e42\u0e25\u0e22\u0e35</span>',
-      care_sub: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e04\u0e27\u0e23\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c\u0e02\u0e31\u0e1a\u0e40\u0e04\u0e25\u0e37\u0e48\u0e2d\u0e19\u0e01\u0e32\u0e23\u0e40\u0e15\u0e34\u0e1a\u0e42\u0e15 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e07\u0e32\u0e19\u0e2d\u0e35\u0e01\u0e0a\u0e34\u0e49\u0e19\u0e43\u0e19\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e43\u0e19 CMS \u0e07\u0e48\u0e32\u0e22\u0e46 \u0e02\u0e13\u0e30\u0e17\u0e35\u0e48 Stormie Studios \u0e14\u0e39\u0e41\u0e25\u0e14\u0e49\u0e32\u0e19\u0e40\u0e17\u0e04\u0e19\u0e34\u0e04\u0e40\u0e1a\u0e37\u0e49\u0e2d\u0e07\u0e2b\u0e25\u0e31\u0e07',
-      care_1_t: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e21\u0e32\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e0a\u0e21', care_1_d: '\u0e01\u0e25\u0e22\u0e38\u0e17\u0e18\u0e4c \u0e14\u0e35\u0e44\u0e0b\u0e19\u0e4c \u0e41\u0e25\u0e30 UX \u0e17\u0e35\u0e48\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e0a\u0e21\u0e43\u0e2b\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01',
-      care_2_t: '\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e07\u0e48\u0e32\u0e22', care_2_d: '\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21 \u0e23\u0e39\u0e1b\u0e20\u0e32\u0e1e \u0e15\u0e32\u0e23\u0e32\u0e07\u0e40\u0e27\u0e25\u0e32 \u0e41\u0e25\u0e30\u0e23\u0e32\u0e04\u0e32\u0e43\u0e19 CMS \u0e07\u0e48\u0e32\u0e22\u0e46',
-      care_3_t: '\u0e14\u0e39\u0e41\u0e25\u0e40\u0e15\u0e47\u0e21\u0e23\u0e39\u0e1b\u0e41\u0e1a\u0e1a', care_3_d: '\u0e42\u0e2e\u0e2a\u0e15\u0e34\u0e49\u0e07 \u0e04\u0e27\u0e32\u0e21\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22 \u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25 \u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e1a\u0e33\u0e23\u0e38\u0e07\u0e23\u0e31\u0e01\u0e29\u0e32\u0e23\u0e27\u0e21\u0e2d\u0e22\u0e39\u0e48\u0e14\u0e49\u0e27\u0e22',
-      care_4_t: '\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21\u0e23\u0e32\u0e22\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e04\u0e07\u0e17\u0e35\u0e48', care_4_d: '\u0e2d\u0e31\u0e15\u0e23\u0e32\u0e04\u0e07\u0e17\u0e35\u0e48\u0e40\u0e14\u0e35\u0e22\u0e27 \u0e44\u0e21\u0e48\u0e21\u0e35\u0e40\u0e0b\u0e2d\u0e23\u0e4c\u0e44\u0e1e\u0e23\u0e2a\u0e4c \u0e40\u0e19\u0e49\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13',
-      care_5_t: '\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e2a\u0e21\u0e2d', care_5_d: '\u0e42\u0e14\u0e40\u0e21\u0e19 \u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32 \u0e41\u0e25\u0e30\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 100%',
-      care_6_t: '\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e14\u0e39\u0e41\u0e25\u0e15\u0e31\u0e27\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e40\u0e27\u0e47\u0e1a \u0e44\u0e21\u0e48\u0e21\u0e35\u0e1b\u0e25\u0e31\u0e01\u0e2d\u0e34\u0e19 \u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e42\u0e04\u0e49\u0e14',
-      care_6_d: '\u0e40\u0e1e\u0e35\u0e22\u0e07\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e17\u0e35\u0e48\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e02\u0e36\u0e49\u0e19\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e40\u0e2d\u0e07\u0e44\u0e14\u0e49\u0e08\u0e23\u0e34\u0e07',
+      care_sub: '\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23 \u0e40\u0e23\u0e32\u0e14\u0e39\u0e41\u0e25\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e42\u0e2e\u0e2a\u0e15\u0e34\u0e49\u0e07 \u0e01\u0e32\u0e23\u0e1a\u0e33\u0e23\u0e38\u0e07\u0e23\u0e31\u0e01\u0e29\u0e32 \u0e41\u0e25\u0e30\u0e07\u0e32\u0e19\u0e14\u0e49\u0e32\u0e19\u0e40\u0e17\u0e04\u0e19\u0e34\u0e04\u0e43\u0e2b\u0e49',
+      care_your_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e1d\u0e48\u0e32\u0e22\u0e04\u0e38\u0e13 <span class="eyebrow2-slash">/</span>',
+      care_your_t: '\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u0e01\u0e32\u0e23\u0e04\u0e27\u0e1a\u0e04\u0e38\u0e21\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13',
+      care_your_d: '\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21 \u0e23\u0e39\u0e1b\u0e20\u0e32\u0e1e \u0e15\u0e32\u0e23\u0e32\u0e07\u0e40\u0e27\u0e25\u0e32 \u0e41\u0e25\u0e30\u0e23\u0e32\u0e04\u0e32\u0e1c\u0e48\u0e32\u0e19\u0e15\u0e31\u0e27\u0e41\u0e01\u0e49\u0e44\u0e02\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e07\u0e48\u0e32\u0e22',
+      care_our_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e1d\u0e48\u0e32\u0e22\u0e40\u0e23\u0e32 <span class="eyebrow2-slash">/</span>',
+      care_our_t: '\u0e07\u0e32\u0e19\u0e14\u0e49\u0e32\u0e19\u0e40\u0e17\u0e04\u0e19\u0e34\u0e04\u0e17\u0e35\u0e48\u0e14\u0e39\u0e41\u0e25\u0e43\u0e2b\u0e49',
+      care_our_d: '\u0e14\u0e35\u0e44\u0e0b\u0e19\u0e4c\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a\u0e40\u0e09\u0e1e\u0e32\u0e30 \u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e2a\u0e49\u0e19\u0e17\u0e32\u0e07\u0e17\u0e35\u0e48\u0e0a\u0e31\u0e14\u0e40\u0e08\u0e19\u0e2a\u0e39\u0e48\u0e01\u0e32\u0e23\u0e2a\u0e2d\u0e1a\u0e16\u0e32\u0e21\u0e41\u0e25\u0e30\u0e2a\u0e21\u0e31\u0e04\u0e23 \u0e42\u0e2e\u0e2a\u0e15\u0e34\u0e49\u0e07 \u0e04\u0e27\u0e32\u0e21\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22 \u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25 \u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e1a\u0e33\u0e23\u0e38\u0e07\u0e23\u0e31\u0e01\u0e29\u0e32\u0e23\u0e27\u0e21\u0e2d\u0e22\u0e39\u0e48\u0e14\u0e49\u0e27\u0e22',
+      care_4_t: '\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21\u0e23\u0e32\u0e22\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e04\u0e07\u0e17\u0e35\u0e48', care_4_d: '\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21\u0e23\u0e32\u0e22\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e17\u0e35\u0e48\u0e15\u0e01\u0e25\u0e07\u0e01\u0e31\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e14\u0e39\u0e41\u0e25\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e15\u0e48\u0e2d\u0e40\u0e19\u0e37\u0e48\u0e2d\u0e07',
+      care_5_t: '\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e2a\u0e21\u0e2d', care_5_d: '\u0e42\u0e14\u0e40\u0e21\u0e19 \u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32 \u0e41\u0e25\u0e30\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e22\u0e31\u0e07\u0e04\u0e07\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13',
       contact_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e15\u0e34\u0e14\u0e15\u0e48\u0e2d\u0e40\u0e23\u0e32 <span class="eyebrow2-slash">/</span>',
       contact_h2: '\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23<span style="color: var(--accent);">\u0e04\u0e27\u0e32\u0e21\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d</span>\u0e14\u0e49\u0e32\u0e19\u0e44\u0e2b\u0e19?',
       contact_sub: '\u0e1a\u0e2d\u0e01\u0e40\u0e23\u0e32\u0e27\u0e48\u0e32\u0e2d\u0e30\u0e44\u0e23\u0e2a\u0e33\u0e04\u0e31\u0e0d\u0e17\u0e35\u0e48\u0e2a\u0e38\u0e14\u0e15\u0e2d\u0e19\u0e19\u0e35\u0e49 \u0e41\u0e25\u0e49\u0e27\u0e40\u0e23\u0e32\u0e08\u0e30\u0e41\u0e2a\u0e14\u0e07\u0e43\u0e2b\u0e49\u0e40\u0e2b\u0e47\u0e19\u0e27\u0e48\u0e32\u0e40\u0e23\u0e32\u0e0a\u0e48\u0e27\u0e22\u0e44\u0e14\u0e49\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e44\u0e23',
