@@ -26,13 +26,16 @@
   .about-photo {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 5 / 6;
+    max-height: 65vh;
+    max-height: 65svh;
     margin: 40px -20px 0;
     clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
   }
   .about-photo img {
-    width: 100%; height: 100%; object-fit: cover; object-position: 30% 22%;
+    width: 100%; height: 100%; object-fit: cover; object-position: 42% 50%;
     display: block;
+    filter: saturate(0.78) contrast(1.08) brightness(0.93);
   }
 
   /* ---- Background (black section) ---- */
@@ -70,7 +73,7 @@
     .about-hero-text-rest { grid-column: 1; grid-row: 2; }
     .about-photo {
       grid-column: 2; grid-row: 1 / 3;
-      margin: 0; height: 100%; aspect-ratio: auto;
+      margin: 0; height: 100%; aspect-ratio: auto; max-height: none;
       clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%);
     }
     .about-row { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start; }
@@ -80,7 +83,7 @@
   @media (max-width: 768px) {
     .about-hero { padding: 70px 20px 90px; }
     .about-hero-shape { height: 130px; clip-path: polygon(0% 100%, 100% 45%, 100% 100%); }
-    .about-photo { aspect-ratio: 3 / 4; margin: 28px -20px 0; }
+    .about-photo { aspect-ratio: 5 / 6; max-height: 62vh; max-height: 62svh; margin: 28px -20px 0; }
     .about-credentials { padding: 60px 20px 170px; }
     .about-consult { padding: 60px 20px 90px; }
     .about-credentials-shape, .about-consult-shape { height: 130px; clip-path: polygon(0% 100%, 100% 45%, 100% 100%); }
