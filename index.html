@@ -96,6 +96,16 @@
 
   .fw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1180px; margin: 0 auto; }
   .fw-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
+  .fw-float { animation: fwFloat 6s ease-in-out infinite; }
+  .fw-float:nth-child(2) { animation-duration: 7s; animation-delay: -2.2s; }
+  .fw-float:nth-child(3) { animation-duration: 5.4s; animation-delay: -4s; }
+  @keyframes fwFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fw-float { animation: none; }
+  }
   .fw-shot-link { display: block; text-decoration: none; color: inherit; }
   .fw-shot img { transition: transform 0.4s ease; }
   .fw-card:hover .fw-shot img { transform: scale(1.04); }
@@ -271,7 +281,7 @@
 
 <section id="work" class="featured-work">
   <div class="fw-head">
-    <div class="reveal">
+    <div>
       <p class="eyebrow2 on-dark" data-i18n="fw_eyebrow"><span class="eyebrow2-slash">/</span> Featured work <span class="eyebrow2-slash">/</span></p>
       <h2 data-i18n="fw_h2">Websites for brands that perform.</h2>
     </div>
@@ -281,8 +291,8 @@
     </div>
   </div>
 
-  <div class="fw-grid reveal-group" id="fwGrid">
-    <div class="fw-card reveal">
+  <div class="fw-grid" id="fwGrid">
+    <div class="fw-card fw-float">
       <a class="fw-shot-link" href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener noreferrer">
         <div class="fw-shot fw-shot-1">
           <img src="shot-masters-gym.jpg" alt="Masters Gym website" loading="lazy">
@@ -303,7 +313,7 @@
       </div>
     </div>
 
-    <div class="fw-card reveal">
+    <div class="fw-card fw-float">
       <a class="fw-shot-link" href="https://clinchathletics.com" target="_blank" rel="noopener noreferrer">
         <div class="fw-shot fw-shot-2">
           <img src="shot-clinch-athletics.jpg" alt="Clinch Athletics website" loading="lazy">
@@ -324,7 +334,7 @@
       </div>
     </div>
 
-    <div class="fw-card reveal">
+    <div class="fw-card fw-float">
       <a class="fw-shot-link" href="https://performance-by-dante.vercel.app" target="_blank" rel="noopener noreferrer">
         <div class="fw-shot fw-shot-3">
           <img src="shot-performance-by-dante.jpg" alt="Performance By Dante website" loading="lazy">
