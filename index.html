@@ -38,9 +38,11 @@
   }
   .hero2-btn { padding: 15px 26px; font-size: 13px; }
 
-  /* ---- Hero CTA: sliding circular knob (replaces plain arrow-slide) ---- */
-  .cta-knob { padding: 6px 6px 6px 22px; gap: 0; }
-  .cta-knob-label { padding-right: 14px; }
+  /* ---- Hero CTA: circle-arrow "rolls out" into full pill + label on load ---- */
+  .cta-knob {
+    padding: 6px 22px 6px 6px; gap: 0;
+    animation: ctaPulse 2.8s ease-in-out infinite, ctaRollOut 0.85s cubic-bezier(0.65, 0, 0.35, 1) 0.4s both;
+  }
   .cta-knob-circle {
     display: inline-flex; align-items: center; justify-content: center;
     width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%;
@@ -48,15 +50,35 @@
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease, color 0.25s ease;
   }
   .cta-knob-circle svg { transition: transform 0.3s ease; }
-  .cta-knob:hover .cta-knob-circle { transform: translateX(5px) scale(1.08); }
-  .cta-knob:hover .cta-knob-circle svg { transform: translateX(2px); }
-  .cta-knob:active .cta-knob-circle { transform: translateX(2px) scale(0.94); }
+  .cta-knob-label {
+    padding-left: 14px;
+    display: inline-block;
+    animation: ctaLabelReveal 0.5s ease 1.05s both;
+  }
+  .cta-knob:hover .cta-knob-circle { transform: translateX(3px) scale(1.08); }
+  .cta-knob:hover .cta-knob-circle svg { transform: translateX(1px); }
+  .cta-knob:active .cta-knob-circle { transform: scale(0.94); }
+  @keyframes ctaRollOut {
+    0% { clip-path: circle(17px at 23px 50%); }
+    100% { clip-path: circle(150% at 23px 50%); }
+  }
+  @keyframes ctaLabelReveal {
+    from { opacity: 0; transform: translateX(-6px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
   @media (max-width: 900px) {
-    .hero2-btn.cta-knob { padding: 4px 4px 4px 16px; gap: 0; }
+    .hero2-btn.cta-knob { padding: 4px 16px 4px 4px; gap: 0; }
     .cta-knob-circle { width: 28px; height: 28px; }
+    .cta-knob-label { padding-left: 10px; }
+    @keyframes ctaRollOut {
+      0% { clip-path: circle(14px at 18px 50%); }
+      100% { clip-path: circle(150% at 18px 50%); }
+    }
   }
   @media (prefers-reduced-motion: reduce) {
     .cta-knob-circle, .cta-knob-circle svg { transition: none; }
+    .cta-knob { animation: ctaPulse 2.8s ease-in-out infinite; clip-path: none; }
+    .cta-knob-label { animation: none; opacity: 1; transform: none; }
   }
 
   /* ============ FEATURED WORK ============ */
@@ -231,10 +253,10 @@
     <p class="hero2-tag sweep-in-left" style="animation-delay: 0.32s;" data-i18n="hero_tag">Professionally managed.</p>
     <p class="hero2-sub" data-i18n="hero_sub">Built to convert visitors into members, and effortless for you to run.</p>
     <a class="btn-nav-cta hero2-btn cta-knob" href="#contact">
-      <span class="cta-knob-label" data-i18n="hero_cta">Request a consultation</span>
       <span class="cta-knob-circle" aria-hidden="true">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </span>
+      <span class="cta-knob-label" data-i18n="hero_cta">Request a consultation</span>
     </a>
   </div>
 </section>
