@@ -137,6 +137,32 @@ footer .logo-img { filter: invert(1) brightness(1.15); }
   header { padding: 16px 20px; }
   section { padding: 72px 20px; }
   .page-hero { padding: 120px 20px 56px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+  /* ---- Footer: compact mobile layout ---- */
+  footer { padding: 48px 20px calc(24px + env(safe-area-inset-bottom)); }
+  .footer-top { margin-bottom: 24px; }
+  .footer-top .logo { margin-bottom: 18px; }
+  .footer-tagline { margin-bottom: 12px; max-width: none; }
+  .footer-tagline:last-of-type { margin-bottom: 20px; }
+  .footer-email-btn { max-width: 100%; white-space: normal; word-break: break-word; margin-bottom: 16px; }
+  .footer-social { gap: 12px; }
+  .footer-divider { margin: 0 auto 24px; }
+  .footer-grid {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: start;
+    gap: 24px 20px;
+    margin: 0 auto 24px;
+  }
+  .footer-col:nth-child(1) { order: 1; }
+  .footer-col:nth-child(3) { order: 2; }
+  .footer-col:nth-child(2) {
+    order: 3;
+    grid-column: 1 / -1;
+    margin-top: 24px;
+  }
+  .footer-grid .footer-col-title { font-size: 12px; letter-spacing: 0.06em; margin-bottom: 12px; }
+  .footer-col a { font-size: 15px; line-height: 1.4; padding: 6px 0; margin-bottom: 0; }
+  .footer-col:nth-child(2) p { font-size: 14px; line-height: 1.5; margin-bottom: 4px; }
+  .footer-col:nth-child(2) p:last-child { margin-bottom: 0; }
+  .footer-bottom { flex-direction: column; gap: 7px; text-align: center; font-size: 12.5px; }
 }
