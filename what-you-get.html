@@ -27,11 +27,19 @@
   .wyg-managed-sub { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 480px; margin-bottom: 48px; }
   .wyg-managed-shape { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0; background: var(--bg); clip-path: polygon(0% 100%, 100% 30%, 100% 100%); }
 
-  .fm-cards { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 14px; }
-  .fm-card { display: flex; align-items: flex-start; gap: 18px; background: #161616; border: 1px solid #2a2a2a; border-radius: 14px; padding: 22px; }
-  .fm-card svg { color: var(--accent); width: 26px; height: 26px; flex-shrink: 0; margin-top: 2px; }
-  .fm-card-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-  .fm-card-desc { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.55; }
+  .fm-rows { position: relative; z-index: 1; max-width: 980px; }
+  .fm-row { padding: 28px 0; }
+  .fm-row + .fm-row { border-top: 1px solid rgba(255,255,255,0.12); }
+  .fm-row-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 10px; }
+  .fm-dash { width: 20px; height: 2px; margin-top: 11px; background: var(--accent); flex-shrink: 0; }
+  .fm-row-title { font-size: 18px; font-weight: 700; color: #fff; line-height: 1.35; }
+  .fm-row-desc { font-size: 14.5px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+  @media (min-width: 900px) {
+    .fm-row { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start; }
+    .fm-row-head { margin-bottom: 0; }
+    .fm-row-desc { max-width: 480px; }
+  }
 
   /* ---- Yours, always (white section) ---- */
   .wyg-yours { position: relative; overflow: hidden; padding: 90px 48px 260px; border-bottom: none; }
@@ -47,10 +55,6 @@
   .wyg-cta { position: relative; text-align: center; background: #0b0b0b; color: #fff; padding: 110px 48px 130px; border-bottom: none; }
   .wyg-cta .eyebrow2 { display: block; text-align: center; }
   .wyg-cta h2 { color: #fff; max-width: 640px; margin: 0 auto 32px; }
-
-  @media (min-width: 1000px) {
-    .fm-cards { grid-template-columns: 1fr 1fr 1fr; }
-  }
 
   @media (min-width: 1400px) {
     .wyg-hero-inner, .wyg-managed-inner, .wyg-yours-inner, .wyg-benefits { max-width: 760px; }
@@ -122,27 +126,27 @@
     <p class="wyg-managed-sub" data-i18n="wyg_managed_sub">Everything required to keep your website useful, secure and effortless to operate.</p>
   </div>
   <div class="inner">
-    <div class="fm-cards">
-      <div class="fm-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        <div>
-          <p class="fm-card-title" data-i18n="wyg_card1_t">Simple content management</p>
-          <p class="fm-card-desc" data-i18n="wyg_card1_d">Update text, images, schedules and prices without touching code.</p>
+    <div class="fm-rows">
+      <div class="fm-row">
+        <div class="fm-row-head">
+          <span class="fm-dash" aria-hidden="true"></span>
+          <span class="fm-row-title" data-i18n="wyg_card1_t">Simple content management</span>
         </div>
+        <p class="fm-row-desc" data-i18n="wyg_card1_d">Update text, images, schedules and prices without touching code.</p>
       </div>
-      <div class="fm-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        <div>
-          <p class="fm-card-title" data-i18n="wyg_card2_t">Hosting and maintenance</p>
-          <p class="fm-card-desc" data-i18n="wyg_card2_d">Deployment, security, backups and updates are handled behind the scenes.</p>
+      <div class="fm-row">
+        <div class="fm-row-head">
+          <span class="fm-dash" aria-hidden="true"></span>
+          <span class="fm-row-title" data-i18n="wyg_card2_t">Hosting and maintenance</span>
         </div>
+        <p class="fm-row-desc" data-i18n="wyg_card2_d">Security, backups and updates are handled behind the scenes.</p>
       </div>
-      <div class="fm-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="18"/><path d="M15 9.5c0-1.4-1.34-2.5-3-2.5s-3 1.1-3 2.5 1.34 2 3 2 3 .6 3 2-1.34 2.5-3 2.5-3-1.1-3-2.5"/></svg>
-        <div>
-          <p class="fm-card-title" data-i18n="wyg_card3_t">One flat monthly fee</p>
-          <p class="fm-card-desc" data-i18n="wyg_card3_d">No plugin stack, surprise maintenance or technical systems for you to manage.</p>
+      <div class="fm-row">
+        <div class="fm-row-head">
+          <span class="fm-dash" aria-hidden="true"></span>
+          <span class="fm-row-title" data-i18n="wyg_card3_t">One flat monthly fee</span>
         </div>
+        <p class="fm-row-desc" data-i18n="wyg_card3_d">One agreed monthly fee for ongoing hosting, maintenance and support.</p>
       </div>
     </div>
   </div>
@@ -198,9 +202,9 @@
       wyg_card1_t: 'Simple content management',
       wyg_card1_d: 'Update text, images, schedules and prices without touching code.',
       wyg_card2_t: 'Hosting and maintenance',
-      wyg_card2_d: 'Deployment, security, backups and updates are handled behind the scenes.',
+      wyg_card2_d: 'Security, backups and updates are handled behind the scenes.',
       wyg_card3_t: 'One flat monthly fee',
-      wyg_card3_d: 'No plugin stack, surprise maintenance or technical systems for you to manage.',
+      wyg_card3_d: 'One agreed monthly fee for ongoing hosting, maintenance and support.',
       wyg_yours_eyebrow: '<span class="eyebrow2-slash">/</span> Yours, always <span class="eyebrow2-slash">/</span>',
       wyg_yours_h2: 'Your website stays yours.',
       wyg_yours_sub: 'Built around your business, not around a platform designed to lock you in.',
@@ -219,9 +223,9 @@
       wyg_card1_t: 'Enkel inneh\u00e5llshantering',
       wyg_card1_d: 'Uppdatera text, bilder, scheman och priser utan att r\u00f6ra kod.',
       wyg_card2_t: 'Hosting och underh\u00e5ll',
-      wyg_card2_d: 'Driftsättning, s\u00e4kerhet, backuper och uppdateringar sk\u00f6ts bakom kulisserna.',
+      wyg_card2_d: 'S\u00e4kerhet, backuper och uppdateringar sk\u00f6ts bakom kulisserna.',
       wyg_card3_t: 'Fast m\u00e5nadsavgift',
-      wyg_card3_d: 'Ingen plugin-stack, \u00f6verraskande underh\u00e5ll eller tekniska system f\u00f6r er att sk\u00f6ta.',
+      wyg_card3_d: 'En \u00f6verenskommen m\u00e5nadsavgift f\u00f6r l\u00f6pande hosting, underh\u00e5ll och support.',
       wyg_yours_eyebrow: '<span class="eyebrow2-slash">/</span> Alltid ert <span class="eyebrow2-slash">/</span>',
       wyg_yours_h2: 'Er webbplats f\u00f6rblir er.',
       wyg_yours_sub: 'Byggd kring er verksamhet, inte kring en plattform gjord f\u00f6r att l\u00e5sa in er.',
@@ -240,9 +244,9 @@
       wyg_card1_t: '\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e17\u0e35\u0e48\u0e07\u0e48\u0e32\u0e22',
       wyg_card1_d: '\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21 \u0e23\u0e39\u0e1b\u0e20\u0e32\u0e1e \u0e15\u0e32\u0e23\u0e32\u0e07\u0e40\u0e27\u0e25\u0e32 \u0e41\u0e25\u0e30\u0e23\u0e32\u0e04\u0e32\u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e41\u0e15\u0e30\u0e42\u0e04\u0e49\u0e14',
       wyg_card2_t: '\u0e42\u0e2e\u0e2a\u0e15\u0e34\u0e49\u0e07\u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e1a\u0e33\u0e23\u0e38\u0e07\u0e23\u0e31\u0e01\u0e29\u0e32',
-      wyg_card2_d: '\u0e01\u0e32\u0e23\u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19 \u0e04\u0e27\u0e32\u0e21\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22 \u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25 \u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e16\u0e39\u0e01\u0e14\u0e39\u0e41\u0e25\u0e2d\u0e22\u0e39\u0e48\u0e40\u0e1a\u0e37\u0e49\u0e2d\u0e07\u0e2b\u0e25\u0e31\u0e07',
+      wyg_card2_d: '\u0e04\u0e27\u0e32\u0e21\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22 \u0e01\u0e32\u0e23\u0e2a\u0e33\u0e23\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25 \u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15\u0e16\u0e39\u0e01\u0e14\u0e39\u0e41\u0e25\u0e2d\u0e22\u0e39\u0e48\u0e40\u0e1a\u0e37\u0e49\u0e2d\u0e07\u0e2b\u0e25\u0e31\u0e07',
       wyg_card3_t: '\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21\u0e23\u0e32\u0e22\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e04\u0e07\u0e17\u0e35\u0e48',
-      wyg_card3_d: '\u0e44\u0e21\u0e48\u0e21\u0e35\u0e1b\u0e25\u0e31\u0e01\u0e2d\u0e34\u0e19 \u0e01\u0e32\u0e23\u0e1a\u0e33\u0e23\u0e38\u0e07\u0e23\u0e31\u0e01\u0e29\u0e32\u0e17\u0e35\u0e48\u0e44\u0e21\u0e48\u0e04\u0e32\u0e14\u0e04\u0e34\u0e14 \u0e2b\u0e23\u0e37\u0e2d\u0e23\u0e30\u0e1a\u0e1a\u0e40\u0e17\u0e04\u0e19\u0e34\u0e04\u0e43\u0e2b\u0e49\u0e04\u0e38\u0e13\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23',
+      wyg_card3_d: '\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21\u0e23\u0e32\u0e22\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e17\u0e35\u0e48\u0e15\u0e01\u0e25\u0e07\u0e01\u0e31\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e42\u0e2e\u0e2a\u0e15\u0e34\u0e49\u0e07 \u0e01\u0e32\u0e23\u0e1a\u0e33\u0e23\u0e38\u0e07\u0e23\u0e31\u0e01\u0e29\u0e32\u0e41\u0e25\u0e30\u0e01\u0e32\u0e23\u0e2a\u0e19\u0e31\u0e1a\u0e2a\u0e19\u0e38\u0e19\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e15\u0e48\u0e2d\u0e40\u0e19\u0e37\u0e48\u0e2d\u0e07',
       wyg_yours_eyebrow: '<span class="eyebrow2-slash">/</span> \u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e40\u0e2a\u0e21\u0e2d <span class="eyebrow2-slash">/</span>',
       wyg_yours_h2: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e22\u0e31\u0e07\u0e04\u0e07\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13',
       wyg_yours_sub: '\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a\u0e23\u0e2d\u0e1a\u0e18\u0e38\u0e23\u0e01\u0e34\u0e08\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 \u2014 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e41\u0e1e\u0e25\u0e15\u0e1f\u0e2d\u0e23\u0e4c\u0e21\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a\u0e21\u0e32\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e01\u0e21\u0e31\u0e14\u0e04\u0e38\u0e13',
