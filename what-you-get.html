@@ -39,7 +39,7 @@
   .wyg-yours-sub { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 480px; margin-bottom: 44px; }
   .wyg-yours-shape { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 0; background: #0b0b0b; clip-path: polygon(0% 100%, 100% 30%, 100% 100%); }
 
-  .wyg-benefits { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px; max-width: 620px; }
+  .wyg-benefits { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px; max-width: 620px; margin: 0 auto; }
   .wyg-benefit { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text); font-weight: 500; }
   .wyg-benefit svg { color: var(--accent); width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
 
@@ -50,6 +50,10 @@
 
   @media (min-width: 1000px) {
     .fm-cards { grid-template-columns: 1fr 1fr 1fr; }
+  }
+
+  @media (min-width: 1400px) {
+    .wyg-hero-inner, .wyg-managed-inner, .wyg-yours-inner, .wyg-benefits { max-width: 760px; }
   }
 
   @media (max-width: 768px) {
