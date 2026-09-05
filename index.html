@@ -96,12 +96,20 @@
 
   .fw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1180px; margin: 0 auto; }
   .fw-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
-  .fw-float { animation: fwFloat 6s ease-in-out infinite; }
-  .fw-float:nth-child(2) { animation-duration: 7s; animation-delay: -2.2s; }
-  .fw-float:nth-child(3) { animation-duration: 5.4s; animation-delay: -4s; }
-  @keyframes fwFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+  .fw-grid { perspective: 1400px; }
+  .fw-float {
+    animation: fwDrift3d 15s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+  .fw-float:nth-child(1) { --drift-x: -10px; --drift-rot: -4deg; animation-duration: 14s; }
+  .fw-float:nth-child(2) { --drift-x: 0px; --drift-rot: 0deg; animation-duration: 17s; animation-delay: -4s; }
+  .fw-float:nth-child(3) { --drift-x: 10px; --drift-rot: 4deg; animation-duration: 15.5s; animation-delay: -8s; }
+  @keyframes fwDrift3d {
+    0%, 100% { transform: translateX(0) translateZ(0) rotateY(0deg); }
+    50% { transform: translateX(var(--drift-x, 8px)) translateZ(14px) rotateY(var(--drift-rot, 3deg)); }
+  }
+  @media (hover: none), (pointer: coarse) {
+    .fw-float { animation: none; }
   }
   @media (prefers-reduced-motion: reduce) {
     .fw-float { animation: none; }
