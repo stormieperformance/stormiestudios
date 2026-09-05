@@ -38,6 +38,27 @@
   }
   .hero2-btn { padding: 15px 26px; font-size: 13px; }
 
+  /* ---- Hero CTA: sliding circular knob (replaces plain arrow-slide) ---- */
+  .cta-knob { padding: 6px 6px 6px 22px; gap: 0; }
+  .cta-knob-label { padding-right: 14px; }
+  .cta-knob-circle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%;
+    background: var(--accent-text); color: var(--accent);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease, color 0.25s ease;
+  }
+  .cta-knob-circle svg { transition: transform 0.3s ease; }
+  .cta-knob:hover .cta-knob-circle { transform: translateX(5px) scale(1.08); }
+  .cta-knob:hover .cta-knob-circle svg { transform: translateX(2px); }
+  .cta-knob:active .cta-knob-circle { transform: translateX(2px) scale(0.94); }
+  @media (max-width: 900px) {
+    .hero2-btn.cta-knob { padding: 4px 4px 4px 16px; gap: 0; }
+    .cta-knob-circle { width: 28px; height: 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta-knob-circle, .cta-knob-circle svg { transition: none; }
+  }
+
   /* ============ FEATURED WORK ============ */
   .featured-work { position: relative; background: #0b0b0b; color: #fff; padding: 90px 48px 220px; margin-top: -1px; border-bottom: none; overflow: hidden; }
   .featured-work-shape {
@@ -209,9 +230,11 @@
     <h1 class="hero2-title"><span class="sweep-in-left" style="animation-delay: 0.05s;" data-i18n="hero_h1_1">Custom websites.</span><br><span class="sweep-in-left" style="animation-delay: 0.18s;" data-i18n="hero_h1_2">Built to perform.</span></h1>
     <p class="hero2-tag sweep-in-left" style="animation-delay: 0.32s;" data-i18n="hero_tag">Professionally managed.</p>
     <p class="hero2-sub" data-i18n="hero_sub">Built to convert visitors into members, and effortless for you to run.</p>
-    <a class="btn-nav-cta hero2-btn" href="#contact">
-      <span data-i18n="hero_cta">Request a consultation</span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    <a class="btn-nav-cta hero2-btn cta-knob" href="#contact">
+      <span class="cta-knob-label" data-i18n="hero_cta">Request a consultation</span>
+      <span class="cta-knob-circle" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
     </a>
   </div>
 </section>
