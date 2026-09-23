@@ -98,12 +98,36 @@
     if (typeof window.onLangChange === 'function') window.onLangChange(lang);
   }
 
+  // English and Swedish live at their own URLs (/ and /sv/) so search engines can index both.
+  // Pages that have both versions declare them with <link rel="alternate" hreflang="...">.
+  // Thai is still switched in place.
+  var pageLang = document.documentElement.getAttribute('lang') || 'en';
+  function altUrl(lang) {
+    var link = document.querySelector('link[rel="alternate"][hreflang="' + lang + '"]');
+    if (!link) return null;
+    var u = new URL(link.href);
+    return u.pathname + location.hash;
+  }
+  function goLang(lang) {
+    var target = (lang === 'en' || lang === 'sv') ? altUrl(lang) : null;
+    if (target && lang !== pageLang) {
+      localStorage.setItem('ss-lang', lang);
+      location.href = target;
+    } else {
+      applyLang(lang);
+    }
+  }
+
   document.querySelectorAll('[data-lang]').forEach(function (btn) {
-    btn.addEventListener('click', function () { applyLang(btn.dataset.lang); });
+    btn.addEventListener('click', function () { goLang(btn.dataset.lang); });
   });
 
   window.ssApplyLang = applyLang;
-  var savedLang = localStorage.getItem('ss-lang') || 'en';
+  var savedLang = localStorage.getItem('ss-lang') || pageLang;
+  if ((savedLang === 'en' || savedLang === 'sv') && savedLang !== pageLang) {
+    var redirect = altUrl(savedLang);
+    if (redirect) { location.replace(redirect); return; }
+  }
   applyLang(savedLang);
 
   // Scroll reveal: fade+slide elements up into place as they enter the viewport.
