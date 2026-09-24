@@ -214,6 +214,8 @@
   .fw-shot-link { display: block; text-decoration: none; color: inherit; }
   .fw-shot img { transition: transform 0.4s ease; }
   .fw-card:hover .fw-shot img { transform: scale(1.04); }
+  .fw-card-static { cursor: default; }
+  .fw-card-static:hover .fw-shot img { transform: none; }
   .fw-shot { aspect-ratio: 4/5; border-radius: 12px; overflow: hidden; background: #16171a; border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; }
   .fw-shot-1 { background: linear-gradient(155deg, #1a1a1a, #262626); }
   .fw-shot-2 { background: linear-gradient(155deg, #1c1712, #2b2015); }
@@ -439,22 +441,18 @@
       </div>
     </div>
 
-    <div class="fw-card fw-float">
-      <a class="fw-shot-link" href="https://performance-by-dante.vercel.app" target="_blank" rel="noopener noreferrer">
+    <div class="fw-card fw-float fw-card-static">
+      <div class="fw-shot-link">
         <div class="fw-shot fw-shot-3">
           <img src="shot-performance-by-dante.jpg" alt="Performance By Dante website" loading="lazy">
         </div>
-      </a>
+      </div>
       <div class="fw-meta">
         <div>
           <p class="fw-name">Performance By Dante</p>
           <p class="fw-cat" data-i18n="fw_cat_website">Website</p>
           <div class="fw-status-row">
             <span class="fw-badge"><span class="fw-badge-dot" aria-hidden="true"></span><span data-i18n="fw_status_dev">In development</span></span>
-            <a class="fw-preview-link" href="https://performance-by-dante.vercel.app" target="_blank" rel="noopener noreferrer">
-              <span data-i18n="fw_preview_link">View preview</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
           </div>
         </div>
       </div>
