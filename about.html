@@ -23,46 +23,43 @@
  "@context": "https://schema.org",
  "@graph": [
   {
-   "@type": "Person",
-   "@id": "https://stormiestudios.com/#storm",
-   "name": "Storm Kolmodin",
-   "url": "https://stormiestudios.com/about.html",
-   "jobTitle": "Web developer and licensed personal trainer",
-   "worksFor": {
-    "@id": "https://stormiestudios.com/#studio"
-   },
-   "homeLocation": {
-    "@type": "Place",
-    "name": "Stockholm, Sweden"
-   },
-   "alumniOf": [
-    {
-     "@type": "CollegeOrUniversity",
-     "name": "Stockholm University"
-    },
-    {
-     "@type": "CollegeOrUniversity",
-     "name": "KTH Royal Institute of Technology"
-    },
-    {
-     "@type": "CollegeOrUniversity",
-     "name": "Luleå University of Technology"
-    }
-   ],
-   "knowsAbout": [
-    "Web development",
-    "Agile project management",
-    "Personal training",
-    "Muay Thai"
-   ]
-  },
-  {
    "@type": "ProfilePage",
    "@id": "https://stormiestudios.com/about.html#page",
    "url": "https://stormiestudios.com/about.html",
    "name": "About Storm Kolmodin | Stormie Studios",
    "mainEntity": {
-    "@id": "https://stormiestudios.com/#storm"
+    "@type": "Person",
+    "@id": "https://stormiestudios.com/#storm",
+    "name": "Storm Kolmodin",
+    "url": "https://stormiestudios.com/about.html",
+    "jobTitle": "Web developer and licensed personal trainer",
+    "worksFor": {
+     "@id": "https://stormiestudios.com/#studio"
+    },
+    "homeLocation": {
+     "@type": "Place",
+     "name": "Stockholm, Sweden"
+    },
+    "alumniOf": [
+     {
+      "@type": "CollegeOrUniversity",
+      "name": "Stockholm University"
+     },
+     {
+      "@type": "CollegeOrUniversity",
+      "name": "KTH Royal Institute of Technology"
+     },
+     {
+      "@type": "CollegeOrUniversity",
+      "name": "Luleå University of Technology"
+     }
+    ],
+    "knowsAbout": [
+     "Web development",
+     "Agile project management",
+     "Personal training",
+     "Muay Thai"
+    ]
    }
   }
  ]

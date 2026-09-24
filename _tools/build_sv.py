@@ -115,7 +115,12 @@ def main():
         page_type = "ProfilePage" if f == "about.html" else "WebPage"
         ent = {"@type": page_type, "@id": sv_url(f) + "#page", "url": sv_url(f), "name": title,
                "description": desc, "inLanguage": "sv", "isPartOf": {"@id": BASE + "#website"}}
-        ent["mainEntity" if f == "about.html" else "about"] = {"@id": BASE + ("#storm" if f == "about.html" else "#studio")}
+        if f == "about.html":
+            # Google needs the full Person object here, not just an @id reference
+            en_ld = json.loads(re.search(r'<script type="application/ld\+json">([\s\S]*?)</script>', s).group(1))
+            ent["mainEntity"] = [x for x in en_ld["@graph"] if x.get("@type") == "ProfilePage"][0]["mainEntity"]
+        else:
+            ent["about"] = {"@id": BASE + "#studio"}
         ld = json.dumps({"@context": "https://schema.org", "@graph": [ent]}, ensure_ascii=False, indent=1)
         sv = re.sub(r'<script type="application/ld\+json">[\s\S]*?</script>',
                     lambda m: '<script type="application/ld+json">\n' + ld + '\n</script>', sv, 1)
