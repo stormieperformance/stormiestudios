@@ -187,11 +187,11 @@
   }
   .fw-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; max-width: 1180px; margin: 0 auto 40px; flex-wrap: wrap; }
   .fw-head h2 { color: #fff; font-size: clamp(24px, 3vw, 34px); margin-bottom: 0; }
-  .fw-arrows { display: flex; gap: 12px; }
+  .fw-arrows { display: none; gap: 12px; } /* only needed when the cards become a swipe carousel */
   .fw-arrows button { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--accent); background: transparent; color: var(--accent); cursor: pointer; font-size: 18px; }
   .fw-arrows button:hover { background: var(--accent); color: #0b0b0b; }
 
-  .fw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1180px; margin: 0 auto; }
+  .fw-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 860px; margin: 0 auto; }
   .fw-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
   .fw-grid { perspective: 1400px; }
   .fw-float {
@@ -199,7 +199,7 @@
     transform-style: preserve-3d;
   }
   .fw-float:nth-child(1) { --drift-x: -10px; --drift-rot: -4deg; animation-duration: 14s; }
-  .fw-float:nth-child(2) { --drift-x: 0px; --drift-rot: 0deg; animation-duration: 17s; animation-delay: -4s; }
+  .fw-float:nth-child(2) { --drift-x: 10px; --drift-rot: 4deg; animation-duration: 15.5s; animation-delay: -6s; }
   .fw-float:nth-child(3) { --drift-x: 10px; --drift-rot: 4deg; animation-duration: 15.5s; animation-delay: -8s; }
   @keyframes fwDrift3d {
     0%, 100% { transform: translateX(0) translateZ(0) rotateY(0deg); }
@@ -258,6 +258,7 @@
     .fw-grid::-webkit-scrollbar { display: none; }
     .fw-card { scroll-snap-align: center; }
     .fw-dots { display: flex; }
+    .fw-arrows { display: flex; }
     .feature-strip { grid-template-columns: 1fr 1fr; }
   }
 
@@ -413,27 +414,6 @@
             <span class="fw-badge"><span class="fw-badge-dot" aria-hidden="true"></span><span data-i18n="fw_status_dev">In development</span></span>
             <a class="fw-preview-link" href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener noreferrer">
               <span data-i18n="fw_preview_link">View preview</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="fw-card fw-float">
-      <a class="fw-shot-link" href="https://clinchathletics.com" target="_blank" rel="noopener noreferrer">
-        <div class="fw-shot fw-shot-2">
-          <img src="shot-clinch-athletics.jpg" alt="Clinch Athletics website" loading="lazy">
-        </div>
-      </a>
-      <div class="fw-meta">
-        <div>
-          <p class="fw-name">Clinch Athletics</p>
-          <p class="fw-cat" data-i18n="fw_cat_ecomdesign">E-commerce design</p>
-          <div class="fw-status-row">
-            <span class="fw-badge"><span class="fw-badge-dot" aria-hidden="true"></span><span data-i18n="fw_status_concept">Brand concept</span></span>
-            <a class="fw-preview-link" href="https://clinchathletics.com" target="_blank" rel="noopener noreferrer">
-              <span data-i18n="fw_preview_concept">View the concept</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
             </a>
           </div>
