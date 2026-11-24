@@ -234,6 +234,9 @@
   .fw-preview-link svg { width: 13px; height: 13px; flex-shrink: 0; }
   .fw-preview-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
+  .fw-notice { max-width: 640px; margin: 0 auto; text-align: center; padding: 56px 32px; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; background: #111214; }
+  .fw-notice-title { color: #fff; font-size: clamp(20px, 2.4vw, 26px); margin: 20px 0 10px; }
+  .fw-notice-text { color: rgba(255,255,255,0.55); font-size: 15px; line-height: 1.6; margin: 0; }
   .fw-dots { display: none; gap: 6px; justify-content: center; margin-top: 24px; }
   .fw-dots button { width: 6px; height: 6px; border-radius: 50%; border: none; background: rgba(255,255,255,0.25); padding: 0; cursor: pointer; }
   .fw-dots button.active { background: var(--accent); width: 18px; border-radius: 3px; }
@@ -393,57 +396,13 @@
       <p class="eyebrow2 on-dark" data-i18n="fw_eyebrow"><span class="eyebrow2-slash">/</span> Featured work <span class="eyebrow2-slash">/</span></p>
       <h2 data-i18n="fw_h2">Websites for brands that perform.</h2>
     </div>
-    <div class="fw-arrows">
-      <button id="fwPrev" aria-label="Previous">&lsaquo;</button>
-      <button id="fwNext" aria-label="Next">&rsaquo;</button>
-    </div>
   </div>
 
-  <div class="fw-grid" id="fwGrid">
-    <div class="fw-card fw-float">
-      <a class="fw-shot-link" href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener noreferrer">
-        <div class="fw-shot fw-shot-1">
-          <img src="shot-masters-gym.jpg" alt="Masters Gym website" loading="lazy">
-        </div>
-      </a>
-      <div class="fw-meta">
-        <div>
-          <p class="fw-name">Masters Gym</p>
-          <p class="fw-cat" data-i18n="fw_cat_website">Website</p>
-          <div class="fw-status-row">
-            <span class="fw-badge"><span class="fw-badge-dot" aria-hidden="true"></span><span data-i18n="fw_status_dev">In development</span></span>
-            <a class="fw-preview-link" href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener noreferrer">
-              <span data-i18n="fw_preview_link">View preview</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="fw-card fw-float">
-      <a class="fw-shot-link" href="https://performance-by-dante.vercel.app" target="_blank" rel="noopener noreferrer">
-        <div class="fw-shot fw-shot-3">
-          <img src="shot-performance-by-dante.jpg" alt="Performance By Dante website" loading="lazy">
-        </div>
-      </a>
-      <div class="fw-meta">
-        <div>
-          <p class="fw-name">Performance By Dante</p>
-          <p class="fw-cat" data-i18n="fw_cat_website">Website</p>
-          <div class="fw-status-row">
-            <span class="fw-badge"><span class="fw-badge-dot" aria-hidden="true"></span><span data-i18n="fw_status_dev">In development</span></span>
-            <a class="fw-preview-link" href="https://performance-by-dante.vercel.app" target="_blank" rel="noopener noreferrer">
-              <span data-i18n="fw_preview_link">View preview</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="fw-notice">
+    <span class="fw-badge"><span class="fw-badge-dot" aria-hidden="true"></span><span data-i18n="fw_uc_badge">Under construction</span></span>
+    <h3 class="fw-notice-title" data-i18n="fw_uc_title">Stormie Studios is under construction.</h3>
+    <p class="fw-notice-text" data-i18n="fw_uc_text">The portfolio is being rebuilt. New work will be shown here soon.</p>
   </div>
-
-  <div class="fw-dots" id="fwDots"></div>
 
   <div class="feature-strip reveal-group">
     <div class="feature-item reveal">
@@ -706,6 +665,7 @@
   // Featured work grid: on mobile it's a horizontal scroll-snap row (one
   // card per view), on desktop all cards sit side by side already.
   const fwGrid = document.getElementById('fwGrid');
+  if (fwGrid) {
   const fwDots = document.getElementById('fwDots');
   const fwCards = [...fwGrid.children];
   fwCards.forEach((_, i) => {
@@ -743,6 +703,7 @@
     const i = Math.min(fwCards.length - 1, fwCurrentIndex() + 1);
     fwCards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
   });
+  }
 
   const NEEDS_I18N = {
     en: {
@@ -812,6 +773,7 @@
       fw_h2: 'Websites for brands that perform.',
       fw_cat_website: 'Website', fw_cat_ecom: 'E-commerce',
       fw_status_dev: 'In development', fw_preview_link: 'View preview',
+      fw_uc_badge: 'Under construction', fw_uc_title: 'Stormie Studios is under construction.', fw_uc_text: 'The portfolio is being rebuilt. New work will be shown here soon.',
       fw_status_prelaunch: 'Pre-launch', fw_preview_store: 'Preview the store', fw_status_concept: 'Brand concept', fw_cat_ecomdesign: 'E-commerce design', fw_preview_concept: 'View the concept',
       feat_1_t: 'Custom design', feat_1_d: 'Built around your brand',
       feat_2_t: 'Built to convert', feat_2_d: 'Websites that turn visitors into members',
@@ -863,6 +825,7 @@
       fw_h2: 'Webbplatser f\u00f6r varum\u00e4rken som presterar.',
       fw_cat_website: 'Webbplats', fw_cat_ecom: 'E-handel',
       fw_status_dev: 'Under utveckling', fw_preview_link: 'Se f\u00f6rhandsvisning',
+      fw_uc_badge: 'Under uppbyggnad', fw_uc_title: 'Stormie Studios \u00e4r under uppbyggnad.', fw_uc_text: 'Portfolion byggs om. Nya projekt visas h\u00e4r snart.',
       fw_status_prelaunch: 'F\u00f6re lansering', fw_preview_store: 'Se butiken', fw_status_concept: 'Varum\u00e4rkeskoncept', fw_cat_ecomdesign: 'E-handelsdesign', fw_preview_concept: 'Se konceptet',
       feat_1_t: 'Skr\u00e4ddarsydd design', feat_1_d: 'Byggd kring ert varum\u00e4rke',
       feat_2_t: 'Byggd f\u00f6r konvertering', feat_2_d: 'Webbplatser som f\u00f6rvandlar bes\u00f6kare till medlemmar',
@@ -914,6 +877,7 @@
       fw_h2: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c\u0e17\u0e35\u0e48\u0e43\u0e2b\u0e49\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c',
       fw_cat_website: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c', fw_cat_ecom: '\u0e2d\u0e35\u0e04\u0e2d\u0e21\u0e40\u0e21\u0e34\u0e23\u0e4c\u0e0b',
       fw_status_dev: '\u0e01\u0e33\u0e25\u0e31\u0e07\u0e1e\u0e31\u0e12\u0e19\u0e32', fw_preview_link: '\u0e14\u0e39\u0e15\u0e31\u0e27\u0e2d\u0e22\u0e48\u0e32\u0e07',
+      fw_uc_badge: '\u0e01\u0e33\u0e25\u0e31\u0e07\u0e1b\u0e23\u0e31\u0e1a\u0e1b\u0e23\u0e38\u0e07', fw_uc_title: 'Stormie Studios \u0e01\u0e33\u0e25\u0e31\u0e07\u0e1b\u0e23\u0e31\u0e1a\u0e1b\u0e23\u0e38\u0e07', fw_uc_text: '\u0e1c\u0e25\u0e07\u0e32\u0e19\u0e01\u0e33\u0e25\u0e31\u0e07\u0e2d\u0e31\u0e1b\u0e40\u0e14\u0e15 \u0e40\u0e23\u0e47\u0e27\u0e46 \u0e19\u0e35\u0e49\u0e08\u0e30\u0e21\u0e35\u0e1c\u0e25\u0e07\u0e32\u0e19\u0e43\u0e2b\u0e21\u0e48',
       fw_status_prelaunch: '\u0e01\u0e48\u0e2d\u0e19\u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27', fw_preview_store: '\u0e14\u0e39\u0e15\u0e31\u0e27\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e23\u0e49\u0e32\u0e19\u0e04\u0e49\u0e32', fw_status_concept: '\u0e41\u0e19\u0e27\u0e04\u0e34\u0e14\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c', fw_cat_ecomdesign: '\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a\u0e2d\u0e35\u0e04\u0e2d\u0e21\u0e40\u0e21\u0e34\u0e23\u0e4c\u0e0b', fw_preview_concept: '\u0e14\u0e39\u0e04\u0e2d\u0e19\u0e40\u0e0b\u0e1b\u0e15\u0e4c',
       feat_1_t: '\u0e14\u0e35\u0e44\u0e0b\u0e19\u0e4c\u0e40\u0e09\u0e1e\u0e32\u0e30', feat_1_d: '\u0e2d\u0e2d\u0e01\u0e41\u0e1a\u0e1a\u0e15\u0e32\u0e21\u0e41\u0e1a\u0e23\u0e19\u0e14\u0e4c\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13',
       feat_2_t: '\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e21\u0e32\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e0a\u0e21', feat_2_d: '\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c\u0e17\u0e35\u0e48\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e02\u0e49\u0e32\u0e0a\u0e21\u0e43\u0e2b\u0e49\u0e40\u0e1b\u0e47\u0e19\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01',
