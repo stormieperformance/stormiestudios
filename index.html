@@ -234,7 +234,9 @@
   .fw-preview-link svg { width: 13px; height: 13px; flex-shrink: 0; }
   .fw-preview-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-  .fw-notice { max-width: 640px; margin: 0 auto; text-align: center; padding: 56px 32px; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; background: #111214; }
+  .fw-grid.fw-grid-single { grid-template-columns: minmax(0, 400px); justify-content: center; }
+  @media (max-width: 900px) { .fw-grid.fw-grid-single { grid-auto-flow: row; grid-template-columns: minmax(0, 340px); overflow: visible; } }
+  .fw-notice { max-width: 640px; margin: 56px auto 0; text-align: center; padding: 56px 32px; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; background: #111214; }
   .fw-notice-title { color: #fff; font-size: clamp(20px, 2.4vw, 26px); margin: 20px 0 10px; }
   .fw-notice-text { color: rgba(255,255,255,0.55); font-size: 15px; line-height: 1.6; margin: 0; }
   .fw-dots { display: none; gap: 6px; justify-content: center; margin-top: 24px; }
@@ -395,6 +397,29 @@
     <div>
       <p class="eyebrow2 on-dark" data-i18n="fw_eyebrow"><span class="eyebrow2-slash">/</span> Featured work <span class="eyebrow2-slash">/</span></p>
       <h2 data-i18n="fw_h2">Websites for brands that perform.</h2>
+    </div>
+  </div>
+
+  <div class="fw-grid fw-grid-single">
+    <div class="fw-card fw-float">
+      <a class="fw-shot-link" href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener noreferrer">
+        <div class="fw-shot fw-shot-1">
+          <img src="shot-masters-gym.jpg?v=20261127" alt="Masters Gym website" loading="lazy">
+        </div>
+      </a>
+      <div class="fw-meta">
+        <div>
+          <p class="fw-name">Masters Gym</p>
+          <p class="fw-cat" data-i18n="fw_cat_website">Website</p>
+          <div class="fw-status-row">
+            <span class="fw-badge"><span class="fw-badge-dot" aria-hidden="true"></span><span data-i18n="fw_status_dev">In development</span></span>
+            <a class="fw-preview-link" href="https://stormieperformance.com/masters-gym/" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="fw_preview_link">View preview</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
